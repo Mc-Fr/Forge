@@ -116,7 +116,6 @@ import net.mcfr.decoration.lighting.BlockLargeTorch;
 import net.mcfr.decoration.lighting.BlockLitCampFire;
 import net.mcfr.decoration.lighting.BlockSimpleCandle;
 import net.mcfr.decoration.lighting.BlockTripleCandle;
-import net.mcfr.decoration.lighting.BlockWallLantern;
 import net.mcfr.decoration.lighting.EnumLanternColor;
 import net.mcfr.decoration.lighting.tileEntities.TileEntityCampfire;
 import net.mcfr.decoration.signs.BlockStandingNormalSign;
@@ -626,8 +625,6 @@ public final class McfrBlocks {
   public static final McfrBlockFence CHERRY_WOOD_FENCE = new McfrBlockFence("cherry_wood", 2, 5, Material.WOOD, SoundType.WOOD, "axe", 0);
   public static final McfrBlockFence PALM_FENCE = new McfrBlockFence("palm", 2, 5, Material.WOOD, SoundType.WOOD, "axe", 0);
   public static final McfrBlockFence BELUXIER_FENCE = new McfrBlockFence("beluxier", 2, 5, Material.WOOD, SoundType.WOOD, "axe", 0);
-  public static final McfrBlockFence GOLDEN_FENCE = new McfrBlockFence("golden", 3, 10, Material.IRON, SoundType.METAL, "pickaxe", 2);
-  public static final McfrBlockFence IRON_FENCE = new McfrBlockFence("iron", 5, 10, Material.IRON, SoundType.METAL, "pickaxe", 1);
   // Murets
   public static final BlockWoodenWall WOODEN_WALL = new BlockWoodenWall();
   public static final BlockWoodenWall2 WOODEN_WALL2 = new BlockWoodenWall2();
@@ -685,21 +682,6 @@ public final class McfrBlocks {
   public static final BlockLantern GREEN_PAPER_LANTERN = new BlockLantern(EnumDyeColor.GREEN, true);
   public static final BlockLantern RED_PAPER_LANTERN = new BlockLantern(EnumDyeColor.RED, true);
 
-  public static final BlockWallLantern WHITE_WALL_LANTERN = new BlockWallLantern(EnumDyeColor.WHITE, false);
-  public static final BlockWallLantern ORANGE_WALL_LANTERN = new BlockWallLantern(EnumDyeColor.ORANGE, false);
-  public static final BlockWallLantern YELLOW_WALL_LANTERN = new BlockWallLantern(EnumDyeColor.YELLOW, false);
-  public static final BlockWallLantern PURPLE_WALL_LANTERN = new BlockWallLantern(EnumDyeColor.PURPLE, false);
-  public static final BlockWallLantern BLUE_WALL_LANTERN = new BlockWallLantern(EnumDyeColor.BLUE, false);
-  public static final BlockWallLantern GREEN_WALL_LANTERN = new BlockWallLantern(EnumDyeColor.GREEN, false);
-  public static final BlockWallLantern RED_WALL_LANTERN = new BlockWallLantern(EnumDyeColor.RED, false);
-
-  public static final BlockWallLantern WHITE_PAPER_WALL_LANTERN = new BlockWallLantern(EnumDyeColor.WHITE, true);
-  public static final BlockWallLantern ORANGE_PAPER_WALL_LANTERN = new BlockWallLantern(EnumDyeColor.ORANGE, true);
-  public static final BlockWallLantern YELLOW_PAPER_WALL_LANTERN = new BlockWallLantern(EnumDyeColor.YELLOW, true);
-  public static final BlockWallLantern PURPLE_PAPER_WALL_LANTERN = new BlockWallLantern(EnumDyeColor.PURPLE, true);
-  public static final BlockWallLantern BLUE_PAPER_WALL_LANTERN = new BlockWallLantern(EnumDyeColor.BLUE, true);
-  public static final BlockWallLantern GREEN_PAPER_WALL_LANTERN = new BlockWallLantern(EnumDyeColor.GREEN, true);
-  public static final BlockWallLantern RED_PAPER_WALL_LANTERN = new BlockWallLantern(EnumDyeColor.RED, true);
   // Panneaux
   public static final BlockWallNote WALL_NOTE = new BlockWallNote();
   public static final BlockTombstone TOMBSTONE = new BlockTombstone();
@@ -1177,8 +1159,6 @@ public final class McfrBlocks {
     register(CHERRY_WOOD_FENCE);
     register(PALM_FENCE);
     register(BELUXIER_FENCE);
-    register(GOLDEN_FENCE);
-    register(IRON_FENCE);
 
     registerVariants(WOODEN_WALL);
     registerVariants(WOODEN_WALL2);
@@ -1231,22 +1211,6 @@ public final class McfrBlocks {
     register(BLUE_PAPER_LANTERN);
     register(GREEN_PAPER_LANTERN);
     register(RED_PAPER_LANTERN);
-
-    register(WHITE_WALL_LANTERN);
-    register(ORANGE_WALL_LANTERN);
-    register(YELLOW_WALL_LANTERN);
-    register(PURPLE_WALL_LANTERN);
-    register(BLUE_WALL_LANTERN);
-    register(GREEN_WALL_LANTERN);
-    register(RED_WALL_LANTERN);
-
-    register(WHITE_PAPER_WALL_LANTERN);
-    register(ORANGE_PAPER_WALL_LANTERN);
-    register(YELLOW_PAPER_WALL_LANTERN);
-    register(PURPLE_PAPER_WALL_LANTERN);
-    register(BLUE_PAPER_WALL_LANTERN);
-    register(GREEN_PAPER_WALL_LANTERN);
-    register(RED_PAPER_WALL_LANTERN);
 
     register(WALL_NOTE);
     register(TOMBSTONE);
@@ -1400,25 +1364,24 @@ public final class McfrBlocks {
    *
    * @param color la couleur
    * @param isPaper la lanterne est en papier ou non
-   * @param isWall la lanterne est sur un mur ou non
    * @return la lanterne ou null si la couleur est null
    */
-  public static Block getLantern(EnumLanternColor color, boolean isPaper, boolean isWall) {
+  public static BlockLantern getLantern(EnumLanternColor color, boolean isPaper) {
     switch (color) {
       case WHITE:
-        return isPaper ? isWall ? WHITE_PAPER_WALL_LANTERN : WHITE_PAPER_LANTERN : isWall ? WHITE_WALL_LANTERN : WHITE_LANTERN;
+        return isPaper ? WHITE_PAPER_LANTERN : WHITE_LANTERN;
       case ORANGE:
-        return isPaper ? isWall ? ORANGE_PAPER_WALL_LANTERN : ORANGE_PAPER_LANTERN : isWall ? ORANGE_WALL_LANTERN : ORANGE_LANTERN;
+        return isPaper ? ORANGE_PAPER_LANTERN : ORANGE_LANTERN;
       case YELLOW:
-        return isPaper ? isWall ? YELLOW_PAPER_WALL_LANTERN : YELLOW_PAPER_LANTERN : isWall ? YELLOW_WALL_LANTERN : YELLOW_LANTERN;
+        return isPaper ? YELLOW_PAPER_LANTERN : YELLOW_LANTERN;
       case PURPLE:
-        return isPaper ? isWall ? PURPLE_PAPER_WALL_LANTERN : PURPLE_PAPER_LANTERN : isWall ? PURPLE_WALL_LANTERN : PURPLE_LANTERN;
+        return isPaper ? PURPLE_PAPER_LANTERN : PURPLE_LANTERN;
       case BLUE:
-        return isPaper ? isWall ? BLUE_PAPER_WALL_LANTERN : BLUE_PAPER_LANTERN : isWall ? BLUE_WALL_LANTERN : BLUE_LANTERN;
+        return isPaper ? BLUE_PAPER_LANTERN : BLUE_LANTERN;
       case GREEN:
-        return isPaper ? isWall ? GREEN_PAPER_WALL_LANTERN : GREEN_PAPER_LANTERN : isWall ? GREEN_WALL_LANTERN : GREEN_LANTERN;
+        return isPaper ? GREEN_PAPER_LANTERN : GREEN_LANTERN;
       case RED:
-        return isPaper ? isWall ? RED_PAPER_WALL_LANTERN : RED_PAPER_LANTERN : isWall ? RED_WALL_LANTERN : RED_LANTERN;
+        return isPaper ? RED_PAPER_LANTERN : RED_LANTERN;
       default:
         return null;
     }

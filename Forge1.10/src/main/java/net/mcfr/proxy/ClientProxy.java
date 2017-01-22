@@ -493,8 +493,6 @@ public class ClientProxy extends CommonProxy {
     registerBlock(CHERRY_WOOD_FENCE);
     registerBlock(PALM_FENCE);
     registerBlock(BELUXIER_FENCE);
-    registerBlock(GOLDEN_FENCE);
-    registerBlock(IRON_FENCE);
 
     registerBlockWoodVariants(WOODEN_WALL);
     registerBlockVariants(WOODEN_WALL2, EnumExoticWoodType.class);
@@ -546,22 +544,6 @@ public class ClientProxy extends CommonProxy {
     registerBlock(BLUE_PAPER_LANTERN);
     registerBlock(GREEN_PAPER_LANTERN);
     registerBlock(RED_PAPER_LANTERN);
-
-    registerBlock(WHITE_WALL_LANTERN);
-    registerBlock(ORANGE_WALL_LANTERN);
-    registerBlock(YELLOW_WALL_LANTERN);
-    registerBlock(PURPLE_WALL_LANTERN);
-    registerBlock(BLUE_WALL_LANTERN);
-    registerBlock(GREEN_WALL_LANTERN);
-    registerBlock(RED_WALL_LANTERN);
-
-    registerBlock(WHITE_PAPER_WALL_LANTERN);
-    registerBlock(ORANGE_PAPER_WALL_LANTERN);
-    registerBlock(YELLOW_PAPER_WALL_LANTERN);
-    registerBlock(PURPLE_PAPER_WALL_LANTERN);
-    registerBlock(BLUE_PAPER_WALL_LANTERN);
-    registerBlock(GREEN_PAPER_WALL_LANTERN);
-    registerBlock(RED_PAPER_WALL_LANTERN);
 
     registerBlock(McfrBlocks.WALL_NOTE);
     registerBlock(McfrBlocks.TOMBSTONE);
@@ -854,7 +836,7 @@ public class ClientProxy extends CommonProxy {
     RenderingRegistry.registerEntityRenderingHandler(EntityBormoth.class, new RenderBormoth(Minecraft.getMinecraft().getRenderManager(), new ModelBormoth(), 2.0F));
     RenderingRegistry.registerEntityRenderingHandler(EntityHoen.class, new RenderHoen(Minecraft.getMinecraft().getRenderManager(), new ModelHoen(), 0.2F));
     RenderingRegistry.registerEntityRenderingHandler(EntityGalt.class, new RenderGalt(Minecraft.getMinecraft().getRenderManager(), new ModelGalt(), 1.2F));
-    
+
     ColorHandler.init();
   }
 

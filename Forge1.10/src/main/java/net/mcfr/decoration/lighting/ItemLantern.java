@@ -44,13 +44,9 @@ public class ItemLantern extends McfrItem {
       pos = pos.offset(facing);
     }
 
-    Block lantern = null;
-    if (facing == EnumFacing.UP || facing == EnumFacing.DOWN)
-      lantern = McfrBlocks.getLantern(EnumLanternColor.byMetadata(stack.getMetadata()), isPaper(), false);
-    else
-      lantern = McfrBlocks.getLantern(EnumLanternColor.byMetadata(stack.getMetadata()), isPaper(), true);
+    BlockLantern lantern = McfrBlocks.getLantern(EnumLanternColor.byMetadata(stack.getMetadata()), isPaper());
 
-    if (playerIn.canPlayerEdit(pos, facing, stack) && stack.stackSize > 0 && worldIn.canBlockBePlaced(lantern, pos, false, facing, null, stack)) {
+    if (playerIn.canPlayerEdit(pos, facing, stack) && stack.stackSize > 0 && lantern.canPlaceBlockOnSide(worldIn, pos, facing.getOpposite())) {
       IBlockState state1 = lantern.onBlockPlaced(worldIn, pos, facing, hitX, hitY, hitZ, 0, playerIn);
 
       if (worldIn.setBlockState(pos, state1, 3)) {
@@ -62,7 +58,7 @@ public class ItemLantern extends McfrItem {
         }
         SoundType soundtype = lantern.getSoundType(state, worldIn, pos, null);
 
-        worldIn.playSound(playerIn, new BlockPos(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5), soundtype.getPlaceSound(), SoundCategory.BLOCKS, (soundtype.getVolume() + 1) / 2.0f, soundtype.getPitch() * 0.8F);
+        worldIn.playSound(playerIn, new BlockPos(pos.getX(), pos.getY(), pos.getZ()), soundtype.getPlaceSound(), SoundCategory.BLOCKS, (soundtype.getVolume() + 1) / 2.0f, soundtype.getPitch() * 0.8F);
         --stack.stackSize;
 
         return EnumActionResult.SUCCESS;
