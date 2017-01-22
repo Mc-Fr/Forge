@@ -147,8 +147,10 @@ public final class McfrItems {
   public static final ItemLantern LANTERN = new ItemLantern(false);
   public static final ItemLantern PAPER_LANTERN = new ItemLantern(true);
   // Vitrines/stands
-  public static final McfrItemBlockSpecial ARMOR_STAND = new McfrItemBlockSpecial("armor_stand", McfrBlocks.ARMOR_STAND, CreativeTabs.DECORATIONS);
-  public static final McfrItemBlockSpecial WEAPONS_STAND = new McfrItemBlockSpecial("weapons_stand", McfrBlocks.WEAPONS_STAND, CreativeTabs.DECORATIONS);
+  public static final McfrItemBlockSpecial ARMOR_STAND = new McfrItemBlockSpecial("armor_stand", McfrBlocks.ARMOR_STAND,
+      null /* CreativeTabs.DECORATIONS */); // TEMP
+  public static final McfrItemBlockSpecial WEAPONS_STAND = new McfrItemBlockSpecial("weapons_stand", McfrBlocks.WEAPONS_STAND,
+      null /* CreativeTabs.DECORATIONS */); // TEMP
   public static final McfrItemBlockSpecial SHOWCASE = new McfrItemBlockSpecial("showcase", McfrBlocks.SHOWCASE, CreativeTabs.DECORATIONS);
   // Panneaux et affiches
   public static final McfrItemSign WALL_NOTE = new McfrItemSign("wall_note", null, McfrBlocks.WALL_NOTE, null, TileEntityWallNote.class);
