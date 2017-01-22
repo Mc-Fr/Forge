@@ -1,6 +1,6 @@
 {
     "parent": "block/wall_inventory",
     "textures": {
-        "wall": "blocks/log_big_oak"
+        "wall": "blocks/log_dark_oak"
     }
 }

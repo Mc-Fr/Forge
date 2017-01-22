@@ -1,0 +1,6 @@
+{
+    "parent": "item/generated",
+    "textures": {
+        "layer0": "mcfr_b_i:items/circular_saw"
+    }
+}
