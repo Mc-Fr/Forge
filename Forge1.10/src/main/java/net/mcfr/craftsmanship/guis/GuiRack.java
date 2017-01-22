@@ -12,8 +12,11 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public abstract class GuiRack extends GuiContainer {
+  private TileEntityRack tileEntityRack;
+
   public GuiRack(InventoryPlayer playerInventory, TileEntityRack rackInventory, EntityPlayer player, final Class<? extends BlockRack<?>> blockClass) {
     super(new ContainerRack(playerInventory, rackInventory, player, blockClass));
+    this.tileEntityRack = rackInventory;
   }
 
   protected abstract ResourceLocation getTexture();
@@ -25,5 +28,14 @@ public abstract class GuiRack extends GuiContainer {
     int x = (this.width - this.xSize) / 2;
     int y = (this.height - this.ySize) / 2;
     drawTexturedModalRect(x, y, 0, 0, this.xSize, this.ySize);
+
+    int l = this.getTranformProgressScaled(44);
+    this.drawTexturedModalRect(x + 77, y + 67, 212, 67, l, 5);
+  }
+
+  private int getTranformProgressScaled(int pixels) {
+    float progress = this.tileEntityRack.getProgress();
+    // System.out.println(progress);
+    return (int) (progress * pixels);
   }
 }

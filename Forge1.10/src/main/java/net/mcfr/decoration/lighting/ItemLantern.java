@@ -33,8 +33,7 @@ public class ItemLantern extends McfrItem {
   }
 
   @Override
-  public EnumActionResult onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX,
-      float hitY, float hitZ) {
+  public EnumActionResult onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
     IBlockState state = worldIn.getBlockState(pos);
     Block block = state.getBlock();
 
@@ -61,10 +60,9 @@ public class ItemLantern extends McfrItem {
           ItemBlock.setTileEntityNBT(worldIn, playerIn, pos, stack);
           state1.getBlock().onBlockPlacedBy(worldIn, pos, state1, playerIn, stack);
         }
-        SoundType soundtype = state.getBlock().getSoundType(state, worldIn, pos, null);
+        SoundType soundtype = lantern.getSoundType(state, worldIn, pos, null);
 
-        worldIn.playSound(playerIn, new BlockPos(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5), soundtype.getPlaceSound(), SoundCategory.BLOCKS,
-            (soundtype.getVolume() + 1) / 2.0f, soundtype.getPitch() * 0.8F);
+        worldIn.playSound(playerIn, new BlockPos(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5), soundtype.getPlaceSound(), SoundCategory.BLOCKS, (soundtype.getVolume() + 1) / 2.0f, soundtype.getPitch() * 0.8F);
         --stack.stackSize;
 
         return EnumActionResult.SUCCESS;

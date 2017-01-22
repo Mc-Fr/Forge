@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import net.mcfr.McfrBlocks;
 import net.mcfr.McfrItems;
 import net.mcfr.craftsmanship.BlockCircularSaw;
 import net.mcfr.craftsmanship.BlockLoom;
@@ -34,8 +35,20 @@ import net.minecraft.item.ItemTool;
 import net.minecraft.util.ResourceLocation;
 
 public final class ItemsLists {
-  private static final Map<String, List<Item>> TYPES = new HashMap<String, List<Item>>();
-  private static final Map<Class<? extends Block>, List<Item>> LISTS = new HashMap<Class<? extends Block>, List<Item>>();
+  private static final Map<String, List<Item>> TYPES = new HashMap<>();
+  private static final Map<Class<? extends Block>, List<Item>> LISTS = new HashMap<>();
+  private static final Map<Class<? extends Block>, Map<HashedItemStack, HashedItemStack>> MAPS = new HashMap<>();
+
+  static {
+    initLittleChestItems();
+    initCrateItems();
+    initFoodCrateItems();
+    initPalletItems();
+    initBookshelfItems();
+    initLoomItems();
+    initTanningRackItems();
+    initCircularSawItems();
+  }
 
   /**
    * @return une liste non modifiable de tous les outils
@@ -44,7 +57,7 @@ public final class ItemsLists {
     String key = "tools";
 
     if (!TYPES.containsKey(key)) {
-      List<Item> l = new ArrayList<Item>();
+      List<Item> l = new ArrayList<>();
 
       for (ResourceLocation r : Item.REGISTRY.getKeys()) {
         Item i = Item.REGISTRY.getObject(r);
@@ -67,7 +80,7 @@ public final class ItemsLists {
     String key = "weapons";
 
     if (!TYPES.containsKey(key)) {
-      List<Item> l = new ArrayList<Item>();
+      List<Item> l = new ArrayList<>();
 
       for (ResourceLocation r : Item.REGISTRY.getKeys()) {
         Item i = Item.REGISTRY.getObject(r);
@@ -90,7 +103,7 @@ public final class ItemsLists {
     String key = "armor";
 
     if (!TYPES.containsKey(key)) {
-      List<Item> l = new ArrayList<Item>();
+      List<Item> l = new ArrayList<>();
 
       for (ResourceLocation r : Item.REGISTRY.getKeys()) {
         Item i = Item.REGISTRY.getObject(r);
@@ -110,7 +123,7 @@ public final class ItemsLists {
     String key = "food";
 
     if (!TYPES.containsKey(key)) {
-      List<Item> l = new ArrayList<Item>();
+      List<Item> l = new ArrayList<>();
 
       for (ResourceLocation r : Item.REGISTRY.getKeys()) {
         Item i = Item.REGISTRY.getObject(r);
@@ -132,7 +145,7 @@ public final class ItemsLists {
     String key = "large";
 
     if (!TYPES.containsKey(key)) {
-      List<Item> l = new ArrayList<Item>();
+      List<Item> l = new ArrayList<>();
 
       for (ResourceLocation r : Item.REGISTRY.getKeys()) {
         Item i = Item.REGISTRY.getObject(r);
@@ -154,7 +167,7 @@ public final class ItemsLists {
     String key = "small";
 
     if (!TYPES.containsKey(key)) {
-      List<Item> l = new ArrayList<Item>();
+      List<Item> l = new ArrayList<>();
 
       for (ResourceLocation r : Item.REGISTRY.getKeys()) {
         @SuppressWarnings("unused")
@@ -176,7 +189,7 @@ public final class ItemsLists {
     String key = "paper";
 
     if (!TYPES.containsKey(key)) {
-      List<Item> l = new ArrayList<Item>();
+      List<Item> l = new ArrayList<>();
 
       l.add(Items.PAPER);
       l.add(Items.BOOK);
@@ -190,28 +203,25 @@ public final class ItemsLists {
     }
 
     return TYPES.get(key);
-
   }
 
-  public static List<Item> getLittleChestItems() {
+  public static void initLittleChestItems() {
     Class<BlockLittleChest> key = BlockLittleChest.class;
 
     if (!LISTS.containsKey(key)) {
-      List<Item> auth = new ArrayList<Item>();
+      List<Item> auth = new ArrayList<>();
 
       auth.add(McfrItems.COIN);
 
       LISTS.put(key, Collections.unmodifiableList(auth));
     }
-
-    return LISTS.get(key);
   }
 
-  public static List<Item> getCrateItems() {
+  public static void initCrateItems() {
     Class<BlockCrate> key = BlockCrate.class;
 
     if (!LISTS.containsKey(key)) {
-      List<Item> auth = new ArrayList<Item>();
+      List<Item> auth = new ArrayList<>();
 
       auth.add(McfrItems.COIN);
       auth.addAll(getTools());
@@ -220,92 +230,85 @@ public final class ItemsLists {
 
       LISTS.put(key, Collections.unmodifiableList(auth));
     }
-
-    return LISTS.get(key);
   }
 
-  public static List<Item> getFoodCrateItems() {
+  public static void initFoodCrateItems() {
     Class<BlockFoodCrate> key = BlockFoodCrate.class;
 
     if (!LISTS.containsKey(key)) {
-      List<Item> auth = new ArrayList<Item>();
+      List<Item> auth = new ArrayList<>();
 
       auth.addAll(getFood());
 
       LISTS.put(key, Collections.unmodifiableList(auth));
     }
-
-    return LISTS.get(key);
   }
 
-  public static List<Item> getPalletItems() {
+  public static void initPalletItems() {
     Class<BlockPallet> key = BlockPallet.class;
 
     if (!LISTS.containsKey(key)) {
-      List<Item> auth = new ArrayList<Item>();
+      List<Item> auth = new ArrayList<>();
 
       auth.addAll(getLargeObjects());
 
       LISTS.put(key, Collections.unmodifiableList(auth));
     }
-
-    return LISTS.get(key);
   }
 
-  public static List<Item> getBookshelfItems() {
+  public static void initBookshelfItems() {
     Class<BlockBookshelf> key = BlockBookshelf.class;
 
     if (!LISTS.containsKey(key)) {
-      List<Item> auth = new ArrayList<Item>();
+      List<Item> auth = new ArrayList<>();
 
       auth.addAll(getPaperBasedItems());
 
       LISTS.put(key, Collections.unmodifiableList(auth));
     }
-
-    return LISTS.get(key);
   }
 
-  public static List<Item> getLoomItems() {
+  public static void initLoomItems() {
     Class<BlockLoom> key = BlockLoom.class;
 
-    if (!LISTS.containsKey(key)) {
-      List<Item> auth = new ArrayList<Item>();
+    if (!MAPS.containsKey(key)) {
+      Map<HashedItemStack, HashedItemStack> auth = new HashMap<>();
 
-      auth.add(Items.STRING);
+      auth.put(HashedItemStack.fromStack(new ItemStack(Items.STRING, 4)), HashedItemStack.fromStack(new ItemStack(Blocks.WOOL)));
 
-      LISTS.put(key, Collections.unmodifiableList(auth));
+      MAPS.put(key, Collections.unmodifiableMap(auth));
+      createList(key);
     }
-
-    return LISTS.get(key);
   }
 
-  public static List<Item> getTanningRackItems() {
+  public static void initTanningRackItems() {
     Class<BlockTanningRack> key = BlockTanningRack.class;
 
-    if (!LISTS.containsKey(key)) {
-      List<Item> auth = new ArrayList<Item>();
+    if (!MAPS.containsKey(key)) {
+      Map<HashedItemStack, HashedItemStack> auth = new HashMap<>();
 
-      // TODO
-
-      LISTS.put(key, Collections.unmodifiableList(auth));
+      MAPS.put(key, Collections.unmodifiableMap(auth));
+      createList(key);
     }
-
-    return LISTS.get(key);
   }
 
-  public static List<Item> getCircularSawItems() {
+  public static void initCircularSawItems() {
     Class<BlockCircularSaw> key = BlockCircularSaw.class;
 
-    if (!LISTS.containsKey(key)) {
-      List<Item> auth = new ArrayList<Item>();
+    if (!MAPS.containsKey(key)) {
+      Map<HashedItemStack, HashedItemStack> auth = new HashMap<>();
 
-      auth.add(Item.getItemFromBlock(Blocks.PLANKS));
+      auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.PLANKS)), HashedItemStack.fromStack(new ItemStack(McfrBlocks.REFINED_PLANKS)));
 
-      LISTS.put(key, Collections.unmodifiableList(auth));
+      MAPS.put(key, Collections.unmodifiableMap(auth));
+      createList(key);
     }
+  }
 
-    return LISTS.get(key);
+  private static void createList(Class<? extends Block> clazz) {
+    List<Item> items = new ArrayList<>();
+    MAPS.get(clazz).keySet().stream().forEach(stack -> items.add(stack.getStack().getItem()));
+    LISTS.put(clazz, items);
   }
 
   /**
@@ -321,6 +324,10 @@ public final class ItemsLists {
     List<Item> list = LISTS.get(blockClass);
 
     return list != null && (stack == null || list.contains(stack.getItem()));
+  }
+
+  public static Map<HashedItemStack, HashedItemStack> getMapForClass(Class<? extends Block> clazz) {
+    return MAPS.get(clazz);
   }
 
   private ItemsLists() {}

@@ -2,6 +2,8 @@ package net.mcfr.utils;
 
 import org.lwjgl.opengl.GL11;
 
+import net.mcfr.utils.math.Point2d;
+import net.mcfr.utils.math.Point3d;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.Tessellator;

@@ -3,7 +3,7 @@ package net.mcfr.decoration.tileEntities;
 import static net.mcfr.utils.RenderUtils.*;
 
 import net.mcfr.McfrBlocks;
-import net.mcfr.utils.Point2d;
+import net.mcfr.utils.math.Point2d;
 import net.minecraft.block.BlockSlab;
 import net.minecraft.block.BlockStairs;
 import net.minecraft.block.state.IBlockState;

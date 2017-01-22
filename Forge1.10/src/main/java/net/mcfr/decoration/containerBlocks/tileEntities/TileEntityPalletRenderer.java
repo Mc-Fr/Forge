@@ -3,8 +3,8 @@ package net.mcfr.decoration.containerBlocks.tileEntities;
 import static net.mcfr.utils.RenderUtils.*;
 
 import net.mcfr.McfrBlocks;
-import net.mcfr.utils.Point2d;
-import net.mcfr.utils.Point3d;
+import net.mcfr.utils.math.Point2d;
+import net.mcfr.utils.math.Point3d;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.item.ItemStack;

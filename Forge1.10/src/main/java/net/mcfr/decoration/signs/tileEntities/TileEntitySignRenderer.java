@@ -6,8 +6,8 @@ import java.util.List;
 
 import net.mcfr.decoration.signs.McfrBlockStandingSign;
 import net.mcfr.decoration.signs.McfrBlockSuspendedSign;
-import net.mcfr.utils.Point2d;
-import net.mcfr.utils.Point3d;
+import net.mcfr.utils.math.Point2d;
+import net.mcfr.utils.math.Point3d;
 import net.minecraft.block.Block;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiUtilRenderComponents;
