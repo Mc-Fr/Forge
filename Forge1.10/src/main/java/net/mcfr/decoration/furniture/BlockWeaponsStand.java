@@ -30,7 +30,7 @@ import net.minecraft.world.World;
 
 public class BlockWeaponsStand extends BlockContainer {
   public static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
-  
+
   public BlockWeaponsStand() {
     super(Material.WOOD);
     String name = "weapons_stand_block";
@@ -41,40 +41,41 @@ public class BlockWeaponsStand extends BlockContainer {
     setSoundType(SoundType.WOOD);
     setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
   }
-  
+
   @Override
   public boolean isOpaqueCube(IBlockState state) {
     return false;
   }
-  
+
   @Override
   public boolean isFullCube(IBlockState state) {
     return false;
   }
-  
+
   @Override
   public EnumBlockRenderType getRenderType(IBlockState state) {
-    return EnumBlockRenderType.ENTITYBLOCK_ANIMATED;
+    // TEMP
+    return EnumBlockRenderType.MODEL; // EnumBlockRenderType.ENTITYBLOCK_ANIMATED;
   }
-  
+
   @Override
   public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
     return super.onBlockPlaced(worldIn, pos, facing, hitX, hitY, hitZ, meta, placer).withProperty(FACING, FacingUtils.getHorizontalFacing(placer));
   }
-  
+
   @Override
   public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, @Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
     if (!worldIn.isRemote) {
       TileEntity te = worldIn.getTileEntity(pos);
-      
+
       if (te instanceof TileEntityWeaponsStand) {
         return interact(playerIn, (TileEntityWeaponsStand) te, getSlot(state.getValue(FACING), hitX, hitZ));
       }
     }
-    
+
     return false;
   }
-  
+
   /**
    * Retourne le slot avec lequel interagir.
    *
@@ -86,16 +87,20 @@ public class BlockWeaponsStand extends BlockContainer {
   private int getSlot(EnumFacing facing, float hitX, float hitZ) {
     switch (facing) {
       case NORTH:
-        if (hitX < 0.5f) return 1;
+        if (hitX < 0.5f)
+          return 1;
         return 0;
       case EAST:
-        if (hitZ < 0.5f) return 1;
+        if (hitZ < 0.5f)
+          return 1;
         return 0;
       case SOUTH:
-        if (hitX < 0.5f) return 0;
+        if (hitX < 0.5f)
+          return 0;
         return 1;
       case WEST:
-        if (hitZ < 0.5f) return 0;
+        if (hitZ < 0.5f)
+          return 0;
         return 1;
       case UP:
       case DOWN:
@@ -103,68 +108,68 @@ public class BlockWeaponsStand extends BlockContainer {
         throw new IllegalArgumentException("" + facing);
     }
   }
-  
+
   private boolean interact(EntityPlayer player, TileEntityWeaponsStand te, int slot) {
     if (te.hasItem(slot) && player.getHeldItemMainhand() == null) {
       player.inventory.setInventorySlotContents(player.inventory.currentItem, te.getItem(slot));
       te.setItem(null, slot);
       TileEntityUtils.sendTileEntityUpdate(te.getWorld(), te);
-      
+
       return true;
     }
     else if (!te.hasItem(slot) && player.getHeldItemMainhand() != null && TileEntityShowcase.itemIsValid(player.getHeldItemMainhand())) {
       te.setItem(player.getHeldItemMainhand(), slot);
       player.getHeldItemMainhand().stackSize--;
       TileEntityUtils.sendTileEntityUpdate(te.getWorld(), te);
-      
+
       return true;
     }
-    
+
     return false;
   }
-  
+
   @Override
   public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
     TileEntity te = worldIn.getTileEntity(pos);
-    
+
     if (te instanceof TileEntityWeaponsStand) {
       TileEntityWeaponsStand t = (TileEntityWeaponsStand) te;
-      
+
       for (int i = 0; i < TileEntityWeaponsStand.INVENTORY_SIZE; i++) {
         ItemStack stack = t.getItem(i);
-        
+
         if (stack != null) {
           EntityItem loot = new EntityItem(worldIn, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, stack);
-          
+
           loot.setPickupDelay(10);
           worldIn.spawnEntityInWorld(loot);
         }
       }
     }
-    
+
     super.breakBlock(worldIn, pos, state);
   }
-  
+
   @Override
   public Item getItemDropped(IBlockState state, Random rand, int fortune) {
     return McfrItems.WEAPONS_STAND;
   }
-  
+
   @Override
   protected BlockStateContainer createBlockState() {
     return new BlockStateContainer(this, FACING);
   }
-  
+
   @Override
   public int getMetaFromState(IBlockState state) {
     return state.getValue(FACING).getHorizontalIndex();
   }
-  
+
   @Override
   public IBlockState getStateFromMeta(int meta) {
     return getDefaultState().withProperty(FACING, EnumFacing.Plane.HORIZONTAL.facings()[meta & 3]);
   }
-  
+
   @Override
   public TileEntity createNewTileEntity(World worldIn, int meta) {
     return new TileEntityWeaponsStand();

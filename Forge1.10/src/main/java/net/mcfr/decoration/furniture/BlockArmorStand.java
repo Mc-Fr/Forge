@@ -73,7 +73,8 @@ public class BlockArmorStand extends BlockContainer {
 
   @Override
   public EnumBlockRenderType getRenderType(IBlockState state) {
-    return EnumBlockRenderType.ENTITYBLOCK_ANIMATED;
+    // TEMP
+    return EnumBlockRenderType.MODEL; // EnumBlockRenderType.ENTITYBLOCK_ANIMATED;
   }
 
   @Override
