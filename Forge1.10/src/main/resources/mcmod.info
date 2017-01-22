@@ -1,0 +1,16 @@
+[
+  {
+    "modid": "mcfr_b_i",
+    "name": "Mc-Fr blocs et items",
+    "description": "Ce mod ajoute tous les blocs et items du serveur.",
+    "version": "${version}",
+    "mcversion": "${mcversion}",
+    "url": "",
+    "updateUrl": "",
+    "authorList": ["Darmo", "Lepticed"],
+    "credits": "Darmo (code source), Lepticed (code source + pack de ressources)",
+    "logoFile": "",
+    "screenshots": [],
+    "dependencies": []
+  }
+]

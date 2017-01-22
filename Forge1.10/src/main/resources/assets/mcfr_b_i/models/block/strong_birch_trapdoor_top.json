@@ -1,0 +1,6 @@
+{
+    "parent": "block/trapdoor_top",
+    "textures": {
+        "texture": "mcfr_b_i:blocks/strong_birch_trapdoor"
+    }
+}

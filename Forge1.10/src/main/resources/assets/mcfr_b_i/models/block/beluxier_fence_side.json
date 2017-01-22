@@ -1,0 +1,6 @@
+{
+    "parent": "block/fence_side",
+    "textures": {
+        "texture": "mcfr_b_i:blocks/planks_beluxier"
+    }
+}

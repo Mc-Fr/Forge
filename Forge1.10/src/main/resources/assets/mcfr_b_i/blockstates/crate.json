@@ -1,0 +1,5 @@
+{
+    "variants": {
+        "normal": { "model": "mcfr_b_i:crate" }
+    }
+}

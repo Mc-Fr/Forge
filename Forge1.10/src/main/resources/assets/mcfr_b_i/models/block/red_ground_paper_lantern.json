@@ -1,0 +1,20 @@
+{
+    "textures": {
+        "particle": "mcfr_b_i:blocks/red_paper_lantern",
+        "cocoa": "mcfr_b_i:blocks/red_paper_lantern"
+	},
+	"elements": [
+		{
+			"from": [ 4, 0, 4 ],
+			"to": [ 12, 9, 12 ],
+			"faces": {
+				"down": { "uv": [ 0, 0, 7, 7 ], "texture": "#cocoa" },
+				"up": { "uv": [ 0, 0, 7, 7 ], "texture": "#cocoa" },
+				"north": { "uv": [ 7, 4, 15, 13 ], "texture": "#cocoa" },
+				"south": { "uv": [ 7, 4, 15, 13 ], "texture": "#cocoa" },
+				"west": { "uv": [ 7, 4, 15, 13 ], "texture": "#cocoa" },
+				"east": { "uv": [ 7, 4, 15, 13 ], "texture": "#cocoa" }
+			}
+		}
+	]
+}

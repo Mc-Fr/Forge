@@ -1,0 +1,13 @@
+{
+    "variants": {
+        "variant=rough_sand": { "model": "mcfr_b_i:marble_rough_sand" },
+        "variant=rough_white": { "model": "mcfr_b_i:marble_rough_white" },
+        "variant=rough_black": { "model": "mcfr_b_i:marble_rough_black" },
+        "variant=chiseled_sand": { "model": "mcfr_b_i:marble_chiseled_sand" },
+        "variant=chiseled_white": { "model": "mcfr_b_i:marble_chiseled_white" },
+        "variant=chiseled_black": { "model": "mcfr_b_i:marble_chiseled_black" },
+        "variant=smooth_sand": { "model": "mcfr_b_i:marble_smooth_sand" },
+        "variant=smooth_white": { "model": "mcfr_b_i:marble_smooth_white" },
+        "variant=smooth_black": { "model": "mcfr_b_i:marble_smooth_black" }
+    }
+}

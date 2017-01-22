@@ -1,0 +1,6 @@
+{
+    "parent": "mcfr_b_i:block/inner_slope",
+    "textures": {
+        "side": "blocks/planks_spruce"
+    }
+}

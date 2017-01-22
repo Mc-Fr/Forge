@@ -1,0 +1,10 @@
+{
+    "variants": {
+        "variant=oak": { "model": "mcfr_b_i:refined_planks_oak" },
+        "variant=spruce": { "model": "mcfr_b_i:refined_planks_spruce" },
+        "variant=birch": { "model": "mcfr_b_i:refined_planks_birch" },
+        "variant=jungle": { "model": "mcfr_b_i:refined_planks_jungle" },
+        "variant=acacia": { "model": "mcfr_b_i:refined_planks_acacia" },
+        "variant=dark_oak": { "model": "mcfr_b_i:refined_planks_dark_oak" }
+    }
+}

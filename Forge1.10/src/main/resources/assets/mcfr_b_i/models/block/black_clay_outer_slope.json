@@ -1,0 +1,6 @@
+{
+    "parent": "mcfr_b_i:block/outer_slope",
+    "textures": {
+        "side": "blocks/hardened_clay_stained_black"
+    }
+}

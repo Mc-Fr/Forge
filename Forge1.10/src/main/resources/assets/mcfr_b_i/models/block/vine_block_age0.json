@@ -1,0 +1,6 @@
+{
+    "parent": "block/cross",
+    "textures": {
+        "cross": "mcfr_b_i:blocks/vine_block_age_0"
+    }
+}

@@ -1,0 +1,16 @@
+{
+    "variants": {
+        "half=bottom,variant=oak": { "model": "mcfr_b_i:half_slab_oak" },
+        "half=top,variant=oak": { "model": "mcfr_b_i:upper_slab_oak" },
+        "half=bottom,variant=spruce": { "model": "mcfr_b_i:half_slab_spruce" },
+        "half=top,variant=spruce": { "model": "mcfr_b_i:upper_slab_spruce" },
+        "half=bottom,variant=birch": { "model": "mcfr_b_i:half_slab_birch" },
+        "half=top,variant=birch": { "model": "mcfr_b_i:upper_slab_birch" },
+        "half=bottom,variant=jungle": { "model": "mcfr_b_i:half_slab_jungle" },
+        "half=top,variant=jungle": { "model": "mcfr_b_i:upper_slab_jungle" },
+        "half=bottom,variant=acacia": { "model": "mcfr_b_i:half_slab_acacia" },
+        "half=top,variant=acacia": { "model": "mcfr_b_i:upper_slab_acacia" },
+        "half=bottom,variant=dark_oak": { "model": "mcfr_b_i:half_slab_big_oak" },
+        "half=top,variant=dark_oak": { "model": "mcfr_b_i:upper_slab_big_oak" }
+    }
+}

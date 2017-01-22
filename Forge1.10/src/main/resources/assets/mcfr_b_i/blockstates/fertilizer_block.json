@@ -1,0 +1,12 @@
+{
+    "variants": {
+        "age=0":  { "model": "mcfr_b_i:fertilizer_0" },
+        "age=1":  { "model": "mcfr_b_i:fertilizer_1" },
+        "age=2":  { "model": "mcfr_b_i:fertilizer_2" },
+        "age=3":  { "model": "mcfr_b_i:fertilizer_3" },
+        "age=4":  { "model": "mcfr_b_i:fertilizer_4" },
+        "age=5":  { "model": "mcfr_b_i:fertilizer_5" },
+        "age=6":  { "model": "mcfr_b_i:fertilizer_6" },
+        "age=7":  { "model": "mcfr_b_i:fertilizer_7" }
+    }
+}

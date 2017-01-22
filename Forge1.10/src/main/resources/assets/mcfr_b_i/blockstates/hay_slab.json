@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "half=bottom,variant=old": { "model": "mcfr_b_i:half_slab_old_hay" },
+        "half=top,variant=old": { "model": "mcfr_b_i:upper_slab_old_hay" },
+        "half=bottom,variant=normal": { "model": "mcfr_b_i:half_slab_hay" },
+        "half=top,variant=normal": { "model": "mcfr_b_i:upper_slab_hay" }
+    }
+}

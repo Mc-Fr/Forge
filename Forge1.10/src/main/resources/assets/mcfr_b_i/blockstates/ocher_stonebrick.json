@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "variant=normal": { "model": "mcfr_b_i:ocher_stonebrick" },
+        "variant=mossy": { "model": "mcfr_b_i:ocher_stonebrick_mossy" },
+        "variant=cracked": { "model": "mcfr_b_i:ocher_stonebrick_cracked" }
+    }
+}

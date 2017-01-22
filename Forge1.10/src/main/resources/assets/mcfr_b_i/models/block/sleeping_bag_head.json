@@ -1,0 +1,22 @@
+{
+    "textures": {
+        "particle": "mcfr_b_i:blocks/sleeping_bag_head_top",
+        "top": "mcfr_b_i:blocks/sleeping_bag_head_top",
+        "bottom": "mcfr_b_i:blocks/sleeping_bag_feet_top",
+        "end": "mcfr_b_i:blocks/sleeping_bag_head_end",
+        "side": "mcfr_b_i:blocks/sleeping_bag_head_side"
+    },
+    "elements": [
+        {
+            "from": [ 0.0, 0.0, 0.0 ], 
+            "to": [ 16.0, 4.0, 16.0 ], 
+            "faces": {
+                "east": { "texture": "#side", "uv": [ 16.0, 12.0, 0.0, 16.0 ] },
+                "south": { "texture": "#end", "uv": [ 0.0, 12.0, 16.0, 16.0 ] },
+                "west": { "texture": "#side", "uv": [ 0.0, 12.0, 16.0, 16.0 ] },
+                "up": { "texture": "#top", "uv": [ 0.0, 16.0, 16.0, 0.0 ], "rotation": 90 },
+                "down": { "texture": "#bottom", "uv": [ 0.0, 0.0, 16.0, 16.0 ], "rotation": 90 }
+            }
+        }
+    ]
+}

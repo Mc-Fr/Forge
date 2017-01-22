@@ -1,0 +1,7 @@
+{
+    "parent": "block/cube_column",
+    "textures": {
+        "end": "mcfr_b_i:blocks/old_hay_top",
+        "side": "mcfr_b_i:blocks/old_hay_side"
+    }
+}

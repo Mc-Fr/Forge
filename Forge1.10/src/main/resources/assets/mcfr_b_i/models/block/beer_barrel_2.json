@@ -1,0 +1,6 @@
+{  
+   "parent":"mcfr_b_i:block/barrel_2",
+   "textures":{
+	  "top":"mcfr_b_i:blocks/barrel_beer_2"
+   }
+}

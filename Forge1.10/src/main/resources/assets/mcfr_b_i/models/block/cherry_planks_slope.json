@@ -1,0 +1,6 @@
+{
+    "parent": "mcfr_b_i:block/slope",
+    "textures": {
+        "side": "mcfr_b_i:blocks/planks_cherry"
+    }
+}

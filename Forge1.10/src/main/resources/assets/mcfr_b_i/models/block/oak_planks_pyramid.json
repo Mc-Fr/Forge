@@ -1,0 +1,6 @@
+{
+    "parent": "mcfr_b_i:block/pyramid",
+    "textures": {
+        "side": "blocks/planks_oak"
+    }
+}

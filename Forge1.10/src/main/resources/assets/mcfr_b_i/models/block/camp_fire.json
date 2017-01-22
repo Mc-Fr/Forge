@@ -1,0 +1,78 @@
+{
+    "__comment": "Model generated using MrCrayfish's Model Creator (http://mrcrayfish.com/modelcreator/)",
+    "textures": {
+        "0": "blocks/log_oak_top",
+        "1": "blocks/log_oak"
+    },
+    "elements": [
+        {
+            "name": "log1",
+            "from": [ 7.0, 0.0, 3.0 ], 
+            "to": [ 9.0, 2.0, 9.0 ], 
+            "rotation": { "origin": [ 8.0, 0.0, 3.0 ], "axis": "x", "angle": -45.0, "rescale": true },
+            "faces": {
+                "north": { "texture": "#0", "uv": [ 0.0, 0.0, 16.0, 16.0 ] },
+                "east": { "texture": "#1", "uv": [ 0.0, 0.0, 16.0, 16.0 ], "rotation": 90 },
+                "south": { "texture": "#0", "uv": [ 0.0, 0.0, 16.0, 16.0 ] },
+                "west": { "texture": "#1", "uv": [ 0.0, 0.0, 16.0, 16.0 ], "rotation": 90 },
+                "up": { "texture": "#1", "uv": [ 0.0, 0.0, 16.0, 16.0 ] },
+                "down": { "texture": "#1", "uv": [ 0.0, 0.0, 16.0, 16.0 ] }
+            }
+        },
+        {
+            "name": "log2",
+            "from": [ 7.0, 0.0, 7.0 ], 
+            "to": [ 9.0, 2.0, 13.0 ], 
+            "rotation": { "origin": [ 8.0, 0.0, 13.0 ], "axis": "x", "angle": 45.0, "rescale": true },
+            "faces": {
+                "north": { "texture": "#0", "uv": [ 0.0, 0.0, 16.0, 16.0 ] },
+                "east": { "texture": "#1", "uv": [ 0.0, 0.0, 16.0, 16.0 ], "rotation": 90 },
+                "south": { "texture": "#0", "uv": [ 0.0, 0.0, 16.0, 16.0 ] },
+                "west": { "texture": "#1", "uv": [ 0.0, 0.0, 16.0, 16.0 ], "rotation": 90 },
+                "up": { "texture": "#1", "uv": [ 0.0, 0.0, 16.0, 16.0 ] },
+                "down": { "texture": "#1", "uv": [ 0.0, 0.0, 16.0, 16.0 ] }
+            }
+        },
+        {
+            "name": "log3",
+            "from": [ 7.0, 0.0, 7.0 ], 
+            "to": [ 13.0, 2.0, 9.0 ], 
+            "rotation": { "origin": [ 13.0, 0.0, 8.0 ], "axis": "z", "angle": -45.0, "rescale": true },
+            "faces": {
+                "north": { "texture": "#1", "uv": [ 0.0, 0.0, 16.0, 16.0 ], "rotation": 90 },
+                "east": { "texture": "#0", "uv": [ 0.0, 0.0, 16.0, 16.0 ] },
+                "south": { "texture": "#1", "uv": [ 0.0, 0.0, 16.0, 16.0 ], "rotation": 90 },
+                "west": { "texture": "#0", "uv": [ 0.0, 0.0, 16.0, 16.0 ] },
+                "up": { "texture": "#1", "uv": [ 0.0, 0.0, 16.0, 16.0 ], "rotation": 90 },
+                "down": { "texture": "#1", "uv": [ 0.0, 0.0, 16.0, 16.0 ], "rotation": 90 }
+            }
+        },
+        {
+            "name": "log4",
+            "from": [ 3.0, 0.0, 7.0 ], 
+            "to": [ 9.0, 2.0, 9.0 ], 
+            "rotation": { "origin": [ 3.0, 0.0, 8.0 ], "axis": "z", "angle": 45.0, "rescale": true },
+            "faces": {
+                "north": { "texture": "#1", "uv": [ 0.0, 0.0, 16.0, 16.0 ], "rotation": 90 },
+                "east": { "texture": "#0", "uv": [ 0.0, 0.0, 16.0, 16.0 ] },
+                "south": { "texture": "#1", "uv": [ 0.0, 0.0, 16.0, 16.0 ], "rotation": 90 },
+                "west": { "texture": "#0", "uv": [ 0.0, 0.0, 16.0, 16.0 ] },
+                "up": { "texture": "#1", "uv": [ 0.0, 0.0, 16.0, 16.0 ], "rotation": 90 },
+                "down": { "texture": "#1", "uv": [ 0.0, 0.0, 16.0, 16.0 ], "rotation": 90 }
+            }
+        },
+        {
+            "name": "log5",
+            "from": [ 7.0, 0.0, 7.0 ], 
+            "to": [ 9.0, 8.0, 9.0 ], 
+            "faces": {
+                "north": { "texture": "#1", "uv": [ 0.0, 0.0, 16.0, 16.0 ] },
+                "east": { "texture": "#1", "uv": [ 0.0, 0.0, 16.0, 16.0 ] },
+                "south": { "texture": "#1", "uv": [ 0.0, 0.0, 16.0, 16.0 ] },
+                "west": { "texture": "#1", "uv": [ 0.0, 0.0, 16.0, 16.0 ] },
+                "up": { "texture": "#0", "uv": [ 0.0, 0.0, 16.0, 16.0 ] },
+                "down": { "texture": "#0", "uv": [ 0.0, 0.0, 16.0, 16.0 ] }
+            }
+        }
+    ]
+}

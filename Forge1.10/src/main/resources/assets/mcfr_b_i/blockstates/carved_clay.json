@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "variant=light":  { "model": "mcfr_b_i:light_carved_clay"},
+        "variant=dark":    { "model": "mcfr_b_i:dark_carved_clay" }
+    }
+}

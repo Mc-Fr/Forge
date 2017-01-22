@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "variant=cactus" :  { "model": "mcfr_b_i:cactus" },
+        "variant=aloe_vera":  { "model": "mcfr_b_i:aloe_vera" },
+        "variant=dead_weed":  { "model": "mcfr_b_i:dead_weed" }
+    }
+}

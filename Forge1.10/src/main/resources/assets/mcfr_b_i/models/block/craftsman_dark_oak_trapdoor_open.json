@@ -1,0 +1,6 @@
+{
+    "parent": "block/trapdoor_open",
+    "textures": {
+        "texture": "mcfr_b_i:blocks/craftsman_big_oak_trapdoor"
+    }
+}

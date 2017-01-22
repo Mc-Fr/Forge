@@ -1,0 +1,7 @@
+{
+    "parent": "block/column_side",
+    "textures": {
+        "end": "mcfr_b_i:blocks/marble_smooth_black",
+        "side": "mcfr_b_i:blocks/marble_column_black"
+    }
+}

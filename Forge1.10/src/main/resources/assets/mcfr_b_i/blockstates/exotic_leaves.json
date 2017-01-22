@@ -1,0 +1,20 @@
+{
+    "variants": {
+        "check_decay=true,decayable=true,variant=apple": { "model": "mcfr_b_i:apple_leaves" },
+        "check_decay=true,decayable=true,variant=cherry": { "model": "mcfr_b_i:cherry_leaves" },
+        "check_decay=true,decayable=true,variant=palm": { "model": "mcfr_b_i:palm_leaves" },
+        "check_decay=true,decayable=true,variant=beluxier": { "model": "mcfr_b_i:beluxier_leaves" },
+        "check_decay=true,decayable=false,variant=apple": { "model": "mcfr_b_i:apple_leaves" },
+        "check_decay=true,decayable=false,variant=cherry": { "model": "mcfr_b_i:cherry_leaves" },
+        "check_decay=true,decayable=false,variant=palm": { "model": "mcfr_b_i:palm_leaves" },
+        "check_decay=true,decayable=false,variant=beluxier": { "model": "mcfr_b_i:beluxier_leaves" },
+        "check_decay=false,decayable=true,variant=apple": { "model": "mcfr_b_i:apple_leaves" },
+        "check_decay=false,decayable=true,variant=cherry": { "model": "mcfr_b_i:cherry_leaves" },
+        "check_decay=false,decayable=true,variant=palm": { "model": "mcfr_b_i:palm_leaves" },
+        "check_decay=false,decayable=true,variant=beluxier": { "model": "mcfr_b_i:beluxier_leaves" },
+        "check_decay=false,decayable=false,variant=apple": { "model": "mcfr_b_i:apple_leaves" },
+        "check_decay=false,decayable=false,variant=cherry": { "model": "mcfr_b_i:cherry_leaves" },
+        "check_decay=false,decayable=false,variant=palm": { "model": "mcfr_b_i:palm_leaves" },
+        "check_decay=false,decayable=false,variant=beluxier": { "model": "mcfr_b_i:beluxier_leaves" }
+    }
+}

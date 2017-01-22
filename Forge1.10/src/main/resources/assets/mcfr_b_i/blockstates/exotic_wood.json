@@ -1,0 +1,20 @@
+{
+    "variants": {
+        "axis=x,variant=apple": { "model": "mcfr_b_i:apple_log_side", "y": 90 },
+		"axis=y,variant=apple": { "model": "mcfr_b_i:apple_log" },
+		"axis=z,variant=apple": { "model": "mcfr_b_i:apple_log_side" },
+        "axis=none,variant=apple":   { "model": "mcfr_b_i:apple_bark" },
+        "axis=x,variant=cherry": { "model": "mcfr_b_i:cherry_log_side", "y": 90 },
+		"axis=y,variant=cherry": { "model": "mcfr_b_i:cherry_log" },
+		"axis=z,variant=cherry": { "model": "mcfr_b_i:cherry_log_side" },
+        "axis=none,variant=cherry":   { "model": "mcfr_b_i:cherry_bark" },
+        "axis=x,variant=palm": { "model": "mcfr_b_i:palm_log_side", "y": 90 },
+		"axis=y,variant=palm": { "model": "mcfr_b_i:palm_log" },
+		"axis=z,variant=palm": { "model": "mcfr_b_i:palm_log_side" },
+        "axis=none,variant=palm":   { "model": "mcfr_b_i:palm_bark" },
+        "axis=x,variant=beluxier": { "model": "mcfr_b_i:beluxier_log_side", "y": 90 },
+		"axis=y,variant=beluxier": { "model": "mcfr_b_i:beluxier_log" },
+		"axis=z,variant=beluxier": { "model": "mcfr_b_i:beluxier_log_side" },
+        "axis=none,variant=beluxier":   { "model": "mcfr_b_i:beluxier_bark" }
+    }
+}

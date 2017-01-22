@@ -1,0 +1,12 @@
+{
+    "variants": {
+        "stage=0,type=apple": { "model": "mcfr_b_i:apple_sapling" },
+        "stage=1,type=apple": { "model": "mcfr_b_i:apple_sapling" },
+        "stage=0,type=cherry": { "model": "mcfr_b_i:cherry_sapling" },
+        "stage=1,type=cherry": { "model": "mcfr_b_i:cherry_sapling" },
+        "stage=0,type=palm": { "model": "mcfr_b_i:palm_sapling" },
+        "stage=1,type=palm": { "model": "mcfr_b_i:palm_sapling" },
+        "stage=0,type=beluxier": { "model": "mcfr_b_i:beluxier_sapling" },
+        "stage=1,type=beluxier": { "model": "mcfr_b_i:beluxier_sapling" }
+    }
+}

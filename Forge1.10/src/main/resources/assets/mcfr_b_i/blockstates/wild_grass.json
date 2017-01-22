@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "variant=normal" :  [{ "model": "mcfr_b_i:wild_grass1" }, { "model": "mcfr_b_i:wild_grass2" },{ "model": "mcfr_b_i:wild_grass3" }],
+        "variant=jungle" : { "model": "mcfr_b_i:jungle" },
+        "variant=fern" : { "model": "mcfr_b_i:fern" }
+    }
+}

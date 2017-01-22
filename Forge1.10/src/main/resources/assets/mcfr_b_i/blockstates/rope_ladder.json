@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "mcfr_b_i:rope_ladder" },
+        "facing=east":  { "model": "mcfr_b_i:rope_ladder", "y": 90 },
+        "facing=south": { "model": "mcfr_b_i:rope_ladder", "y": 180 },
+        "facing=west":  { "model": "mcfr_b_i:rope_ladder", "y": 270 }
+    }
+}

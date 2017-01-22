@@ -1,0 +1,10 @@
+{
+    "variants": {
+        "half=bottom,variant=smooth_black": { "model": "mcfr_b_i:half_slab_smooth_black_marble" },
+        "half=top,variant=smooth_black": { "model": "mcfr_b_i:upper_slab_smooth_black_marble" },
+        "half=bottom,variant=rough_black": { "model": "mcfr_b_i:half_slab_rough_black_marble" },
+        "half=top,variant=rough_black": { "model": "mcfr_b_i:upper_slab_rough_black_marble" },
+        "half=bottom,variant=chiseled_black": { "model": "mcfr_b_i:half_slab_chiseled_black_marble" },
+        "half=top,variant=chiseled_black": { "model": "mcfr_b_i:upper_slab_chiseled_black_marble" }
+    }
+}

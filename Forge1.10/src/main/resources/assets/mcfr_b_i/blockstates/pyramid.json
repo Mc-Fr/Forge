@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "facing=down":  { "model": "pyramid", "x": 180 },
+        "facing=up":    { "model": "pyramid" }
+    }
+}

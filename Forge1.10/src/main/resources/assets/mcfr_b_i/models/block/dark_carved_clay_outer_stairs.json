@@ -1,0 +1,8 @@
+{
+    "parent": "block/outer_stairs",
+    "textures": {
+        "bottom": "mcfr_b_i:blocks/carved_clay_dark",
+        "top": "mcfr_b_i:blocks/carved_clay_dark",
+        "side": "mcfr_b_i:blocks/carved_clay_dark"
+    }
+}

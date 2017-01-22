@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north":  { "model": "mcfr_b_i:loom" },
+        "facing=west":  { "model": "mcfr_b_i:loom", "y": 270 },
+        "facing=south": { "model": "mcfr_b_i:loom", "y": 180 },
+        "facing=east": { "model": "mcfr_b_i:loom", "y": 90 }
+    }
+}

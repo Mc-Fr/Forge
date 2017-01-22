@@ -1,0 +1,6 @@
+{
+    "parent": "mcfr_b_i:block/inner_slope",
+    "textures": {
+        "side": "mcfr_b_i:blocks/log_beluxier"
+    }
+}

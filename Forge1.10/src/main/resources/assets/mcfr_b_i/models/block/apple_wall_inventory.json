@@ -1,0 +1,6 @@
+{
+    "parent": "block/wall_inventory",
+    "textures": {
+        "wall": "mcfr_b_i:blocks/log_apple"
+    }
+}

@@ -1,0 +1,6 @@
+{
+    "parent": "block/cube_all",
+    "textures": {
+        "all": "mcfr_b_i:blocks/marble_column_sand"
+    }
+}

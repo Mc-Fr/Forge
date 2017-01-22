@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "variant=brick": { "model": "mcfr_b_i:tiles_brick" },
+        "variant=slate": { "model": "mcfr_b_i:tiles_slate" }
+    }
+}

@@ -1,0 +1,9 @@
+{
+    "variants": {
+        "variant=right": { "model": "mcfr_b_i:timbered_block_right" },
+        "variant=left": { "model": "mcfr_b_i:timbered_block_left" },
+        "variant=crossed": { "model": "mcfr_b_i:timbered_block_crossed" },
+        "variant=horizontal": { "model": "mcfr_b_i:timbered_block_horizontal" },
+        "variant=vertical": { "model": "mcfr_b_i:timbered_block_vertical" }
+    }
+}

@@ -1,0 +1,20 @@
+{
+    "variants": {
+        "color=white": { "model": "carpet_white" },
+        "color=orange": { "model": "carpet_orange" },
+        "color=magenta": { "model": "carpet_magenta" },
+        "color=light_blue": { "model": "carpet_light_blue" },
+        "color=yellow": { "model": "carpet_yellow" },
+        "color=lime": { "model": "carpet_lime" },
+        "color=pink": { "model": "carpet_pink" },
+        "color=gray": { "model": "carpet_gray" },
+        "color=silver": { "model": "carpet_silver" },
+        "color=cyan": { "model": "carpet_cyan" },
+        "color=purple": { "model": "carpet_purple" },
+        "color=blue": { "model": "carpet_blue" },
+        "color=brown": { "model": "carpet_brown" },
+        "color=green": { "model": "carpet_green" },
+        "color=red": { "model": "carpet_red" },
+        "color=black": { "model": "carpet_black" }
+    }
+}

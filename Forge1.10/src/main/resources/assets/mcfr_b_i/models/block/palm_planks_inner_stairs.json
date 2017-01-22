@@ -1,0 +1,8 @@
+{
+    "parent": "block/inner_stairs",
+    "textures": {
+        "bottom": "mcfr_b_i:blocks/planks_palm",
+        "top": "mcfr_b_i:blocks/planks_palm",
+        "side": "mcfr_b_i:blocks/planks_palm"
+    }
+}

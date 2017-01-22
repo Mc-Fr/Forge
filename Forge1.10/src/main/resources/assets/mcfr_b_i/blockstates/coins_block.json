@@ -1,0 +1,9 @@
+{
+    "variants": {
+        "variant=type_0":  { "model": "mcfr_b_i:coins_0" },
+        "variant=type_1":  { "model": "mcfr_b_i:coins_1" },
+        "variant=type_2":  { "model": "mcfr_b_i:coins_2" },
+        "variant=type_3":  { "model": "mcfr_b_i:coins_3" },
+        "variant=type_4":  { "model": "mcfr_b_i:coins_4" }
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "variants": {
+        "normal": [
+            { "weight": 8, "model": "waterlily" },
+            { "weight": 8, "model": "waterlily", "y": 90 },
+            { "weight": 8, "model": "waterlily", "y": 180 },
+            { "weight": 8, "model": "waterlily", "y": 270 },
+            { "weight": 6, "model": "waterlily_two_pads" },
+            { "weight": 6, "model": "waterlily_two_pads", "y": 90 },
+            { "weight": 6, "model": "waterlily_two_pads", "y": 180 },
+            { "weight": 6, "model": "waterlily_two_pads", "y": 270 },
+            { "weight": 6, "model": "waterlily_flower_white" },
+            { "weight": 6, "model": "waterlily_flower_white", "y": 90 },
+            { "weight": 6, "model": "waterlily_flower_white", "y": 180 },
+            { "weight": 6, "model": "waterlily_flower_white", "y": 270 },
+            { "weight": 3, "model": "waterlily_flower_pink" },
+            { "weight": 3, "model": "waterlily_flower_pink", "y": 90 },
+            { "weight": 3, "model": "waterlily_flower_pink", "y": 180 },
+            { "weight": 3, "model": "waterlily_flower_pink", "y": 270 },
+            { "weight": 3, "model": "waterlily_flower_red" },
+            { "weight": 3, "model": "waterlily_flower_red", "y": 90 },
+            { "weight": 3, "model": "waterlily_flower_red", "y": 180 },
+            { "weight": 3, "model": "waterlily_flower_red", "y": 270 }
+        ]
+    }
+}

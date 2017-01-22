@@ -1,0 +1,16 @@
+{
+    "variants": {
+        "axis=y,variant=sand":    { "model": "mcfr_b_i:marble_column_sand" },
+        "axis=z,variant=sand":     { "model": "mcfr_b_i:marble_column_sand_side" },
+        "axis=x,variant=sand":     { "model": "mcfr_b_i:marble_column_sand_side", "y": 90 },
+        "axis=none,variant=sand":   { "model": "mcfr_b_i:marble_column_sand_bark" },
+        "axis=y,variant=white":    { "model": "mcfr_b_i:marble_column_white" },
+        "axis=z,variant=white":     { "model": "mcfr_b_i:marble_column_white_side" },
+        "axis=x,variant=white":     { "model": "mcfr_b_i:marble_column_white_side", "y": 90 },
+        "axis=none,variant=white":   { "model": "mcfr_b_i:marble_column_white_bark" },
+        "axis=y,variant=black":    { "model": "mcfr_b_i:marble_column_black" },
+        "axis=z,variant=black":     { "model": "mcfr_b_i:marble_column_black_side" },
+        "axis=x,variant=black":     { "model": "mcfr_b_i:marble_column_black_side", "y": 90 },
+        "axis=none,variant=black":   { "model": "mcfr_b_i:marble_column_black_bark" }
+    }
+}

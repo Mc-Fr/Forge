@@ -1,0 +1,6 @@
+{
+    "parent": "mcfr_b_i:block/slope",
+    "textures": {
+        "side": "blocks/stone_granite_smooth"
+    }
+}

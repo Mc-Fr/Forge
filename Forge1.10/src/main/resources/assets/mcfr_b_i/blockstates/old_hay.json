@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "axis=y":    { "model": "mcfr_b_i:old_hay" },
+        "axis=z":     { "model": "mcfr_b_i:old_hay_side" },
+        "axis=x":     { "model": "mcfr_b_i:old_hay_side", "y": 90 },
+        "axis=none":   { "model": "mcfr_b_i:old_hay_bark" }
+    }
+}

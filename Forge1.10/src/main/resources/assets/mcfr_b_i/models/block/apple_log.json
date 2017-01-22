@@ -1,0 +1,7 @@
+{
+    "parent": "block/cube_column",
+    "textures": {
+        "end": "mcfr_b_i:blocks/log_apple_top",
+        "side": "mcfr_b_i:blocks/log_apple"
+    }
+}

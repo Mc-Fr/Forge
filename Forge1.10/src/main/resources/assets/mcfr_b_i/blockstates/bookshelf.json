@@ -1,0 +1,10 @@
+{
+    "variants": {
+        "variant=oak":  { "model": "mcfr_b_i:bookshelf_oak" },
+        "variant=spruce":  { "model": "mcfr_b_i:bookshelf_spruce" },
+        "variant=birch":  { "model": "mcfr_b_i:bookshelf_birch" },
+        "variant=jungle":  { "model": "mcfr_b_i:bookshelf_jungle" },
+        "variant=acacia":  { "model": "mcfr_b_i:bookshelf_acacia" },
+        "variant=dark_oak":  { "model": "mcfr_b_i:bookshelf_big_oak" }
+    }
+}

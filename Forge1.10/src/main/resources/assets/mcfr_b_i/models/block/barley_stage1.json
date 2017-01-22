@@ -1,0 +1,6 @@
+{
+    "parent": "block/crop",
+    "textures": {
+        "crop": "mcfr_b_i:blocks/barley_stage_1"
+    }
+}

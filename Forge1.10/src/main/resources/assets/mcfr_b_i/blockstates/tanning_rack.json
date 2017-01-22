@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north":  { "model": "mcfr_b_i:tanning_rack" },
+        "facing=west":  { "model": "mcfr_b_i:tanning_rack", "y": 270 },
+        "facing=south": { "model": "mcfr_b_i:tanning_rack", "y": 180 },
+        "facing=east": { "model": "mcfr_b_i:tanning_rack", "y": 90 }
+    }
+}

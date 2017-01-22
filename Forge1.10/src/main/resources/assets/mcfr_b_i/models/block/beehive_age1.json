@@ -1,0 +1,27 @@
+{
+    "ambientocclusion": false,
+    "textures": {
+        "particle": "mcfr_b_i:blocks/beehive_stage_1",
+        "beehive": "mcfr_b_i:blocks/beehive_stage_1"
+    },
+    "elements": [
+        {   "from": [ 5, 5, 9 ],
+            "to": [ 11, 12, 15 ],
+            "faces": {
+                "down":  { "uv": [ 0, 0,  6,  6 ], "texture": "#beehive" },
+                "up":    { "uv": [ 0, 0,  6,  6 ], "texture": "#beehive" },
+                "north": { "uv": [ 9, 4, 15, 11 ], "texture": "#beehive" },
+                "south": { "uv": [ 9, 4, 15, 11 ], "texture": "#beehive" },
+                "west":  { "uv": [ 9, 4, 15, 11 ], "texture": "#beehive" },
+                "east":  { "uv": [ 9, 4, 15, 11 ], "texture": "#beehive" }
+            }
+        },
+        {   "from": [ 8, 12, 12 ],
+            "to": [ 8, 16, 16 ],
+            "faces": {
+                "west": { "uv": [ 12, 0, 16, 4 ], "texture": "#beehive" },
+                "east": { "uv": [ 16, 0, 12, 4 ], "texture": "#beehive" }
+            }
+        }
+    ]
+}

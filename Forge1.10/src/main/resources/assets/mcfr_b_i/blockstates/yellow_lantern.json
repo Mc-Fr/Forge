@@ -1,0 +1,20 @@
+{
+    "variants": {
+        "on_ground=true,rotation=0": { "model": "mcfr_b_i:yellow_ground_lantern" },
+        "on_ground=true,rotation=1": { "model": "mcfr_b_i:yellow_ground_lantern_1" },
+        "on_ground=true,rotation=2": { "model": "mcfr_b_i:yellow_ground_lantern", "y": 90 },
+        "on_ground=true,rotation=3": { "model": "mcfr_b_i:yellow_ground_lantern_1", "y": 90 },
+        "on_ground=true,rotation=4": { "model": "mcfr_b_i:yellow_ground_lantern" },
+        "on_ground=true,rotation=5": { "model": "mcfr_b_i:yellow_ground_lantern_1" },
+        "on_ground=true,rotation=6": { "model": "mcfr_b_i:yellow_ground_lantern", "y": 90 },
+        "on_ground=true,rotation=7": { "model": "mcfr_b_i:yellow_ground_lantern_1", "y": 90 },
+        "on_ground=false,rotation=0": { "model": "mcfr_b_i:yellow_lantern" },
+        "on_ground=false,rotation=1": { "model": "mcfr_b_i:yellow_lantern_1" },
+        "on_ground=false,rotation=2": { "model": "mcfr_b_i:yellow_lantern", "y":90 },
+        "on_ground=false,rotation=3": { "model": "mcfr_b_i:yellow_lantern_1", "y":90 },
+        "on_ground=false,rotation=4": { "model": "mcfr_b_i:yellow_lantern" },
+        "on_ground=false,rotation=5": { "model": "mcfr_b_i:yellow_lantern_1" },
+        "on_ground=false,rotation=6": { "model": "mcfr_b_i:yellow_lantern", "y":90 },
+        "on_ground=false,rotation=7": { "model": "mcfr_b_i:yellow_lantern_1", "y":90 }
+    }
+}

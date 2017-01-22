@@ -1,0 +1,8 @@
+{
+    "parent": "block/outer_stairs",
+    "textures": {
+        "bottom": "mcfr_b_i:blocks/refined_planks_jungle",
+        "top": "mcfr_b_i:blocks/refined_planks_jungle",
+        "side": "mcfr_b_i:blocks/refined_planks_jungle"
+    }
+}

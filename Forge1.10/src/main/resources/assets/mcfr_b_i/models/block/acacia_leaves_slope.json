@@ -1,0 +1,6 @@
+{
+    "parent": "mcfr_b_i:block/leaves_slope",
+    "textures": {
+        "side": "blocks/leaves_acacia"
+    }
+}

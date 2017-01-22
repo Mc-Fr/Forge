@@ -1,0 +1,6 @@
+{
+    "parent": "block/leaves",
+    "textures": {
+        "all": "mcfr_b_i:blocks/leaves_cherry"
+    }
+}

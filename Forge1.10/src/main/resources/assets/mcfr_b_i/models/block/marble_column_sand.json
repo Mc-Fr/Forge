@@ -1,0 +1,7 @@
+{
+    "parent": "block/cube_column",
+    "textures": {
+        "end": "mcfr_b_i:blocks/marble_smooth_sand",
+        "side": "mcfr_b_i:blocks/marble_column_sand"
+    }
+}

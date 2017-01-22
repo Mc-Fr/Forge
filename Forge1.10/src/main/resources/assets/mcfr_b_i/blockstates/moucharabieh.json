@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "variant=stone":  { "model": "mcfr_b_i:stone_moucharabieh" },
+        "variant=wood":  { "model": "mcfr_b_i:wooden_moucharabieh", "y": 180, "uvlock": true },
+        "variant=iron": { "model": "mcfr_b_i:iron_moucharabieh", "y": 90, "uvlock": true }
+    }
+}

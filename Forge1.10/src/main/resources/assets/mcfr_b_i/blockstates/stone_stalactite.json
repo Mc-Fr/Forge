@@ -1,0 +1,10 @@
+{
+    "variants": {
+        "half=bottom,size=small" :  { "model": "mcfr_b_i:stone_stalactite_small" , "x": 180},
+        "half=bottom,size=medium" : { "model": "mcfr_b_i:stone_stalactite_medium", "x": 180 },
+        "half=bottom,size=big" : { "model": "mcfr_b_i:stone_stalactite_big", "x": 180 },
+        "half=top,size=small" : { "model": "mcfr_b_i:stone_stalactite_small"},
+        "half=top,size=medium" : { "model": "mcfr_b_i:stone_stalactite_medium" },
+        "half=top,size=big" : { "model": "mcfr_b_i:stone_stalactite_big" }
+    }
+}

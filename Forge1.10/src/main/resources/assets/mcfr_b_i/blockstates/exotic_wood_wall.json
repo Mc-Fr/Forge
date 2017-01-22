@@ -1,0 +1,64 @@
+{
+    "multipart": [
+        {   "when": { "up": "true", "variant": "apple" },
+            "apply": { "model": "mcfr_b_i:apple_wall_post" }
+        },
+        {   "when": { "north": "true", "variant": "apple" },
+            "apply": { "model": "mcfr_b_i:apple_wall_side", "uvlock": true }
+        },
+        {   "when": { "east": "true", "variant": "apple" },
+            "apply": { "model": "mcfr_b_i:apple_wall_side", "y": 90, "uvlock": true }
+        },
+        {   "when": { "south": "true", "variant": "apple" },
+            "apply": { "model": "mcfr_b_i:apple_wall_side", "y": 180, "uvlock": true }
+        },
+        {   "when": { "west": "true", "variant": "apple" },
+            "apply": { "model": "mcfr_b_i:apple_wall_side", "y": 270, "uvlock": true }
+        },
+        {   "when": { "up": "true", "variant": "cherry" },
+            "apply": { "model": "mcfr_b_i:cherry_wall_post" }
+        },
+        {   "when": { "north": "true", "variant": "cherry" },
+            "apply": { "model": "mcfr_b_i:cherry_wall_side", "uvlock": true }
+        },
+        {   "when": { "east": "true", "variant": "cherry" },
+            "apply": { "model": "mcfr_b_i:cherry_wall_side", "y": 90, "uvlock": true }
+        },
+        {   "when": { "south": "true", "variant": "cherry" },
+            "apply": { "model": "mcfr_b_i:cherry_wall_side", "y": 180, "uvlock": true }
+        },
+        {   "when": { "west": "true", "variant": "cherry" },
+            "apply": { "model": "mcfr_b_i:cherry_wall_side", "y": 270, "uvlock": true }
+        },
+        {   "when": { "up": "true", "variant": "palm" },
+            "apply": { "model": "mcfr_b_i:palm_wall_post" }
+        },
+        {   "when": { "north": "true", "variant": "palm" },
+            "apply": { "model": "mcfr_b_i:palm_wall_side", "uvlock": true }
+        },
+        {   "when": { "east": "true", "variant": "palm" },
+            "apply": { "model": "mcfr_b_i:palm_wall_side", "y": 90, "uvlock": true }
+        },
+        {   "when": { "south": "true", "variant": "palm" },
+            "apply": { "model": "mcfr_b_i:palm_wall_side", "y": 180, "uvlock": true }
+        },
+        {   "when": { "west": "true", "variant": "palm" },
+            "apply": { "model": "mcfr_b_i:palm_wall_side", "y": 270, "uvlock": true }
+        },
+        {   "when": { "up": "true", "variant": "beluxier" },
+            "apply": { "model": "mcfr_b_i:beluxier_wall_post" }
+        },
+        {   "when": { "north": "true", "variant": "beluxier" },
+            "apply": { "model": "mcfr_b_i:beluxier_wall_side", "uvlock": true }
+        },
+        {   "when": { "east": "true", "variant": "beluxier" },
+            "apply": { "model": "mcfr_b_i:beluxier_wall_side", "y": 90, "uvlock": true }
+        },
+        {   "when": { "south": "true", "variant": "beluxier" },
+            "apply": { "model": "mcfr_b_i:beluxier_wall_side", "y": 180, "uvlock": true }
+        },
+        {   "when": { "west": "true", "variant": "beluxier" },
+            "apply": { "model": "mcfr_b_i:beluxier_wall_side", "y": 270, "uvlock": true }
+        }
+    ]
+}

@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=east":  { "model": "mcfr_b_i:little_chest" },
+        "facing=south":  { "model": "mcfr_b_i:little_chest", "y": 90 },
+        "facing=west": { "model": "mcfr_b_i:little_chest", "y": 180 },
+        "facing=north": { "model": "mcfr_b_i:little_chest", "y": -90 }
+    }
+}

@@ -1,0 +1,20 @@
+{
+    "variants": {
+        "variant=red_cap": { "model": "mcfr_b_i:mushroom_cap_red" },
+        "variant=pink_cap": { "model": "mcfr_b_i:mushroom_cap_pink" },
+        "variant=orange_cap": { "model": "mcfr_b_i:mushroom_cap_orange" },
+        "variant=yellow_cap": { "model": "mcfr_b_i:mushroom_cap_yellow" },
+        "variant=blue_cap": { "model": "mcfr_b_i:mushroom_cap_blue" },
+        "variant=light_blue_cap": { "model": "mcfr_b_i:mushroom_cap_light_blue" },
+        "variant=green_cap": { "model": "mcfr_b_i:mushroom_cap_green" },
+        "variant=lime_cap": { "model": "mcfr_b_i:mushroom_cap_lime" },
+        "variant=purple_cap": { "model": "mcfr_b_i:mushroom_cap_purple" },
+        "variant=magenta_cap": { "model": "mcfr_b_i:mushroom_cap_magenta" },
+        "variant=cyan_cap": { "model": "mcfr_b_i:mushroom_cap_cyan" },
+        "variant=white_stem": { "model": "mcfr_b_i:mushroom_stem_white" },
+        "variant=light_blue_stem": { "model": "mcfr_b_i:mushroom_stem_light_blue" },
+        "variant=cyan_gills": { "model": "mcfr_b_i:mushroom_gills_cyan" },
+        "variant=white_gills": { "model": "mcfr_b_i:mushroom_gills_white" },
+        "variant=light_blue_gills": { "model": "mcfr_b_i:mushroom_gills_light_blue" }
+    }
+}

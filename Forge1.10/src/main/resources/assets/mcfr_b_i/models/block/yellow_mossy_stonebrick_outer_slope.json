@@ -1,0 +1,6 @@
+{
+    "parent": "mcfr_b_i:block/outer_slope",
+    "textures": {
+        "side": "mcfr_b_i:blocks/yellow_stonebrick_mossy"
+    }
+}

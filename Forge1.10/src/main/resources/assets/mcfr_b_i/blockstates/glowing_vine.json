@@ -1,0 +1,10 @@
+{
+    "variants": {
+        "facing=east": { "model": "mcfr_b_i:glowing_vine" , "y": -90},
+        "facing=west": { "model": "mcfr_b_i:glowing_vine", "y": 90 },
+        "facing=north": { "model": "mcfr_b_i:glowing_vine", "y": 180 },
+        "facing=south": { "model": "mcfr_b_i:glowing_vine" },
+        "facing=up": { "model": "mcfr_b_i:glowing_vine", "x": 90 },
+        "facing=down": { "model": "mcfr_b_i:glowing_vine", "x": -90 }
+    }
+}
