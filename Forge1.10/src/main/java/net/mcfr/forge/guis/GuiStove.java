@@ -5,8 +5,6 @@ import net.mcfr.forge.tileEntities.TileEntityStove;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.inventory.IInventory;
-import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -15,11 +13,11 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class GuiStove extends GuiContainer {
   private static final ResourceLocation STOVE_GUI_TEXTURES = new ResourceLocation(Constants.MOD_ID, "textures/gui/container/stove.png");
 
-  private final IInventory stoveInventory;
+  private final TileEntityStove tileStove;
 
   public GuiStove(InventoryPlayer playerInv, TileEntityStove stoveInv) {
     super(new ContainerStove(playerInv, stoveInv));
-    this.stoveInventory = stoveInv;
+    this.tileStove = stoveInv;
   }
 
   @Override
@@ -30,25 +28,33 @@ public class GuiStove extends GuiContainer {
     int y = (this.height - this.ySize) / 2;
     drawTexturedModalRect(x, y, 0, 0, this.xSize, this.ySize);
 
-    if (TileEntityFurnace.isBurning(this.stoveInventory)) {
-      int progress = getBurnLeftScaled(13);
-      drawTexturedModalRect(x + 56, y + 36 + 12 - progress, 176, 12 - progress, 14, progress + 1);
+    int max = -1, progress = -1, offset = -1;
+
+    if (this.tileStove.isBurning()) {
+      max = 13;
+      progress = getFuelProgressScaled(max);
+      offset = max - progress;
+      drawTexturedModalRect(x + 57, y + 32 + offset, 176, 1 + offset, 14, progress);
+
+      progress = getNextTemperatureProgressScaled(22);
+      drawTexturedModalRect(x + 80, y + 38, 176, 20, progress, 5);
     }
 
-    int progress = getTemperatureScaled(24);
-    drawTexturedModalRect(x + 79, y + 34, 176, 14, progress + 1, 16);
+    max = 66;
+    progress = getTemperatureProgressScaled(max);
+    offset = max - progress;
+    drawTexturedModalRect(x + 110, y + 4 + offset, 207, 4 + offset, 19, progress);
   }
 
-  private int getTemperatureScaled(int pixels) {
-    int temperature = this.stoveInventory.getField(0);
-    return temperature != 0 ? temperature * pixels / TileEntityStove.MAX_TEMPERATURE : 0;
+  private int getFuelProgressScaled(int pixels) {
+    return (int) ((1 - this.tileStove.getFuelProgress()) * pixels) + 1;
   }
 
-  private int getBurnLeftScaled(int pixels) {
-    int totalBurnTime = this.stoveInventory.getField(2);
+  private int getNextTemperatureProgressScaled(int pixels) {
+    return (int) (this.tileStove.getNextTemperatureProgress() * pixels);
+  }
 
-    if (totalBurnTime == 0) totalBurnTime = 200;
-
-    return this.stoveInventory.getField(1) * pixels / totalBurnTime;
+  private int getTemperatureProgressScaled(int pixels) {
+    return (int) (this.tileStove.getTemperatureProgress() * pixels);
   }
 }

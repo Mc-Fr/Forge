@@ -29,13 +29,11 @@ public abstract class GuiRack extends GuiContainer {
     int y = (this.height - this.ySize) / 2;
     drawTexturedModalRect(x, y, 0, 0, this.xSize, this.ySize);
 
-    int l = this.getTranformProgressScaled(44);
+    int l = this.getTranformProgressScaled(22);
     this.drawTexturedModalRect(x + 77, y + 67, 212, 67, l, 5);
   }
 
   private int getTranformProgressScaled(int pixels) {
-    float progress = this.tileEntityRack.getProgress();
-    // System.out.println(progress);
-    return (int) (progress * pixels);
+    return (int) (this.tileEntityRack.getProgress() * pixels);
   }
 }

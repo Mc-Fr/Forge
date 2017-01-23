@@ -3,7 +3,9 @@ package net.mcfr.forge.tileEntities;
 import net.mcfr.Constants;
 import net.mcfr.McfrBlocks;
 import net.mcfr.forge.BlockBellows;
+import net.mcfr.forge.BlockStove;
 import net.mcfr.forge.guis.ContainerStove;
+import net.mcfr.utils.NBTUtils;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -20,98 +22,125 @@ public class TileEntityStove extends TileEntityLockable implements ITickable, IS
   /** La température maximale. */
   public static final int MAX_TEMPERATURE = 500;
   /** Le nombre de tics avant de changer la température d'un degré. */
-  private static final int TICKS_PER_STEPS = 2 * 20;
+  private static final int TICKS_PER_STEPS = 20;
 
-  private int lastTick;
   /** Le nombre de tics de l'item courant. */
   private int totalFuelTicks;
   /** Le nombre de tics restant à consommer. */
   private int remainingFuelTicks;
+  /** Le nombre de tics restant avant d'augmenter d'un degré. */
+  private int remainingStepTicks;
   private int temperature;
+  private boolean maxReached;
   private ItemStack fuel;
 
   public TileEntityStove() {
-    setFuel(null);
+    this.totalFuelTicks = 0;
+    this.remainingFuelTicks = 0;
+    this.remainingStepTicks = TICKS_PER_STEPS;
     this.temperature = 0;
+    this.maxReached = false;
+    this.fuel = null;
   }
 
-  // FIXME : le carburant est consommé trop vite.
   @Override
   public void update() {
-    if (this.fuel != null && hasActiveBellows() && !isLit()) {
-      int meta = McfrBlocks.STOVE.getMetaFromState(getWorld().getBlockState(getPos()));
-      getWorld().setBlockState(getPos(), McfrBlocks.LIT_STOVE.getStateFromMeta(meta));
-    }
-    if (this.temperature == 0 && isLit()) {
-      int meta = McfrBlocks.LIT_STOVE.getMetaFromState(getWorld().getBlockState(getPos()));
-      getWorld().setBlockState(getPos(), McfrBlocks.STOVE.getStateFromMeta(meta));
+    markDirty();
+
+    if (hasActiveBellows() && this.temperature < MAX_TEMPERATURE) {
+      // On consomme s'il y a du carburant disponible et que le précédent a fini de brûler.
+      if (!isBurning() && TileEntityFurnace.isItemFuel(this.fuel)) {
+        this.remainingFuelTicks = this.totalFuelTicks = TileEntityFurnace.getItemBurnTime(this.fuel);
+        decrStackSize(0, 1);
+        BlockStove.setState(true, getWorld(), getPos());
+      } // On éteint si le four n'est plus chaud et ne brûle plus.
+      else if (!isBurning() && !isHot() && getWorld().getBlockState(getPos()) == McfrBlocks.LIT_STOVE) {
+        BlockStove.setState(false, getWorld(), getPos());
+      }
     }
 
-    this.lastTick = (this.lastTick + 1) % TICKS_PER_STEPS;
-    if (hasActiveBellows() && this.lastTick == 0 && this.fuel != null) {
-      powerStove();
-    }
-    if (hasActiveBellows() && isBurning()) {
+    if (isBurning() && this.temperature < MAX_TEMPERATURE && !this.maxReached) {
       this.remainingFuelTicks--;
-      if (this.lastTick == 0 && this.temperature < MAX_TEMPERATURE) this.temperature++;
+      // Augmentation température.
+      if (getRemainingStepTicks() == 0) {
+        this.remainingStepTicks = TICKS_PER_STEPS;
+        this.temperature++;
+        if (this.temperature == MAX_TEMPERATURE)
+          this.maxReached = true;
+      }
+      else
+        this.remainingStepTicks--;
+    } // Diminution température.
+    else if (isHot() || getRemainingStepTicks() != TICKS_PER_STEPS) {
+      if (getRemainingStepTicks() == TICKS_PER_STEPS) {
+        if (this.temperature > 0)
+          this.temperature--;
+        if (this.temperature >= 0)
+          this.remainingStepTicks = 0;
+      }
+      else
+        this.remainingStepTicks++;
+      if (this.maxReached && getTemperature() < MAX_TEMPERATURE - 5)
+        this.maxReached = false;
     }
-    else {
-      if (this.lastTick == 0 && this.temperature > 0) this.temperature--;
-    }
+
+    // System.out.println("Fuel: " + getRemainingFuelTicks());
+    // System.out.println("Step: " + getRemainingStepTicks());
+    // System.out.println("Temp: " + getTemperature());
   }
 
-  /**
-   * Consomme un item de carburant.
-   */
-  private void powerStove() {
-    if (this.fuel != null) {
-      this.fuel.stackSize--;
-      this.lastTick = 0;
-      this.remainingFuelTicks = this.totalFuelTicks = TileEntityFurnace.getItemBurnTime(this.fuel);
-      if (this.fuel.stackSize == 0) this.fuel = null;
-    }
+  public int getTotalFuelTicks() {
+    return this.totalFuelTicks;
+  }
+
+  public int getRemainingFuelTicks() {
+    return this.remainingFuelTicks;
+  }
+
+  public float getFuelProgress() {
+    return !isBurning() ? 0 : (float) (getTotalFuelTicks() - getRemainingFuelTicks()) / getTotalFuelTicks();
+  }
+
+  public int getRemainingStepTicks() {
+    return this.remainingStepTicks;
+  }
+
+  public float getNextTemperatureProgress() {
+    return (float) (TICKS_PER_STEPS - getRemainingStepTicks()) / TICKS_PER_STEPS;
   }
 
   public int getTemperature() {
     return this.temperature;
   }
 
-  /**
-   * Indique s'il reste des tics à consommer.
-   */
+  public float getTemperatureProgress() {
+    return (float) getTemperature() / MAX_TEMPERATURE;
+  }
+
   public boolean isBurning() {
-    return this.remainingFuelTicks > 0;
+    return this.remainingFuelTicks > 0 && hasActiveBellows();
   }
 
-  /**
-   * @return le stack présent dans l'emplacement du carburant ou null s'il est vide
-   */
-  public ItemStack getFuel() {
-    return this.fuel != null ? this.fuel.copy() : null;
-  }
-
-  public void setFuel(ItemStack fuel) {
-    if (fuel == null) {
-      this.fuel = null;
-    }
-    else if (TileEntityFurnace.isItemFuel(fuel)) {
-      System.out.println(TileEntityFurnace.getItemBurnTime(fuel));
-      this.fuel = fuel.stackSize > 0 ? fuel : null;
-      this.lastTick = 0;
-      this.remainingFuelTicks = this.totalFuelTicks = TileEntityFurnace.getItemBurnTime(fuel);
-    }
-  }
-
-  public boolean isLit() {
+  public boolean isHot() {
     return this.temperature > 0;
   }
 
   private boolean hasActiveBellows() {
-    BlockPos[] pos = {getPos().east(), getPos().east().south(), getPos().south(), getPos().west().south(), getPos().west(), //
-      getPos().west().north(), getPos().north(), getPos().east().north()};
+    // @f0
+    BlockPos[] pos = {
+      getPos().east(),
+      getPos().east().south(),
+      getPos().south(),
+      getPos().west().south(),
+      getPos().west(),
+      getPos().west().north(),
+      getPos().north(),
+      getPos().east().north()};
+    // @f1
 
     for (BlockPos p : pos)
-      if (hasActiveBellow(p)) return true;
+      if (isActiveBellow(p))
+        return true;
 
     return false;
   }
@@ -122,7 +151,7 @@ public class TileEntityStove extends TileEntityLockable implements ITickable, IS
    * @param pos la position à vérifier
    * @return Présence d'un soufflet activé.
    */
-  private boolean hasActiveBellow(BlockPos pos) {
+  private boolean isActiveBellow(BlockPos pos) {
     if (this.worldObj.getBlockState(pos).getBlock() instanceof BlockBellows) {
       return ((TileEntityBellows) this.worldObj.getTileEntity(pos)).isPowered();
     }
@@ -146,14 +175,16 @@ public class TileEntityStove extends TileEntityLockable implements ITickable, IS
 
   @Override
   public ItemStack getStackInSlot(int index) {
-    return index == 0 ? getFuel() : null;
+    return index == 0 ? this.fuel : null;
   }
 
   @Override
   public ItemStack decrStackSize(int index, int count) {
-    if (index == 0) {
+    if (index == 0 && this.fuel != null) {
       ItemStack stack = this.fuel.splitStack(count);
-      if (this.fuel.stackSize == 0) this.fuel = null;
+
+      if (this.fuel.stackSize == 0)
+        this.fuel = null;
 
       return stack;
     }
@@ -172,7 +203,8 @@ public class TileEntityStove extends TileEntityLockable implements ITickable, IS
 
   @Override
   public void setInventorySlotContents(int index, ItemStack stack) {
-    if (isItemValidForSlot(index, stack)) setFuel(stack);
+    if (isItemValidForSlot(index, stack))
+      this.fuel = stack;
   }
 
   @Override
@@ -187,64 +219,17 @@ public class TileEntityStove extends TileEntityLockable implements ITickable, IS
 
   @Override
   public boolean isItemValidForSlot(int index, ItemStack stack) {
-    return index == 0 && TileEntityFurnace.isItemFuel(stack);
-  }
-
-  /**
-   * Retourne les champs suivants pour les valeurs suivantes :
-   * <ul>
-   * <li>0 -> température</li>
-   * <li>1 -> tics totaux pour le carburant actuel</li>
-   * <li>2 -> tics restants pour le carburant actuel</li>
-   * </ul>
-   * 
-   * @return la valeur d'un champ
-   */
-  @Override
-  public int getField(int id) {
-    switch (id) {
-      case 0:
-        return this.temperature;
-      case 1:
-        return this.totalFuelTicks;
-      case 2:
-        return this.remainingFuelTicks;
-    }
-
-    return 0;
-  }
-
-  /**
-   * Modifie les champs suivants pour les valeurs suivantes :
-   * <ul>
-   * <li>0 -> température</li>
-   * <li>1 -> tics totaux pour le carburant actuel</li>
-   * <li>2 -> tics restants pour le carburant actuel</li>
-   * </ul>
-   */
-  @Override
-  public void setField(int id, int value) {
-    switch (id) {
-      case 0:
-        this.temperature = value;
-        break;
-      case 1:
-        this.totalFuelTicks = value;
-        break;
-      case 2:
-        this.remainingFuelTicks = value;
-        break;
-    }
+    return index == 0 && (stack == null || TileEntityFurnace.isItemFuel(stack));
   }
 
   @Override
   public int getFieldCount() {
-    return 3;
+    return 0;
   }
 
   @Override
   public void clear() {
-    setFuel(null);
+    this.fuel = null;
   }
 
   @Override
@@ -264,44 +249,55 @@ public class TileEntityStove extends TileEntityLockable implements ITickable, IS
   public void closeInventory(EntityPlayer player) {}
 
   @Override
+  public int getField(int id) {
+    return -1;
+  }
+
+  @Override
+  public void setField(int id, int value) {}
+
+  @Override
   public int[] getSlotsForFace(EnumFacing side) {
     return new int[]{0};
   }
 
   @Override
   public boolean canInsertItem(int index, ItemStack itemStackIn, EnumFacing direction) {
-    return index == 0 && TileEntityFurnace.isItemFuel(itemStackIn);
+    return false;
   }
 
   @Override
   public boolean canExtractItem(int index, ItemStack stack, EnumFacing direction) {
-    return true;
+    return false;
   }
 
   @Override
   public void readFromNBT(NBTTagCompound compound) {
     super.readFromNBT(compound);
 
-    this.lastTick = compound.getInteger("LastTick");
+    System.out.println("read");
+    this.totalFuelTicks = compound.getInteger("TotalFuelTicks");
+    this.remainingFuelTicks = compound.getInteger("RemainingFuelTicks");
+    this.remainingStepTicks = compound.getInteger("RemainingStepTicks");
     this.temperature = compound.getInteger("Temperature");
-    this.totalFuelTicks = compound.getInteger("TotalTicks");
-    this.remainingFuelTicks = compound.getInteger("RemainingTicks");
-    this.fuel = compound.hasKey("Item", 10) ? ItemStack.loadItemStackFromNBT(compound.getCompoundTag("Item")) : null;
+    this.fuel = compound.hasKey("Fuel", NBTUtils.TAG_COMPOUND) ? ItemStack.loadItemStackFromNBT(compound.getCompoundTag("Fuel")) : null;
+    System.out.println(this.totalFuelTicks);
+    System.out.println(this.remainingFuelTicks);
+    System.out.println(this.remainingStepTicks);
+    System.out.println(this.temperature);
+    System.out.println(this.fuel);
   }
 
   @Override
   public NBTTagCompound writeToNBT(NBTTagCompound compound) {
     super.writeToNBT(compound);
 
-    compound.setInteger("LastTick", this.lastTick);
+    compound.setInteger("TotalFuelTicks", getTotalFuelTicks());
+    compound.setInteger("RemainingFuelTicks", getRemainingFuelTicks());
+    compound.setInteger("RemainingStepTicks", getRemainingStepTicks());
     compound.setInteger("Temperature", getTemperature());
-    compound.setInteger("TotalTicks", this.totalFuelTicks);
-    compound.setInteger("RemainingTicks", this.remainingFuelTicks);
-    if (this.fuel != null) {
-      NBTTagCompound item = new NBTTagCompound();
-      this.fuel.writeToNBT(item);
-      compound.setTag("Item", item);
-    }
+    if (this.fuel != null)
+      compound.setTag("Fuel", this.fuel.writeToNBT(new NBTTagCompound()));
 
     return compound;
   }

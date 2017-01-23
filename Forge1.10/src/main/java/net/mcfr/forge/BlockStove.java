@@ -49,8 +49,10 @@ public class BlockStove extends BlockContainer {
     setSoundType(SoundType.STONE);
     setHardness(3.5f);
     setHarvestLevel("pickaxe", 0);
-    if (isBurning) setLightLevel(0.875f);
-    else setCreativeTab(CreativeTabs.DECORATIONS);
+    if (isBurning)
+      setLightLevel(0.875f);
+    else
+      setCreativeTab(CreativeTabs.DECORATIONS);
     setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
   }
 
@@ -116,6 +118,7 @@ public class BlockStove extends BlockContainer {
         case SOUTH:
           worldIn.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, d0 + d4, d1, d2 + d3, 0.0D, 0.0D, 0.0D, new int[0]);
           worldIn.spawnParticle(EnumParticleTypes.FLAME, d0 + d4, d1, d2 + d3, 0.0D, 0.0D, 0.0D, new int[0]);
+          break;
       }
     }
   }
@@ -142,8 +145,8 @@ public class BlockStove extends BlockContainer {
       worldIn.setBlockState(pos, McfrBlocks.LIT_STOVE.getDefaultState().withProperty(FACING, iblockstate.getValue(FACING)), 3);
     }
     else {
-      worldIn.setBlockState(pos, McfrBlocks.LIT_STOVE.getDefaultState().withProperty(FACING, iblockstate.getValue(FACING)), 3);
-      worldIn.setBlockState(pos, McfrBlocks.LIT_STOVE.getDefaultState().withProperty(FACING, iblockstate.getValue(FACING)), 3);
+      worldIn.setBlockState(pos, McfrBlocks.STOVE.getDefaultState().withProperty(FACING, iblockstate.getValue(FACING)), 3);
+      worldIn.setBlockState(pos, McfrBlocks.STOVE.getDefaultState().withProperty(FACING, iblockstate.getValue(FACING)), 3);
     }
 
     if (tileentity != null) {
@@ -181,8 +184,8 @@ public class BlockStove extends BlockContainer {
   public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
     TileEntity tileentity = worldIn.getTileEntity(pos);
 
-    if (tileentity instanceof TileEntityFurnace) {
-      InventoryHelper.dropInventoryItems(worldIn, pos, (TileEntityFurnace) tileentity);
+    if (tileentity instanceof TileEntityStove) {
+      InventoryHelper.dropInventoryItems(worldIn, pos, (TileEntityStove) tileentity);
       worldIn.updateComparatorOutputLevel(pos, this);
     }
 
