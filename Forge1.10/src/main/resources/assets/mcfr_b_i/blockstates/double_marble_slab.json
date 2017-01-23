@@ -1,0 +1,10 @@
+{
+    "variants": {
+        "variant=rough_sand": { "model": "mcfr_b_i:marble_rough_sand" },
+        "variant=column_sand": { "model": "mcfr_b_i:marble_column_sand" },
+        "variant=smooth_sand": { "model": "mcfr_b_i:marble_smooth_sand" },
+        "variant=rough_white": { "model": "mcfr_b_i:marble_rough_white" },
+        "variant=column_white": { "model": "mcfr_b_i:marble_column_white" },
+        "variant=smooth_white": { "model": "mcfr_b_i:marble_smooth_white" }
+    }
+}

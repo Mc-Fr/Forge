@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "variant=apple": { "model": "mcfr_b_i:apple_planks" },
+        "variant=cherry": { "model": "mcfr_b_i:cherry_planks" },
+        "variant=palm": { "model": "mcfr_b_i:palm_planks" },
+        "variant=beluxier": { "model": "mcfr_b_i:beluxier_planks" }
+    }
+}

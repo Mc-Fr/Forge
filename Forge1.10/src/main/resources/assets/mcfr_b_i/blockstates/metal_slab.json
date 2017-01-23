@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "half=bottom,variant=iron": { "model": "mcfr_b_i:half_slab_metal_iron" },
+        "half=top,variant=iron": { "model": "mcfr_b_i:upper_slab_metal_iron" },
+        "half=bottom,variant=gold": { "model": "mcfr_b_i:half_slab_metal_gold" },
+        "half=top,variant=gold": { "model": "mcfr_b_i:upper_slab_metal_gold" }
+    }
+}

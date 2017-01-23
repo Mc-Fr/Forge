@@ -1,6 +1,6 @@
 {
     "variants": {
-        "variant=old": { "model": "mcfr_b_i:old_hay" },
-        "variant=normal": { "model": "hay" }
+        "variant=normal": { "model": "hay" },
+        "variant=old": { "model": "mcfr_b_i:old_hay" }
     }
 }

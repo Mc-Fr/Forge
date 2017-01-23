@@ -1,0 +1,18 @@
+{
+    "variants": {
+        "half=bottom,variant=yellow_stone": { "model": "mcfr_b_i:half_slab_stone_yellow_stone" },
+        "half=top,variant=yellow_stone": { "model": "mcfr_b_i:upper_slab_stone_yellow_stone" },
+        "half=bottom,variant=yellow_cobblestone": { "model": "mcfr_b_i:half_slab_stone_yellow_cobblestone" },
+        "half=top,variant=yellow_cobblestone": { "model": "mcfr_b_i:upper_slab_stone_yellow_cobblestone" },
+        "half=bottom,variant=ocher_stone": { "model": "mcfr_b_i:half_slab_stone_ocher_stone" },
+        "half=top,variant=ocher_stone": { "model": "mcfr_b_i:upper_slab_stone_ocher_stone" },
+        "half=bottom,variant=ocher_cobblestone": { "model": "mcfr_b_i:half_slab_stone_ocher_cobblestone" },
+        "half=top,variant=ocher_cobblestone": { "model": "mcfr_b_i:upper_slab_stone_ocher_cobblestone" },
+        "half=bottom,variant=slate": { "model": "mcfr_b_i:half_slab_stone_slate" },
+        "half=top,variant=slate": { "model": "mcfr_b_i:upper_slab_stone_slate" },
+        "half=bottom,variant=brick_tiles": { "model": "mcfr_b_i:half_slab_stone_brick_tiles" },
+        "half=top,variant=brick_tiles": { "model": "mcfr_b_i:upper_slab_stone_brick_tiles" },
+        "half=bottom,variant=slate_tiles": { "model": "mcfr_b_i:half_slab_stone_slate_tiles" },
+        "half=top,variant=slate_tiles": { "model": "mcfr_b_i:upper_slab_stone_slate_tiles" }
+    }
+}

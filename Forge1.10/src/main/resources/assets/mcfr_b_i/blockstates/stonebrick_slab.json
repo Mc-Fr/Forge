@@ -1,0 +1,20 @@
+{
+    "variants": {
+        "half=bottom,variant=mossy": { "model": "mcfr_b_i:half_slab_stonebrick_mossy" },
+        "half=top,variant=mossy": { "model": "mcfr_b_i:upper_slab_stonebrick_mossy" },
+        "half=bottom,variant=cracked": { "model": "mcfr_b_i:half_slab_stonebrick_cracked" },
+        "half=top,variant=cracked": { "model": "mcfr_b_i:upper_slab_stonebrick_cracked" },
+        "half=bottom,variant=yellow": { "model": "mcfr_b_i:half_slab_stonebrick_yellow" },
+        "half=top,variant=yellow": { "model": "mcfr_b_i:upper_slab_stonebrick_yellow" },
+        "half=bottom,variant=yellow_mossy": { "model": "mcfr_b_i:half_slab_stonebrick_yellow_mossy" },
+        "half=top,variant=yellow_mossy": { "model": "mcfr_b_i:upper_slab_stonebrick_yellow_mossy" },
+        "half=bottom,variant=yellow_cracked": { "model": "mcfr_b_i:half_slab_stonebrick_yellow_cracked" },
+        "half=top,variant=yellow_cracked": { "model": "mcfr_b_i:upper_slab_stonebrick_yellow_cracked" },
+        "half=bottom,variant=ocher": { "model": "mcfr_b_i:half_slab_stonebrick_ocher" },
+        "half=top,variant=ocher": { "model": "mcfr_b_i:upper_slab_stonebrick_ocher" },
+        "half=bottom,variant=ocher_mossy": { "model": "mcfr_b_i:half_slab_stonebrick_ocher_mossy" },
+        "half=top,variant=ocher_mossy": { "model": "mcfr_b_i:upper_slab_stonebrick_ocher_mossy" },
+        "half=bottom,variant=ocher_cracked": { "model": "mcfr_b_i:half_slab_stonebrick_ocher_cracked" },
+        "half=top,variant=ocher_cracked": { "model": "mcfr_b_i:upper_slab_stonebrick_ocher_cracked" }
+    }
+}

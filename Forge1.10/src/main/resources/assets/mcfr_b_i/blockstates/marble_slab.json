@@ -1,0 +1,16 @@
+{
+    "variants": {
+        "half=bottom,variant=rough_sand": { "model": "mcfr_b_i:half_slab_marble_rough_sand" },
+        "half=top,variant=rough_sand": { "model": "mcfr_b_i:upper_slab_marble_rough_sand" },
+        "half=bottom,variant=column_sand": { "model": "mcfr_b_i:half_slab_marble_column_sand" },
+        "half=top,variant=column_sand": { "model": "mcfr_b_i:upper_slab_marble_column_sand" },
+        "half=bottom,variant=smooth_sand": { "model": "mcfr_b_i:half_slab_marble_smooth_sand" },
+        "half=top,variant=smooth_sand": { "model": "mcfr_b_i:upper_slab_marble_smooth_sand" },
+        "half=bottom,variant=rough_white": { "model": "mcfr_b_i:half_slab_marble_rough_white" },
+        "half=top,variant=rough_white": { "model": "mcfr_b_i:upper_slab_marble_rough_white" },
+        "half=bottom,variant=column_white": { "model": "mcfr_b_i:half_slab_marble_column_white" },
+        "half=top,variant=column_white": { "model": "mcfr_b_i:upper_slab_marble_column_white" },
+        "half=bottom,variant=smooth_white": { "model": "mcfr_b_i:half_slab_marble_smooth_white" },
+        "half=top,variant=smooth_white": { "model": "mcfr_b_i:upper_slab_marble_smooth_white" }
+    }
+}

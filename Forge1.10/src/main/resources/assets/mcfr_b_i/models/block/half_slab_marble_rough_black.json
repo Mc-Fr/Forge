@@ -1,0 +1,8 @@
+{
+    "parent": "block/half_slab",
+    "textures": {
+        "bottom": "mcfr_b_i:blocks/marble_rough_black",
+        "top": "mcfr_b_i:blocks/marble_rough_black",
+        "side": "mcfr_b_i:blocks/marble_rough_black"
+    }
+}

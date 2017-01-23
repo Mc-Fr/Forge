@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "variant=rough_black": { "model": "mcfr_b_i:marble_rough_black" },
+        "variant=column_black": { "model": "mcfr_b_i:marble_column_black" },
+        "variant=smooth_black": { "model": "mcfr_b_i:marble_smooth_black" }
+    }
+}

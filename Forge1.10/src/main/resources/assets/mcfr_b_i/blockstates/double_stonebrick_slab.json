@@ -1,0 +1,12 @@
+{
+    "variants": {
+        "variant=mossy": { "model": "stonebrick_mossy" },
+        "variant=cracked": { "model": "stonebrick_cracked" },
+        "variant=yellow": { "model": "mcfr_b_i:yellow_stonebrick_normal" },
+        "variant=yellow_mossy": { "model": "mcfr_b_i:yellow_stonebrick_mossy" },
+        "variant=yellow_cracked": { "model": "mcfr_b_i:yellow_stonebrick_cracked" },
+        "variant=ocher": { "model": "mcfr_b_i:ocher_stonebrick" },
+        "variant=ocher_mossy": { "model": "mcfr_b_i:ocher_stonebrick_mossy" },
+        "variant=ocher_cracked": { "model": "mcfr_b_i:ocher_stonebrick_cracked" }
+    }
+}

@@ -1,5 +1,5 @@
 {
-    "parent": "block/half_slab",
+    "parent": "block/upper_slab",
     "textures": {
         "bottom": "mcfr_b_i:blocks/refined_oak",
         "top": "mcfr_b_i:blocks/refined_oak",

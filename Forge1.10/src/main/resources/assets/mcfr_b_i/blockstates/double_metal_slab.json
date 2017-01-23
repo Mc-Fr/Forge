@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "variant=iron": { "model": "mcfr_b_i:refined_iron_block" },
+        "variant=gold": { "model": "mcfr_b_i:refined_gold_block" }
+    }
+}

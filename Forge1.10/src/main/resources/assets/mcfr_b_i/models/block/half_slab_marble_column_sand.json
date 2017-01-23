@@ -1,0 +1,8 @@
+{
+    "parent": "block/half_slab",
+    "textures": {
+        "bottom": "mcfr_b_i:blocks/marble_column_sand",
+        "top": "mcfr_b_i:blocks/marble_column_sand",
+        "side": "mcfr_b_i:blocks/marble_column_sand"
+    }
+}
