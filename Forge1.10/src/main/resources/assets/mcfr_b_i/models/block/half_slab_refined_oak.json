@@ -1,8 +1,8 @@
 {
     "parent": "block/half_slab",
     "textures": {
-        "bottom": "mcfr_b_i:blocks/refined_oak",
-        "top": "mcfr_b_i:blocks/refined_oak",
-        "side": "mcfr_b_i:blocks/refined_oak"
+        "bottom": "mcfr_b_i:blocks/refined_planks_oak",
+        "top": "mcfr_b_i:blocks/refined_planks_oak",
+        "side": "mcfr_b_i:blocks/refined_planks_oak"
     }
 }

@@ -1,8 +1,8 @@
 {
     "parent": "block/half_slab",
     "textures": {
-        "bottom": "mcfr_b_i:blocks/exotic_wood_palm",
-        "top": "mcfr_b_i:blocks/exotic_wood_palm",
-        "side": "mcfr_b_i:blocks/exotic_wood_palm"
+        "bottom": "mcfr_b_i:blocks/planks_palm",
+        "top": "mcfr_b_i:blocks/planks_palm",
+        "side": "mcfr_b_i:blocks/planks_palm"
     }
 }
