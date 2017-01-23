@@ -9,11 +9,6 @@ public abstract class EntityGendered extends EntitySyncedAnimal {
     this.setGender(Genders.getRandomGender());
   }
 
-  public EntityGendered(World worldIn, Genders gender) {
-    super(worldIn);
-    this.setGender(gender);
-  }
-
   public void setGender(Genders gender) {
     this.setSyncedInteger("Gender", gender.getInt());
   }

@@ -6,7 +6,7 @@ import javax.annotation.Nullable;
 
 import com.google.common.collect.Sets;
 
-import net.mcfr.entities.mobs.gender.EntityGendered;
+import net.mcfr.entities.mobs.gender.EntityBurrowed;
 import net.mcfr.entities.mobs.gender.Genders;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
@@ -36,7 +36,7 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.storage.loot.LootTableList;
 
-public class EntitySiker extends EntityGendered {
+public class EntitySiker extends EntityBurrowed {
   private static final Set<Item> TEMPTATION_ITEMS = Sets.newHashSet(Items.WHEAT_SEEDS);
 
   public EntitySiker(World worldIn) {
