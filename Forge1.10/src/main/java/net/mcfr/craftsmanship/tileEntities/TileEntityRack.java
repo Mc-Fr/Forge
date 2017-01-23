@@ -5,6 +5,7 @@ import java.util.Map;
 import net.mcfr.decoration.containerBlocks.tileEntities.TileEntityRestricted;
 import net.mcfr.utils.HashedItemStack;
 import net.mcfr.utils.ItemsLists;
+import net.mcfr.utils.NBTUtils;
 import net.minecraft.block.Block;
 import net.minecraft.inventory.Container;
 import net.minecraft.item.ItemStack;
@@ -126,7 +127,7 @@ public abstract class TileEntityRack extends TileEntityRestricted implements ITi
   public void readFromNBT(NBTTagCompound compound) {
     super.readFromNBT(compound);
     this.remainingTicks = compound.getInteger("RemainingTicks");
-    this.currentStack = compound.hasKey("CurrentStack") ? ItemStack.loadItemStackFromNBT(compound.getCompoundTag("CurrentStack")) : null;
+    this.currentStack = compound.hasKey("CurrentStack", NBTUtils.TAG_COMPOUND) ? ItemStack.loadItemStackFromNBT(compound.getCompoundTag("CurrentStack")) : null;
   }
 
   @Override
