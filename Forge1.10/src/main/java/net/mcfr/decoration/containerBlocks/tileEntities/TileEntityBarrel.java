@@ -52,7 +52,7 @@ public class TileEntityBarrel extends TileEntity {
   @Override
   public NBTTagCompound writeToNBT(NBTTagCompound compound) {
     super.writeToNBT(compound);
-    compound.setLong("creationSate", this.creationDate);
+    compound.setLong("creationDate", this.creationDate);
     compound.setInteger("durability", this.durability);
     return compound;
   }
