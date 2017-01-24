@@ -1,7 +1,7 @@
 package net.mcfr.network;
 
 import io.netty.buffer.ByteBuf;
-import net.mcfr.entities.mobs.gender.EntitySyncedAnimal;
+import net.mcfr.entities.mobs.EntitySyncedAnimal;
 import net.minecraft.client.Minecraft;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fml.common.network.ByteBufUtils;
