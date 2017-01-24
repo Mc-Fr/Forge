@@ -9,6 +9,8 @@ import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
+import net.minecraft.network.NetworkManager;
+import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntityLockable;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
@@ -203,5 +205,20 @@ public abstract class McfrTileEntityLockable extends TileEntityLockable {
   @Override
   public String getGuiID() {
     return Constants.MOD_ID + ":" + this.name;
+  }
+
+  @Override
+  public SPacketUpdateTileEntity getUpdatePacket() {
+    return new SPacketUpdateTileEntity(getPos(), 0, getUpdateTag());
+  }
+
+  @Override
+  public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity pkt) {
+    readFromNBT(pkt.getNbtCompound());
+  }
+
+  @Override
+  public NBTTagCompound getUpdateTag() {
+    return writeToNBT(new NBTTagCompound());
   }
 }

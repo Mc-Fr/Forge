@@ -33,8 +33,10 @@ public class TileEntityBellows extends TileEntity implements ITickable {
 
   public void setPowered(boolean isPowered) {
     this.powered = isPowered;
-    if (getWorld() != null)
+    if (getWorld() != null) {
       TileEntityUtils.sendTileEntityUpdate(getWorld(), this);
+      markDirty();
+    }
   }
 
   public int getStep() {
@@ -59,6 +61,7 @@ public class TileEntityBellows extends TileEntity implements ITickable {
           this.rising = !this.rising;
         }
       }
+      markDirty();
     }
   }
 
@@ -84,15 +87,16 @@ public class TileEntityBellows extends TileEntity implements ITickable {
 
   @Override
   public SPacketUpdateTileEntity getUpdatePacket() {
-    NBTTagCompound c = new NBTTagCompound();
-    writeToNBT(c);
-    SPacketUpdateTileEntity packet = new SPacketUpdateTileEntity(getPos(), 0, c);
-
-    return packet;
+    return new SPacketUpdateTileEntity(getPos(), 0, getUpdateTag());
   }
 
   @Override
   public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity pkt) {
     readFromNBT(pkt.getNbtCompound());
+  }
+
+  @Override
+  public NBTTagCompound getUpdateTag() {
+    return writeToNBT(new NBTTagCompound());
   }
 }
