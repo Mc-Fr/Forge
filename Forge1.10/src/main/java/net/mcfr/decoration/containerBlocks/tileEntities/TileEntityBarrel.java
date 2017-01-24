@@ -3,6 +3,8 @@ package net.mcfr.decoration.containerBlocks.tileEntities;
 import java.util.Date;
 
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.NetworkManager;
+import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 
 /**
@@ -53,5 +55,20 @@ public class TileEntityBarrel extends TileEntity {
     compound.setLong("creationSate", this.creationDate);
     compound.setInteger("durability", this.durability);
     return compound;
+  }
+
+  @Override
+  public SPacketUpdateTileEntity getUpdatePacket() {
+    return new SPacketUpdateTileEntity(getPos(), 0, getUpdateTag());
+  }
+
+  @Override
+  public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity pkt) {
+    readFromNBT(pkt.getNbtCompound());
+  }
+
+  @Override
+  public NBTTagCompound getUpdateTag() {
+    return writeToNBT(new NBTTagCompound());
   }
 }

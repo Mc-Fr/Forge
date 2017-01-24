@@ -12,6 +12,8 @@ import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.NetworkManager;
+import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.tileentity.TileEntityLockable;
 import net.minecraft.util.EnumFacing;
@@ -35,6 +37,7 @@ public class TileEntityStove extends TileEntityLockable implements ITickable, IS
   private ItemStack fuel;
 
   public TileEntityStove() {
+    super();
     this.totalFuelTicks = 0;
     this.remainingFuelTicks = 0;
     this.remainingStepTicks = TICKS_PER_STEPS;
@@ -45,18 +48,18 @@ public class TileEntityStove extends TileEntityLockable implements ITickable, IS
 
   @Override
   public void update() {
-    markDirty();
-
     if (hasActiveBellows() && this.temperature < MAX_TEMPERATURE) {
       // On consomme s'il y a du carburant disponible et que le précédent a fini de brûler.
       if (!isBurning() && TileEntityFurnace.isItemFuel(this.fuel)) {
         this.remainingFuelTicks = this.totalFuelTicks = TileEntityFurnace.getItemBurnTime(this.fuel);
         decrStackSize(0, 1);
         BlockStove.setState(true, getWorld(), getPos());
-      } // On éteint si le four n'est plus chaud et ne brûle plus.
-      else if (!isBurning() && !isHot() && getWorld().getBlockState(getPos()) == McfrBlocks.LIT_STOVE) {
-        BlockStove.setState(false, getWorld(), getPos());
       }
+    }
+    // On éteint si le four n'est plus chaud et ne brûle plus.
+    if (!isBurning() && !isHot() && getWorld().getBlockState(getPos()).getBlock() == McfrBlocks.LIT_STOVE) {
+      System.out.println("zdfegr");
+      BlockStove.setState(false, getWorld(), getPos());
     }
 
     if (isBurning() && this.temperature < MAX_TEMPERATURE && !this.maxReached) {
@@ -87,6 +90,7 @@ public class TileEntityStove extends TileEntityLockable implements ITickable, IS
     // System.out.println("Fuel: " + getRemainingFuelTicks());
     // System.out.println("Step: " + getRemainingStepTicks());
     // System.out.println("Temp: " + getTemperature());
+    markDirty();
   }
 
   public int getTotalFuelTicks() {
@@ -275,17 +279,11 @@ public class TileEntityStove extends TileEntityLockable implements ITickable, IS
   public void readFromNBT(NBTTagCompound compound) {
     super.readFromNBT(compound);
 
-    System.out.println("read");
     this.totalFuelTicks = compound.getInteger("TotalFuelTicks");
     this.remainingFuelTicks = compound.getInteger("RemainingFuelTicks");
     this.remainingStepTicks = compound.getInteger("RemainingStepTicks");
     this.temperature = compound.getInteger("Temperature");
     this.fuel = compound.hasKey("Fuel", NBTUtils.TAG_COMPOUND) ? ItemStack.loadItemStackFromNBT(compound.getCompoundTag("Fuel")) : null;
-    System.out.println(this.totalFuelTicks);
-    System.out.println(this.remainingFuelTicks);
-    System.out.println(this.remainingStepTicks);
-    System.out.println(this.temperature);
-    System.out.println(this.fuel);
   }
 
   @Override
@@ -300,5 +298,20 @@ public class TileEntityStove extends TileEntityLockable implements ITickable, IS
       compound.setTag("Fuel", this.fuel.writeToNBT(new NBTTagCompound()));
 
     return compound;
+  }
+
+  @Override
+  public SPacketUpdateTileEntity getUpdatePacket() {
+    return new SPacketUpdateTileEntity(getPos(), 0, getUpdateTag());
+  }
+
+  @Override
+  public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity pkt) {
+    readFromNBT(pkt.getNbtCompound());
+  }
+
+  @Override
+  public NBTTagCompound getUpdateTag() {
+    return writeToNBT(new NBTTagCompound());
   }
 }

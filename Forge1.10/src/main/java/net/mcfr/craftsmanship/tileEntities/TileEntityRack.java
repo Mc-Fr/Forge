@@ -133,7 +133,7 @@ public abstract class TileEntityRack extends TileEntityRestricted implements ITi
   @Override
   public NBTTagCompound writeToNBT(NBTTagCompound compound) {
     super.writeToNBT(compound);
-    compound.setLong("RemainingTicks", this.remainingTicks);
+    compound.setInteger("RemainingTicks", this.remainingTicks);
     if (this.currentStack != null)
       compound.setTag("CurrentStack", this.currentStack.writeToNBT(new NBTTagCompound()));
 
