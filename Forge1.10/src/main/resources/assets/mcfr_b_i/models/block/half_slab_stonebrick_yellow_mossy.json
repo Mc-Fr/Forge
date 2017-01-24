@@ -1,8 +1,8 @@
 {
     "parent": "block/half_slab",
     "textures": {
-        "bottom": "mcfr_b_i:blocks/yellow_stonebrick_mossy",
-        "top": "mcfr_b_i:blocks/yellow_stonebrick_mossy",
-        "side": "mcfr_b_i:blocks/yellow_stonebrick_mossy"
+        "bottom": "mcfr_b_i:blocks/stonebrick_yellow_mossy",
+        "top": "mcfr_b_i:blocks/stonebrick_yellow_mossy",
+        "side": "mcfr_b_i:blocks/stonebrick_yellow_mossy"
     }
 }

@@ -1,8 +1,8 @@
 {
     "parent": "block/half_slab",
     "textures": {
-        "bottom": "blocks/ocher_stone",
-        "top": "blocks/ocher_stone",
-        "side": "blocks/ocher_stone"
+        "bottom": "mcfr_b_i:blocks/stone_ocher_stone",
+        "top": "mcfr_b_i:blocks/stone_ocher_stone",
+        "side": "mcfr_b_i:blocks/stone_ocher_stone"
     }
 }
