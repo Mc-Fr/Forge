@@ -22,22 +22,20 @@ import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 
-// Pas besoin d'afficher le texte.
 public class BlockTombstone extends McfrBlockStandingSign {
   public BlockTombstone() {
-    super(Material.ROCK, "tombstone_block");
-    setSoundType(SoundType.STONE);
+    super("tombstone_block", Material.ROCK, SoundType.STONE, 2, "pickaxe");
   }
-  
+
   @Override
   public AxisAlignedBB getCollisionBoundingBox(IBlockState state, World worldIn, BlockPos pos) {
     return getBoundingBox(state, worldIn, pos);
   }
-  
+
   @Override
   public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, @Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
     TileEntity tileEntity = worldIn.getTileEntity(pos);
-    
+
     if (tileEntity instanceof TileEntityTombstone) {
       for (ITextComponent component : ((TileEntityTombstone) tileEntity).signText) {
         if (!"".equals(component.getUnformattedText())) {
@@ -45,20 +43,20 @@ public class BlockTombstone extends McfrBlockStandingSign {
         }
       }
     }
-    
+
     return super.onBlockActivated(worldIn, pos, state, playerIn, hand, heldItem, side, hitX, hitY, hitZ);
   }
-  
+
   @Override
   public Item getItemDropped(IBlockState state, Random rand, int fortune) {
     return McfrItems.TOMBSTONE;
   }
-  
+
   @Override
   public ItemStack getItem(World worldIn, BlockPos pos, IBlockState state) {
     return new ItemStack(McfrItems.TOMBSTONE);
   }
-  
+
   @Override
   public TileEntity createNewTileEntity(World worldIn, int meta) {
     return new TileEntityTombstone();

@@ -15,8 +15,7 @@ import net.minecraft.world.World;
 
 public class BlockStandingOrpSign extends McfrBlockStandingSign {
   public BlockStandingOrpSign() {
-    super(Material.GLASS, "standing_orp_sign");
-    setSoundType(SoundType.WOOD);
+    super("standing_orp_sign", Material.GLASS, SoundType.WOOD, 1, null);
   }
 
   @Override

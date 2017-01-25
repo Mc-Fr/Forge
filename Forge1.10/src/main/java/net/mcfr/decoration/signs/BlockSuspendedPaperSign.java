@@ -15,8 +15,7 @@ import net.minecraft.world.World;
 
 public class BlockSuspendedPaperSign extends McfrBlockSuspendedSign {
   public BlockSuspendedPaperSign() {
-    super(Material.WOOD, "suspended_paper_sign");
-    setSoundType(SoundType.WOOD);
+    super("suspended_paper_sign", Material.WOOD, SoundType.WOOD, 1, "axe");
   }
 
   @Override

@@ -15,8 +15,7 @@ import net.minecraft.world.World;
 
 public class BlockWallPaperSign extends McfrBlockWallSign {
   public BlockWallPaperSign() {
-    super(Material.WOOD, "wall_paper_sign");
-    setSoundType(SoundType.WOOD);
+    super("wall_paper_sign", Material.WOOD, SoundType.WOOD, 1, "axe");
   }
 
   @Override

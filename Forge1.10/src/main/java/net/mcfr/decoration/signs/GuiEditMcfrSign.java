@@ -106,6 +106,7 @@ public class GuiEditMcfrSign extends GuiScreen {
     Block block = this.tileSign.getBlockType();
 
     if (block instanceof McfrBlockStandingSign || block instanceof McfrBlockSuspendedSign) {
+      // TODO réparer panneaux suspendus.
       float angle = (this.tileSign.getBlockMetadata() * 360) / 16.0F;
       float y = (block instanceof McfrBlockStandingSign) ? -1.0625F : -1.5F;
 

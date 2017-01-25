@@ -15,8 +15,7 @@ import net.minecraft.world.World;
 
 public class BlockWallOrpSign extends McfrBlockWallSign {
   public BlockWallOrpSign() {
-    super(Material.GLASS, "wall_orp_sign");
-    setSoundType(SoundType.WOOD);
+    super("wall_orp_sign", Material.GLASS, SoundType.WOOD, 1, null);
   }
 
   @Override

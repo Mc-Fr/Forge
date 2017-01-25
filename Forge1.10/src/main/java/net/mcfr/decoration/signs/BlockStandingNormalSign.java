@@ -15,8 +15,7 @@ import net.minecraft.world.World;
 
 public class BlockStandingNormalSign extends McfrBlockStandingSign {
   public BlockStandingNormalSign() {
-    super(Material.WOOD, "standing_sign");
-    setSoundType(SoundType.WOOD);
+    super("standing_sign", Material.WOOD, SoundType.WOOD, 1, "axe");
   }
 
   @Override

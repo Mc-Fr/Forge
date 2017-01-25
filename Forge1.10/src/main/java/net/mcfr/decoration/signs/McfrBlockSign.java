@@ -4,11 +4,13 @@ import java.util.Random;
 
 import javax.annotation.Nullable;
 
+import net.mcfr.commons.McfrBlock;
 import net.mcfr.decoration.signs.tileEntities.TileEntityMcfrSign;
-import net.mcfr.utils.NameUtils;
-import net.minecraft.block.BlockContainer;
+import net.minecraft.block.ITileEntityProvider;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -23,17 +25,9 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public abstract class McfrBlockSign extends BlockContainer {
-  /**
-   * Crée un nouveau panneau.
-   *
-   * @param material le matériau
-   * @param name le nom du bloc
-   */
-  public McfrBlockSign(Material material, String name) {
-    super(material);
-    setRegistryName(name);
-    setUnlocalizedName(NameUtils.getUnlocalizedName(name));
+public abstract class McfrBlockSign extends McfrBlock implements ITileEntityProvider {
+  public McfrBlockSign(String name, Material material, SoundType sound, float hardness, String tool) {
+    super(name, material, sound, hardness, 0, tool, 0, CreativeTabs.DECORATIONS);
   }
 
   @Override

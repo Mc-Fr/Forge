@@ -1,5 +1,6 @@
 package net.mcfr.decoration.signs;
 
+import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockStateContainer;
@@ -13,8 +14,8 @@ import net.minecraft.world.World;
 public abstract class McfrBlockWallSign extends McfrBlockSign {
   public static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
 
-  public McfrBlockWallSign(Material material, String name) {
-    super(material, name);
+  public McfrBlockWallSign(String name, Material material, SoundType sound, float hardness, String tool) {
+    super(name, material, sound, hardness, tool);
     setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
   }
 
