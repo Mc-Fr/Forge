@@ -14,11 +14,10 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class OpenEditWallNoteMessageHandler implements IMessageHandler<OpenEditWallNoteMessage, IMessage> {
   @Override
-  @SideOnly(Side.CLIENT)
   public IMessage onMessage(final OpenEditWallNoteMessage message, MessageContext ctx) {
     Minecraft.getMinecraft().addScheduledTask(() -> {
       BlockPos pos = message.getSignPos();
-      World world = Minecraft.getMinecraft().theWorld;
+      World world = Minecraft.getMinecraft().thePlayer.worldObj;
       TileEntity te = world.getTileEntity(pos);
 
       if (!(te instanceof TileEntityWallNote)) {
@@ -27,9 +26,14 @@ public class OpenEditWallNoteMessageHandler implements IMessageHandler<OpenEditW
         te.setPos(message.getSignPos());
       }
 
-      Minecraft.getMinecraft().displayGuiScreen(new GuiEditWallNote((TileEntityWallNote) te));
+      openGui((TileEntityWallNote) te);
     });
 
     return null;
+  }
+
+  @SideOnly(Side.CLIENT)
+  public void openGui(TileEntityWallNote te) {
+    Minecraft.getMinecraft().displayGuiScreen(new GuiEditWallNote(te));
   }
 }

@@ -17,11 +17,10 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class OpenEditMcfrSignMessageHandler implements IMessageHandler<OpenEditMcfrSignMessage, IMessage> {
   @Override
-  @SideOnly(Side.CLIENT)
   public IMessage onMessage(final OpenEditMcfrSignMessage message, MessageContext ctx) {
     Minecraft.getMinecraft().addScheduledTask(() -> {
       BlockPos pos = message.getSignPos();
-      World world = Minecraft.getMinecraft().theWorld;
+      World world = Minecraft.getMinecraft().thePlayer.worldObj;
       TileEntity te = world.getTileEntity(pos);
 
       if (!(te instanceof TileEntityMcfrSign)) {
@@ -40,9 +39,14 @@ public class OpenEditMcfrSignMessageHandler implements IMessageHandler<OpenEditM
         te.setPos(message.getSignPos());
       }
 
-      Minecraft.getMinecraft().displayGuiScreen(new GuiEditMcfrSign((TileEntityMcfrSign) te));
+      openGui((TileEntityMcfrSign) te);
     });
 
     return null;
+  }
+
+  @SideOnly(Side.CLIENT)
+  public void openGui(TileEntityMcfrSign te) {
+    Minecraft.getMinecraft().displayGuiScreen(new GuiEditMcfrSign(te));
   }
 }
