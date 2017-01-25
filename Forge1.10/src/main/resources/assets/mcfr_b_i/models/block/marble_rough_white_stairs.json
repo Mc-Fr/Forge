@@ -1,0 +1,8 @@
+{
+    "parent": "block/stairs",
+    "textures": {
+        "bottom": "mcfr_b_i:blocks/marble_rough_white",
+        "top": "mcfr_b_i:blocks/marble_rough_white",
+        "side": "mcfr_b_i:blocks/marble_rough_white"
+    }
+}
