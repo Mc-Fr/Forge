@@ -14,6 +14,7 @@ public class ModelGalt extends ModelBase {
   public ModelRenderer abdomen;
   public ModelRenderer torso;
   public ModelRenderer head;
+  public ModelRenderer nose;
   public ModelRenderer tail;
   public ModelRenderer rightLeg1;
   public ModelRenderer rightLeg2;
@@ -37,6 +38,7 @@ public class ModelGalt extends ModelBase {
     
     this.abdomen = new ModelRenderer(this, 0, 53);
     this.head = new ModelRenderer(this, 0, 0);
+    this.nose = new ModelRenderer(this, 0, 0);
     this.leftArm1 = new ModelRenderer(this, 0, 103);
     this.leftArm2 = new ModelRenderer(this, 0, 124);
     this.leftLeg1 = new ModelRenderer(this, 36, 103);
@@ -53,6 +55,7 @@ public class ModelGalt extends ModelBase {
     // #f:0
     this.abdomen.addBox(-5.40F, -6.00F, -8.70F, 10, 12, 17);  this.abdomen.setRotationPoint(0.00F, 8.13F, 6.66F);
     this.head.addBox(-5.10F, -4.43F, -14.60F, 10, 9, 15); this.head.setRotationPoint(0.00F, -1.89F, -12.17F);
+    this.nose.addBox(-2.40F, -1.05F, -16.40F, 5, 4, 2); this.nose.setRotationPoint(0.00F, 0.00F, 0.00F);
     this.leftArm1.addBox(-2.70F, -2.32F, -3.44F, 5, 15, 6, true); this.leftArm1.setRotationPoint(6.68F, -1.76F, -9.16F);
     this.leftArm2.addBox(-2.10F, -1.00F, -2.25F, 4, 9, 4, true);  this.leftArm2.setRotationPoint(0.00F, 11.25F, -0.44F);
     this.leftLeg1.addBox(-2.40F, -2.66F, -3.29F, 4, 10, 6, true); this.leftLeg1.setRotationPoint(6.08F, 0.11F, 4.13F);
@@ -70,6 +73,7 @@ public class ModelGalt extends ModelBase {
     // Enfantillages
     this.abdomen.addChild(this.torso);
     this.torso.addChild(this.head);
+    this.head.addChild(this.nose);
     
     this.abdomen.addChild(this.tail);
     
@@ -94,7 +98,7 @@ public class ModelGalt extends ModelBase {
   public void render(Entity entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw,
       float headPitch, float scale) {
     this.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale, entityIn);
-
+    
     if (((EntityGendered) entityIn).isChild()) {
       GlStateManager.pushMatrix();
       GlStateManager.scale(0.4F, 0.4F, 0.4F);

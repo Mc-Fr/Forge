@@ -36,7 +36,6 @@ public class SyncEntityMessage implements IMessage {
   public static class ClientHandler implements IMessageHandler<SyncEntityMessage, IMessage> {
     @Override
     public IMessage onMessage(SyncEntityMessage message, MessageContext ctx) {
-      // EntitySyncedAnimal.syncedProps.put(message.entityId, message.entitySyncDataCompound);
       EntitySyncedAnimal entity = (EntitySyncedAnimal) Minecraft.getMinecraft().thePlayer.worldObj.getEntityByID(message.entityId);
       if (entity != null) {
         entity.setSyncedProps(message.entitySyncDataCompound);
