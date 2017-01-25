@@ -11,6 +11,5 @@ public enum CustomGuiScreens {
   CRATE,
   FOOD_CRATE,
   LITTLE_CHEST,
-  PALLET,
-  WALL_NOTE;
+  PALLET;
 }

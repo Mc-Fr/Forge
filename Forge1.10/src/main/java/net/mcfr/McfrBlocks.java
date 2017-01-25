@@ -381,15 +381,15 @@ public final class McfrBlocks {
   public static final McfrBlockStairs SLATE_TILES_STAIRS = new McfrBlockStairs(TILES, 1, "slate_tiles", "pickaxe", 0);
   public static final McfrBlockStairs LIGHT_CARVED_CLAY_STAIRS = new McfrBlockStairs(CARVED_CLAY, 0, "light_carved_clay", "pickaxe", 0);
   public static final McfrBlockStairs DARK_CARVED_CLAY_STAIRS = new McfrBlockStairs(CARVED_CLAY, 1, "dark_carved_clay", "pickaxe", 0);
-  public static final McfrBlockStairs MARBLE_ROUGH_SAND_STAIRS = new McfrBlockStairs(MARBLE, 0, "marble_rough_sand_stairs", "pickaxe", 0);
-  public static final McfrBlockStairs MARBLE_SMOOTH_SAND_STAIRS = new McfrBlockStairs(MARBLE, 1, "marble_smooth_sand_stairs", "pickaxe", 0);
-  public static final McfrBlockStairs MARBLE_COLUMN_SAND_STAIRS = new McfrBlockStairs(MARBLE, 2, "marble_column_sand_stairs", "pickaxe", 0);
-  public static final McfrBlockStairs MARBLE_ROUGH_WHITE_STAIRS = new McfrBlockStairs(MARBLE, 3, "marble_rough_white_stairs", "pickaxe", 0);
-  public static final McfrBlockStairs MARBLE_SMOOTH_WHITE_STAIRS = new McfrBlockStairs(MARBLE, 4, "marble_smooth_white_stairs", "pickaxe", 0);
-  public static final McfrBlockStairs MARBLE_COLUMN_WHITE_STAIRS = new McfrBlockStairs(MARBLE, 5, "marble_column_white_stairs", "pickaxe", 0);
-  public static final McfrBlockStairs MARBLE_ROUGH_BLACK_STAIRS = new McfrBlockStairs(MARBLE, 6, "marble_rough_black_stairs", "pickaxe", 0);
-  public static final McfrBlockStairs MARBLE_SMOOTH_BLACK_STAIRS = new McfrBlockStairs(MARBLE, 7, "marble_smooth_black_stairs", "pickaxe", 0);
-  public static final McfrBlockStairs MARBLE_COLUMN_BLACK_STAIRS = new McfrBlockStairs(MARBLE, 8, "marble_column_black_stairs", "pickaxe", 0);
+  public static final McfrBlockStairs MARBLE_ROUGH_SAND_STAIRS = new McfrBlockStairs(MARBLE, 0, "marble_rough_sand", "pickaxe", 0);
+  public static final McfrBlockStairs MARBLE_SMOOTH_SAND_STAIRS = new McfrBlockStairs(MARBLE, 1, "marble_smooth_sand", "pickaxe", 0);
+  public static final McfrBlockStairs MARBLE_COLUMN_SAND_STAIRS = new McfrBlockStairs(MARBLE, 2, "marble_column_sand", "pickaxe", 0);
+  public static final McfrBlockStairs MARBLE_ROUGH_WHITE_STAIRS = new McfrBlockStairs(MARBLE, 3, "marble_rough_white", "pickaxe", 0);
+  public static final McfrBlockStairs MARBLE_SMOOTH_WHITE_STAIRS = new McfrBlockStairs(MARBLE, 4, "marble_smooth_white", "pickaxe", 0);
+  public static final McfrBlockStairs MARBLE_COLUMN_WHITE_STAIRS = new McfrBlockStairs(MARBLE, 5, "marble_column_white", "pickaxe", 0);
+  public static final McfrBlockStairs MARBLE_ROUGH_BLACK_STAIRS = new McfrBlockStairs(MARBLE, 6, "marble_rough_black", "pickaxe", 0);
+  public static final McfrBlockStairs MARBLE_SMOOTH_BLACK_STAIRS = new McfrBlockStairs(MARBLE, 7, "marble_smooth_black", "pickaxe", 0);
+  public static final McfrBlockStairs MARBLE_COLUMN_BLACK_STAIRS = new McfrBlockStairs(MARBLE, 8, "marble_column_black", "pickaxe", 0);
   // Pentes
   public static final McfrBlockSlope STONE_SLOPE = new McfrBlockSlope(Blocks.STONE, 0, "stone", "pickaxe", 0);
   public static final McfrBlockSlope COBBLESTONE_SLOPE = new McfrBlockSlope(Blocks.COBBLESTONE, 0, "cobblestone", "pickaxe", 0);

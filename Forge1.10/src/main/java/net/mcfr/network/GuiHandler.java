@@ -47,7 +47,6 @@ public class GuiHandler implements IGuiHandler {
     BlockPos pos = new BlockPos(x, y, z);
     TileEntity tileEntity = world.getTileEntity(pos);
 
-    System.out.println(tileEntity);
     switch (CustomGuiScreens.values()[id]) {
       case ANVIL:
         return new ContainerAnvil(player.inventory, world, pos);
@@ -99,8 +98,6 @@ public class GuiHandler implements IGuiHandler {
     BlockPos pos = new BlockPos(x, y, z);
     TileEntity tileEntity = world.getTileEntity(pos);
 
-    System.out.println(" " + System.currentTimeMillis());
-    System.out.println(" " + tileEntity);
     switch (CustomGuiScreens.values()[id]) {
       case ANVIL:
         return new GuiAnvil(player.inventory, world, pos);

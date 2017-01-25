@@ -1,8 +1,6 @@
 package net.mcfr.decoration.signs;
 
 import net.mcfr.McfrBlocks;
-import net.mcfr.McfrMain;
-import net.mcfr.commons.CustomGuiScreens;
 import net.mcfr.commons.McfrItem;
 import net.mcfr.decoration.signs.tileEntities.TileEntityWallNote;
 import net.minecraft.creativetab.CreativeTabs;
@@ -36,7 +34,7 @@ public class ItemWallNote extends McfrItem {
         TileEntity te = worldIn.getTileEntity(pos);
 
         if (te != null && te instanceof TileEntityWallNote) {
-          playerIn.openGui(McfrMain.instance, CustomGuiScreens.WALL_NOTE.ordinal(), worldIn, pos.getX(), pos.getY(), pos.getZ());
+          // TODO
         }
       }
 

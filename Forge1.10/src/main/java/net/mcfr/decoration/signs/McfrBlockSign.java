@@ -10,11 +10,11 @@ import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -27,7 +27,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public abstract class McfrBlockSign extends McfrBlock implements ITileEntityProvider {
   public McfrBlockSign(String name, Material material, SoundType sound, float hardness, String tool) {
-    super(name, material, sound, hardness, 0, tool, 0, CreativeTabs.DECORATIONS);
+    super(name, material, sound, hardness, 0, tool, 0, null);
   }
 
   @Override
@@ -54,6 +54,11 @@ public abstract class McfrBlockSign extends McfrBlock implements ITileEntityProv
   @Override
   public boolean isOpaqueCube(IBlockState state) {
     return false;
+  }
+
+  @Override
+  public EnumBlockRenderType getRenderType(IBlockState state) {
+    return EnumBlockRenderType.INVISIBLE;
   }
 
   @Override

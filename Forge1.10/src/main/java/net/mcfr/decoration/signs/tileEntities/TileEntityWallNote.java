@@ -1,34 +1,54 @@
 package net.mcfr.decoration.signs.tileEntities;
 
+import net.mcfr.utils.NBTUtils;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
+import net.minecraft.nbt.NBTTagString;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TextComponentString;
 
 public class TileEntityWallNote extends TileEntity {
-  private String text;
+  public static final int LINES_NB = 15;
+
+  private ITextComponent[] text;
+  private int lineBeingEdited;
 
   public TileEntityWallNote() {
-    this.text = null;
-    // TEMP
-    this.text = "Bonjour !\nCeci est un §1test§r.";
+    this.text = new ITextComponent[LINES_NB];
+    this.lineBeingEdited = -1;
   }
 
-  public String getText() {
+  public ITextComponent[] getText() {
     return this.text;
+  }
+
+  public int getLineBeingEdited() {
+    return this.lineBeingEdited;
+  }
+
+  public void setLineBeingEdited(int lineBeingEdited) {
+    this.lineBeingEdited = lineBeingEdited;
   }
 
   @Override
   public void readFromNBT(NBTTagCompound compound) {
     super.readFromNBT(compound);
-    this.text = compound.getString("Text");
+
+    NBTTagList lines = compound.getTagList("Lines", NBTUtils.TAG_STRING);
+    for (int i = 0; i < LINES_NB; i++)
+      this.text[i] = new TextComponentString(lines.getStringTagAt(i));
   }
 
   @Override
   public NBTTagCompound writeToNBT(NBTTagCompound compound) {
     super.writeToNBT(compound);
 
-    compound.setString("Text", getText());
+    NBTTagList lines = new NBTTagList();
+    for (int i = 0; i < LINES_NB; i++)
+      lines.appendTag(new NBTTagString(getText()[i].getFormattedText()));
 
     return compound;
   }

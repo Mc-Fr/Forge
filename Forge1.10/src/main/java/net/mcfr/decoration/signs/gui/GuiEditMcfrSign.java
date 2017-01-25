@@ -1,9 +1,13 @@
-package net.mcfr.decoration.signs;
+package net.mcfr.decoration.signs.gui;
 
 import java.io.IOException;
 
 import org.lwjgl.input.Keyboard;
 
+import net.mcfr.decoration.signs.McfrBlockStandingSign;
+import net.mcfr.decoration.signs.McfrBlockSuspendedSign;
+import net.mcfr.decoration.signs.McfrBlockWallSign;
+import net.mcfr.decoration.signs.tileEntities.TileEntityMcfrSign;
 import net.minecraft.block.Block;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
@@ -12,23 +16,22 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.network.play.client.CPacketUpdateSign;
-import net.minecraft.tileentity.TileEntitySign;
 import net.minecraft.util.ChatAllowedCharacters;
 import net.minecraft.util.text.TextComponentString;
 
 /**
- * Copié de {@link net.minecraft.client.gui.inventory.GuiEditSign}.
+ * Adapté de {@link net.minecraft.client.gui.inventory.GuiEditSign}.
  *
  * @author Mc-Fr
  */
 public class GuiEditMcfrSign extends GuiScreen {
-  private TileEntitySign tileSign;
+  private TileEntityMcfrSign tileSign;
   /** Compte le nombre de mises à jour de l'écran. */
   private int updateCounter;
   private int editLine;
   private GuiButton doneBtn;
 
-  public GuiEditMcfrSign(TileEntitySign teSign) {
+  public GuiEditMcfrSign(TileEntityMcfrSign teSign) {
     this.tileSign = teSign;
   }
 

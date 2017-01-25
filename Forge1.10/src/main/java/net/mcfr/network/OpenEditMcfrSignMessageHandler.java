@@ -1,6 +1,6 @@
 package net.mcfr.network;
 
-import net.mcfr.decoration.signs.GuiEditMcfrSign;
+import net.mcfr.decoration.signs.gui.GuiEditMcfrSign;
 import net.mcfr.decoration.signs.tileEntities.TileEntityMcfrSign;
 import net.mcfr.decoration.signs.tileEntities.TileEntityNormalSign;
 import net.mcfr.decoration.signs.tileEntities.TileEntityOrpSign;
