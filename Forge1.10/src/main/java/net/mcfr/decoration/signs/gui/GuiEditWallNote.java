@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.lwjgl.input.Keyboard;
 
+import net.mcfr.Constants;
 import net.mcfr.decoration.signs.tileEntities.TileEntityWallNote;
 import net.mcfr.network.McfrNetworkWrapper;
 import net.mcfr.network.UpdateWallNoteMessage;
@@ -15,6 +16,7 @@ import net.minecraft.client.gui.GuiUtilRenderComponents;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.util.ChatAllowedCharacters;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 
@@ -24,6 +26,8 @@ import net.minecraft.util.text.TextComponentString;
  * @author Mc-Fr
  */
 public class GuiEditWallNote extends GuiScreen {
+  private static final ResourceLocation NOTE_TEXTURE = new ResourceLocation(Constants.MOD_ID, "");
+
   private TileEntityWallNote tileNote;
   /** Compte le nombre de mises à jour de l'écran. */
   private int updateCounter;
@@ -101,9 +105,11 @@ public class GuiEditWallNote extends GuiScreen {
   @Override
   public void drawScreen(int mouseX, int mouseY, float partialTicks) {
     drawDefaultBackground();
-    drawCenteredString(this.fontRendererObj, "Éditer la note", this.width / 2, 30, 16777215);
+
     GlStateManager.color(1, 1, 1, 1);
-    GlStateManager.pushMatrix();
+    drawCenteredString(this.fontRendererObj, "Éditer la note", this.width / 2, 30, 16777215);
+    // this.mc.getTextureManager().bindTexture(NOTE_TEXTURE);
+    // drawTexturedModalRect(0, 0, 0, 0, 200, 200); // TEMP valeurs
 
     if (this.updateCounter / 6 % 2 == 0) {
       this.tileNote.setLineBeingEdited(this.editLine);
@@ -123,7 +129,6 @@ public class GuiEditWallNote extends GuiScreen {
     }
 
     this.tileNote.setLineBeingEdited(-1);
-    GlStateManager.popMatrix();
 
     super.drawScreen(mouseX, mouseY, partialTicks);
   }
