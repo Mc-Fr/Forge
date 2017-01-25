@@ -4,6 +4,7 @@ import java.util.List;
 
 import net.mcfr.McfrItems;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockSign;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -34,10 +35,9 @@ public class PlayerEventHandler {
         e.setCanceled(true);
       }
       // Rend inactif l'item du panneau de base.
-      // TEMP réactivation des panneaux de base.
-      // if (stack.getItem() == Items.SIGN) {
-      // e.setCanceled(true);
-      // }
+      if (stack.getItem() == Items.SIGN) {
+        e.setCanceled(true);
+      }
       if (stack.getItem() == Items.GLASS_BOTTLE && e.getWorld().getBlockState(e.getPos()).getBlock() == Blocks.CAULDRON) {
         // TODO : donner une fiole en fonction du contenu du chaudron
       }
@@ -52,10 +52,9 @@ public class PlayerEventHandler {
   @SubscribeEvent
   public void onBlockPlaced(PlaceEvent e) {
     // Désactive complètement l'utilisation des panneaux de base.
-    // TEMP réactivation des panneaux de base.
-    // if (e.getPlacedBlock().getBlock() instanceof BlockSign) {
-    // e.setCanceled(true);
-    // }
+    if (e.getPlacedBlock().getBlock() instanceof BlockSign) {
+      e.setCanceled(true);
+    }
   }
 
   /**
@@ -95,17 +94,17 @@ public class PlayerEventHandler {
       replaceStackIfPresent(e.getDrops(), SIGN, new ItemStack(McfrItems.SIGN));
     }
   }
-  
+
   @SubscribeEvent
   public void onPlayerLogsIn(PlayerLoggedInEvent event) {
-    /*System.out.println("Un joueur s'est connecté !");
-    if (!event.player.worldObj.isRemote) {
-      System.out.println("Message envoyé au joueur récemment connecté.");
-      List<EntitySyncedAnimal> list = event.player.worldObj.getEntities(EntitySyncedAnimal.class, e -> true);
-      list.forEach(e -> e.syncToPlayer((EntityPlayerMP) event.player));
-    }*/
+    /*
+     * System.out.println("Un joueur s'est connecté !"); if (!event.player.worldObj.isRemote) {
+     * System.out.println("Message envoyé au joueur récemment connecté."); List<EntitySyncedAnimal>
+     * list = event.player.worldObj.getEntities(EntitySyncedAnimal.class, e -> true); list.forEach(e
+     * -> e.syncToPlayer((EntityPlayerMP) event.player)); }
+     */
   }
-  
+
   /**
    * Remplace toutes les occurences du stack donné par un autre dans la liste spécifiée.
    *

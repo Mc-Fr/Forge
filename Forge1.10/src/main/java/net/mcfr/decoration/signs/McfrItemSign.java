@@ -2,7 +2,12 @@ package net.mcfr.decoration.signs;
 
 import net.mcfr.commons.McfrItem;
 import net.mcfr.decoration.signs.tileEntities.TileEntityMcfrSign;
+import net.mcfr.network.McfrNetworkWrapper;
+import net.mcfr.network.OpenEditMcfrSignMessage;
+import net.mcfr.network.OpenEditMcfrSignMessage.SignType;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -20,8 +25,7 @@ public class McfrItemSign extends McfrItem {
   private Class<? extends TileEntityMcfrSign> teClass;
 
   public McfrItemSign(String name, McfrBlockStandingSign standingSign, McfrBlockWallSign wallSign, McfrBlockSuspendedSign suspendedSign, Class<? extends TileEntityMcfrSign> teClass) {
-    // TEMP null CreativeTab
-    super(name, 64, null/* CreativeTabs.DECORATIONS */);
+    super(name, 64, CreativeTabs.DECORATIONS);
     this.standingSign = standingSign;
     this.wallSign = wallSign;
     this.suspendedSign = suspendedSign;
@@ -51,10 +55,8 @@ public class McfrItemSign extends McfrItem {
         TileEntity te = worldIn.getTileEntity(pos);
 
         if (te != null && te.getClass() == this.teClass && !ItemBlock.setTileEntityNBT(worldIn, playerIn, pos, stack)) {
-          // ((TileEntityMcfrSign) te).setPlayer(playerIn);
-          playerIn.openEditSign((TileEntityMcfrSign) te);
-          // McfrNetworkWrapper.getInstance().sendTo(new OpenEditMcfrSignMessage(pos),
-          // (EntityPlayerMP) playerIn);
+          ((TileEntityMcfrSign) te).setPlayer(playerIn);
+          McfrNetworkWrapper.getInstance().sendTo(new OpenEditMcfrSignMessage(pos, SignType.fromClass(this.teClass)), (EntityPlayerMP) playerIn);
         }
       }
 
@@ -65,6 +67,6 @@ public class McfrItemSign extends McfrItem {
   }
 
   private int getRotation(EntityPlayer playerIn) {
-    return MathHelper.floor_double((playerIn.rotationYaw + 180) * 16 / 360 + 0.5) & 15;
+    return MathHelper.floor_double((playerIn.rotationYaw + 180) * 16 / 360 + 0.5) % 16;
   }
 }

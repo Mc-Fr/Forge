@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import org.lwjgl.input.Keyboard;
 
-import net.mcfr.decoration.signs.tileEntities.TileEntityMcfrSign;
 import net.minecraft.block.Block;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
@@ -13,6 +12,7 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.network.play.client.CPacketUpdateSign;
+import net.minecraft.tileentity.TileEntitySign;
 import net.minecraft.util.ChatAllowedCharacters;
 import net.minecraft.util.text.TextComponentString;
 
@@ -21,14 +21,14 @@ import net.minecraft.util.text.TextComponentString;
  *
  * @author Mc-Fr
  */
-public class GuiEditSign extends GuiScreen {
-  private TileEntityMcfrSign tileSign;
+public class GuiEditMcfrSign extends GuiScreen {
+  private TileEntitySign tileSign;
   /** Compte le nombre de mises à jour de l'écran. */
   private int updateCounter;
   private int editLine;
   private GuiButton doneBtn;
 
-  public GuiEditSign(TileEntityMcfrSign teSign) {
+  public GuiEditMcfrSign(TileEntitySign teSign) {
     this.tileSign = teSign;
   }
 

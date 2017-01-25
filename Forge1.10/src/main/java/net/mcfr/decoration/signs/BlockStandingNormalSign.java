@@ -21,8 +21,8 @@ public class BlockStandingNormalSign extends McfrBlockStandingSign {
 
   @Override
   public TileEntity createNewTileEntity(World worldIn, int meta) {
-    if (worldIn.isRemote)
-      System.out.println(" " + System.currentTimeMillis());
+    // if (worldIn.isRemote)
+    System.out.println(" " + System.currentTimeMillis());
     return new TileEntityNormalSign();
   }
 

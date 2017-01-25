@@ -1,7 +1,10 @@
 package net.mcfr.network;
 
-import net.mcfr.decoration.signs.GuiEditSign;
+import net.mcfr.decoration.signs.GuiEditMcfrSign;
 import net.mcfr.decoration.signs.tileEntities.TileEntityMcfrSign;
+import net.mcfr.decoration.signs.tileEntities.TileEntityNormalSign;
+import net.mcfr.decoration.signs.tileEntities.TileEntityOrpSign;
+import net.mcfr.decoration.signs.tileEntities.TileEntityPaperSign;
 import net.minecraft.client.Minecraft;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
@@ -21,11 +24,25 @@ public class OpenEditMcfrSignMessageHandler implements IMessageHandler<OpenEditM
       public void run() {
         BlockPos pos = message.getSignPos();
         World world = Minecraft.getMinecraft().theWorld;
-        TileEntity te = world.getTileEntity(pos); // Null p*tain !
+        TileEntity te = world.getTileEntity(pos);
 
-        System.out.println(" " + te + " " + System.currentTimeMillis());
-        if (te instanceof TileEntityMcfrSign)
-          Minecraft.getMinecraft().displayGuiScreen(new GuiEditSign((TileEntityMcfrSign) te));
+        if (!(te instanceof TileEntityMcfrSign)) {
+          switch (message.getSignType()) {
+            case NORMAL:
+              te = new TileEntityNormalSign();
+              break;
+            case PAPER:
+              te = new TileEntityPaperSign();
+              break;
+            case ORP:
+              te = new TileEntityOrpSign();
+              break;
+          }
+          te.setWorldObj(world);
+          te.setPos(message.getSignPos());
+        }
+
+        Minecraft.getMinecraft().displayGuiScreen(new GuiEditMcfrSign((TileEntityMcfrSign) te));
       }
     });
 
