@@ -10,6 +10,8 @@ public class TileEntityWallNote extends TileEntity {
 
   public TileEntityWallNote() {
     this.text = null;
+    // TEMP
+    this.text = "Bonjour !\nCeci est un §1test§r.";
   }
 
   public String getText() {

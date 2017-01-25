@@ -9,12 +9,12 @@ import net.mcfr.craftsmanship.ItemSwordHandle;
 import net.mcfr.decoration.beds.McfrItemBed;
 import net.mcfr.decoration.containerBlocks.ItemBarrel;
 import net.mcfr.decoration.lighting.ItemLantern;
+import net.mcfr.decoration.signs.ItemWallNote;
 import net.mcfr.decoration.signs.McfrItemSign;
 import net.mcfr.decoration.signs.tileEntities.TileEntityNormalSign;
 import net.mcfr.decoration.signs.tileEntities.TileEntityOrpSign;
 import net.mcfr.decoration.signs.tileEntities.TileEntityPaperSign;
 import net.mcfr.decoration.signs.tileEntities.TileEntityTombstone;
-import net.mcfr.decoration.signs.tileEntities.TileEntityWallNote;
 import net.mcfr.economy.ItemClawMoney;
 import net.mcfr.economy.ItemCoin;
 import net.mcfr.economy.ItemToken;
@@ -153,7 +153,7 @@ public final class McfrItems {
       null /* CreativeTabs.DECORATIONS */); // TEMP
   public static final McfrItemBlockSpecial SHOWCASE = new McfrItemBlockSpecial("showcase", McfrBlocks.SHOWCASE, CreativeTabs.DECORATIONS);
   // Panneaux et affiches
-  public static final McfrItemSign WALL_NOTE = new McfrItemSign("wall_note", null, McfrBlocks.WALL_NOTE, null, TileEntityWallNote.class);
+  public static final ItemWallNote WALL_NOTE = new ItemWallNote();
   public static final McfrItemSign TOMBSTONE = new McfrItemSign("tombstone", McfrBlocks.TOMBSTONE, null, null, TileEntityTombstone.class);
   public static final McfrItemSign SIGN = new McfrItemSign("sign", McfrBlocks.STANDING_SIGN, McfrBlocks.WALL_SIGN, McfrBlocks.SUSPENDED_SIGN, TileEntityNormalSign.class);
   public static final McfrItemSign PAPER_SIGN = new McfrItemSign("paper_sign", McfrBlocks.STANDING_PAPER_SIGN, McfrBlocks.WALL_PAPER_SIGN, McfrBlocks.SUSPENDED_PAPER_SIGN, TileEntityPaperSign.class);

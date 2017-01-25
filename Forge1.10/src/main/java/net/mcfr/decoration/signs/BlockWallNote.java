@@ -28,7 +28,7 @@ public class BlockWallNote extends McfrBlockWallSign {
       TileEntity te = worldIn.getTileEntity(pos);
 
       if (te instanceof TileEntityWallNote) {
-        playerIn.addChatComponentMessage(new TextComponentString(""));
+        playerIn.addChatComponentMessage(new TextComponentString(((TileEntityWallNote) te).getText()));
         return true;
       }
     }
