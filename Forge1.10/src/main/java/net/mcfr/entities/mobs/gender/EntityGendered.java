@@ -1,5 +1,6 @@
 package net.mcfr.entities.mobs.gender;
 
+import net.mcfr.entities.mobs.EntitySyncedAnimal;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.world.World;
 

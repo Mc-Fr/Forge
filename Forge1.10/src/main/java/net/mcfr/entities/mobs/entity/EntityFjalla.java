@@ -6,7 +6,7 @@ import javax.annotation.Nullable;
 
 import com.google.common.collect.Sets;
 
-import net.mcfr.entities.mobs.gender.EntityBurrowed;
+import net.mcfr.entities.mobs.EntityBurrowed;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;

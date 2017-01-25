@@ -1,5 +1,6 @@
-package net.mcfr.entities.mobs.gender;
+package net.mcfr.entities.mobs;
 
+import net.mcfr.entities.mobs.gender.EntityGendered;
 import net.minecraft.util.math.Vec3i;
 import net.minecraft.world.World;
 

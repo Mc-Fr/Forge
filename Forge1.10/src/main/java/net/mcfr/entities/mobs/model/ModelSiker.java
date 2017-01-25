@@ -152,7 +152,7 @@ public class ModelSiker extends ModelBase {
       GlStateManager.translate(0.0F, 35.0F * scale, 0.0F);
       this.abdomen1.render(scale);
       GlStateManager.popMatrix();
-    } else if (((EntityGendered) entityIn).getGender() == Genders.FEMALE){
+    } else if (((EntityGendered) entityIn).getGender() == Genders.FEMALE) {
       GlStateManager.pushMatrix();
       GlStateManager.scale(0.9F, 0.9F, 0.9F);
       GlStateManager.translate(0.0F, 3.0F * scale, 0.0F);
@@ -228,22 +228,27 @@ public class ModelSiker extends ModelBase {
 
     // Tables d'animation
     float[] animNeckYb = { 0.0F, 0.0F, 0.0F, 0.0F, 4.0F };
+    float phaseCos = MathHelper.cos(ageInTicks * tickToSec * 8.0F * ((float) Math.PI));
+    float doubleCos = MathHelper.cos(ageInTicks * tickToSec * 16.0F * ((float) Math.PI));
 
     // Calcul de l'animation
-    this.rightLeg1.rotateAngleX += MathHelper.cos(ageInTicks * tickToSec * 8.0F * ((float) Math.PI)) * 30.0F * limbSwingAmount * degToRad;
+    this.rightLeg1.rotateAngleX += phaseCos * 30.0F * limbSwingAmount * degToRad;
     this.rightLeg4.rotateAngleX -= this.rightLeg1.rotateAngleX;
 
-    this.leftLeg1.rotateAngleX += MathHelper.cos((ageInTicks * tickToSec * 4.0F + 0.5F) * 2.0F * ((float) Math.PI)) * 30.0F * limbSwingAmount
-        * degToRad;
+    this.leftLeg1.rotateAngleX -= phaseCos * 30.0F * limbSwingAmount * degToRad;
     this.leftLeg4.rotateAngleX -= this.leftLeg1.rotateAngleX;
 
-    this.rightArm1.rotateAngleX += this.leftLeg1.rotateAngleX;
-    this.rightArm3.rotateAngleX += this.leftLeg1.rotateAngleX;
-    this.rightArm2.rotateAngleX -= this.rightArm1.rotateAngleX;
+    this.rightArm1.rotateAngleX -= this.leftLeg1.rotateAngleX * 0.8F;
+    this.rightArm3.rotateAngleX -= this.leftLeg1.rotateAngleX * 0.3F;
+    this.rightArm2.rotateAngleX += this.rightArm1.rotateAngleX * 0.5F;
 
-    this.leftArm1.rotateAngleX += this.rightLeg1.rotateAngleX;
-    this.leftArm3.rotateAngleX += this.leftLeg1.rotateAngleX;
-    this.leftArm2.rotateAngleX -= this.leftArm1.rotateAngleX;
+    this.leftArm1.rotateAngleX += this.leftLeg1.rotateAngleX * 0.8F;
+    this.leftArm3.rotateAngleX += this.leftLeg1.rotateAngleX * 0.3F;
+    this.leftArm2.rotateAngleX += this.leftArm1.rotateAngleX * 0.5F;
+    
+    this.torso1.rotateAngleX += doubleCos * 1.0F * limbSwingAmount * degToRad;
+    this.torso2.rotateAngleX += doubleCos * 1.0F * limbSwingAmount * degToRad;
+    this.neck1.rotateAngleX -= doubleCos * 1.5F * limbSwingAmount * degToRad;
 
     this.neck1.rotateAngleY = FourierUtils.calculateScaledSeries(ageInTicks * tickToSec * 0.05F, new float[0], animNeckYb, 0.02F);
     this.neck2.rotateAngleY = FourierUtils.calculateScaledSeries(ageInTicks * tickToSec * 0.05F, new float[0], animNeckYb, 0.02F);

@@ -1,8 +1,9 @@
-package net.mcfr.entities.mobs.gender;
+package net.mcfr.entities.mobs;
 
 import java.util.HashMap;
 import java.util.Map;
 
+import net.mcfr.entities.mobs.gender.Genders;
 import net.mcfr.network.McfrNetworkWrapper;
 import net.mcfr.network.SyncEntityMessage;
 import net.minecraft.entity.EntityAgeable;
