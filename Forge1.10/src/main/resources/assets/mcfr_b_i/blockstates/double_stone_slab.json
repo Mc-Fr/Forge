@@ -1,10 +1,10 @@
 {
     "variants": {
-        "variant=yellow_stone": { "model": "yellow_stone" },
-        "variant=yellow_cobblestone": { "model": "yellow_cobblestone" },
-        "variant=ocher_stone": { "model": "ocher_stone" },
-        "variant=ocher_cobblestone": { "model": "ocher_cobblestone" },
-        "variant=slate": { "model": "slate" },
+        "variant=yellow_stone": { "model": "granite" },
+        "variant=yellow_cobblestone": { "model": "granite_smooth" },
+        "variant=ocher_stone": { "model": "diorite" },
+        "variant=ocher_cobblestone": { "model": "diorite_smooth" },
+        "variant=slate": { "model": "andesite" },
         "variant=brick_tiles": { "model": "mcfr_b_i:tiles_brick" },
         "variant=slate_tiles": { "model": "mcfr_b_i:tiles_slate" }
     }
