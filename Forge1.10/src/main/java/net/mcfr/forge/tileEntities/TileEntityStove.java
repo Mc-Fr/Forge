@@ -58,7 +58,6 @@ public class TileEntityStove extends TileEntityLockable implements ITickable, IS
     }
     // On éteint si le four n'est plus chaud et ne brûle plus.
     if (!isBurning() && !isHot() && getWorld().getBlockState(getPos()).getBlock() == McfrBlocks.LIT_STOVE) {
-      System.out.println("zdfegr");
       BlockStove.setState(false, getWorld(), getPos());
     }
 
@@ -87,9 +86,6 @@ public class TileEntityStove extends TileEntityLockable implements ITickable, IS
         this.maxReached = false;
     }
 
-    // System.out.println("Fuel: " + getRemainingFuelTicks());
-    // System.out.println("Step: " + getRemainingStepTicks());
-    // System.out.println("Temp: " + getTemperature());
     markDirty();
   }
 

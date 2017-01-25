@@ -15,8 +15,7 @@ import net.minecraft.world.World;
 
 public class BlockWallNormalSign extends McfrBlockWallSign {
   public BlockWallNormalSign() {
-    super(Material.WOOD, "wall_sign");
-    setSoundType(SoundType.WOOD);
+    super("wall_sign", Material.WOOD, SoundType.WOOD, 1, "axe");
   }
 
   @Override

@@ -2,8 +2,6 @@ package net.mcfr.decoration.signs;
 
 import java.util.Random;
 
-import javax.annotation.Nullable;
-
 import net.mcfr.McfrItems;
 import net.mcfr.decoration.signs.tileEntities.TileEntityWallNote;
 import net.minecraft.block.SoundType;
@@ -16,19 +14,26 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
 
 public class BlockWallNote extends McfrBlockWallSign {
   public BlockWallNote() {
-    super(Material.CLOTH, "wall_note_block");
-    setSoundType(SoundType.WOOD);
+    super("wall_note_block", Material.WOOD, SoundType.WOOD, 0, null);
   }
 
   @Override
-  public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, @Nullable ItemStack heldItem,
-      EnumFacing side, float hitX, float hitY, float hitZ) {
-    // TODO
-    return super.onBlockActivated(worldIn, pos, state, playerIn, hand, heldItem, side, hitX, hitY, hitZ);
+  public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
+    if (worldIn.isRemote) {
+      TileEntity te = worldIn.getTileEntity(pos);
+
+      if (te instanceof TileEntityWallNote) {
+        playerIn.addChatComponentMessage(new TextComponentString(((TileEntityWallNote) te).getText()));
+        return true;
+      }
+    }
+
+    return false;
   }
 
   @Override

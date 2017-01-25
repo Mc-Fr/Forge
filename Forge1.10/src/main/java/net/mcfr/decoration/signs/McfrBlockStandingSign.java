@@ -1,5 +1,6 @@
 package net.mcfr.decoration.signs;
 
+import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.BlockStateContainer;
@@ -11,8 +12,8 @@ import net.minecraft.world.World;
 public abstract class McfrBlockStandingSign extends McfrBlockSign {
   public static final PropertyInteger ROTATION = PropertyInteger.create("rotation", 0, 15);
 
-  public McfrBlockStandingSign(Material material, String name) {
-    super(material, name);
+  public McfrBlockStandingSign(String name, Material material, SoundType sound, float hardness, String tool) {
+    super(name, material, sound, hardness, tool);
     setDefaultState(this.blockState.getBaseState().withProperty(ROTATION, 0));
   }
 

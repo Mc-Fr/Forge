@@ -36,6 +36,12 @@ import net.mcfr.decoration.furniture.tileEntities.TileEntityWeaponsStandRenderer
 import net.mcfr.decoration.lighting.EnumLanternColor;
 import net.mcfr.decoration.lighting.tileEntities.TileEntityCampfire;
 import net.mcfr.decoration.lighting.tileEntities.TileEntityCampfireRenderer;
+import net.mcfr.decoration.signs.tileEntities.TileEntityNormalSign;
+import net.mcfr.decoration.signs.tileEntities.TileEntityNormalSignRenderer;
+import net.mcfr.decoration.signs.tileEntities.TileEntityOrpSign;
+import net.mcfr.decoration.signs.tileEntities.TileEntityOrpSignRenderer;
+import net.mcfr.decoration.signs.tileEntities.TileEntityPaperSign;
+import net.mcfr.decoration.signs.tileEntities.TileEntityPaperSignRenderer;
 import net.mcfr.decoration.tileEntities.TileEntityCarpet;
 import net.mcfr.decoration.tileEntities.TileEntityCarpetRenderer;
 import net.mcfr.economy.ItemClawMoney;
@@ -72,8 +78,10 @@ import net.minecraft.block.BlockPlanks;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelBakery;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
+import net.minecraft.tileentity.TileEntitySign;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
@@ -801,18 +809,14 @@ public class ClientProxy extends CommonProxy {
     registerItem(LIGHTNING);
 
     // Suppression du rendu des panneaux par défaut.
-    // TEMP suppression des panneaux Mc-Fr.
-    // TileEntityRendererDispatcher.instance.mapSpecialRenderers.remove(TileEntitySign.class);
+    TileEntityRendererDispatcher.instance.mapSpecialRenderers.remove(TileEntitySign.class);
     ClientRegistry.bindTileEntitySpecialRenderer(TileEntityBellows.class, new TileEntityBellowsRenderer());
     ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCampfire.class, new TileEntityCampfireRenderer());
     ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCarpet.class, new TileEntityCarpetRenderer());
-    // ClientRegistry.bindTileEntitySpecialRenderer(TileEntityNormalSign.class, new
-    // TileEntityNormalSignRenderer());
-    // ClientRegistry.bindTileEntitySpecialRenderer(TileEntityOrpSign.class, new
-    // TileEntityOrpSignRenderer());
+    ClientRegistry.bindTileEntitySpecialRenderer(TileEntityNormalSign.class, new TileEntityNormalSignRenderer());
+    ClientRegistry.bindTileEntitySpecialRenderer(TileEntityOrpSign.class, new TileEntityOrpSignRenderer());
     ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPallet.class, new TileEntityPalletRenderer());
-    // ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPaperSign.class, new
-    // TileEntityPaperSignRenderer());
+    ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPaperSign.class, new TileEntityPaperSignRenderer());
     ClientRegistry.bindTileEntitySpecialRenderer(TileEntityShowcase.class, new TileEntityShowcaseRenderer());
     ClientRegistry.bindTileEntitySpecialRenderer(TileEntityWeaponsStand.class, new TileEntityWeaponsStandRenderer());
 
