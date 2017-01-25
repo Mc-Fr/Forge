@@ -67,6 +67,6 @@ public class McfrItemSign extends McfrItem {
   }
 
   private int getRotation(EntityPlayer playerIn) {
-    return MathHelper.floor_double((playerIn.rotationYaw + 180) * 16 / 360 + 0.5) % 16;
+    return MathHelper.floor_double((playerIn.rotationYaw + 180) * 16 / 360 + 0.5) & 15;
   }
 }

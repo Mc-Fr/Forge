@@ -3,11 +3,11 @@ package net.mcfr.decoration.lighting;
 import java.util.Random;
 
 import net.mcfr.McfrItems;
-import net.mcfr.commons.McfrBlockOrientable;
-import net.mcfr.utils.FacingUtils;
+import net.mcfr.commons.McfrBlock;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyEnum;
+import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
@@ -19,17 +19,19 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockLantern extends McfrBlockOrientable {
+public class BlockLantern extends McfrBlock {
+  public static final PropertyInteger ORIENTATION = PropertyInteger.create("orientation", 0, 3);
   public static final PropertyEnum<EnumPosition> POSITION = PropertyEnum.create("position", EnumPosition.class);
 
   private final EnumDyeColor color;
 
   public BlockLantern(EnumDyeColor color, boolean isPaper) {
     super(color.getName() + (isPaper ? "_paper" : "") + "_lantern", isPaper ? Material.CLOTH : Material.GLASS, isPaper ? SoundType.CLOTH : SoundType.GLASS, 0.5f, 0, null, -1, null);
-    setDefaultState(this.blockState.getBaseState().withProperty(POSITION, EnumPosition.BOTTOM));
+    setDefaultState(this.blockState.getBaseState().withProperty(ORIENTATION, 0).withProperty(POSITION, EnumPosition.BOTTOM));
     setLightLevel(0.875f);
     this.color = color;
   }
@@ -45,8 +47,20 @@ public class BlockLantern extends McfrBlockOrientable {
   @Override
   public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
     EnumPosition position = EnumPosition.fromFacing(facing);
-    EnumFacing face = position.isOnWall() ? facing : FacingUtils.getHorizontalFacing(placer);
-    return super.onBlockPlaced(worldIn, pos, facing, hitX, hitY, hitZ, meta, placer).withProperty(POSITION, position).withProperty(FACING, face);
+    int face = position.isOnWall() ? facing.getHorizontalIndex() : getFacingIndex(placer);
+    return super.onBlockPlaced(worldIn, pos, facing, hitX, hitY, hitZ, meta, placer).withProperty(POSITION, position).withProperty(ORIENTATION, face);
+  }
+
+  private int getFacingIndex(EntityLivingBase placer) {
+    int rotation = MathHelper.floor_double((placer.rotationYaw + 180) * 16 / 360 + 0.5) & 15;
+
+    if (rotation == 0 || rotation == 8)
+      return 0;
+    if (rotation == 4 || rotation == 12)
+      return 1;
+    if (rotation >= 1 && rotation <= 3 || rotation >= 9 && rotation <= 11)
+      return 2;
+    return 3;
   }
 
   @Override
@@ -58,15 +72,15 @@ public class BlockLantern extends McfrBlockOrientable {
     else if (state.getValue(POSITION) == EnumPosition.TOP)
       return new AxisAlignedBB(h - f, 0.4, h - f, h + f, 1, h + f);
     else {
-      switch (state.getValue(FACING)) {
-        case NORTH:
-          return new AxisAlignedBB(h - f, 0.2, h, h + f, 0.8, 1);
-        case EAST:
-          return new AxisAlignedBB(0, 0.2, h - f, h, 0.8, h + f);
-        case SOUTH:
+      switch (state.getValue(ORIENTATION)) {
+        case 0:
           return new AxisAlignedBB(h - f, 0.2, 0, h + f, 0.8, h);
-        case WEST:
+        case 1:
           return new AxisAlignedBB(h, 0.2, h - f, 1, 0.8, h + f);
+        case 2:
+          return new AxisAlignedBB(h - f, 0.2, h, h + f, 0.8, 1);
+        case 3:
+          return new AxisAlignedBB(0, 0.2, h - f, h, 0.8, h + f);
         default:
           return NULL_AABB;
       }
@@ -85,17 +99,18 @@ public class BlockLantern extends McfrBlockOrientable {
 
   @Override
   protected BlockStateContainer createBlockState() {
-    return new BlockStateContainer(this, POSITION, FACING);
+    return new BlockStateContainer(this, POSITION, ORIENTATION);
   }
 
   @Override
+  @SuppressWarnings("deprecation")
   public IBlockState getStateFromMeta(int meta) {
-    return super.getStateFromMeta(meta).withProperty(POSITION, EnumPosition.fromIndex((meta & 0xf0) >> 2));
+    return super.getStateFromMeta(meta).withProperty(ORIENTATION, meta & 3).withProperty(POSITION, EnumPosition.fromIndex((meta & 0xf0) >> 2));
   }
 
   @Override
   public int getMetaFromState(IBlockState state) {
-    return (state.getValue(POSITION).ordinal() << 2) | super.getMetaFromState(state);
+    return (state.getValue(POSITION).ordinal() << 2) | (state.getValue(ORIENTATION) & 3);
   }
 
   @Override
