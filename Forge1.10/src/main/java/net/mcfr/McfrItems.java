@@ -250,8 +250,7 @@ public final class McfrItems {
   public static void init() {
     Items.PUMPKIN_PIE.setMaxStackSize(1);
     Items.CAULDRON.setMaxStackSize(1);
-    // TEMP
-    // Items.SIGN.setCreativeTab(null);
+    Items.SIGN.setCreativeTab(null);
     Items.ENCHANTED_BOOK.setCreativeTab(null);
     setFoodAlwaysEdible();
 
