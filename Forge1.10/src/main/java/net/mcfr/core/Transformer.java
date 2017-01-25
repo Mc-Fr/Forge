@@ -21,10 +21,7 @@ import org.objectweb.asm.tree.MethodNode;
 import org.objectweb.asm.tree.TypeInsnNode;
 import org.objectweb.asm.tree.VarInsnNode;
 
-import net.mcfr.decoration.signs.McfrBlockStandingSign;
-import net.mcfr.decoration.signs.McfrBlockSuspendedSign;
 import net.minecraft.block.BlockCrops;
-import net.minecraft.client.gui.inventory.GuiEditSign;
 import net.minecraft.entity.projectile.EntityFishHook;
 import net.minecraft.item.ItemFishingRod;
 import net.minecraft.launchwrapper.IClassTransformer;
@@ -36,13 +33,12 @@ public class Transformer implements IClassTransformer {
   private static final Map<String, BiConsumer<ClassNode, Boolean>> CLASSES;
 
   static {
-    Map<String, BiConsumer<ClassNode, Boolean>> list = new HashMap<>();
-    list.put("net.minecraft.block.BlockCrops", Transformer::transformBlockCrops);
-    list.put("net.minecraft.client.gui.inventory.GuiEditSign", null); // TEMP
-    list.put("net.minecraft.block.Block", Transformer::transformBlock);
-    list.put("net.minecraft.entity.projectile.EntityFishHook", Transformer::transformEntityFishHook);
+    Map<String, BiConsumer<ClassNode, Boolean>> map = new HashMap<>();
+    map.put("net.minecraft.block.BlockCrops", Transformer::transformBlockCrops);
+    map.put("net.minecraft.block.Block", Transformer::transformBlock);
+    map.put("net.minecraft.entity.projectile.EntityFishHook", Transformer::transformEntityFishHook);
 
-    CLASSES = Collections.unmodifiableMap(list);
+    CLASSES = Collections.unmodifiableMap(map);
   }
 
   @Override
@@ -117,66 +113,6 @@ public class Transformer implements IClassTransformer {
         method.instructions.insert(node, node = new InsnNode(ICONST_0));
         method.instructions.insert(node, node = label2);
         method.instructions.insert(node, new InsnNode(IRETURN));
-        break;
-      }
-    }
-  }
-
-  /**
-   * Ajoute le code suivant (en italique) dans {@link GuiEditSign#drawScreen
-   * GuiEditSign.drawScreen}&nbsp;:
-   * 
-   * <pre>
-   * Block block = this.tileSign.getBlockType();
-   * 
-   * if (<i>block instanceof McfrBlockStandingSign || block instanceof McfrBlockSuspendedSign || </i>block == Block.STANDING_SIGN) {
-   *   ...
-   * </pre>
-   * 
-   * Bytecode&nbsp;:
-   * 
-   * <pre>
-   * aload 5                            // GuiEditSign.drawScreen.block
-   * instanceof McfrBlockStandingSign
-   * ifne L11                           // bloc then
-   * aload 5                            // GuiEditSign.drawScreen.
-   * instanceof McfrBlockSuspendedSign
-   * ifne L11                           // bloc then
-   * </pre>
-   * 
-   * @param classNode
-   * @param obfuscated
-   */
-  @SuppressWarnings("unused")
-  private static void transformGuiEditSign(ClassNode classNode, boolean obfuscated) {
-    final String methodName = obfuscated ? "a" : "drawScreen";
-    final String methodDesc = "(IIF)V";
-
-    for (MethodNode method : classNode.methods) {
-      if (method.name.equals(methodName) && method.desc.equals(methodDesc)) {
-        AbstractInsnNode targetNode = null;
-
-        for (AbstractInsnNode node : method.instructions.toArray()) {
-          if (node.getOpcode() == ALOAD && ((VarInsnNode) node).var == 5 && node.getNext().getOpcode() == GETSTATIC) {
-            targetNode = node;
-            break;
-          }
-        }
-
-        if (targetNode != null) {
-          // On récupère l'instruction précédente.
-          AbstractInsnNode node = targetNode.getPrevious();
-          // On récupère le label du 'then' (L11), trois instructions plus loin.
-          LabelNode label = (LabelNode) targetNode.getNext().getNext().getNext();
-
-          // On ajoute les instructions.
-          method.instructions.insert(node, node = new VarInsnNode(ALOAD, 5));
-          method.instructions.insert(node, node = new TypeInsnNode(INSTANCEOF, Type.getInternalName(McfrBlockStandingSign.class)));
-          method.instructions.insert(node, node = new JumpInsnNode(IFNE, label));
-          method.instructions.insert(node, node = new VarInsnNode(ALOAD, 5));
-          method.instructions.insert(node, node = new TypeInsnNode(INSTANCEOF, Type.getInternalName(McfrBlockSuspendedSign.class)));
-          method.instructions.insert(node, node = new JumpInsnNode(IFNE, label));
-        }
         break;
       }
     }
