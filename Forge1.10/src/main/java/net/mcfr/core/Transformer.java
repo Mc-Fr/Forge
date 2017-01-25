@@ -222,8 +222,6 @@ public class Transformer implements IClassTransformer {
           LabelNode label1 = ((JumpInsnNode) node).label;
           method.instructions.insert(node, node = label);
           method.instructions.insert(node, new JumpInsnNode(IFEQ, label1));
-
-          BytecodeUtils.displayCode(targetNode.getPrevious(), 8);
         }
         break;
       }

@@ -19,8 +19,6 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
@@ -29,13 +27,14 @@ public class BlockWallNote extends McfrBlock implements ITileEntityProvider {
 
   public BlockWallNote() {
     super("wall_note_block", Material.WOOD, SoundType.WOOD, 1, 0, null, -1, null);
+    setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
   }
 
   @Override
   public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
     float w = 0.125F;
 
-    switch (source.getBlockState(pos).getValue(FACING)) {
+    switch (state.getValue(FACING)) {
       case NORTH:
         return new AxisAlignedBB(0, 0, 1 - w, 1, 1, 1);
       case SOUTH:
@@ -90,8 +89,19 @@ public class BlockWallNote extends McfrBlock implements ITileEntityProvider {
       TileEntity te = worldIn.getTileEntity(pos);
 
       if (te instanceof TileEntityWallNote) {
-        for (ITextComponent text : ((TileEntityWallNote) te).getText())
-          playerIn.addChatComponentMessage(new TextComponentString(text.getFormattedText()));
+        TileEntityWallNote t = (TileEntityWallNote) te;
+        int firstLineIndex = 0;
+        int lastLineIndex = 14;
+
+        // On supprime les lignes vides en début et en fin de note.
+        while (t.getText()[firstLineIndex].getUnformattedText().equals("§r"))
+          firstLineIndex++;
+        while (t.getText()[lastLineIndex].getUnformattedText().equals("§r"))
+          lastLineIndex--;
+
+        for (int i = firstLineIndex; i <= lastLineIndex; i++)
+          playerIn.addChatComponentMessage(t.getText()[i]);
+
         return true;
       }
     }
