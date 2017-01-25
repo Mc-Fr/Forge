@@ -6,12 +6,12 @@ import java.util.List;
 
 import net.mcfr.decoration.signs.McfrBlockStandingSign;
 import net.mcfr.decoration.signs.McfrBlockSuspendedSign;
+import net.mcfr.decoration.signs.models.ModelSign;
 import net.mcfr.utils.math.Point2d;
 import net.mcfr.utils.math.Point3d;
 import net.minecraft.block.Block;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiUtilRenderComponents;
-import net.minecraft.client.model.ModelSign;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.util.ResourceLocation;
@@ -39,11 +39,19 @@ public abstract class TileEntitySignRenderer<T extends TileEntityMcfrSign> exten
 
     if (block instanceof McfrBlockStandingSign || block instanceof McfrBlockSuspendedSign) {
       GlStateManager.translate((float) x + 0.5F, (float) y + 0.5F, (float) z + 0.5F);
-      float f1 = (float) (te.getBlockMetadata() * 360) / 16.0F;
+      float f1 = te.getBlockMetadata() * 360 / 16.0F;
       GlStateManager.rotate(-f1, 0.0F, 1.0F, 0.0F);
-      this.model.signStick.showModel = true;
-    }
-    else {
+      if (block instanceof McfrBlockStandingSign) {
+        this.model.signStick.showModel = true;
+        this.model.signRope1.showModel = false;
+        this.model.signRope2.showModel = false;
+      } else if (block instanceof McfrBlockSuspendedSign) {
+        GlStateManager.translate(0.0F, -0.4F, 0F);
+        this.model.signStick.showModel = false;
+        this.model.signRope1.showModel = true;
+        this.model.signRope2.showModel = true;
+      }
+    } else {
       int k = te.getBlockMetadata();
       float f2 = 0.0F;
 
@@ -63,6 +71,8 @@ public abstract class TileEntitySignRenderer<T extends TileEntityMcfrSign> exten
       GlStateManager.rotate(-f2, 0.0F, 1.0F, 0.0F);
       GlStateManager.translate(0.0F, -0.3125F, -0.4375F);
       this.model.signStick.showModel = false;
+      this.model.signRope1.showModel = false;
+      this.model.signRope2.showModel = false;
     }
 
     if (destroyStage >= 0) {
@@ -72,8 +82,7 @@ public abstract class TileEntitySignRenderer<T extends TileEntityMcfrSign> exten
       GlStateManager.scale(4.0F, 2.0F, 1.0F);
       GlStateManager.translate(0.0625F, 0.0625F, 0.0625F);
       GlStateManager.matrixMode(5888);
-    }
-    else {
+    } else {
       bindTexture(this.signTexture);
     }
 
@@ -93,13 +102,12 @@ public abstract class TileEntitySignRenderer<T extends TileEntityMcfrSign> exten
         if (te.signText[j] != null) {
           ITextComponent itextcomponent = te.signText[j];
           List<ITextComponent> list = GuiUtilRenderComponents.splitText(itextcomponent, 90, fontrenderer, false, true);
-          String s = list != null && !list.isEmpty() ? ((ITextComponent) list.get(0)).getFormattedText() : "";
+          String s = list != null && !list.isEmpty() ? list.get(0).getFormattedText() : "";
 
           if (j == te.lineBeingEdited) {
             s = "> " + s + " <";
             fontrenderer.drawString(s, -fontrenderer.getStringWidth(s) / 2, j * 10 - te.signText.length * 5, 0);
-          }
-          else {
+          } else {
             fontrenderer.drawString(s, -fontrenderer.getStringWidth(s) / 2, j * 10 - te.signText.length * 5, 0);
           }
         }
@@ -120,6 +128,7 @@ public abstract class TileEntitySignRenderer<T extends TileEntityMcfrSign> exten
   @SuppressWarnings("unused")
   private void renderSuspensions() {
     // FIXME : NullPointer
-    drawQuad(new Point3d(0, 0, 0), new Point3d(0, 1, 0), new Point3d(1, 1, 0), new Point3d(1, 0, 0), new Point2d(0, 0), new Point2d(0, 0), new Point2d(0, 0), new Point2d(0, 0));
+    drawQuad(new Point3d(0, 0, 0), new Point3d(0, 1, 0), new Point3d(1, 1, 0), new Point3d(1, 0, 0), new Point2d(0, 0), new Point2d(0, 0),
+        new Point2d(0, 0), new Point2d(0, 0));
   }
 }
