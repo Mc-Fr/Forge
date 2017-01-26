@@ -1,0 +1,6 @@
+{
+    "parent": "block/wall_post",
+    "textures": {
+        "wall": "mcfr_b_i:blocks/column_black"
+    }
+}
