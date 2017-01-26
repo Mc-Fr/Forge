@@ -44,6 +44,15 @@ public class EntityGalt extends EntityBurrowed {
       super(worldIn);
       this.setSize(2.0F, 1.7F);
       this.setPathPriority(PathNodeType.WATER, 0.0F);
+      this.setFurType(this.rand.nextInt(2) + 1);
+  }
+  
+  public void setFurType(int type) {
+    this.setSyncedInteger("FurType", type);
+  }
+
+  public int getFurType() {
+    return this.getSyncedInteger("FurType");
   }
 
   protected void initEntityAI()

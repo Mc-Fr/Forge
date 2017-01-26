@@ -21,7 +21,7 @@ public abstract class McfrBlockWallSign extends McfrBlockSign {
 
   @Override
   public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
-    EnumFacing enumfacing = source.getBlockState(pos).getValue(FACING);
+    EnumFacing enumfacing = state.getValue(FACING);
     float f = 0.28125F;
     float f1 = 0.78125F;
     float f2 = 0.0F;

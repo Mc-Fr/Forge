@@ -1,5 +1,7 @@
 package net.mcfr.decoration.signs.tileEntities;
 
+import java.util.Arrays;
+
 import net.mcfr.utils.NBTUtils;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
@@ -19,6 +21,7 @@ public class TileEntityWallNote extends TileEntity {
   public TileEntityWallNote() {
     this.text = new ITextComponent[LINES_NB];
     this.lineBeingEdited = -1;
+    Arrays.fill(this.text, new TextComponentString(""));
   }
 
   public ITextComponent[] getText() {
@@ -48,7 +51,8 @@ public class TileEntityWallNote extends TileEntity {
 
     NBTTagList lines = new NBTTagList();
     for (int i = 0; i < LINES_NB; i++)
-      lines.appendTag(new NBTTagString(getText()[i].getFormattedText()));
+      lines.appendTag(new NBTTagString(getText()[i].getUnformattedText()));
+    compound.setTag("Lines", lines);
 
     return compound;
   }

@@ -3,8 +3,11 @@ package net.mcfr.decoration.signs;
 import net.mcfr.McfrBlocks;
 import net.mcfr.commons.McfrItem;
 import net.mcfr.decoration.signs.tileEntities.TileEntityWallNote;
+import net.mcfr.network.McfrNetworkWrapper;
+import net.mcfr.network.OpenEditWallNoteMessage;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumActionResult;
@@ -34,7 +37,7 @@ public class ItemWallNote extends McfrItem {
         TileEntity te = worldIn.getTileEntity(pos);
 
         if (te != null && te instanceof TileEntityWallNote) {
-          // TODO
+          McfrNetworkWrapper.getInstance().sendTo(new OpenEditWallNoteMessage(pos), (EntityPlayerMP) playerIn);
         }
       }
 

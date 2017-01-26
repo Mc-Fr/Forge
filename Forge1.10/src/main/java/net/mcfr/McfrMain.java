@@ -13,7 +13,11 @@ import net.mcfr.network.GuiHandler;
 import net.mcfr.network.McfrNetworkWrapper;
 import net.mcfr.network.OpenEditMcfrSignMessage;
 import net.mcfr.network.OpenEditMcfrSignMessageHandler;
+import net.mcfr.network.OpenEditWallNoteMessage;
+import net.mcfr.network.OpenEditWallNoteMessageHandler;
 import net.mcfr.network.SyncEntityMessage;
+import net.mcfr.network.UpdateWallNoteMessage;
+import net.mcfr.network.UpdateWallNoteMessageHandler;
 import net.mcfr.proxy.CommonProxy;
 import net.mcfr.utils.LargeRecipesUtils;
 import net.minecraft.init.Blocks;
@@ -49,8 +53,8 @@ public class McfrMain {
   @SidedProxy(clientSide = "net.mcfr.proxy.ClientProxy", serverSide = "net.mcfr.proxy.CommonProxy")
   public static CommonProxy proxy;
 
-  @SuppressWarnings("deprecation")
   @EventHandler
+  @SuppressWarnings("deprecation")
   public void preInit(FMLPreInitializationEvent e) {
     McfrBlocks.init();
     McfrItems.init();
@@ -69,14 +73,20 @@ public class McfrMain {
     proxy.register();
     registerEventHandlers();
     NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
-    McfrNetworkWrapper.registerPacket(OpenEditMcfrSignMessageHandler.class, OpenEditMcfrSignMessage.class, Side.CLIENT);
-    McfrNetworkWrapper.registerPacket(SyncEntityMessage.ClientHandler.class, SyncEntityMessage.class, Side.CLIENT);
-    McfrNetworkWrapper.registerPacket(SyncEntityMessage.ServerHandler.class, SyncEntityMessage.class, Side.SERVER);
+    registerPackets();
   }
 
   private void registerEventHandlers() {
     MinecraftForge.EVENT_BUS.register(BlockBarrel.TILE_ENTITY_SAVER);
     MinecraftForge.EVENT_BUS.register(new PlayerEventHandler());
+  }
+
+  private void registerPackets() {
+    McfrNetworkWrapper.registerPacket(OpenEditMcfrSignMessageHandler.class, OpenEditMcfrSignMessage.class, Side.CLIENT);
+    McfrNetworkWrapper.registerPacket(OpenEditWallNoteMessageHandler.class, OpenEditWallNoteMessage.class, Side.CLIENT);
+    McfrNetworkWrapper.registerPacket(UpdateWallNoteMessageHandler.class, UpdateWallNoteMessage.class, Side.SERVER);
+    McfrNetworkWrapper.registerPacket(SyncEntityMessage.ClientHandler.class, SyncEntityMessage.class, Side.CLIENT);
+    McfrNetworkWrapper.registerPacket(SyncEntityMessage.ServerHandler.class, SyncEntityMessage.class, Side.SERVER);
   }
 
   private void registerEntities() {
