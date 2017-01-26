@@ -1,8 +1,11 @@
 package net.mcfr.entities.mobs.model;
 
 import net.mcfr.entities.mobs.entity.EntityBormoth;
+import net.mcfr.entities.mobs.gender.EntityGendered;
+import net.mcfr.entities.mobs.gender.Genders;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.fml.relauncher.Side;
@@ -110,8 +113,18 @@ public class ModelBormoth extends ModelBase {
       break;
     }
     
-    if (this.isChild) {
-      // TODO
+    if (((EntityGendered) entityIn).isChild()) {
+      GlStateManager.pushMatrix();
+      GlStateManager.scale(0.4F, 0.4F, 0.4F);
+      GlStateManager.translate(0.0F, 35.0F * scale, 0.0F);
+      this.abdomen.render(scale);
+      GlStateManager.popMatrix();
+    } else if (((EntityGendered) entityIn).getGender() == Genders.FEMALE){
+      GlStateManager.pushMatrix();
+      GlStateManager.scale(0.9F, 0.9F, 0.9F);
+      GlStateManager.translate(0.0F, 3.0F * scale, 0.0F);
+      this.abdomen.render(scale);
+      GlStateManager.popMatrix();
     } else {
       this.abdomen.render(scale);
     }

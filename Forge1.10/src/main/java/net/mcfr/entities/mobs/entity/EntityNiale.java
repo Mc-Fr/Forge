@@ -42,8 +42,17 @@ public class EntityNiale extends EntityBurrowed {
   public EntityNiale(World worldIn)
   {
       super(worldIn);
-      this.setSize(0.8F, 1.0F);
+      this.setSize(1.1F, 1.3F);
       this.setPathPriority(PathNodeType.WATER, 0.0F);
+      this.setWhoolColor(this.rand.nextInt(3));
+  }
+  
+  public void setWhoolColor(int color) {
+    this.setSyncedInteger("WhoolColor", color);
+  }
+  
+  public int getWhoolColor() {
+    return this.getSyncedInteger("WhoolColor");
   }
 
   protected void initEntityAI()

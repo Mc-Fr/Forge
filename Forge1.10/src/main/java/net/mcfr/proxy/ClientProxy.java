@@ -50,14 +50,17 @@ import net.mcfr.economy.ItemToken;
 import net.mcfr.entities.mobs.entity.EntityBormoth;
 import net.mcfr.entities.mobs.entity.EntityGalt;
 import net.mcfr.entities.mobs.entity.EntityHoen;
+import net.mcfr.entities.mobs.entity.EntityNiale;
 import net.mcfr.entities.mobs.entity.EntitySiker;
 import net.mcfr.entities.mobs.model.ModelBormoth;
 import net.mcfr.entities.mobs.model.ModelGalt;
 import net.mcfr.entities.mobs.model.ModelHoen;
+import net.mcfr.entities.mobs.model.ModelNiale;
 import net.mcfr.entities.mobs.model.ModelSiker;
 import net.mcfr.entities.mobs.render.RenderBormoth;
 import net.mcfr.entities.mobs.render.RenderGalt;
 import net.mcfr.entities.mobs.render.RenderHoen;
+import net.mcfr.entities.mobs.render.RenderNiale;
 import net.mcfr.entities.mobs.render.RenderSiker;
 import net.mcfr.environment.BlockStalactite;
 import net.mcfr.environment.ItemOre;
@@ -840,6 +843,7 @@ public class ClientProxy extends CommonProxy {
     RenderingRegistry.registerEntityRenderingHandler(EntityBormoth.class, new RenderBormoth(Minecraft.getMinecraft().getRenderManager(), new ModelBormoth(), 2.0F));
     RenderingRegistry.registerEntityRenderingHandler(EntityHoen.class, new RenderHoen(Minecraft.getMinecraft().getRenderManager(), new ModelHoen(), 0.2F));
     RenderingRegistry.registerEntityRenderingHandler(EntityGalt.class, new RenderGalt(Minecraft.getMinecraft().getRenderManager(), new ModelGalt(), 1.2F));
+    RenderingRegistry.registerEntityRenderingHandler(EntityNiale.class, new RenderNiale(Minecraft.getMinecraft().getRenderManager(), new ModelNiale(), 0.8F));
 
     ColorHandler.init();
   }

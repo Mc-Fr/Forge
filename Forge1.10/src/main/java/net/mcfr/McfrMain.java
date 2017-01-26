@@ -7,6 +7,7 @@ import net.mcfr.entities.EntitySailBoat;
 import net.mcfr.entities.mobs.entity.EntityBormoth;
 import net.mcfr.entities.mobs.entity.EntityGalt;
 import net.mcfr.entities.mobs.entity.EntityHoen;
+import net.mcfr.entities.mobs.entity.EntityNiale;
 import net.mcfr.entities.mobs.entity.EntitySiker;
 import net.mcfr.event.PlayerEventHandler;
 import net.mcfr.network.GuiHandler;
@@ -95,6 +96,7 @@ public class McfrMain {
     EntityRegistry.registerModEntity(EntitySiker.class, "siker", 1, this, 80, 3, true, 0xBA9B54, 0x5E4B23);
     EntityRegistry.registerModEntity(EntityBormoth.class, "bormoth", 2, this, 80, 3, true, 1000, 1000);
     EntityRegistry.registerModEntity(EntityHoen.class, "hoen", 3, this, 80, 3, true, 0x7E1620, 0x514445);
-    EntityRegistry.registerModEntity(EntityGalt.class, "galt", 4, this, 80, 3, true, 0xC7C7C7, 0x81616F);
+    EntityRegistry.registerModEntity(EntityGalt.class, "galt", 4, this, 80, 3, true, 0xc7c7c7, 0x81616F);
+    EntityRegistry.registerModEntity(EntityNiale.class, "niale", 5, this, 80, 3, true, 0xd0c0c0, 0x180808);
   }
 }

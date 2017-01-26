@@ -98,7 +98,7 @@ public class ModelGalt extends ModelBase {
   public void render(Entity entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw,
       float headPitch, float scale) {
     this.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale, entityIn);
-    
+        
     if (((EntityGendered) entityIn).isChild()) {
       GlStateManager.pushMatrix();
       GlStateManager.scale(0.4F, 0.4F, 0.4F);
