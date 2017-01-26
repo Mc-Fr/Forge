@@ -1,0 +1,6 @@
+{
+    "parent": "block/wall_side",
+    "textures": {
+        "wall": "mcfr_b_i:blocks/yellow_stonebrick_cracked"
+    }
+}
