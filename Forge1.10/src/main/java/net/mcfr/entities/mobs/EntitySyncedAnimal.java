@@ -28,6 +28,16 @@ public abstract class EntitySyncedAnimal extends EntityAnimal {
     this.setSyncedProps(nbt);
   }
 
+  public void setSyncedBoolean(String key, boolean value) {
+    NBTTagCompound nbt = this.getSyncedProps();
+    nbt.setBoolean(key, value);
+    this.setSyncedProps(nbt);
+  }
+  
+  public boolean getSyncedBoolean(String key) {
+    return this.syncedPropsCompound.getBoolean(key);
+  }
+  
   public void setSyncedInteger(String key, int value) {
     NBTTagCompound nbt = this.getSyncedProps();
     nbt.setInteger(key, value);
