@@ -12,10 +12,10 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 
-public class EntitySyncedAnimal extends EntityAnimal {
+public abstract class EntitySyncedAnimal extends EntityAnimal {
   public static Map<Integer, NBTTagCompound> syncedProps = new HashMap<>();
   protected NBTTagCompound syncedPropsCompound = new NBTTagCompound();
-  private boolean isInitialized;
+  protected boolean isInitialized;
 
   public EntitySyncedAnimal(World worldIn) {
     super(worldIn);
@@ -77,14 +77,11 @@ public class EntitySyncedAnimal extends EntityAnimal {
 
   @Override
   public void onLivingUpdate() {
-    if (!this.isInitialized) {
+    if (!this.isInitialized && this.worldObj.isRemote) {
       this.askForSync();
     }
     super.onLivingUpdate();
   }
-
-  @Override
-  public EntityAgeable createChild(EntityAgeable ageable) {
-    return null;
-  }
+  
+  public abstract EntityAgeable createChild(EntityAgeable ageable);
 }

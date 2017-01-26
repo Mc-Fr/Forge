@@ -114,9 +114,9 @@ public class EntityNiale extends EntityBurrowed {
       return LootTableList.ENTITIES_CHICKEN;
   }
 
-  public EntityHoen createChild(EntityAgeable ageable)
+  public EntityNiale createChild(EntityAgeable ageable)
   {
-      return new EntityHoen(this.worldObj);
+      return new EntityNiale(this.worldObj);
   }
 
   /**

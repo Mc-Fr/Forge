@@ -105,9 +105,9 @@ public class EntityGronle extends EntityBurrowed {
       return LootTableList.ENTITIES_CHICKEN;
   }
 
-  public EntityHoen createChild(EntityAgeable ageable)
+  public EntityGronle createChild(EntityAgeable ageable)
   {
-      return new EntityHoen(this.worldObj);
+      return new EntityGronle(this.worldObj);
   }
 
   /**

@@ -105,9 +105,9 @@ public class EntityFjalla extends EntityBurrowed {
       return LootTableList.ENTITIES_CHICKEN;
   }
 
-  public EntityHoen createChild(EntityAgeable ageable)
+  public EntityFjalla createChild(EntityAgeable ageable)
   {
-      return new EntityHoen(this.worldObj);
+      return new EntityFjalla(this.worldObj);
   }
 
   /**
