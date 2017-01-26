@@ -1,7 +1,26 @@
 package net.mcfr;
 
 import net.mcfr.coma.PotionComa;
+import net.mcfr.craftsmanship.tileEntities.TileEntityCircularSaw;
+import net.mcfr.craftsmanship.tileEntities.TileEntityLoom;
+import net.mcfr.craftsmanship.tileEntities.TileEntityTanningRack;
 import net.mcfr.decoration.containerBlocks.BlockBarrel;
+import net.mcfr.decoration.containerBlocks.tileEntities.TileEntityBarrel;
+import net.mcfr.decoration.containerBlocks.tileEntities.TileEntityBookshelf;
+import net.mcfr.decoration.containerBlocks.tileEntities.TileEntityCrate;
+import net.mcfr.decoration.containerBlocks.tileEntities.TileEntityFoodCrate;
+import net.mcfr.decoration.containerBlocks.tileEntities.TileEntityLittleChest;
+import net.mcfr.decoration.containerBlocks.tileEntities.TileEntityPallet;
+import net.mcfr.decoration.furniture.tileEntities.TileEntityShowcase;
+import net.mcfr.decoration.furniture.tileEntities.TileEntityWeaponsStand;
+import net.mcfr.decoration.lighting.tileEntities.TileEntityCampfire;
+import net.mcfr.decoration.signs.tileEntities.TileEntityNormalSign;
+import net.mcfr.decoration.signs.tileEntities.TileEntityOrpSign;
+import net.mcfr.decoration.signs.tileEntities.TileEntityPaperSign;
+import net.mcfr.decoration.signs.tileEntities.TileEntityTombstone;
+import net.mcfr.decoration.signs.tileEntities.TileEntityWallNote;
+import net.mcfr.decoration.tileEntities.TileEntityCarpet;
+import net.mcfr.decoration.tileEntities.TileEntitySupport;
 import net.mcfr.entities.EntityGrapnel;
 import net.mcfr.entities.EntitySailBoat;
 import net.mcfr.entities.mobs.entity.EntityBormoth;
@@ -10,6 +29,8 @@ import net.mcfr.entities.mobs.entity.EntityHoen;
 import net.mcfr.entities.mobs.entity.EntityNiale;
 import net.mcfr.entities.mobs.entity.EntitySiker;
 import net.mcfr.event.PlayerEventHandler;
+import net.mcfr.forge.tileEntities.TileEntityBellows;
+import net.mcfr.forge.tileEntities.TileEntityStove;
 import net.mcfr.network.GuiHandler;
 import net.mcfr.network.McfrNetworkWrapper;
 import net.mcfr.network.OpenEditMcfrSignMessage;
@@ -25,6 +46,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
@@ -36,6 +58,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.GameData;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 
 /**
@@ -59,6 +82,7 @@ public class McfrMain {
   public void preInit(FMLPreInitializationEvent e) {
     McfrBlocks.init();
     McfrItems.init();
+    registerTileEntities();
     registerEntities();
     // DEBUG à réactiver une fois le débug terminé.
     // CraftingManager.getInstance().getRecipeList().clear();
@@ -90,6 +114,30 @@ public class McfrMain {
     McfrNetworkWrapper.registerPacket(SyncEntityMessage.ServerHandler.class, SyncEntityMessage.class, Side.SERVER);
   }
 
+  private void registerTileEntities() {
+    registerTileEntity(TileEntityBarrel.class, "barrel");
+    registerTileEntity(TileEntityBellows.class, "bellows");
+    registerTileEntity(TileEntityBookshelf.class, "bookshelf");
+    registerTileEntity(TileEntityCampfire.class, "campfire");
+    registerTileEntity(TileEntityCarpet.class, "carpet");
+    registerTileEntity(TileEntityCircularSaw.class, "circular_saw");
+    registerTileEntity(TileEntityCrate.class, "crate");
+    registerTileEntity(TileEntityFoodCrate.class, "food_crate");
+    registerTileEntity(TileEntityLittleChest.class, "little_chest");
+    registerTileEntity(TileEntityLoom.class, "loom");
+    registerTileEntity(TileEntityNormalSign.class, "sign");
+    registerTileEntity(TileEntityOrpSign.class, "orp_sign");
+    registerTileEntity(TileEntityPallet.class, "pallet");
+    registerTileEntity(TileEntityPaperSign.class, "paper_sign");
+    registerTileEntity(TileEntityShowcase.class, "showcase");
+    registerTileEntity(TileEntityStove.class, "stove");
+    registerTileEntity(TileEntitySupport.class, "support");
+    registerTileEntity(TileEntityTanningRack.class, "tanning_rack");
+    registerTileEntity(TileEntityTombstone.class, "tombstone");
+    registerTileEntity(TileEntityWallNote.class, "wall_note");
+    registerTileEntity(TileEntityWeaponsStand.class, "weapons_stand");
+  }
+
   private void registerEntities() {
     EntityRegistry.registerModEntity(EntityGrapnel.class, "grapnel", 1000, this, 10, 3, true);
     EntityRegistry.registerModEntity(EntitySailBoat.class, "sailboat", 1001, this, 80, 3, true);
@@ -98,5 +146,15 @@ public class McfrMain {
     EntityRegistry.registerModEntity(EntityHoen.class, "hoen", 3, this, 80, 3, true, 0x7E1620, 0x514445);
     EntityRegistry.registerModEntity(EntityGalt.class, "galt", 4, this, 80, 3, true, 0xc7c7c7, 0x81616F);
     EntityRegistry.registerModEntity(EntityNiale.class, "niale", 5, this, 80, 3, true, 0xd0c0c0, 0x180808);
+  }
+
+  /**
+   * Enregistre une tile entity.
+   *
+   * @param tileEntityClass la tile entity
+   * @param id son ID
+   */
+  private static void registerTileEntity(Class<? extends TileEntity> tileEntityClass, String id) {
+    GameRegistry.registerTileEntity(tileEntityClass, id);
   }
 }

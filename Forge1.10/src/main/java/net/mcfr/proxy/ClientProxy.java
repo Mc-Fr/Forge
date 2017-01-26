@@ -44,6 +44,8 @@ import net.mcfr.decoration.signs.tileEntities.TileEntityPaperSign;
 import net.mcfr.decoration.signs.tileEntities.TileEntityPaperSignRenderer;
 import net.mcfr.decoration.tileEntities.TileEntityCarpet;
 import net.mcfr.decoration.tileEntities.TileEntityCarpetRenderer;
+import net.mcfr.decoration.tileEntities.TileEntitySupport;
+import net.mcfr.decoration.tileEntities.TileEntitySupportRenderer;
 import net.mcfr.economy.ItemClawMoney;
 import net.mcfr.economy.ItemCoin;
 import net.mcfr.economy.ItemToken;
@@ -822,6 +824,7 @@ public class ClientProxy extends CommonProxy {
     ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPaperSign.class, new TileEntityPaperSignRenderer());
     ClientRegistry.bindTileEntitySpecialRenderer(TileEntityShowcase.class, new TileEntityShowcaseRenderer());
     ClientRegistry.bindTileEntitySpecialRenderer(TileEntityWeaponsStand.class, new TileEntityWeaponsStandRenderer());
+    ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySupport.class, new TileEntitySupportRenderer());
 
     // TODO 1.11
     // RenderingRegistry.registerEntityRenderingHandler(EntitySiker.class, new
