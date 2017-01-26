@@ -2,6 +2,8 @@ package net.mcfr.decoration.furniture.tileEntities;
 
 import net.mcfr.decoration.furniture.BlockShowcase;
 import net.mcfr.utils.ItemsLists;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
@@ -10,9 +12,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 
-public class TileEntityShowcase extends TileEntity implements ClickableTileEntity {
-  private static final int COOLDOWN = 20;
-
+public class TileEntityShowcase extends TileEntity implements IInventory, ClickableTileEntity {
   private ItemStack shownItem;
   private boolean adjacentShowcaseChecked;
   private TileEntityShowcase adjacentShowcaseNorth;
@@ -34,8 +34,8 @@ public class TileEntityShowcase extends TileEntity implements ClickableTileEntit
   }
 
   @Override
-  public boolean canPlayerInteract() {
-    return this.lastClickedTime < System.currentTimeMillis() - COOLDOWN;
+  public long getLastClickTime() {
+    return this.lastClickedTime;
   }
 
   @Override
@@ -162,6 +162,95 @@ public class TileEntityShowcase extends TileEntity implements ClickableTileEntit
 
   public boolean hasItem() {
     return getItem() != null;
+  }
+
+  @Override
+  public String getName() {
+    return "container.showcase";
+  }
+
+  @Override
+  public boolean hasCustomName() {
+    return false;
+  }
+
+  @Override
+  public int getSizeInventory() {
+    return 1;
+  }
+
+  @Override
+  public ItemStack getStackInSlot(int index) {
+    return index == 0 ? this.shownItem : null;
+  }
+
+  @Override
+  public ItemStack decrStackSize(int index, int count) {
+    if (index == 0) {
+      if (this.shownItem != null) {
+        this.shownItem.stackSize -= count;
+        if (this.shownItem.stackSize == 0)
+          this.shownItem = null;
+      }
+
+      return this.shownItem;
+    }
+    return null;
+  }
+
+  @Override
+  public ItemStack removeStackFromSlot(int index) {
+    if (index == 0) {
+      ItemStack stack = this.shownItem;
+      this.shownItem = null;
+      return stack;
+    }
+    return null;
+  }
+
+  @Override
+  public void setInventorySlotContents(int index, ItemStack stack) {
+    if (index == 0)
+      this.shownItem = stack;
+  }
+
+  @Override
+  public int getInventoryStackLimit() {
+    return 1;
+  }
+
+  @Override
+  public boolean isUseableByPlayer(EntityPlayer player) {
+    return false;
+  }
+
+  @Override
+  public void openInventory(EntityPlayer player) {}
+
+  @Override
+  public void closeInventory(EntityPlayer player) {}
+
+  @Override
+  public boolean isItemValidForSlot(int index, ItemStack stack) {
+    return index == 0 && itemIsValid(stack);
+  }
+
+  @Override
+  public int getField(int id) {
+    return -1;
+  }
+
+  @Override
+  public void setField(int id, int value) {}
+
+  @Override
+  public int getFieldCount() {
+    return 0;
+  }
+
+  @Override
+  public void clear() {
+    this.shownItem = null;
   }
 
   public static boolean itemIsValid(ItemStack stack) {
