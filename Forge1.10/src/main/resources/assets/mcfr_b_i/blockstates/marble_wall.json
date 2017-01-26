@@ -1,0 +1,94 @@
+{
+    "multipart": [
+        {   "when": { "up": "true", "variant": "smooth_sand" },
+            "apply": { "model": "mcfr_b_i:marble_smooth_sand_wall_post" }
+        },
+        {   "when": { "north": "true", "variant": "smooth_sand" },
+            "apply": { "model": "mcfr_b_i:marble_smooth_sand_wall_side", "uvlock": true }
+        },
+        {   "when": { "east": "true", "variant": "smooth_sand" },
+            "apply": { "model": "mcfr_b_i:marble_smooth_sand_wall_side", "y": 90, "uvlock": true }
+        },
+        {   "when": { "south": "true", "variant": "smooth_sand" },
+            "apply": { "model": "mcfr_b_i:marble_smooth_sand_wall_side", "y": 180, "uvlock": true }
+        },
+        {   "when": { "west": "true", "variant": "smooth_sand" },
+            "apply": { "model": "mcfr_b_i:marble_smooth_sand_wall_side", "y": 270, "uvlock": true }
+        },
+        {   "when": { "up": "true", "variant": "column_sand" },
+            "apply": { "model": "mcfr_b_i:marble_column_sand_wall_post" }
+        },
+        {   "when": { "north": "true", "variant": "column_sand" },
+            "apply": { "model": "mcfr_b_i:marble_column_sand_wall_side", "uvlock": true }
+        },
+        {   "when": { "east": "true", "variant": "column_sand" },
+            "apply": { "model": "mcfr_b_i:marble_column_sand_wall_side", "y": 90, "uvlock": true }
+        },
+        {   "when": { "south": "true", "variant": "column_sand" },
+            "apply": { "model": "mcfr_b_i:marble_column_sand_wall_side", "y": 180, "uvlock": true }
+        },
+        {   "when": { "west": "true", "variant": "column_sand" },
+            "apply": { "model": "mcfr_b_i:marble_column_sand_wall_side", "y": 270, "uvlock": true }
+        },
+        {   "when": { "up": "true", "variant": "smooth_white" },
+            "apply": { "model": "mcfr_b_i:marble_smooth_white_wall_post" }
+        },
+        {   "when": { "north": "true", "variant": "smooth_white" },
+            "apply": { "model": "mcfr_b_i:marble_smooth_white_wall_side", "uvlock": true }
+        },
+        {   "when": { "east": "true", "variant": "smooth_white" },
+            "apply": { "model": "mcfr_b_i:marble_smooth_white_wall_side", "y": 90, "uvlock": true }
+        },
+        {   "when": { "south": "true", "variant": "smooth_white" },
+            "apply": { "model": "mcfr_b_i:marble_smooth_white_wall_side", "y": 180, "uvlock": true }
+        },
+        {   "when": { "west": "true", "variant": "smooth_white" },
+            "apply": { "model": "mcfr_b_i:marble_smooth_white_wall_side", "y": 270, "uvlock": true }
+        },
+        {   "when": { "up": "true", "variant": "column_white" },
+            "apply": { "model": "mcfr_b_i:marble_column_white_wall_post" }
+        },
+        {   "when": { "north": "true", "variant": "column_white" },
+            "apply": { "model": "mcfr_b_i:marble_column_white_wall_side", "uvlock": true }
+        },
+        {   "when": { "east": "true", "variant": "column_white" },
+            "apply": { "model": "mcfr_b_i:marble_column_white_wall_side", "y": 90, "uvlock": true }
+        },
+        {   "when": { "south": "true", "variant": "column_white" },
+            "apply": { "model": "mcfr_b_i:marble_column_white_wall_side", "y": 180, "uvlock": true }
+        },
+        {   "when": { "west": "true", "variant": "column_white" },
+            "apply": { "model": "mcfr_b_i:marble_column_white_wall_side", "y": 270, "uvlock": true }
+        },
+        {   "when": { "up": "true", "variant": "smooth_black" },
+            "apply": { "model": "mcfr_b_i:marble_smooth_black_wall_post" }
+        },
+        {   "when": { "north": "true", "variant": "smooth_black" },
+            "apply": { "model": "mcfr_b_i:marble_smooth_black_wall_side", "uvlock": true }
+        },
+        {   "when": { "east": "true", "variant": "smooth_black" },
+            "apply": { "model": "mcfr_b_i:marble_smooth_black_wall_side", "y": 90, "uvlock": true }
+        },
+        {   "when": { "south": "true", "variant": "smooth_black" },
+            "apply": { "model": "mcfr_b_i:marble_smooth_black_wall_side", "y": 180, "uvlock": true }
+        },
+        {   "when": { "west": "true", "variant": "smooth_black" },
+            "apply": { "model": "mcfr_b_i:marble_smooth_black_wall_side", "y": 270, "uvlock": true }
+        },
+        {   "when": { "up": "true", "variant": "column_black" },
+            "apply": { "model": "mcfr_b_i:marble_column_black_wall_post" }
+        },
+        {   "when": { "north": "true", "variant": "column_black" },
+            "apply": { "model": "mcfr_b_i:marble_column_black_wall_side", "uvlock": true }
+        },
+        {   "when": { "east": "true", "variant": "column_black" },
+            "apply": { "model": "mcfr_b_i:marble_column_black_wall_side", "y": 90, "uvlock": true }
+        },
+        {   "when": { "south": "true", "variant": "column_black" },
+            "apply": { "model": "mcfr_b_i:marble_column_black_wall_side", "y": 180, "uvlock": true }
+        },
+        {   "when": { "west": "true", "variant": "column_black" },
+            "apply": { "model": "mcfr_b_i:marble_column_black_wall_side", "y": 270, "uvlock": true }
+        }
+    ]
+}
