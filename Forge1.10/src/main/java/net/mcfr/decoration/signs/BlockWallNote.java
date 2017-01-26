@@ -30,6 +30,12 @@ public class BlockWallNote extends McfrBlock implements ITileEntityProvider {
     setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
   }
 
+  // FIXME
+  @Override
+  public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, World worldIn, BlockPos pos) {
+    return NULL_AABB;
+  }
+
   @Override
   public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
     float w = 0.125F;
@@ -38,13 +44,13 @@ public class BlockWallNote extends McfrBlock implements ITileEntityProvider {
       case NORTH:
         return new AxisAlignedBB(0, 0, 1 - w, 1, 1, 1);
       case SOUTH:
-        return new AxisAlignedBB(0, 0, 0, 1, 0, w);
+        return new AxisAlignedBB(0, 0, 0, 1, 1, w);
       case WEST:
         return new AxisAlignedBB(1 - w, 0, 0, 1, 1, 1);
       case EAST:
         return new AxisAlignedBB(0, 0, 0, w, 1, 1);
       default:
-        return NULL_AABB;
+        return new AxisAlignedBB(0, 0, 0, 1, 1, 1);
     }
   }
 

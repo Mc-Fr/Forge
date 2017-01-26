@@ -11,7 +11,6 @@ import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockRenderLayer;
@@ -27,9 +26,9 @@ public class BlockLantern extends McfrBlock {
   public static final PropertyInteger ORIENTATION = PropertyInteger.create("orientation", 0, 3);
   public static final PropertyEnum<EnumPosition> POSITION = PropertyEnum.create("position", EnumPosition.class);
 
-  private final EnumDyeColor color;
+  private final EnumLanternColor color;
 
-  public BlockLantern(EnumDyeColor color, boolean isPaper) {
+  public BlockLantern(EnumLanternColor color, boolean isPaper) {
     super(color.getName() + (isPaper ? "_paper" : "") + "_lantern", isPaper ? Material.CLOTH : Material.GLASS, isPaper ? SoundType.CLOTH : SoundType.GLASS, 0.5f, 0, null, -1, null);
     setDefaultState(this.blockState.getBaseState().withProperty(ORIENTATION, 0).withProperty(POSITION, EnumPosition.BOTTOM));
     setLightLevel(0.875f);

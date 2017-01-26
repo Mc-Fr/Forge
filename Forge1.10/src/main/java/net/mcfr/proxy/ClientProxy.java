@@ -44,8 +44,6 @@ import net.mcfr.decoration.signs.tileEntities.TileEntityPaperSign;
 import net.mcfr.decoration.signs.tileEntities.TileEntityPaperSignRenderer;
 import net.mcfr.decoration.tileEntities.TileEntityCarpet;
 import net.mcfr.decoration.tileEntities.TileEntityCarpetRenderer;
-import net.mcfr.decoration.tileEntities.TileEntityLongSupport;
-import net.mcfr.decoration.tileEntities.TileEntityLongSupportRenderer;
 import net.mcfr.decoration.tileEntities.TileEntitySupport;
 import net.mcfr.decoration.tileEntities.TileEntitySupportRenderer;
 import net.mcfr.economy.ItemClawMoney;
@@ -827,7 +825,6 @@ public class ClientProxy extends CommonProxy {
     ClientRegistry.bindTileEntitySpecialRenderer(TileEntityShowcase.class, new TileEntityShowcaseRenderer());
     ClientRegistry.bindTileEntitySpecialRenderer(TileEntityWeaponsStand.class, new TileEntityWeaponsStandRenderer());
     ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySupport.class, new TileEntitySupportRenderer());
-    ClientRegistry.bindTileEntitySpecialRenderer(TileEntityLongSupport.class, new TileEntityLongSupportRenderer());
 
     // TODO 1.11
     // RenderingRegistry.registerEntityRenderingHandler(EntitySiker.class, new
@@ -845,16 +842,11 @@ public class ClientProxy extends CommonProxy {
     // }
     // });
 
-    RenderingRegistry.registerEntityRenderingHandler(EntitySiker.class,
-        new RenderSiker(Minecraft.getMinecraft().getRenderManager(), new ModelSiker(), 2.0F));
-    RenderingRegistry.registerEntityRenderingHandler(EntityBormoth.class,
-        new RenderBormoth(Minecraft.getMinecraft().getRenderManager(), new ModelBormoth(), 2.0F));
-    RenderingRegistry.registerEntityRenderingHandler(EntityHoen.class,
-        new RenderHoen(Minecraft.getMinecraft().getRenderManager(), new ModelHoen(), 0.2F));
-    RenderingRegistry.registerEntityRenderingHandler(EntityGalt.class,
-        new RenderGalt(Minecraft.getMinecraft().getRenderManager(), new ModelGalt(), 1.2F));
-    RenderingRegistry.registerEntityRenderingHandler(EntityNiale.class,
-        new RenderNiale(Minecraft.getMinecraft().getRenderManager(), new ModelNiale(), 0.8F));
+    RenderingRegistry.registerEntityRenderingHandler(EntitySiker.class, new RenderSiker(Minecraft.getMinecraft().getRenderManager(), new ModelSiker(), 2.0F));
+    RenderingRegistry.registerEntityRenderingHandler(EntityBormoth.class, new RenderBormoth(Minecraft.getMinecraft().getRenderManager(), new ModelBormoth(), 2.0F));
+    RenderingRegistry.registerEntityRenderingHandler(EntityHoen.class, new RenderHoen(Minecraft.getMinecraft().getRenderManager(), new ModelHoen(), 0.2F));
+    RenderingRegistry.registerEntityRenderingHandler(EntityGalt.class, new RenderGalt(Minecraft.getMinecraft().getRenderManager(), new ModelGalt(), 1.2F));
+    RenderingRegistry.registerEntityRenderingHandler(EntityNiale.class, new RenderNiale(Minecraft.getMinecraft().getRenderManager(), new ModelNiale(), 0.8F));
 
     ColorHandler.init();
   }
@@ -862,8 +854,7 @@ public class ClientProxy extends CommonProxy {
   /**
    * Enregistre un item.
    *
-   * @param item
-   *          l'item
+   * @param item l'item
    */
   private static void registerItem(Item item) {
     registerItem(item, 0, item.getRegistryName().getResourcePath());
@@ -872,27 +863,21 @@ public class ClientProxy extends CommonProxy {
   /**
    * Enregistre un item.
    *
-   * @param item
-   *          l'item
-   * @param metadata
-   *          le metadata de l'item
-   * @param name
-   *          le nom interne de l'item
+   * @param item l'item
+   * @param metadata le metadata de l'item
+   * @param name le nom interne de l'item
    */
   private static void registerItem(Item item, int metadata, String name) {
     if (item == null)
       return;
-    Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(item, metadata,
-        new ModelResourceLocation(item.getRegistryName().getResourceDomain() + ":" + name, "inventory"));
+    Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(item, metadata, new ModelResourceLocation(item.getRegistryName().getResourceDomain() + ":" + name, "inventory"));
   }
 
   /**
    * Enregistre un item avec toutes ses variantes.
    *
-   * @param item
-   *          l'item
-   * @param variants
-   *          l'énumération des variantes
+   * @param item l'item
+   * @param variants l'énumération des variantes
    */
   private static <T extends Enum<T> & IEnumType<T>> void registerItemVariants(Item item, Class<T> variants) {
     T[] types = variants.getEnumConstants();
@@ -900,8 +885,7 @@ public class ClientProxy extends CommonProxy {
 
     for (T variant : types) {
       registerItem(item, variant.getMetadata(), item.getRegistryName().getResourcePath() + "_" + variant.getName());
-      names[variant.getMetadata()] = new ResourceLocation(Constants.MOD_ID,
-          item.getRegistryName().getResourcePath().toString() + "_" + variant.getName());
+      names[variant.getMetadata()] = new ResourceLocation(Constants.MOD_ID, item.getRegistryName().getResourcePath().toString() + "_" + variant.getName());
     }
 
     ModelBakery.registerItemVariants(item, names);
@@ -910,8 +894,7 @@ public class ClientProxy extends CommonProxy {
   /**
    * Enregistre un bloc.
    *
-   * @param block
-   *          le bloc
+   * @param block le bloc
    */
   private static void registerBlock(Block block) {
     registerBlock(block, 0, block.getRegistryName().getResourcePath());
@@ -920,12 +903,9 @@ public class ClientProxy extends CommonProxy {
   /**
    * Enregistre un bloc.
    *
-   * @param block
-   *          le bloc
-   * @param metadata
-   *          le metadata du bloc
-   * @param name
-   *          le nom interne du bloc
+   * @param block le bloc
+   * @param metadata le metadata du bloc
+   * @param name le nom interne du bloc
    */
   private static void registerBlock(Block block, int metadata, String name) {
     registerItem(Item.getItemFromBlock(block), metadata, name);
@@ -934,12 +914,9 @@ public class ClientProxy extends CommonProxy {
   /**
    * Enregistre un bloc avec toutes ses variantes.
    *
-   * @param block
-   *          le bloc
-   * @param variants
-   *          l'énumération des variantes
-   * @param name
-   *          le nom interne du bloc
+   * @param block le bloc
+   * @param variants l'énumération des variantes
+   * @param name le nom interne du bloc
    */
   private static <T extends Enum<T> & IEnumType<T>> void registerBlockVariants(Block block, Class<T> variants) {
     T[] types = variants.getEnumConstants();
@@ -959,8 +936,7 @@ public class ClientProxy extends CommonProxy {
   /**
    * Enregistre un bloc avec toutes ses variantes de bois.
    *
-   * @param block
-   *          le bloc
+   * @param block le bloc
    */
   private static void registerBlockWoodVariants(Block block) {
     BlockPlanks.EnumType[] types = BlockPlanks.EnumType.values();
@@ -980,8 +956,7 @@ public class ClientProxy extends CommonProxy {
   /**
    * Enregistre un bloc avec toutes ses variantes de couleur.
    *
-   * @param block
-   *          le bloc
+   * @param block le bloc
    */
   private static void registerBlockColorVariants(Block block) {
     EnumDyeColor[] types = EnumDyeColor.values();
@@ -1001,12 +976,9 @@ public class ClientProxy extends CommonProxy {
   /**
    * Enregistre une dalle avec toutes ses variantes.
    *
-   * @param slab
-   *          la dalle
-   * @param doubleSlab
-   *          la double dalle
-   * @param variants
-   *          l'énumération des variantes
+   * @param slab la dalle
+   * @param doubleSlab la double dalle
+   * @param variants l'énumération des variantes
    */
   private static <T extends Enum<T> & IEnumType<T>> void registerSlabVariants(McfrBlockSlab<?> slab, McfrBlockSlab<?> doubleSlab, Class<T> variants) {
     registerBlockVariants(slab, variants);
@@ -1016,10 +988,8 @@ public class ClientProxy extends CommonProxy {
   /**
    * Enregistre une dalle avec toutes ses variantes de bois.
    *
-   * @param slab
-   *          la dalle
-   * @param doubleSlab
-   *          la double dalle
+   * @param slab la dalle
+   * @param doubleSlab la double dalle
    */
   private static void registerWoodSlabVariants(McfrBlockSlab<?> slab, McfrBlockSlab<?> doubleSlab) {
     registerBlockWoodVariants(slab);

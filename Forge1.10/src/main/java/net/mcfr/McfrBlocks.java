@@ -59,9 +59,6 @@ import net.mcfr.craftsmanship.BlockCircularSaw;
 import net.mcfr.craftsmanship.BlockLargeWorkbench;
 import net.mcfr.craftsmanship.BlockLoom;
 import net.mcfr.craftsmanship.BlockTanningRack;
-import net.mcfr.craftsmanship.tileEntities.TileEntityCircularSaw;
-import net.mcfr.craftsmanship.tileEntities.TileEntityLoom;
-import net.mcfr.craftsmanship.tileEntities.TileEntityTanningRack;
 import net.mcfr.decoration.BlockChain;
 import net.mcfr.decoration.BlockChessboard;
 import net.mcfr.decoration.BlockCoins;
@@ -90,12 +87,6 @@ import net.mcfr.decoration.containerBlocks.BlockLittleChest;
 import net.mcfr.decoration.containerBlocks.BlockPallet;
 import net.mcfr.decoration.containerBlocks.BlockRumBarrel;
 import net.mcfr.decoration.containerBlocks.BlockWineBarrel;
-import net.mcfr.decoration.containerBlocks.tileEntities.TileEntityBarrel;
-import net.mcfr.decoration.containerBlocks.tileEntities.TileEntityBookshelf;
-import net.mcfr.decoration.containerBlocks.tileEntities.TileEntityCrate;
-import net.mcfr.decoration.containerBlocks.tileEntities.TileEntityFoodCrate;
-import net.mcfr.decoration.containerBlocks.tileEntities.TileEntityLittleChest;
-import net.mcfr.decoration.containerBlocks.tileEntities.TileEntityPallet;
 import net.mcfr.decoration.furniture.BlockArmorStand;
 import net.mcfr.decoration.furniture.BlockBench;
 import net.mcfr.decoration.furniture.BlockChair;
@@ -106,8 +97,6 @@ import net.mcfr.decoration.furniture.BlockTableWithFoot;
 import net.mcfr.decoration.furniture.BlockWeaponsStand;
 import net.mcfr.decoration.furniture.BlockWoodenChair;
 import net.mcfr.decoration.furniture.BlockWoodenShelf;
-import net.mcfr.decoration.furniture.tileEntities.TileEntityShowcase;
-import net.mcfr.decoration.furniture.tileEntities.TileEntityWeaponsStand;
 import net.mcfr.decoration.lighting.BlockBrazier;
 import net.mcfr.decoration.lighting.BlockCampfire;
 import net.mcfr.decoration.lighting.BlockChandelier;
@@ -117,7 +106,6 @@ import net.mcfr.decoration.lighting.BlockLitCampFire;
 import net.mcfr.decoration.lighting.BlockSimpleCandle;
 import net.mcfr.decoration.lighting.BlockTripleCandle;
 import net.mcfr.decoration.lighting.EnumLanternColor;
-import net.mcfr.decoration.lighting.tileEntities.TileEntityCampfire;
 import net.mcfr.decoration.signs.BlockStandingNormalSign;
 import net.mcfr.decoration.signs.BlockStandingOrpSign;
 import net.mcfr.decoration.signs.BlockStandingPaperSign;
@@ -128,12 +116,6 @@ import net.mcfr.decoration.signs.BlockWallNormalSign;
 import net.mcfr.decoration.signs.BlockWallNote;
 import net.mcfr.decoration.signs.BlockWallOrpSign;
 import net.mcfr.decoration.signs.BlockWallPaperSign;
-import net.mcfr.decoration.signs.tileEntities.TileEntityNormalSign;
-import net.mcfr.decoration.signs.tileEntities.TileEntityOrpSign;
-import net.mcfr.decoration.signs.tileEntities.TileEntityPaperSign;
-import net.mcfr.decoration.signs.tileEntities.TileEntityTombstone;
-import net.mcfr.decoration.signs.tileEntities.TileEntityWallNote;
-import net.mcfr.decoration.tileEntities.TileEntityCarpet;
 import net.mcfr.economy.BlockChanger;
 import net.mcfr.environment.BlockBeehive;
 import net.mcfr.environment.BlockStalactite;
@@ -159,8 +141,6 @@ import net.mcfr.food.McfrBlockCake;
 import net.mcfr.forge.BlockBellows;
 import net.mcfr.forge.BlockStove;
 import net.mcfr.forge.McfrBlockAnvil;
-import net.mcfr.forge.tileEntities.TileEntityBellows;
-import net.mcfr.forge.tileEntities.TileEntityStove;
 import net.mcfr.mecanisms.BlockLongRedstoneRepeater;
 import net.mcfr.mecanisms.BlockPulsor;
 import net.mcfr.mecanisms.McfrBlockFenceGate;
@@ -180,11 +160,9 @@ import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
-import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
@@ -666,21 +644,21 @@ public final class McfrBlocks {
 
   public static final McfrBlockOrientable WOODEN_LAMP = new McfrBlockOrientable("wooden_lamp", Material.WOOD, SoundType.WOOD, 2, 5, "axe", 0, CreativeTabs.BUILDING_BLOCKS);
   // Lanternes
-  public static final BlockLantern WHITE_LANTERN = new BlockLantern(EnumDyeColor.WHITE, false);
-  public static final BlockLantern ORANGE_LANTERN = new BlockLantern(EnumDyeColor.ORANGE, false);
-  public static final BlockLantern YELLOW_LANTERN = new BlockLantern(EnumDyeColor.YELLOW, false);
-  public static final BlockLantern PURPLE_LANTERN = new BlockLantern(EnumDyeColor.PURPLE, false);
-  public static final BlockLantern BLUE_LANTERN = new BlockLantern(EnumDyeColor.BLUE, false);
-  public static final BlockLantern GREEN_LANTERN = new BlockLantern(EnumDyeColor.GREEN, false);
-  public static final BlockLantern RED_LANTERN = new BlockLantern(EnumDyeColor.RED, false);
+  public static final BlockLantern WHITE_LANTERN = new BlockLantern(EnumLanternColor.WHITE, false);
+  public static final BlockLantern ORANGE_LANTERN = new BlockLantern(EnumLanternColor.ORANGE, false);
+  public static final BlockLantern YELLOW_LANTERN = new BlockLantern(EnumLanternColor.YELLOW, false);
+  public static final BlockLantern PURPLE_LANTERN = new BlockLantern(EnumLanternColor.PURPLE, false);
+  public static final BlockLantern BLUE_LANTERN = new BlockLantern(EnumLanternColor.BLUE, false);
+  public static final BlockLantern GREEN_LANTERN = new BlockLantern(EnumLanternColor.GREEN, false);
+  public static final BlockLantern RED_LANTERN = new BlockLantern(EnumLanternColor.RED, false);
 
-  public static final BlockLantern WHITE_PAPER_LANTERN = new BlockLantern(EnumDyeColor.WHITE, true);
-  public static final BlockLantern ORANGE_PAPER_LANTERN = new BlockLantern(EnumDyeColor.ORANGE, true);
-  public static final BlockLantern YELLOW_PAPER_LANTERN = new BlockLantern(EnumDyeColor.YELLOW, true);
-  public static final BlockLantern PURPLE_PAPER_LANTERN = new BlockLantern(EnumDyeColor.PURPLE, true);
-  public static final BlockLantern BLUE_PAPER_LANTERN = new BlockLantern(EnumDyeColor.BLUE, true);
-  public static final BlockLantern GREEN_PAPER_LANTERN = new BlockLantern(EnumDyeColor.GREEN, true);
-  public static final BlockLantern RED_PAPER_LANTERN = new BlockLantern(EnumDyeColor.RED, true);
+  public static final BlockLantern WHITE_PAPER_LANTERN = new BlockLantern(EnumLanternColor.WHITE, true);
+  public static final BlockLantern ORANGE_PAPER_LANTERN = new BlockLantern(EnumLanternColor.ORANGE, true);
+  public static final BlockLantern YELLOW_PAPER_LANTERN = new BlockLantern(EnumLanternColor.YELLOW, true);
+  public static final BlockLantern PURPLE_PAPER_LANTERN = new BlockLantern(EnumLanternColor.PURPLE, true);
+  public static final BlockLantern BLUE_PAPER_LANTERN = new BlockLantern(EnumLanternColor.BLUE, true);
+  public static final BlockLantern GREEN_PAPER_LANTERN = new BlockLantern(EnumLanternColor.GREEN, true);
+  public static final BlockLantern RED_PAPER_LANTERN = new BlockLantern(EnumLanternColor.RED, true);
 
   // Panneaux
   public static final BlockWallNote WALL_NOTE = new BlockWallNote();
@@ -742,8 +720,8 @@ public final class McfrBlocks {
   public static final BlockWoodenShelf DARK_OAK_SHELF = new BlockWoodenShelf(BlockPlanks.EnumType.DARK_OAK);
   public static final BlockShelf STONE_SHELF = new BlockShelf("stone", Material.ROCK, SoundType.STONE, 2, 4, "pickaxe", 0, CreativeTabs.DECORATIONS);
   // Équerres
-  public static final BlockSupport SUPPORT = new BlockSupport("support");
-  public static final BlockSupport LONG_SUPPORT = new BlockSupport("long_support");
+  public static final BlockSupport SUPPORT = new BlockSupport(false);
+  public static final BlockSupport LONG_SUPPORT = new BlockSupport(true);
 
   public static final BlockChessboard CHESSBOARD = new BlockChessboard();
   // Nourriture
@@ -1278,27 +1256,6 @@ public final class McfrBlocks {
 
     register(LONG_REPEATER_OFF);
     register(LONG_REPEATER_ON);
-
-    registerTileEntity(TileEntityBarrel.class, "barrel");
-    registerTileEntity(TileEntityBellows.class, "bellows");
-    registerTileEntity(TileEntityBookshelf.class, "bookshelf");
-    registerTileEntity(TileEntityCampfire.class, "campfire");
-    registerTileEntity(TileEntityCarpet.class, "carpet");
-    registerTileEntity(TileEntityCircularSaw.class, "circular_saw");
-    registerTileEntity(TileEntityCrate.class, "crate");
-    registerTileEntity(TileEntityFoodCrate.class, "food_crate");
-    registerTileEntity(TileEntityLittleChest.class, "little_chest");
-    registerTileEntity(TileEntityLoom.class, "loom");
-    registerTileEntity(TileEntityNormalSign.class, "sign");
-    registerTileEntity(TileEntityOrpSign.class, "orp_sign");
-    registerTileEntity(TileEntityPallet.class, "pallet");
-    registerTileEntity(TileEntityPaperSign.class, "paper_sign");
-    registerTileEntity(TileEntityShowcase.class, "showcase");
-    registerTileEntity(TileEntityStove.class, "stove");
-    registerTileEntity(TileEntityTanningRack.class, "tanning_rack");
-    registerTileEntity(TileEntityTombstone.class, "tombstone");
-    registerTileEntity(TileEntityWallNote.class, "wall_note");
-    registerTileEntity(TileEntityWeaponsStand.class, "weapons_stand");
   }
 
   /**
@@ -1333,16 +1290,6 @@ public final class McfrBlocks {
     GameRegistry.register(item);
     GameRegistry.register(halfSlab);
     GameRegistry.register(doubleSlab);
-  }
-
-  /**
-   * Enregistre une tile entity.
-   *
-   * @param tileEntityClass la tile entity
-   * @param id son ID
-   */
-  private static void registerTileEntity(Class<? extends TileEntity> tileEntityClass, String id) {
-    GameRegistry.registerTileEntity(tileEntityClass, id);
   }
 
   /**
