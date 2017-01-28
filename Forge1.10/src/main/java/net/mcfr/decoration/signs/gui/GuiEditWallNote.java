@@ -2,7 +2,6 @@ package net.mcfr.decoration.signs.gui;
 
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.List;
 
 import org.lwjgl.input.Keyboard;
 
@@ -12,12 +11,11 @@ import net.mcfr.network.McfrNetworkWrapper;
 import net.mcfr.network.UpdateWallNoteMessage;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.gui.GuiUtilRenderComponents;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.util.ChatAllowedCharacters;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 
 /**
@@ -26,7 +24,7 @@ import net.minecraft.util.text.TextComponentString;
  * @author Mc-Fr
  */
 public class GuiEditWallNote extends GuiScreen {
-  private static final ResourceLocation NOTE_TEXTURE = new ResourceLocation(Constants.MOD_ID, "");
+  private static final ResourceLocation NOTE_TEXTURE = new ResourceLocation(Constants.MOD_ID, "textures/entity/wall_note.png");
 
   private TileEntityWallNote tileNote;
   /** Compte le nombre de mises à jour de l'écran. */
@@ -42,7 +40,7 @@ public class GuiEditWallNote extends GuiScreen {
   public void initGui() {
     this.buttonList.clear();
     Keyboard.enableRepeatEvents(true);
-    this.buttonList.add(this.doneBtn = new GuiButton(0, this.width / 2 - 100, this.height / 4 + 130, I18n.format("gui.done")));
+    this.buttonList.add(this.doneBtn = new GuiButton(0, this.width / 2 - 100, this.height / 4 + 140, I18n.format("gui.done")));
   }
 
   @Override
@@ -50,9 +48,9 @@ public class GuiEditWallNote extends GuiScreen {
     Keyboard.enableRepeatEvents(false);
     // @f0
     String[] lines = Arrays.asList(this.tileNote.getText())
-        .stream()
-        .map(text -> text != null ? text.getFormattedText() : null)
-        .toArray(String[]::new);
+      .stream()
+      .map(text -> text != null ? text.getFormattedText() : null)
+      .toArray(String[]::new);
     // @f1
     McfrNetworkWrapper.getInstance().sendToServer(new UpdateWallNoteMessage(this.tileNote.getPos(), lines));
   }
@@ -107,28 +105,35 @@ public class GuiEditWallNote extends GuiScreen {
     drawDefaultBackground();
 
     GlStateManager.color(1, 1, 1, 1);
-    drawCenteredString(this.fontRendererObj, "Éditer la note", this.width / 2, 30, 16777215);
-    // this.mc.getTextureManager().bindTexture(NOTE_TEXTURE);
-    // drawTexturedModalRect(0, 0, 0, 0, 200, 200); // TEMP valeurs
+    drawCenteredString(this.fontRendererObj, "Éditer la note", this.width / 2, 30, 0xffffff);
+
+    GlStateManager.color(1, 1, 1, 1);
+    GlStateManager.pushMatrix();
+    GlStateManager.translate(this.width / 2, 0, 50);
+    float f = -102f;
+    GlStateManager.scale(f, f, f);
+    GlStateManager.rotate(180, 0, 1, 0);
+
+    int meta = this.tileNote.getBlockMetadata();
+    float angle = 0;
+
+    if (meta == 2)
+      angle = 180;
+    if (meta == 4)
+      angle = 90;
+    if (meta == 5)
+      angle = -270;
+
+    GlStateManager.rotate(angle, 0, 1, 0);
+    GlStateManager.translate(0, -1.0625F, 0);
 
     if (this.updateCounter / 6 % 2 == 0) {
       this.tileNote.setLineBeingEdited(this.editLine);
     }
 
-    for (int j = 0; j < this.tileNote.getText().length; j++) {
-      if (this.tileNote.getText()[j] != null) {
-        ITextComponent text = this.tileNote.getText()[j];
-        List<ITextComponent> list = GuiUtilRenderComponents.splitText(text, 90, this.fontRendererObj, false, true);
-        String s = list != null && !list.isEmpty() ? list.get(0).getFormattedText() : "";
-
-        if (j == this.tileNote.getLineBeingEdited())
-          s = "> " + s + " <";
-        int y = 120 + j * 10 - this.tileNote.getText().length * 5;
-        drawCenteredString(this.fontRendererObj, s, this.width / 2, y, 16777215);
-      }
-    }
-
+    TileEntityRendererDispatcher.instance.renderTileEntityAt(this.tileNote, -0.5, -0.75, -0.5, 0);
     this.tileNote.setLineBeingEdited(-1);
+    GlStateManager.popMatrix();
 
     super.drawScreen(mouseX, mouseY, partialTicks);
   }
