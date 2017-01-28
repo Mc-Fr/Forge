@@ -5,13 +5,11 @@ import org.lwjgl.opengl.GL11;
 import net.mcfr.utils.math.Point2d;
 import net.mcfr.utils.math.Point3d;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.VertexBuffer;
 import net.minecraft.client.renderer.block.model.ItemCameraTransforms;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 
 public final class RenderUtils {
@@ -27,18 +25,6 @@ public final class RenderUtils {
    */
   public static VertexBuffer getRenderer() {
     return Tessellator.getInstance().getBuffer();
-  }
-
-  /**
-   * Corrige la lumière d'une TileEntity (utilisée dans les TESR).
-   *
-   * @param te la TileEntity
-   */
-  // FIXME : marche pas.
-  public static void fixLight(TileEntity te) {
-    int light = te.getWorld().getCombinedLight(te.getPos(), 0);
-    OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, light % 65536, light / 65536);
-    GL11.glColor3f(1, 1, 1);
   }
 
   /**

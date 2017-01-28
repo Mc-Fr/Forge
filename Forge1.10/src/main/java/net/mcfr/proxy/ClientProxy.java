@@ -54,6 +54,8 @@ import net.mcfr.decoration.signs.tileEntities.TileEntityOrpSign;
 import net.mcfr.decoration.signs.tileEntities.TileEntityOrpSignRenderer;
 import net.mcfr.decoration.signs.tileEntities.TileEntityPaperSign;
 import net.mcfr.decoration.signs.tileEntities.TileEntityPaperSignRenderer;
+import net.mcfr.decoration.signs.tileEntities.TileEntityWallNote;
+import net.mcfr.decoration.signs.tileEntities.TileEntityWallNoteRenderer;
 import net.mcfr.decoration.tileEntities.TileEntityCarpet;
 import net.mcfr.decoration.tileEntities.TileEntityCarpetRenderer;
 import net.mcfr.decoration.tileEntities.TileEntitySupport;
@@ -839,6 +841,7 @@ public class ClientProxy extends CommonProxy {
     ClientRegistry.bindTileEntitySpecialRenderer(TileEntityNormalSign.class, new TileEntityNormalSignRenderer());
     ClientRegistry.bindTileEntitySpecialRenderer(TileEntityOrpSign.class, new TileEntityOrpSignRenderer());
     ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPaperSign.class, new TileEntityPaperSignRenderer());
+    ClientRegistry.bindTileEntitySpecialRenderer(TileEntityWallNote.class, new TileEntityWallNoteRenderer());
 
     ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPallet.class, new TileEntityPalletRenderer());
 

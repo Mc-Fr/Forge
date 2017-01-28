@@ -1,14 +1,10 @@
 package net.mcfr.decoration.signs.tileEntities;
 
-import static net.mcfr.utils.RenderUtils.*;
-
 import java.util.List;
 
 import net.mcfr.decoration.signs.McfrBlockStandingSign;
 import net.mcfr.decoration.signs.McfrBlockSuspendedSign;
 import net.mcfr.decoration.signs.models.ModelSign;
-import net.mcfr.utils.math.Point2d;
-import net.mcfr.utils.math.Point3d;
 import net.minecraft.block.Block;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiUtilRenderComponents;
@@ -38,40 +34,36 @@ public abstract class TileEntitySignRenderer<T extends TileEntityMcfrSign> exten
     GlStateManager.pushMatrix();
 
     if (block instanceof McfrBlockStandingSign || block instanceof McfrBlockSuspendedSign) {
-      GlStateManager.translate((float) x + 0.5F, (float) y + 0.5F, (float) z + 0.5F);
-      float f1 = te.getBlockMetadata() * 360 / 16.0F;
-      GlStateManager.rotate(-f1, 0.0F, 1.0F, 0.0F);
+      float meta = te.getBlockMetadata() * 360 / 16;
+
+      GlStateManager.translate((float) x + 0.5f, (float) y + 0.5f, (float) z + 0.5f);
+      GlStateManager.rotate(-meta, 0, 1, 0);
       if (block instanceof McfrBlockStandingSign) {
         this.model.signStick.showModel = true;
         this.model.signRope1.showModel = false;
         this.model.signRope2.showModel = false;
       }
       else if (block instanceof McfrBlockSuspendedSign) {
-        GlStateManager.translate(0.0F, -0.4F, 0F);
+        GlStateManager.translate(0, -0.4f, 0f);
         this.model.signStick.showModel = false;
         this.model.signRope1.showModel = true;
         this.model.signRope2.showModel = true;
       }
     }
     else {
-      int k = te.getBlockMetadata();
-      float f2 = 0.0F;
+      int meta = te.getBlockMetadata();
+      float angle = 0;
 
-      if (k == 2) {
-        f2 = 180.0F;
-      }
+      if (meta == 2)
+        angle = 180;
+      if (meta == 4)
+        angle = 90;
+      if (meta == 5)
+        angle = 270;
 
-      if (k == 4) {
-        f2 = 90.0F;
-      }
-
-      if (k == 5) {
-        f2 = -90.0F;
-      }
-
-      GlStateManager.translate((float) x + 0.5F, (float) y + 0.5F, (float) z + 0.5F);
-      GlStateManager.rotate(-f2, 0.0F, 1.0F, 0.0F);
-      GlStateManager.translate(0.0F, -0.3125F, -0.4375F);
+      GlStateManager.translate((float) x + 0.5f, (float) y + 0.5f, (float) z + 0.5f);
+      GlStateManager.rotate(-angle, 0, 1, 0);
+      GlStateManager.translate(0, -0.3125f, -0.4375f);
       this.model.signStick.showModel = false;
       this.model.signRope1.showModel = false;
       this.model.signRope2.showModel = false;
@@ -81,8 +73,8 @@ public abstract class TileEntitySignRenderer<T extends TileEntityMcfrSign> exten
       bindTexture(DESTROY_STAGES[destroyStage]);
       GlStateManager.matrixMode(5890);
       GlStateManager.pushMatrix();
-      GlStateManager.scale(4.0F, 2.0F, 1.0F);
-      GlStateManager.translate(0.0625F, 0.0625F, 0.0625F);
+      GlStateManager.scale(4, 2, 1);
+      GlStateManager.translate(0.0625f, 0.0625f, 0.0625f);
       GlStateManager.matrixMode(5888);
     }
     else {
@@ -91,16 +83,19 @@ public abstract class TileEntitySignRenderer<T extends TileEntityMcfrSign> exten
 
     GlStateManager.enableRescaleNormal();
     GlStateManager.pushMatrix();
-    GlStateManager.scale(0.6666667F, -0.6666667F, -0.6666667F);
+    GlStateManager.scale(0.6666667f, -0.6666667f, -0.6666667f);
+
     this.model.renderSign();
+
     GlStateManager.popMatrix();
-    FontRenderer fontrenderer = getFontRenderer();
-    GlStateManager.translate(0.0F, 0.33333334F, 0.046666667F);
-    GlStateManager.scale(0.010416667F, -0.010416667F, 0.010416667F);
-    GlStateManager.glNormal3f(0.0F, 0.0F, -0.010416667F);
+    GlStateManager.translate(0, 0.33333334f, 0.046666667f);
+    GlStateManager.scale(0.010416667f, -0.010416667f, 0.010416667f);
+    GlStateManager.glNormal3f(0, 0, -0.010416667f);
     GlStateManager.depthMask(false);
 
     if (destroyStage < 0) {
+      FontRenderer fontrenderer = getFontRenderer();
+
       for (int j = 0; j < te.signText.length; ++j) {
         if (te.signText[j] != null) {
           ITextComponent itextcomponent = te.signText[j];
@@ -119,7 +114,7 @@ public abstract class TileEntitySignRenderer<T extends TileEntityMcfrSign> exten
     }
 
     GlStateManager.depthMask(true);
-    GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+    GlStateManager.color(1, 1, 1, 1);
     GlStateManager.popMatrix();
 
     if (destroyStage >= 0) {
@@ -127,11 +122,5 @@ public abstract class TileEntitySignRenderer<T extends TileEntityMcfrSign> exten
       GlStateManager.popMatrix();
       GlStateManager.matrixMode(5888);
     }
-  }
-
-  @SuppressWarnings("unused")
-  private void renderSuspensions() {
-    // FIXME : NullPointer
-    drawQuad(new Point3d(0, 0, 0), new Point3d(0, 1, 0), new Point3d(1, 1, 0), new Point3d(1, 0, 0), new Point2d(0, 0), new Point2d(0, 0), new Point2d(0, 0), new Point2d(0, 0));
   }
 }

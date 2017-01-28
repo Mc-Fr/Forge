@@ -71,9 +71,9 @@ public class BlockLantern extends McfrBlock {
     double f = 0.25, h = 0.5;
 
     if (state.getValue(POSITION) == EnumPosition.BOTTOM)
-      return new AxisAlignedBB(h - f, 0, h - f, h + f, 0.6, h + f);
+      return new AxisAlignedBB(h - f, 0, h - f, h + f, 0.5625, h + f);
     else if (state.getValue(POSITION) == EnumPosition.TOP)
-      return new AxisAlignedBB(h - f, 0.4, h - f, h + f, 1, h + f);
+      return new AxisAlignedBB(h - f, 0.4375f, h - f, h + f, 1, h + f);
     else {
       switch (state.getValue(ORIENTATION)) {
         case 0:

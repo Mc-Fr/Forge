@@ -16,6 +16,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -42,6 +43,11 @@ public class BlockWallNote extends McfrBlock implements ITileEntityProvider {
   }
 
   @Override
+  public EnumBlockRenderType getRenderType(IBlockState state) {
+    return EnumBlockRenderType.ENTITYBLOCK_ANIMATED;
+  }
+
+  @Override
   public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, World worldIn, BlockPos pos) {
     return NULL_AABB;
   }
@@ -50,13 +56,13 @@ public class BlockWallNote extends McfrBlock implements ITileEntityProvider {
   public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
     switch (state.getValue(FACING)) {
       case NORTH:
-        return new AxisAlignedBB(0, 0, 0.875f, 1, 1, 1);
+        return new AxisAlignedBB(0, 0, 1, 1, 1, 1);
       case SOUTH:
-        return new AxisAlignedBB(0, 0, 0, 1, 1, 0.125f);
+        return new AxisAlignedBB(0, 0, 0, 1, 1, 0);
       case WEST:
-        return new AxisAlignedBB(0.875f, 0, 0, 1, 1, 1);
+        return new AxisAlignedBB(1, 0, 0, 1, 1, 1);
       case EAST:
-        return new AxisAlignedBB(0, 0, 0, 0.125f, 1, 1);
+        return new AxisAlignedBB(0, 0, 0, 0, 1, 1);
       default:
         return FULL_BLOCK_AABB;
     }
@@ -104,9 +110,9 @@ public class BlockWallNote extends McfrBlock implements ITileEntityProvider {
         int lastLineIndex = 14;
 
         // On supprime les lignes vides en début et en fin de note.
-        while (t.getText()[firstLineIndex].getUnformattedText().equals("§r"))
+        while (firstLineIndex < 15 && t.getText()[firstLineIndex].getUnformattedText().equals("§r"))
           firstLineIndex++;
-        while (t.getText()[lastLineIndex].getUnformattedText().equals("§r"))
+        while (lastLineIndex > 0 && t.getText()[lastLineIndex].getUnformattedText().equals("§r"))
           lastLineIndex--;
 
         for (int i = firstLineIndex; i <= lastLineIndex; i++)

@@ -34,8 +34,6 @@ public class TileEntityCarpetRenderer extends TileEntitySpecialRenderer<TileEnti
     GlStateManager.pushMatrix();
     GlStateManager.translate(x, y, z);
 
-    fixLight(te);
-
     bindTex("minecraft:textures/blocks/wool_colored_" + EnumDyeColor.byMetadata(te.getMetadata()).getName() + ".png");
 
     if (isBottomHalfSlab(world, down)) {
@@ -294,14 +292,10 @@ public class TileEntityCarpetRenderer extends TileEntitySpecialRenderer<TileEnti
     double h = H + b;
     double l = 0.5;
     Point2d[][] points = { //
-        { new Point2d(0, 0), new Point2d(0, l + H), new Point2d(1, l + H), new Point2d(1, 0), new Point2d(0, l + H), new Point2d(0, 1), new Point2d(1, 1),
-            new Point2d(1, l + H) }, //
-        { new Point2d(1, 0), new Point2d(l - W, 0), new Point2d(l - W, 1), new Point2d(1, 1), new Point2d(l - W, 0), new Point2d(0, 0), new Point2d(0, 1),
-            new Point2d(l - W, 1) }, //
-        { new Point2d(1, 1), new Point2d(1, l - H), new Point2d(0, l - H), new Point2d(0, 1), new Point2d(1, l - H), new Point2d(1, 0), new Point2d(0, 0),
-            new Point2d(0, l - H) }, //
-        { new Point2d(0, 1), new Point2d(l + W, 1), new Point2d(l + W, 0), new Point2d(0, 0), new Point2d(l + W, 1), new Point2d(1, 1), new Point2d(1, 0),
-            new Point2d(l + W, 0) } //
+      {new Point2d(0, 0), new Point2d(0, l + H), new Point2d(1, l + H), new Point2d(1, 0), new Point2d(0, l + H), new Point2d(0, 1), new Point2d(1, 1), new Point2d(1, l + H)}, //
+      {new Point2d(1, 0), new Point2d(l - W, 0), new Point2d(l - W, 1), new Point2d(1, 1), new Point2d(l - W, 0), new Point2d(0, 0), new Point2d(0, 1), new Point2d(l - W, 1)}, //
+      {new Point2d(1, 1), new Point2d(1, l - H), new Point2d(0, l - H), new Point2d(0, 1), new Point2d(1, l - H), new Point2d(1, 0), new Point2d(0, 0), new Point2d(0, l - H)}, //
+      {new Point2d(0, 1), new Point2d(l + W, 1), new Point2d(l + W, 0), new Point2d(0, 0), new Point2d(l + W, 1), new Point2d(1, 1), new Point2d(1, 0), new Point2d(l + W, 0)} //
     };
     Point2d[] p = points[0];
 
@@ -381,14 +375,10 @@ public class TileEntityCarpetRenderer extends TileEntitySpecialRenderer<TileEnti
     double h = H + b;
     double l = 0.5;
     Point2d[][] points = { //
-        { new Point2d(0, 0), new Point2d(0, l + H), new Point2d(1, l + H), new Point2d(1, 0), new Point2d(0, l + H), new Point2d(0, 1), new Point2d(l + W, 1),
-            new Point2d(l + W, l + H), new Point2d(l + W, l + H), new Point2d(l + W, 1), new Point2d(1, 1), new Point2d(1, l + H) }, //
-        { new Point2d(1, 0), new Point2d(l - W, 0), new Point2d(l - W, 1), new Point2d(1, 1), new Point2d(l - W, 0), new Point2d(0, 0), new Point2d(0, l + H),
-            new Point2d(l - W, l + H), new Point2d(l - W, l + H), new Point2d(0, l + H), new Point2d(0, 1), new Point2d(l - W, 1) }, //
-        { new Point2d(1, 1), new Point2d(1, l - H), new Point2d(0, l - H), new Point2d(0, 1), new Point2d(1, l - H), new Point2d(1, 0), new Point2d(l - W, 0),
-            new Point2d(l - W, l - H), new Point2d(l - W, l - H), new Point2d(l - W, 0), new Point2d(0, 0), new Point2d(0, l - H) }, //
-        { new Point2d(0, 1), new Point2d(l + W, 1), new Point2d(l + W, 0), new Point2d(0, 0), new Point2d(l + W, 1), new Point2d(1, 1), new Point2d(1, l - H),
-            new Point2d(l + W, l - H), new Point2d(l + W, l - H), new Point2d(1, l - H), new Point2d(1, 0), new Point2d(l + W, 0) } //
+      {new Point2d(0, 0), new Point2d(0, l + H), new Point2d(1, l + H), new Point2d(1, 0), new Point2d(0, l + H), new Point2d(0, 1), new Point2d(l + W, 1), new Point2d(l + W, l + H), new Point2d(l + W, l + H), new Point2d(l + W, 1), new Point2d(1, 1), new Point2d(1, l + H)}, //
+      {new Point2d(1, 0), new Point2d(l - W, 0), new Point2d(l - W, 1), new Point2d(1, 1), new Point2d(l - W, 0), new Point2d(0, 0), new Point2d(0, l + H), new Point2d(l - W, l + H), new Point2d(l - W, l + H), new Point2d(0, l + H), new Point2d(0, 1), new Point2d(l - W, 1)}, //
+      {new Point2d(1, 1), new Point2d(1, l - H), new Point2d(0, l - H), new Point2d(0, 1), new Point2d(1, l - H), new Point2d(1, 0), new Point2d(l - W, 0), new Point2d(l - W, l - H), new Point2d(l - W, l - H), new Point2d(l - W, 0), new Point2d(0, 0), new Point2d(0, l - H)}, //
+      {new Point2d(0, 1), new Point2d(l + W, 1), new Point2d(l + W, 0), new Point2d(0, 0), new Point2d(l + W, 1), new Point2d(1, 1), new Point2d(1, l - H), new Point2d(l + W, l - H), new Point2d(l + W, l - H), new Point2d(1, l - H), new Point2d(1, 0), new Point2d(l + W, 0)} //
     };
     Point2d[] p = points[0];
 
@@ -478,14 +468,10 @@ public class TileEntityCarpetRenderer extends TileEntitySpecialRenderer<TileEnti
     double h = H + b;
     double l = 0.5;
     Point2d[][] points = { //
-        { new Point2d(0, 0), new Point2d(0, l + H), new Point2d(l + W, l + H), new Point2d(l + W, 0), new Point2d(0, l + H), new Point2d(0, 1),
-            new Point2d(1, 1), new Point2d(1, l + H), new Point2d(l + W, 0), new Point2d(l + W, l + H), new Point2d(1, l + H), new Point2d(1, 0) }, //
-        { new Point2d(1, 0), new Point2d(l - W, 0), new Point2d(l - W, l + H), new Point2d(1, l + H), new Point2d(l - W, 0), new Point2d(0, 0),
-            new Point2d(0, 1), new Point2d(l - W, 1), new Point2d(1, l + H), new Point2d(l - W, l + H), new Point2d(l - W, 1), new Point2d(1, 1) }, //
-        { new Point2d(1, 1), new Point2d(1, l - H), new Point2d(l - W, l - H), new Point2d(l - W, 1), new Point2d(1, l - H), new Point2d(1, 0),
-            new Point2d(0, 0), new Point2d(0, l - H), new Point2d(l - W, 1), new Point2d(l - W, l - H), new Point2d(0, l - H), new Point2d(0, 1) }, //
-        { new Point2d(0, 1), new Point2d(l + W, 1), new Point2d(l + W, l - H), new Point2d(0, l - H), new Point2d(l + W, 1), new Point2d(1, 1),
-            new Point2d(1, 0), new Point2d(l + W, 0), new Point2d(0, l - H), new Point2d(l + W, l - H), new Point2d(l + W, 0), new Point2d(0, 0) } //
+      {new Point2d(0, 0), new Point2d(0, l + H), new Point2d(l + W, l + H), new Point2d(l + W, 0), new Point2d(0, l + H), new Point2d(0, 1), new Point2d(1, 1), new Point2d(1, l + H), new Point2d(l + W, 0), new Point2d(l + W, l + H), new Point2d(1, l + H), new Point2d(1, 0)}, //
+      {new Point2d(1, 0), new Point2d(l - W, 0), new Point2d(l - W, l + H), new Point2d(1, l + H), new Point2d(l - W, 0), new Point2d(0, 0), new Point2d(0, 1), new Point2d(l - W, 1), new Point2d(1, l + H), new Point2d(l - W, l + H), new Point2d(l - W, 1), new Point2d(1, 1)}, //
+      {new Point2d(1, 1), new Point2d(1, l - H), new Point2d(l - W, l - H), new Point2d(l - W, 1), new Point2d(1, l - H), new Point2d(1, 0), new Point2d(0, 0), new Point2d(0, l - H), new Point2d(l - W, 1), new Point2d(l - W, l - H), new Point2d(0, l - H), new Point2d(0, 1)}, //
+      {new Point2d(0, 1), new Point2d(l + W, 1), new Point2d(l + W, l - H), new Point2d(0, l - H), new Point2d(l + W, 1), new Point2d(1, 1), new Point2d(1, 0), new Point2d(l + W, 0), new Point2d(0, l - H), new Point2d(l + W, l - H), new Point2d(l + W, 0), new Point2d(0, 0)} //
     };
     Point2d[] p = points[0];
 
