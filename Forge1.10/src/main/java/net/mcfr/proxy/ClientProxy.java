@@ -27,6 +27,8 @@ import net.mcfr.craftsmanship.ItemSwordHandle;
 import net.mcfr.craftsmanship.tileEntities.TileEntityCircularSaw;
 import net.mcfr.craftsmanship.tileEntities.TileEntityCircularSawRenderer;
 import net.mcfr.decoration.containerBlocks.ItemBarrel;
+import net.mcfr.decoration.containerBlocks.tileEntities.TileEntityBookshelf;
+import net.mcfr.decoration.containerBlocks.tileEntities.TileEntityBookshelfRenderer;
 import net.mcfr.decoration.containerBlocks.tileEntities.TileEntityPallet;
 import net.mcfr.decoration.containerBlocks.tileEntities.TileEntityPalletRenderer;
 import net.mcfr.decoration.furniture.tileEntities.TileEntityArmChair;
@@ -843,6 +845,7 @@ public class ClientProxy extends CommonProxy {
     ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPaperSign.class, new TileEntityPaperSignRenderer());
     ClientRegistry.bindTileEntitySpecialRenderer(TileEntityWallNote.class, new TileEntityWallNoteRenderer());
 
+    ClientRegistry.bindTileEntitySpecialRenderer(TileEntityBookshelf.class, new TileEntityBookshelfRenderer());
     ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPallet.class, new TileEntityPalletRenderer());
 
     ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySupport.class, new TileEntitySupportRenderer());

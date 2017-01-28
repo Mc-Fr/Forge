@@ -5,12 +5,15 @@ import org.lwjgl.opengl.GL11;
 import net.mcfr.utils.math.Point2d;
 import net.mcfr.utils.math.Point3d;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.VertexBuffer;
 import net.minecraft.client.renderer.block.model.ItemCameraTransforms;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 
 public final class RenderUtils {
   public static final int TOP_OFFSET = 17;
@@ -19,6 +22,13 @@ public final class RenderUtils {
   public static final int BOTTOM_OFFSET = 7;
   public static final int SIDE_OFFSET = 8;
   public static final int SLOT_SIZE = 18;
+
+  public static void fixLighting(World world, BlockPos pos) {
+    int worldLight = world.getCombinedLight(pos, 15728640);
+    int wBrightness = worldLight % 65536;
+    int yBrightness = worldLight / 65536;
+    OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, (float) wBrightness, (float) yBrightness);
+  }
 
   /**
    * @return le WorldRenderer

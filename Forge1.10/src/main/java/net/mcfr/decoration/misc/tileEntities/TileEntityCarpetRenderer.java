@@ -3,6 +3,7 @@ package net.mcfr.decoration.misc.tileEntities;
 import static net.mcfr.utils.RenderUtils.*;
 
 import net.mcfr.McfrBlocks;
+import net.mcfr.utils.RenderUtils;
 import net.mcfr.utils.math.Point2d;
 import net.minecraft.block.BlockSlab;
 import net.minecraft.block.BlockStairs;
@@ -34,6 +35,7 @@ public class TileEntityCarpetRenderer extends TileEntitySpecialRenderer<TileEnti
     GlStateManager.pushMatrix();
     GlStateManager.translate(x, y, z);
 
+    RenderUtils.fixLighting(te.getWorld(), te.getPos());
     bindTex("minecraft:textures/blocks/wool_colored_" + EnumDyeColor.byMetadata(te.getMetadata()).getName() + ".png");
 
     if (isBottomHalfSlab(world, down)) {
