@@ -32,6 +32,8 @@ public class Transformer implements IClassTransformer {
   /** Associe une fonction de transformation au nom d'une classe. */
   private static final Map<String, BiConsumer<ClassNode, Boolean>> CLASSES;
 
+  // TODO tester de désactiver les transformeurs un par un pour voir lequel empêche Sponge de
+  // démarrer.
   static {
     Map<String, BiConsumer<ClassNode, Boolean>> map = new HashMap<>();
     map.put("net.minecraft.block.BlockCrops", Transformer::transformBlockCrops);
