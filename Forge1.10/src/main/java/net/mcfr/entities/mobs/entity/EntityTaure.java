@@ -105,9 +105,9 @@ public class EntityTaure extends EntityBurrowed {
       return LootTableList.ENTITIES_CHICKEN;
   }
 
-  public EntityHoen createChild(EntityAgeable ageable)
+  public EntityTaure createChild(EntityAgeable ageable)
   {
-      return new EntityHoen(this.worldObj);
+      return new EntityTaure(this.worldObj);
   }
 
   /**

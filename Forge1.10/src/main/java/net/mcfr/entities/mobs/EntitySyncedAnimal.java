@@ -12,10 +12,10 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 
-public class EntitySyncedAnimal extends EntityAnimal {
+public abstract class EntitySyncedAnimal extends EntityAnimal {
   public static Map<Integer, NBTTagCompound> syncedProps = new HashMap<>();
   protected NBTTagCompound syncedPropsCompound = new NBTTagCompound();
-  private boolean isInitialized;
+  protected boolean isInitialized;
 
   public EntitySyncedAnimal(World worldIn) {
     super(worldIn);
@@ -28,6 +28,16 @@ public class EntitySyncedAnimal extends EntityAnimal {
     this.setSyncedProps(nbt);
   }
 
+  public void setSyncedBoolean(String key, boolean value) {
+    NBTTagCompound nbt = this.getSyncedProps();
+    nbt.setBoolean(key, value);
+    this.setSyncedProps(nbt);
+  }
+  
+  public boolean getSyncedBoolean(String key) {
+    return this.syncedPropsCompound.getBoolean(key);
+  }
+  
   public void setSyncedInteger(String key, int value) {
     NBTTagCompound nbt = this.getSyncedProps();
     nbt.setInteger(key, value);
@@ -77,14 +87,11 @@ public class EntitySyncedAnimal extends EntityAnimal {
 
   @Override
   public void onLivingUpdate() {
-    if (!this.isInitialized) {
+    if (!this.isInitialized && this.worldObj.isRemote) {
       this.askForSync();
     }
     super.onLivingUpdate();
   }
-
-  @Override
-  public EntityAgeable createChild(EntityAgeable ageable) {
-    return null;
-  }
+  
+  public abstract EntityAgeable createChild(EntityAgeable ageable);
 }

@@ -7,6 +7,7 @@ import javax.annotation.Nullable;
 import com.google.common.collect.Sets;
 
 import net.mcfr.entities.mobs.EntityBurrowed;
+import net.mcfr.entities.mobs.ai.EntityAIGoToBurrow;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
@@ -53,12 +54,13 @@ public class EntityHoen extends EntityBurrowed {
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(1, new EntityAIPanic(this, 1.4D));
         this.tasks.addTask(2, new EntityAIMate(this, 1.0D));
-        this.tasks.addTask(3, new EntityAITempt(this, 1.0D, false, TEMPTATION_ITEMS));
+        this.tasks.addTask(3, new EntityAITempt(this, 1.0D, true, TEMPTATION_ITEMS));
         this.tasks.addTask(4, new EntityAIFollowParent(this, 1.1D));
-        this.tasks.addTask(5, new EntityAIWander(this, 1.0D));
-        this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityHoen.class, 6.0F));
-        this.tasks.addTask(7, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
-        this.tasks.addTask(8, new EntityAILookIdle(this));
+        this.tasks.addTask(5, new EntityAIGoToBurrow(this, 1.0D, 3));
+        this.tasks.addTask(6, new EntityAIWander(this, 1.0D, 10));
+        this.tasks.addTask(7, new EntityAIWatchClosest(this, EntityHoen.class, 6.0F));
+        this.tasks.addTask(8, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
+        this.tasks.addTask(9, new EntityAILookIdle(this));
     }
 
     public float getEyeHeight()
@@ -77,6 +79,7 @@ public class EntityHoen extends EntityBurrowed {
      * Called frequently so the entity can update its state every tick as required. For example, zombies and skeletons
      * use this to react to sunlight and start to burn.
      */
+    @Override
     public void onLivingUpdate()
     {
         super.onLivingUpdate();

@@ -7,6 +7,7 @@ import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.math.MathHelper;
 
 public class ModelNiale extends ModelBase {
@@ -14,6 +15,7 @@ public class ModelNiale extends ModelBase {
 
   private float headYaw;
   private float headPitch;
+  private float headRotationAngleX;
 
   public ModelRenderer body;
   public ModelRenderer head;
@@ -79,7 +81,7 @@ public class ModelNiale extends ModelBase {
   public void render(Entity entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
     this.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale, entityIn);
     
-    if (((EntityNiale) entityIn).getWhoolColor() != 0) {
+    if (!((EntityNiale) entityIn).getSheared()) {
       this.whool.isHidden = false;
       this.tailWhool.isHidden = false;
       this.headWhool.isHidden = false;
@@ -114,6 +116,7 @@ public class ModelNiale extends ModelBase {
    * Interpolate the head rotation angles to make the head movement softer
    */
   private void interpolateHeadAngles(float headPitch, float headYaw, float speed) {
+    
     if (this.headPitch - headPitch > 0.2F) {
       this.headPitch -= speed;
     } else if (this.headPitch - headPitch < -0.2F) {
@@ -126,7 +129,15 @@ public class ModelNiale extends ModelBase {
       this.headYaw += speed;
     }
   }
-
+  
+  public void setLivingAnimations(EntityLivingBase entitylivingbaseIn, float p_78086_2_, float p_78086_3_, float partialTickTime)
+  {
+      super.setLivingAnimations(entitylivingbaseIn, p_78086_2_, p_78086_3_, partialTickTime);
+      this.head.rotationPointY = -0.74F + ((EntityNiale)entitylivingbaseIn).getHeadRotationPointY(partialTickTime) * 9.0F;
+      this.headRotationAngleX = ((EntityNiale)entitylivingbaseIn).getHeadRotationAngleX(partialTickTime);
+      this.headWhool.rotationPointY = this.head.rotationPointY;
+  }
+  
   /**
    * Sets the model's various rotation angles. For bipeds, par1 and par2 are
    * used for animating the movement of arms and legs, where par1 represents the
@@ -145,7 +156,8 @@ public class ModelNiale extends ModelBase {
     this.tail.rotateAngleY = 0F;
     this.tailWhool.rotateAngleX = 0F * degToRad;
     this.whool.rotateAngleX = 0F * degToRad;
-    // Calcul de l'animation
+    
+    // Calcul de l'animation    
     float phaseCos = MathHelper.cos(ageInTicks * tickToSec * 12.0F * ((float) Math.PI));
     float phaseSin = MathHelper.sin(ageInTicks * tickToSec * 16.0F * ((float) Math.PI));
     
@@ -160,7 +172,7 @@ public class ModelNiale extends ModelBase {
     this.interpolateHeadAngles(headPitch, netHeadYaw, 0.2F);
     
     this.head.rotateAngleY = this.headPitch * degToRad;
-    this.head.rotateAngleX = this.headYaw * degToRad;
+    this.head.rotateAngleX = this.headRotationAngleX;
     this.headWhool.rotateAngleX = this.head.rotateAngleX / 2;
     this.headWhool.rotateAngleY = this.head.rotateAngleY / 2;
   }

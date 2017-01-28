@@ -105,9 +105,9 @@ public class EntityKunawalu extends EntityBurrowed {
       return LootTableList.ENTITIES_CHICKEN;
   }
 
-  public EntityHoen createChild(EntityAgeable ageable)
+  public EntityKunawalu createChild(EntityAgeable ageable)
   {
-      return new EntityHoen(this.worldObj);
+      return new EntityKunawalu(this.worldObj);
   }
 
   /**
