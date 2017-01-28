@@ -27,7 +27,6 @@ public class EntityAIGoToBurrow extends EntityAIBase {
       Vec3d burrowPos = this.entity.getBurrowPosition();
       if (this.entity.getPositionVector().distanceTo(burrowPos) > burrowSize) {
         this.targetPos = RandomPositionGenerator.findRandomTargetBlockTowards(this.entity, this.burrowSize, 1, burrowPos);
-        System.out.println(burrowPos);
         return this.targetPos != null;
       }
     }

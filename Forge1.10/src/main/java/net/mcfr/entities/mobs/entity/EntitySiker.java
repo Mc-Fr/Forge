@@ -7,6 +7,10 @@ import javax.annotation.Nullable;
 import com.google.common.collect.Sets;
 
 import net.mcfr.entities.mobs.EntityBurrowed;
+import net.mcfr.entities.mobs.ai.AICycle;
+import net.mcfr.entities.mobs.ai.EntityAIAttackCycle;
+import net.mcfr.entities.mobs.ai.EntityAIAvoidEntityCycle;
+import net.mcfr.entities.mobs.ai.EntityAIGoToBurrow;
 import net.mcfr.entities.mobs.gender.Genders;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
@@ -14,11 +18,9 @@ import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.ai.EntityAIFollowParent;
+import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.entity.ai.EntityAILookIdle;
-import net.minecraft.entity.ai.EntityAIMate;
-import net.minecraft.entity.ai.EntityAIPanic;
-import net.minecraft.entity.ai.EntityAITempt;
+import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.player.EntityPlayer;
@@ -38,24 +40,38 @@ import net.minecraft.world.storage.loot.LootTableList;
 
 public class EntitySiker extends EntityBurrowed {
   private static final Set<Item> TEMPTATION_ITEMS = Sets.newHashSet(Items.WHEAT_SEEDS);
+  private AICycle cycle;
 
   public EntitySiker(World worldIn) {
     super(worldIn);
-    setSize(2.0F, 3.5F);
+    setSize(1.9F, 3.0F);
     setPathPriority(PathNodeType.WATER, 0.0F);
   }
 
   @Override
   protected void initEntityAI() {
-    this.tasks.addTask(1, new EntityAIPanic(this, 1.4D));
-    this.tasks.addTask(2, new EntityAIMate(this, 1.0D));
-    this.tasks.addTask(3, new EntityAITempt(this, 1.0D, false, TEMPTATION_ITEMS));
-    this.tasks.addTask(4, new EntityAIFollowParent(this, 1.1D));
-    this.tasks.addTask(5, new EntityAIWander(this, 1.0D));
-    this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
-    this.tasks.addTask(7, new EntityAILookIdle(this));
+    this.cycle = AICycle.IDLE;
+        
+    this.tasks.addTask(0, new EntityAIAvoidEntityCycle<EntityPlayer>(this, EntityPlayer.class, 30.0F, 1.0F, 1.4F, 100));
+    this.tasks.addTask(1, new EntityAIAttackCycle(this, 1.3F, true, 100));
+    this.tasks.addTask(2, new EntityAIWatchClosest(this, EntityPlayer.class, 25.0F, 0.9F));
+    this.tasks.addTask(3, new EntityAIGoToBurrow(this, 1.0D, 5));
+    this.tasks.addTask(4, new EntityAIWander(this, 1.0D));
+    this.tasks.addTask(5, new EntityAILookIdle(this));
+    
+    this.targetTasks.addTask(0, new EntityAIHurtByTarget(this, false, new Class[0]));
+    this.targetTasks.addTask(1, new EntityAINearestAttackableTarget<EntityPlayer>(this, EntityPlayer.class, true));
   }
-
+  
+  public AICycle getCycle() {
+    return this.cycle;
+  }
+  
+  public void setCycle(AICycle cycle) {
+    System.out.println(cycle);
+    this.cycle = cycle;
+  }
+  
   @Override
   public float getEyeHeight() {
     return this.height;
@@ -64,8 +80,11 @@ public class EntitySiker extends EntityBurrowed {
   @Override
   protected void applyEntityAttributes() {
     super.applyEntityAttributes();
-    getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(10.0D);
+    getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(24.0D);
     getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.3D);
+    getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(15.0F);
+    
+    this.getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(10.0D);
   }
 
   /**
