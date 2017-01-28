@@ -1,4 +1,4 @@
-package net.mcfr.decoration.furniture.models;
+package net.mcfr.decoration.misc.models;
 
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;

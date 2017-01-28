@@ -10,6 +10,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumFacing.Axis;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -43,6 +44,11 @@ public class BlockSupport extends McfrBlockOrientable implements ITileEntityProv
   @Override
   public AxisAlignedBB getCollisionBoundingBox(IBlockState state, World worldIn, BlockPos pos) {
     return NULL_AABB;
+  }
+
+  @Override
+  public EnumBlockRenderType getRenderType(IBlockState state) {
+    return EnumBlockRenderType.ENTITYBLOCK_ANIMATED;
   }
 
   @Override
