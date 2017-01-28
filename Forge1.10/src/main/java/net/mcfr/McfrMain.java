@@ -11,8 +11,12 @@ import net.mcfr.decoration.containerBlocks.tileEntities.TileEntityCrate;
 import net.mcfr.decoration.containerBlocks.tileEntities.TileEntityFoodCrate;
 import net.mcfr.decoration.containerBlocks.tileEntities.TileEntityLittleChest;
 import net.mcfr.decoration.containerBlocks.tileEntities.TileEntityPallet;
+import net.mcfr.decoration.furniture.tileEntities.TileEntityArmChair;
 import net.mcfr.decoration.furniture.tileEntities.TileEntityShowcase;
 import net.mcfr.decoration.furniture.tileEntities.TileEntityWeaponsStand;
+import net.mcfr.decoration.furniture.tileEntities.TileEntityWoodenBench;
+import net.mcfr.decoration.furniture.tileEntities.TileEntityWoodenChair;
+import net.mcfr.decoration.furniture.tileEntities.TileEntityWoodenStool;
 import net.mcfr.decoration.lighting.tileEntities.TileEntityCampfire;
 import net.mcfr.decoration.signs.tileEntities.TileEntityNormalSign;
 import net.mcfr.decoration.signs.tileEntities.TileEntityOrpSign;
@@ -115,6 +119,7 @@ public class McfrMain {
   }
 
   private void registerTileEntities() {
+    registerTileEntity(TileEntityArmChair.class, "arm_chair");
     registerTileEntity(TileEntityBarrel.class, "barrel");
     registerTileEntity(TileEntityBellows.class, "bellows");
     registerTileEntity(TileEntityBookshelf.class, "bookshelf");
@@ -136,6 +141,9 @@ public class McfrMain {
     registerTileEntity(TileEntityTombstone.class, "tombstone");
     registerTileEntity(TileEntityWallNote.class, "wall_note");
     registerTileEntity(TileEntityWeaponsStand.class, "weapons_stand");
+    registerTileEntity(TileEntityWoodenBench.class, "wooden_bench");
+    registerTileEntity(TileEntityWoodenChair.class, "wooden_chair");
+    registerTileEntity(TileEntityWoodenStool.class, "wooden_stool");
   }
 
   private void registerEntities() {

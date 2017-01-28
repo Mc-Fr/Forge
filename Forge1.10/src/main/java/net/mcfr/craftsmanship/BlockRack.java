@@ -1,5 +1,7 @@
 package net.mcfr.craftsmanship;
 
+import java.lang.reflect.InvocationTargetException;
+
 import net.mcfr.craftsmanship.tileEntities.TileEntityRack;
 import net.mcfr.decoration.containerBlocks.McfrBlockContainer;
 import net.mcfr.utils.FacingUtils;
@@ -27,10 +29,11 @@ public abstract class BlockRack<T extends TileEntityRack> extends McfrBlockConta
     T te = null;
 
     try {
-      te = getTileEntityClass().newInstance();
+      te = getTileEntityClass().getConstructor(EnumFacing.class).newInstance(getStateFromMeta(meta).getValue(FACING));
     }
-    catch (InstantiationException e) {}
-    catch (IllegalAccessException e) {}
+    catch (NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+      e.printStackTrace();
+    }
 
     return te;
   }

@@ -226,6 +226,7 @@ public class BlockShowcase extends BlockContainer {
     return false;
   }
 
+  // FIXME conserver la tile entity.
   @Override
   @SuppressWarnings("deprecation")
   public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn) {
