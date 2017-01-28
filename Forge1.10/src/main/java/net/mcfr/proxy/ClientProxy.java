@@ -24,28 +24,44 @@ import net.mcfr.construction.BlockTimbered;
 import net.mcfr.construction.McfrBlockSlab;
 import net.mcfr.craftsmanship.ItemStitch;
 import net.mcfr.craftsmanship.ItemSwordHandle;
-import net.mcfr.decoration.BlockFloorDecoration;
-import net.mcfr.decoration.EnumMoucharabiehType;
+import net.mcfr.craftsmanship.tileEntities.TileEntityCircularSaw;
+import net.mcfr.craftsmanship.tileEntities.TileEntityCircularSawRenderer;
 import net.mcfr.decoration.containerBlocks.ItemBarrel;
+import net.mcfr.decoration.containerBlocks.tileEntities.TileEntityBookshelf;
+import net.mcfr.decoration.containerBlocks.tileEntities.TileEntityBookshelfRenderer;
 import net.mcfr.decoration.containerBlocks.tileEntities.TileEntityPallet;
 import net.mcfr.decoration.containerBlocks.tileEntities.TileEntityPalletRenderer;
+import net.mcfr.decoration.furniture.tileEntities.TileEntityArmChair;
+import net.mcfr.decoration.furniture.tileEntities.TileEntityArmChairRenderer;
 import net.mcfr.decoration.furniture.tileEntities.TileEntityShowcase;
 import net.mcfr.decoration.furniture.tileEntities.TileEntityShowcaseRenderer;
 import net.mcfr.decoration.furniture.tileEntities.TileEntityWeaponsStand;
 import net.mcfr.decoration.furniture.tileEntities.TileEntityWeaponsStandRenderer;
+import net.mcfr.decoration.furniture.tileEntities.TileEntityWoodenBench;
+import net.mcfr.decoration.furniture.tileEntities.TileEntityWoodenBenchRenderer;
+import net.mcfr.decoration.furniture.tileEntities.TileEntityWoodenChair;
+import net.mcfr.decoration.furniture.tileEntities.TileEntityWoodenChairRenderer;
+import net.mcfr.decoration.furniture.tileEntities.TileEntityWoodenStool;
+import net.mcfr.decoration.furniture.tileEntities.TileEntityWoodenStoolRenderer;
 import net.mcfr.decoration.lighting.EnumLanternColor;
 import net.mcfr.decoration.lighting.tileEntities.TileEntityCampfire;
 import net.mcfr.decoration.lighting.tileEntities.TileEntityCampfireRenderer;
+import net.mcfr.decoration.lighting.tileEntities.TileEntityChandelier;
+import net.mcfr.decoration.lighting.tileEntities.TileEntityChandelierRenderer;
+import net.mcfr.decoration.misc.BlockFloorDecoration;
+import net.mcfr.decoration.misc.EnumMoucharabiehType;
+import net.mcfr.decoration.misc.tileEntities.TileEntityCarpet;
+import net.mcfr.decoration.misc.tileEntities.TileEntityCarpetRenderer;
+import net.mcfr.decoration.misc.tileEntities.TileEntitySupport;
+import net.mcfr.decoration.misc.tileEntities.TileEntitySupportRenderer;
 import net.mcfr.decoration.signs.tileEntities.TileEntityNormalSign;
 import net.mcfr.decoration.signs.tileEntities.TileEntityNormalSignRenderer;
 import net.mcfr.decoration.signs.tileEntities.TileEntityOrpSign;
 import net.mcfr.decoration.signs.tileEntities.TileEntityOrpSignRenderer;
 import net.mcfr.decoration.signs.tileEntities.TileEntityPaperSign;
 import net.mcfr.decoration.signs.tileEntities.TileEntityPaperSignRenderer;
-import net.mcfr.decoration.tileEntities.TileEntityCarpet;
-import net.mcfr.decoration.tileEntities.TileEntityCarpetRenderer;
-import net.mcfr.decoration.tileEntities.TileEntitySupport;
-import net.mcfr.decoration.tileEntities.TileEntitySupportRenderer;
+import net.mcfr.decoration.signs.tileEntities.TileEntityWallNote;
+import net.mcfr.decoration.signs.tileEntities.TileEntityWallNoteRenderer;
 import net.mcfr.economy.ItemClawMoney;
 import net.mcfr.economy.ItemCoin;
 import net.mcfr.economy.ItemToken;
@@ -816,15 +832,31 @@ public class ClientProxy extends CommonProxy {
     // Suppression du rendu des panneaux par défaut.
     TileEntityRendererDispatcher.instance.mapSpecialRenderers.remove(TileEntitySign.class);
     ClientRegistry.bindTileEntitySpecialRenderer(TileEntityBellows.class, new TileEntityBellowsRenderer());
+
     ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCampfire.class, new TileEntityCampfireRenderer());
+    ClientRegistry.bindTileEntitySpecialRenderer(TileEntityChandelier.class, new TileEntityChandelierRenderer());
+
     ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCarpet.class, new TileEntityCarpetRenderer());
+
+    ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCircularSaw.class, new TileEntityCircularSawRenderer());
+
     ClientRegistry.bindTileEntitySpecialRenderer(TileEntityNormalSign.class, new TileEntityNormalSignRenderer());
     ClientRegistry.bindTileEntitySpecialRenderer(TileEntityOrpSign.class, new TileEntityOrpSignRenderer());
-    ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPallet.class, new TileEntityPalletRenderer());
     ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPaperSign.class, new TileEntityPaperSignRenderer());
+    ClientRegistry.bindTileEntitySpecialRenderer(TileEntityWallNote.class, new TileEntityWallNoteRenderer());
+
+    ClientRegistry.bindTileEntitySpecialRenderer(TileEntityBookshelf.class, new TileEntityBookshelfRenderer());
+    ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPallet.class, new TileEntityPalletRenderer());
+
+    ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySupport.class, new TileEntitySupportRenderer());
+
     ClientRegistry.bindTileEntitySpecialRenderer(TileEntityShowcase.class, new TileEntityShowcaseRenderer());
     ClientRegistry.bindTileEntitySpecialRenderer(TileEntityWeaponsStand.class, new TileEntityWeaponsStandRenderer());
-    ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySupport.class, new TileEntitySupportRenderer());
+
+    ClientRegistry.bindTileEntitySpecialRenderer(TileEntityArmChair.class, new TileEntityArmChairRenderer());
+    ClientRegistry.bindTileEntitySpecialRenderer(TileEntityWoodenBench.class, new TileEntityWoodenBenchRenderer());
+    ClientRegistry.bindTileEntitySpecialRenderer(TileEntityWoodenChair.class, new TileEntityWoodenChairRenderer());
+    ClientRegistry.bindTileEntitySpecialRenderer(TileEntityWoodenStool.class, new TileEntityWoodenStoolRenderer());
 
     // TODO 1.11
     // RenderingRegistry.registerEntityRenderingHandler(EntitySiker.class, new

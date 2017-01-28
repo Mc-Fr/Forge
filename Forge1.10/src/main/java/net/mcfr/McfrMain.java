@@ -11,16 +11,21 @@ import net.mcfr.decoration.containerBlocks.tileEntities.TileEntityCrate;
 import net.mcfr.decoration.containerBlocks.tileEntities.TileEntityFoodCrate;
 import net.mcfr.decoration.containerBlocks.tileEntities.TileEntityLittleChest;
 import net.mcfr.decoration.containerBlocks.tileEntities.TileEntityPallet;
+import net.mcfr.decoration.furniture.tileEntities.TileEntityArmChair;
 import net.mcfr.decoration.furniture.tileEntities.TileEntityShowcase;
 import net.mcfr.decoration.furniture.tileEntities.TileEntityWeaponsStand;
+import net.mcfr.decoration.furniture.tileEntities.TileEntityWoodenBench;
+import net.mcfr.decoration.furniture.tileEntities.TileEntityWoodenChair;
+import net.mcfr.decoration.furniture.tileEntities.TileEntityWoodenStool;
 import net.mcfr.decoration.lighting.tileEntities.TileEntityCampfire;
+import net.mcfr.decoration.lighting.tileEntities.TileEntityChandelier;
+import net.mcfr.decoration.misc.tileEntities.TileEntityCarpet;
+import net.mcfr.decoration.misc.tileEntities.TileEntitySupport;
 import net.mcfr.decoration.signs.tileEntities.TileEntityNormalSign;
 import net.mcfr.decoration.signs.tileEntities.TileEntityOrpSign;
 import net.mcfr.decoration.signs.tileEntities.TileEntityPaperSign;
 import net.mcfr.decoration.signs.tileEntities.TileEntityTombstone;
 import net.mcfr.decoration.signs.tileEntities.TileEntityWallNote;
-import net.mcfr.decoration.tileEntities.TileEntityCarpet;
-import net.mcfr.decoration.tileEntities.TileEntitySupport;
 import net.mcfr.entities.EntityGrapnel;
 import net.mcfr.entities.EntitySailBoat;
 import net.mcfr.entities.mobs.entity.EntityBormoth;
@@ -116,31 +121,46 @@ public class McfrMain {
 
   private void registerTileEntities() {
     registerTileEntity(TileEntityBarrel.class, "barrel");
+
     registerTileEntity(TileEntityBellows.class, "bellows");
-    registerTileEntity(TileEntityBookshelf.class, "bookshelf");
+    registerTileEntity(TileEntityStove.class, "stove");
+
     registerTileEntity(TileEntityCampfire.class, "campfire");
+    registerTileEntity(TileEntityChandelier.class, "chandelier");
+
     registerTileEntity(TileEntityCarpet.class, "carpet");
-    registerTileEntity(TileEntityCircularSaw.class, "circular_saw");
+
+    registerTileEntity(TileEntityBookshelf.class, "bookshelf");
     registerTileEntity(TileEntityCrate.class, "crate");
     registerTileEntity(TileEntityFoodCrate.class, "food_crate");
     registerTileEntity(TileEntityLittleChest.class, "little_chest");
-    registerTileEntity(TileEntityLoom.class, "loom");
-    registerTileEntity(TileEntityNormalSign.class, "sign");
-    registerTileEntity(TileEntityOrpSign.class, "orp_sign");
     registerTileEntity(TileEntityPallet.class, "pallet");
-    registerTileEntity(TileEntityPaperSign.class, "paper_sign");
-    registerTileEntity(TileEntityShowcase.class, "showcase");
-    registerTileEntity(TileEntityStove.class, "stove");
-    registerTileEntity(TileEntitySupport.class, "support");
+
+    registerTileEntity(TileEntityCircularSaw.class, "circular_saw");
+    registerTileEntity(TileEntityLoom.class, "loom");
     registerTileEntity(TileEntityTanningRack.class, "tanning_rack");
+
+    registerTileEntity(TileEntityNormalSign.class, "sign");
+    registerTileEntity(TileEntityPaperSign.class, "paper_sign");
+    registerTileEntity(TileEntityOrpSign.class, "orp_sign");
     registerTileEntity(TileEntityTombstone.class, "tombstone");
     registerTileEntity(TileEntityWallNote.class, "wall_note");
+
+    registerTileEntity(TileEntityShowcase.class, "showcase");
     registerTileEntity(TileEntityWeaponsStand.class, "weapons_stand");
+
+    registerTileEntity(TileEntitySupport.class, "support");
+
+    registerTileEntity(TileEntityArmChair.class, "arm_chair");
+    registerTileEntity(TileEntityWoodenBench.class, "wooden_bench");
+    registerTileEntity(TileEntityWoodenChair.class, "wooden_chair");
+    registerTileEntity(TileEntityWoodenStool.class, "wooden_stool");
   }
 
   private void registerEntities() {
     EntityRegistry.registerModEntity(EntityGrapnel.class, "grapnel", 1000, this, 10, 3, true);
     EntityRegistry.registerModEntity(EntitySailBoat.class, "sailboat", 1001, this, 80, 3, true);
+
     EntityRegistry.registerModEntity(EntitySiker.class, "siker", 1, this, 80, 3, true, 0xBA9B54, 0x5E4B23);
     EntityRegistry.registerModEntity(EntityBormoth.class, "bormoth", 2, this, 80, 3, true, 1000, 1000);
     EntityRegistry.registerModEntity(EntityHoen.class, "hoen", 3, this, 80, 3, true, 0x7E1620, 0x514445);

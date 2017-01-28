@@ -23,9 +23,8 @@ public class TileEntityPalletRenderer extends TileEntitySpecialRenderer<TileEnti
     GlStateManager.pushMatrix();
     GlStateManager.translate(x, y, z);
 
-    fixLight(te);
-
-    if (te.getWorld().getBlockState(te.getPos().up()).getBlock() == McfrBlocks.PALLET) drawSupports();
+    if (te.getWorld().getBlockState(te.getPos().up()).getBlock() == McfrBlocks.PALLET)
+      drawSupports();
     drawContent(stacks);
 
     GlStateManager.popMatrix();
@@ -68,11 +67,13 @@ public class TileEntityPalletRenderer extends TileEntitySpecialRenderer<TileEnti
     GlStateManager.translate(3 * px, 2 * px, 3 * px);
 
     for (int i = 0; i < stacks.length; i++) {
-      if (stacks[i] == null) continue;
+      if (stacks[i] == null)
+        continue;
       float xo = scaleFactor * ((1 + blockW) * px * (i % 3));
       float zo = scaleFactor * ((1 + blockW) * px * (i / 3));
 
-      if (i > 0) GlStateManager.translate(xo, 0, zo);
+      if (i > 0)
+        GlStateManager.translate(xo, 0, zo);
       for (int j = 0; j < 3 * ((float) stacks[i].stackSize / stacks[i].getMaxStackSize()); j++) {
         final float yo = scaleFactor * (blockW * px * j);
 

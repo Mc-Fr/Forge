@@ -14,6 +14,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -34,6 +35,11 @@ public class BlockBookshelf extends McfrBlockContainer<TileEntityBookshelf> impl
   @Override
   public TileEntityBookshelf createNewTileEntity(World worldIn, int meta) {
     return new TileEntityBookshelf();
+  }
+
+  @Override
+  public EnumBlockRenderType getRenderType(IBlockState state) {
+    return EnumBlockRenderType.ENTITYBLOCK_ANIMATED;
   }
 
   @Override

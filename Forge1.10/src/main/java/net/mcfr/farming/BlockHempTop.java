@@ -12,19 +12,19 @@ public class BlockHempTop extends BlockBushTop {
   public BlockHempTop() {
     super("hemp");
   }
-  
+
   @Override
   public BlockBushBase getBaseBlock() {
-    return (BlockBushBase) McfrBlocks.HEMP_BASE;
+    return McfrBlocks.HEMP_BASE;
   }
-  
+
   @Override
   public List<ItemStack> getItems() {
-    List<ItemStack> list = new ArrayList<ItemStack>();
-    
+    List<ItemStack> list = new ArrayList<>();
+
     list.add(new ItemStack(McfrItems.HEMP));
     list.add(new ItemStack(McfrItems.HEMP_LEAF, new Random().nextInt(3) + 1));
-    
+
     return list;
   }
 }

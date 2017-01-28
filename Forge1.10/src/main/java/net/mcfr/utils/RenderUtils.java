@@ -11,8 +11,9 @@ import net.minecraft.client.renderer.VertexBuffer;
 import net.minecraft.client.renderer.block.model.ItemCameraTransforms;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 
 public final class RenderUtils {
   public static final int TOP_OFFSET = 17;
@@ -22,23 +23,18 @@ public final class RenderUtils {
   public static final int SIDE_OFFSET = 8;
   public static final int SLOT_SIZE = 18;
 
+  public static void fixLighting(World world, BlockPos pos) {
+    int worldLight = world.getCombinedLight(pos, 15728640);
+    int wBrightness = worldLight % 65536;
+    int yBrightness = worldLight / 65536;
+    OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, (float) wBrightness, (float) yBrightness);
+  }
+
   /**
    * @return le WorldRenderer
    */
   public static VertexBuffer getRenderer() {
     return Tessellator.getInstance().getBuffer();
-  }
-
-  /**
-   * Corrige la lumière d'une TileEntity (utilisée dans les TESR).
-   *
-   * @param te la TileEntity
-   */
-  // FIXME : marche pas.
-  public static void fixLight(TileEntity te) {
-    int light = te.getWorld().getCombinedLight(te.getPos(), 0);
-    OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, light % 65536, light / 65536);
-    GL11.glColor3f(1, 1, 1);
   }
 
   /**

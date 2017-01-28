@@ -13,6 +13,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumFacing.Axis;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
@@ -41,12 +42,12 @@ public class McfrItemSign extends McfrItem {
           int i = getRotation(playerIn);
           worldIn.setBlockState(pos, this.standingSign.getDefaultState().withProperty(McfrBlockStandingSign.ROTATION, Integer.valueOf(i)), 11);
         }
-        else if (facing == EnumFacing.DOWN && this.suspendedSign.canPlaceBlockAt(worldIn, pos.down())) {
+        else if (facing == EnumFacing.DOWN && this.suspendedSign != null && this.suspendedSign.canPlaceBlockAt(worldIn, pos.down())) {
           pos = pos.down();
           int i = getRotation(playerIn);
           worldIn.setBlockState(pos, this.suspendedSign.getDefaultState().withProperty(McfrBlockSuspendedSign.ROTATION, Integer.valueOf(i)), 11);
         }
-        else if (this.wallSign.canPlaceBlockAt(worldIn, pos.offset(facing))) {
+        else if (facing.getAxis() != Axis.Y && this.wallSign.canPlaceBlockAt(worldIn, pos.offset(facing))) {
           pos = pos.offset(facing);
           worldIn.setBlockState(pos, this.wallSign.getDefaultState().withProperty(McfrBlockWallSign.FACING, facing), 11);
         }

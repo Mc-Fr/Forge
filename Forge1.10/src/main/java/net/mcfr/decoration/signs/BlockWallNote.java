@@ -5,6 +5,7 @@ import java.util.Random;
 import net.mcfr.McfrItems;
 import net.mcfr.commons.McfrBlock;
 import net.mcfr.decoration.signs.tileEntities.TileEntityWallNote;
+import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -15,6 +16,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -30,7 +32,21 @@ public class BlockWallNote extends McfrBlock implements ITileEntityProvider {
     setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
   }
 
-  // FIXME
+  @Override
+  public boolean isOpaqueCube(IBlockState state) {
+    return false;
+  }
+
+  @Override
+  public boolean isFullCube(IBlockState state) {
+    return false;
+  }
+
+  @Override
+  public EnumBlockRenderType getRenderType(IBlockState state) {
+    return EnumBlockRenderType.ENTITYBLOCK_ANIMATED;
+  }
+
   @Override
   public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, World worldIn, BlockPos pos) {
     return NULL_AABB;
@@ -38,34 +54,28 @@ public class BlockWallNote extends McfrBlock implements ITileEntityProvider {
 
   @Override
   public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
-    float w = 0.125F;
-
     switch (state.getValue(FACING)) {
       case NORTH:
-        return new AxisAlignedBB(0, 0, 1 - w, 1, 1, 1);
+        return new AxisAlignedBB(0, 0, 1, 1, 1, 1);
       case SOUTH:
-        return new AxisAlignedBB(0, 0, 0, 1, 1, w);
+        return new AxisAlignedBB(0, 0, 0, 1, 1, 0);
       case WEST:
-        return new AxisAlignedBB(1 - w, 0, 0, 1, 1, 1);
+        return new AxisAlignedBB(1, 0, 0, 1, 1, 1);
       case EAST:
-        return new AxisAlignedBB(0, 0, 0, w, 1, 1);
+        return new AxisAlignedBB(0, 0, 0, 0, 1, 1);
       default:
-        return new AxisAlignedBB(0, 0, 0, 1, 1, 1);
+        return FULL_BLOCK_AABB;
     }
   }
 
   @Override
-  public void onNeighborChange(IBlockAccess world, BlockPos pos, BlockPos neighbor) {
-    World worldIn = (World) world;
-    IBlockState state = worldIn.getBlockState(pos);
-    EnumFacing enumfacing = state.getValue(FACING);
+  public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn) {
+    EnumFacing facing = state.getValue(FACING);
 
-    if (!worldIn.getBlockState(pos.offset(enumfacing.getOpposite())).getMaterial().isSolid()) {
+    if (!worldIn.getBlockState(pos.offset(facing.getOpposite())).getMaterial().isSolid()) {
       dropBlockAsItem(worldIn, pos, state, 0);
       worldIn.setBlockToAir(pos);
     }
-
-    super.onNeighborChange(worldIn, pos, neighbor);
   }
 
   @Override
@@ -100,9 +110,9 @@ public class BlockWallNote extends McfrBlock implements ITileEntityProvider {
         int lastLineIndex = 14;
 
         // On supprime les lignes vides en début et en fin de note.
-        while (t.getText()[firstLineIndex].getUnformattedText().equals("§r"))
+        while (firstLineIndex < 15 && t.getText()[firstLineIndex].getUnformattedText().equals("§r"))
           firstLineIndex++;
-        while (t.getText()[lastLineIndex].getUnformattedText().equals("§r"))
+        while (lastLineIndex > 0 && t.getText()[lastLineIndex].getUnformattedText().equals("§r"))
           lastLineIndex--;
 
         for (int i = firstLineIndex; i <= lastLineIndex; i++)

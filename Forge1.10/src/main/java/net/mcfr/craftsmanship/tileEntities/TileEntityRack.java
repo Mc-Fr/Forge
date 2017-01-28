@@ -10,6 +10,7 @@ import net.minecraft.block.Block;
 import net.minecraft.inventory.Container;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 
 public abstract class TileEntityRack extends TileEntityRestricted implements ITickable {
@@ -17,11 +18,17 @@ public abstract class TileEntityRack extends TileEntityRestricted implements ITi
 
   private ItemStack currentStack;
   private int remainingTicks;
+  private EnumFacing facing;
 
-  public TileEntityRack(String name, Class<? extends Block> blockClass, Class<? extends Container> containerClass) {
+  public TileEntityRack(String name, EnumFacing facing, Class<? extends Block> blockClass, Class<? extends Container> containerClass) {
     super(name, 2, 64, false, blockClass, containerClass);
     this.currentStack = null;
     this.remainingTicks = TRANSFORM_TIME;
+    this.facing = facing;
+  }
+
+  public EnumFacing getFacing() {
+    return this.facing;
   }
 
   @Override
@@ -126,6 +133,7 @@ public abstract class TileEntityRack extends TileEntityRestricted implements ITi
   @Override
   public void readFromNBT(NBTTagCompound compound) {
     super.readFromNBT(compound);
+    this.facing = EnumFacing.getHorizontal(compound.getInteger("Facing"));
     this.remainingTicks = compound.getInteger("RemainingTicks");
     this.currentStack = compound.hasKey("CurrentStack", NBTUtils.TAG_COMPOUND) ? ItemStack.loadItemStackFromNBT(compound.getCompoundTag("CurrentStack")) : null;
   }
@@ -133,6 +141,7 @@ public abstract class TileEntityRack extends TileEntityRestricted implements ITi
   @Override
   public NBTTagCompound writeToNBT(NBTTagCompound compound) {
     super.writeToNBT(compound);
+    compound.setInteger("Facing", this.facing.getHorizontalIndex());
     compound.setInteger("RemainingTicks", this.remainingTicks);
     if (this.currentStack != null)
       compound.setTag("CurrentStack", this.currentStack.writeToNBT(new NBTTagCompound()));

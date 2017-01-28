@@ -11,6 +11,7 @@ import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockRenderLayer;
@@ -19,6 +20,7 @@ import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
@@ -27,12 +29,14 @@ public class BlockLantern extends McfrBlock {
   public static final PropertyEnum<EnumPosition> POSITION = PropertyEnum.create("position", EnumPosition.class);
 
   private final EnumLanternColor color;
+  private final boolean isPaper;
 
   public BlockLantern(EnumLanternColor color, boolean isPaper) {
     super(color.getName() + (isPaper ? "_paper" : "") + "_lantern", isPaper ? Material.CLOTH : Material.GLASS, isPaper ? SoundType.CLOTH : SoundType.GLASS, 0.5f, 0, null, -1, null);
     setDefaultState(this.blockState.getBaseState().withProperty(ORIENTATION, 0).withProperty(POSITION, EnumPosition.BOTTOM));
     setLightLevel(0.875f);
     this.color = color;
+    this.isPaper = isPaper;
   }
 
   @Override
@@ -67,9 +71,9 @@ public class BlockLantern extends McfrBlock {
     double f = 0.25, h = 0.5;
 
     if (state.getValue(POSITION) == EnumPosition.BOTTOM)
-      return new AxisAlignedBB(h - f, 0, h - f, h + f, 0.6, h + f);
+      return new AxisAlignedBB(h - f, 0, h - f, h + f, 0.5625, h + f);
     else if (state.getValue(POSITION) == EnumPosition.TOP)
-      return new AxisAlignedBB(h - f, 0.4, h - f, h + f, 1, h + f);
+      return new AxisAlignedBB(h - f, 0.4375f, h - f, h + f, 1, h + f);
     else {
       switch (state.getValue(ORIENTATION)) {
         case 0:
@@ -125,6 +129,11 @@ public class BlockLantern extends McfrBlock {
   @Override
   public int damageDropped(IBlockState state) {
     return this.color.getMetadata();
+  }
+
+  @Override
+  public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player) {
+    return new ItemStack(this.isPaper ? McfrItems.PAPER_LANTERN : McfrItems.LANTERN, 1, this.color.getMetadata());
   }
 
   @Override
