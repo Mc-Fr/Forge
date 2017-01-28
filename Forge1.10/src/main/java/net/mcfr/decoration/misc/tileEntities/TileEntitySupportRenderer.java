@@ -1,4 +1,4 @@
-package net.mcfr.decoration.tileEntities;
+package net.mcfr.decoration.misc.tileEntities;
 
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.util.EnumFacing;

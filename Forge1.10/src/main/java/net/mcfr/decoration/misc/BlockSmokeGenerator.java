@@ -1,4 +1,4 @@
-package net.mcfr.decoration;
+package net.mcfr.decoration.misc;
 
 import java.util.Random;
 

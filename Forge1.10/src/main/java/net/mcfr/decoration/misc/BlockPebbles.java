@@ -1,4 +1,4 @@
-package net.mcfr.decoration;
+package net.mcfr.decoration.misc;
 
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;

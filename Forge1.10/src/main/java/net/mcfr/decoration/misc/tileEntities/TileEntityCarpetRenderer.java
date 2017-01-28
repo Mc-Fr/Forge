@@ -1,4 +1,4 @@
-package net.mcfr.decoration.tileEntities;
+package net.mcfr.decoration.misc.tileEntities;
 
 import static net.mcfr.utils.RenderUtils.*;
 
