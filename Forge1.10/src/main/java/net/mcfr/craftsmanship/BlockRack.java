@@ -30,8 +30,8 @@ public abstract class BlockRack<T extends TileEntityRack> extends McfrBlockConta
 
     try {
       te = getTileEntityClass().getConstructor(EnumFacing.class).newInstance(getStateFromMeta(meta).getValue(FACING));
-    }
-    catch (NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+    } catch (NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException
+        | InvocationTargetException e) {
       e.printStackTrace();
     }
 

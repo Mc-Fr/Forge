@@ -36,54 +36,55 @@ public class BlockBeehive extends BlockCocoa {
     setResistance(5);
     setSoundType(SoundType.WOOD);
   }
-  
+
   @Override
-  public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, @Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
+  public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, @Nullable ItemStack heldItem,
+      EnumFacing side, float hitX, float hitY, float hitZ) {
     if (playerIn.getHeldItemMainhand() != null && playerIn.getHeldItemMainhand().getItem() == Items.BOWL) {
       if (!playerIn.inventory.addItemStackToInventory(new ItemStack(McfrItems.HONEY)) && !worldIn.isRemote) {
         EntityItem loot = new EntityItem(worldIn, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, new ItemStack(McfrItems.HONEY));
-        
+
         loot.setPickupDelay(10);
         worldIn.spawnEntityInWorld(loot);
       }
       playerIn.getHeldItemMainhand().stackSize--;
-      
+
       return true;
     }
-    
+
     return false;
   }
-  
+
   @Override
   public boolean canBlockStay(World worldIn, BlockPos pos, IBlockState state) {
     IBlockState s = worldIn.getBlockState(pos.offset(state.getValue(FACING)));
     return s.getBlock() == Blocks.LOG && s.getValue(BlockOldLog.VARIANT) == BlockPlanks.EnumType.OAK;
   }
-  
+
   @Override
   public List<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
-    List<ItemStack> list = new ArrayList<ItemStack>();
-    
+    List<ItemStack> list = new ArrayList<>();
+
     list.add(getItem((World) world, pos, state));
-    
+
     return list;
   }
-  
+
   @Override
   public ItemStack getItem(World worldIn, BlockPos pos, IBlockState state) {
     return new ItemStack(McfrItems.WAX);
   }
-  
+
   @Override
   public Item getItemDropped(IBlockState state, Random rand, int fortune) {
     return McfrItems.WAX;
   }
-  
+
   @Override
   public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, IBlockState state) {
     return false;
   }
-  
+
   @Override
   public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player) {
     return getItem(world, pos, state);

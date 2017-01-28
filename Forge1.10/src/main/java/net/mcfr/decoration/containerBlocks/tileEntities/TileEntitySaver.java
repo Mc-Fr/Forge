@@ -16,7 +16,7 @@ public abstract class TileEntitySaver<T extends TileEntity> {
   private final Map<String, T> tileEntities;
 
   public TileEntitySaver() {
-    this.tileEntities = new HashMap<String, T>();
+    this.tileEntities = new HashMap<>();
   }
 
   public void put(World world, BlockPos pos, T tileEntity) {

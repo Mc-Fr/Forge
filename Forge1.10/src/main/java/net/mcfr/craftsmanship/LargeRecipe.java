@@ -5,7 +5,6 @@ import java.util.Objects;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.item.crafting.ShapedRecipes;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeHooks;
 
@@ -23,10 +22,14 @@ public class LargeRecipe implements IRecipe {
   /**
    * Crée une recette 5x5.
    * 
-   * @param width la largeur de la zone
-   * @param height la hauteur de la zone
-   * @param items les ingrédients
-   * @param output le résultat
+   * @param width
+   *          la largeur de la zone
+   * @param height
+   *          la hauteur de la zone
+   * @param items
+   *          les ingrédients
+   * @param output
+   *          le résultat
    */
   public LargeRecipe(int width, int height, ItemStack[] items, ItemStack output) {
     checkParameters(width, height, items, output);
@@ -67,13 +70,11 @@ public class LargeRecipe implements IRecipe {
   public boolean matches(InventoryCrafting inv, World worldIn) {
     for (int i = 0; i <= 5 - this.width; i++) {
       for (int j = 0; j <= 5 - this.height; j++) {
-        if (checkMatch(inv, i, j, true)) {
+        if (checkMatch(inv, i, j, true))
           return true;
-        }
 
-        if (checkMatch(inv, i, j, false)) {
+        if (checkMatch(inv, i, j, false))
           return true;
-        }
       }
     }
 
@@ -94,8 +95,7 @@ public class LargeRecipe implements IRecipe {
         if (k >= 0 && l >= 0 && k < this.width && l < this.height) {
           if (b) {
             stack = this.items[this.width - k - 1 + l * this.width];
-          }
-          else {
+          } else {
             stack = this.items[k + l * this.width];
           }
         }
