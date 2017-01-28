@@ -11,13 +11,11 @@ import net.mcfr.McfrItems;
 import net.mcfr.craftsmanship.BlockCircularSaw;
 import net.mcfr.craftsmanship.BlockLoom;
 import net.mcfr.craftsmanship.BlockTanningRack;
-import net.mcfr.craftsmanship.guis.ContainerRack;
 import net.mcfr.decoration.containerBlocks.BlockBookshelf;
 import net.mcfr.decoration.containerBlocks.BlockCrate;
 import net.mcfr.decoration.containerBlocks.BlockFoodCrate;
 import net.mcfr.decoration.containerBlocks.BlockLittleChest;
 import net.mcfr.decoration.containerBlocks.BlockPallet;
-import net.mcfr.decoration.containerBlocks.guis.ContainerRestricted;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -62,7 +60,8 @@ public final class ItemsLists {
       for (ResourceLocation r : Item.REGISTRY.getKeys()) {
         Item i = Item.REGISTRY.getObject(r);
 
-        if (i instanceof ItemTool || i instanceof ItemHoe || i instanceof ItemShears || i instanceof ItemFishingRod || i instanceof ItemFlintAndSteel) {
+        if (i instanceof ItemTool || i instanceof ItemHoe || i instanceof ItemShears || i instanceof ItemFishingRod
+            || i instanceof ItemFlintAndSteel) {
           l.add(i);
         }
       }
@@ -314,11 +313,13 @@ public final class ItemsLists {
   /**
    * Indique si le bloc spécifié accepte le stack donné.
    *
-   * @param blockClass la classe du bloc
-   * @param stack le stack
+   * @param blockClass
+   *          la classe du bloc
+   * @param stack
+   *          le stack
    * @return vrai si le stack est accepté
-   * @note Cette méthode est prévue pour être utilisée par les classes {@link ContainerRestricted}
-   *       et {@link ContainerRack}.
+   * @note Cette méthode est prévue pour être utilisée par les classes {@link ContainerRestricted} et
+   *       {@link ContainerRack}.
    */
   public static boolean isItemValid(Class<? extends Block> blockClass, ItemStack stack) {
     List<Item> list = LISTS.get(blockClass);

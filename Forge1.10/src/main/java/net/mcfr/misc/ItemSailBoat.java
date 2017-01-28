@@ -10,7 +10,6 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityBoat.Type;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
-import net.minecraft.item.ItemMinecart;
 import net.minecraft.item.ItemStack;
 import net.minecraft.stats.StatList;
 import net.minecraft.util.ActionResult;
@@ -50,19 +49,19 @@ public class ItemSailBoat extends McfrItem {
     Vec3d vec3d1 = vec3d.addVector(f7 * 5, f6 * 5, f8 * 5);
     RayTraceResult raytraceresult = worldIn.rayTraceBlocks(vec3d, vec3d1, true);
 
-    if (raytraceresult == null) {
-      return new ActionResult<ItemStack>(EnumActionResult.PASS, itemStackIn);
-    }
+    if (raytraceresult == null)
+      return new ActionResult<>(EnumActionResult.PASS, itemStackIn);
     else {
       Vec3d vec3d2 = playerIn.getLook(1.0F);
       boolean flag = false;
-      List<Entity> list = worldIn.getEntitiesWithinAABBExcludingEntity(playerIn, playerIn.getEntityBoundingBox().addCoord(vec3d2.xCoord * 5.0D, vec3d2.yCoord * 5.0D, vec3d2.zCoord * 5.0D).expandXyz(1.0D));
+      List<Entity> list = worldIn.getEntitiesWithinAABBExcludingEntity(playerIn,
+          playerIn.getEntityBoundingBox().addCoord(vec3d2.xCoord * 5.0D, vec3d2.yCoord * 5.0D, vec3d2.zCoord * 5.0D).expandXyz(1.0D));
 
       for (int i = 0; i < list.size(); ++i) {
-        Entity entity = (Entity) list.get(i);
+        Entity entity = list.get(i);
 
         if (entity.canBeCollidedWith()) {
-          AxisAlignedBB axisalignedbb = entity.getEntityBoundingBox().expandXyz((double) entity.getCollisionBorderSize());
+          AxisAlignedBB axisalignedbb = entity.getEntityBoundingBox().expandXyz(entity.getCollisionBorderSize());
 
           if (axisalignedbb.isVecInside(vec3d)) {
             flag = true;
@@ -70,22 +69,20 @@ public class ItemSailBoat extends McfrItem {
         }
       }
 
-      if (flag) {
-        return new ActionResult<ItemStack>(EnumActionResult.PASS, itemStackIn);
-      }
-      else if (raytraceresult.typeOfHit != RayTraceResult.Type.BLOCK) {
-        return new ActionResult<ItemStack>(EnumActionResult.PASS, itemStackIn);
-      }
+      if (flag)
+        return new ActionResult<>(EnumActionResult.PASS, itemStackIn);
+      else if (raytraceresult.typeOfHit != RayTraceResult.Type.BLOCK)
+        return new ActionResult<>(EnumActionResult.PASS, itemStackIn);
       else {
         Block block = worldIn.getBlockState(raytraceresult.getBlockPos()).getBlock();
         boolean flag1 = block == Blocks.WATER || block == Blocks.FLOWING_WATER;
-        EntitySailBoat entityboat = new EntitySailBoat(worldIn, raytraceresult.hitVec.xCoord, flag1 ? raytraceresult.hitVec.yCoord - 0.12D : raytraceresult.hitVec.yCoord, raytraceresult.hitVec.zCoord);
+        EntitySailBoat entityboat = new EntitySailBoat(worldIn, raytraceresult.hitVec.xCoord,
+            flag1 ? raytraceresult.hitVec.yCoord - 0.12D : raytraceresult.hitVec.yCoord, raytraceresult.hitVec.zCoord);
         entityboat.setBoatType(Type.OAK);
         entityboat.rotationYaw = playerIn.rotationYaw;
 
-        if (!worldIn.getCollisionBoxes(entityboat, entityboat.getEntityBoundingBox().expandXyz(-0.1D)).isEmpty()) {
-          return new ActionResult<ItemStack>(EnumActionResult.FAIL, itemStackIn);
-        }
+        if (!worldIn.getCollisionBoxes(entityboat, entityboat.getEntityBoundingBox().expandXyz(-0.1D)).isEmpty())
+          return new ActionResult<>(EnumActionResult.FAIL, itemStackIn);
         else {
           if (!worldIn.isRemote) {
             worldIn.spawnEntityInWorld(entityboat);
@@ -96,7 +93,7 @@ public class ItemSailBoat extends McfrItem {
           }
 
           playerIn.addStat(StatList.getObjectUseStats(this));
-          return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, itemStackIn);
+          return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
         }
       }
     }

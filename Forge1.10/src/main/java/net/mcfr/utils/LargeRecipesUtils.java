@@ -14,8 +14,10 @@ public final class LargeRecipesUtils {
   /**
    * Ajoute une recette 5x5.
    * 
-   * @param result le résultat de la recette
-   * @param recipeComponents les composants de la recette
+   * @param result
+   *          le résultat de la recette
+   * @param recipeComponents
+   *          les composants de la recette
    */
   public static void addLargeRecipe(ItemStack result, Object... recipeComponents) {
     Components c = getComponents(recipeComponents);
@@ -25,9 +27,12 @@ public final class LargeRecipesUtils {
   /**
    * Ajoute une recette 5x5 pour l'enclume.
    * 
-   * @param result le résultat de la recette
-   * @param temperature la température requise pour obtenir le résultat
-   * @param recipeComponents les composants de la recette
+   * @param result
+   *          le résultat de la recette
+   * @param temperature
+   *          la température requise pour obtenir le résultat
+   * @param recipeComponents
+   *          les composants de la recette
    */
   public static void addAnvilRecipe(ItemStack result, int temperature, Object... recipeComponents) {
     Components c = getComponents(recipeComponents);
@@ -48,7 +53,7 @@ public final class LargeRecipesUtils {
       pattern += str;
     }
 
-    Map<Character, ItemStack> charToItemStack = new HashMap<Character, ItemStack>();
+    Map<Character, ItemStack> charToItemStack = new HashMap<>();
 
     for (; i < recipeComponents.length; i += 2) {
       Character character = (Character) recipeComponents[i];
@@ -56,11 +61,9 @@ public final class LargeRecipesUtils {
 
       if (recipeComponents[i + 1] instanceof Item) {
         stack = new ItemStack((Item) recipeComponents[i + 1]);
-      }
-      else if (recipeComponents[i + 1] instanceof Block) {
+      } else if (recipeComponents[i + 1] instanceof Block) {
         stack = new ItemStack((Block) recipeComponents[i + 1], 1, 32767);
-      }
-      else if (recipeComponents[i + 1] instanceof ItemStack) {
+      } else if (recipeComponents[i + 1] instanceof ItemStack) {
         stack = (ItemStack) recipeComponents[i + 1];
       }
 
@@ -74,8 +77,7 @@ public final class LargeRecipesUtils {
 
       if (charToItemStack.containsKey(c)) {
         stacks[j] = charToItemStack.get(c).copy();
-      }
-      else {
+      } else {
         stacks[j] = null;
       }
     }

@@ -11,18 +11,18 @@ public class BlockVineTop extends BlockBushTop {
   public BlockVineTop() {
     super("vine");
   }
-  
+
   @Override
   public BlockBushBase getBaseBlock() {
-    return (BlockBushBase) McfrBlocks.VINE_BASE;
+    return McfrBlocks.VINE_BASE;
   }
-  
+
   @Override
   public List<ItemStack> getItems() {
-    List<ItemStack> list = new ArrayList<ItemStack>();
-    
+    List<ItemStack> list = new ArrayList<>();
+
     list.add(new ItemStack(McfrItems.GRAPES));
-    
+
     return list;
   }
 }
