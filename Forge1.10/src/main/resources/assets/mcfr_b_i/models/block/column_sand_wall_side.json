@@ -1,6 +1,0 @@
-{
-    "parent": "block/wall_side",
-    "textures": {
-        "wall": "mcfr_b_i:blocks/column_sand"
-    }
-}
