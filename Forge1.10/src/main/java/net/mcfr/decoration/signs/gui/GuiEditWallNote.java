@@ -5,7 +5,6 @@ import java.util.Arrays;
 
 import org.lwjgl.input.Keyboard;
 
-import net.mcfr.Constants;
 import net.mcfr.decoration.signs.tileEntities.TileEntityWallNote;
 import net.mcfr.network.McfrNetworkWrapper;
 import net.mcfr.network.UpdateWallNoteMessage;
@@ -15,7 +14,6 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.util.ChatAllowedCharacters;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextComponentString;
 
 /**
@@ -24,8 +22,6 @@ import net.minecraft.util.text.TextComponentString;
  * @author Mc-Fr
  */
 public class GuiEditWallNote extends GuiScreen {
-  private static final ResourceLocation NOTE_TEXTURE = new ResourceLocation(Constants.MOD_ID, "textures/entity/wall_note.png");
-
   private TileEntityWallNote tileNote;
   /** Compte le nombre de mises à jour de l'écran. */
   private int updateCounter;
