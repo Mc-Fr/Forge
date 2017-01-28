@@ -5,6 +5,7 @@ import java.util.Random;
 import net.mcfr.McfrItems;
 import net.mcfr.commons.McfrBlock;
 import net.mcfr.decoration.signs.tileEntities.TileEntityWallNote;
+import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -30,7 +31,16 @@ public class BlockWallNote extends McfrBlock implements ITileEntityProvider {
     setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
   }
 
-  // FIXME
+  @Override
+  public boolean isOpaqueCube(IBlockState state) {
+    return false;
+  }
+
+  @Override
+  public boolean isFullCube(IBlockState state) {
+    return false;
+  }
+
   @Override
   public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, World worldIn, BlockPos pos) {
     return NULL_AABB;
@@ -38,26 +48,23 @@ public class BlockWallNote extends McfrBlock implements ITileEntityProvider {
 
   @Override
   public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
-    float w = 0.125F;
-
     switch (state.getValue(FACING)) {
       case NORTH:
-        return new AxisAlignedBB(0, 0, 1 - w, 1, 1, 1);
+        return new AxisAlignedBB(0, 0, 0.875f, 1, 1, 1);
       case SOUTH:
-        return new AxisAlignedBB(0, 0, 0, 1, 1, w);
+        return new AxisAlignedBB(0, 0, 0, 1, 1, 0.125f);
       case WEST:
-        return new AxisAlignedBB(1 - w, 0, 0, 1, 1, 1);
+        return new AxisAlignedBB(0.875f, 0, 0, 1, 1, 1);
       case EAST:
-        return new AxisAlignedBB(0, 0, 0, w, 1, 1);
+        return new AxisAlignedBB(0, 0, 0, 0.125f, 1, 1);
       default:
-        return new AxisAlignedBB(0, 0, 0, 1, 1, 1);
+        return FULL_BLOCK_AABB;
     }
   }
 
   @Override
-  public void onNeighborChange(IBlockAccess world, BlockPos pos, BlockPos neighbor) {
-    World worldIn = (World) world;
-    IBlockState state = worldIn.getBlockState(pos);
+  @SuppressWarnings("deprecation")
+  public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn) {
     EnumFacing enumfacing = state.getValue(FACING);
 
     if (!worldIn.getBlockState(pos.offset(enumfacing.getOpposite())).getMaterial().isSolid()) {
@@ -65,7 +72,7 @@ public class BlockWallNote extends McfrBlock implements ITileEntityProvider {
       worldIn.setBlockToAir(pos);
     }
 
-    super.onNeighborChange(worldIn, pos, neighbor);
+    super.neighborChanged(state, worldIn, pos, blockIn);
   }
 
   @Override

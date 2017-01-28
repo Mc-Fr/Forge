@@ -27,8 +27,8 @@ public abstract class TileEntitySignRenderer<T extends TileEntityMcfrSign> exten
   /** Le modèle de panneau. */
   private final ModelSign model;
 
-  public TileEntitySignRenderer(String texture) {
-    this.signTexture = new ResourceLocation(texture);
+  public TileEntitySignRenderer(String domain, String texture) {
+    this.signTexture = new ResourceLocation(domain, texture);
     this.model = new ModelSign();
   }
 
@@ -45,13 +45,15 @@ public abstract class TileEntitySignRenderer<T extends TileEntityMcfrSign> exten
         this.model.signStick.showModel = true;
         this.model.signRope1.showModel = false;
         this.model.signRope2.showModel = false;
-      } else if (block instanceof McfrBlockSuspendedSign) {
+      }
+      else if (block instanceof McfrBlockSuspendedSign) {
         GlStateManager.translate(0.0F, -0.4F, 0F);
         this.model.signStick.showModel = false;
         this.model.signRope1.showModel = true;
         this.model.signRope2.showModel = true;
       }
-    } else {
+    }
+    else {
       int k = te.getBlockMetadata();
       float f2 = 0.0F;
 
@@ -82,7 +84,8 @@ public abstract class TileEntitySignRenderer<T extends TileEntityMcfrSign> exten
       GlStateManager.scale(4.0F, 2.0F, 1.0F);
       GlStateManager.translate(0.0625F, 0.0625F, 0.0625F);
       GlStateManager.matrixMode(5888);
-    } else {
+    }
+    else {
       bindTexture(this.signTexture);
     }
 
@@ -107,7 +110,8 @@ public abstract class TileEntitySignRenderer<T extends TileEntityMcfrSign> exten
           if (j == te.lineBeingEdited) {
             s = "> " + s + " <";
             fontrenderer.drawString(s, -fontrenderer.getStringWidth(s) / 2, j * 10 - te.signText.length * 5, 0);
-          } else {
+          }
+          else {
             fontrenderer.drawString(s, -fontrenderer.getStringWidth(s) / 2, j * 10 - te.signText.length * 5, 0);
           }
         }
@@ -128,7 +132,6 @@ public abstract class TileEntitySignRenderer<T extends TileEntityMcfrSign> exten
   @SuppressWarnings("unused")
   private void renderSuspensions() {
     // FIXME : NullPointer
-    drawQuad(new Point3d(0, 0, 0), new Point3d(0, 1, 0), new Point3d(1, 1, 0), new Point3d(1, 0, 0), new Point2d(0, 0), new Point2d(0, 0),
-        new Point2d(0, 0), new Point2d(0, 0));
+    drawQuad(new Point3d(0, 0, 0), new Point3d(0, 1, 0), new Point3d(1, 1, 0), new Point3d(1, 0, 0), new Point2d(0, 0), new Point2d(0, 0), new Point2d(0, 0), new Point2d(0, 0));
   }
 }

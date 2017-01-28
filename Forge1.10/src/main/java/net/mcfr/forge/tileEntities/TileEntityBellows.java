@@ -8,11 +8,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ITickable;
 
 public class TileEntityBellows extends TileEntity implements ITickable {
-  /**
-   * Le nombre de pas correspond au nombre de pixels (seixièmes de bloc) à parcourir dans
-   * l'animation.
-   */
-  public static final int STEPS = 9;
+  public static final int STEPS = 11;
 
   private boolean powered;
   private int step;

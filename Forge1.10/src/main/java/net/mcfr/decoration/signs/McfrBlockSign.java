@@ -42,11 +42,6 @@ public abstract class McfrBlockSign extends McfrBlock implements ITileEntityProv
   }
 
   @Override
-  public boolean isPassable(IBlockAccess worldIn, BlockPos pos) {
-    return true;
-  }
-
-  @Override
   public boolean isFullCube(IBlockState state) {
     return false;
   }

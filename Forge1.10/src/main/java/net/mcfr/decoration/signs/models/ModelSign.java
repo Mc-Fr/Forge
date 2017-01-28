@@ -12,10 +12,10 @@ public class ModelSign extends ModelBase {
   public ModelRenderer signRope2 = new ModelRenderer(this, 8, 14);
 
   public ModelSign() {
-    this.signBoard.addBox(-12.0F, -14.0F, -1.0F, 24, 12, 2, 0.0F);
-    this.signStick.addBox(-1.0F, -2.0F, -1.0F, 2, 14, 2, 0.0F);
-    this.signRope1.addBox(8.0F, -22.0F, -1.0F, 2, 8, 2, 0.0F);
-    this.signRope2.addBox(-9.0F, -22.0F, -1.0F, 2, 8, 2, 0.0F);
+    this.signBoard.addBox(-12, -14, -1, 24, 12, 2, 0);
+    this.signStick.addBox(-1, -2, -1, 2, 14, 2, 0);
+    this.signRope1.addBox(8, -22, -1, 2, 8, 2, 0);
+    this.signRope2.addBox(-9, -22, -1, 2, 8, 2, 0);
   }
 
   public void renderSign() {
