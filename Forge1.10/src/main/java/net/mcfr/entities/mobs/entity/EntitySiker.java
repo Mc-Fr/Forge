@@ -51,27 +51,27 @@ public class EntitySiker extends EntityBurrowed {
   @Override
   protected void initEntityAI() {
     this.cycle = AICycle.IDLE;
-        
-    this.tasks.addTask(0, new EntityAIAvoidEntityCycle<EntityPlayer>(this, EntityPlayer.class, 30.0F, 1.0F, 1.4F, 100));
+
+    this.tasks.addTask(0, new EntityAIAvoidEntityCycle<>(this, EntityPlayer.class, 30.0F, 1.0F, 1.4F, 100));
     this.tasks.addTask(1, new EntityAIAttackCycle(this, 1.3F, true, 100));
     this.tasks.addTask(2, new EntityAIWatchClosest(this, EntityPlayer.class, 25.0F, 0.9F));
     this.tasks.addTask(3, new EntityAIGoToBurrow(this, 1.0D, 5));
     this.tasks.addTask(4, new EntityAIWander(this, 1.0D));
     this.tasks.addTask(5, new EntityAILookIdle(this));
-    
+
     this.targetTasks.addTask(0, new EntityAIHurtByTarget(this, false, new Class[0]));
-    this.targetTasks.addTask(1, new EntityAINearestAttackableTarget<EntityPlayer>(this, EntityPlayer.class, true));
+    this.targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityPlayer.class, true));
   }
-  
+
   public AICycle getCycle() {
     return this.cycle;
   }
-  
+
   public void setCycle(AICycle cycle) {
     System.out.println(cycle);
     this.cycle = cycle;
   }
-  
+
   @Override
   public float getEyeHeight() {
     return this.height;
@@ -83,8 +83,8 @@ public class EntitySiker extends EntityBurrowed {
     getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(24.0D);
     getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.3D);
     getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(15.0F);
-    
-    this.getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(10.0D);
+
+    getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(10.0D);
   }
 
   /**
@@ -98,7 +98,7 @@ public class EntitySiker extends EntityBurrowed {
 
   @Override
   protected SoundEvent getAmbientSound() {
-    if (this.getGender() == Genders.FEMALE)
+    if (getGender() == Genders.FEMALE)
       return SoundEvents.ENTITY_COW_AMBIENT;
     else
       return SoundEvents.ENTITY_CHICKEN_AMBIENT;
