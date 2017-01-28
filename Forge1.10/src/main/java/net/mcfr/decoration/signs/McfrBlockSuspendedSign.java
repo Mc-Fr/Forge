@@ -1,12 +1,12 @@
 package net.mcfr.decoration.signs;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 public abstract class McfrBlockSuspendedSign extends McfrBlockSign {
@@ -18,13 +18,11 @@ public abstract class McfrBlockSuspendedSign extends McfrBlockSign {
   }
 
   @Override
-  public void onNeighborChange(IBlockAccess worldIn, BlockPos pos, BlockPos neighbor) {
+  public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn) {
     if (!worldIn.getBlockState(pos.up()).getMaterial().isSolid()) {
-      dropBlockAsItem((World) worldIn, pos, worldIn.getBlockState(pos), 0);
-      ((World) worldIn).setBlockToAir(pos);
+      dropBlockAsItem(worldIn, pos, state, 0);
+      worldIn.setBlockToAir(pos);
     }
-
-    super.onNeighborChange(worldIn, pos, neighbor);
   }
 
   @Override

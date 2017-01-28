@@ -63,16 +63,13 @@ public class BlockWallNote extends McfrBlock implements ITileEntityProvider {
   }
 
   @Override
-  @SuppressWarnings("deprecation")
   public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn) {
-    EnumFacing enumfacing = state.getValue(FACING);
+    EnumFacing facing = state.getValue(FACING);
 
-    if (!worldIn.getBlockState(pos.offset(enumfacing.getOpposite())).getMaterial().isSolid()) {
+    if (!worldIn.getBlockState(pos.offset(facing.getOpposite())).getMaterial().isSolid()) {
       dropBlockAsItem(worldIn, pos, state, 0);
       worldIn.setBlockToAir(pos);
     }
-
-    super.neighborChanged(state, worldIn, pos, blockIn);
   }
 
   @Override

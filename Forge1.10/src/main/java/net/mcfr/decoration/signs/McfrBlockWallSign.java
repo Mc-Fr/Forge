@@ -1,5 +1,6 @@
 package net.mcfr.decoration.signs;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyDirection;
@@ -40,17 +41,13 @@ public abstract class McfrBlockWallSign extends McfrBlockSign {
   }
 
   @Override
-  public void onNeighborChange(IBlockAccess world, BlockPos pos, BlockPos neighbor) {
-    World worldIn = (World) world;
-    IBlockState state = worldIn.getBlockState(pos);
-    EnumFacing enumfacing = state.getValue(FACING);
+  public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn) {
+    EnumFacing facing = state.getValue(FACING);
 
-    if (!worldIn.getBlockState(pos.offset(enumfacing.getOpposite())).getMaterial().isSolid()) {
+    if (!worldIn.getBlockState(pos.offset(facing.getOpposite())).getMaterial().isSolid()) {
       dropBlockAsItem(worldIn, pos, state, 0);
       worldIn.setBlockToAir(pos);
     }
-
-    super.onNeighborChange(worldIn, pos, neighbor);
   }
 
   @Override
