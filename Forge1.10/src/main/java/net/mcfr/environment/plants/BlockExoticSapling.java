@@ -5,6 +5,7 @@ import java.util.Random;
 
 import net.mcfr.commons.IBlockWithVariants;
 import net.mcfr.environment.plants.treeGen.WorldGenAppleTree;
+import net.mcfr.environment.plants.treeGen.WorldGenBeluxier;
 import net.mcfr.environment.plants.treeGen.WorldGenCherryTree;
 import net.mcfr.utils.NameUtils;
 import net.minecraft.block.BlockBush;
@@ -89,10 +90,9 @@ public class BlockExoticSapling extends BlockBush implements IBlockWithVariants,
       // case PALM_TREE:
       // worldGenerator = new WorldGenPalmTree(true);
       // break;
-      // case BELUXIER:
-      // worldGenerator = rand.nextInt(100) <= 10 ? new WorldGenLargeBeluxier(true) : new
-      // WorldGenBeluxier(true);
-      // break;
+      case BELUXIER:
+        worldGenerator = new WorldGenBeluxier(true);
+        break;
     }
 
     IBlockState air = Blocks.AIR.getDefaultState();
