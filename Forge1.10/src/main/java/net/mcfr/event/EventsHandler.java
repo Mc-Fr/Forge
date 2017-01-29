@@ -5,15 +5,12 @@ import java.util.List;
 import net.mcfr.McfrItems;
 import net.mcfr.guis.GuiMcfrIngameMenu;
 import net.mcfr.guis.GuiMcfrMainMenu;
-import net.mcfr.guis.GuiMcfrOptions;
-import net.mcfr.utils.ReflectionUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSign;
 import net.minecraft.client.gui.GuiIngameMenu;
 import net.minecraft.client.gui.GuiMainMenu;
 import net.minecraft.client.gui.GuiOptions;
 import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.settings.GameSettings;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -40,11 +37,13 @@ public class EventsHandler {
     if (gui instanceof GuiMainMenu)
       e.setGui(new GuiMcfrMainMenu());
     if (gui instanceof GuiOptions) {
-      GuiOptions g = (GuiOptions) gui;
-      GuiScreen lastScreen = ReflectionUtils.getValueForField(GuiOptions.class, "lastScreen", "g", g);
-      GameSettings settings = ReflectionUtils.getValueForField(GuiOptions.class, "settings", "h", g);
-
-      e.setGui(new GuiMcfrOptions(lastScreen, settings));
+      // GuiOptions g = (GuiOptions) gui;
+      // GuiScreen lastScreen = ReflectionUtils.getValueForField(GuiOptions.class, "lastScreen",
+      // "g", g);
+      // GameSettings settings = ReflectionUtils.getValueForField(GuiOptions.class, "settings", "h",
+      // g);
+      //
+      // e.setGui(new GuiMcfrOptions(lastScreen, settings));
     }
     if (gui instanceof GuiIngameMenu)
       e.setGui(new GuiMcfrIngameMenu());
