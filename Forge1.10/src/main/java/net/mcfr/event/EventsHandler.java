@@ -27,7 +27,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 /**
- * Cette classe permet regroupe les écouteurs d'évènement liés au joueur.
+ * Cette classe permet regroupe tous les écouteurs d'évènement.
  *
  * @author Mc-Fr
  */
