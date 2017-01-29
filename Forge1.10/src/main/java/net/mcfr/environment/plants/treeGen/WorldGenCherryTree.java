@@ -34,10 +34,10 @@ public class WorldGenCherryTree extends WorldGenMcfrTree {
       if (state.getBlock().canSustainPlant(state, worldIn, position.down(), EnumFacing.UP, McfrBlocks.EXOTIC_SAPLING) && position.getY() < worldIn.getHeight() - height - 1) {
         setDirtAt(worldIn, position.down());
 
-        int y = 0;
+        int y;
         int xo = 0;
         int zo = 0;
-        int orientation = 0;
+        EnumFacing.Axis orientation = EnumFacing.Axis.Y;
 
         for (y = 0; y < height; y++)
           setBlockAndNotifyAdequately(worldIn, position.up(y), this.wood);
@@ -53,9 +53,9 @@ public class WorldGenCherryTree extends WorldGenMcfrTree {
           zo = 1;
 
         if (random == 0 || random == 1)
-          orientation = 4;
+          orientation = EnumFacing.Axis.X;
         else
-          orientation = 8;
+          orientation = EnumFacing.Axis.Z;
 
         y--;
         if (worldIn.isAirBlock(position.add(xo, 0, zo)))
@@ -91,14 +91,15 @@ public class WorldGenCherryTree extends WorldGenMcfrTree {
           setBlockAndNotifyAdequately(worldIn, pos.up(), this.wood);
           setBlockAndNotifyAdequately(worldIn, pos.up(2), this.wood);
 
-          if (orientation == 4) {
+          if (orientation == EnumFacing.Axis.X) {
             x = position.getX() + xOffset * 2;
           }
           else {
             z = position.getZ() + zOffset * 2;
           }
+
           if (i == 2) {
-            if (orientation == 4) {
+            if (orientation == EnumFacing.Axis.X) {
               x = position.getX() + xOffset;
               z = position.getX() + zOffset * 2;
             }
@@ -133,7 +134,7 @@ public class WorldGenCherryTree extends WorldGenMcfrTree {
   private void generateLeaves(World worldIn, Random rand, LeafSphere sphere) {
     BlockPos pos = sphere.getPos();
     int diameter = sphere.getDiameter();
-    int overflow = sphere.getOverflow();
+    int overflow = sphere.getMinOverflow();
     int ratio = sphere.getRatio();
 
     for (int x = -diameter; x < diameter + 1; x++) {
@@ -148,39 +149,6 @@ public class WorldGenCherryTree extends WorldGenMcfrTree {
             setBlockAndNotifyAdequately(worldIn, pos1.down(), this.leaves);
         }
       }
-    }
-  }
-
-  private class LeafSphere {
-    private final BlockPos pos;
-    private final int diameter, overflow, ratio, smear;
-
-    public LeafSphere(BlockPos pos, int diameter, int overflowing, int ratio, int smear) {
-      this.pos = pos;
-      this.diameter = diameter;
-      this.overflow = overflowing;
-      this.ratio = ratio;
-      this.smear = smear;
-    }
-
-    public BlockPos getPos() {
-      return this.pos;
-    }
-
-    public int getDiameter() {
-      return this.diameter;
-    }
-
-    public int getOverflow() {
-      return this.overflow;
-    }
-
-    public int getRatio() {
-      return this.ratio;
-    }
-
-    public int getSmear() {
-      return this.smear;
     }
   }
 }
