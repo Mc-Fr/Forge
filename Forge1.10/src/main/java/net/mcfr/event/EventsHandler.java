@@ -27,13 +27,13 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 /**
- * Cette classe permet regroupe tous les écouteurs d'évènement.
+ * Cette classe regroupe tous les écouteurs d'évènement.
  *
  * @author Mc-Fr
  */
 public class EventsHandler {
-  @SubscribeEvent
   @SideOnly(Side.CLIENT)
+  @SubscribeEvent
   public void onOpenGui(GuiOpenEvent e) {
     GuiScreen gui = e.getGui();
 
