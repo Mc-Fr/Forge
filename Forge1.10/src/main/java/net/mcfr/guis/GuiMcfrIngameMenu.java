@@ -25,10 +25,10 @@ public class GuiMcfrIngameMenu extends GuiScreen {
     GuiButton guibutton = func_189646_b(new GuiButton(7, this.width / 2 - 100, this.height / 4 + 72 + -16, 200, 20, I18n.format("menu.shareToLan")));
     guibutton.enabled = this.mc.isSingleplayer() && !this.mc.getIntegratedServer().getPublic();
     this.buttonList.add(new GuiButton(0, this.width / 2 - 100, this.height / 4 + 96 + -16, 200, 20, I18n.format("menu.options")));
-    this.buttonList.add(new GuiButton(1, this.width / 2 - 100, this.height / 4 + 120 + -16, I18n.format("menu.returnToMenu")));
+    this.buttonList.add(guibutton = new GuiButton(1, this.width / 2 - 100, this.height / 4 + 120 + -16, I18n.format("menu.returnToMenu")));
 
     if (!this.mc.isIntegratedServerRunning()) {
-      this.buttonList.get(0).displayString = I18n.format("menu.disconnect");
+      guibutton.displayString = I18n.format("menu.disconnect");
     }
   }
 

@@ -70,6 +70,7 @@ public class GuiMcfrOptions extends GuiScreen {
       }
       else {
         this.difficultyButton.enabled = false;
+        this.difficultyButton.visible = false;
       }
     }
 

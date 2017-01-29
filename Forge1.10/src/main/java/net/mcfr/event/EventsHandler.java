@@ -23,6 +23,8 @@ import net.minecraftforge.event.world.BlockEvent.HarvestDropsEvent;
 import net.minecraftforge.event.world.BlockEvent.PlaceEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 /**
  * Cette classe permet regroupe les écouteurs d'évènement liés au joueur.
@@ -31,6 +33,7 @@ import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent;
  */
 public class EventsHandler {
   @SubscribeEvent
+  @SideOnly(Side.CLIENT)
   public void onOpenGui(GuiOpenEvent e) {
     GuiScreen gui = e.getGui();
 
