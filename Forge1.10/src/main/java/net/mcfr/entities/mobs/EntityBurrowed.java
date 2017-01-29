@@ -84,6 +84,10 @@ public abstract class EntityBurrowed extends EntityGendered {
       if (this.timesInLove > 0) {
         this.setNewBurrow();
       }
+    } else {
+      if (this.timesInLove > 0) {
+        this.setUniqueId(MathHelper.getRandomUuid(this.rand));
+      }
     }
   }
 
