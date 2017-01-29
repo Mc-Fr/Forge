@@ -6,10 +6,13 @@ import java.util.Map;
 import net.mcfr.entities.mobs.gender.Genders;
 import net.mcfr.network.McfrNetworkWrapper;
 import net.mcfr.network.SyncEntityMessage;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 
 public abstract class EntitySyncedAnimal extends EntityAnimal {
@@ -33,17 +36,17 @@ public abstract class EntitySyncedAnimal extends EntityAnimal {
     nbt.setBoolean(key, value);
     this.setSyncedProps(nbt);
   }
-  
+
   public boolean getSyncedBoolean(String key) {
     return this.syncedPropsCompound.getBoolean(key);
   }
-  
+
   public void setSyncedInteger(String key, int value) {
     NBTTagCompound nbt = this.getSyncedProps();
     nbt.setInteger(key, value);
     this.setSyncedProps(nbt);
   }
-  
+
   public int getSyncedInteger(String key) {
     return this.syncedPropsCompound.getInteger(key);
   }
@@ -64,13 +67,13 @@ public abstract class EntitySyncedAnimal extends EntityAnimal {
       McfrNetworkWrapper.getInstance().sendTo(new SyncEntityMessage(this), player);
     }
   }
-  
+
   public void askForSync() {
     if (this.worldObj.isRemote) {
       McfrNetworkWrapper.getInstance().sendToServer(new SyncEntityMessage(this));
     }
   }
-  
+
   public void setInitialized(boolean initialized) {
     this.isInitialized = initialized;
   }
@@ -92,6 +95,18 @@ public abstract class EntitySyncedAnimal extends EntityAnimal {
     }
     super.onLivingUpdate();
   }
+
+  @Override
+  public boolean attackEntityAsMob(Entity entityTarget) {
+    return entityTarget.attackEntityFrom(DamageSource.causeMobDamage(this),
+        (float) getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue());
+  }
   
+  @Override
+  public boolean attackEntityFrom(DamageSource source, float amount) {
+    this.setLastAttacker(source.getEntity());
+    return super.attackEntityFrom(source, amount);
+  }
+
   public abstract EntityAgeable createChild(EntityAgeable ageable);
 }
