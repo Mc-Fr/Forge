@@ -18,6 +18,8 @@ public class BlockBench extends BlockWoodenChair {
 
   public BlockBench(BlockPlanks.EnumType type) {
     super(type, "bench");
+    // TEMP
+    setCreativeTab(null);
     setDefaultState(this.blockState.getBaseState().withProperty(NORTH, false).withProperty(EAST, false).withProperty(SOUTH, false).withProperty(WEST, false));
   }
 

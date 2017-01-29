@@ -37,6 +37,7 @@ public class EventsHandler {
     if (gui instanceof GuiMainMenu)
       e.setGui(new GuiMcfrMainMenu());
     if (gui instanceof GuiOptions) {
+      // FIXME
       // GuiOptions g = (GuiOptions) gui;
       // GuiScreen lastScreen = ReflectionUtils.getValueForField(GuiOptions.class, "lastScreen",
       // "g", g);
