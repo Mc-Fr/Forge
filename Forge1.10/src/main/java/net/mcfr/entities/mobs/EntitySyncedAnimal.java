@@ -7,7 +7,6 @@ import net.mcfr.entities.mobs.gender.Genders;
 import net.mcfr.network.McfrNetworkWrapper;
 import net.mcfr.network.SyncEntityMessage;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -22,19 +21,19 @@ public abstract class EntitySyncedAnimal extends EntityAnimal {
 
   public EntitySyncedAnimal(World worldIn) {
     super(worldIn);
-    isInitialized = false;
+    this.isInitialized = false;
   }
 
   public void setGender(Genders gender) {
-    NBTTagCompound nbt = this.getSyncedProps();
+    NBTTagCompound nbt = getSyncedProps();
     nbt.setInteger("Gender", gender.getInt());
-    this.setSyncedProps(nbt);
+    setSyncedProps(nbt);
   }
 
   public void setSyncedBoolean(String key, boolean value) {
-    NBTTagCompound nbt = this.getSyncedProps();
+    NBTTagCompound nbt = getSyncedProps();
     nbt.setBoolean(key, value);
-    this.setSyncedProps(nbt);
+    setSyncedProps(nbt);
   }
 
   public boolean getSyncedBoolean(String key) {
@@ -42,9 +41,9 @@ public abstract class EntitySyncedAnimal extends EntityAnimal {
   }
 
   public void setSyncedInteger(String key, int value) {
-    NBTTagCompound nbt = this.getSyncedProps();
+    NBTTagCompound nbt = getSyncedProps();
     nbt.setInteger(key, value);
-    this.setSyncedProps(nbt);
+    setSyncedProps(nbt);
   }
 
   public int getSyncedInteger(String key) {
@@ -78,11 +77,13 @@ public abstract class EntitySyncedAnimal extends EntityAnimal {
     this.isInitialized = initialized;
   }
 
+  @Override
   public void writeEntityToNBT(NBTTagCompound compound) {
     super.writeEntityToNBT(compound);
-    compound.setTag("SyncedProps", syncedPropsCompound);
+    compound.setTag("SyncedProps", this.syncedPropsCompound);
   }
 
+  @Override
   public void readEntityFromNBT(NBTTagCompound compound) {
     super.readEntityFromNBT(compound);
     this.syncedPropsCompound = (NBTTagCompound) compound.getTag("SyncedProps");
@@ -91,7 +92,7 @@ public abstract class EntitySyncedAnimal extends EntityAnimal {
   @Override
   public void onLivingUpdate() {
     if (!this.isInitialized && this.worldObj.isRemote) {
-      this.askForSync();
+      askForSync();
     }
     super.onLivingUpdate();
   }
@@ -101,12 +102,10 @@ public abstract class EntitySyncedAnimal extends EntityAnimal {
     return entityTarget.attackEntityFrom(DamageSource.causeMobDamage(this),
         (float) getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue());
   }
-  
+
   @Override
   public boolean attackEntityFrom(DamageSource source, float amount) {
-    this.setLastAttacker(source.getEntity());
+    setLastAttacker(source.getEntity());
     return super.attackEntityFrom(source, amount);
   }
-
-  public abstract EntityAgeable createChild(EntityAgeable ageable);
 }

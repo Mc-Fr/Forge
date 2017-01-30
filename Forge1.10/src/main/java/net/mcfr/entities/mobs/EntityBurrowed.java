@@ -18,17 +18,17 @@ public abstract class EntityBurrowed extends EntityGendered {
 
   public EntityBurrowed(World worldIn) {
     super(worldIn);
-    this.setBurrow(-1, this.getPosition());
+    this.setBurrow(-1, getPosition());
     if (!this.worldObj.isRemote) {
-      this.resetBurrowChange();
+      resetBurrowChange();
     }
   }
 
   public void setBurrow(int burrowId, int homeX, int homeY, int homeZ) {
-    this.setSyncedInteger("Burrow", burrowId);
-    this.setSyncedInteger("HomeX", homeX);
-    this.setSyncedInteger("HomeY", homeY);
-    this.setSyncedInteger("HomeZ", homeZ);
+    setSyncedInteger("Burrow", burrowId);
+    setSyncedInteger("HomeX", homeX);
+    setSyncedInteger("HomeY", homeY);
+    setSyncedInteger("HomeZ", homeZ);
   }
 
   public void setBurrow(int burrowId, BlockPos position) {
@@ -36,11 +36,11 @@ public abstract class EntityBurrowed extends EntityGendered {
   }
 
   public int getBurrow() {
-    return this.getSyncedInteger("Burrow");
+    return getSyncedInteger("Burrow");
   }
 
   public Vec3d getBurrowPosition() {
-    return new Vec3d(this.getSyncedInteger("HomeX"), this.getSyncedInteger("HomeY"), this.getSyncedInteger("HomeZ"));
+    return new Vec3d(getSyncedInteger("HomeX"), getSyncedInteger("HomeY"), getSyncedInteger("HomeZ"));
   }
 
   @SideOnly(Side.SERVER)
@@ -55,22 +55,21 @@ public abstract class EntityBurrowed extends EntityGendered {
   }
 
   public void setNewBurrow() {
-    this.resetBurrowChange();
-    System.out.println(this.getUniqueID());
-    this.setUniqueId(MathHelper.getRandomUuid(this.rand));
-    System.out.println(this.getUniqueID());
-    this.setBurrow(-2, this.getPosition());
+    resetBurrowChange();
+    System.out.println(getUniqueID());
+    setUniqueId(MathHelper.getRandomUuid(this.rand));
+    System.out.println(getUniqueID());
+    this.setBurrow(-2, getPosition());
   }
 
   @Override
   public void onLivingUpdate() {
-    if (this.getBurrow() == -1 && !this.worldObj.isRemote) {
-      this.setBurrow(-2, this.getPosition());
+    if (getBurrow() == -1 && !this.worldObj.isRemote) {
+      this.setBurrow(-2, getPosition());
     }
-    if (this.getHealth() < this.getMaxHealth() && (this.ticksExisted - this.lastHealTime) > 40
-        && (this.ticksExisted - this.getLastAttackerTime()) > 100) {
-      this.heal(1);
-      System.out.println("Healed ! Nouvelle santé : " + this.getHealth());
+    if (getHealth() < getMaxHealth() && this.ticksExisted - this.lastHealTime > 40 && this.ticksExisted - getLastAttackerTime() > 100) {
+      heal(1);
+      System.out.println("Healed ! Nouvelle santé : " + getHealth());
       this.lastHealTime = this.ticksExisted;
     }
     super.onLivingUpdate();
@@ -80,15 +79,10 @@ public abstract class EntityBurrowed extends EntityGendered {
   public void setInLove(EntityPlayer player) {
     super.setInLove(player);
     if (!this.worldObj.isRemote) {
-      this.increaseTimesInLove();
+      increaseTimesInLove();
       if (this.timesInLove > 0) {
-        this.setNewBurrow();
+        setNewBurrow();
       }
     }
-  }
-
-  @Override
-  protected boolean canDespawn() {
-    return false;
   }
 }
