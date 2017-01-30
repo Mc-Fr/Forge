@@ -11,6 +11,7 @@ public class BlockStool extends BlockWoodenChair {
   public BlockStool(EnumType type, boolean isTall) {
     super(type, (isTall ? "tall_" : "") + "stool");
     this.isTall = isTall;
+    setCreativeTab(null); // TEMP
   }
 
   public boolean isTall() {

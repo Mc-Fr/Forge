@@ -4,6 +4,9 @@ import java.util.List;
 import java.util.Random;
 
 import net.mcfr.commons.IBlockWithVariants;
+import net.mcfr.environment.plants.treeGen.WorldGenAppleTree;
+import net.mcfr.environment.plants.treeGen.WorldGenBeluxier;
+import net.mcfr.environment.plants.treeGen.WorldGenCherryTree;
 import net.mcfr.utils.NameUtils;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.IGrowable;
@@ -22,16 +25,14 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraft.world.gen.feature.WorldGenBigTree;
-import net.minecraft.world.gen.feature.WorldGenTrees;
 import net.minecraft.world.gen.feature.WorldGenerator;
-import net.minecraftforge.event.terraingen.TerrainGen;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockExoticSapling extends BlockBush implements IBlockWithVariants, IGrowable {
   public static final PropertyEnum<EnumExoticWoodType> VARIANT = PropertyEnum.create("type", EnumExoticWoodType.class);
   public static final PropertyInteger STAGE = PropertyInteger.create("stage", 0, 1);
+  private static final AxisAlignedBB SAPLING_AABB = new AxisAlignedBB(0.1, 0, 0.1, 0.9, 0.8, 0.9);
 
   public BlockExoticSapling() {
     super();
@@ -45,8 +46,7 @@ public class BlockExoticSapling extends BlockBush implements IBlockWithVariants,
 
   @Override
   public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
-    float f = 0.4F, h = 0.5F;
-    return new AxisAlignedBB(h - f, 0, h - f, h + f, f * 2, h + f);
+    return SAPLING_AABB;
   }
 
   @Override
@@ -74,121 +74,50 @@ public class BlockExoticSapling extends BlockBush implements IBlockWithVariants,
     }
   }
 
-  // TODO : génération des arbres.
-  @SuppressWarnings("unused")
   public void generateTree(World worldIn, BlockPos pos, IBlockState state, Random rand) {
-    if (true)
-      return; // TEMP
-    if (!TerrainGen.saplingGrowTree(worldIn, rand, pos))
-      return;
-
-    WorldGenerator worldgenerator = rand.nextInt(10) == 0 ? new WorldGenBigTree(true) : new WorldGenTrees(true);
-    int i = 0;
-    int j = 0;
+    WorldGenerator worldGenerator = null;
+    int x = 0;
+    int z = 0;
     boolean flag = false;
 
-    // switch (state.getValue(TYPE)) {
-    // case SPRUCE:
-    // label114: for (i = 0; i >= -1; --i) {
-    // for (j = 0; j >= -1; --j) {
-    // if (func_181624_a(worldIn, pos, i, j, ExoticWoodType.SPRUCE)) {
-    // worldgenerator = new WorldGenMegaPineTree(false, rand.nextBoolean());
-    // flag = true;
-    // break label114;
-    // }
-    // }
-    // }
-    //
-    // if (!flag) {
-    // j = 0;
-    // i = 0;
-    // worldgenerator = new WorldGenTaiga2(true);
-    // }
-    //
-    // break;
-    // case BIRCH:
-    // worldgenerator = new WorldGenForest(true, false);
-    // break;
-    // case JUNGLE:
-    // IBlockState iblockstate = Blocks.log.getDefaultState().withProperty(BlockOldLog.VARIANT,
-    // ExoticWoodType.JUNGLE);
-    // IBlockState iblockstate1 = Blocks.leaves.getDefaultState().withProperty(BlockOldLeaf.VARIANT,
-    // ExoticWoodType.JUNGLE).withProperty(BlockLeaves.CHECK_DECAY, Boolean.valueOf(false));
-    // label269: for (i = 0; i >= -1; --i) {
-    // for (j = 0; j >= -1; --j) {
-    // if (func_181624_a(worldIn, pos, i, j, ExoticWoodType.JUNGLE)) {
-    // worldgenerator = new WorldGenMegaJungle(true, 10, 20, iblockstate, iblockstate1);
-    // flag = true;
-    // break label269;
-    // }
-    // }
-    // }
-    //
-    // if (!flag) {
-    // j = 0;
-    // i = 0;
-    // worldgenerator = new WorldGenTrees(true, 4 + rand.nextInt(7), iblockstate, iblockstate1,
-    // false);
-    // }
-    //
-    // break;
-    // case ACACIA:
-    // worldgenerator = new WorldGenSavannaTree(true);
-    // break;
-    // case DARK_OAK:
-    // label390: for (i = 0; i >= -1; --i) {
-    // for (j = 0; j >= -1; --j) {
-    // if (func_181624_a(worldIn, pos, i, j, ExoticWoodType.DARK_OAK)) {
-    // worldgenerator = new WorldGenCanopyTree(true);
-    // flag = true;
-    // break label390;
-    // }
-    // }
-    // }
-    //
-    // if (!flag) {
-    // return;
-    // }
-    // case OAK:
-    // }
+    switch (state.getValue(VARIANT)) {
+      case APPLE_TREE:
+        worldGenerator = new WorldGenAppleTree(true);
+        break;
+      case CHERRY_TREE:
+        worldGenerator = new WorldGenCherryTree(true);
+        break;
+      // case PALM_TREE:
+      // worldGenerator = new WorldGenPalmTree(true);
+      // break;
+      case BELUXIER:
+        worldGenerator = new WorldGenBeluxier(true);
+        break;
+    }
 
-    IBlockState iblockstate2 = Blocks.AIR.getDefaultState();
+    IBlockState air = Blocks.AIR.getDefaultState();
 
     if (flag) {
-      worldIn.setBlockState(pos.add(i, 0, j), iblockstate2, 4);
-      worldIn.setBlockState(pos.add(i + 1, 0, j), iblockstate2, 4);
-      worldIn.setBlockState(pos.add(i, 0, j + 1), iblockstate2, 4);
-      worldIn.setBlockState(pos.add(i + 1, 0, j + 1), iblockstate2, 4);
+      worldIn.setBlockState(pos.add(x, 0, z), air, 4);
+      worldIn.setBlockState(pos.add(x + 1, 0, z), air, 4);
+      worldIn.setBlockState(pos.add(x, 0, z + 1), air, 4);
+      worldIn.setBlockState(pos.add(x + 1, 0, z + 1), air, 4);
     }
     else {
-      worldIn.setBlockState(pos, iblockstate2, 4);
+      worldIn.setBlockState(pos, air, 4);
     }
 
-    if (!worldgenerator.generate(worldIn, rand, pos.add(i, 0, j))) {
+    if (!worldGenerator.generate(worldIn, rand, pos.add(x, 0, z))) {
       if (flag) {
-        worldIn.setBlockState(pos.add(i, 0, j), state, 4);
-        worldIn.setBlockState(pos.add(i + 1, 0, j), state, 4);
-        worldIn.setBlockState(pos.add(i, 0, j + 1), state, 4);
-        worldIn.setBlockState(pos.add(i + 1, 0, j + 1), state, 4);
+        worldIn.setBlockState(pos.add(x, 0, z), state, 4);
+        worldIn.setBlockState(pos.add(x + 1, 0, z), state, 4);
+        worldIn.setBlockState(pos.add(x, 0, z + 1), state, 4);
+        worldIn.setBlockState(pos.add(x + 1, 0, z + 1), state, 4);
       }
       else {
         worldIn.setBlockState(pos, state, 4);
       }
     }
-  }
-
-  // Copiée de BlockSapling
-  @SuppressWarnings("unused")
-  private boolean func_181624_a(World worldIn, BlockPos pos, int i, int j, EnumExoticWoodType type) {
-    return isTypeAt(worldIn, pos.add(i, 0, j), type) && isTypeAt(worldIn, pos.add(i + 1, 0, j), type) && isTypeAt(worldIn, pos.add(i, 0, j + 1), type) && isTypeAt(worldIn, pos.add(i + 1, 0, j + 1), type);
-  }
-
-  /**
-   * Vérifie que le bloc à une position donnée possède une pousse exotique du type indiqué.
-   */
-  public boolean isTypeAt(World worldIn, BlockPos pos, EnumExoticWoodType type) {
-    IBlockState state = worldIn.getBlockState(pos);
-    return state.getBlock() == this && state.getValue(VARIANT) == type;
   }
 
   @Override

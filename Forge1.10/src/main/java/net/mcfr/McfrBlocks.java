@@ -720,7 +720,7 @@ public final class McfrBlocks {
   public static final BlockWoodenShelf JUNGLE_SHELF = new BlockWoodenShelf(BlockPlanks.EnumType.JUNGLE);
   public static final BlockWoodenShelf ACACIA_SHELF = new BlockWoodenShelf(BlockPlanks.EnumType.ACACIA);
   public static final BlockWoodenShelf DARK_OAK_SHELF = new BlockWoodenShelf(BlockPlanks.EnumType.DARK_OAK);
-  public static final BlockShelf STONE_SHELF = new BlockShelf("stone", Material.ROCK, SoundType.STONE, 2, 4, "pickaxe", 0, CreativeTabs.DECORATIONS);
+  public static final BlockShelf STONE_SHELF = new BlockShelf("stone", Material.ROCK, SoundType.STONE, 2, 4, "pickaxe", 0);
   // Équerres
   public static final BlockSupport SUPPORT = new BlockSupport(false);
   public static final BlockSupport LONG_SUPPORT = new BlockSupport(true);
@@ -739,6 +739,13 @@ public final class McfrBlocks {
     Blocks.MONSTER_EGG.setCreativeTab(null);
     Blocks.ANVIL.setCreativeTab(null);
     WOODEN_LAMP.setLightLevel(0.938f);
+    // TEMP
+    OAK_CHAIR.setCreativeTab(null);
+    SPRUCE_CHAIR.setCreativeTab(null);
+    BIRCH_CHAIR.setCreativeTab(null);
+    JUNGLE_CHAIR.setCreativeTab(null);
+    ACACIA_CHAIR.setCreativeTab(null);
+    DARK_OAK_CHAIR.setCreativeTab(null);
 
     register(CHANGER);
 

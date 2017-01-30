@@ -3,23 +3,53 @@ package net.mcfr.event;
 import java.util.List;
 
 import net.mcfr.McfrItems;
+import net.mcfr.guis.GuiMcfrIngameMenu;
+import net.mcfr.guis.GuiMcfrMainMenu;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSign;
+import net.minecraft.client.gui.GuiIngameMenu;
+import net.minecraft.client.gui.GuiMainMenu;
+import net.minecraft.client.gui.GuiOptions;
+import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.client.event.GuiOpenEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.world.BlockEvent.HarvestDropsEvent;
 import net.minecraftforge.event.world.BlockEvent.PlaceEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 /**
- * Cette classe permet regroupe les écouteurs d'évènement liés au joueur.
+ * Cette classe regroupe tous les écouteurs d'évènement.
  *
  * @author Mc-Fr
  */
-public class PlayerEventHandler {
+public class EventsHandler {
+  @SideOnly(Side.CLIENT)
+  @SubscribeEvent
+  public void onOpenGui(GuiOpenEvent e) {
+    GuiScreen gui = e.getGui();
+
+    if (gui instanceof GuiMainMenu)
+      e.setGui(new GuiMcfrMainMenu());
+    if (gui instanceof GuiOptions) {
+      // FIXME
+      // GuiOptions g = (GuiOptions) gui;
+      // GuiScreen lastScreen = ReflectionUtils.getValueForField(GuiOptions.class, "lastScreen",
+      // "g", g);
+      // GameSettings settings = ReflectionUtils.getValueForField(GuiOptions.class, "settings", "h",
+      // g);
+      //
+      // e.setGui(new GuiMcfrOptions(lastScreen, settings));
+    }
+    if (gui instanceof GuiIngameMenu)
+      e.setGui(new GuiMcfrIngameMenu());
+  }
+
   /**
    * Cet écouteur est notifié à chaque interaction d'un joueur avec l'environnement.
    *

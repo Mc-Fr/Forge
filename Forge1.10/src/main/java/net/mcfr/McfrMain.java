@@ -33,7 +33,7 @@ import net.mcfr.entities.mobs.entity.EntityGalt;
 import net.mcfr.entities.mobs.entity.EntityHoen;
 import net.mcfr.entities.mobs.entity.EntityNiale;
 import net.mcfr.entities.mobs.entity.EntitySiker;
-import net.mcfr.event.PlayerEventHandler;
+import net.mcfr.event.EventsHandler;
 import net.mcfr.forge.tileEntities.TileEntityBellows;
 import net.mcfr.forge.tileEntities.TileEntityStove;
 import net.mcfr.network.GuiHandler;
@@ -46,10 +46,7 @@ import net.mcfr.network.SyncEntityMessage;
 import net.mcfr.network.UpdateWallNoteMessage;
 import net.mcfr.network.UpdateWallNoteMessageHandler;
 import net.mcfr.proxy.CommonProxy;
-import net.mcfr.utils.LargeRecipesUtils;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
-import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
@@ -89,9 +86,7 @@ public class McfrMain {
     McfrItems.init();
     registerTileEntities();
     registerEntities();
-    // DEBUG à réactiver une fois le débug terminé.
-    // CraftingManager.getInstance().getRecipeList().clear();
-    LargeRecipesUtils.addAnvilRecipe(new ItemStack(Items.STICK), 0, "|", "|", "|", "|", "|", '|', new ItemStack(Blocks.PLANKS)); // DEBUG
+    CraftingManager.getInstance().getRecipeList().clear();
     FurnaceRecipes.instance().getSmeltingList().clear();
 
     // GameData.getPotionRegistry().register(PotionComa.COMA);
@@ -108,7 +103,7 @@ public class McfrMain {
 
   private void registerEventHandlers() {
     MinecraftForge.EVENT_BUS.register(BlockBarrel.TILE_ENTITY_SAVER);
-    MinecraftForge.EVENT_BUS.register(new PlayerEventHandler());
+    MinecraftForge.EVENT_BUS.register(new EventsHandler());
   }
 
   private void registerPackets() {
