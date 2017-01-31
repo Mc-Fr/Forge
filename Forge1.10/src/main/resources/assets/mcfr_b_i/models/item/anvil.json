@@ -1,6 +1,3 @@
 {
-    "parent": "item/generated",
-    "textures": {
-        "layer0": "mcfr_b_i:items/anvil"
-    }
+    "parent": "mcfr_b_i:block/anvil"
 }
