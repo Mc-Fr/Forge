@@ -88,6 +88,7 @@ import net.mcfr.decoration.furniture.BlockWoodenShelf;
 import net.mcfr.decoration.lighting.BlockBrazier;
 import net.mcfr.decoration.lighting.BlockCampfire;
 import net.mcfr.decoration.lighting.BlockChandelier;
+import net.mcfr.decoration.lighting.BlockDoubleCandle;
 import net.mcfr.decoration.lighting.BlockLantern;
 import net.mcfr.decoration.lighting.BlockLargeTorch;
 import net.mcfr.decoration.lighting.BlockLitCampFire;
@@ -634,6 +635,7 @@ public final class McfrBlocks {
   public static final BlockCoins COINS = new BlockCoins();
   // Éclairage
   public static final BlockSimpleCandle CANDLE = new BlockSimpleCandle();
+  public static final BlockDoubleCandle DOUBLE_CANDLE = new BlockDoubleCandle();
   public static final BlockTripleCandle TRIPLE_CANDLE = new BlockTripleCandle();
   /** Lustre */
   public static final BlockChandelier CHANDELIER = new BlockChandelier(false);
@@ -1174,6 +1176,7 @@ public final class McfrBlocks {
     registerVariants(COINS);
 
     register(CANDLE);
+    register(DOUBLE_CANDLE);
     register(TRIPLE_CANDLE);
     register(CHANDELIER);
     register(LARGE_CHANDELIER);

@@ -549,6 +549,7 @@ public class ClientProxy extends CommonProxy {
     registerBlockVariants(COINS, BlockFloorDecoration.EnumType.class);
 
     registerBlock(CANDLE);
+    registerBlock(DOUBLE_CANDLE);
     registerBlock(TRIPLE_CANDLE);
     registerBlock(CHANDELIER);
     registerBlock(LARGE_CHANDELIER);
