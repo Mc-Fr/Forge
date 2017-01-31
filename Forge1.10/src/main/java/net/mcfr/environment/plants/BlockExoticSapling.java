@@ -7,6 +7,7 @@ import net.mcfr.commons.IBlockWithVariants;
 import net.mcfr.environment.plants.treeGen.WorldGenAppleTree;
 import net.mcfr.environment.plants.treeGen.WorldGenBeluxier;
 import net.mcfr.environment.plants.treeGen.WorldGenCherryTree;
+import net.mcfr.environment.plants.treeGen.WorldGenPalmTree;
 import net.mcfr.utils.NameUtils;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.IGrowable;
@@ -87,9 +88,9 @@ public class BlockExoticSapling extends BlockBush implements IBlockWithVariants,
       case CHERRY_TREE:
         worldGenerator = new WorldGenCherryTree(true);
         break;
-      // case PALM_TREE:
-      // worldGenerator = new WorldGenPalmTree(true);
-      // break;
+      case PALM_TREE:
+        worldGenerator = new WorldGenPalmTree(true);
+        break;
       case BELUXIER:
         worldGenerator = new WorldGenBeluxier(true);
         break;
