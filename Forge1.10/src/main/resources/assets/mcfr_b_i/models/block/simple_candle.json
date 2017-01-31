@@ -1,0 +1,22 @@
+{
+	"__comment": "Designed by Mcfr4488 with Cubik Studio - https://cubik.studio",
+	"textures": {
+		"particle": "mcfr_b_i:blocks/simple_candle_front",
+		"candle_side": "mcfr_b_i:blocks/simple_candle_front"
+	},
+	"elements": [
+		{
+			"__comment": "Core",
+			"from": [ 7.5, 0, 7.5 ],
+			"to": [ 9.5, 8, 9.5 ],
+			"faces": {
+				"down": { "uv": [ 7, 14, 9, 16 ], "texture": "#candle_side" },
+				"up": { "uv": [ 7, 14, 9, 16 ], "texture": "#candle_side" },
+				"north": { "uv": [ 7, 8, 9, 16 ], "texture": "#candle_side" },
+				"south": { "uv": [ 7, 8, 9, 16 ], "texture": "#candle_side" },
+				"west": { "uv": [ 7, 8, 9, 16 ], "texture": "#candle_side" },
+				"east": { "uv": [ 7, 8, 9, 16 ], "texture": "#candle_side" }
+			}
+		}
+	]
+}

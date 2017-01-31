@@ -1,0 +1,48 @@
+{
+	"__comment": "Designed by Mcfr4488 with Cubik Studio - https://cubik.studio",
+	"textures": {
+		"particle": "mcfr_b_i:blocks/triple_candle_front",
+		"candle_side": "mcfr_b_i:blocks/triple_candle_front"
+	},
+	"elements": [
+		{
+			"__comment": "Candle_small",
+			"from": [ 4, 0, 4.5 ],
+			"to": [ 6, 8, 6.5 ],
+			"faces": {
+				"down": { "uv": [ 14, 14, 16, 16 ], "texture": "#candle_side" },
+				"up": { "uv": [ 14, 14, 16, 16 ], "texture": "#candle_side" },
+				"north": { "uv": [ 0, 4, 2, 12 ], "texture": "#candle_side" },
+				"south": { "uv": [ 0, 4, 2, 12 ], "texture": "#candle_side" },
+				"west": { "uv": [ 0, 4, 2, 12 ], "texture": "#candle_side" },
+				"east": { "uv": [ 0, 4, 2, 12 ], "texture": "#candle_side" }
+			}
+		},
+		{
+			"__comment": "Candle_medium",
+			"from": [ 9, 0, 5 ],
+			"to": [ 12, 10, 8 ],
+			"faces": {
+				"down": { "uv": [ 13, 13, 16, 16 ], "texture": "#candle_side" },
+				"up": { "uv": [ 13, 13, 16, 16 ], "texture": "#candle_side" },
+				"north": { "uv": [ 13, 4, 16, 16 ], "texture": "#candle_side" },
+				"south": { "uv": [ 13, 4, 16, 16 ], "texture": "#candle_side" },
+				"west": { "uv": [ 13, 4, 16, 16 ], "texture": "#candle_side" },
+				"east": { "uv": [ 13, 4, 16, 16 ], "texture": "#candle_side" }
+			}
+		},
+		{
+			"__comment": "Candle_large",
+			"from": [ 5.5, 0, 9.5 ],
+			"to": [ 9.5, 12, 13.5 ],
+			"faces": {
+				"down": { "uv": [ 12, 12, 16, 16 ], "texture": "#candle_side" },
+				"up": { "uv": [ 12, 12, 16, 16 ], "texture": "#candle_side" },
+				"north": { "uv": [ 12, 4, 16, 16 ], "texture": "#candle_side" },
+				"south": { "uv": [ 12, 4, 16, 16 ], "texture": "#candle_side" },
+				"west": { "uv": [ 12, 4, 16, 16 ], "texture": "#candle_side" },
+				"east": { "uv": [ 12, 4, 16, 16 ], "texture": "#candle_side" }
+			}
+		}
+	]
+}
