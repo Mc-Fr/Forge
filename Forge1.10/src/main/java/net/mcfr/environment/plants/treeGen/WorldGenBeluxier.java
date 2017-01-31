@@ -26,7 +26,8 @@ public class WorldGenBeluxier extends WorldGenMcfrTree {
 
   @Override
   public boolean generate(World worldIn, Random rand, BlockPos position) {
-    int height = this.minTreeHeight + rand.nextInt(5);
+    int base = this.minTreeHeight + rand.nextInt(2);
+    int height = 5 + base;
 
     if (checkHeight(worldIn, position, height)) {
       List<LeafSphere> spheres = new ArrayList<>();
@@ -57,10 +58,10 @@ public class WorldGenBeluxier extends WorldGenMcfrTree {
         else
           axis = EnumAxis.Z;
 
-        setBlockAndNotifyAdequately(worldIn, position.up(this.minTreeHeight), Blocks.AIR.getDefaultState());
-        setBlockAndNotifyAdequately(worldIn, position.add(xo, this.minTreeHeight - 1, zo), this.wood);
-        setBlockAndNotifyAdequately(worldIn, position.add(xo, this.minTreeHeight, zo), this.wood);
-        setBlockAndNotifyAdequately(worldIn, position.add(xo, this.minTreeHeight + 1, zo), this.wood);
+        setBlockAndNotifyAdequately(worldIn, position.up(base), Blocks.AIR.getDefaultState());
+        setBlockAndNotifyAdequately(worldIn, position.add(xo, base - 1, zo), this.wood);
+        setBlockAndNotifyAdequately(worldIn, position.add(xo, base, zo), this.wood);
+        setBlockAndNotifyAdequately(worldIn, position.add(xo, base + 1, zo), this.wood);
 
         BlockPos pos = position.add(-xo, 0, -zo);
         // Sol
@@ -81,6 +82,8 @@ public class WorldGenBeluxier extends WorldGenMcfrTree {
 
         // Branches
         for (int b = 0; b < 4; b++) {
+          xo = 0;
+          zo = 0;
           if (b == 0)
             xo = -1;
           else if (b == 1)
@@ -103,11 +106,11 @@ public class WorldGenBeluxier extends WorldGenMcfrTree {
         }
 
         for (int i = 0, n = 1 + rand.nextInt(3); i < n; i++) {
-          spheres.add(new LeafSphere(position.up(this.minTreeHeight + 3 - i), 5, 6, 6, 100, i == n - 1 ? 1 : 0));
+          spheres.add(new LeafSphere(position.up(base + 3 - i), 5, 6, 6, 100, i == n - 1 ? 1 : 0));
         }
-        spheres.add(new LeafSphere(position.up(this.minTreeHeight + 4), 5, 5, 6, 100, -1));
-        spheres.add(new LeafSphere(position.up(this.minTreeHeight + 5), 4, 4, 4, 100, -1));
-        spheres.add(new LeafSphere(position.up(this.minTreeHeight + 6), 3, 0, 3, 100, 0));
+        spheres.add(new LeafSphere(position.up(base + 4), 5, 5, 6, 100, -1));
+        spheres.add(new LeafSphere(position.up(base + 5), 4, 4, 4, 100, -1));
+        spheres.add(new LeafSphere(position.up(base + 6), 3, 0, 3, 100, 0));
 
         for (LeafSphere sphere : spheres)
           generateLeaves(worldIn, rand, sphere);
@@ -146,7 +149,7 @@ public class WorldGenBeluxier extends WorldGenMcfrTree {
               }
             }
             else {
-              if (n == maxOverflow && smear != 0 && rand.nextInt(2) == 0) {
+              if (n == maxOverflow && smear != 0 && rand.nextBoolean()) {
                 setBlockAndNotifyAdequately(worldIn, pos.down(smear), this.leaves);
 
                 int offset = 0;
@@ -181,12 +184,12 @@ public class WorldGenBeluxier extends WorldGenMcfrTree {
 
   @SuppressWarnings("deprecation")
   private void spawnVines(World world, BlockPos pos, int meta) {
-    int i = 4;
+    int maxLength = 4;
 
     setBlockAndNotifyAdequately(world, pos, Blocks.VINE.getStateFromMeta(meta));
-    while (world.isAirBlock(pos = pos.down()) && i > 0) {
+    while (world.isAirBlock(pos = pos.down()) && maxLength > 0) {
       setBlockAndNotifyAdequately(world, pos, Blocks.VINE.getStateFromMeta(meta));
-      i--;
+      maxLength--;
     }
   }
 }

@@ -3,17 +3,11 @@ package net.mcfr.guis;
 import java.io.IOException;
 
 import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiMainMenu;
-import net.minecraft.client.gui.GuiMultiplayer;
-import net.minecraft.client.gui.GuiOptions;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.GuiShareToLan;
 import net.minecraft.client.gui.achievement.GuiAchievements;
 import net.minecraft.client.gui.achievement.GuiStats;
-import net.minecraft.client.multiplayer.WorldClient;
 import net.minecraft.client.resources.I18n;
-import net.minecraft.realms.RealmsBridge;
-import net.minecraftforge.fml.client.FMLClientHandler;
 
 public class GuiMcfrIngameMenu extends GuiScreen {
   @Override
@@ -39,30 +33,13 @@ public class GuiMcfrIngameMenu extends GuiScreen {
   protected void actionPerformed(GuiButton button) throws IOException {
     switch (button.id) {
       case 0:
-        this.mc.displayGuiScreen(new GuiOptions(this, this.mc.gameSettings));
+        this.mc.displayGuiScreen(new GuiMcfrOptions(this, this.mc.gameSettings));
         break;
       case 1:
-        boolean flag = this.mc.isIntegratedServerRunning();
-        boolean flag1 = this.mc.isConnectedToRealms();
         button.enabled = false;
         this.mc.theWorld.sendQuittingDisconnectingPacket();
-        this.mc.loadWorld((WorldClient) null);
-
-        if (flag) {
-          this.mc.displayGuiScreen(new GuiMainMenu());
-        }
-        else if (flag1) {
-          RealmsBridge realmsbridge = new RealmsBridge();
-          realmsbridge.switchToRealms(new GuiMainMenu());
-        }
-        else {
-          this.mc.displayGuiScreen(new GuiMultiplayer(new GuiMainMenu()));
-        }
-
-      case 2:
-      case 3:
-      default:
-        break;
+        this.mc.loadWorld(null);
+        this.mc.displayGuiScreen(new GuiMcfrMainMenu());
       case 4:
         this.mc.displayGuiScreen((GuiScreen) null);
         this.mc.setIngameFocus();
@@ -77,9 +54,6 @@ public class GuiMcfrIngameMenu extends GuiScreen {
         break;
       case 7:
         this.mc.displayGuiScreen(new GuiShareToLan(this));
-        break;
-      case 12:
-        FMLClientHandler.instance().showInGameModOptions(null);
         break;
     }
   }
