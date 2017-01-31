@@ -1,9 +1,6 @@
 package net.mcfr;
 
-import static net.minecraft.inventory.EntityEquipmentSlot.CHEST;
-import static net.minecraft.inventory.EntityEquipmentSlot.FEET;
-import static net.minecraft.inventory.EntityEquipmentSlot.HEAD;
-import static net.minecraft.inventory.EntityEquipmentSlot.LEGS;
+import static net.minecraft.inventory.EntityEquipmentSlot.*;
 
 import net.mcfr.commons.McfrItem;
 import net.mcfr.commons.McfrItemBlockSpecial;
@@ -343,21 +340,21 @@ public final class McfrItems {
     register(POIGRUME);
     register(POIGRUME_COOKIE);
     register(COCOA);
-    
+
     register(RAW_HUNTED_LEG);
     register(COOKED_HUNTED_LEG);
     register(RAW_HUNTED_STEAK);
     register(COOKED_HUNTED_STEAK);
     register(RAW_HUNTED_POULTRY);
     register(COOKED_HUNTED_POULTRY);
-    
+
     register(RAW_NIALE_MEAT);
     register(COOKED_NIALE_MEAT);
     register(RAW_HOEN_MEAT);
     register(COOKED_HOEN_MEAT);
     register(RAW_GALT_MEAT);
     register(COOKED_GALT_MEAT);
-    
+
     register(STRONG_OAK_DOOR);
     register(CRAFTSMAN_OAK_DOOR);
     register(CRAFTSMAN_SPRUCE_DOOR);
@@ -475,7 +472,7 @@ public final class McfrItems {
     addSmelting(RAW_NIALE_MEAT, COOKED_NIALE_MEAT, 1, 0, 0);
     addSmelting(RAW_HOEN_MEAT, COOKED_HOEN_MEAT, 1, 0, 0);
     addSmelting(RAW_GALT_MEAT, COOKED_GALT_MEAT, 1, 0, 0);
-    
+
     McfrBlocks.LIT_CAMPFIRE.addRecipe(Items.PORKCHOP, Items.COOKED_PORKCHOP);
     McfrBlocks.LIT_CAMPFIRE.addRecipe(Items.BEEF, Items.COOKED_BEEF);
     McfrBlocks.LIT_CAMPFIRE.addRecipe(Items.CHICKEN, Items.COOKED_CHICKEN);
@@ -493,6 +490,26 @@ public final class McfrItems {
   }
 
   /**
+   * Ajoute une recette.
+   * 
+   * @param output l'item en sortie
+   * @param params les paramètres
+   */
+  private static void addShapedRecipe(ItemStack output, Object... params) {
+    GameRegistry.addShapedRecipe(output, params);
+  }
+
+  /**
+   * Ajoute une recette sans contrainte de disposition.
+   * 
+   * @param output l'item en sortie
+   * @param params les paramètres
+   */
+  private static void addShapelessRecipe(ItemStack output, Object... params) {
+    GameRegistry.addShapelessRecipe(output, params);
+  }
+
+  /**
    * Ajoute une recette pour le four.
    *
    * @param item l'item
@@ -501,7 +518,6 @@ public final class McfrItems {
    * @param meta le metadata
    * @param xp la quantité d'XP
    */
-  @SuppressWarnings("unused")
   private static void addSmelting(Item item, Item result, int quantity, int meta, float xp) {
     GameRegistry.addSmelting(item, new ItemStack(result, quantity, meta), xp);
   }
