@@ -1,6 +1,9 @@
 package net.mcfr;
 
-import static net.minecraft.inventory.EntityEquipmentSlot.*;
+import static net.minecraft.inventory.EntityEquipmentSlot.CHEST;
+import static net.minecraft.inventory.EntityEquipmentSlot.FEET;
+import static net.minecraft.inventory.EntityEquipmentSlot.HEAD;
+import static net.minecraft.inventory.EntityEquipmentSlot.LEGS;
 
 import net.mcfr.commons.McfrItem;
 import net.mcfr.commons.McfrItemBlockSpecial;
@@ -128,6 +131,20 @@ public final class McfrItems {
   public static final McfrItemFood POIGRUME = new McfrItemFood("poigrume", 1, 0.8f);
   public static final McfrItemFood POIGRUME_COOKIE = new McfrItemFood("poigrume_cookie", 2, 3.2f);
   public static final McfrItem COCOA = new McfrItem("cocoa", CreativeTabs.MATERIALS);
+  // Viande de chasse
+  public static final McfrItemFood RAW_HUNTED_LEG = new McfrItemFood("raw_hunted_leg", 3, 0.6f);
+  public static final McfrItemFood COOKED_HUNTED_LEG = new McfrItemFood("cooked_hunted_leg", 4, 8.8f);
+  public static final McfrItemFood RAW_HUNTED_STEAK = new McfrItemFood("raw_hunted_steak", 3, 0.6f);
+  public static final McfrItemFood COOKED_HUNTED_STEAK = new McfrItemFood("cooked_hunted_steak", 6, 10.6f);
+  public static final McfrItemFood RAW_HUNTED_POULTRY = new McfrItemFood("raw_hunted_poultry", 2, 0.5f);
+  public static final McfrItemFood COOKED_HUNTED_POULTRY = new McfrItemFood("cooked_hunted_poultry", 4, 6.8f);
+  // Viande d'élevage
+  public static final McfrItemFood RAW_NIALE_MEAT = new McfrItemFood("raw_niale_meat", 3, 0.6f);
+  public static final McfrItemFood COOKED_NIALE_MEAT = new McfrItemFood("cooked_niale_meat", 6, 12.8f);
+  public static final McfrItemFood RAW_HOEN_MEAT = new McfrItemFood("raw_hoen_meat", 2, 0.5f);
+  public static final McfrItemFood COOKED_HOEN_MEAT = new McfrItemFood("cooked_hoen_meat", 6, 9.2f);
+  public static final McfrItemFood RAW_GALT_MEAT = new McfrItemFood("raw_galt_meat", 3, 0.6f);
+  public static final McfrItemFood COOKED_GALT_MEAT = new McfrItemFood("cooked_galt_meat", 6, 12.8f);
   // Portes
   public static final McfrItemDoor STRONG_OAK_DOOR = McfrBlocks.STRONG_OAK_DOOR.getItem();
   public static final McfrItemDoor CRAFTSMAN_OAK_DOOR = McfrBlocks.CRAFTSMAN_OAK_DOOR.getItem();
@@ -326,7 +343,21 @@ public final class McfrItems {
     register(POIGRUME);
     register(POIGRUME_COOKIE);
     register(COCOA);
-
+    
+    register(RAW_HUNTED_LEG);
+    register(COOKED_HUNTED_LEG);
+    register(RAW_HUNTED_STEAK);
+    register(COOKED_HUNTED_STEAK);
+    register(RAW_HUNTED_POULTRY);
+    register(COOKED_HUNTED_POULTRY);
+    
+    register(RAW_NIALE_MEAT);
+    register(COOKED_NIALE_MEAT);
+    register(RAW_HOEN_MEAT);
+    register(COOKED_HOEN_MEAT);
+    register(RAW_GALT_MEAT);
+    register(COOKED_GALT_MEAT);
+    
     register(STRONG_OAK_DOOR);
     register(CRAFTSMAN_OAK_DOOR);
     register(CRAFTSMAN_SPRUCE_DOOR);
@@ -438,6 +469,13 @@ public final class McfrItems {
     register(MAGIC_WAND);
     register(LIGHTNING);
 
+    addSmelting(RAW_HUNTED_LEG, COOKED_HUNTED_LEG, 1, 0, 0);
+    addSmelting(RAW_HUNTED_STEAK, COOKED_HUNTED_STEAK, 1, 0, 0);
+    addSmelting(RAW_HUNTED_POULTRY, COOKED_HUNTED_POULTRY, 1, 0, 0);
+    addSmelting(RAW_NIALE_MEAT, COOKED_NIALE_MEAT, 1, 0, 0);
+    addSmelting(RAW_HOEN_MEAT, COOKED_HOEN_MEAT, 1, 0, 0);
+    addSmelting(RAW_GALT_MEAT, COOKED_GALT_MEAT, 1, 0, 0);
+    
     McfrBlocks.LIT_CAMPFIRE.addRecipe(Items.PORKCHOP, Items.COOKED_PORKCHOP);
     McfrBlocks.LIT_CAMPFIRE.addRecipe(Items.BEEF, Items.COOKED_BEEF);
     McfrBlocks.LIT_CAMPFIRE.addRecipe(Items.CHICKEN, Items.COOKED_CHICKEN);

@@ -718,6 +718,20 @@ public class ClientProxy extends CommonProxy {
     registerItem(POIGRUME);
     registerItem(POIGRUME_COOKIE);
     registerItem(COCOA);
+    
+    registerItem(McfrItems.RAW_HUNTED_LEG);
+    registerItem(McfrItems.COOKED_HUNTED_LEG);
+    registerItem(McfrItems.RAW_HUNTED_STEAK);
+    registerItem(McfrItems.COOKED_HUNTED_STEAK);
+    registerItem(McfrItems.RAW_HUNTED_POULTRY);
+    registerItem(McfrItems.COOKED_HUNTED_POULTRY);
+    
+    registerItem(McfrItems.RAW_NIALE_MEAT);
+    registerItem(McfrItems.COOKED_NIALE_MEAT);
+    registerItem(McfrItems.RAW_HOEN_MEAT);
+    registerItem(McfrItems.COOKED_HOEN_MEAT);
+    registerItem(McfrItems.RAW_GALT_MEAT);
+    registerItem(McfrItems.COOKED_GALT_MEAT);
 
     registerItem(McfrItems.STRONG_OAK_DOOR);
     registerItem(McfrItems.CRAFTSMAN_OAK_DOOR);
