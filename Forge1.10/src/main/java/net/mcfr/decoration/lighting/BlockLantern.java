@@ -106,9 +106,8 @@ public class BlockLantern extends McfrBlock {
   }
 
   @Override
-  @SuppressWarnings("deprecation")
   public IBlockState getStateFromMeta(int meta) {
-    return super.getStateFromMeta(meta).withProperty(ORIENTATION, meta & 3).withProperty(POSITION, EnumPosition.fromIndex((meta & 0xf0) >> 2));
+    return getDefaultState().withProperty(ORIENTATION, meta & 3).withProperty(POSITION, EnumPosition.fromIndex((meta & 0b1100) >> 2));
   }
 
   @Override
@@ -118,12 +117,12 @@ public class BlockLantern extends McfrBlock {
 
   @Override
   public ItemStack getItem(World worldIn, BlockPos pos, IBlockState state) {
-    return new ItemStack(getRegistryName().getResourcePath().contains("paper") ? McfrItems.PAPER_LANTERN : McfrItems.LANTERN);
+    return new ItemStack(this.isPaper ? McfrItems.PAPER_LANTERN : McfrItems.LANTERN);
   }
 
   @Override
   public Item getItemDropped(IBlockState state, Random rand, int fortune) {
-    return getRegistryName().getResourcePath().contains("paper") ? McfrItems.PAPER_LANTERN : McfrItems.LANTERN;
+    return this.isPaper ? McfrItems.PAPER_LANTERN : McfrItems.LANTERN;
   }
 
   @Override
