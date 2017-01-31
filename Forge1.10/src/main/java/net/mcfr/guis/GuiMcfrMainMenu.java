@@ -207,8 +207,6 @@ public class GuiMcfrMainMenu extends GuiScreen {
         this.mc.displayGuiScreen(new GuiMcfrOptions(this, this.mc.gameSettings));
         break;
       case 1: // Serveur Roleplay
-        // FIXME ajouter le serveur s'il n'est pas enregistré.
-        // Fonctionne si GuiMultiplayer a été ouverte avant.
         connectToServer("minecraft-fr.net:23457");
         break;
       case 2: // Serveur Freebuild
