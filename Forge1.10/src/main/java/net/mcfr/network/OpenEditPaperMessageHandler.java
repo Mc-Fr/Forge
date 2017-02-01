@@ -14,13 +14,18 @@ public class OpenEditPaperMessageHandler implements IMessageHandler<OpenEditPape
   @Override
   public IMessage onMessage(final OpenEditPaperMessage message, MessageContext ctx) {
     Minecraft.getMinecraft().addScheduledTask(() -> {
-      EntityPlayer player = Minecraft.getMinecraft().thePlayer;
+      EntityPlayer player = getPlayer();
       openGui(player, player.getHeldItem(message.getHand()), message.isPaperUnsigned());
     });
 
     return null;
   }
-
+  
+  @SideOnly(Side.CLIENT)
+  public EntityPlayer getPlayer() {
+    return Minecraft.getMinecraft().thePlayer;
+  }
+  
   @SideOnly(Side.CLIENT)
   public void openGui(EntityPlayer player, ItemStack stack, boolean isUnsigned) {
     Minecraft.getMinecraft().displayGuiScreen(new GuiScreenPaper(player, stack, isUnsigned));

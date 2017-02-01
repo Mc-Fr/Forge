@@ -20,7 +20,7 @@ public class OpenEditMcfrSignMessageHandler implements IMessageHandler<OpenEditM
   public IMessage onMessage(final OpenEditMcfrSignMessage message, MessageContext ctx) {
     Minecraft.getMinecraft().addScheduledTask(() -> {
       BlockPos pos = message.getSignPos();
-      World world = Minecraft.getMinecraft().thePlayer.worldObj;
+      World world = getWorld();
       TileEntity te = world.getTileEntity(pos);
 
       if (!(te instanceof TileEntityMcfrSign)) {
@@ -44,7 +44,12 @@ public class OpenEditMcfrSignMessageHandler implements IMessageHandler<OpenEditM
 
     return null;
   }
-
+  
+  @SideOnly(Side.CLIENT)
+  public World getWorld() {
+    return Minecraft.getMinecraft().thePlayer.worldObj;
+  }
+  
   @SideOnly(Side.CLIENT)
   public void openGui(TileEntityMcfrSign te) {
     Minecraft.getMinecraft().displayGuiScreen(new GuiEditMcfrSign(te));
