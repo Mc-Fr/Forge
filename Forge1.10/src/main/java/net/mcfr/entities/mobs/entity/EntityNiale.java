@@ -16,6 +16,7 @@ import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.EntityAIAvoidEntity;
 import net.minecraft.entity.ai.EntityAIEatGrass;
 import net.minecraft.entity.ai.EntityAIFollowParent;
 import net.minecraft.entity.ai.EntityAILookIdle;
@@ -78,14 +79,15 @@ public class EntityNiale extends EntityBurrowed implements net.minecraftforge.co
     this.entityAIEatGrass = new EntityAIEatGrass(this);
     this.tasks.addTask(0, new EntityAISwimming(this));
     this.tasks.addTask(1, new EntityAIPanic(this, 1.25D));
-    this.tasks.addTask(2, new EntityAIMate(this, 1.0D));
-    this.tasks.addTask(3, new EntityAITempt(this, 1.0D, true, TEMPTATION_ITEMS));
-    this.tasks.addTask(4, new EntityAIFollowParent(this, 1.1D));
-    this.tasks.addTask(5, new EntityAIGoToBurrow(this, 1.0D, 5));
-    this.tasks.addTask(6, this.entityAIEatGrass);
-    this.tasks.addTask(7, new EntityAIWander(this, 1.0D));
-    this.tasks.addTask(8, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
-    this.tasks.addTask(9, new EntityAILookIdle(this));
+    this.tasks.addTask(2, new EntityAIAvoidEntity<EntityGalt>(this, EntityGalt.class, 20.0F, 1.0F, 1.3F));
+    this.tasks.addTask(3, new EntityAIMate(this, 1.0D));
+    this.tasks.addTask(4, new EntityAITempt(this, 1.0D, true, TEMPTATION_ITEMS));
+    this.tasks.addTask(5, new EntityAIFollowParent(this, 1.1D));
+    this.tasks.addTask(6, new EntityAIGoToBurrow(this, 1.0D, 5));
+    this.tasks.addTask(7, this.entityAIEatGrass);
+    this.tasks.addTask(8, new EntityAIWander(this, 1.0D, 10));
+    this.tasks.addTask(9, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
+    this.tasks.addTask(10, new EntityAILookIdle(this));
   }
 
   @Override
@@ -112,8 +114,8 @@ public class EntityNiale extends EntityBurrowed implements net.minecraftforge.co
   @Override
   protected void applyEntityAttributes() {
     super.applyEntityAttributes();
-    getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(4.0D);
-    getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.2D);
+    getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(16.0D);
+    getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.27D);
   }
 
   /**

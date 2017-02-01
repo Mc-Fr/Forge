@@ -14,6 +14,7 @@ import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.EntityAIAvoidEntity;
 import net.minecraft.entity.ai.EntityAIFollowParent;
 import net.minecraft.entity.ai.EntityAILookIdle;
 import net.minecraft.entity.ai.EntityAIMate;
@@ -53,6 +54,7 @@ public class EntityHoen extends EntityBurrowed {
     {
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(1, new EntityAIPanic(this, 1.4D));
+        this.tasks.addTask(2, new EntityAIAvoidEntity<EntityGalt>(this, EntityGalt.class, 15.0F, 1.0F, 1.3F));
         this.tasks.addTask(2, new EntityAIMate(this, 1.0D));
         this.tasks.addTask(3, new EntityAITempt(this, 1.0D, true, TEMPTATION_ITEMS));
         this.tasks.addTask(4, new EntityAIFollowParent(this, 1.1D));
@@ -72,7 +74,7 @@ public class EntityHoen extends EntityBurrowed {
     {
         super.applyEntityAttributes();
         this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(4.0D);
-        this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.2D);
+        this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.25D);
     }
 
     /**

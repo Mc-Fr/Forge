@@ -21,6 +21,7 @@ import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.entity.ai.EntityAILookIdle;
 import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
+import net.minecraft.entity.ai.EntityAIPanic;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.player.EntityPlayer;
@@ -52,12 +53,13 @@ public class EntitySiker extends EntityBurrowed {
   protected void initEntityAI() {
     this.cycle = AICycle.IDLE;
 
-    this.tasks.addTask(0, new EntityAIAvoidEntityCycle<>(this, EntityPlayer.class, 30.0F, 1.0F, 1.4F, 100));
-    this.tasks.addTask(1, new EntityAIAttackCycle(this, 1.3F, true, 100));
-    this.tasks.addTask(2, new EntityAIWatchClosest(this, EntityPlayer.class, 25.0F, 0.9F));
-    this.tasks.addTask(3, new EntityAIGoToBurrow(this, 1.0D, 5));
-    this.tasks.addTask(4, new EntityAIWander(this, 1.0D));
-    this.tasks.addTask(5, new EntityAILookIdle(this));
+    this.tasks.addTask(0, new EntityAIAvoidEntityCycle<>(this, EntityPlayer.class, 30.0F, 1.0F, 1.4F, 150));
+    this.tasks.addTask(1, new EntityAIAttackCycle(this, 1.3F, true, 50));
+    this.tasks.addTask(2, new EntityAIPanic(this, 1.3F));
+    this.tasks.addTask(3, new EntityAIWatchClosest(this, EntityPlayer.class, 25.0F, 0.9F));
+    this.tasks.addTask(4, new EntityAIGoToBurrow(this, 1.0D, 5));
+    this.tasks.addTask(5, new EntityAIWander(this, 1.0D, 10));
+    this.tasks.addTask(6, new EntityAILookIdle(this));
 
     this.targetTasks.addTask(0, new EntityAIHurtByTarget(this, false, new Class[0]));
     this.targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityPlayer.class, true));

@@ -45,7 +45,7 @@ public class EntityGalt extends EntityBurrowed {
     super(worldIn);
     setSize(1.5F, 1.7F);
     setPathPriority(PathNodeType.WATER, 0.0F);
-    setFurType(this.rand.nextInt(2) + 1);
+    setFurType(2);
   }
 
   public void setFurType(int type) {
@@ -63,13 +63,13 @@ public class EntityGalt extends EntityBurrowed {
     this.tasks.addTask(2, new EntityAIAttackMelee(this, 1.5F, true));
     this.tasks.addTask(3, new EntityAIWatchClosest(this, EntityPlayer.class, 25.0F, 0.9F));
     this.tasks.addTask(4, new EntityAIGoToBurrow(this, 1.0D, 5));
-    this.tasks.addTask(5, new EntityAIWander(this, 1.0D));
+    this.tasks.addTask(5, new EntityAIWander(this, 1.0D, 10));
     this.tasks.addTask(6, new EntityAILookIdle(this));
 
     this.targetTasks.addTask(0, new EntityAIHurtByTarget(this, false, new Class[0]));
     this.targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityPlayer.class, true));
     this.targetTasks.addTask(2, new EntityAINearestAttackableTarget<>(this, EntityNiale.class, true));
-    this.targetTasks.addTask(2, new EntityAINearestAttackableTarget<>(this, EntityHoen.class, true));
+    this.targetTasks.addTask(3, new EntityAINearestAttackableTarget<>(this, EntityHoen.class, true));
   }
 
   @Override
@@ -80,11 +80,11 @@ public class EntityGalt extends EntityBurrowed {
   @Override
   protected void applyEntityAttributes() {
     super.applyEntityAttributes();
-    getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(4.0D);
-    getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.2D);
-    getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(16.0F);
+    getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(20.0D);
+    getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.35D);
+    getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(25.0F);
 
-    getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(2.0D);
+    getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(6.0D);
   }
 
   /**
