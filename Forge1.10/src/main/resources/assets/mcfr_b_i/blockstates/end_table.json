@@ -1,0 +1,10 @@
+{
+    "variants": {
+        "variant=oak": { "model": "mcfr_b_i:oak_end_table" },
+        "variant=jungle": { "model": "mcfr_b_i:jungle_end_table" },
+        "variant=birch": { "model": "mcfr_b_i:birch_end_table" },
+        "variant=spruce": { "model": "mcfr_b_i:spruce_end_table" },
+        "variant=acacia": { "model": "mcfr_b_i:acacia_end_table" },
+        "variant=dark_oak": { "model": "mcfr_b_i:dark_oak_end_table" }
+    }
+}
