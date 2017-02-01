@@ -27,7 +27,7 @@ public class BlockTable extends McfrBlock implements IBlockWithVariants {
   }
 
   public BlockTable(String type, AxisAlignedBB aabb) {
-    super(type + "_table", Material.WOOD, SoundType.WOOD, 1.5f, 5, "axe", 0, null);
+    super(type + "_table", Material.WOOD, SoundType.WOOD, 1.5f, 5, "axe", 0, CreativeTabs.DECORATIONS);
     this.aabb = aabb;
   }
 

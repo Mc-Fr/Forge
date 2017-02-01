@@ -40,6 +40,8 @@ import net.mcfr.network.GuiHandler;
 import net.mcfr.network.McfrNetworkWrapper;
 import net.mcfr.network.OpenEditMcfrSignMessage;
 import net.mcfr.network.OpenEditMcfrSignMessageHandler;
+import net.mcfr.network.OpenEditPaperMessage;
+import net.mcfr.network.OpenEditPaperMessageHandler;
 import net.mcfr.network.OpenEditWallNoteMessage;
 import net.mcfr.network.OpenEditWallNoteMessageHandler;
 import net.mcfr.network.SyncEntityMessage;
@@ -107,6 +109,7 @@ public class McfrMain {
   }
 
   private void registerPackets() {
+    McfrNetworkWrapper.registerPacket(OpenEditPaperMessageHandler.class, OpenEditPaperMessage.class, Side.CLIENT);
     McfrNetworkWrapper.registerPacket(OpenEditMcfrSignMessageHandler.class, OpenEditMcfrSignMessage.class, Side.CLIENT);
     McfrNetworkWrapper.registerPacket(OpenEditWallNoteMessageHandler.class, OpenEditWallNoteMessage.class, Side.CLIENT);
     McfrNetworkWrapper.registerPacket(UpdateWallNoteMessageHandler.class, UpdateWallNoteMessage.class, Side.SERVER);

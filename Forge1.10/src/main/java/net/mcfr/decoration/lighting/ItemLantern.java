@@ -12,7 +12,6 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
@@ -34,34 +33,31 @@ public class ItemLantern extends McfrItem {
 
   @Override
   public EnumActionResult onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-    IBlockState state = worldIn.getBlockState(pos);
-    Block block = state.getBlock();
+    if (playerIn.canPlayerEdit(pos, facing, stack)) {
+      IBlockState state = worldIn.getBlockState(pos);
+      Block block = state.getBlock();
 
-    if (block == Blocks.SNOW_LAYER && state.getValue(BlockSnow.LAYERS) < 1) {
-      facing = EnumFacing.UP;
-    }
-    else if (!block.isReplaceable(worldIn, pos)) {
-      pos = pos.offset(facing);
-    }
+      if (block == Blocks.SNOW_LAYER && state.getValue(BlockSnow.LAYERS) < 1) {
+        facing = EnumFacing.UP;
+      }
+      else if (!block.isReplaceable(worldIn, pos)) {
+        pos = pos.offset(facing);
+      }
 
-    BlockLantern lantern = McfrBlocks.getLantern(EnumLanternColor.byMetadata(stack.getMetadata()), isPaper());
+      BlockLantern lantern = McfrBlocks.getLantern(EnumLanternColor.byMetadata(stack.getMetadata()), isPaper());
 
-    if (playerIn.canPlayerEdit(pos, facing, stack) && stack.stackSize > 0 && lantern.canPlaceBlockOnSide(worldIn, pos, facing.getOpposite())) {
-      IBlockState state1 = lantern.onBlockPlaced(worldIn, pos, facing, hitX, hitY, hitZ, 0, playerIn);
+      if (stack.stackSize > 0 && lantern.canPlaceBlockOnSide(worldIn, pos, facing.getOpposite())) {
+        IBlockState state1 = lantern.onBlockPlaced(worldIn, pos, facing, hitX, hitY, hitZ, 0, playerIn);
 
-      if (worldIn.setBlockState(pos, state1, 3)) {
-        state1 = worldIn.getBlockState(pos);
+        if (worldIn.setBlockState(pos, state1)) {
+          // state1.getBlock().onBlockPlacedBy(worldIn, pos, state1, playerIn, stack);
 
-        if (state1.getBlock() == lantern) {
-          ItemBlock.setTileEntityNBT(worldIn, playerIn, pos, stack);
-          state1.getBlock().onBlockPlacedBy(worldIn, pos, state1, playerIn, stack);
+          SoundType soundtype = lantern.getSoundType(state1, worldIn, pos, null);
+          worldIn.playSound(playerIn, new BlockPos(pos.getX(), pos.getY(), pos.getZ()), soundtype.getPlaceSound(), SoundCategory.BLOCKS, (soundtype.getVolume() + 1) / 2.0f, soundtype.getPitch() * 0.8F);
+          stack.stackSize--;
+
+          return EnumActionResult.SUCCESS;
         }
-        SoundType soundtype = lantern.getSoundType(state, worldIn, pos, null);
-
-        worldIn.playSound(playerIn, new BlockPos(pos.getX(), pos.getY(), pos.getZ()), soundtype.getPlaceSound(), SoundCategory.BLOCKS, (soundtype.getVolume() + 1) / 2.0f, soundtype.getPitch() * 0.8F);
-        --stack.stackSize;
-
-        return EnumActionResult.SUCCESS;
       }
     }
 
