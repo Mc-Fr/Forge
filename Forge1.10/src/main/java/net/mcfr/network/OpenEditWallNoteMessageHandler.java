@@ -17,7 +17,7 @@ public class OpenEditWallNoteMessageHandler implements IMessageHandler<OpenEditW
   public IMessage onMessage(final OpenEditWallNoteMessage message, MessageContext ctx) {
     Minecraft.getMinecraft().addScheduledTask(() -> {
       BlockPos pos = message.getSignPos();
-      World world = Minecraft.getMinecraft().thePlayer.worldObj;
+      World world = NetworkUtils.getLocalWorld();
       TileEntity te = world.getTileEntity(pos);
 
       if (!(te instanceof TileEntityWallNote)) {
