@@ -23,7 +23,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class ColorHandler {
+public final class ColorHandler {
   public static void init() {
     Minecraft minecraft = Minecraft.getMinecraft();
     BlockColors blockColors = minecraft.getBlockColors();

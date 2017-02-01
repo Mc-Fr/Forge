@@ -2,7 +2,7 @@ package net.mcfr.utils;
 
 import java.lang.reflect.Field;
 
-public class ReflectionUtils {
+public final class ReflectionUtils {
   @SuppressWarnings("unchecked")
   public static <T, U> U getValueForField(Class<T> clazz, String fieldName, String obfName, T obj) {
     Field field;
