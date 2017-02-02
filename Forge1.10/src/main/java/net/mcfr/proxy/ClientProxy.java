@@ -725,6 +725,8 @@ public class ClientProxy extends CommonProxy {
     registerItem(COOKED_HUNTED_STEAK);
     registerItem(RAW_HUNTED_POULTRY);
     registerItem(COOKED_HUNTED_POULTRY);
+    registerItem(HUNTED_SKIN);
+    
     registerItem(RAW_NIALE_MEAT);
     registerItem(COOKED_NIALE_MEAT);
     registerItem(RAW_HOEN_MEAT);

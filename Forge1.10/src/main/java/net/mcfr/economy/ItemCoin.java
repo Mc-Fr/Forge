@@ -37,6 +37,7 @@ public class ItemCoin extends McfrItem {
   public static enum EnumType implements IEnumType<EnumType> {
     BRASS("brass"),
     ELINVAR("elinvar"),
+    GOLD("gold"),
     PLATINUM("platinum");
 
     private final String name;

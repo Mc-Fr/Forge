@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=south":  { "model": "mcfr_b_i:acacia_tall_stool" },
+        "facing=east":  { "model": "mcfr_b_i:acacia_tall_stool", "y": 270 },
+        "facing=north": { "model": "mcfr_b_i:acacia_tall_stool", "y": 180 },
+        "facing=west": { "model": "mcfr_b_i:acacia_tall_stool", "y": 90 }
+    }
+}

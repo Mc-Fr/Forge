@@ -1,6 +1,9 @@
 package net.mcfr;
 
-import static net.minecraft.inventory.EntityEquipmentSlot.*;
+import static net.minecraft.inventory.EntityEquipmentSlot.CHEST;
+import static net.minecraft.inventory.EntityEquipmentSlot.FEET;
+import static net.minecraft.inventory.EntityEquipmentSlot.HEAD;
+import static net.minecraft.inventory.EntityEquipmentSlot.LEGS;
 
 import net.mcfr.commons.McfrItem;
 import net.mcfr.commons.McfrItemBlockSpecial;
@@ -128,14 +131,15 @@ public final class McfrItems {
   public static final McfrItemFood POIGRUME = new McfrItemFood("poigrume", 1, 0.8f);
   public static final McfrItemFood POIGRUME_COOKIE = new McfrItemFood("poigrume_cookie", 2, 3.2f);
   public static final McfrItem COCOA = new McfrItem("cocoa", CreativeTabs.MATERIALS);
-  // Viande de chasse
+  // Loots de chasse
   public static final McfrItemFood RAW_HUNTED_LEG = new McfrItemFood("raw_hunted_leg", 3, 0.6f);
   public static final McfrItemFood COOKED_HUNTED_LEG = new McfrItemFood("cooked_hunted_leg", 4, 8.8f);
   public static final McfrItemFood RAW_HUNTED_STEAK = new McfrItemFood("raw_hunted_steak", 3, 0.6f);
   public static final McfrItemFood COOKED_HUNTED_STEAK = new McfrItemFood("cooked_hunted_steak", 6, 10.6f);
   public static final McfrItemFood RAW_HUNTED_POULTRY = new McfrItemFood("raw_hunted_poultry", 2, 0.5f);
   public static final McfrItemFood COOKED_HUNTED_POULTRY = new McfrItemFood("cooked_hunted_poultry", 4, 6.8f);
-  // Viande d'élevage
+  public static final McfrItem HUNTED_SKIN = new McfrItem("hunted_skin", CreativeTabs.MATERIALS);
+  // Loots d'élevage
   public static final McfrItemFood RAW_NIALE_MEAT = new McfrItemFood("raw_niale_meat", 3, 0.6f);
   public static final McfrItemFood COOKED_NIALE_MEAT = new McfrItemFood("cooked_niale_meat", 6, 12.8f);
   public static final McfrItemFood RAW_HOEN_MEAT = new McfrItemFood("raw_hoen_meat", 2, 0.5f);
@@ -347,6 +351,7 @@ public final class McfrItems {
     register(COOKED_HUNTED_STEAK);
     register(RAW_HUNTED_POULTRY);
     register(COOKED_HUNTED_POULTRY);
+    register(HUNTED_SKIN);
 
     register(RAW_NIALE_MEAT);
     register(COOKED_NIALE_MEAT);

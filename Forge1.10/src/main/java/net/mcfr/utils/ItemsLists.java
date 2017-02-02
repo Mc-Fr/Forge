@@ -11,11 +11,13 @@ import net.mcfr.McfrItems;
 import net.mcfr.craftsmanship.BlockCircularSaw;
 import net.mcfr.craftsmanship.BlockLoom;
 import net.mcfr.craftsmanship.BlockTanningRack;
+import net.mcfr.craftsmanship.guis.ContainerRack;
 import net.mcfr.decoration.containerBlocks.BlockBookshelf;
 import net.mcfr.decoration.containerBlocks.BlockCrate;
 import net.mcfr.decoration.containerBlocks.BlockFoodCrate;
 import net.mcfr.decoration.containerBlocks.BlockLittleChest;
 import net.mcfr.decoration.containerBlocks.BlockPallet;
+import net.mcfr.decoration.containerBlocks.guis.ContainerRestricted;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -285,7 +287,9 @@ public final class ItemsLists {
 
     if (!MAPS.containsKey(key)) {
       Map<HashedItemStack, HashedItemStack> auth = new HashMap<>();
-
+      
+      auth.put(HashedItemStack.fromStack(new ItemStack(McfrItems.HUNTED_SKIN)), HashedItemStack.fromStack(new ItemStack(Items.LEATHER)));
+      
       MAPS.put(key, Collections.unmodifiableMap(auth));
       createList(key);
     }
