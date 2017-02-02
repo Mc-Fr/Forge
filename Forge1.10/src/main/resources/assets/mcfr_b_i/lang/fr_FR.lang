@@ -198,6 +198,7 @@ tile.mcfr_b_i_changer.name=Échangeur
 
 item.mcfr_b_i_coin.brass.name=Pièce de laiton
 item.mcfr_b_i_coin.elinvar.name=Pièce d'élinvar
+item.mcfr_b_i_coin.gold.name=Pièce d'or
 item.mcfr_b_i_coin.platinum.name=Pièce de platine
 item.mcfr_b_i_pipe.name=Pipe en bois
 item.mcfr_b_i_key.name=Clé
