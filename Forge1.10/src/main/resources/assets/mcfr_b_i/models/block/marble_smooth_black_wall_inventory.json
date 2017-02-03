@@ -1,6 +1,6 @@
 {
     "parent": "block/wall_inventory",
     "textures": {
-        "wall": "blocks/marble_smooth_black"
+        "wall": "mcfr_b_i:blocks/marble_smooth_black"
     }
 }
