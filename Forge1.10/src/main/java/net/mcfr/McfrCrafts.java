@@ -1017,21 +1017,21 @@ public final class McfrCrafts {
   private McfrCrafts() {}
 
   private static class Components {
-    private int w, h;
+    private int width, height;
     private ItemStack[] items;
 
-    public Components(int w, int h, ItemStack[] items) {
-      this.w = w;
-      this.h = h;
+    public Components(int width, int height, ItemStack[] items) {
+      this.width = width;
+      this.height = height;
       this.items = items;
     }
 
     public int getWidth() {
-      return this.w;
+      return this.width;
     }
 
     public int getHeight() {
-      return this.h;
+      return this.height;
     }
 
     public ItemStack[] getItems() {

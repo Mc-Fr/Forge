@@ -86,6 +86,7 @@ public class McfrMain {
     // CraftingManager.getInstance().getRecipeList().clear();
     FurnaceRecipes.instance().getSmeltingList().clear();
     McfrCrafts.registerCrafts();
+    McfrCrafts.registerAnvilCrafts();
   }
 
   @EventHandler
