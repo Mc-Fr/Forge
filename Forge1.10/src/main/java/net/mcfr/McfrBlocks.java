@@ -39,7 +39,7 @@ import net.mcfr.construction.BlockStonebrickSlab.BlockHalfStonebrickSlab;
 import net.mcfr.construction.BlockTiles;
 import net.mcfr.construction.BlockTimbered;
 import net.mcfr.construction.BlockWoodenWall;
-import net.mcfr.construction.BlockWoodenWall2;
+import net.mcfr.construction.BlockExoticWoodWall;
 import net.mcfr.construction.ItemExoticWoodSlab;
 import net.mcfr.construction.ItemHaySlab;
 import net.mcfr.construction.ItemMarbleSlab;
@@ -204,7 +204,7 @@ public final class McfrBlocks {
   /** Soufflet */
   public static final BlockBellows BELLOWS = new BlockBellows();
   // Construction
-  public static final BlockOldHay OLD_HAY = new BlockOldHay();
+  public static final BlockOldHay OLD_HAY_BLOCK = new BlockOldHay();
   public static final McfrBlock REFINED_GOLD_BLOCK = new McfrBlock("refined_gold_block", Material.IRON, MapColor.GOLD, SoundType.METAL, 3, 10, "pickaxe", 2, CreativeTabs.BUILDING_BLOCKS);
   public static final McfrBlock REFINED_IRON_BLOCK = new McfrBlock("refined_iron_block", Material.IRON, SoundType.METAL, 5, 10, "pickaxe", 1, CreativeTabs.BUILDING_BLOCKS);
   public static final BlockRefinedPlanks REFINED_PLANKS = new BlockRefinedPlanks();
@@ -332,7 +332,7 @@ public final class McfrBlocks {
   public static final McfrBlockStairs RED_CLAY_STAIRS = new McfrBlockStairs(Blocks.STAINED_HARDENED_CLAY, 14, "red_clay", "pickaxe", 0);
   public static final McfrBlockStairs BLACK_CLAY_STAIRS = new McfrBlockStairs(Blocks.STAINED_HARDENED_CLAY, 15, "black_clay", "pickaxe", 0);
   public static final McfrBlockStairs HAY_STAIRS = new McfrBlockStairs(Blocks.HAY_BLOCK, 0, "hay", null, -1);
-  public static final McfrBlockStairs OLD_HAY_STAIRS = new McfrBlockStairs(OLD_HAY, 0, "old_hay", null, -1);
+  public static final McfrBlockStairs OLD_HAY_STAIRS = new McfrBlockStairs(OLD_HAY_BLOCK, 0, "old_hay", null, -1);
   public static final McfrBlockStairs APPLE_PLANKS_STAIRS = new McfrBlockStairs(EXOTIC_PLANKS, 0, "apple_planks", "axe", 0);
   public static final McfrBlockStairs CHERRY_PLANKS_STAIRS = new McfrBlockStairs(EXOTIC_PLANKS, 1, "cherry_planks", "axe", 0);
   public static final McfrBlockStairs PALM_PLANKS_STAIRS = new McfrBlockStairs(EXOTIC_PLANKS, 2, "palm_planks", "axe", 0);
@@ -608,7 +608,7 @@ public final class McfrBlocks {
   public static final McfrBlockFence BELUXIER_FENCE = new McfrBlockFence("beluxier", 2, 5, Material.WOOD, SoundType.WOOD, "axe", 0);
   // Murets
   public static final BlockWoodenWall WOODEN_WALL = new BlockWoodenWall();
-  public static final BlockWoodenWall2 WOODEN_WALL2 = new BlockWoodenWall2();
+  public static final BlockExoticWoodWall EXOTIC_WOOD_WALL = new BlockExoticWoodWall();
   public static final BlockStoneWall STONE_WALL = new BlockStoneWall();
   public static final BlockMarbleWall MARBLE_WALL = new BlockMarbleWall();
   // Lits
@@ -763,7 +763,7 @@ public final class McfrBlocks {
     register(LIT_STOVE);
     register(BELLOWS);
 
-    register(OLD_HAY);
+    register(OLD_HAY_BLOCK);
     register(REFINED_GOLD_BLOCK);
     register(REFINED_IRON_BLOCK);
     registerVariants(REFINED_PLANKS);
@@ -1151,7 +1151,7 @@ public final class McfrBlocks {
     register(BELUXIER_FENCE);
 
     registerVariants(WOODEN_WALL);
-    registerVariants(WOODEN_WALL2);
+    registerVariants(EXOTIC_WOOD_WALL);
     registerVariants(STONE_WALL);
     registerVariants(MARBLE_WALL);
 

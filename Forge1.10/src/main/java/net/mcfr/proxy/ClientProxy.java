@@ -135,7 +135,7 @@ public class ClientProxy extends CommonProxy {
     registerBlock(LIT_STOVE);
     registerBlock(BELLOWS);
 
-    registerBlock(OLD_HAY);
+    registerBlock(OLD_HAY_BLOCK);
     registerBlock(REFINED_GOLD_BLOCK);
     registerBlock(REFINED_IRON_BLOCK);
     registerBlockWoodVariants(REFINED_PLANKS);
@@ -524,7 +524,7 @@ public class ClientProxy extends CommonProxy {
     registerBlock(BELUXIER_FENCE);
 
     registerBlockWoodVariants(WOODEN_WALL);
-    registerBlockVariants(WOODEN_WALL2, EnumExoticWoodType.class);
+    registerBlockVariants(EXOTIC_WOOD_WALL, EnumExoticWoodType.class);
     registerBlockVariants(STONE_WALL, BlockStoneWall.EnumType.class);
     registerBlockVariants(MARBLE_WALL, BlockMarbleWall.EnumType.class);
 

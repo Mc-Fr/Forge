@@ -11,10 +11,10 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
-public class BlockWoodenWall2 extends McfrBlockWall {
+public class BlockExoticWoodWall extends McfrBlockWall {
   public static final PropertyEnum<EnumExoticWoodType> VARIANT = PropertyEnum.create("variant", EnumExoticWoodType.class);
 
-  public BlockWoodenWall2() {
+  public BlockExoticWoodWall() {
     super("exotic_wood", Material.WOOD, SoundType.WOOD, 2, 5, "axe", 0);
     setDefaultState(getDefaultState().withProperty(VARIANT, EnumExoticWoodType.APPLE_TREE));
   }
