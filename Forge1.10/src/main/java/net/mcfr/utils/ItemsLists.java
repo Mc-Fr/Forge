@@ -18,7 +18,9 @@ import net.mcfr.decoration.containerBlocks.BlockFoodCrate;
 import net.mcfr.decoration.containerBlocks.BlockLittleChest;
 import net.mcfr.decoration.containerBlocks.BlockPallet;
 import net.mcfr.decoration.containerBlocks.guis.ContainerRestricted;
+import net.mcfr.environment.plants.EnumExoticWoodType;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockPlanks;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -62,8 +64,7 @@ public final class ItemsLists {
       for (ResourceLocation r : Item.REGISTRY.getKeys()) {
         Item i = Item.REGISTRY.getObject(r);
 
-        if (i instanceof ItemTool || i instanceof ItemHoe || i instanceof ItemShears || i instanceof ItemFishingRod
-            || i instanceof ItemFlintAndSteel) {
+        if (i instanceof ItemTool || i instanceof ItemHoe || i instanceof ItemShears || i instanceof ItemFishingRod || i instanceof ItemFlintAndSteel) {
           l.add(i);
         }
       }
@@ -275,7 +276,10 @@ public final class ItemsLists {
     if (!MAPS.containsKey(key)) {
       Map<HashedItemStack, HashedItemStack> auth = new HashMap<>();
 
-      auth.put(HashedItemStack.fromStack(new ItemStack(Items.STRING, 4)), HashedItemStack.fromStack(new ItemStack(Blocks.WOOL)));
+      auth.put(HashedItemStack.fromStack(new ItemStack(McfrItems.HEMP_FIBER, 3)), HashedItemStack.fromStack(new ItemStack(McfrItems.CLOTH_ROLL)));
+      auth.put(HashedItemStack.fromStack(new ItemStack(Items.STRING, 4)), HashedItemStack.fromStack(new ItemStack(McfrItems.THREAD_COIL)));
+      auth.put(HashedItemStack.fromStack(new ItemStack(McfrItems.THREAD_COIL, 2)), HashedItemStack.fromStack(new ItemStack(Blocks.WOOL)));
+      auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.WOOL)), HashedItemStack.fromStack(new ItemStack(McfrBlocks.CARPET, 3)));
 
       MAPS.put(key, Collections.unmodifiableMap(auth));
       createList(key);
@@ -287,9 +291,9 @@ public final class ItemsLists {
 
     if (!MAPS.containsKey(key)) {
       Map<HashedItemStack, HashedItemStack> auth = new HashMap<>();
-      
+
       auth.put(HashedItemStack.fromStack(new ItemStack(McfrItems.HUNTED_SKIN)), HashedItemStack.fromStack(new ItemStack(Items.LEATHER)));
-      
+
       MAPS.put(key, Collections.unmodifiableMap(auth));
       createList(key);
     }
@@ -301,7 +305,42 @@ public final class ItemsLists {
     if (!MAPS.containsKey(key)) {
       Map<HashedItemStack, HashedItemStack> auth = new HashMap<>();
 
-      auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.PLANKS)), HashedItemStack.fromStack(new ItemStack(McfrBlocks.REFINED_PLANKS)));
+      for (int i = 0; i < BlockPlanks.EnumType.values().length; i++) {
+        auth.put(HashedItemStack.fromStack(new ItemStack(i < 4 ? Blocks.LOG : Blocks.LOG2, 1, i % 4)), HashedItemStack.fromStack(new ItemStack(Blocks.PLANKS, 1, i)));
+        auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.PLANKS, 1, i)), HashedItemStack.fromStack(new ItemStack(McfrBlocks.REFINED_PLANKS, 1, i)));
+        auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.WOODEN_SLAB, 1, i)), HashedItemStack.fromStack(new ItemStack(Blocks.PLANKS, 2, i)));
+      }
+      for (int i = 0; i < EnumExoticWoodType.values().length; i++)
+        auth.put(HashedItemStack.fromStack(new ItemStack(McfrBlocks.EXOTIC_LOG, 1, i)), HashedItemStack.fromStack(new ItemStack(McfrBlocks.EXOTIC_PLANKS, 1, i)));
+      auth.put(HashedItemStack.fromStack(new ItemStack(McfrBlocks.STRONG_OAK_DOOR)), HashedItemStack.fromStack(new ItemStack(Blocks.PLANKS, 2)));
+      auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.OAK_STAIRS)), HashedItemStack.fromStack(new ItemStack(Blocks.PLANKS, 1, 0)));
+      auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.SPRUCE_STAIRS)), HashedItemStack.fromStack(new ItemStack(Blocks.PLANKS, 1, 1)));
+      auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.BIRCH_STAIRS)), HashedItemStack.fromStack(new ItemStack(Blocks.PLANKS, 1, 2)));
+      auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.JUNGLE_STAIRS)), HashedItemStack.fromStack(new ItemStack(Blocks.PLANKS, 1, 3)));
+      auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.ACACIA_STAIRS)), HashedItemStack.fromStack(new ItemStack(Blocks.PLANKS, 1, 4)));
+      auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.DARK_OAK_STAIRS)), HashedItemStack.fromStack(new ItemStack(Blocks.PLANKS, 1, 5)));
+      auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.TRAPDOOR)), HashedItemStack.fromStack(new ItemStack(Blocks.PLANKS)));
+      auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.WOODEN_BUTTON)), HashedItemStack.fromStack(new ItemStack(Blocks.PLANKS)));
+      auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.CHEST)), HashedItemStack.fromStack(new ItemStack(Blocks.PLANKS)));
+      auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.CRAFTING_TABLE)), HashedItemStack.fromStack(new ItemStack(Blocks.PLANKS)));
+      auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.OAK_DOOR)), HashedItemStack.fromStack(new ItemStack(Items.STICK, 1, 10)));
+      auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.SPRUCE_DOOR)), HashedItemStack.fromStack(new ItemStack(Items.STICK, 1, 10)));
+      auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.BIRCH_DOOR)), HashedItemStack.fromStack(new ItemStack(Items.STICK, 1, 10)));
+      auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.JUNGLE_DOOR)), HashedItemStack.fromStack(new ItemStack(Items.STICK, 1, 10)));
+      auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.ACACIA_DOOR)), HashedItemStack.fromStack(new ItemStack(Items.STICK, 1, 10)));
+      auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.DARK_OAK_DOOR)), HashedItemStack.fromStack(new ItemStack(Items.STICK, 1, 10)));
+      auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.OAK_FENCE)), HashedItemStack.fromStack(new ItemStack(Items.STICK, 1, 10)));
+      auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.SPRUCE_FENCE)), HashedItemStack.fromStack(new ItemStack(Items.STICK, 1, 10)));
+      auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.BIRCH_FENCE)), HashedItemStack.fromStack(new ItemStack(Items.STICK, 1, 10)));
+      auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.JUNGLE_FENCE)), HashedItemStack.fromStack(new ItemStack(Items.STICK, 1, 10)));
+      auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.ACACIA_FENCE)), HashedItemStack.fromStack(new ItemStack(Items.STICK, 1, 10)));
+      auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.DARK_OAK_FENCE)), HashedItemStack.fromStack(new ItemStack(Items.STICK, 1, 10)));
+      auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.OAK_FENCE_GATE)), HashedItemStack.fromStack(new ItemStack(Items.STICK, 1, 10)));
+      auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.SPRUCE_FENCE_GATE)), HashedItemStack.fromStack(new ItemStack(Items.STICK, 1, 10)));
+      auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.BIRCH_FENCE_GATE)), HashedItemStack.fromStack(new ItemStack(Items.STICK, 1, 10)));
+      auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.JUNGLE_FENCE_GATE)), HashedItemStack.fromStack(new ItemStack(Items.STICK, 1, 10)));
+      auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.ACACIA_FENCE_GATE)), HashedItemStack.fromStack(new ItemStack(Items.STICK, 1, 10)));
+      auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.DARK_OAK_FENCE_GATE)), HashedItemStack.fromStack(new ItemStack(Items.STICK, 1, 10)));
 
       MAPS.put(key, Collections.unmodifiableMap(auth));
       createList(key);
@@ -317,13 +356,11 @@ public final class ItemsLists {
   /**
    * Indique si le bloc spécifié accepte le stack donné.
    *
-   * @param blockClass
-   *          la classe du bloc
-   * @param stack
-   *          le stack
+   * @param blockClass la classe du bloc
+   * @param stack le stack
    * @return vrai si le stack est accepté
-   * @note Cette méthode est prévue pour être utilisée par les classes {@link ContainerRestricted} et
-   *       {@link ContainerRack}.
+   * @note Cette méthode est prévue pour être utilisée par les classes {@link ContainerRestricted}
+   *       et {@link ContainerRack}.
    */
   public static boolean isItemValid(Class<? extends Block> blockClass, ItemStack stack) {
     List<Item> list = LISTS.get(blockClass);
