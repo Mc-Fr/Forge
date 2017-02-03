@@ -85,6 +85,13 @@ tile.mcfr_b_i_marble_slab.smooth_white.name=Dalle en marbre blanc lisse
 tile.mcfr_b_i_marble_slab2.rough_black.name=Dalle en marbre noir brut
 tile.mcfr_b_i_marble_slab2.chiseled_black.name=Dalle en mabre noir décoré
 tile.mcfr_b_i_marble_slab2.smooth_black.name=Dalle en marbre noir lisse
+tile.mcfr_b_i_marble_slab2.smooth_black.name=Dalle en marbre noir lisse
+tile.mcfr_b_i_marble_wall.column_black.name=Muret en marbre noir
+tile.mcfr_b_i_marble_wall.column_sand.name=Muret en marbre jaune
+tile.mcfr_b_i_marble_wall.column_white.name=Muret en marbre blanc
+tile.mcfr_b_i_marble_wall.smooth_black.name=Muret en marbre noir lisse
+tile.mcfr_b_i_marble_wall.smooth_sand.name=Muret en marbre jaune lisse
+tile.mcfr_b_i_marble_wall.smooth_white.name=Muret en marbre blanc lisse
 tile.mcfr_b_i_carved_clay.light.name=Argile travaillé clair
 tile.mcfr_b_i_carved_clay.dark.name=Argile travaillé sombre
 tile.mcfr_b_i_mushroom_block.red_cap.name=Chapeau rouge
@@ -198,7 +205,6 @@ tile.mcfr_b_i_changer.name=Échangeur
 
 item.mcfr_b_i_coin.brass.name=Pièce de laiton
 item.mcfr_b_i_coin.elinvar.name=Pièce d'élinvar
-item.mcfr_b_i_coin.gold.name=Pièce d'or
 item.mcfr_b_i_coin.platinum.name=Pièce de platine
 item.mcfr_b_i_pipe.name=Pipe en bois
 item.mcfr_b_i_key.name=Clé
@@ -251,7 +257,7 @@ item.mcfr_b_i_raw_niale_meat.name=Viande de Niale crue
 item.mcfr_b_i_cooked_niale_meat.name=Viande de Niale cuite
 item.mcfr_b_i_raw_galt_meat.name=Viande de Galt crue
 item.mcfr_b_i_cooked_galt_meat.name=Viande de Galt cuite
-item.mcfr_b_i_raw_hoet_meat.name=Viande d'Hoen crue
+item.mcfr_b_i_raw_hoen_meat.name=Viande d'Hoen crue
 item.mcfr_b_i_cooked_hoen_meat.name=Viande d'Hoen cuite
 
 
@@ -349,6 +355,7 @@ item.mcfr_b_i_empty_bowl.name=Bolet
 item.mcfr_b_i_empty_glass.name=Verre
 item.mcfr_b_i_empty_bottle.name=Bouteille
 item.mcfr_b_i_fertilizer.name=Engrais
+item.mcfr_b_i_hunted_skin.name=Peau brute de chasse
 
 < Other >
 tile.mcfr_b_i_stone_stairs.name=Escalier en pierre
@@ -738,7 +745,7 @@ tile.mcfr_b_i_end_table.birch.name=Table basse en bouleau
 tile.mcfr_b_i_end_table.jungle.name=Table basse en acajou
 tile.mcfr_b_i_end_table.acacia.name=Table basse en acacia
 tile.mcfr_b_i_end_table.dark_oak.name=Table basse en chêne sombre
-tile.mcfr_b_i_foot_table.name=Table à pied
+tile.mcfr_b_i_foot_table.name=Table à quatre pieds
 tile.mcfr_b_i_oak_shelf.name=Étagère en chêne
 tile.mcfr_b_i_spruce_shelf.name=Étagère en pin
 tile.mcfr_b_i_birch_shelf.name=Étagère en bouleau

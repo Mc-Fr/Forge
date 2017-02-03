@@ -1,6 +1,6 @@
 {
     "parent": "block/wall_inventory",
     "textures": {
-        "wall": "blocks/log_acacia"
+        "wall": "blocks/stonebrick_mossy"
     }
 }

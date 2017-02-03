@@ -1,6 +1,5 @@
 package net.mcfr;
 
-import net.mcfr.coma.PotionComa;
 import net.mcfr.craftsmanship.tileEntities.TileEntityCircularSaw;
 import net.mcfr.craftsmanship.tileEntities.TileEntityLoom;
 import net.mcfr.craftsmanship.tileEntities.TileEntityTanningRack;
@@ -51,7 +50,6 @@ import net.mcfr.proxy.CommonProxy;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -61,7 +59,6 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
-import net.minecraftforge.fml.common.registry.GameData;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 
@@ -90,9 +87,6 @@ public class McfrMain {
     registerEntities();
     CraftingManager.getInstance().getRecipeList().clear();
     FurnaceRecipes.instance().getSmeltingList().clear();
-
-    // GameData.getPotionRegistry().register(PotionComa.COMA);
-    GameData.getPotionRegistry().register(28, new ResourceLocation("coma"), new PotionComa());
   }
 
   @EventHandler
