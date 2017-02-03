@@ -1,18 +1,22 @@
 package net.mcfr;
 
-import static net.mcfr.utils.LargeRecipesUtils.*;
-
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import net.mcfr.craftsmanship.LargeRecipe;
 import net.mcfr.decoration.lighting.EnumLanternColor;
 import net.mcfr.environment.plants.EnumExoticWoodType;
+import net.mcfr.forge.recipes.AnvilRecipe;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockPlanks;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.EnumDyeColor;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.CraftingManager;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public final class McfrCrafts {
@@ -825,6 +829,74 @@ public final class McfrCrafts {
     addLargeRecipe(new ItemStack(McfrItems.ASSASSIN_BOOTS), "FT TF", "PP PP", 'P', McfrItems.HUNTED_SKIN, 'T', McfrItems.CLOTH_ROLL, 'F', McfrItems.THREAD_COIL);
   }
 
+  public static void registerAnvilCrafts() {
+    addAnvilRecipe(new ItemStack(McfrItems.IRON_BOW), 60, 90, "  #B#", " P  S", "#  S ", "B S  ", "#S   ", '#', Items.IRON_INGOT, 'P', new ItemStack(McfrItems.SWORD_HANDLE, 1, 0), 'B', Items.STICK, 'S', Items.STRING);
+    addAnvilRecipe(new ItemStack(McfrItems.GOLDEN_BOW), 45, 70, "  ##N", " P  S", "#  S ", "# S  ", "NS   ", '#', Items.GOLD_INGOT, 'P', new ItemStack(McfrItems.SWORD_HANDLE, 1, 2), 'N', Items.GOLD_NUGGET, 'S', Items.STRING);
+
+    addAnvilRecipe(new ItemStack(Items.IRON_SWORD), 60, 90, "    F", " F F ", " FF  ", " PFF ", "L    ", 'L', new ItemStack(McfrItems.ORE, 1, 2), 'F', Items.IRON_INGOT, 'P', new ItemStack(McfrItems.SWORD_HANDLE, 1, 0));
+    addAnvilRecipe(new ItemStack(Items.GOLDEN_SWORD), 45, 70, "    G", " G G ", " GN  ", " PGG ", "G    ", 'N', Items.GOLD_NUGGET, 'G', Items.GOLD_INGOT, 'P', new ItemStack(McfrItems.SWORD_HANDLE, 1, 2));
+
+    addAnvilRecipe(new ItemStack(Items.IRON_HELMET), 70, 100, " FFF ", "FFFFF", "F   F", "FF FF", " F F ", 'F', Items.IRON_INGOT);
+    addAnvilRecipe(new ItemStack(Items.IRON_CHESTPLATE), 70, 100, " FCF ", "FMFFF", "CFFFF", "CCMCC", "FFFFF", 'M', McfrItems.STITCH, 'C', Items.LEATHER, 'F', Items.IRON_INGOT);
+    addAnvilRecipe(new ItemStack(Items.IRON_LEGGINGS), 70, 100, "CCMCC", "FFFFF", "FF FF", "FF FF", "FF FF", 'M', McfrItems.STITCH, 'C', Items.LEATHER, 'F', Items.IRON_INGOT);
+    addAnvilRecipe(new ItemStack(Items.IRON_BOOTS), 70, 100, "CF FC", "CF FC", "FF FF", 'F', Items.IRON_INGOT, 'C', Items.LEATHER);
+
+    addAnvilRecipe(new ItemStack(Items.GOLDEN_HELMET), 35, 60, " GLG ", "GGGGG", "G G G", "GG GG", "M   M", 'G', Items.GOLD_INGOT, 'L', new ItemStack(Blocks.WOOL, 1, 14), 'M', new ItemStack(McfrItems.STITCH, 1, 1));
+    addAnvilRecipe(new ItemStack(Items.GOLDEN_CHESTPLATE), 35, 60, " FFF ", "OFFFO", "OOFOO", "COCOC", "OCOCO", 'O', Items.GOLD_INGOT, 'F', Items.IRON_INGOT, 'C', Items.LEATHER);
+    addAnvilRecipe(new ItemStack(Items.GOLDEN_LEGGINGS), 35, 60, "CCMCC", "CCGCC", "CG GC", "GG GG", "GG GG", 'G', Items.GOLD_INGOT, 'C', Items.LEATHER, 'M', new ItemStack(McfrItems.STITCH, 1, 1));
+    addAnvilRecipe(new ItemStack(Items.GOLDEN_BOOTS), 35, 60, "CG GC", "CG GC", "GG GG", 'G', Items.GOLD_INGOT, 'C', Items.LEATHER);
+
+    addAnvilRecipe(new ItemStack(Items.CHAINMAIL_HELMET), 70, 100, "FFFFF", "FFFFF", "M F M", "M   M", " M M ", 'F', Items.IRON_INGOT, 'M', McfrItems.STITCH);
+    addAnvilRecipe(new ItemStack(Items.CHAINMAIL_CHESTPLATE), 70, 100, " T T ", "TTTMT", "MTCTM", "MMMCM", "MMMMC", 'T', McfrItems.CLOTH_ROLL, 'M', McfrItems.STITCH, 'C', Items.LEATHER);
+    addAnvilRecipe(new ItemStack(Items.CHAINMAIL_LEGGINGS), 70, 100, "CCMCC", "TTMTT", "TM MT", "MM MM", "M   M", 'T', McfrItems.CLOTH_ROLL, 'M', McfrItems.STITCH, 'C', Items.LEATHER);
+    addAnvilRecipe(new ItemStack(Items.CHAINMAIL_BOOTS), 70, 100, " F F ", "MF FM", "MC CM", 'F', Items.IRON_INGOT, 'M', McfrItems.STITCH, 'C', Items.LEATHER);
+
+    addAnvilRecipe(new ItemStack(McfrItems.GOLDEN_CHAINMAIL_HELMET), 35, 60, " CGC ", "CGGGC", "G G G", "MGGGM", "M   M", 'C', Items.LEATHER, 'M', new ItemStack(McfrItems.STITCH, 1, 1), 'G', Items.GOLD_INGOT);
+    addAnvilRecipe(new ItemStack(McfrItems.GOLDEN_CHAINMAIL_CHESTPLATE), 35, 60, " G C ", "GG#GG", "GCMMG", "CC#CC", "MMMMM", 'C', Items.LEATHER, 'M', new ItemStack(McfrItems.STITCH, 1, 1), '#', McfrItems.STITCH, 'G', Items.GOLD_INGOT);
+    addAnvilRecipe(new ItemStack(McfrItems.GOLDEN_CHAINMAIL_LEGGINGS), 35, 60, "CCCCC", "MMMMM", "MMTMM", "MTTTM", "TT TT", 'C', Items.LEATHER, 'M', new ItemStack(McfrItems.STITCH, 1, 1), 'T', McfrItems.CLOTH_ROLL, 'G', Items.GOLD_INGOT);
+    addAnvilRecipe(new ItemStack(McfrItems.GOLDEN_CHAINMAIL_BOOTS), 35, 60, "MG GM", "MG GM", "CC CC", 'C', Items.LEATHER, 'M', new ItemStack(McfrItems.STITCH, 1, 1), 'G', Items.GOLD_INGOT);
+
+    addAnvilRecipe(new ItemStack(Items.CAULDRON), 70, 90, "I   I", "I   I", "II II", "BI IB", "I I I", 'I', Items.IRON_INGOT, 'B', Blocks.PLANKS);
+    addAnvilRecipe(new ItemStack(Items.BUCKET), 60, 100, "I I", "I I", " I ", 'I', Items.IRON_INGOT);
+
+    addAnvilRecipe(new ItemStack(Items.MINECART, 1), 60, 100, "I   I", "I   I", "IIII ", 'I', Items.IRON_INGOT);
+    addAnvilRecipe(new ItemStack(Blocks.RAIL, 16), 60, 100, "I I I", "ISSSI", "S I S", "ISSSI", "I I I", 'I', Items.IRON_INGOT, 'S', Items.STICK);
+    addAnvilRecipe(new ItemStack(Blocks.GOLDEN_RAIL, 6), 40, 70, "GSRSG", "G G G", "GSRSG", "G G G", "GSRSG", 'G', Items.GOLD_INGOT, 'S', Items.STICK, 'R', Items.REDSTONE);
+    addAnvilRecipe(new ItemStack(Blocks.DETECTOR_RAIL, 6), 60, 100, "ISSSI", "RIIIR", "ISISI", "RIIIR", "ISSSI", 'I', Items.IRON_INGOT, 'S', Items.STICK, 'R', Items.REDSTONE);
+
+    addAnvilRecipe(new ItemStack(Items.CLOCK, 1), 40, 70, " # ", "#X#", " # ", '#', Items.GOLD_INGOT, 'X', Items.REDSTONE);
+    addAnvilRecipe(new ItemStack(Items.COMPASS, 1), 60, 100, " # ", "#X#", " # ", '#', Items.IRON_INGOT, 'X', Items.REDSTONE);
+    addAnvilRecipe(new ItemStack(Items.SHEARS), 60, 100, "  #  ", " #   ", " S  #", " SS# ", '#', Items.IRON_INGOT, 'S', Items.STICK);
+
+    addAnvilRecipe(new ItemStack(McfrBlocks.ANVIL), 125, 140, "BBBBB", " BBB ", "  W  ", " IWI ", "IIIII", 'B', Blocks.IRON_BLOCK, 'W', Blocks.PLANKS, 'I', Items.IRON_INGOT);
+    addAnvilRecipe(new ItemStack(McfrBlocks.STOVE), 60, 100, "IIIII", "II II", "IIIII", "B   B", "IBBBI", 'B', Blocks.IRON_BLOCK, 'I', Items.IRON_INGOT);
+
+    addAnvilRecipe(new ItemStack(McfrItems.SAW_BLADE, 2), 55, 96, "  #  ", " #B# ", "#BFB#", " #B# ", "  #  ", '#', Items.IRON_INGOT, 'B', Blocks.IRON_BARS, 'F', Blocks.OAK_FENCE);
+
+    addAnvilRecipe(new ItemStack(McfrItems.STITCH, 8), 60, 100, "  #  ", " # # ", " #   ", " # # ", "  #  ", '#', Items.IRON_INGOT);
+    addAnvilRecipe(new ItemStack(McfrItems.STITCH, 8, 1), 40, 70, "  #  ", " # # ", " #   ", " # # ", "  #  ", '#', Items.GOLD_INGOT);
+
+    addAnvilRecipe(new ItemStack(McfrItems.IRON_DAGGER), 60, 90, "  I", " I ", "P  ", 'I', Items.IRON_INGOT, 'P', new ItemStack(McfrItems.SWORD_HANDLE));
+    addAnvilRecipe(new ItemStack(Items.IRON_DOOR), 60, 100, "FFF", "FBF", "FBF", "FFF", "FFF", 'B', Blocks.IRON_BARS, 'F', Items.IRON_INGOT);
+    addAnvilRecipe(new ItemStack(Blocks.IRON_TRAPDOOR), 60, 100, "FFF", "FBF", "FFF", 'B', Blocks.IRON_BARS, 'F', Items.IRON_INGOT);
+
+    addAnvilRecipe(new ItemStack(McfrItems.IRON_RAPIER), 60, 90, "    I", "   I ", "  I  ", "II   ", "PI   ", 'I', Items.IRON_INGOT, 'P', new ItemStack(McfrItems.SWORD_HANDLE));
+    addAnvilRecipe(new ItemStack(McfrItems.IRON_BASTARD), 60, 90, "   II", "  II ", " III ", " PI  ", "P    ", 'I', Items.IRON_INGOT, 'P', new ItemStack(McfrItems.SWORD_HANDLE));
+    addAnvilRecipe(new ItemStack(McfrItems.IRON_SPEAR), 60, 90, "    I", "   S ", "  P  ", " P   ", "S    ", 'I', Items.IRON_INGOT, 'P', new ItemStack(McfrItems.SWORD_HANDLE), 'S', Items.STICK);
+    addAnvilRecipe(new ItemStack(McfrItems.IRON_HALBERD), 60, 90, " II I", " III ", "  I  ", " S   ", "P    ", 'I', Items.IRON_INGOT, 'P', new ItemStack(McfrItems.SWORD_HANDLE), 'S', Items.STICK);
+    addAnvilRecipe(new ItemStack(McfrItems.IRON_BATTLE_AXE), 60, 90, " II  ", " III ", "  III", " S II", "P    ", 'I', Items.IRON_INGOT, 'P', new ItemStack(McfrItems.SWORD_HANDLE), 'S', Items.STICK);
+    addAnvilRecipe(new ItemStack(McfrItems.IRON_HAMMER), 60, 90, " II  ", " III ", "  III", " I II", "P    ", 'I', Items.IRON_INGOT, 'P', new ItemStack(McfrItems.SWORD_HANDLE));
+    addAnvilRecipe(new ItemStack(McfrItems.IRON_MACE), 60, 90, "   II", "  III", "  II ", " S   ", "P    ", 'I', Items.IRON_INGOT, 'P', new ItemStack(McfrItems.SWORD_HANDLE), 'S', Items.STICK);
+
+    addAnvilRecipe(new ItemStack(McfrItems.GOLDEN_RAPIER), 45, 70, "    I", "   I ", "  I  ", "II   ", "PI   ", 'I', Items.GOLD_INGOT, 'P', new ItemStack(McfrItems.SWORD_HANDLE, 1, 2));
+    addAnvilRecipe(new ItemStack(McfrItems.GOLDEN_BASTARD), 45, 70, "   II", "  II ", " III ", " PI  ", "P    ", 'I', Items.GOLD_INGOT, 'P', new ItemStack(McfrItems.SWORD_HANDLE, 1, 2));
+    addAnvilRecipe(new ItemStack(McfrItems.GOLDEN_SPEAR), 45, 70, "    I", "   S ", "  P  ", " P   ", "S    ", 'I', Items.GOLD_INGOT, 'P', new ItemStack(McfrItems.SWORD_HANDLE, 1, 2), 'S', Items.STICK);
+    addAnvilRecipe(new ItemStack(McfrItems.GOLDEN_HALBERD), 45, 70, " II I", " III ", "  I  ", " S   ", "P    ", 'I', Items.GOLD_INGOT, 'P', new ItemStack(McfrItems.SWORD_HANDLE, 1, 2), 'S', Items.STICK);
+    addAnvilRecipe(new ItemStack(McfrItems.GOLDEN_BATTLE_AXE), 45, 70, " II  ", " III ", "  III", " S II", "P    ", 'I', Items.GOLD_INGOT, 'P', new ItemStack(McfrItems.SWORD_HANDLE, 1, 2), 'S', Items.STICK);
+    addAnvilRecipe(new ItemStack(McfrItems.GOLDEN_HAMMER), 45, 70, " II  ", " III ", "  III", " I II", "P    ", 'I', Items.GOLD_INGOT, 'P', new ItemStack(McfrItems.SWORD_HANDLE, 1, 2));
+    addAnvilRecipe(new ItemStack(McfrItems.GOLDEN_MACE), 45, 70, "   II", "  III", "  II ", " S   ", "P    ", 'I', Items.GOLD_INGOT, 'P', new ItemStack(McfrItems.SWORD_HANDLE, 1, 2), 'S', Items.STICK);
+  }
+
   private static void addStairsRecipe(Block out, ItemStack in) {
     addShapedRecipe(new ItemStack(out, 4), "#  ", "## ", "###", '#', in);
   }
@@ -869,5 +941,101 @@ public final class McfrCrafts {
     GameRegistry.addShapelessRecipe(output, params);
   }
 
+  /**
+   * Ajoute une recette 5x5.
+   * 
+   * @param result le résultat de la recette
+   * @param recipeComponents les composants de la recette
+   */
+  private static void addLargeRecipe(ItemStack result, Object... recipeComponents) {
+    Components c = getComponents(recipeComponents);
+    CraftingManager.getInstance().getRecipeList().add(new LargeRecipe(c.getWidth(), c.getHeight(), c.getItems(), result));
+  }
+
+  /**
+   * Ajoute une recette 5x5 pour l'enclume.
+   * 
+   * @param result le résultat de la recette
+   * @param temperatureMin la température minimale requise pour obtenir le résultat
+   * @param temperatureMin la température maximale requise pour obtenir le résultat
+   * @param recipeComponents les composants de la recette
+   */
+  private static void addAnvilRecipe(ItemStack result, int temperatureMin, int temperatureMax, Object... recipeComponents) {
+    Components c = getComponents(recipeComponents);
+    CraftingManager.getInstance().getRecipeList().add(new AnvilRecipe(c.getWidth(), c.getHeight(), c.getItems(), result, temperatureMin, temperatureMax));
+  }
+
+  private static Components getComponents(Object... recipeComponents) {
+    String pattern = "";
+    int i = 0;
+    int width = 0;
+    int height = 0;
+
+    while (recipeComponents[i] instanceof String) {
+      String str = (String) recipeComponents[i++];
+
+      height++;
+      width = str.length();
+      pattern += str;
+    }
+
+    Map<Character, ItemStack> charToItemStack = new HashMap<>();
+
+    for (; i < recipeComponents.length; i += 2) {
+      Character character = (Character) recipeComponents[i];
+      ItemStack stack = null;
+
+      if (recipeComponents[i + 1] instanceof Item) {
+        stack = new ItemStack((Item) recipeComponents[i + 1]);
+      }
+      else if (recipeComponents[i + 1] instanceof Block) {
+        stack = new ItemStack((Block) recipeComponents[i + 1], 1, 32767);
+      }
+      else if (recipeComponents[i + 1] instanceof ItemStack) {
+        stack = (ItemStack) recipeComponents[i + 1];
+      }
+
+      charToItemStack.put(character, stack);
+    }
+
+    ItemStack[] stacks = new ItemStack[width * height];
+
+    for (int j = 0; j < width * height; j++) {
+      char c = pattern.charAt(j);
+
+      if (charToItemStack.containsKey(c)) {
+        stacks[j] = charToItemStack.get(c).copy();
+      }
+      else {
+        stacks[j] = null;
+      }
+    }
+
+    return new Components(width, height, stacks);
+  }
+
   private McfrCrafts() {}
+
+  private static class Components {
+    private int w, h;
+    private ItemStack[] items;
+
+    public Components(int w, int h, ItemStack[] items) {
+      this.w = w;
+      this.h = h;
+      this.items = items;
+    }
+
+    public int getWidth() {
+      return this.w;
+    }
+
+    public int getHeight() {
+      return this.h;
+    }
+
+    public ItemStack[] getItems() {
+      return this.items;
+    }
+  }
 }

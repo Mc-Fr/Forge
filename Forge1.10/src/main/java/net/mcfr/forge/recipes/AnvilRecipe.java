@@ -9,7 +9,8 @@ import net.minecraft.item.ItemStack;
  * @author Mc-Fr
  */
 public class AnvilRecipe extends LargeRecipe {
-  private final int temperature;
+  private final int temperatureMin;
+  private final int temperatureMax;
 
   /**
    * Crée une recette pour l'enclume.
@@ -18,11 +19,13 @@ public class AnvilRecipe extends LargeRecipe {
    * @param height la hauteur de la zone
    * @param items les ingrédients
    * @param output le résultat
-   * @param temperature la température des haut-fourneaux nécessaire pour débloquer cette recette
+   * @param temperatureMin la température minimale des haut-fourneaux pour débloquer cette recette
+   * @param temperatureMin la température maximale des haut-fourneaux pour débloquer cette recette
    */
-  public AnvilRecipe(int width, int height, ItemStack[] items, ItemStack output, int temperature) {
+  public AnvilRecipe(int width, int height, ItemStack[] items, ItemStack output, int temperatureMin, int temperatureMax) {
     super(width, height, items, output);
-    this.temperature = temperature;
+    this.temperatureMin = temperatureMin;
+    this.temperatureMax = temperatureMax;
   }
 
   /**
@@ -32,6 +35,6 @@ public class AnvilRecipe extends LargeRecipe {
    * @return vrai si la température est correcte
    */
   public boolean temperatureMatches(int temperature) {
-    return temperature >= this.temperature;
+    return temperature >= this.temperatureMin && temperature <= this.temperatureMax;
   }
 }
