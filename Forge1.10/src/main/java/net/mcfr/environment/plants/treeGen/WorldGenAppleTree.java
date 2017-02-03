@@ -4,7 +4,7 @@ import java.util.Random;
 
 import net.mcfr.McfrBlocks;
 import net.mcfr.environment.plants.BlockExoticLeaves;
-import net.mcfr.environment.plants.BlockExoticWood;
+import net.mcfr.environment.plants.BlockExoticLog;
 import net.mcfr.environment.plants.EnumExoticWoodType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -13,7 +13,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class WorldGenAppleTree extends WorldGenMcfrTree {
-  public static final IBlockState APPLE_TRUNK = McfrBlocks.EXOTIC_WOOD.getDefaultState().withProperty(BlockExoticWood.VARIANT, EnumExoticWoodType.APPLE_TREE);
+  public static final IBlockState APPLE_TRUNK = McfrBlocks.EXOTIC_LOG.getDefaultState().withProperty(BlockExoticLog.VARIANT, EnumExoticWoodType.APPLE_TREE);
   public static final IBlockState APPLE_LEAF = McfrBlocks.EXOTIC_LEAVES.getDefaultState().withProperty(BlockExoticLeaves.VARIANT, EnumExoticWoodType.APPLE_TREE).withProperty(BlockExoticLeaves.CHECK_DECAY, false);
 
   public WorldGenAppleTree(boolean notify) {

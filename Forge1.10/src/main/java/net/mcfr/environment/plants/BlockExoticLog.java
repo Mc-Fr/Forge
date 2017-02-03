@@ -18,10 +18,10 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockExoticWood extends BlockLog implements IBlockWithVariants {
+public class BlockExoticLog extends BlockLog implements IBlockWithVariants {
   public static final PropertyEnum<EnumExoticWoodType> VARIANT = PropertyEnum.create("variant", EnumExoticWoodType.class);
 
-  public BlockExoticWood() {
+  public BlockExoticLog() {
     super();
     String name = "exotic_wood";
     setRegistryName(name);

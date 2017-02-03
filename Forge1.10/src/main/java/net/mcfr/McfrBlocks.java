@@ -125,7 +125,7 @@ import net.mcfr.environment.BlockStalactite;
 import net.mcfr.environment.plants.BlockExoticLeaves;
 import net.mcfr.environment.plants.BlockExoticPlanks;
 import net.mcfr.environment.plants.BlockExoticSapling;
-import net.mcfr.environment.plants.BlockExoticWood;
+import net.mcfr.environment.plants.BlockExoticLog;
 import net.mcfr.environment.plants.BlockGlowingMushroom;
 import net.mcfr.environment.plants.BlockGlowingVine;
 import net.mcfr.environment.plants.BlockMushroom;
@@ -240,7 +240,7 @@ public final class McfrBlocks {
   // Bois
   public static final BlockExoticPlanks EXOTIC_PLANKS = new BlockExoticPlanks();
   public static final BlockExoticSapling EXOTIC_SAPLING = new BlockExoticSapling();
-  public static final BlockExoticWood EXOTIC_WOOD = new BlockExoticWood();
+  public static final BlockExoticLog EXOTIC_LOG = new BlockExoticLog();
   public static final BlockExoticLeaves EXOTIC_LEAVES = new BlockExoticLeaves();
   // Environnement
   public static final BlockStalactite STONE_STALACTITE = new BlockStalactite("stone", Material.ROCK, SoundType.STONE, 1.5f, 0, "pickaxe", 0);
@@ -337,10 +337,10 @@ public final class McfrBlocks {
   public static final McfrBlockStairs CHERRY_PLANKS_STAIRS = new McfrBlockStairs(EXOTIC_PLANKS, 1, "cherry_planks", "axe", 0);
   public static final McfrBlockStairs PALM_PLANKS_STAIRS = new McfrBlockStairs(EXOTIC_PLANKS, 2, "palm_planks", "axe", 0);
   public static final McfrBlockStairs BELUXIER_PLANKS_STAIRS = new McfrBlockStairs(EXOTIC_PLANKS, 3, "beluxier_planks", "axe", 0);
-  public static final McfrBlockStairs APPLE_LOG_STAIRS = new McfrBlockStairs(EXOTIC_WOOD, 0, "apple_log", "axe", 0);
-  public static final McfrBlockStairs CHERRY_LOG_STAIRS = new McfrBlockStairs(EXOTIC_WOOD, 1, "cherry_log", "axe", 0);
-  public static final McfrBlockStairs PALM_LOG_STAIRS = new McfrBlockStairs(EXOTIC_WOOD, 2, "palm_log", "axe", 0);
-  public static final McfrBlockStairs BELUXIER_LOG_STAIRS = new McfrBlockStairs(EXOTIC_WOOD, 3, "beluxier_log", "axe", 0);
+  public static final McfrBlockStairs APPLE_LOG_STAIRS = new McfrBlockStairs(EXOTIC_LOG, 0, "apple_log", "axe", 0);
+  public static final McfrBlockStairs CHERRY_LOG_STAIRS = new McfrBlockStairs(EXOTIC_LOG, 1, "cherry_log", "axe", 0);
+  public static final McfrBlockStairs PALM_LOG_STAIRS = new McfrBlockStairs(EXOTIC_LOG, 2, "palm_log", "axe", 0);
+  public static final McfrBlockStairs BELUXIER_LOG_STAIRS = new McfrBlockStairs(EXOTIC_LOG, 3, "beluxier_log", "axe", 0);
   public static final McfrBlockStairs REFINED_OAK_STAIRS = new McfrBlockStairs(REFINED_PLANKS, 0, "refined_oak_planks", "axe", 0);
   public static final McfrBlockStairs REFINED_SPRUCE_STAIRS = new McfrBlockStairs(REFINED_PLANKS, 1, "refined_spruce_planks", "axe", 0);
   public static final McfrBlockStairs REFINED_BIRCH_STAIRS = new McfrBlockStairs(REFINED_PLANKS, 2, "refined_birch_planks", "axe", 0);
@@ -439,10 +439,10 @@ public final class McfrBlocks {
   public static final McfrBlockSlope CHERRY_PLANKS_SLOPE = new McfrBlockSlope(EXOTIC_PLANKS, 1, "cherry_planks", "axe", 0);
   public static final McfrBlockSlope PALM_PLANKS_SLOPE = new McfrBlockSlope(EXOTIC_PLANKS, 2, "palm_planks", "axe", 0);
   public static final McfrBlockSlope BELUXIER_PLANKS_SLOPE = new McfrBlockSlope(EXOTIC_PLANKS, 3, "beluxier_planks", "axe", 0);
-  public static final McfrBlockSlope APPLE_LOG_SLOPE = new McfrBlockSlope(EXOTIC_WOOD, 0, "apple_log", "axe", 0);
-  public static final McfrBlockSlope CHERRY_LOG_SLOPE = new McfrBlockSlope(EXOTIC_WOOD, 1, "cherry_log", "axe", 0);
-  public static final McfrBlockSlope PALM_LOG_SLOPE = new McfrBlockSlope(EXOTIC_WOOD, 2, "palm_log", "axe", 0);
-  public static final McfrBlockSlope BELUXIER_LOG_SLOPE = new McfrBlockSlope(EXOTIC_WOOD, 3, "beluxier_log", "axe", 0);
+  public static final McfrBlockSlope APPLE_LOG_SLOPE = new McfrBlockSlope(EXOTIC_LOG, 0, "apple_log", "axe", 0);
+  public static final McfrBlockSlope CHERRY_LOG_SLOPE = new McfrBlockSlope(EXOTIC_LOG, 1, "cherry_log", "axe", 0);
+  public static final McfrBlockSlope PALM_LOG_SLOPE = new McfrBlockSlope(EXOTIC_LOG, 2, "palm_log", "axe", 0);
+  public static final McfrBlockSlope BELUXIER_LOG_SLOPE = new McfrBlockSlope(EXOTIC_LOG, 3, "beluxier_log", "axe", 0);
   public static final McfrBlockLeavesSlope APPLE_LEAVES_SLOPE = new McfrBlockLeavesSlope(EXOTIC_LEAVES, 0, "apple");
   public static final McfrBlockLeavesSlope CHERRY_LEAVES_SLOPE = new McfrBlockLeavesSlope(EXOTIC_LEAVES, 1, "cherry");
   public static final McfrBlockLeavesSlope PALM_LEAVES_SLOPE = new McfrBlockLeavesSlope(EXOTIC_LEAVES, 2, "palm");
@@ -536,10 +536,10 @@ public final class McfrBlocks {
   public static final McfrBlockPyramid CHERRY_PLANKS_PYRAMID = new McfrBlockPyramid(EXOTIC_PLANKS, 1, 2, 5, "cherry_planks", "axe", 0);
   public static final McfrBlockPyramid PALM_PLANKS_PYRAMID = new McfrBlockPyramid(EXOTIC_PLANKS, 2, 2, 5, "palm_planks", "axe", 0);
   public static final McfrBlockPyramid BELUXIER_PLANKS_PYRAMID = new McfrBlockPyramid(EXOTIC_PLANKS, 3, 2, 5, "beluxier_planks", "axe", 0);
-  public static final McfrBlockPyramid APPLE_LOG_PYRAMID = new McfrBlockPyramid(EXOTIC_WOOD, 0, 2, 5, "apple_log", "axe", 0);
-  public static final McfrBlockPyramid CHERRY_LOG_PYRAMID = new McfrBlockPyramid(EXOTIC_WOOD, 1, 2, 5, "cherry_log", "axe", 0);
-  public static final McfrBlockPyramid PALM_LOG_PYRAMID = new McfrBlockPyramid(EXOTIC_WOOD, 2, 2, 5, "palm_log", "axe", 0);
-  public static final McfrBlockPyramid BELUXIER_LOG_PYRAMID = new McfrBlockPyramid(EXOTIC_WOOD, 3, 2, 5, "beluxier_log", "axe", 0);
+  public static final McfrBlockPyramid APPLE_LOG_PYRAMID = new McfrBlockPyramid(EXOTIC_LOG, 0, 2, 5, "apple_log", "axe", 0);
+  public static final McfrBlockPyramid CHERRY_LOG_PYRAMID = new McfrBlockPyramid(EXOTIC_LOG, 1, 2, 5, "cherry_log", "axe", 0);
+  public static final McfrBlockPyramid PALM_LOG_PYRAMID = new McfrBlockPyramid(EXOTIC_LOG, 2, 2, 5, "palm_log", "axe", 0);
+  public static final McfrBlockPyramid BELUXIER_LOG_PYRAMID = new McfrBlockPyramid(EXOTIC_LOG, 3, 2, 5, "beluxier_log", "axe", 0);
   public static final McfrBlockLeavesPyramid APPLE_LEAVES_PYRAMID = new McfrBlockLeavesPyramid(EXOTIC_LEAVES, 0, "apple");
   public static final McfrBlockLeavesPyramid CHERRY_LEAVES_PYRAMID = new McfrBlockLeavesPyramid(EXOTIC_LEAVES, 1, "cherry");
   public static final McfrBlockLeavesPyramid PALM_LEAVES_PYRAMID = new McfrBlockLeavesPyramid(EXOTIC_LEAVES, 2, "palm");
@@ -792,7 +792,7 @@ public final class McfrBlocks {
 
     registerVariants(EXOTIC_PLANKS);
     registerVariants(EXOTIC_SAPLING);
-    registerVariants(EXOTIC_WOOD);
+    registerVariants(EXOTIC_LOG);
     registerVariants(EXOTIC_LEAVES);
 
     registerVariants(STONE_STALACTITE);

@@ -6,7 +6,7 @@ import java.util.Random;
 
 import net.mcfr.McfrBlocks;
 import net.mcfr.environment.plants.BlockExoticLeaves;
-import net.mcfr.environment.plants.BlockExoticWood;
+import net.mcfr.environment.plants.BlockExoticLog;
 import net.mcfr.environment.plants.EnumExoticWoodType;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLog.EnumAxis;
@@ -17,7 +17,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class WorldGenBeluxier extends WorldGenMcfrTree {
-  public static final IBlockState BELUXIER_TRUNK = McfrBlocks.EXOTIC_WOOD.getDefaultState().withProperty(BlockExoticWood.VARIANT, EnumExoticWoodType.BELUXIER);
+  public static final IBlockState BELUXIER_TRUNK = McfrBlocks.EXOTIC_LOG.getDefaultState().withProperty(BlockExoticLog.VARIANT, EnumExoticWoodType.BELUXIER);
   public static final IBlockState BELUXIER_LEAF = McfrBlocks.EXOTIC_LEAVES.getDefaultState().withProperty(BlockExoticLeaves.VARIANT, EnumExoticWoodType.BELUXIER).withProperty(BlockExoticLeaves.CHECK_DECAY, false);
 
   public WorldGenBeluxier(boolean notify) {
@@ -66,7 +66,7 @@ public class WorldGenBeluxier extends WorldGenMcfrTree {
         BlockPos pos = position.add(-xo, 0, -zo);
         // Sol
         if (worldIn.isAirBlock(pos))
-          setBlockAndNotifyAdequately(worldIn, pos, this.wood.withProperty(BlockExoticWood.LOG_AXIS, axis));
+          setBlockAndNotifyAdequately(worldIn, pos, this.wood.withProperty(BlockExoticLog.LOG_AXIS, axis));
 
         for (int x = -1; x <= 1; x++) {
           for (int z = -1; z <= 1; z++) {
@@ -99,9 +99,9 @@ public class WorldGenBeluxier extends WorldGenMcfrTree {
             axis = EnumAxis.Z;
 
           for (int i = 1; i <= 3; i++)
-            setBlockAndNotifyAdequately(worldIn, position.add(i * xo, height, i * zo), this.wood.withProperty(BlockExoticWood.LOG_AXIS, axis));
+            setBlockAndNotifyAdequately(worldIn, position.add(i * xo, height, i * zo), this.wood.withProperty(BlockExoticLog.LOG_AXIS, axis));
           setBlockAndNotifyAdequately(worldIn, position.add(3 * xo, height - 1, 3 * zo), this.wood);
-          setBlockAndNotifyAdequately(worldIn, position.add(4 * xo, height - 1, 4 * zo), this.wood.withProperty(BlockExoticWood.LOG_AXIS, axis));
+          setBlockAndNotifyAdequately(worldIn, position.add(4 * xo, height - 1, 4 * zo), this.wood.withProperty(BlockExoticLog.LOG_AXIS, axis));
           setBlockAndNotifyAdequately(worldIn, position.add(4 * xo, height - 2, 4 * zo), this.wood);
         }
 

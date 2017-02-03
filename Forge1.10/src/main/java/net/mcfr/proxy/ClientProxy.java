@@ -164,7 +164,7 @@ public class ClientProxy extends CommonProxy {
 
     registerBlockVariants(EXOTIC_PLANKS, EnumExoticWoodType.class);
     registerBlockVariants(EXOTIC_SAPLING, EnumExoticWoodType.class);
-    registerBlockVariants(EXOTIC_WOOD, EnumExoticWoodType.class);
+    registerBlockVariants(EXOTIC_LOG, EnumExoticWoodType.class);
     registerBlockVariants(EXOTIC_LEAVES, EnumExoticWoodType.class);
 
     registerBlockVariants(STONE_STALACTITE, BlockStalactite.EnumSize.class);

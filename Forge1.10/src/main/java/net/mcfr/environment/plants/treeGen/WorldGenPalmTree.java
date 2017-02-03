@@ -4,7 +4,7 @@ import java.util.Random;
 
 import net.mcfr.McfrBlocks;
 import net.mcfr.environment.plants.BlockExoticLeaves;
-import net.mcfr.environment.plants.BlockExoticWood;
+import net.mcfr.environment.plants.BlockExoticLog;
 import net.mcfr.environment.plants.EnumExoticWoodType;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.EnumFacing;
@@ -12,7 +12,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class WorldGenPalmTree extends WorldGenMcfrTree {
-  public static final IBlockState PALM_TRUNK = McfrBlocks.EXOTIC_WOOD.getDefaultState().withProperty(BlockExoticWood.VARIANT, EnumExoticWoodType.PALM_TREE);
+  public static final IBlockState PALM_TRUNK = McfrBlocks.EXOTIC_LOG.getDefaultState().withProperty(BlockExoticLog.VARIANT, EnumExoticWoodType.PALM_TREE);
   public static final IBlockState PALM_LEAF = McfrBlocks.EXOTIC_LEAVES.getDefaultState().withProperty(BlockExoticLeaves.VARIANT, EnumExoticWoodType.PALM_TREE).withProperty(BlockExoticLeaves.CHECK_DECAY, false);
 
   public WorldGenPalmTree(boolean notify) {
