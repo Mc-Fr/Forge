@@ -9,6 +9,7 @@ import net.mcfr.construction.BlockColoredStonebrick;
 import net.mcfr.construction.BlockExoticWoodSlab;
 import net.mcfr.construction.BlockExoticWoodSlab.BlockDoubleExoticWoodSlab;
 import net.mcfr.construction.BlockExoticWoodSlab.BlockHalfExoticWoodSlab;
+import net.mcfr.construction.BlockExoticWoodWall;
 import net.mcfr.construction.BlockHaySlab;
 import net.mcfr.construction.BlockHaySlab.BlockDoubleHaySlab;
 import net.mcfr.construction.BlockHaySlab.BlockHalfHaySlab;
@@ -39,7 +40,6 @@ import net.mcfr.construction.BlockStonebrickSlab.BlockHalfStonebrickSlab;
 import net.mcfr.construction.BlockTiles;
 import net.mcfr.construction.BlockTimbered;
 import net.mcfr.construction.BlockWoodenWall;
-import net.mcfr.construction.BlockExoticWoodWall;
 import net.mcfr.construction.ItemExoticWoodSlab;
 import net.mcfr.construction.ItemHaySlab;
 import net.mcfr.construction.ItemMarbleSlab;
@@ -123,9 +123,9 @@ import net.mcfr.economy.BlockChanger;
 import net.mcfr.environment.BlockBeehive;
 import net.mcfr.environment.BlockStalactite;
 import net.mcfr.environment.plants.BlockExoticLeaves;
+import net.mcfr.environment.plants.BlockExoticLog;
 import net.mcfr.environment.plants.BlockExoticPlanks;
 import net.mcfr.environment.plants.BlockExoticSapling;
-import net.mcfr.environment.plants.BlockExoticLog;
 import net.mcfr.environment.plants.BlockGlowingMushroom;
 import net.mcfr.environment.plants.BlockGlowingVine;
 import net.mcfr.environment.plants.BlockMushroom;
@@ -192,7 +192,7 @@ public final class McfrBlocks {
   public static final BlockSmokeGenerator SMOKE_GENERATOR = new BlockSmokeGenerator();
   /** Feu de camp */
   public static final BlockCampfire CAMPFIRE = new BlockCampfire();
-  /** Feu de camp allumé (allumé) */
+  /** Feu de camp allumé */
   public static final BlockLitCampFire LIT_CAMPFIRE = new BlockLitCampFire();
 
   // Forge

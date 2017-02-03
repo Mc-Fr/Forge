@@ -1,37 +1,44 @@
 package net.mcfr.decoration.lighting;
 
 import net.mcfr.commons.IEnumType;
+import net.minecraft.item.EnumDyeColor;
 
 public enum EnumLanternColor implements IEnumType<EnumLanternColor> {
-  WHITE("white"),
-  ORANGE("orange"),
-  YELLOW("yellow"),
-  PURPLE("purple"),
-  BLUE("blue"),
-  GREEN("green"),
-  RED("red");
-  
+  WHITE("white", EnumDyeColor.WHITE),
+  ORANGE("orange", EnumDyeColor.ORANGE),
+  YELLOW("yellow", EnumDyeColor.YELLOW),
+  PURPLE("purple", EnumDyeColor.PURPLE),
+  BLUE("blue", EnumDyeColor.BLUE),
+  GREEN("green", EnumDyeColor.GREEN),
+  RED("red", EnumDyeColor.RED);
+
   private final String name;
-  
-  private EnumLanternColor(String name) {
+  private final EnumDyeColor color;
+
+  private EnumLanternColor(String name, EnumDyeColor color) {
     this.name = name;
+    this.color = color;
   }
-  
+
   @Override
   public String getName() {
     return this.name;
   }
-  
+
+  public EnumDyeColor getDyeColor() {
+    return this.color;
+  }
+
   @Override
   public int getMetadata() {
     return ordinal();
   }
-  
+
   @Override
   public String toString() {
     return getName();
   }
-  
+
   public static EnumLanternColor byMetadata(int meta) {
     return values()[meta % values().length];
   }
