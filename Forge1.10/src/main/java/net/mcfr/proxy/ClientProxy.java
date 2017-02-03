@@ -678,6 +678,7 @@ public class ClientProxy extends CommonProxy {
     registerItem(GRAPES);
     registerItem(McfrItems.SUGAR_CANES);
     registerItem(HEMP);
+    registerItem(HEMP_FLOWER);
     registerItem(HEMP_LEAF);
     registerItem(HEMP_FIBER);
     registerItem(HEMP_OIL);
@@ -726,7 +727,7 @@ public class ClientProxy extends CommonProxy {
     registerItem(RAW_HUNTED_POULTRY);
     registerItem(COOKED_HUNTED_POULTRY);
     registerItem(HUNTED_SKIN);
-    
+
     registerItem(RAW_NIALE_MEAT);
     registerItem(COOKED_NIALE_MEAT);
     registerItem(RAW_HOEN_MEAT);

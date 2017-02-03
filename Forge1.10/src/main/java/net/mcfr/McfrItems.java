@@ -1,9 +1,6 @@
 package net.mcfr;
 
-import static net.minecraft.inventory.EntityEquipmentSlot.CHEST;
-import static net.minecraft.inventory.EntityEquipmentSlot.FEET;
-import static net.minecraft.inventory.EntityEquipmentSlot.HEAD;
-import static net.minecraft.inventory.EntityEquipmentSlot.LEGS;
+import static net.minecraft.inventory.EntityEquipmentSlot.*;
 
 import net.mcfr.commons.McfrItem;
 import net.mcfr.commons.McfrItemBlockSpecial;
@@ -91,6 +88,7 @@ public final class McfrItems {
   public static final McfrItem GRAPES = new McfrItem("grapes", CreativeTabs.FOOD);
   public static final McfrItemBlockSpecial SUGAR_CANES = new McfrItemBlockSpecial("sugar_canes", McfrBlocks.SUGAR_CANES, CreativeTabs.MATERIALS);
   public static final McfrItemBlockSpecial HEMP = new McfrItemBlockSpecial("hemp", McfrBlocks.HEMP_BASE, CreativeTabs.MATERIALS);
+  public static final McfrItem HEMP_FLOWER = new McfrItem("hemp_flower", CreativeTabs.MATERIALS);
   public static final McfrItem HEMP_LEAF = new McfrItem("hemp_leaf", CreativeTabs.MATERIALS);
   public static final McfrItem HEMP_FIBER = new McfrItem("hemp_fiber", CreativeTabs.MATERIALS);
   public static final McfrItem HEMP_OIL = new McfrItem("hemp_oil", CreativeTabs.MATERIALS);
@@ -304,6 +302,7 @@ public final class McfrItems {
     register(GRAPES);
     register(SUGAR_CANES);
     register(HEMP);
+    register(HEMP_FLOWER);
     register(HEMP_LEAF);
     register(HEMP_FIBER);
     register(HEMP_OIL);
@@ -492,26 +491,6 @@ public final class McfrItems {
 
   private static void register(Item item) {
     GameRegistry.register(item);
-  }
-
-  /**
-   * Ajoute une recette.
-   * 
-   * @param output l'item en sortie
-   * @param params les paramètres
-   */
-  private static void addShapedRecipe(ItemStack output, Object... params) {
-    GameRegistry.addShapedRecipe(output, params);
-  }
-
-  /**
-   * Ajoute une recette sans contrainte de disposition.
-   * 
-   * @param output l'item en sortie
-   * @param params les paramètres
-   */
-  private static void addShapelessRecipe(ItemStack output, Object... params) {
-    GameRegistry.addShapelessRecipe(output, params);
   }
 
   /**

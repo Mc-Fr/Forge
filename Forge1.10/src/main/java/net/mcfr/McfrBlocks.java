@@ -738,6 +738,7 @@ public final class McfrBlocks {
    * Initialise tous les blocs.
    */
   public static void init() {
+    Blocks.BOOKSHELF.setCreativeTab(null);
     Blocks.MONSTER_EGG.setCreativeTab(null);
     Blocks.ANVIL.setCreativeTab(null);
     WOODEN_LAMP.setLightLevel(0.938f);
