@@ -78,7 +78,6 @@ public class McfrMain {
   public static CommonProxy proxy;
 
   @EventHandler
-  @SuppressWarnings("deprecation")
   public void preInit(FMLPreInitializationEvent e) {
     McfrBlocks.init();
     McfrItems.init();
