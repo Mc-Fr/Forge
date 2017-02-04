@@ -64,13 +64,8 @@ import net.mcfr.decoration.beds.BlockNormalBed;
 import net.mcfr.decoration.beds.BlockSleepingBag;
 import net.mcfr.decoration.beds.BlockStoneBed;
 import net.mcfr.decoration.containerBlocks.BlockBeerBarrel;
-import net.mcfr.decoration.containerBlocks.BlockBookshelf;
 import net.mcfr.decoration.containerBlocks.BlockCiderBarrel;
-import net.mcfr.decoration.containerBlocks.BlockCrate;
 import net.mcfr.decoration.containerBlocks.BlockEmptyBarrel;
-import net.mcfr.decoration.containerBlocks.BlockFoodCrate;
-import net.mcfr.decoration.containerBlocks.BlockLittleChest;
-import net.mcfr.decoration.containerBlocks.BlockPallet;
 import net.mcfr.decoration.containerBlocks.BlockRumBarrel;
 import net.mcfr.decoration.containerBlocks.BlockWineBarrel;
 import net.mcfr.decoration.furniture.BlockArmChair;
@@ -262,11 +257,11 @@ public final class McfrBlocks {
   public static final BlockWineBarrel WINE_BARREL = new BlockWineBarrel();
   public static final BlockRumBarrel RUM_BARREL = new BlockRumBarrel();
   // Coffres
-  public static final BlockLittleChest LITTLE_CHEST = new BlockLittleChest();
-  public static final BlockCrate CRATE = new BlockCrate();
-  public static final BlockFoodCrate FOOD_CRATE = new BlockFoodCrate();
-  public static final BlockPallet PALLET = new BlockPallet();
-  public static final BlockBookshelf BOOKSHELF = new BlockBookshelf();
+  // public static final BlockLittleChest LITTLE_CHEST = new BlockLittleChest();
+  // public static final BlockCrate CRATE = new BlockCrate();
+  // public static final BlockFoodCrate FOOD_CRATE = new BlockFoodCrate();
+  // public static final BlockPallet PALLET = new BlockPallet();
+  // public static final BlockBookshelf BOOKSHELF = new BlockBookshelf();
   // Dalles
   public static final BlockHaySlab HAY_SLAB = new BlockHalfHaySlab();
   public static final BlockHaySlab DOUBLE_HAY_SLAB = new BlockDoubleHaySlab();
@@ -813,11 +808,11 @@ public final class McfrBlocks {
     register(WINE_BARREL);
     register(RUM_BARREL);
 
-    register(LITTLE_CHEST);
+    /*register(LITTLE_CHEST);
     register(CRATE);
     register(FOOD_CRATE);
     register(PALLET);
-    registerVariants(BOOKSHELF);
+    registerVariants(BOOKSHELF);*/
 
     registerSlab(HAY_SLAB, DOUBLE_HAY_SLAB, new ItemHaySlab(HAY_SLAB, HAY_SLAB, DOUBLE_HAY_SLAB));
     registerSlab(REFINED_PLANKS_SLAB, DOUBLE_REFINED_PLANKS_SLAB, new ItemRefinedPlanksSlab(REFINED_PLANKS_SLAB, REFINED_PLANKS_SLAB, DOUBLE_REFINED_PLANKS_SLAB));

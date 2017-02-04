@@ -1,6 +1,9 @@
 package net.mcfr;
 
-import static net.minecraft.inventory.EntityEquipmentSlot.*;
+import static net.minecraft.inventory.EntityEquipmentSlot.CHEST;
+import static net.minecraft.inventory.EntityEquipmentSlot.FEET;
+import static net.minecraft.inventory.EntityEquipmentSlot.HEAD;
+import static net.minecraft.inventory.EntityEquipmentSlot.LEGS;
 
 import net.mcfr.commons.McfrItem;
 import net.mcfr.commons.McfrItemBlockSpecial;
@@ -484,6 +487,12 @@ public final class McfrItems {
     addSmelting(RAW_HOEN_MEAT, COOKED_HOEN_MEAT, 1, 0, 0);
     addSmelting(RAW_GALT_MEAT, COOKED_GALT_MEAT, 1, 0, 0);
 
+    McfrBlocks.LIT_CAMPFIRE.addRecipe(McfrItems.RAW_HUNTED_LEG, McfrItems.COOKED_HUNTED_LEG);
+    McfrBlocks.LIT_CAMPFIRE.addRecipe(McfrItems.RAW_HUNTED_STEAK, McfrItems.COOKED_HUNTED_STEAK);
+    McfrBlocks.LIT_CAMPFIRE.addRecipe(McfrItems.RAW_HUNTED_POULTRY, McfrItems.COOKED_HUNTED_POULTRY);
+    McfrBlocks.LIT_CAMPFIRE.addRecipe(McfrItems.RAW_HOEN_MEAT, McfrItems.COOKED_HOEN_MEAT);
+    McfrBlocks.LIT_CAMPFIRE.addRecipe(McfrItems.RAW_NIALE_MEAT, McfrItems.COOKED_NIALE_MEAT);
+    McfrBlocks.LIT_CAMPFIRE.addRecipe(McfrItems.RAW_GALT_MEAT, McfrItems.COOKED_GALT_MEAT);
     McfrBlocks.LIT_CAMPFIRE.addRecipe(Items.PORKCHOP, Items.COOKED_PORKCHOP);
     McfrBlocks.LIT_CAMPFIRE.addRecipe(Items.BEEF, Items.COOKED_BEEF);
     McfrBlocks.LIT_CAMPFIRE.addRecipe(Items.CHICKEN, Items.COOKED_CHICKEN);
