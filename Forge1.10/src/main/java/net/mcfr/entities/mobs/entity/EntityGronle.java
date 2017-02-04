@@ -1,5 +1,7 @@
 package net.mcfr.entities.mobs.entity;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 import javax.annotation.Nullable;
@@ -21,6 +23,7 @@ import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.ai.EntityAITempt;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
@@ -35,6 +38,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.storage.loot.LootTableList;
+import net.minecraftforge.event.entity.living.LivingDropsEvent;
 
 public class EntityGronle extends EntityBurrowed {
   private static final Set<Item> TEMPTATION_ITEMS = Sets.newHashSet(new Item[] {Items.WHEAT_SEEDS, Items.MELON_SEEDS, Items.PUMPKIN_SEEDS, Items.BEETROOT_SEEDS});
@@ -159,5 +163,19 @@ public class EntityGronle extends EntityBurrowed {
       {
           ((EntityLivingBase)passenger).renderYawOffset = this.renderYawOffset;
       }
+  }
+  
+  @Override
+  public void setDropItems(LivingDropsEvent event) {
+    List<EntityItem> drops = event.getDrops();
+    
+    drops.clear();
+    
+    List<ItemStack> itemList = new ArrayList<>();
+    
+    for (ItemStack i : itemList) {
+      drops.add(new EntityItem(event.getEntity().worldObj, event.getEntity().posX, 
+          event.getEntity().posY, event.getEntity().posZ, i));
+    }
   }
 }
