@@ -5,6 +5,7 @@ import static net.mcfr.utils.RenderUtils.draw;
 import static net.mcfr.utils.RenderUtils.drawQuad;
 import static net.mcfr.utils.RenderUtils.renderItem;
 
+import net.mcfr.McfrBlocks;
 import net.mcfr.utils.math.Point2d;
 import net.mcfr.utils.math.Point3d;
 import net.minecraft.client.renderer.GlStateManager;
@@ -25,9 +26,9 @@ public class TileEntityPalletRenderer extends TileEntitySpecialRenderer<TileEnti
     GlStateManager.pushMatrix();
     GlStateManager.translate(x, y, z);
 
-    /*if (te.getWorld().getBlockState(te.getPos().up()).getBlock() == McfrBlocks.PALLET) //TODO Desactiv
+    if (te.getWorld().getBlockState(te.getPos().up()).getBlock() == McfrBlocks.PALLET)
       drawSupports();
-    drawContent(stacks);*/
+    drawContent(stacks);
 
     GlStateManager.popMatrix();
   }

@@ -185,12 +185,12 @@ public class ClientProxy extends CommonProxy {
     registerBlock(McfrBlocks.WINE_BARREL);
     registerBlock(McfrBlocks.RUM_BARREL);
 
-    /*registerBlock(LITTLE_CHEST);
+    registerBlock(LITTLE_CHEST);
     registerBlock(CRATE);
     registerBlock(FOOD_CRATE);
     registerBlock(PALLET);
     registerBlockWoodVariants(BOOKSHELF);
-    registerBlock(BOOKSHELF);*/
+    registerBlock(BOOKSHELF);
 
     registerSlabVariants(HAY_SLAB, DOUBLE_HAY_SLAB, BlockHaySlab.EnumType.class);
     registerWoodSlabVariants(REFINED_PLANKS_SLAB, DOUBLE_REFINED_PLANKS_SLAB);
