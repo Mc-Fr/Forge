@@ -5,8 +5,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URI;
 import java.net.URL;
-import java.net.URLConnection;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -188,7 +186,7 @@ public class GuiMcfrMainMenu extends GuiScreen {
     yOffset += step + 10;
     this.buttonList.add(new GuiButton(0, this.width / 2 - 100, yOffset, 98, 20, I18n.format("menu.options")));
     this.buttonList.add(new GuiButton(7, this.width / 2 + 2, yOffset, 98, 20, I18n.format("menu.quit")));
-    if (shouldDisplayTestButtons(Minecraft.getMinecraft().thePlayer.getName())) {
+    if (shouldDisplayTestButtons()) {
       this.buttonList.add(new GuiButton(8, 0, 0, 50, 20, "Solo"));
       this.buttonList.add(new GuiButton(9, 55, 0, 50, 20, "Serveurs"));
     }
@@ -231,22 +229,22 @@ public class GuiMcfrMainMenu extends GuiScreen {
     }
   }
 
-  private boolean shouldDisplayTestButtons(String playerName) {
-    try {
-      URLConnection conn = new URL("http://www.minecraft-fr.net/launcher/adminList.txt").openConnection();
-
-      BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
-      String line;
-      List<String> admins = new ArrayList<>();
-      while ((line = rd.readLine()) != null) {
-        admins.add(line.toLowerCase());
-      }
-      rd.close();
-
-      return admins.contains(playerName.toLowerCase());
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
+  private boolean shouldDisplayTestButtons() {
+    //    try {
+    //      URLConnection conn = new URL("http://www.minecraft-fr.net/launcher/adminList.txt").openConnection();
+    //
+    //      BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
+    //      String line;
+    //      List<String> admins = new ArrayList<>();
+    //      while ((line = rd.readLine()) != null) {
+    //        admins.add(line.toLowerCase());
+    //      }
+    //      rd.close();
+    //
+    //      return admins.contains(playerName.toLowerCase());
+    //    } catch (IOException e) {
+    //      e.printStackTrace();
+    //    }
     return false;
   }
 

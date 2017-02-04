@@ -11,11 +11,11 @@ buildscript {
 apply plugin: "net.minecraftforge.gradle.forge"
 // Only edit below this line, the above code adds and enables the nessasary things for Forge to be setup.
 
-jar {
-   manifest {
-       attributes "FMLCorePlugin": "net.mcfr.core.McfrCore", "FMLCorePluginContainsFMLMod": "true"
-   }
-}
+//jar {
+ //  manifest {
+  //     attributes "FMLCorePlugin": "net.mcfr.core.McfrCore", "FMLCorePluginContainsFMLMod": "true"
+  // }
+//}
 
 version = "1.0"
 group = "net.mcfr" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
