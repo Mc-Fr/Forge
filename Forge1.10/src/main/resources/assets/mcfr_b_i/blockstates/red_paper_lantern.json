@@ -1,16 +1,20 @@
 {
     "variants": {
-        "orientation=0,position=bottom": { "model": "mcfr_b_i:red_ground_paper_lantern" },
-        "orientation=1,position=bottom": { "model": "mcfr_b_i:red_ground_paper_lantern", "y": 90 },
-        "orientation=2,position=bottom": { "model": "mcfr_b_i:red_ground_paper_lantern_1", "y": 90 },
-        "orientation=3,position=bottom": { "model": "mcfr_b_i:red_ground_paper_lantern_1" },
-        "orientation=0,position=wall": { "model": "mcfr_b_i:red_wall_paper_lantern" },
-        "orientation=1,position=wall": { "model": "mcfr_b_i:red_wall_paper_lantern", "y": 90 },
-        "orientation=2,position=wall": { "model": "mcfr_b_i:red_wall_paper_lantern", "y": 180 },
-        "orientation=3,position=wall": { "model": "mcfr_b_i:red_wall_paper_lantern", "y": 270 },
-        "orientation=0,position=top": { "model": "mcfr_b_i:red_paper_lantern" },
-        "orientation=1,position=top": { "model": "mcfr_b_i:red_paper_lantern", "y": 90 },
-        "orientation=2,position=top": { "model": "mcfr_b_i:red_paper_lantern_1", "y": 90 },
-        "orientation=3,position=top": { "model": "mcfr_b_i:red_paper_lantern_1" }
+        "on_ground=true,rotation=0": { "model": "mcfr_b_i:red_ground_paper_lantern" },
+        "on_ground=true,rotation=1": { "model": "mcfr_b_i:red_ground_paper_lantern_1" },
+        "on_ground=true,rotation=2": { "model": "mcfr_b_i:red_ground_paper_lantern", "y": 90 },
+        "on_ground=true,rotation=3": { "model": "mcfr_b_i:red_ground_paper_lantern_1", "y": 90 },
+        "on_ground=true,rotation=4": { "model": "mcfr_b_i:red_ground_paper_lantern" },
+        "on_ground=true,rotation=5": { "model": "mcfr_b_i:red_ground_paper_lantern_1" },
+        "on_ground=true,rotation=6": { "model": "mcfr_b_i:red_ground_paper_lantern", "y": 90 },
+        "on_ground=true,rotation=7": { "model": "mcfr_b_i:red_ground_paper_lantern_1", "y": 90 },
+        "on_ground=false,rotation=0": { "model": "mcfr_b_i:red_paper_lantern" },
+        "on_ground=false,rotation=1": { "model": "mcfr_b_i:red_paper_lantern_1" },
+        "on_ground=false,rotation=2": { "model": "mcfr_b_i:red_paper_lantern", "y":90 },
+        "on_ground=false,rotation=3": { "model": "mcfr_b_i:red_paper_lantern_1", "y":90 },
+        "on_ground=false,rotation=4": { "model": "mcfr_b_i:red_paper_lantern" },
+        "on_ground=false,rotation=5": { "model": "mcfr_b_i:red_paper_lantern_1" },
+        "on_ground=false,rotation=6": { "model": "mcfr_b_i:red_paper_lantern", "y":90 },
+        "on_ground=false,rotation=7": { "model": "mcfr_b_i:red_paper_lantern_1", "y":90 }
     }
 }
