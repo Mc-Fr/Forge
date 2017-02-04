@@ -70,7 +70,6 @@ public class EntitySiker extends EntityBurrowed {
   }
 
   public void setCycle(AICycle cycle) {
-    System.out.println(cycle);
     this.cycle = cycle;
   }
 

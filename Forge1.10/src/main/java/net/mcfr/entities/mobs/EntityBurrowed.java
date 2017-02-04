@@ -3,7 +3,6 @@ package net.mcfr.entities.mobs;
 import net.mcfr.entities.mobs.gender.EntityGendered;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -29,6 +28,7 @@ public abstract class EntityBurrowed extends EntityGendered {
     setSyncedInteger("HomeX", homeX);
     setSyncedInteger("HomeY", homeY);
     setSyncedInteger("HomeZ", homeZ);
+    setSyncedBoolean("ToRemove", false);
   }
 
   public void setBurrow(int burrowId, BlockPos position) {
@@ -42,11 +42,20 @@ public abstract class EntityBurrowed extends EntityGendered {
   public Vec3d getBurrowPosition() {
     return new Vec3d(getSyncedInteger("HomeX"), getSyncedInteger("HomeY"), getSyncedInteger("HomeZ"));
   }
+  
+  public boolean mustRemove() {
+    return getSyncedBoolean("ToRemove");
+  }
+  
+  public void setToRemove(boolean value) {
+    setBurrow(-2, getPosition());
+    setSyncedBoolean("ToRemove", value);
+  }
 
   @SideOnly(Side.SERVER)
   public void resetBurrowChange() {
     this.timesInLove = 0;
-    this.changeBurrowLimit = this.rand.nextInt(3) + 1;
+    this.changeBurrowLimit = this.rand.nextInt(3);
   }
 
   @SideOnly(Side.SERVER)
@@ -54,11 +63,8 @@ public abstract class EntityBurrowed extends EntityGendered {
     this.timesInLove++;
   }
 
-  public void setNewBurrow() {
+  public void detachFromBurrow() {
     resetBurrowChange();
-    System.out.println(getUniqueID());
-    setUniqueId(MathHelper.getRandomUuid(this.rand));
-    System.out.println(getUniqueID());
     this.setBurrow(-2, getPosition());
   }
 
@@ -69,9 +75,13 @@ public abstract class EntityBurrowed extends EntityGendered {
     }
     if (getHealth() < getMaxHealth() && this.ticksExisted - this.lastHealTime > 40 && this.ticksExisted - getLastAttackerTime() > 100) {
       heal(1);
-      System.out.println("Healed ! Nouvelle santé : " + getHealth());
       this.lastHealTime = this.ticksExisted;
     }
+    
+    if (mustRemove()) {
+      this.setDead();
+    }
+    
     super.onLivingUpdate();
   }
 
@@ -80,12 +90,8 @@ public abstract class EntityBurrowed extends EntityGendered {
     super.setInLove(player);
     if (!this.worldObj.isRemote) {
       increaseTimesInLove();
-      if (this.timesInLove > 0) {
-        setNewBurrow();
-      }
-    } else {
-      if (this.timesInLove > 0) {
-        this.setUniqueId(MathHelper.getRandomUuid(this.rand));
+      if (this.timesInLove > this.changeBurrowLimit) {
+        detachFromBurrow();
       }
     }
   }
