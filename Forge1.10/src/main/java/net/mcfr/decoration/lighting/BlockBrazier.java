@@ -8,7 +8,9 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 public class BlockBrazier extends McfrBlock {
@@ -20,6 +22,11 @@ public class BlockBrazier extends McfrBlock {
     this.lit = lit;
     if (lit)
       setLightLevel(0.9375f);
+  }
+
+  @Override
+  public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
+    return new AxisAlignedBB(0, 0, 0, 1, 0.5, 1);
   }
 
   @Override
