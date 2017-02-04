@@ -18,6 +18,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.oredict.RecipeSorter;
+import net.minecraftforge.oredict.RecipeSorter.Category;
 
 public final class McfrCrafts {
   private static final List<Block> LOGS;
@@ -55,6 +57,31 @@ public final class McfrCrafts {
   }
 
   public static void registerCrafts() {
+    RecipeSorter.register(Constants.MOD_ID + ":large", LargeRecipe.class, Category.SHAPED, "after:minecraft:shaped");
+
+    removeRecipe(new ItemStack(Blocks.SANDSTONE_STAIRS, 4));
+    removeRecipe(new ItemStack(Blocks.WOOL));
+    removeRecipe(new ItemStack(Blocks.PISTON));
+    removeRecipe(new ItemStack(Blocks.STICKY_PISTON));
+    removeRecipe(new ItemStack(Blocks.CHEST));
+    removeRecipe(new ItemStack(Blocks.TRAPPED_CHEST));
+    removeRecipe(new ItemStack(Blocks.FURNACE));
+    removeRecipe(new ItemStack(Blocks.STAINED_GLASS));
+    removeRecipe(new ItemStack(Blocks.STAINED_GLASS_PANE));
+    removeRecipe(new ItemStack(Blocks.REDSTONE_LAMP));
+    for (EnumDyeColor color : EnumDyeColor.values())
+      removeRecipe(new ItemStack(Blocks.HARDENED_CLAY, 8, color.getMetadata()));
+
+    removeRecipe(new ItemStack(Items.SUGAR));
+    removeRecipe(new ItemStack(Items.COOKIE));
+    removeRecipe(new ItemStack(Items.PUMPKIN_PIE));
+    removeRecipe(new ItemStack(Items.CAKE));
+    removeRecipe(new ItemStack(Items.FLINT_AND_STEEL));
+    removeRecipe(new ItemStack(Items.BOW));
+    for (EnumDyeColor color : EnumDyeColor.values())
+      removeRecipe(new ItemStack(Items.DYE, 1, color.getMetadata()));
+    removeRecipe(new ItemStack(Items.BED));
+
     /*
      * Blocs
      */
@@ -64,10 +91,7 @@ public final class McfrCrafts {
     addShapedRecipe(new ItemStack(Blocks.STONE, 8, 1), "###", "#C#", "###", 'C', new ItemStack(Items.DYE, 1, 11), '#', new ItemStack(Blocks.STONE, 1, 0));
     addShapedRecipe(new ItemStack(Blocks.STONE, 8, 3), "###", "#C#", "###", 'C', new ItemStack(Items.DYE, 1, 14), '#', new ItemStack(Blocks.STONE, 1, 0));
 
-    addShapedRecipe(new ItemStack(Blocks.SANDSTONE_STAIRS, 4), "#  ", "## ", "###", '#', Blocks.SANDSTONE);
-
-    for (EnumDyeColor color : EnumDyeColor.values())
-      addShapelessRecipe(new ItemStack(Blocks.WOOL, 1, color.getMetadata()), new ItemStack(Items.DYE, 1, color.getDyeDamage()), new ItemStack(Blocks.WOOL, 1, 0));
+    addShapedRecipe(new ItemStack(Blocks.SANDSTONE_STAIRS, 4), "#  ", "## ", "###", '#', McfrBlocks.ROUGH_SANDSTONE);
 
     for (Block log : LOGS)
       addLargeRecipe(new ItemStack(Blocks.PISTON), "#####", "FFFFF", "CRRRC", "CRRRC", "CCCCC", '#', log, 'C', Blocks.COBBLESTONE, 'R', Items.REDSTONE, 'F', Items.IRON_INGOT);
@@ -693,8 +717,7 @@ public final class McfrCrafts {
 
     addLargeRecipe(new ItemStack(Items.BED), "RRRR#", "TTTTT", "DDDDD", "F   F", 'R', McfrItems.CLOTH_ROLL, 'T', McfrBlocks.CARPET, '#', Blocks.WOOL, 'F', Items.IRON_INGOT, 'D', McfrBlocks.REFINED_PLANKS_SLAB);
 
-    for (Block planks : PLANKS)
-      addShapedRecipe(new ItemStack(Items.STICK, 4), "#", "#", '#', planks);
+    addShapedRecipe(new ItemStack(Items.STICK, 4), "#", "#", '#', McfrBlocks.EXOTIC_PLANKS);
 
     addLargeRecipe(new ItemStack(Items.SADDLE), "  C  ", "MCCCM", "CC CC", "C   C", "M   M", 'C', Items.LEATHER, 'M', McfrItems.STITCH);
 
@@ -830,6 +853,35 @@ public final class McfrCrafts {
   }
 
   public static void registerAnvilCrafts() {
+    RecipeSorter.register(Constants.MOD_ID + ":anvil", AnvilRecipe.class, Category.SHAPED, "after:minecraft:shaped");
+
+    removeRecipe(new ItemStack(Items.IRON_SWORD));
+    removeRecipe(new ItemStack(Items.GOLDEN_SWORD));
+    removeRecipe(new ItemStack(Items.DIAMOND_SWORD));
+    removeRecipe(new ItemStack(Items.IRON_HELMET));
+    removeRecipe(new ItemStack(Items.IRON_CHESTPLATE));
+    removeRecipe(new ItemStack(Items.IRON_LEGGINGS));
+    removeRecipe(new ItemStack(Items.IRON_BOOTS));
+    removeRecipe(new ItemStack(Items.GOLDEN_HELMET));
+    removeRecipe(new ItemStack(Items.GOLDEN_CHESTPLATE));
+    removeRecipe(new ItemStack(Items.GOLDEN_LEGGINGS));
+    removeRecipe(new ItemStack(Items.GOLDEN_BOOTS));
+    removeRecipe(new ItemStack(Items.DIAMOND_HELMET));
+    removeRecipe(new ItemStack(Items.DIAMOND_CHESTPLATE));
+    removeRecipe(new ItemStack(Items.DIAMOND_LEGGINGS));
+    removeRecipe(new ItemStack(Items.DIAMOND_BOOTS));
+    removeRecipe(new ItemStack(Items.CAULDRON));
+    removeRecipe(new ItemStack(Items.BUCKET));
+    removeRecipe(new ItemStack(Items.MINECART));
+    removeRecipe(new ItemStack(Blocks.RAIL));
+    removeRecipe(new ItemStack(Blocks.GOLDEN_RAIL));
+    removeRecipe(new ItemStack(Blocks.DETECTOR_RAIL));
+    removeRecipe(new ItemStack(Items.CLOCK));
+    removeRecipe(new ItemStack(Items.COMPASS));
+    removeRecipe(new ItemStack(Items.SHEARS));
+    removeRecipe(new ItemStack(Items.IRON_DOOR));
+    removeRecipe(new ItemStack(Blocks.IRON_TRAPDOOR));
+
     addAnvilRecipe(new ItemStack(McfrItems.IRON_BOW), 60, 90, "  #B#", " P  S", "#  S ", "B S  ", "#S   ", '#', Items.IRON_INGOT, 'P', new ItemStack(McfrItems.SWORD_HANDLE, 1, 0), 'B', Items.STICK, 'S', Items.STRING);
     addAnvilRecipe(new ItemStack(McfrItems.GOLDEN_BOW), 45, 70, "  ##N", " P  S", "#  S ", "# S  ", "NS   ", '#', Items.GOLD_INGOT, 'P', new ItemStack(McfrItems.SWORD_HANDLE, 1, 2), 'N', Items.GOLD_NUGGET, 'S', Items.STRING);
 
@@ -963,6 +1015,20 @@ public final class McfrCrafts {
   private static void addAnvilRecipe(ItemStack result, int temperatureMin, int temperatureMax, Object... recipeComponents) {
     Components c = getComponents(recipeComponents);
     CraftingManager.getInstance().getRecipeList().add(new AnvilRecipe(c.getWidth(), c.getHeight(), c.getItems(), result, temperatureMin, temperatureMax));
+  }
+
+  /**
+   * Supprime les recettes dont la sortie correspond au stack donné.
+   * 
+   * @param out le stack de sortie
+   */
+  private static void removeRecipe(ItemStack out) {
+    CraftingManager.getInstance().getRecipeList().removeIf(recipe -> {
+      if (recipe == null)
+        return false;
+      ItemStack stack = recipe.getRecipeOutput();
+      return stack != null && stack.getItem() == out.getItem() && stack.getMetadata() == out.getMetadata() && stack.stackSize == out.stackSize;
+    });
   }
 
   private static Components getComponents(Object... recipeComponents) {

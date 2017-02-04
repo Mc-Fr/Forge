@@ -22,9 +22,9 @@ import net.minecraft.util.math.BlockPos;
 
 public class TileEntityStove extends TileEntityLockable implements ITickable, ISidedInventory {
   /** La température maximale. */
-  public static final int MAX_TEMPERATURE = 500;
+  public static final int MAX_TEMPERATURE = 150;
   /** Le nombre de tics avant de changer la température d'un degré. */
-  private static final int TICKS_PER_STEPS = 20;
+  private static final int TICKS_PER_STEPS = 3 * 20;
 
   /** Le nombre de tics de l'item courant. */
   private int totalFuelTicks;

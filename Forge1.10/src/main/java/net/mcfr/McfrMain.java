@@ -47,7 +47,6 @@ import net.mcfr.network.SyncEntityMessage;
 import net.mcfr.network.UpdateWallNoteMessage;
 import net.mcfr.network.UpdateWallNoteMessageHandler;
 import net.mcfr.proxy.CommonProxy;
-import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
@@ -83,8 +82,7 @@ public class McfrMain {
     McfrItems.init();
     registerTileEntities();
     registerEntities();
-    // CraftingManager.getInstance().getRecipeList().clear();
-    FurnaceRecipes.instance().getSmeltingList().clear();
+
     McfrCrafts.registerCrafts();
     McfrCrafts.registerAnvilCrafts();
   }
