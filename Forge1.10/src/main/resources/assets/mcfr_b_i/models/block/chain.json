@@ -1,0 +1,38 @@
+{
+	"__comment": "Designed by Mcfr4488 with Cubik Studio - https://cubik.studio",
+	"textures": {
+		"particle": "mcfr_b_i:blocks/chain_1",
+		"texture": "mcfr_b_i:blocks/chain_1",
+		"texture1": "mcfr_b_i:blocks/chain_2"
+	},
+	"elements": [
+		{
+			"__comment": "Cube1",
+			"from": [ 6, 0, 8 ],
+			"to": [ 10, 16, 8.001 ],
+			"rotation": { "origin": [ 8, 0, 8 ], "axis": "y", "angle": -45 },
+			"faces": {
+				"down": { "uv": [ 6, 7.999, 10, 8 ], "texture": "#texture" },
+				"up": { "uv": [ 6, 8, 10, 8.000999 ], "texture": "#texture" },
+				"north": { "uv": [ 5.5, 0, 10, 16 ], "texture": "#texture" },
+				"south": { "uv": [ 5.5, 0, 10, 16 ], "texture": "#texture" },
+				"west": { "uv": [ 8, 0, 8.001, 16 ], "texture": "#texture" },
+				"east": { "uv": [ 7.999, 0, 8, 16 ], "texture": "#texture" }
+			}
+		},
+		{
+			"__comment": "Cube1",
+			"from": [ 6, 0, 8 ],
+			"to": [ 10, 16, 8.001 ],
+			"rotation": { "origin": [ 8, 0, 8 ], "axis": "y", "angle": 45 },
+			"faces": {
+				"down": { "uv": [ 6, 7.999, 10, 8 ], "texture": "#texture1" },
+				"up": { "uv": [ 6, 8, 10, 8.000999 ], "texture": "#texture1" },
+				"north": { "uv": [ 5.5, 0, 10, 16 ], "texture": "#texture1" },
+				"south": { "uv": [ 5.5, 0, 10, 16 ], "texture": "#texture1" },
+				"west": { "uv": [ 8, 0, 8.001, 16 ], "texture": "#texture1" },
+				"east": { "uv": [ 7.999, 0, 8, 16 ], "texture": "#texture1                                                        " }
+			}
+		}
+	]
+}

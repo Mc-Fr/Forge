@@ -1,0 +1,22 @@
+{
+    "ambientocclusion": false,
+    "textures": {
+        "particle": "mcfr_b_i:blocks/rope_block",
+		"texture" : "mcfr_b_i:blocks/rope_block"
+    },
+    "elements": [
+        {   "from": [ 0, 9, 0 ],
+            "to": [ 16, 9, 16 ],
+            "rotation": {
+                "origin": [ 8, 9, 8 ],
+                "axis": "x",
+                "angle": -45,
+                "rescale": true
+            },
+            "faces": {
+                "down":  { "uv": [ 0, 16, 16,  0 ], "texture": "#texture" },
+                "up":    { "uv": [ 0,  0, 16, 16 ], "texture": "#texture" }
+            }
+        }
+    ]
+}

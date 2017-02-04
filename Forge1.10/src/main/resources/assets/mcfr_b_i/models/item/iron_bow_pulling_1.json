@@ -1,5 +1,5 @@
 {
-    "parent": "item/handheld",
+    "parent": "mcfr_b_i:item/iron_bow",
     "textures": {
         "layer0": "mcfr_b_i:items/bows/iron_pulling_1"
     }

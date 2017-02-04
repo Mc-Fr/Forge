@@ -1,0 +1,57 @@
+{
+	"__comment": "Designed by Mcfr4488 with Cubik Studio - https://cubik.studio",
+	"textures": {
+		"particle": "mcfr_b_i:blocks/large_torch",
+		"cocoa": "mcfr_b_i:blocks/large_torch"
+	},
+	"elements": [
+		{
+			"from": [ 7, 0, 7 ],
+			"to": [ 9, 8, 9 ],
+			"faces": {
+				"down": { "uv": [ 7, 10, 9, 12 ], "texture": "#cocoa", "rotation": 270 },
+				"up": { "uv": [ 7, 10, 9, 12 ], "texture": "#cocoa", "rotation": 90 },
+				"north": { "uv": [ 7, 8.000001, 9, 16 ], "texture": "#cocoa" },
+				"south": { "uv": [ 7, 8.000001, 9, 16 ], "texture": "#cocoa" },
+				"west": { "uv": [ 7, 8.000001, 9, 16 ], "texture": "#cocoa" },
+				"east": { "uv": [ 7, 8.000001, 9, 16 ], "texture": "#cocoa" }
+			}
+		},
+		{
+			"__comment": "PlaneZ12",
+			"from": [ 6.999, 8, 5 ],
+			"to": [ 7, 13.5, 11 ],
+			"faces": {
+				"west": { "uv": [ 5, 3, 11, 8.5 ], "texture": "#cocoa" },
+				"east": { "uv": [ 5, 3, 11, 8.5 ], "texture": "#cocoa" }
+			}
+		},
+		{
+			"__comment": "PlaneZ12",
+			"from": [ 8.999, 8, 5 ],
+			"to": [ 9, 13.5, 11 ],
+			"faces": {
+				"west": { "uv": [ 5, 3, 11, 8.5 ], "texture": "#cocoa" },
+				"east": { "uv": [ 5, 3, 11, 8.5 ], "texture": "#cocoa" }
+			}
+		},
+		{
+			"__comment": "PlaneZ12",
+			"from": [ 5, 8, 6.999 ],
+			"to": [ 11, 13.5, 7 ],
+			"faces": {
+				"north": { "uv": [ 5, 3, 11, 8.5 ], "texture": "#cocoa" },
+				"south": { "uv": [ 5, 3, 11, 8.5 ], "texture": "#cocoa" }
+			}
+		},
+		{
+			"__comment": "PlaneZ12",
+			"from": [ 5, 8, 9 ],
+			"to": [ 11, 13.5, 9.001 ],
+			"faces": {
+				"north": { "uv": [ 5, 3, 11, 8.5 ], "texture": "#cocoa" },
+				"south": { "uv": [ 5, 3, 11, 8.5 ], "texture": "#cocoa" }
+			}
+		}
+	]
+}

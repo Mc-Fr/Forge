@@ -1,0 +1,16 @@
+{
+    "ambientocclusion": false,
+    "textures": {
+        "particle": "mcfr_b_i:blocks/rope_block",
+		"texture" : "mcfr_b_i:blocks/rope_block_curved"
+    },
+    "elements": [
+        {   "from": [ 0, 1, 0 ],
+            "to": [ 16, 1, 16 ],
+            "faces": {
+                "down":  { "uv": [ 0, 16, 16,  0 ], "texture": "#texture" },
+                "up":    { "uv": [ 0,  0, 16, 16 ], "texture": "#texture" }
+            }
+        }
+    ]
+}

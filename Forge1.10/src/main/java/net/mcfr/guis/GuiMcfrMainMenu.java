@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URI;
 import java.net.URL;
+import java.net.URLConnection;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -47,14 +49,10 @@ public class GuiMcfrMainMenu extends GuiScreen {
   private static final ResourceLocation MINECRAFT_TITLE_TEXTURES = new ResourceLocation("textures/gui/title/minecraft.png");
   /** An array of all the paths to the panorama pictures. */
   // @f0
-  private static final ResourceLocation[] TITLE_PANORAMA_PATHS = {
-    new ResourceLocation("textures/gui/title/background/panorama_0.png"),
-    new ResourceLocation("textures/gui/title/background/panorama_1.png"),
-    new ResourceLocation("textures/gui/title/background/panorama_2.png"),
-    new ResourceLocation("textures/gui/title/background/panorama_3.png"),
-    new ResourceLocation("textures/gui/title/background/panorama_4.png"),
-    new ResourceLocation("textures/gui/title/background/panorama_5.png")
-  };
+  private static final ResourceLocation[] TITLE_PANORAMA_PATHS = { new ResourceLocation("textures/gui/title/background/panorama_0.png"),
+      new ResourceLocation("textures/gui/title/background/panorama_1.png"), new ResourceLocation("textures/gui/title/background/panorama_2.png"),
+      new ResourceLocation("textures/gui/title/background/panorama_3.png"), new ResourceLocation("textures/gui/title/background/panorama_4.png"),
+      new ResourceLocation("textures/gui/title/background/panorama_5.png") };
   // @f1
   public static final String MORE_INFO_TEXT = "Please click " + TextFormatting.UNDERLINE + "here" + TextFormatting.RESET + " for more information.";
 
@@ -110,15 +108,13 @@ public class GuiMcfrMainMenu extends GuiScreen {
 
       if (!list.isEmpty()) {
         while (true) {
-          this.splashText = (String) list.get(RANDOM.nextInt(list.size()));
+          this.splashText = list.get(RANDOM.nextInt(list.size()));
           if (this.splashText.hashCode() != 125780783) {
             break;
           }
         }
       }
-    }
-    catch (IOException e) {}
-    finally {
+    } catch (IOException e) {} finally {
       IOUtils.closeQuietly(splashes);
     }
     FMLClientHandler.instance().setupServerList();
@@ -155,11 +151,9 @@ public class GuiMcfrMainMenu extends GuiScreen {
 
     if (calendar.get(2) + 1 == 12 && calendar.get(5) == 24) {
       this.splashText = "Joyeux Noël !";
-    }
-    else if (calendar.get(2) + 1 == 1 && calendar.get(5) == 1) {
+    } else if (calendar.get(2) + 1 == 1 && calendar.get(5) == 1) {
       this.splashText = "Bonne année !";
-    }
-    else if (calendar.get(2) + 1 == 10 && calendar.get(5) == 31) {
+    } else if (calendar.get(2) + 1 == 10 && calendar.get(5) == 31) {
       this.splashText = "HOOoooOOOoooo ! Spouky !";
     }
 
@@ -194,7 +188,7 @@ public class GuiMcfrMainMenu extends GuiScreen {
     yOffset += step + 10;
     this.buttonList.add(new GuiButton(0, this.width / 2 - 100, yOffset, 98, 20, I18n.format("menu.options")));
     this.buttonList.add(new GuiButton(7, this.width / 2 + 2, yOffset, 98, 20, I18n.format("menu.quit")));
-    if (shouldDisplayTestButtons()) {
+    if (shouldDisplayTestButtons(Minecraft.getMinecraft().thePlayer.getName())) {
       this.buttonList.add(new GuiButton(8, 0, 0, 50, 20, "Solo"));
       this.buttonList.add(new GuiButton(9, 55, 0, 50, 20, "Serveurs"));
     }
@@ -203,42 +197,57 @@ public class GuiMcfrMainMenu extends GuiScreen {
   @Override
   protected void actionPerformed(GuiButton button) {
     switch (button.id) {
-      case 0: // Options
-        this.mc.displayGuiScreen(new GuiMcfrOptions(this, this.mc.gameSettings));
-        break;
-      case 1: // Serveur Roleplay
-        connectToServer("minecraft-fr.net:23457");
-        break;
-      case 2: // Serveur Freebuild
-        // TODO url freebuild ?
-        // connectToServer("???");
-        break;
-      case 3: // Lien site
-        openLink("http://www.minecraft-fr.net");
-        break;
-      case 4: // Lien Discord
-        openLink("https://discord.gg/vrDZa7Z");
-        break;
-      case 5: // Lien Wiki
-        openLink("http://www.minecraft-fr.net/wiki/index.php");
-        break;
-      case 6: // Lien patchnote
-        // TODO patchnote
-        break;
-      case 7: // Quitter
-        this.mc.shutdown();
-        break;
-      case 8: // Partie solo test
-        this.mc.displayGuiScreen(new GuiWorldSelection(this));
-        break;
-      case 9: // Liste serveurs test
-        this.mc.displayGuiScreen(new GuiMultiplayer(this));
-        break;
+    case 0: // Options
+      this.mc.displayGuiScreen(new GuiMcfrOptions(this, this.mc.gameSettings));
+      break;
+    case 1: // Serveur Roleplay
+      connectToServer("minecraft-fr.net:23457");
+      break;
+    case 2: // Serveur Freebuild
+      // TODO url freebuild ?
+      // connectToServer("???");
+      break;
+    case 3: // Lien site
+      openLink("http://www.minecraft-fr.net");
+      break;
+    case 4: // Lien Discord
+      openLink("https://discord.gg/vrDZa7Z");
+      break;
+    case 5: // Lien Wiki
+      openLink("http://www.minecraft-fr.net/wiki/index.php");
+      break;
+    case 6: // Lien patchnote
+      // TODO patchnote
+      break;
+    case 7: // Quitter
+      this.mc.shutdown();
+      break;
+    case 8: // Partie solo test
+      this.mc.displayGuiScreen(new GuiWorldSelection(this));
+      break;
+    case 9: // Liste serveurs test
+      this.mc.displayGuiScreen(new GuiMultiplayer(this));
+      break;
     }
   }
 
-  private boolean shouldDisplayTestButtons() {
-    return true; // TEMP
+  private boolean shouldDisplayTestButtons(String playerName) {
+    try {
+      URLConnection conn = new URL("http://www.minecraft-fr.net/launcher/adminList.txt").openConnection();
+
+      BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
+      String line;
+      List<String> admins = new ArrayList<>();
+      while ((line = rd.readLine()) != null) {
+        admins.add(line.toLowerCase());
+      }
+      rd.close();
+
+      return admins.contains(playerName.toLowerCase());
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+    return false;
   }
 
   private void connectToServer(String ip) {
@@ -249,8 +258,7 @@ public class GuiMcfrMainMenu extends GuiScreen {
     try {
       Object o = Class.forName("java.awt.Desktop").getMethod("getDesktop").invoke(null);
       o.getClass().getMethod("browse", URI.class).invoke(o, new URL(url).toURI());
-    }
-    catch (Throwable e) {
+    } catch (Throwable e) {
       LOGGER.error("Couldn't open link", e);
     }
   }
@@ -283,15 +291,16 @@ public class GuiMcfrMainMenu extends GuiScreen {
     GlStateManager.disableAlpha();
     GlStateManager.disableCull();
     GlStateManager.depthMask(false);
-    GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
+    GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA,
+        GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
 
     for (int j = 0; j < 64; ++j) {
       GlStateManager.pushMatrix();
-      float f = ((float) (j % 8) / 8.0F - 0.5F) / 64.0F;
-      float f1 = ((float) (j / 8) / 8.0F - 0.5F) / 64.0F;
+      float f = (j % 8 / 8.0F - 0.5F) / 64.0F;
+      float f1 = (j / 8 / 8.0F - 0.5F) / 64.0F;
       GlStateManager.translate(f, f1, 0.0F);
-      GlStateManager.rotate(MathHelper.sin(((float) this.panoramaTimer + partialTicks) / 400.0F) * 25.0F + 20.0F, 1.0F, 0.0F, 0.0F);
-      GlStateManager.rotate(-((float) this.panoramaTimer + partialTicks) * 0.1F, 0.0F, 1.0F, 0.0F);
+      GlStateManager.rotate(MathHelper.sin((this.panoramaTimer + partialTicks) / 400.0F) * 25.0F + 20.0F, 1.0F, 0.0F, 0.0F);
+      GlStateManager.rotate(-(this.panoramaTimer + partialTicks) * 0.1F, 0.0F, 1.0F, 0.0F);
 
       for (int k = 0; k < 6; ++k) {
         GlStateManager.pushMatrix();
@@ -351,7 +360,8 @@ public class GuiMcfrMainMenu extends GuiScreen {
     GlStateManager.glTexParameteri(3553, 10240, 9729);
     GlStateManager.glCopyTexSubImage2D(3553, 0, 0, 0, 0, 0, 256, 256);
     GlStateManager.enableBlend();
-    GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
+    GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA,
+        GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
     GlStateManager.colorMask(true, true, true, false);
     Tessellator tessellator = Tessellator.getInstance();
     VertexBuffer vertexbuffer = tessellator.getBuffer();
@@ -359,14 +369,14 @@ public class GuiMcfrMainMenu extends GuiScreen {
     GlStateManager.disableAlpha();
 
     for (int j = 0; j < 3; ++j) {
-      float f = 1.0F / (float) (j + 1);
+      float f = 1.0F / (j + 1);
       int k = this.width;
       int l = this.height;
-      float f1 = (float) (j - 1) / 256.0F;
-      vertexbuffer.pos((double) k, (double) l, (double) this.zLevel).tex((double) (0.0F + f1), 1.0D).color(1.0F, 1.0F, 1.0F, f).endVertex();
-      vertexbuffer.pos((double) k, 0.0D, (double) this.zLevel).tex((double) (1.0F + f1), 1.0D).color(1.0F, 1.0F, 1.0F, f).endVertex();
-      vertexbuffer.pos(0.0D, 0.0D, (double) this.zLevel).tex((double) (1.0F + f1), 0.0D).color(1.0F, 1.0F, 1.0F, f).endVertex();
-      vertexbuffer.pos(0.0D, (double) l, (double) this.zLevel).tex((double) (0.0F + f1), 0.0D).color(1.0F, 1.0F, 1.0F, f).endVertex();
+      float f1 = (j - 1) / 256.0F;
+      vertexbuffer.pos(k, l, this.zLevel).tex(0.0F + f1, 1.0D).color(1.0F, 1.0F, 1.0F, f).endVertex();
+      vertexbuffer.pos(k, 0.0D, this.zLevel).tex(1.0F + f1, 1.0D).color(1.0F, 1.0F, 1.0F, f).endVertex();
+      vertexbuffer.pos(0.0D, 0.0D, this.zLevel).tex(1.0F + f1, 0.0D).color(1.0F, 1.0F, 1.0F, f).endVertex();
+      vertexbuffer.pos(0.0D, l, this.zLevel).tex(0.0F + f1, 0.0D).color(1.0F, 1.0F, 1.0F, f).endVertex();
     }
 
     tessellator.draw();
@@ -380,28 +390,28 @@ public class GuiMcfrMainMenu extends GuiScreen {
   private void renderSkybox(int mouseX, int mouseY, float partialTicks) {
     this.mc.getFramebuffer().unbindFramebuffer();
     GlStateManager.viewport(0, 0, 256, 256);
-    this.drawPanorama(mouseX, mouseY, partialTicks);
-    this.rotateAndBlurSkybox(partialTicks);
-    this.rotateAndBlurSkybox(partialTicks);
-    this.rotateAndBlurSkybox(partialTicks);
-    this.rotateAndBlurSkybox(partialTicks);
-    this.rotateAndBlurSkybox(partialTicks);
-    this.rotateAndBlurSkybox(partialTicks);
-    this.rotateAndBlurSkybox(partialTicks);
+    drawPanorama(mouseX, mouseY, partialTicks);
+    rotateAndBlurSkybox(partialTicks);
+    rotateAndBlurSkybox(partialTicks);
+    rotateAndBlurSkybox(partialTicks);
+    rotateAndBlurSkybox(partialTicks);
+    rotateAndBlurSkybox(partialTicks);
+    rotateAndBlurSkybox(partialTicks);
+    rotateAndBlurSkybox(partialTicks);
     this.mc.getFramebuffer().bindFramebuffer(true);
     GlStateManager.viewport(0, 0, this.mc.displayWidth, this.mc.displayHeight);
-    float f = 120.0F / (float) (this.width > this.height ? this.width : this.height);
-    float f1 = (float) this.height * f / 256.0F;
-    float f2 = (float) this.width * f / 256.0F;
+    float f = 120.0F / (this.width > this.height ? this.width : this.height);
+    float f1 = this.height * f / 256.0F;
+    float f2 = this.width * f / 256.0F;
     int i = this.width;
     int j = this.height;
     Tessellator tessellator = Tessellator.getInstance();
     VertexBuffer vertexbuffer = tessellator.getBuffer();
     vertexbuffer.begin(7, DefaultVertexFormats.POSITION_TEX_COLOR);
-    vertexbuffer.pos(0.0D, (double) j, (double) this.zLevel).tex((double) (0.5F - f1), (double) (0.5F + f2)).color(1.0F, 1.0F, 1.0F, 1.0F).endVertex();
-    vertexbuffer.pos((double) i, (double) j, (double) this.zLevel).tex((double) (0.5F - f1), (double) (0.5F - f2)).color(1.0F, 1.0F, 1.0F, 1.0F).endVertex();
-    vertexbuffer.pos((double) i, 0.0D, (double) this.zLevel).tex((double) (0.5F + f1), (double) (0.5F - f2)).color(1.0F, 1.0F, 1.0F, 1.0F).endVertex();
-    vertexbuffer.pos(0.0D, 0.0D, (double) this.zLevel).tex((double) (0.5F + f1), (double) (0.5F + f2)).color(1.0F, 1.0F, 1.0F, 1.0F).endVertex();
+    vertexbuffer.pos(0.0D, j, this.zLevel).tex(0.5F - f1, 0.5F + f2).color(1.0F, 1.0F, 1.0F, 1.0F).endVertex();
+    vertexbuffer.pos(i, j, this.zLevel).tex(0.5F - f1, 0.5F - f2).color(1.0F, 1.0F, 1.0F, 1.0F).endVertex();
+    vertexbuffer.pos(i, 0.0D, this.zLevel).tex(0.5F + f1, 0.5F - f2).color(1.0F, 1.0F, 1.0F, 1.0F).endVertex();
+    vertexbuffer.pos(0.0D, 0.0D, this.zLevel).tex(0.5F + f1, 0.5F + f2).color(1.0F, 1.0F, 1.0F, 1.0F).endVertex();
     tessellator.draw();
   }
 
@@ -422,17 +432,16 @@ public class GuiMcfrMainMenu extends GuiScreen {
       drawTexturedModalRect(j + 99 + 26, 30, 126, 0, 3, 44);
       drawTexturedModalRect(j + 99 + 26 + 3, 30, 99, 0, 26, 44);
       drawTexturedModalRect(j + 155, 30, 0, 45, 155, 44);
-    }
-    else {
+    } else {
       drawTexturedModalRect(j + 0, 30, 0, 0, 155, 44);
       drawTexturedModalRect(j + 155, 30, 0, 45, 155, 44);
     }
 
     GlStateManager.pushMatrix();
-    GlStateManager.translate((float) (this.width / 2 + 90), 70.0F, 0.0F);
+    GlStateManager.translate(this.width / 2 + 90, 70.0F, 0.0F);
     GlStateManager.rotate(-20.0F, 0.0F, 0.0F, 1.0F);
-    float f = 1.8F - MathHelper.abs(MathHelper.sin((float) (Minecraft.getSystemTime() % 1000L) / 1000.0F * ((float) Math.PI * 2F)) * 0.1F);
-    f = f * 100.0F / (float) (this.fontRendererObj.getStringWidth(this.splashText) + 32);
+    float f = 1.8F - MathHelper.abs(MathHelper.sin(Minecraft.getSystemTime() % 1000L / 1000.0F * ((float) Math.PI * 2F)) * 0.1F);
+    f = f * 100.0F / (this.fontRendererObj.getStringWidth(this.splashText) + 32);
     GlStateManager.scale(f, f, f);
     drawCenteredString(this.fontRendererObj, this.splashText, 0, -8, -256);
     GlStateManager.popMatrix();
@@ -454,7 +463,8 @@ public class GuiMcfrMainMenu extends GuiScreen {
     super.mouseClicked(mouseX, mouseY, mouseButton);
 
     synchronized (this.threadLock) {
-      if (!this.openGLWarning1.isEmpty() && mouseX >= this.openGLWarningX1 && mouseX <= this.openGLWarningX2 && mouseY >= this.openGLWarningY1 && mouseY <= this.openGLWarningY2) {
+      if (!this.openGLWarning1.isEmpty() && mouseX >= this.openGLWarningX1 && mouseX <= this.openGLWarningX2 && mouseY >= this.openGLWarningY1
+          && mouseY <= this.openGLWarningY2) {
         GuiConfirmOpenLink guiConfirmOpenLink = new GuiConfirmOpenLink(this, this.openGLWarningLink, 13, true);
         guiConfirmOpenLink.disableSecurityWarning();
         this.mc.displayGuiScreen(guiConfirmOpenLink);

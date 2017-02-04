@@ -1,0 +1,22 @@
+{
+	"__comment": "Designed by Mcfr4488 with Cubik Studio - https://cubik.studio",
+	"textures": {
+		"particle": "mcfr_b_i:blocks/rope_block",
+		"texture": "mcfr_b_i:blocks/rope_block"
+	},
+	"elements": [
+		{
+			"__comment": "Cube3",
+			"from": [ 7, 0, 7 ],
+			"to": [ 9, 16, 9 ],
+			"faces": {
+				"down": { "uv": [ 7.5, 0.5, 9, 2 ], "texture": "#texture" },
+				"up": { "uv": [ 7.5, 0.5, 9, 2 ], "texture": "#texture" },
+				"north": { "uv": [ 7.5, 0, 9.5, 16 ], "texture": "#texture" },
+				"south": { "uv": [ 7.5, 0, 9.5, 16 ], "texture": "#texture" },
+				"west": { "uv": [ 7.5, 0, 9.5, 16 ], "texture": "#texture" },
+				"east": { "uv": [ 7.5, 0, 9.5, 16 ], "texture": "#texture" }
+			}
+		}
+	]
+}

@@ -1,0 +1,6 @@
+{
+    "parent": "mcfr_b_i:item/long_bow",
+    "textures": {
+        "layer0": "mcfr_b_i:items/bows/long_pulling_2"
+    }
+}

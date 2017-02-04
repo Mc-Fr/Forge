@@ -1,0 +1,9 @@
+{
+    "variants": {
+        "facing=south":  { "model": "mcfr_b_i:large_wall_torch" },
+        "facing=east":  { "model": "mcfr_b_i:large_wall_torch", "y": 270 },
+        "facing=north": { "model": "mcfr_b_i:large_wall_torch", "y": 180 },
+        "facing=west": { "model": "mcfr_b_i:large_wall_torch", "y": 90 },
+        "facing=up": { "model": "mcfr_b_i:large_torch" }
+    }
+}

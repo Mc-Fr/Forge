@@ -1,5 +1,5 @@
 {
     "variants": {
-        "normal":  { "model": "mcfr_b_i:pallet"}
+        "normal": { "model": "mcfr_b_i:pallet" }
     }
 }

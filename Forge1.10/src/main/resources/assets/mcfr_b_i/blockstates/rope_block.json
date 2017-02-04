@@ -1,0 +1,14 @@
+{
+    "variants": {
+        "shape=north_south": { "model": "mcfr_b_i:rope_flat" },
+        "shape=east_west": { "model": "mcfr_b_i:rope_flat", "y": 90 },
+        "shape=ascending_east": { "model": "mcfr_b_i:rope_raised_ne", "y": 90 },
+        "shape=ascending_west": { "model": "mcfr_b_i:rope_raised_sw", "y": 90 },
+        "shape=ascending_north": { "model": "mcfr_b_i:rope_raised_ne" },
+        "shape=ascending_south": { "model": "mcfr_b_i:rope_raised_sw" },
+        "shape=south_east": { "model": "mcfr_b_i:rope_curved" },
+        "shape=south_west": { "model": "mcfr_b_i:rope_curved", "y": 90 },
+        "shape=north_west": { "model": "mcfr_b_i:rope_curved", "y": 180 },
+        "shape=north_east": { "model": "mcfr_b_i:rope_curved", "y": 270 }
+    }
+}
