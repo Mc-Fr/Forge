@@ -269,6 +269,13 @@ public final class McfrItems {
     Items.SIGN.setCreativeTab(null);
     Items.ENCHANTED_BOOK.setCreativeTab(null);
     setFoodAlwaysEdible();
+    // TEMP
+    CRAFTSMAN_OAK_DOOR.setCreativeTab(null);
+    CRAFTSMAN_SPRUCE_DOOR.setCreativeTab(null);
+    CRAFTSMAN_BIRCH_DOOR.setCreativeTab(null);
+    CRAFTSMAN_JUNGLE_DOOR.setCreativeTab(null);
+    CRAFTSMAN_ACACIA_DOOR.setCreativeTab(null);
+    CRAFTSMAN_DARK_OAK_DOOR.setCreativeTab(null);
 
     register(COIN);
     register(TOKEN);

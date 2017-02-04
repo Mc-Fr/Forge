@@ -4,7 +4,6 @@ import java.util.List;
 
 import net.mcfr.utils.NameUtils;
 import net.minecraft.block.BlockDoor;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemDoor;
 import net.minecraft.item.ItemStack;
@@ -14,8 +13,6 @@ public class McfrItemDoor extends ItemDoor {
     super(block);
     setRegistryName(name);
     setUnlocalizedName(NameUtils.getUnlocalizedName(name));
-    // TEMP
-    setCreativeTab(CreativeTabs.REDSTONE);
   }
 
   @Override
