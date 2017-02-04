@@ -73,6 +73,7 @@ public final class McfrCrafts {
     for (EnumDyeColor color : EnumDyeColor.values())
       removeRecipe(new ItemStack(Blocks.HARDENED_CLAY, 8, color.getMetadata()));
 
+    removeRecipe(new ItemStack(Items.SIGN));
     removeRecipe(new ItemStack(Items.SUGAR));
     removeRecipe(new ItemStack(Items.COOKIE));
     removeRecipe(new ItemStack(Items.PUMPKIN_PIE));
@@ -811,6 +812,9 @@ public final class McfrCrafts {
     addShapelessRecipe(new ItemStack(McfrItems.LANTERN, 1, 4), new ItemStack(Items.DYE, 1, 4), McfrBlocks.WHITE_LANTERN);
     addShapelessRecipe(new ItemStack(McfrItems.LANTERN, 1, 5), new ItemStack(Items.DYE, 1, 2), McfrBlocks.WHITE_LANTERN);
     addShapelessRecipe(new ItemStack(McfrItems.LANTERN, 1, 6), new ItemStack(Items.DYE, 1, 1), McfrBlocks.WHITE_LANTERN);
+
+    for (Block planks : PLANKS)
+      addShapedRecipe(new ItemStack(McfrItems.SIGN), "###", "###", " | ", '#', planks, '|', Items.STICK);
 
     // Vitrines/stands
     for (Block fence : WOODEN_FENCES)
