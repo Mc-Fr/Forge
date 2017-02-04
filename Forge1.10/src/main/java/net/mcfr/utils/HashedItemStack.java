@@ -28,7 +28,7 @@ public class HashedItemStack {
     final int prime = 31;
     int result = 1;
 
-    result = prime * result + (this.stack.getItem() != null ? this.stack.getItem().hashCode() : 0);
+    result = prime * result + this.stack.getItem().hashCode();
     result = prime * result + this.stack.stackSize;
     result = prime * result + this.stack.getMetadata();
 

@@ -323,24 +323,42 @@ public final class ItemsLists {
       auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.WOODEN_BUTTON)), HashedItemStack.fromStack(new ItemStack(Blocks.PLANKS)));
       auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.CHEST)), HashedItemStack.fromStack(new ItemStack(Blocks.PLANKS)));
       auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.CRAFTING_TABLE)), HashedItemStack.fromStack(new ItemStack(Blocks.PLANKS)));
-      auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.OAK_DOOR)), HashedItemStack.fromStack(new ItemStack(Items.STICK, 1, 10)));
-      auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.SPRUCE_DOOR)), HashedItemStack.fromStack(new ItemStack(Items.STICK, 1, 10)));
-      auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.BIRCH_DOOR)), HashedItemStack.fromStack(new ItemStack(Items.STICK, 1, 10)));
-      auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.JUNGLE_DOOR)), HashedItemStack.fromStack(new ItemStack(Items.STICK, 1, 10)));
-      auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.ACACIA_DOOR)), HashedItemStack.fromStack(new ItemStack(Items.STICK, 1, 10)));
-      auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.DARK_OAK_DOOR)), HashedItemStack.fromStack(new ItemStack(Items.STICK, 1, 10)));
-      auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.OAK_FENCE)), HashedItemStack.fromStack(new ItemStack(Items.STICK, 1, 10)));
-      auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.SPRUCE_FENCE)), HashedItemStack.fromStack(new ItemStack(Items.STICK, 1, 10)));
-      auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.BIRCH_FENCE)), HashedItemStack.fromStack(new ItemStack(Items.STICK, 1, 10)));
-      auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.JUNGLE_FENCE)), HashedItemStack.fromStack(new ItemStack(Items.STICK, 1, 10)));
-      auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.ACACIA_FENCE)), HashedItemStack.fromStack(new ItemStack(Items.STICK, 1, 10)));
-      auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.DARK_OAK_FENCE)), HashedItemStack.fromStack(new ItemStack(Items.STICK, 1, 10)));
-      auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.OAK_FENCE_GATE)), HashedItemStack.fromStack(new ItemStack(Items.STICK, 1, 10)));
-      auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.SPRUCE_FENCE_GATE)), HashedItemStack.fromStack(new ItemStack(Items.STICK, 1, 10)));
-      auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.BIRCH_FENCE_GATE)), HashedItemStack.fromStack(new ItemStack(Items.STICK, 1, 10)));
-      auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.JUNGLE_FENCE_GATE)), HashedItemStack.fromStack(new ItemStack(Items.STICK, 1, 10)));
-      auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.ACACIA_FENCE_GATE)), HashedItemStack.fromStack(new ItemStack(Items.STICK, 1, 10)));
-      auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.DARK_OAK_FENCE_GATE)), HashedItemStack.fromStack(new ItemStack(Items.STICK, 1, 10)));
+      // auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.OAK_DOOR)),
+      // HashedItemStack.fromStack(new ItemStack(Items.STICK, 10)));
+      // auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.SPRUCE_DOOR)),
+      // HashedItemStack.fromStack(new ItemStack(Items.STICK, 10)));
+      // auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.BIRCH_DOOR)),
+      // HashedItemStack.fromStack(new ItemStack(Items.STICK, 10)));
+      // auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.JUNGLE_DOOR)),
+      // HashedItemStack.fromStack(new ItemStack(Items.STICK, 10)));
+      // auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.ACACIA_DOOR)),
+      // HashedItemStack.fromStack(new ItemStack(Items.STICK, 10)));
+      // auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.DARK_OAK_DOOR)),
+      // HashedItemStack.fromStack(new ItemStack(Items.STICK, 10)));
+      // auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.OAK_FENCE)),
+      // HashedItemStack.fromStack(new ItemStack(Items.STICK, 10)));
+      // auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.SPRUCE_FENCE)),
+      // HashedItemStack.fromStack(new ItemStack(Items.STICK, 10)));
+      // auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.BIRCH_FENCE)),
+      // HashedItemStack.fromStack(new ItemStack(Items.STICK, 10)));
+      // auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.JUNGLE_FENCE)),
+      // HashedItemStack.fromStack(new ItemStack(Items.STICK, 10)));
+      // auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.ACACIA_FENCE)),
+      // HashedItemStack.fromStack(new ItemStack(Items.STICK, 10)));
+      // auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.DARK_OAK_FENCE)),
+      // HashedItemStack.fromStack(new ItemStack(Items.STICK, 10)));
+      // auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.OAK_FENCE_GATE)),
+      // HashedItemStack.fromStack(new ItemStack(Items.STICK, 10)));
+      // auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.SPRUCE_FENCE_GATE)),
+      // HashedItemStack.fromStack(new ItemStack(Items.STICK, 10)));
+      // auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.BIRCH_FENCE_GATE)),
+      // HashedItemStack.fromStack(new ItemStack(Items.STICK, 10)));
+      // auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.JUNGLE_FENCE_GATE)),
+      // HashedItemStack.fromStack(new ItemStack(Items.STICK, 10)));
+      // auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.ACACIA_FENCE_GATE)),
+      // HashedItemStack.fromStack(new ItemStack(Items.STICK, 10)));
+      // auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.DARK_OAK_FENCE_GATE)),
+      // HashedItemStack.fromStack(new ItemStack(Items.STICK, 10)));
 
       MAPS.put(key, Collections.unmodifiableMap(auth));
       createList(key);

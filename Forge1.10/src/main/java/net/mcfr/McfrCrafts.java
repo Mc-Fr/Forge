@@ -958,6 +958,7 @@ public final class McfrCrafts {
     addFurnaceRecipe(new ItemStack(McfrItems.ORE, 1, 1), new ItemStack(Items.GOLD_INGOT));
     addFurnaceRecipe(new ItemStack(Blocks.STONE, 1, 2), new ItemStack(Blocks.STONE, 1, 1));
     addFurnaceRecipe(new ItemStack(Blocks.STONE, 1, 4), new ItemStack(Blocks.STONE, 1, 3));
+    // FIXME ignorés ?
     addFurnaceRecipe(new ItemStack(McfrItems.RAW_SWORDFISH), new ItemStack(McfrItems.COOKED_SWORDFISH));
     addFurnaceRecipe(new ItemStack(McfrItems.RAW_SARDINE), new ItemStack(McfrItems.COOKED_SARDINE));
     addFurnaceRecipe(new ItemStack(McfrItems.RAW_HUNTED_LEG), new ItemStack(McfrItems.COOKED_HUNTED_LEG));
