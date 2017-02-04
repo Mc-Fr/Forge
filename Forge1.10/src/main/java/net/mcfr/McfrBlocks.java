@@ -808,11 +808,11 @@ public final class McfrBlocks {
     register(WINE_BARREL);
     register(RUM_BARREL);
 
-    register(LITTLE_CHEST);
+    /*register(LITTLE_CHEST);
     register(CRATE);
     register(FOOD_CRATE);
     register(PALLET);
-    registerVariants(BOOKSHELF);
+    registerVariants(BOOKSHELF);*/
 
     registerSlab(HAY_SLAB, DOUBLE_HAY_SLAB, new ItemHaySlab(HAY_SLAB, HAY_SLAB, DOUBLE_HAY_SLAB));
     registerSlab(REFINED_PLANKS_SLAB, DOUBLE_REFINED_PLANKS_SLAB, new ItemRefinedPlanksSlab(REFINED_PLANKS_SLAB, REFINED_PLANKS_SLAB, DOUBLE_REFINED_PLANKS_SLAB));
