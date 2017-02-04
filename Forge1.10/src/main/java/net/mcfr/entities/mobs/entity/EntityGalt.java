@@ -1,14 +1,16 @@
 package net.mcfr.entities.mobs.entity;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 import javax.annotation.Nullable;
 
 import com.google.common.collect.Sets;
 
+import net.mcfr.McfrItems;
 import net.mcfr.entities.mobs.EntityBurrowed;
 import net.mcfr.entities.mobs.ai.EntityAIGoToBurrow;
-import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EntityLiving;
@@ -22,24 +24,20 @@ import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
 import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
-import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.pathfinding.PathNodeType;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.SoundEvent;
 import net.minecraft.util.datafix.DataFixer;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
-import net.minecraft.world.storage.loot.LootTableList;
+import net.minecraftforge.event.entity.living.LivingDropsEvent;
 
 public class EntityGalt extends EntityBurrowed {
   private static final Set<Item> TEMPTATION_ITEMS = Sets
-      .newHashSet(new Item[] { Items.WHEAT_SEEDS, Items.MELON_SEEDS, Items.PUMPKIN_SEEDS, Items.BEETROOT_SEEDS });
+      .newHashSet();
 
   public EntityGalt(World worldIn) {
     super(worldIn);
@@ -97,32 +95,6 @@ public class EntityGalt extends EntityBurrowed {
   }
 
   @Override
-  protected SoundEvent getAmbientSound() {
-    return SoundEvents.ENTITY_CHICKEN_AMBIENT;
-  }
-
-  @Override
-  protected SoundEvent getHurtSound() {
-    return SoundEvents.ENTITY_CHICKEN_HURT;
-  }
-
-  @Override
-  protected SoundEvent getDeathSound() {
-    return SoundEvents.ENTITY_CHICKEN_DEATH;
-  }
-
-  @Override
-  protected void playStepSound(BlockPos pos, Block blockIn) {
-    playSound(SoundEvents.ENTITY_CHICKEN_STEP, 0.15F, 1.0F);
-  }
-
-  @Override
-  @Nullable
-  protected ResourceLocation getLootTable() {
-    return LootTableList.ENTITIES_CHICKEN;
-  }
-
-  @Override
   public EntityGalt createChild(EntityAgeable ageable) {
     return new EntityGalt(this.worldObj);
   }
@@ -173,6 +145,22 @@ public class EntityGalt extends EntityBurrowed {
 
     if (passenger instanceof EntityLivingBase) {
       ((EntityLivingBase) passenger).renderYawOffset = this.renderYawOffset;
+    }
+  }
+
+  @Override
+  public void setDropItems(LivingDropsEvent event) {
+    List<EntityItem> drops = event.getDrops();
+    
+    drops.clear();
+    
+    List<ItemStack> itemList = new ArrayList<>();
+    itemList.add(new ItemStack(McfrItems.RAW_HUNTED_STEAK, getRandomQuantity(8.6F)));
+    itemList.add(new ItemStack(McfrItems.HUNTED_SKIN, getRandomQuantity(9.6F)));
+    
+    for (ItemStack i : itemList) {
+      drops.add(new EntityItem(event.getEntity().worldObj, event.getEntity().posX, 
+          event.getEntity().posY, event.getEntity().posZ, i));
     }
   }
 }

@@ -1,11 +1,11 @@
 package net.mcfr.entities.mobs.entity;
 
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.annotation.Nullable;
 
-import com.google.common.collect.Sets;
-
+import net.mcfr.McfrItems;
 import net.mcfr.entities.mobs.EntityBurrowed;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
@@ -20,10 +20,10 @@ import net.minecraft.entity.ai.EntityAIPanic;
 import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.pathfinding.PathNodeType;
@@ -34,9 +34,9 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.storage.loot.LootTableList;
+import net.minecraftforge.event.entity.living.LivingDropsEvent;
 
 public class EntityBormoth extends EntityBurrowed {
-  private static final Set<Item> TEMPTATION_ITEMS = Sets.newHashSet(Items.WHEAT_SEEDS);
 
   public EntityBormoth(World worldIn) {
     super(worldIn);
@@ -108,14 +108,6 @@ public class EntityBormoth extends EntityBurrowed {
   }
 
   /**
-   * Checks if the parameter is an item which this animal can be fed to breed it
-   * (wheat, carrots or seeds depending on the animal type)
-   */
-  public boolean isBreedingItem(@Nullable ItemStack stack) {
-    return stack != null && TEMPTATION_ITEMS.contains(stack.getItem());
-  }
-
-  /**
    * Get the experience points the entity currently has.
    */
   protected int getExperiencePoints(EntityPlayer player) {
@@ -149,6 +141,22 @@ public class EntityBormoth extends EntityBurrowed {
 
     if (passenger instanceof EntityLivingBase) {
       ((EntityLivingBase) passenger).renderYawOffset = this.renderYawOffset;
+    }
+  }
+  
+  @Override
+  public void setDropItems(LivingDropsEvent event) {
+    List<EntityItem> drops = event.getDrops();
+    
+    drops.clear();
+    
+    List<ItemStack> itemList = new ArrayList<>();
+    itemList.add(new ItemStack(Items.ROTTEN_FLESH, getRandomQuantity(12.5F)));
+    itemList.add(new ItemStack(McfrItems.HUNTED_SKIN, getRandomQuantity(12.5F)));
+    
+    for (ItemStack i : itemList) {
+      drops.add(new EntityItem(event.getEntity().worldObj, event.getEntity().posX, 
+          event.getEntity().posY, event.getEntity().posZ, i));
     }
   }
 }

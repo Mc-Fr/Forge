@@ -3,6 +3,7 @@ package net.mcfr.event;
 import java.util.List;
 
 import net.mcfr.McfrItems;
+import net.mcfr.entities.mobs.EntityBurrowed;
 import net.mcfr.guis.GuiMcfrIngameMenu;
 import net.mcfr.guis.GuiMcfrMainMenu;
 import net.minecraft.block.Block;
@@ -14,9 +15,11 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.event.GuiOpenEvent;
+import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.world.BlockEvent.HarvestDropsEvent;
 import net.minecraftforge.event.world.BlockEvent.PlaceEvent;
+import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent;
 import net.minecraftforge.fml.relauncher.Side;
@@ -37,6 +40,13 @@ public class EventsHandler {
       e.setGui(new GuiMcfrMainMenu());
     if (gui instanceof GuiIngameMenu)
       e.setGui(new GuiMcfrIngameMenu());
+  }
+  
+  @SubscribeEvent(priority = EventPriority.NORMAL, receiveCanceled = true)
+  public void onEvent(LivingDropsEvent event) {
+    if (event.getEntityLiving() instanceof EntityBurrowed) {
+      ((EntityBurrowed) event.getEntityLiving()).setDropItems(event);
+    }
   }
 
   /**

@@ -5,6 +5,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
+import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -83,6 +84,15 @@ public abstract class EntityBurrowed extends EntityGendered {
     }
     
     super.onLivingUpdate();
+  }
+  
+  public abstract void setDropItems(LivingDropsEvent event);
+  
+  public int getRandomQuantity(float value) {
+    int baseValue = (int) Math.floor(value);
+    float chance = value - baseValue;
+    int bonusValue = (this.rand.nextFloat() < chance ? 1 : 0);
+    return baseValue + bonusValue;
   }
 
   @Override
