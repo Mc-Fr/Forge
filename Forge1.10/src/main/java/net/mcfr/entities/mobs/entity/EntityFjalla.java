@@ -8,6 +8,7 @@ import javax.annotation.Nullable;
 
 import com.google.common.collect.Sets;
 
+import net.mcfr.McfrItems;
 import net.mcfr.entities.mobs.EntityBurrowed;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
@@ -23,7 +24,6 @@ import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.ai.EntityAITempt;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
-import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
@@ -38,7 +38,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.storage.loot.LootTableList;
-import net.minecraftforge.event.entity.living.LivingDropsEvent;
 
 public class EntityFjalla extends EntityBurrowed {
   private static final Set<Item> TEMPTATION_ITEMS = Sets.newHashSet(new Item[] {Items.WHEAT_SEEDS, Items.MELON_SEEDS, Items.PUMPKIN_SEEDS, Items.BEETROOT_SEEDS});
@@ -165,17 +164,12 @@ public class EntityFjalla extends EntityBurrowed {
       }
   }
   
-  @Override
-  public void setDropItems(LivingDropsEvent event) {
-    List<EntityItem> drops = event.getDrops();
-    
-    drops.clear();
-    
+  public List<ItemStack> getLoots() {
     List<ItemStack> itemList = new ArrayList<>();
     
-    for (ItemStack i : itemList) {
-      drops.add(new EntityItem(event.getEntity().worldObj, event.getEntity().posX, 
-          event.getEntity().posY, event.getEntity().posZ, i));
-    }
+    itemList.add(new ItemStack(Items.ROTTEN_FLESH, getRandomQuantity(12.5F)));
+    itemList.add(new ItemStack(McfrItems.HUNTED_SKIN, getRandomQuantity(12.5F)));
+    
+    return itemList;
   }
 }

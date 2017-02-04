@@ -26,7 +26,6 @@ import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.ai.EntityAITempt;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
-import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
@@ -39,7 +38,6 @@ import net.minecraft.util.datafix.DataFixer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
-import net.minecraftforge.event.entity.living.LivingDropsEvent;
 
 public class EntityHoen extends EntityBurrowed {
     //new Item[] {Items.WHEAT_SEEDS, Items.MELON_SEEDS, Items.PUMPKIN_SEEDS, Items.BEETROOT_SEEDS}
@@ -175,19 +173,12 @@ public class EntityHoen extends EntityBurrowed {
     	this.ticks++;
     }
     
-    @Override
-    public void setDropItems(LivingDropsEvent event) {
-      List<EntityItem> drops = event.getDrops();
-      
-      drops.clear();
-      
+    public List<ItemStack> getLoots() {
       List<ItemStack> itemList = new ArrayList<>();
+
       itemList.add(new ItemStack(McfrItems.RAW_HUNTED_POULTRY, getRandomQuantity(14.2F)));
       itemList.add(new ItemStack(Items.FEATHER, getRandomQuantity(6.4F)));
       
-      for (ItemStack i : itemList) {
-        drops.add(new EntityItem(event.getEntity().worldObj, event.getEntity().posX, 
-            event.getEntity().posY, event.getEntity().posZ, i));
-      }
+      return itemList;
     }
 }
