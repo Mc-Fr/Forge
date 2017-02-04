@@ -58,7 +58,7 @@ public final class McfrCrafts {
   }
 
   public static void registerCrafts() {
-    RecipeSorter.register(Constants.MOD_ID + ":large", LargeRecipe.class, Category.SHAPED, "after:minecraft:shaped");
+    RecipeSorter.register(Constants.MOD_ID + ":large", LargeRecipe.class, Category.SHAPED, "before:minecraft:shaped");
 
     removeRecipe(new ItemStack(Blocks.SANDSTONE_STAIRS, 4));
     removeRecipe(new ItemStack(Blocks.WOOL));
