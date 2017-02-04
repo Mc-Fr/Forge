@@ -17,6 +17,7 @@ import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
+import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.RecipeSorter;
 import net.minecraftforge.oredict.RecipeSorter.Category;
@@ -949,6 +950,26 @@ public final class McfrCrafts {
     addAnvilRecipe(new ItemStack(McfrItems.GOLDEN_MACE), 45, 70, "   II", "  III", "  II ", " S   ", "P    ", 'I', Items.GOLD_INGOT, 'P', new ItemStack(McfrItems.SWORD_HANDLE, 1, 2), 'S', Items.STICK);
   }
 
+  public static void registerFurnaceRecipes() {
+    removeFurnaceRecipe(new ItemStack(Blocks.IRON_ORE));
+    removeFurnaceRecipe(new ItemStack(Blocks.GOLD_ORE));
+
+    addFurnaceRecipe(new ItemStack(McfrItems.ORE, 1, 0), new ItemStack(Items.IRON_INGOT));
+    addFurnaceRecipe(new ItemStack(McfrItems.ORE, 1, 1), new ItemStack(Items.GOLD_INGOT));
+    addFurnaceRecipe(new ItemStack(Blocks.STONE, 1, 2), new ItemStack(Blocks.STONE, 1, 1));
+    addFurnaceRecipe(new ItemStack(Blocks.STONE, 1, 4), new ItemStack(Blocks.STONE, 1, 3));
+    addFurnaceRecipe(new ItemStack(McfrItems.RAW_SWORDFISH), new ItemStack(McfrItems.COOKED_SWORDFISH));
+    addFurnaceRecipe(new ItemStack(McfrItems.RAW_SARDINE), new ItemStack(McfrItems.COOKED_SARDINE));
+    addFurnaceRecipe(new ItemStack(McfrItems.RAW_HUNTED_LEG), new ItemStack(McfrItems.COOKED_HUNTED_LEG));
+    addFurnaceRecipe(new ItemStack(McfrItems.RAW_HUNTED_STEAK), new ItemStack(McfrItems.COOKED_HUNTED_STEAK));
+    addFurnaceRecipe(new ItemStack(McfrItems.RAW_HUNTED_POULTRY), new ItemStack(McfrItems.COOKED_HUNTED_POULTRY));
+    addFurnaceRecipe(new ItemStack(McfrItems.RAW_NIALE_MEAT), new ItemStack(McfrItems.COOKED_NIALE_MEAT));
+    addFurnaceRecipe(new ItemStack(McfrItems.RAW_HOEN_MEAT), new ItemStack(McfrItems.COOKED_HOEN_MEAT));
+    addFurnaceRecipe(new ItemStack(McfrItems.RAW_GALT_MEAT), new ItemStack(McfrItems.COOKED_GALT_MEAT));
+    addFurnaceRecipe(new ItemStack(McfrItems.BREAD_DOUGH), new ItemStack(Items.BREAD));
+    addFurnaceRecipe(new ItemStack(McfrBlocks.EXOTIC_LOG), new ItemStack(Items.COAL, 1, 1));
+  }
+
   private static void addStairsRecipe(Block out, ItemStack in) {
     addShapedRecipe(new ItemStack(out, 4), "#  ", "## ", "###", '#', in);
   }
@@ -1029,6 +1050,28 @@ public final class McfrCrafts {
       ItemStack stack = recipe.getRecipeOutput();
       return stack != null && stack.getItem() == out.getItem() && stack.getMetadata() == out.getMetadata() && stack.stackSize == out.stackSize;
     });
+  }
+
+  /**
+   * Supprime les recettes du four dont la sortie correspond au stack donné.
+   * 
+   * @param out le stack de sortie
+   */
+  private static void removeFurnaceRecipe(ItemStack out) {
+    Map<ItemStack, ItemStack> list = FurnaceRecipes.instance().getSmeltingList();
+
+    for (ItemStack key : list.keySet()) {
+      ItemStack stack = list.get(key);
+
+      if (stack.getItem() == out.getItem() && stack.getMetadata() == out.getMetadata() && stack.stackSize == out.stackSize) {
+        list.remove(key);
+        break;
+      }
+    }
+  }
+
+  private static void addFurnaceRecipe(ItemStack in, ItemStack out) {
+    GameRegistry.addSmelting(in, out, 0);
   }
 
   private static Components getComponents(Object... recipeComponents) {

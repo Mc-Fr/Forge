@@ -80,11 +80,12 @@ public class McfrMain {
   public void preInit(FMLPreInitializationEvent e) {
     McfrBlocks.init();
     McfrItems.init();
-    registerTileEntities();
-    registerEntities();
-
     McfrCrafts.registerCrafts();
     McfrCrafts.registerAnvilCrafts();
+    McfrCrafts.registerFurnaceRecipes();
+
+    registerTileEntities();
+    registerEntities();
   }
 
   @EventHandler
