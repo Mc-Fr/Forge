@@ -306,9 +306,9 @@ public final class ItemsLists {
       Map<HashedItemStack, HashedItemStack> auth = new HashMap<>();
 
       for (int i = 0; i < BlockPlanks.EnumType.values().length; i++) {
-        auth.put(HashedItemStack.fromStack(new ItemStack(i < 4 ? Blocks.LOG : Blocks.LOG2, 1, i % 4)), HashedItemStack.fromStack(new ItemStack(Blocks.PLANKS, 1, i)));
+        auth.put(HashedItemStack.fromStack(new ItemStack(i < 4 ? Blocks.LOG : Blocks.LOG2, 1, i % 4)), HashedItemStack.fromStack(new ItemStack(Blocks.PLANKS, 4, i)));
         auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.PLANKS, 1, i)), HashedItemStack.fromStack(new ItemStack(McfrBlocks.REFINED_PLANKS, 1, i)));
-        auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.WOODEN_SLAB, 1, i)), HashedItemStack.fromStack(new ItemStack(Blocks.PLANKS, 2, i)));
+        auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.WOODEN_SLAB, 2, i)), HashedItemStack.fromStack(new ItemStack(Blocks.PLANKS, 1, i)));
       }
       for (int i = 0; i < EnumExoticWoodType.values().length; i++)
         auth.put(HashedItemStack.fromStack(new ItemStack(McfrBlocks.EXOTIC_LOG, 1, i)), HashedItemStack.fromStack(new ItemStack(McfrBlocks.EXOTIC_PLANKS, 1, i)));
