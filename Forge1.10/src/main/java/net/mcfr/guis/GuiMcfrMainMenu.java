@@ -5,10 +5,13 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URI;
 import java.net.URL;
+import java.net.URLConnection;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 import org.apache.commons.io.Charsets;
 import org.apache.commons.io.IOUtils;
@@ -234,23 +237,18 @@ public class GuiMcfrMainMenu extends GuiScreen {
   }
 
   private boolean shouldDisplayTestButtons() {
-    // try {
-    // URLConnection conn = new
-    // URL("http://www.minecraft-fr.net/launcher/adminList.txt").openConnection();
-    //
-    // BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream(),
-    // "UTF-8"));
-    // String line;
-    // List<String> admins = new ArrayList<>();
-    // while ((line = rd.readLine()) != null) {
-    // admins.add(line.toLowerCase());
-    // }
-    // rd.close();
-    //
-    // return admins.contains(playerName.toLowerCase());
-    // } catch (IOException e) {
-    // e.printStackTrace();
-    // }
+    try {
+      List<String> admins = new ArrayList<>();
+      URLConnection conn = new URL("http://www.minecraft-fr.net/launcher/adminList.txt").openConnection();
+
+      try (BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"))) {
+        admins = rd.lines().collect(Collectors.toList());
+      }
+
+      return admins.contains(Minecraft.getMinecraft().getSession().getUsername().toLowerCase());
+    }
+    catch (IOException e) {}
+
     return false;
   }
 
