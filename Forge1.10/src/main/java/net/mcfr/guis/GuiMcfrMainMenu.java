@@ -112,7 +112,9 @@ public class GuiMcfrMainMenu extends GuiScreen {
           }
         }
       }
-    } catch (IOException e) {} finally {
+    }
+    catch (IOException e) {}
+    finally {
       IOUtils.closeQuietly(splashes);
     }
     FMLClientHandler.instance().setupServerList();
@@ -149,9 +151,11 @@ public class GuiMcfrMainMenu extends GuiScreen {
 
     if (calendar.get(2) + 1 == 12 && calendar.get(5) == 24) {
       this.splashText = "Joyeux Noël !";
-    } else if (calendar.get(2) + 1 == 1 && calendar.get(5) == 1) {
+    }
+    else if (calendar.get(2) + 1 == 1 && calendar.get(5) == 1) {
       this.splashText = "Bonne année !";
-    } else if (calendar.get(2) + 1 == 10 && calendar.get(5) == 31) {
+    }
+    else if (calendar.get(2) + 1 == 10 && calendar.get(5) == 31) {
       this.splashText = "HOOoooOOOoooo ! Spouky !";
     }
 
@@ -195,57 +199,59 @@ public class GuiMcfrMainMenu extends GuiScreen {
   @Override
   protected void actionPerformed(GuiButton button) {
     switch (button.id) {
-    case 0: // Options
-      this.mc.displayGuiScreen(new GuiMcfrOptions(this, this.mc.gameSettings));
-      break;
-    case 1: // Serveur Roleplay
-      connectToServer("minecraft-fr.net:23457");
-      break;
-    case 2: // Serveur Freebuild
-      // TODO url freebuild ?
-      // connectToServer("???");
-      break;
-    case 3: // Lien site
-      openLink("http://www.minecraft-fr.net");
-      break;
-    case 4: // Lien Discord
-      openLink("https://discord.gg/vrDZa7Z");
-      break;
-    case 5: // Lien Wiki
-      openLink("http://www.minecraft-fr.net/wiki/index.php");
-      break;
-    case 6: // Lien patchnote
-      // TODO patchnote
-      break;
-    case 7: // Quitter
-      this.mc.shutdown();
-      break;
-    case 8: // Partie solo test
-      this.mc.displayGuiScreen(new GuiWorldSelection(this));
-      break;
-    case 9: // Liste serveurs test
-      this.mc.displayGuiScreen(new GuiMultiplayer(this));
-      break;
+      case 0: // Options
+        this.mc.displayGuiScreen(new GuiMcfrOptions(this, this.mc.gameSettings));
+        break;
+      case 1: // Serveur Roleplay
+        connectToServer("minecraft-fr.net:23457");
+        break;
+      case 2: // Serveur Freebuild
+        // TODO url freebuild ?
+        // connectToServer("???");
+        break;
+      case 3: // Lien site
+        openLink("http://www.minecraft-fr.net");
+        break;
+      case 4: // Lien Discord
+        openLink("https://discord.gg/vrDZa7Z");
+        break;
+      case 5: // Lien Wiki
+        openLink("http://www.minecraft-fr.net/wiki/index.php");
+        break;
+      case 6: // Lien patchnote
+        // TODO patchnote
+        break;
+      case 7: // Quitter
+        this.mc.shutdown();
+        break;
+      case 8: // Partie solo test
+        this.mc.displayGuiScreen(new GuiWorldSelection(this));
+        break;
+      case 9: // Liste serveurs test
+        this.mc.displayGuiScreen(new GuiMultiplayer(this));
+        break;
     }
   }
 
   private boolean shouldDisplayTestButtons() {
-    //    try {
-    //      URLConnection conn = new URL("http://www.minecraft-fr.net/launcher/adminList.txt").openConnection();
+    // try {
+    // URLConnection conn = new
+    // URL("http://www.minecraft-fr.net/launcher/adminList.txt").openConnection();
     //
-    //      BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
-    //      String line;
-    //      List<String> admins = new ArrayList<>();
-    //      while ((line = rd.readLine()) != null) {
-    //        admins.add(line.toLowerCase());
-    //      }
-    //      rd.close();
+    // BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream(),
+    // "UTF-8"));
+    // String line;
+    // List<String> admins = new ArrayList<>();
+    // while ((line = rd.readLine()) != null) {
+    // admins.add(line.toLowerCase());
+    // }
+    // rd.close();
     //
-    //      return admins.contains(playerName.toLowerCase());
-    //    } catch (IOException e) {
-    //      e.printStackTrace();
-    //    }
-    return true;
+    // return admins.contains(playerName.toLowerCase());
+    // } catch (IOException e) {
+    // e.printStackTrace();
+    // }
+    return false;
   }
 
   private void connectToServer(String ip) {
@@ -256,7 +262,8 @@ public class GuiMcfrMainMenu extends GuiScreen {
     try {
       Object o = Class.forName("java.awt.Desktop").getMethod("getDesktop").invoke(null);
       o.getClass().getMethod("browse", URI.class).invoke(o, new URL(url).toURI());
-    } catch (Throwable e) {
+    }
+    catch (Throwable e) {
       LOGGER.error("Couldn't open link", e);
     }
   }
@@ -289,8 +296,7 @@ public class GuiMcfrMainMenu extends GuiScreen {
     GlStateManager.disableAlpha();
     GlStateManager.disableCull();
     GlStateManager.depthMask(false);
-    GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA,
-        GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
+    GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
 
     for (int j = 0; j < 64; ++j) {
       GlStateManager.pushMatrix();
@@ -358,8 +364,7 @@ public class GuiMcfrMainMenu extends GuiScreen {
     GlStateManager.glTexParameteri(3553, 10240, 9729);
     GlStateManager.glCopyTexSubImage2D(3553, 0, 0, 0, 0, 0, 256, 256);
     GlStateManager.enableBlend();
-    GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA,
-        GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
+    GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
     GlStateManager.colorMask(true, true, true, false);
     Tessellator tessellator = Tessellator.getInstance();
     VertexBuffer vertexbuffer = tessellator.getBuffer();
@@ -430,7 +435,8 @@ public class GuiMcfrMainMenu extends GuiScreen {
       drawTexturedModalRect(j + 99 + 26, 30, 126, 0, 3, 44);
       drawTexturedModalRect(j + 99 + 26 + 3, 30, 99, 0, 26, 44);
       drawTexturedModalRect(j + 155, 30, 0, 45, 155, 44);
-    } else {
+    }
+    else {
       drawTexturedModalRect(j + 0, 30, 0, 0, 155, 44);
       drawTexturedModalRect(j + 155, 30, 0, 45, 155, 44);
     }
@@ -461,8 +467,7 @@ public class GuiMcfrMainMenu extends GuiScreen {
     super.mouseClicked(mouseX, mouseY, mouseButton);
 
     synchronized (this.threadLock) {
-      if (!this.openGLWarning1.isEmpty() && mouseX >= this.openGLWarningX1 && mouseX <= this.openGLWarningX2 && mouseY >= this.openGLWarningY1
-          && mouseY <= this.openGLWarningY2) {
+      if (!this.openGLWarning1.isEmpty() && mouseX >= this.openGLWarningX1 && mouseX <= this.openGLWarningX2 && mouseY >= this.openGLWarningY1 && mouseY <= this.openGLWarningY2) {
         GuiConfirmOpenLink guiConfirmOpenLink = new GuiConfirmOpenLink(this, this.openGLWarningLink, 13, true);
         guiConfirmOpenLink.disableSecurityWarning();
         this.mc.displayGuiScreen(guiConfirmOpenLink);
