@@ -20,7 +20,6 @@ import net.minecraft.entity.ai.EntityAIPanic;
 import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
-import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
@@ -34,7 +33,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.storage.loot.LootTableList;
-import net.minecraftforge.event.entity.living.LivingDropsEvent;
 
 public class EntityBormoth extends EntityBurrowed {
 
@@ -144,19 +142,12 @@ public class EntityBormoth extends EntityBurrowed {
     }
   }
   
-  @Override
-  public void setDropItems(LivingDropsEvent event) {
-    List<EntityItem> drops = event.getDrops();
-    
-    drops.clear();
-    
+  public List<ItemStack> getLoots() {
     List<ItemStack> itemList = new ArrayList<>();
+    
     itemList.add(new ItemStack(Items.ROTTEN_FLESH, getRandomQuantity(12.5F)));
     itemList.add(new ItemStack(McfrItems.HUNTED_SKIN, getRandomQuantity(12.5F)));
     
-    for (ItemStack i : itemList) {
-      drops.add(new EntityItem(event.getEntity().worldObj, event.getEntity().posX, 
-          event.getEntity().posY, event.getEntity().posZ, i));
-    }
+    return itemList;
   }
 }

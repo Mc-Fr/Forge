@@ -1,6 +1,9 @@
 package net.mcfr.decoration.containerBlocks.tileEntities;
 
-import static net.mcfr.utils.RenderUtils.*;
+import static net.mcfr.utils.RenderUtils.bindTex;
+import static net.mcfr.utils.RenderUtils.draw;
+import static net.mcfr.utils.RenderUtils.drawQuad;
+import static net.mcfr.utils.RenderUtils.renderItem;
 
 import net.mcfr.McfrBlocks;
 import net.mcfr.utils.math.Point2d;

@@ -73,6 +73,7 @@ public final class McfrCrafts {
     for (EnumDyeColor color : EnumDyeColor.values())
       removeRecipe(new ItemStack(Blocks.HARDENED_CLAY, 8, color.getMetadata()));
 
+    removeRecipe(new ItemStack(Items.SIGN));
     removeRecipe(new ItemStack(Items.SUGAR));
     removeRecipe(new ItemStack(Items.COOKIE));
     removeRecipe(new ItemStack(Items.PUMPKIN_PIE));
@@ -175,7 +176,7 @@ public final class McfrCrafts {
       addShapedRecipe(new ItemStack(McfrBlocks.LARGE_WORKBENCH, 1), "IWI", "WWW", "IWI", 'I', Items.IRON_INGOT, 'W', planks);
 
     // Coffres
-    for (Block planks : PLANKS) {
+    /*for (Block planks : PLANKS) {
       addLargeRecipe(new ItemStack(McfrBlocks.LITTLE_CHEST, 1), "IIIII", "IWWWI", "IIHII", "IWWWI", "IIWII", 'I', Items.IRON_INGOT, 'W', planks, 'H', Blocks.TRIPWIRE_HOOK);
       addShapedRecipe(new ItemStack(McfrBlocks.CRATE, 1), "###", "###", "###", '#', planks);
       addShapedRecipe(new ItemStack(McfrBlocks.FOOD_CRATE, 1), "WWW", "FFF", "WWW", 'W', planks, 'F', Items.STRING);
@@ -183,7 +184,7 @@ public final class McfrCrafts {
     }
     for (int i = 0; i < BlockPlanks.EnumType.values().length; i++)
       addLargeRecipe(new ItemStack(McfrBlocks.BOOKSHELF, 1, i), "#####", "#   #", "#SSS#", "#   #", "#####", '#', new ItemStack(Blocks.PLANKS, 1, i), 'S', new ItemStack(Blocks.WOODEN_SLAB, 1, i));
-
+    */
     // Dalles
     addShapedRecipe(new ItemStack(McfrBlocks.HAY_SLAB, 6, 0), "###", '#', Blocks.HAY_BLOCK);
     addShapedRecipe(new ItemStack(McfrBlocks.HAY_SLAB, 6, 1), "###", '#', McfrBlocks.OLD_HAY_BLOCK);
@@ -811,6 +812,9 @@ public final class McfrCrafts {
     addShapelessRecipe(new ItemStack(McfrItems.LANTERN, 1, 4), new ItemStack(Items.DYE, 1, 4), McfrBlocks.WHITE_LANTERN);
     addShapelessRecipe(new ItemStack(McfrItems.LANTERN, 1, 5), new ItemStack(Items.DYE, 1, 2), McfrBlocks.WHITE_LANTERN);
     addShapelessRecipe(new ItemStack(McfrItems.LANTERN, 1, 6), new ItemStack(Items.DYE, 1, 1), McfrBlocks.WHITE_LANTERN);
+
+    for (Block planks : PLANKS)
+      addShapedRecipe(new ItemStack(McfrItems.SIGN), "###", "###", " | ", '#', planks, '|', Items.STICK);
 
     // Vitrines/stands
     for (Block fence : WOODEN_FENCES)

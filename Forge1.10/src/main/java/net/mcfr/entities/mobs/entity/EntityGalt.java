@@ -24,7 +24,6 @@ import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
 import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
-import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -33,7 +32,6 @@ import net.minecraft.pathfinding.PathNodeType;
 import net.minecraft.util.datafix.DataFixer;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
-import net.minecraftforge.event.entity.living.LivingDropsEvent;
 
 public class EntityGalt extends EntityBurrowed {
   private static final Set<Item> TEMPTATION_ITEMS = Sets
@@ -147,20 +145,13 @@ public class EntityGalt extends EntityBurrowed {
       ((EntityLivingBase) passenger).renderYawOffset = this.renderYawOffset;
     }
   }
-
-  @Override
-  public void setDropItems(LivingDropsEvent event) {
-    List<EntityItem> drops = event.getDrops();
-    
-    drops.clear();
-    
+  
+  public List<ItemStack> getLoots() {
     List<ItemStack> itemList = new ArrayList<>();
+    
     itemList.add(new ItemStack(McfrItems.RAW_HUNTED_STEAK, getRandomQuantity(8.6F)));
     itemList.add(new ItemStack(McfrItems.HUNTED_SKIN, getRandomQuantity(9.6F)));
     
-    for (ItemStack i : itemList) {
-      drops.add(new EntityItem(event.getEntity().worldObj, event.getEntity().posX, 
-          event.getEntity().posY, event.getEntity().posZ, i));
-    }
+    return itemList;
   }
 }

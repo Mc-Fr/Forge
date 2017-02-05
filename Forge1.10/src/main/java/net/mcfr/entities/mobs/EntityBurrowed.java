@@ -1,11 +1,14 @@
 package net.mcfr.entities.mobs;
 
+import java.util.List;
+
 import net.mcfr.entities.mobs.gender.EntityGendered;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -86,7 +89,12 @@ public abstract class EntityBurrowed extends EntityGendered {
     super.onLivingUpdate();
   }
   
-  public abstract void setDropItems(LivingDropsEvent event);
+  public abstract List<ItemStack> getLoots();
+  
+  @Override
+  protected void dropLoot(boolean wasRecentlyHit, int lootingModifier, DamageSource source) {
+    getLoots().forEach(i -> this.entityDropItem(i, 0.0F));
+  }
   
   public int getRandomQuantity(float value) {
     int baseValue = (int) Math.floor(value);

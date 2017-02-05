@@ -245,7 +245,7 @@ public class GuiMcfrMainMenu extends GuiScreen {
     //    } catch (IOException e) {
     //      e.printStackTrace();
     //    }
-    return false;
+    return true;
   }
 
   private void connectToServer(String ip) {
