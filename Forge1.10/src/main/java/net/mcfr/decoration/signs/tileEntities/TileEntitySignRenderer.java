@@ -44,7 +44,7 @@ public abstract class TileEntitySignRenderer<T extends TileEntityMcfrSign> exten
         this.model.signRope2.showModel = false;
       }
       else if (block instanceof McfrBlockSuspendedSign) {
-        GlStateManager.translate(0, -0.4f, 0f);
+        GlStateManager.translate(0, -0.4f, 0);
         this.model.signStick.showModel = false;
         this.model.signRope1.showModel = true;
         this.model.signRope2.showModel = true;
@@ -94,21 +94,20 @@ public abstract class TileEntitySignRenderer<T extends TileEntityMcfrSign> exten
     GlStateManager.depthMask(false);
 
     if (destroyStage < 0) {
-      FontRenderer fontrenderer = getFontRenderer();
+      FontRenderer fontRenderer = getFontRenderer();
 
       for (int j = 0; j < te.signText.length; ++j) {
         if (te.signText[j] != null) {
           ITextComponent itextcomponent = te.signText[j];
-          List<ITextComponent> list = GuiUtilRenderComponents.splitText(itextcomponent, 90, fontrenderer, false, true);
-          String s = list != null && !list.isEmpty() ? list.get(0).getFormattedText() : "";
+          List<ITextComponent> list = GuiUtilRenderComponents.splitText(itextcomponent, 90, fontRenderer, false, true);
+          String s = list != null && !list.isEmpty() ? (te instanceof TileEntityOrpSign ? list.get(0).getUnformattedText() : list.get(0).getFormattedText()) : "";
 
-          if (j == te.lineBeingEdited) {
+          if (j == te.lineBeingEdited)
             s = "> " + s + " <";
-            fontrenderer.drawString(s, -fontrenderer.getStringWidth(s) / 2, j * 10 - te.signText.length * 5, 0);
-          }
-          else {
-            fontrenderer.drawString(s, -fontrenderer.getStringWidth(s) / 2, j * 10 - te.signText.length * 5, 0);
-          }
+          if (te instanceof TileEntityOrpSign)
+            s = "§f" + s;
+
+          fontRenderer.drawString(s, -fontRenderer.getStringWidth(s) / 2, j * 10 - te.signText.length * 5, 0);
         }
       }
     }
