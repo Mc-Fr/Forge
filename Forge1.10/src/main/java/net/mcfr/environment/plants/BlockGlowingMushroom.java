@@ -1,14 +1,11 @@
 package net.mcfr.environment.plants;
 
-import java.util.Random;
-
 import net.mcfr.commons.McfrBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.Item;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
@@ -60,10 +57,5 @@ public class BlockGlowingMushroom extends McfrBlock {
   public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn) {
     if (!canPlaceBlockAt(worldIn, pos))
       worldIn.setBlockToAir(pos);
-  }
-
-  @Override
-  public Item getItemDropped(IBlockState state, Random rand, int fortune) {
-    return null;
   }
 }
