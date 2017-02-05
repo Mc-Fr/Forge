@@ -4,7 +4,7 @@ import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
 
 import io.netty.buffer.ByteBuf;
-import net.mcfr.decoration.signs.tileEntities.TileEntityWallNote;
+import net.mcfr.decoration.signs.tileEntities.TileLargeSign;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 
@@ -14,7 +14,7 @@ public class UpdateWallNoteMessage implements IMessage {
 
   // Requis par Forge.
   public UpdateWallNoteMessage() {
-    this(null, new String[TileEntityWallNote.LINES_NB]);
+    this(null, new String[TileLargeSign.LINES_NB]);
   }
 
   public UpdateWallNoteMessage(BlockPos signPos, String[] lines) {

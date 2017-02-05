@@ -1,6 +1,6 @@
 package net.mcfr.network;
 
-import net.mcfr.decoration.signs.tileEntities.TileEntityWallNote;
+import net.mcfr.decoration.signs.tileEntities.TileLargeSign;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
@@ -21,9 +21,9 @@ public class UpdateWallNoteMessageHandler implements IMessageHandler<UpdateWallN
     IBlockState state = world.getBlockState(pos);
     TileEntity te = world.getTileEntity(pos);
 
-    if (te instanceof TileEntityWallNote && world.isBlockLoaded(pos)) {
+    if (te instanceof TileLargeSign && world.isBlockLoaded(pos)) {
       for (int i = 0; i < message.getLines().length; i++) {
-        ((TileEntityWallNote) te).getText()[i] = new TextComponentString(message.getLines()[i]);
+        ((TileLargeSign) te).getText()[i] = new TextComponentString(message.getLines()[i]);
       }
     }
     te.markDirty();

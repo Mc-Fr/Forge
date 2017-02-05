@@ -5,7 +5,7 @@ import java.util.Arrays;
 
 import org.lwjgl.input.Keyboard;
 
-import net.mcfr.decoration.signs.tileEntities.TileEntityWallNote;
+import net.mcfr.decoration.signs.tileEntities.TileLargeSign;
 import net.mcfr.network.McfrNetworkWrapper;
 import net.mcfr.network.UpdateWallNoteMessage;
 import net.minecraft.client.gui.GuiButton;
@@ -22,13 +22,13 @@ import net.minecraft.util.text.TextComponentString;
  * @author Mc-Fr
  */
 public class GuiEditWallNote extends GuiScreen {
-  private TileEntityWallNote tileNote;
+  private TileLargeSign tileNote;
   /** Compte le nombre de mises à jour de l'écran. */
   private int updateCounter;
   private int editLine;
   private GuiButton doneBtn;
 
-  public GuiEditWallNote(TileEntityWallNote teSign) {
+  public GuiEditWallNote(TileLargeSign teSign) {
     this.tileNote = teSign;
   }
 

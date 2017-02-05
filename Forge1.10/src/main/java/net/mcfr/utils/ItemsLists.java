@@ -17,10 +17,16 @@ import net.mcfr.decoration.containerBlocks.BlockCrate;
 import net.mcfr.decoration.containerBlocks.BlockFoodCrate;
 import net.mcfr.decoration.containerBlocks.BlockLittleChest;
 import net.mcfr.decoration.containerBlocks.BlockPallet;
+import net.mcfr.decoration.containerBlocks.ItemBarrel;
 import net.mcfr.decoration.containerBlocks.guis.ContainerRestricted;
+import net.mcfr.decoration.signs.ItemTombstone;
 import net.mcfr.environment.plants.EnumExoticWoodType;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockButton;
+import net.minecraft.block.BlockFlower;
+import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.BlockPlanks;
+import net.minecraft.block.BlockSapling;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -30,6 +36,7 @@ import net.minecraft.item.ItemFishingRod;
 import net.minecraft.item.ItemFlintAndSteel;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemHoe;
+import net.minecraft.item.ItemMinecart;
 import net.minecraft.item.ItemShears;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
@@ -149,14 +156,18 @@ public final class ItemsLists {
     if (!TYPES.containsKey(key)) {
       List<Item> l = new ArrayList<>();
 
+      for (ResourceLocation r : Block.REGISTRY.getKeys()) {
+        Block b = Block.REGISTRY.getObject(r);
+
+        if (b != Blocks.MELON_BLOCK && b != Blocks.PUMPKIN && !(b instanceof BlockSapling) && !(b instanceof BlockFlower) && !(b instanceof BlockLeaves) && b != Blocks.WEB && b != Blocks.GRASS && b != Blocks.CACTUS && b != Blocks.VINE && !(b instanceof BlockButton) && b != Blocks.LEVER && b != Blocks.REDSTONE_WIRE && b != Blocks.TRIPWIRE_HOOK && b != Blocks.TRIPWIRE)
+          l.add(Item.getItemFromBlock(b));
+      }
+
       for (ResourceLocation r : Item.REGISTRY.getKeys()) {
         Item i = Item.REGISTRY.getObject(r);
 
-        l.add(i); // TEMP
-        // TODO large objects
-        // if (i instanceof ItemFood && i != Items.fermented_spider_eye || i instanceof ItemBow) {
-        // l.add(i);
-        // }
+        if (i instanceof ItemMinecart || i instanceof ItemBarrel || i instanceof ItemTombstone || i == Items.CAULDRON || i == McfrItems.SAW_SUPPORT)
+          l.add(i);
       }
 
       TYPES.put(key, Collections.unmodifiableList(l));
@@ -172,14 +183,18 @@ public final class ItemsLists {
       List<Item> l = new ArrayList<>();
 
       for (ResourceLocation r : Item.REGISTRY.getKeys()) {
-        @SuppressWarnings("unused")
         Item i = Item.REGISTRY.getObject(r);
 
-        // TODO small items
-        // if (i instanceof ItemFood && i != Items.fermented_spider_eye || i instanceof ItemBow) {
-        // l.add(i);
-        // }
+        if (i != McfrItems.COIN && i != McfrItems.TOKEN && i != McfrItems.CLAW_MONEY)
+          l.add(i);
       }
+
+      l.removeAll(getPaperBasedItems());
+      l.removeAll(getLargeObjects());
+      l.removeAll(getFood());
+      l.removeAll(getArmorPieces());
+      l.removeAll(getWeapons());
+      l.removeAll(getTools());
 
       TYPES.put(key, Collections.unmodifiableList(l));
     }
@@ -200,6 +215,8 @@ public final class ItemsLists {
       l.add(Items.ENCHANTED_BOOK);
       l.add(Items.MAP);
       l.add(Items.FILLED_MAP);
+      l.add(McfrItems.WRITEABLE_PAPER);
+      l.add(McfrItems.SIGNED_PAPER);
 
       TYPES.put(key, Collections.unmodifiableList(l));
     }

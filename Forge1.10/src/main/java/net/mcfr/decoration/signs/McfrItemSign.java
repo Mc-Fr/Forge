@@ -5,6 +5,7 @@ import net.mcfr.decoration.signs.tileEntities.TileEntityMcfrSign;
 import net.mcfr.network.McfrNetworkWrapper;
 import net.mcfr.network.OpenEditMcfrSignMessage;
 import net.mcfr.network.OpenEditMcfrSignMessage.SignType;
+import net.mcfr.utils.FacingUtils;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -16,7 +17,6 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumFacing.Axis;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
 public class McfrItemSign extends McfrItem {
@@ -39,13 +39,13 @@ public class McfrItemSign extends McfrItem {
       if (!worldIn.isRemote) {
         if (facing == EnumFacing.UP && this.standingSign.canPlaceBlockAt(worldIn, pos.up())) {
           pos = pos.up();
-          int i = getRotation(playerIn);
-          worldIn.setBlockState(pos, this.standingSign.getDefaultState().withProperty(McfrBlockStandingSign.ROTATION, Integer.valueOf(i)), 11);
+          int rotation = FacingUtils.getSignRotation(playerIn);
+          worldIn.setBlockState(pos, this.standingSign.getDefaultState().withProperty(McfrBlockStandingSign.ROTATION, rotation), 11);
         }
         else if (facing == EnumFacing.DOWN && this.suspendedSign != null && this.suspendedSign.canPlaceBlockAt(worldIn, pos.down())) {
           pos = pos.down();
-          int i = getRotation(playerIn);
-          worldIn.setBlockState(pos, this.suspendedSign.getDefaultState().withProperty(McfrBlockSuspendedSign.ROTATION, Integer.valueOf(i)), 11);
+          int rotation = FacingUtils.getSignRotation(playerIn);
+          worldIn.setBlockState(pos, this.suspendedSign.getDefaultState().withProperty(McfrBlockSuspendedSign.ROTATION, rotation), 11);
         }
         else if (facing.getAxis() != Axis.Y && this.wallSign.canPlaceBlockAt(worldIn, pos.offset(facing))) {
           pos = pos.offset(facing);
@@ -65,9 +65,5 @@ public class McfrItemSign extends McfrItem {
     }
 
     return EnumActionResult.FAIL;
-  }
-
-  private int getRotation(EntityPlayer playerIn) {
-    return MathHelper.floor_double((playerIn.rotationYaw + 180) * 16 / 360 + 0.5) & 15;
   }
 }

@@ -24,7 +24,7 @@ import net.mcfr.decoration.signs.tileEntities.TileEntityNormalSign;
 import net.mcfr.decoration.signs.tileEntities.TileEntityOrpSign;
 import net.mcfr.decoration.signs.tileEntities.TileEntityPaperSign;
 import net.mcfr.decoration.signs.tileEntities.TileEntityTombstone;
-import net.mcfr.decoration.signs.tileEntities.TileEntityWallNote;
+import net.mcfr.decoration.signs.tileEntities.TileLargeSign;
 import net.mcfr.entities.EntityGrapnel;
 import net.mcfr.entities.EntitySailBoat;
 import net.mcfr.entities.mobs.entity.EntityBormoth;
@@ -135,7 +135,7 @@ public class McfrMain {
     registerTileEntity(TileEntityPaperSign.class, "paper_sign");
     registerTileEntity(TileEntityOrpSign.class, "orp_sign");
     registerTileEntity(TileEntityTombstone.class, "tombstone");
-    registerTileEntity(TileEntityWallNote.class, "wall_note");
+    registerTileEntity(TileLargeSign.class, "wall_note");
 
     registerTileEntity(TileEntityShowcase.class, "showcase");
     registerTileEntity(TileEntityWeaponsStand.class, "weapons_stand");

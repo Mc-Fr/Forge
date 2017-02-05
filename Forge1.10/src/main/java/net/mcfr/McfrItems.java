@@ -1,9 +1,6 @@
 package net.mcfr;
 
-import static net.minecraft.inventory.EntityEquipmentSlot.CHEST;
-import static net.minecraft.inventory.EntityEquipmentSlot.FEET;
-import static net.minecraft.inventory.EntityEquipmentSlot.HEAD;
-import static net.minecraft.inventory.EntityEquipmentSlot.LEGS;
+import static net.minecraft.inventory.EntityEquipmentSlot.*;
 
 import net.mcfr.commons.McfrItem;
 import net.mcfr.commons.McfrItemBlockSpecial;
@@ -12,12 +9,12 @@ import net.mcfr.craftsmanship.ItemSwordHandle;
 import net.mcfr.decoration.beds.McfrItemBed;
 import net.mcfr.decoration.containerBlocks.ItemBarrel;
 import net.mcfr.decoration.lighting.ItemLantern;
+import net.mcfr.decoration.signs.ItemTombstone;
 import net.mcfr.decoration.signs.ItemWallNote;
 import net.mcfr.decoration.signs.McfrItemSign;
 import net.mcfr.decoration.signs.tileEntities.TileEntityNormalSign;
 import net.mcfr.decoration.signs.tileEntities.TileEntityOrpSign;
 import net.mcfr.decoration.signs.tileEntities.TileEntityPaperSign;
-import net.mcfr.decoration.signs.tileEntities.TileEntityTombstone;
 import net.mcfr.economy.ItemClawMoney;
 import net.mcfr.economy.ItemCoin;
 import net.mcfr.economy.ItemToken;
@@ -173,7 +170,7 @@ public final class McfrItems {
   public static final McfrItemBlockSpecial SHOWCASE = new McfrItemBlockSpecial("showcase", McfrBlocks.SHOWCASE, CreativeTabs.DECORATIONS);
   // Panneaux et affiches
   public static final ItemWallNote WALL_NOTE = new ItemWallNote();
-  public static final McfrItemSign TOMBSTONE = new McfrItemSign("tombstone", McfrBlocks.TOMBSTONE, null, null, TileEntityTombstone.class);
+  public static final ItemTombstone TOMBSTONE = new ItemTombstone();
   public static final McfrItemSign SIGN = new McfrItemSign("sign", McfrBlocks.STANDING_SIGN, McfrBlocks.WALL_SIGN, McfrBlocks.SUSPENDED_SIGN, TileEntityNormalSign.class);
   public static final McfrItemSign PAPER_SIGN = new McfrItemSign("paper_sign", McfrBlocks.STANDING_PAPER_SIGN, McfrBlocks.WALL_PAPER_SIGN, McfrBlocks.SUSPENDED_PAPER_SIGN, TileEntityPaperSign.class);
   public static final McfrItemSign ORP_SIGN = new McfrItemSign("orp_sign", McfrBlocks.STANDING_ORP_SIGN, McfrBlocks.WALL_ORP_SIGN, null, TileEntityOrpSign.class);

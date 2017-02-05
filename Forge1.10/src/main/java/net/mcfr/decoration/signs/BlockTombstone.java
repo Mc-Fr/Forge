@@ -2,10 +2,9 @@ package net.mcfr.decoration.signs;
 
 import java.util.Random;
 
-import javax.annotation.Nullable;
-
 import net.mcfr.McfrItems;
 import net.mcfr.decoration.signs.tileEntities.TileEntityTombstone;
+import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -17,9 +16,6 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TextComponentString;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 
 public class BlockTombstone extends McfrBlockStandingSign {
@@ -33,18 +29,37 @@ public class BlockTombstone extends McfrBlockStandingSign {
   }
 
   @Override
-  public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, @Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
-    TileEntity tileEntity = worldIn.getTileEntity(pos);
+  public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn) {
+    if (!worldIn.getBlockState(pos.down()).getMaterial().isSolid()) {
+      dropBlockAsItem(worldIn, pos, state, 0);
+      worldIn.setBlockToAir(pos);
+    }
+  }
 
-    if (tileEntity instanceof TileEntityTombstone) {
-      for (ITextComponent component : ((TileEntityTombstone) tileEntity).signText) {
-        if (!"".equals(component.getUnformattedText())) {
-          playerIn.addChatMessage(new TextComponentString(TextFormatting.GRAY + component.getFormattedText()));
-        }
+  @Override
+  public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
+    if (worldIn.isRemote) {
+      TileEntity te = worldIn.getTileEntity(pos);
+
+      if (te instanceof TileEntityTombstone) {
+        TileEntityTombstone t = (TileEntityTombstone) te;
+        int firstLineIndex = 0;
+        int lastLineIndex = 14;
+
+        // On supprime les lignes vides en début et en fin d'épitaphe.
+        while (firstLineIndex < 15 && t.getText()[firstLineIndex].getUnformattedText().equals("§r"))
+          firstLineIndex++;
+        while (lastLineIndex > 0 && t.getText()[lastLineIndex].getUnformattedText().equals("§r"))
+          lastLineIndex--;
+
+        for (int i = firstLineIndex; i <= lastLineIndex; i++)
+          playerIn.addChatComponentMessage(t.getText()[i]);
+
+        return true;
       }
     }
 
-    return super.onBlockActivated(worldIn, pos, state, playerIn, hand, heldItem, side, hitX, hitY, hitZ);
+    return false;
   }
 
   @Override
