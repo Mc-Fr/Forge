@@ -350,6 +350,6 @@ public class BlockShowcase extends BlockContainer {
 
   @Override
   public TileEntity createNewTileEntity(World worldIn, int meta) {
-    return new TileEntityShowcase();
+    return new TileEntityShowcase(getStateFromMeta(meta).getValue(FACING));
   }
 }

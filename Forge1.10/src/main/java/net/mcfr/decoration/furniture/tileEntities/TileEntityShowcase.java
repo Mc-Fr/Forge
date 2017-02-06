@@ -1,29 +1,31 @@
 package net.mcfr.decoration.furniture.tileEntities;
 
+import net.mcfr.commons.TileEntityOriented;
 import net.mcfr.decoration.furniture.BlockShowcase;
 import net.mcfr.utils.ItemsLists;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.network.NetworkManager;
-import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 
-public class TileEntityShowcase extends TileEntity implements IInventory, ClickableTileEntity {
+public class TileEntityShowcase extends TileEntityOriented implements IInventory, ClickableTileEntity {
   private ItemStack shownItem;
   private boolean adjacentShowcaseChecked;
   private TileEntityShowcase adjacentShowcaseNorth;
   private TileEntityShowcase adjacentShowcaseSouth;
   private TileEntityShowcase adjacentShowcaseEast;
   private TileEntityShowcase adjacentShowcaseWest;
-
   private long lastClickedTime;
 
   public TileEntityShowcase() {
-    super();
+    this(EnumFacing.NORTH);
+  }
+
+  public TileEntityShowcase(EnumFacing facing) {
+    super(facing);
     this.shownItem = null;
     this.adjacentShowcaseChecked = false;
     this.adjacentShowcaseEast = null;
@@ -127,21 +129,6 @@ public class TileEntityShowcase extends TileEntity implements IInventory, Clicka
       compound.setTag("Item", c);
     }
     return compound;
-  }
-
-  @Override
-  public SPacketUpdateTileEntity getUpdatePacket() {
-    return new SPacketUpdateTileEntity(getPos(), 0, writeToNBT(new NBTTagCompound()));
-  }
-
-  @Override
-  public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity pkt) {
-    readFromNBT(pkt.getNbtCompound());
-  }
-
-  @Override
-  public NBTTagCompound getUpdateTag() {
-    return writeToNBT(new NBTTagCompound());
   }
 
   public ItemStack getItem() {

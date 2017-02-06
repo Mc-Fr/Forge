@@ -172,6 +172,6 @@ public class BlockWeaponsStand extends BlockContainer {
 
   @Override
   public TileEntity createNewTileEntity(World worldIn, int meta) {
-    return new TileEntityWeaponsStand();
+    return new TileEntityWeaponsStand(getStateFromMeta(meta).getValue(FACING));
   }
 }

@@ -2,22 +2,33 @@ package net.mcfr.decoration.furniture.tileEntities;
 
 import java.util.Arrays;
 
+import net.mcfr.commons.TileEntityOriented;
 import net.mcfr.utils.ItemsLists;
 import net.mcfr.utils.NBTUtils;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
-import net.minecraft.network.NetworkManager;
-import net.minecraft.network.play.server.SPacketUpdateTileEntity;
-import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumFacing;
 
-public class TileEntityWeaponsStand extends TileEntity {
+public class TileEntityWeaponsStand extends TileEntityOriented implements ClickableTileEntity {
   public static final int INVENTORY_SIZE = 2;
 
   private ItemStack[] stacks;
+  private long lastClickedTime;
 
   public TileEntityWeaponsStand() {
+    this(EnumFacing.NORTH);
+  }
+
+  public TileEntityWeaponsStand(EnumFacing facing) {
+    super(facing);
     this.stacks = new ItemStack[INVENTORY_SIZE];
+    this.lastClickedTime = 0;
+  }
+
+  @Override
+  public long getLastClickTime() {
+    return this.lastClickedTime;
   }
 
   @Override
@@ -55,20 +66,6 @@ public class TileEntityWeaponsStand extends TileEntity {
     }
     compound.setTag("Items", list);
     return compound;
-  }
-
-  @Override
-  public SPacketUpdateTileEntity getUpdatePacket() {
-    NBTTagCompound c = new NBTTagCompound();
-    writeToNBT(c);
-    SPacketUpdateTileEntity packet = new SPacketUpdateTileEntity(getPos(), 0, c);
-
-    return packet;
-  }
-
-  @Override
-  public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity pkt) {
-    readFromNBT(pkt.getNbtCompound());
   }
 
   public ItemStack getItem(int slot) {
