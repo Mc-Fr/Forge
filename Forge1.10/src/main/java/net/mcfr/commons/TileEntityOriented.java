@@ -6,17 +6,32 @@ import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 
+/**
+ * Classe fournissant une gestion de l'orientation aux tile entities.
+ * 
+ * @author Mc-Fr
+ */
 public abstract class TileEntityOriented extends TileEntity {
+  /** L'orientation */
   private EnumFacing facing;
 
+  /**
+   * Crée une tile entity orientée vers le nord.
+   */
   public TileEntityOriented() {
     this(EnumFacing.NORTH);
   }
 
+  /**
+   * Crée une tile entity avec l'orientation donnée.
+   */
   public TileEntityOriented(EnumFacing facing) {
     this.facing = facing;
   }
 
+  /**
+   * @return l'orientation
+   */
   public EnumFacing getFacing() {
     return this.facing;
   }
