@@ -1,6 +1,6 @@
 package net.mcfr.food;
 
-import net.mcfr.decoration.containerBlocks.ItemBarrel;
+import net.mcfr.decoration.container_blocks.ItemBarrel;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;

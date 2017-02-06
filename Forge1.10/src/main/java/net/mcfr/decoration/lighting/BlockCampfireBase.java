@@ -4,7 +4,7 @@ import java.util.Random;
 
 import net.mcfr.McfrItems;
 import net.mcfr.commons.McfrBlock;
-import net.mcfr.decoration.lighting.tileEntities.TileEntityCampfire;
+import net.mcfr.decoration.lighting.tile_entities.TileEntityCampfire;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;

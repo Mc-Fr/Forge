@@ -5,7 +5,7 @@ import java.util.Arrays;
 
 import org.lwjgl.input.Keyboard;
 
-import net.mcfr.decoration.signs.tileEntities.TileLargeSign;
+import net.mcfr.decoration.signs.tile_entities.TileLargeSign;
 import net.mcfr.network.McfrNetworkWrapper;
 import net.mcfr.network.UpdateWallNoteMessage;
 import net.minecraft.client.gui.GuiButton;

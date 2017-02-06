@@ -2,7 +2,7 @@ package net.mcfr.decoration.signs;
 
 import net.mcfr.McfrBlocks;
 import net.mcfr.commons.McfrItem;
-import net.mcfr.decoration.signs.tileEntities.TileLargeSign;
+import net.mcfr.decoration.signs.tile_entities.TileLargeSign;
 import net.mcfr.network.McfrNetworkWrapper;
 import net.mcfr.network.OpenEditWallNoteMessage;
 import net.minecraft.creativetab.CreativeTabs;

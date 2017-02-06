@@ -1,6 +1,6 @@
 package net.mcfr.decoration.furniture;
 
-import net.mcfr.decoration.furniture.tileEntities.TileEntityWoodenChair;
+import net.mcfr.decoration.furniture.tile_entities.TileEntityWoodenChair;
 import net.minecraft.block.BlockPlanks;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;

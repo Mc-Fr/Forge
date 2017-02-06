@@ -1,7 +1,7 @@
 package net.mcfr.decoration.misc;
 
 import net.mcfr.commons.IBlockWithVariants;
-import net.mcfr.decoration.misc.tileEntities.TileEntityCarpet;
+import net.mcfr.decoration.misc.tile_entities.TileEntityCarpet;
 import net.mcfr.utils.NameUtils;
 import net.minecraft.block.BlockCarpet;
 import net.minecraft.block.ITileEntityProvider;

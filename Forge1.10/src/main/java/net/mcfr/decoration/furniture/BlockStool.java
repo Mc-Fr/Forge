@@ -1,6 +1,6 @@
 package net.mcfr.decoration.furniture;
 
-import net.mcfr.decoration.furniture.tileEntities.TileEntityWoodenStool;
+import net.mcfr.decoration.furniture.tile_entities.TileEntityWoodenStool;
 import net.minecraft.block.BlockPlanks.EnumType;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;

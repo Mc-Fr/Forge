@@ -1,6 +1,6 @@
 package net.mcfr.network;
 
-import net.mcfr.decoration.signs.tileEntities.TileLargeSign;
+import net.mcfr.decoration.signs.tile_entities.TileLargeSign;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;

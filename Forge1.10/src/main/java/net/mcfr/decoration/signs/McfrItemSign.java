@@ -1,7 +1,7 @@
 package net.mcfr.decoration.signs;
 
 import net.mcfr.commons.McfrItem;
-import net.mcfr.decoration.signs.tileEntities.TileEntityMcfrSign;
+import net.mcfr.decoration.signs.tile_entities.TileEntityMcfrSign;
 import net.mcfr.network.McfrNetworkWrapper;
 import net.mcfr.network.OpenEditMcfrSignMessage;
 import net.mcfr.network.OpenEditMcfrSignMessage.SignType;

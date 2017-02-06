@@ -1,6 +1,6 @@
 package net.mcfr.decoration.furniture;
 
-import net.mcfr.decoration.furniture.tileEntities.TileEntityWoodenBench;
+import net.mcfr.decoration.furniture.tile_entities.TileEntityWoodenBench;
 import net.minecraft.block.BlockPlanks;
 import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockStateContainer;

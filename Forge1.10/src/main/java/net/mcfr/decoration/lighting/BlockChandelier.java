@@ -3,7 +3,7 @@ package net.mcfr.decoration.lighting;
 import java.util.Random;
 
 import net.mcfr.commons.McfrBlock;
-import net.mcfr.decoration.lighting.tileEntities.TileEntityChandelier;
+import net.mcfr.decoration.lighting.tile_entities.TileEntityChandelier;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;

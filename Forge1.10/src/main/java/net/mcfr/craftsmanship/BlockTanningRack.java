@@ -1,6 +1,6 @@
 package net.mcfr.craftsmanship;
 
-import net.mcfr.craftsmanship.tileEntities.TileEntityTanningRack;
+import net.mcfr.craftsmanship.tile_entities.TileEntityTanningRack;
 import net.mcfr.guis.CustomGuiScreens;
 
 public class BlockTanningRack extends BlockRack<TileEntityTanningRack> {

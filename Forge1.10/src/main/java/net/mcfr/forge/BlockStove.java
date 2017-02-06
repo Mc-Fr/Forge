@@ -6,7 +6,7 @@ import javax.annotation.Nullable;
 
 import net.mcfr.McfrBlocks;
 import net.mcfr.McfrMain;
-import net.mcfr.forge.tileEntities.TileEntityStove;
+import net.mcfr.forge.tile_entities.TileEntityStove;
 import net.mcfr.guis.CustomGuiScreens;
 import net.mcfr.utils.NameUtils;
 import net.minecraft.block.BlockContainer;

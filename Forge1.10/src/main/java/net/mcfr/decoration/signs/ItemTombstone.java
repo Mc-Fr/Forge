@@ -2,7 +2,7 @@ package net.mcfr.decoration.signs;
 
 import net.mcfr.McfrBlocks;
 import net.mcfr.commons.McfrItem;
-import net.mcfr.decoration.signs.tileEntities.TileEntityTombstone;
+import net.mcfr.decoration.signs.tile_entities.TileEntityTombstone;
 import net.mcfr.utils.FacingUtils;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;

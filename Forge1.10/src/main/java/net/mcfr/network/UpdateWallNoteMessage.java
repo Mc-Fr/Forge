@@ -4,7 +4,7 @@ import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
 
 import io.netty.buffer.ByteBuf;
-import net.mcfr.decoration.signs.tileEntities.TileLargeSign;
+import net.mcfr.decoration.signs.tile_entities.TileLargeSign;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 

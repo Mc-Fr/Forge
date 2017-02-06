@@ -1,6 +1,6 @@
 package net.mcfr.forge;
 
-import net.mcfr.forge.tileEntities.TileEntityBellows;
+import net.mcfr.forge.tile_entities.TileEntityBellows;
 import net.mcfr.utils.NameUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;

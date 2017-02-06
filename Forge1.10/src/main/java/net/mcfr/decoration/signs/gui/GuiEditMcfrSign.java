@@ -7,7 +7,7 @@ import org.lwjgl.input.Keyboard;
 import net.mcfr.decoration.signs.McfrBlockStandingSign;
 import net.mcfr.decoration.signs.McfrBlockSuspendedSign;
 import net.mcfr.decoration.signs.McfrBlockWallSign;
-import net.mcfr.decoration.signs.tileEntities.TileEntityMcfrSign;
+import net.mcfr.decoration.signs.tile_entities.TileEntityMcfrSign;
 import net.minecraft.block.Block;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;

@@ -3,7 +3,7 @@ package net.mcfr.decoration.signs;
 import java.util.Random;
 
 import net.mcfr.McfrItems;
-import net.mcfr.decoration.signs.tileEntities.TileEntityTombstone;
+import net.mcfr.decoration.signs.tile_entities.TileEntityTombstone;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;

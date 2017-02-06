@@ -1,7 +1,7 @@
 package net.mcfr.network;
 
 import net.mcfr.decoration.signs.gui.GuiEditWallNote;
-import net.mcfr.decoration.signs.tileEntities.TileEntityWallNote;
+import net.mcfr.decoration.signs.tile_entities.TileEntityWallNote;
 import net.minecraft.client.Minecraft;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;

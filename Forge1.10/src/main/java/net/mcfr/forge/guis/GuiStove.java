@@ -1,7 +1,7 @@
 package net.mcfr.forge.guis;
 
 import net.mcfr.Constants;
-import net.mcfr.forge.tileEntities.TileEntityStove;
+import net.mcfr.forge.tile_entities.TileEntityStove;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.player.InventoryPlayer;

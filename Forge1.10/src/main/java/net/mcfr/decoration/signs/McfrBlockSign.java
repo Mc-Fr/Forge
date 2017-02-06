@@ -5,7 +5,7 @@ import java.util.Random;
 import javax.annotation.Nullable;
 
 import net.mcfr.commons.McfrBlock;
-import net.mcfr.decoration.signs.tileEntities.TileEntityMcfrSign;
+import net.mcfr.decoration.signs.tile_entities.TileEntityMcfrSign;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;

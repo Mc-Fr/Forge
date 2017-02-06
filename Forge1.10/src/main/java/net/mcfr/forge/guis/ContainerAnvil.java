@@ -2,7 +2,7 @@ package net.mcfr.forge.guis;
 
 import net.mcfr.craftsmanship.guis.ContainerLargeWorkbench;
 import net.mcfr.forge.recipes.LargeRecipesHandler;
-import net.mcfr.forge.tileEntities.TileEntityStove;
+import net.mcfr.forge.tile_entities.TileEntityStove;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.tileentity.TileEntity;

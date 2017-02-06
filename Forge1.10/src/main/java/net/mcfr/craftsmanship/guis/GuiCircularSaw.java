@@ -2,7 +2,7 @@ package net.mcfr.craftsmanship.guis;
 
 import net.mcfr.Constants;
 import net.mcfr.craftsmanship.BlockCircularSaw;
-import net.mcfr.craftsmanship.tileEntities.TileEntityCircularSaw;
+import net.mcfr.craftsmanship.tile_entities.TileEntityCircularSaw;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;

@@ -2,7 +2,7 @@ package net.mcfr.craftsmanship.guis;
 
 import net.mcfr.Constants;
 import net.mcfr.craftsmanship.BlockLoom;
-import net.mcfr.craftsmanship.tileEntities.TileEntityLoom;
+import net.mcfr.craftsmanship.tile_entities.TileEntityLoom;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;

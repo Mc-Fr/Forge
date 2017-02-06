@@ -4,7 +4,7 @@ import java.util.Random;
 
 import net.mcfr.McfrItems;
 import net.mcfr.commons.McfrBlock;
-import net.mcfr.decoration.signs.tileEntities.TileEntityWallNote;
+import net.mcfr.decoration.signs.tile_entities.TileEntityWallNote;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;

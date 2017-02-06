@@ -1,7 +1,7 @@
 package net.mcfr.decoration.misc;
 
 import net.mcfr.commons.McfrBlockOrientable;
-import net.mcfr.decoration.misc.tileEntities.TileEntitySupport;
+import net.mcfr.decoration.misc.tile_entities.TileEntitySupport;
 import net.mcfr.utils.FacingUtils;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;

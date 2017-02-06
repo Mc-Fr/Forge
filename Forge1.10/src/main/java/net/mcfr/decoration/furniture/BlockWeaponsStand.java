@@ -5,8 +5,8 @@ import java.util.Random;
 import javax.annotation.Nullable;
 
 import net.mcfr.McfrItems;
-import net.mcfr.decoration.furniture.tileEntities.TileEntityShowcase;
-import net.mcfr.decoration.furniture.tileEntities.TileEntityWeaponsStand;
+import net.mcfr.decoration.furniture.tile_entities.TileEntityShowcase;
+import net.mcfr.decoration.furniture.tile_entities.TileEntityWeaponsStand;
 import net.mcfr.utils.FacingUtils;
 import net.mcfr.utils.NameUtils;
 import net.mcfr.utils.TileEntityUtils;

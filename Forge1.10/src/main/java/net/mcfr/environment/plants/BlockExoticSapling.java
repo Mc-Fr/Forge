@@ -4,10 +4,10 @@ import java.util.List;
 import java.util.Random;
 
 import net.mcfr.commons.IBlockWithVariants;
-import net.mcfr.environment.plants.treeGen.WorldGenAppleTree;
-import net.mcfr.environment.plants.treeGen.WorldGenBeluxier;
-import net.mcfr.environment.plants.treeGen.WorldGenCherryTree;
-import net.mcfr.environment.plants.treeGen.WorldGenPalmTree;
+import net.mcfr.environment.plants.tree_gen.WorldGenAppleTree;
+import net.mcfr.environment.plants.tree_gen.WorldGenBeluxier;
+import net.mcfr.environment.plants.tree_gen.WorldGenCherryTree;
+import net.mcfr.environment.plants.tree_gen.WorldGenPalmTree;
 import net.mcfr.utils.NameUtils;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.IGrowable;

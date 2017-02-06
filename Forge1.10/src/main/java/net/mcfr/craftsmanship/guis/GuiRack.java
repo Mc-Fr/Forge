@@ -1,7 +1,7 @@
 package net.mcfr.craftsmanship.guis;
 
 import net.mcfr.craftsmanship.BlockRack;
-import net.mcfr.craftsmanship.tileEntities.TileEntityRack;
+import net.mcfr.craftsmanship.tile_entities.TileEntityRack;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.player.EntityPlayer;

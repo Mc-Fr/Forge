@@ -1,10 +1,10 @@
 package net.mcfr.network;
 
 import net.mcfr.decoration.signs.gui.GuiEditMcfrSign;
-import net.mcfr.decoration.signs.tileEntities.TileEntityMcfrSign;
-import net.mcfr.decoration.signs.tileEntities.TileEntityNormalSign;
-import net.mcfr.decoration.signs.tileEntities.TileEntityOrpSign;
-import net.mcfr.decoration.signs.tileEntities.TileEntityPaperSign;
+import net.mcfr.decoration.signs.tile_entities.TileEntityMcfrSign;
+import net.mcfr.decoration.signs.tile_entities.TileEntityNormalSign;
+import net.mcfr.decoration.signs.tile_entities.TileEntityOrpSign;
+import net.mcfr.decoration.signs.tile_entities.TileEntityPaperSign;
 import net.minecraft.client.Minecraft;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;

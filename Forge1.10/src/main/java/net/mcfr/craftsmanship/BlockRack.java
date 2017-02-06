@@ -2,8 +2,8 @@ package net.mcfr.craftsmanship;
 
 import java.lang.reflect.InvocationTargetException;
 
-import net.mcfr.craftsmanship.tileEntities.TileEntityRack;
-import net.mcfr.decoration.containerBlocks.McfrBlockContainer;
+import net.mcfr.craftsmanship.tile_entities.TileEntityRack;
+import net.mcfr.decoration.container_blocks.McfrBlockContainer;
 import net.mcfr.utils.FacingUtils;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;

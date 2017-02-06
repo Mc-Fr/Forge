@@ -3,7 +3,7 @@ package net.mcfr.decoration.signs;
 import java.util.Random;
 
 import net.mcfr.McfrItems;
-import net.mcfr.decoration.signs.tileEntities.TileEntityOrpSign;
+import net.mcfr.decoration.signs.tile_entities.TileEntityOrpSign;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
