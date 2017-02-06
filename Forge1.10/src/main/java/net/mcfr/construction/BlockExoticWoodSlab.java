@@ -19,6 +19,11 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+/**
+ * Dalle de bois exotique.
+ * 
+ * @author Mc-Fr
+ */
 public abstract class BlockExoticWoodSlab extends McfrBlockSlab<EnumExoticWoodType> {
   public static final PropertyEnum<EnumExoticWoodType> VARIANT = PropertyEnum.create("variant", EnumExoticWoodType.class);
 
@@ -79,6 +84,11 @@ public abstract class BlockExoticWoodSlab extends McfrBlockSlab<EnumExoticWoodTy
     return Item.getItemFromBlock(McfrBlocks.EXOTIC_WOOD_SLAB);
   }
 
+  /**
+   * Dalle de bois exotique simple.
+   * 
+   * @author Mc-Fr
+   */
   public static class BlockHalfExoticWoodSlab extends BlockExoticWoodSlab {
     @Override
     public boolean isDouble() {
@@ -86,6 +96,11 @@ public abstract class BlockExoticWoodSlab extends McfrBlockSlab<EnumExoticWoodTy
     }
   }
 
+  /**
+   * Dalle de bois exotique double.
+   * 
+   * @author Mc-Fr
+   */
   public static class BlockDoubleExoticWoodSlab extends BlockExoticWoodSlab {
     @Override
     public boolean isDouble() {

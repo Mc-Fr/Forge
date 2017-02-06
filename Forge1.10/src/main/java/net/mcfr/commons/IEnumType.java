@@ -5,7 +5,8 @@ import net.minecraft.util.IStringSerializable;
 /**
  * Interface permettant de repérer les énumérations de variantes de blocs/items.<br/>
  * La type générique est supposé restreindre l'utilisation de cette interface aux énumérations
- * seulement.
+ * seulement. Les énumérations implementant cette interface devraient fournir une méthode statique
+ * {@code T byMetadata(int meta)}.
  * 
  * @author Mc-Fr
  */

@@ -11,6 +11,11 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
+/**
+ * Muret de bois exotique.
+ * 
+ * @author Mc-Fr
+ */
 public class BlockExoticWoodWall extends McfrBlockWall {
   public static final PropertyEnum<EnumExoticWoodType> VARIANT = PropertyEnum.create("variant", EnumExoticWoodType.class);
 

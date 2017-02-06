@@ -18,6 +18,11 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 
+/**
+ * Bloc de marbre.
+ * 
+ * @author Mc-Fr
+ */
 public class BlockMarble extends McfrBlock implements IBlockWithVariants {
   public static final PropertyEnum<EnumType> VARIANT = PropertyEnum.create("variant", EnumType.class);
 
@@ -58,6 +63,22 @@ public class BlockMarble extends McfrBlock implements IBlockWithVariants {
     return state.getValue(VARIANT).getMetadata();
   }
 
+  /**
+   * Variantes du bloc de marbre :
+   * <ul>
+   * <li>couleur sable, brut</li>
+   * <li>couleur sable, sculpté</li>
+   * <li>couleur sable, lisse</li>
+   * <li>blanc, brut</li>
+   * <li>blanc, sculpté</li>
+   * <li>blanc, lisse</li>
+   * <li>noir, brut</li>
+   * <li>noir, sculpté</li>
+   * <li>noir, lisse</li>
+   * </ul>
+   * 
+   * @author Mc-Fr
+   */
   public static enum EnumType implements IEnumType<EnumType> {
     ROUGH_SAND("rough_sand"),
     CHISELED_SAND("chiseled_sand"),

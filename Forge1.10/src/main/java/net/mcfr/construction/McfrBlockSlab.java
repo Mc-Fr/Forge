@@ -15,19 +15,52 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IStringSerializable;
 
+/**
+ * Classe de base des dalles du mod.
+ * 
+ * @author Mc-Fr
+ *
+ * @param <T> le type des variantes
+ */
 public abstract class McfrBlockSlab<T extends Enum<T> & IStringSerializable> extends BlockSlab implements IBlockWithVariants {
+  /** La classe des variantes. */
   private final Class<T> clazz;
 
-  public McfrBlockSlab(String materialName, Material materialIn, SoundType sound, float hardness, float resistance, String tool, int harvestLevel, Class<T> clazz) {
-    this(materialName, null, materialIn, sound, hardness, resistance, tool, harvestLevel, clazz);
+  /**
+   * Crée une nouvelle dalle.
+   * 
+   * @param name le nom (sans le suffixe '_slab')
+   * @param material le matériau
+   * @param sound le type de son
+   * @param hardness la dureté
+   * @param resistance la résistance aux explosions
+   * @param tool l'outil nécessaire
+   * @param harvestLevel la niveau de récolte
+   * @param clazz la classe des variantes
+   */
+  public McfrBlockSlab(String name, Material material, SoundType sound, float hardness, float resistance, String tool, int harvestLevel, Class<T> clazz) {
+    this(name, null, material, sound, hardness, resistance, tool, harvestLevel, clazz);
   }
 
-  public McfrBlockSlab(String materialName, String suffix, Material materialIn, SoundType sound, float hardness, float resistance, String tool, int harvestLevel, Class<T> clazz) {
-    super(materialIn);
+  /**
+   * Crée une nouvelle dalle.
+   * 
+   * @param name le nom (sans le suffixe '_slab')
+   * @param material le matériau
+   * @param suffix le suffixe (ex: '2' comme dans 'stone_slab2')
+   * @param sound le type de son
+   * @param hardness la dureté
+   * @param resistance la résistance aux explosions
+   * @param tool l'outil nécessaire
+   * @param harvestLevel la niveau de récolte
+   * @param clazz la classe des variantes
+   */
+  public McfrBlockSlab(String name, String suffix, Material material, SoundType sound, float hardness, float resistance, String tool, int harvestLevel, Class<T> clazz) {
+    super(material);
     this.clazz = clazz;
-    materialName = (isDouble() ? "double_" : "") + materialName + "_slab" + (suffix != null ? suffix : "");
-    setRegistryName(materialName);
-    setUnlocalizedName(NameUtils.getUnlocalizedName(materialName));
+    name = (isDouble() ? "double_" : "") + name + "_slab" + (suffix != null ? suffix : "");
+    setRegistryName(name);
+    setUnlocalizedName(NameUtils.getUnlocalizedName(name));
     setResistance(resistance);
     setHardness(hardness);
     if (tool != null)
@@ -65,8 +98,6 @@ public abstract class McfrBlockSlab<T extends Enum<T> & IStringSerializable> ext
 
   @Override
   public final Comparable<?> getTypeForItem(ItemStack stack) {
-    Exception ex = null;
-
     try {
       Method valuesMethod = this.clazz.getMethod("values");
       @SuppressWarnings("unchecked")
@@ -74,22 +105,8 @@ public abstract class McfrBlockSlab<T extends Enum<T> & IStringSerializable> ext
 
       return values[(stack.getMetadata() & 7) % values.length];
     }
-    catch (NoSuchMethodException e) {
-      ex = e;
+    catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+      throw new RuntimeException(e);
     }
-    catch (SecurityException e) {
-      ex = e;
-    }
-    catch (IllegalAccessException e) {
-      ex = e;
-    }
-    catch (IllegalArgumentException e) {
-      ex = e;
-    }
-    catch (InvocationTargetException e) {
-      ex = e;
-    }
-
-    throw new RuntimeException(ex);
   }
 }

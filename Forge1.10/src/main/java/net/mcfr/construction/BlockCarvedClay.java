@@ -18,6 +18,11 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 
+/**
+ * Bloc d'argile sculptée.
+ * 
+ * @author Mc-Fr
+ */
 public class BlockCarvedClay extends McfrBlock implements IBlockWithVariants {
   public static final PropertyEnum<EnumType> VARIANT = PropertyEnum.create("variant", EnumType.class);
 
@@ -58,6 +63,15 @@ public class BlockCarvedClay extends McfrBlock implements IBlockWithVariants {
     return state.getValue(VARIANT).getMetadata();
   }
 
+  /**
+   * Variantes du bloc d'argile sculptée :
+   * <ul>
+   * <li>claire</li>
+   * <li>foncée</li>
+   * </ul>
+   * 
+   * @author Mc-Fr
+   */
   public static enum EnumType implements IEnumType<EnumType> {
     LIGHT("light"),
     DARK("dark");

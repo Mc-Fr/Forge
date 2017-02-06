@@ -21,6 +21,11 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 
+/**
+ * Colonne de marbre
+ * 
+ * @author Mc-Fr
+ */
 public class BlockMarbleColumn extends BlockRotatedPillar implements IBlockWithVariants {
   public static final PropertyEnum<EnumType> VARIANT = PropertyEnum.create("variant", EnumType.class);
 
@@ -74,6 +79,16 @@ public class BlockMarbleColumn extends BlockRotatedPillar implements IBlockWithV
     return super.onBlockPlaced(worldIn, pos, facing, hitX, hitY, hitZ, meta, placer).withProperty(AXIS, facing.getAxis());
   }
 
+  /**
+   * Variantes de la colonne de marbre :
+   * <ul>
+   * <li>couleur sable</li>
+   * <li>blanche</li>
+   * <li>noire</li>
+   * </ul>
+   * 
+   * @author Mc-Fr
+   */
   public static enum EnumType implements IEnumType<EnumType> {
     SAND("sand"),
     WHITE("white"),

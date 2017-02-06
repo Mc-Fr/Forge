@@ -19,6 +19,11 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+/**
+ * Dalle de paille.
+ * 
+ * @author Mc-Fr
+ */
 public abstract class BlockHaySlab extends McfrBlockSlab<BlockHaySlab.EnumType> {
   public static final PropertyEnum<EnumType> VARIANT = PropertyEnum.create("variant", EnumType.class);
 
@@ -78,6 +83,15 @@ public abstract class BlockHaySlab extends McfrBlockSlab<BlockHaySlab.EnumType> 
     return Item.getItemFromBlock(McfrBlocks.HAY_SLAB);
   }
 
+  /**
+   * Variantes de la dalle de paille :
+   * <ul>
+   * <li>normale</li>
+   * <li>vieille</li>
+   * </ul>
+   * 
+   * @author Mc-Fr
+   */
   public static enum EnumType implements IEnumType<EnumType> {
     NORMAL("normal"),
     OLD("old");
@@ -108,6 +122,11 @@ public abstract class BlockHaySlab extends McfrBlockSlab<BlockHaySlab.EnumType> 
     }
   }
 
+  /**
+   * Dalle de paille simple.
+   * 
+   * @author Mc-Fr
+   */
   public static class BlockHalfHaySlab extends BlockHaySlab {
     @Override
     public boolean isDouble() {
@@ -115,6 +134,11 @@ public abstract class BlockHaySlab extends McfrBlockSlab<BlockHaySlab.EnumType> 
     }
   }
 
+  /**
+   * Dalle de paille double.
+   * 
+   * @author Mc-Fr
+   */
   public static class BlockDoubleHaySlab extends BlockHaySlab {
     @Override
     public boolean isDouble() {

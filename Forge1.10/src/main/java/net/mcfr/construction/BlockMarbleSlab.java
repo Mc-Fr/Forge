@@ -19,6 +19,11 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+/**
+ * Dalle de marbre.
+ * 
+ * @author Mc-Fr
+ */
 public abstract class BlockMarbleSlab extends McfrBlockSlab<BlockMarbleSlab.EnumType> {
   public static final PropertyEnum<EnumType> VARIANT = PropertyEnum.create("variant", EnumType.class);
 
@@ -78,6 +83,19 @@ public abstract class BlockMarbleSlab extends McfrBlockSlab<BlockMarbleSlab.Enum
     return Item.getItemFromBlock(McfrBlocks.MARBLE_SLAB);
   }
 
+  /**
+   * Variantes de la dalle de marbre :
+   * <ul>
+   * <li>couleur sable, brute</li>
+   * <li>couleur sable, colonne</li>
+   * <li>couleur sable, brute</li>
+   * <li>blanche, brute</li>
+   * <li>blanche, colonne</li>
+   * <li>blanche, lisse</li>
+   * </ul>
+   * 
+   * @author Mc-Fr
+   */
   public static enum EnumType implements IEnumType<EnumType> {
     ROUGH_SAND("rough_sand"),
     COLUMN_SAND("column_sand"),

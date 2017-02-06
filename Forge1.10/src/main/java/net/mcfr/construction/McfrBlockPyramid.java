@@ -17,14 +17,31 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+/**
+ * Classe de base des pyramides du mod.
+ * 
+ * @author Mc-Fr
+ */
 public class McfrBlockPyramid extends McfrBlock {
   public static final PropertyEnum<EnumHalf> HALF = PropertyEnum.create("half", EnumHalf.class);
 
+  /** Le bloc de référence. */
   private final Block modelBlock;
 
+  /**
+   * Crée une nouvelle pyramide.
+   * 
+   * @param block le bloc de base
+   * @param metadata le metadata du bloc
+   * @param hardness la dureté
+   * @param resistance la résistance aux explosions
+   * @param name le nom (sans le suffixe '_pyramid')
+   * @param tool l'outil nécessaire
+   * @param harvestLevel le niveau de récolte
+   */
   @SuppressWarnings("deprecation")
-  public McfrBlockPyramid(Block block, int metadata, float hardness, float resistance, String materialName, String tool, int harvestLevel) {
-    super(materialName + "_pyramid", block.getDefaultState().getMaterial(), block.getSoundType(), hardness, resistance, tool, harvestLevel, CreativeTabs.BUILDING_BLOCKS);
+  public McfrBlockPyramid(Block block, int metadata, float hardness, float resistance, String name, String tool, int harvestLevel) {
+    super(name + "_pyramid", block.getDefaultState().getMaterial(), block.getSoundType(), hardness, resistance, tool, harvestLevel, CreativeTabs.BUILDING_BLOCKS);
     this.modelBlock = block;
     setDefaultState(this.blockState.getBaseState().withProperty(HALF, EnumHalf.BOTTOM));
   }

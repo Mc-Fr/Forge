@@ -18,6 +18,11 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 
+/**
+ * Bloc de briques de pierre colorées.
+ * 
+ * @author Mc-Fr
+ */
 public class BlockColoredStonebrick extends McfrBlock implements IBlockWithVariants {
   public static final PropertyEnum<EnumType> VARIANT = PropertyEnum.create("variant", EnumType.class);
 
@@ -58,6 +63,16 @@ public class BlockColoredStonebrick extends McfrBlock implements IBlockWithVaria
     return state.getValue(VARIANT).getMetadata();
   }
 
+  /**
+   * Variantes du bloc de briques colorées :
+   * <ul>
+   * <li>normales</li>
+   * <li>moussues</li>
+   * <li>craquelées</li>
+   * </ul>
+   * 
+   * @author Mc-Fr
+   */
   public static enum EnumType implements IEnumType<EnumType> {
     DEFAULT("normal"),
     MOSSY("mossy"),
