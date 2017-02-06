@@ -1,4 +1,4 @@
-package net.mcfr.decoration.signs.gui;
+package net.mcfr.decoration.signs.guis;
 
 import java.io.IOException;
 import java.util.Arrays;
