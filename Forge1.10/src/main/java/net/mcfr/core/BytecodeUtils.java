@@ -11,8 +11,19 @@ import org.objectweb.asm.tree.MethodInsnNode;
 import org.objectweb.asm.tree.TypeInsnNode;
 import org.objectweb.asm.tree.VarInsnNode;
 
-public class BytecodeUtils {
-  public static void displayCode(AbstractInsnNode start, int length) {
+/**
+ * Classe utilitaire pour l'affichage de bytecode.
+ *
+ * @author Mc-Fr
+ */
+class BytecodeUtils {
+  /**
+   * Affiche le bytecode à partir de l'instruction donnée.
+   * 
+   * @param start l'instruction de départ.
+   * @param length le nombre d'instructions à afficher
+   */
+  static void displayCode(AbstractInsnNode start, int length) {
     AbstractInsnNode node = start;
 
     for (int i = 0; i < length && node != null; i++, node = node.getNext()) {
@@ -35,6 +46,12 @@ public class BytecodeUtils {
     }
   }
 
+  /**
+   * Retourne le nom de l'opcode correspondant au code donné.
+   * 
+   * @param opcode le code
+   * @return le nom de l'opcode
+   */
   private static String getOpcodeName(int opcode) {
     Field[] fields = Opcodes.class.getDeclaredFields();
     String name = null;

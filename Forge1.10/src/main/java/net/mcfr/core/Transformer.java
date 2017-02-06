@@ -28,7 +28,12 @@ import net.minecraft.launchwrapper.IClassTransformer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class Transformer implements IClassTransformer {
+/**
+ * Transformeur du coremod.
+ *
+ * @author Mc-Fr
+ */
+class Transformer implements IClassTransformer {
   /** Associe une fonction de transformation au nom d'une classe. */
   private static final Map<String, BiConsumer<ClassNode, Boolean>> CLASSES;
 
@@ -46,6 +51,14 @@ public class Transformer implements IClassTransformer {
     return CLASSES.containsKey(transformedName) ? transform(!name.equals(transformedName), transformedName, classCode) : classCode;
   }
 
+  /**
+   * Transforme la classe donnée.
+   * 
+   * @param obfuscated l'environnement est obfuqué ou non
+   * @param name le nom
+   * @param classCode le code de la classe
+   * @return la classe transformée
+   */
   private byte[] transform(boolean obfuscated, String name, byte[] classCode) {
     System.out.println("Transformation de " + name);
 
@@ -62,6 +75,70 @@ public class Transformer implements IClassTransformer {
     classNode.accept(classWriter);
 
     return classWriter.toByteArray();
+  }
+
+  /**
+   * Modifie le code suivant (en italique) dans {@link EntityFishHook#onUpdate
+   * EntityFishHook.onUpdate}&nbsp;:
+   * 
+   * <pre>
+   * if (this.angler.isDead ||
+   *     !this.angler.isEntityAlive() ||
+   *     itemstack == null ||
+   *     itemstack.getItem() <i>instanceof ItemFishHook</i> <span style=
+   * "text-decoration:line-through">!= Items.FISHING_ROD</span> ||
+   *     this.getDistanceSqToEntity(this.angler) > 1024.0D) {
+   *   ...
+   * </pre>
+   * 
+   * Bytecode&nbsp;:
+   * 
+   * <pre>
+   * aload_1                         // itemstack
+   * invokevirtual ItemStack.getItem
+   * <i>instanceof ItemFishingRod
+   * goto L</i>
+   * getstatic Items.FISHING_ROD     // On ne supprime pas les instructions existantes
+   * if_acmpne L9
+   * <i>L
+   * ifeq L9</i>
+   * </pre>
+   * 
+   * @param classNode
+   * @param obfuscated
+   */
+  private static void transformEntityFishHook(ClassNode classNode, boolean obfuscated) {
+    final String methodName = obfuscated ? "m" : "onUpdate";
+    final String methodDesc = "()V";
+
+    for (MethodNode method : classNode.methods) {
+      if (method.name.equals(methodName) && method.desc.equals(methodDesc)) {
+        AbstractInsnNode targetNode = null;
+
+        for (AbstractInsnNode node : method.instructions.toArray()) {
+          AbstractInsnNode prev = node.getPrevious();
+
+          if (node.getOpcode() == INVOKEVIRTUAL && prev.getOpcode() == ALOAD && ((VarInsnNode) prev).var == 1 && node.getNext().getOpcode() == GETSTATIC) {
+            targetNode = node;
+            break;
+          }
+        }
+
+        if (targetNode != null) {
+          AbstractInsnNode node = targetNode;
+
+          // On insère les nouvelles instructions
+          method.instructions.insert(node, node = new TypeInsnNode(INSTANCEOF, Type.getInternalName(ItemFishingRod.class)));
+          LabelNode label = new LabelNode(new Label());
+          method.instructions.insert(node, node = new JumpInsnNode(GOTO, label));
+          node = node.getNext().getNext(); // On saute les 2 suivantes.
+          LabelNode label1 = ((JumpInsnNode) node).label;
+          method.instructions.insert(node, node = label);
+          method.instructions.insert(node, new JumpInsnNode(IFEQ, label1));
+        }
+        break;
+      }
+    }
   }
 
   /**
@@ -163,70 +240,6 @@ public class Transformer implements IClassTransformer {
           // On insère les nouvelles instructions
           method.instructions.insert(node, node = new TypeInsnNode(INSTANCEOF, "net/minecraft/block/BlockBed"));
           method.instructions.insert(node, new InsnNode(IRETURN));
-        }
-        break;
-      }
-    }
-  }
-
-  /**
-   * Modifie le code suivant (en italique) dans {@link EntityFishHook#onUpdate
-   * EntityFishHook.onUpdate}&nbsp;:
-   * 
-   * <pre>
-   * if (this.angler.isDead ||
-   *     !this.angler.isEntityAlive() ||
-   *     itemstack == null ||
-   *     itemstack.getItem() <i>instanceof ItemFishHook</i> <span style=
-   * "text-decoration:line-through">!= Items.FISHING_ROD</span> ||
-   *     this.getDistanceSqToEntity(this.angler) > 1024.0D) {
-   *   ...
-   * </pre>
-   * 
-   * Bytecode&nbsp;:
-   * 
-   * <pre>
-   * aload_1                         // itemstack
-   * invokevirtual ItemStack.getItem
-   * <i>instanceof ItemFishingRod
-   * goto L</i>
-   * getstatic Items.FISHING_ROD     // On ne supprime pas les instructions existantes
-   * if_acmpne L9
-   * <i>L
-   * ifeq L9</i>
-   * </pre>
-   * 
-   * @param classNode
-   * @param obfuscated
-   */
-  private static void transformEntityFishHook(ClassNode classNode, boolean obfuscated) {
-    final String methodName = obfuscated ? "m" : "onUpdate";
-    final String methodDesc = "()V";
-
-    for (MethodNode method : classNode.methods) {
-      if (method.name.equals(methodName) && method.desc.equals(methodDesc)) {
-        AbstractInsnNode targetNode = null;
-
-        for (AbstractInsnNode node : method.instructions.toArray()) {
-          AbstractInsnNode prev = node.getPrevious();
-
-          if (node.getOpcode() == INVOKEVIRTUAL && prev.getOpcode() == ALOAD && ((VarInsnNode) prev).var == 1 && node.getNext().getOpcode() == GETSTATIC) {
-            targetNode = node;
-            break;
-          }
-        }
-
-        if (targetNode != null) {
-          AbstractInsnNode node = targetNode;
-
-          // On insère les nouvelles instructions
-          method.instructions.insert(node, node = new TypeInsnNode(INSTANCEOF, Type.getInternalName(ItemFishingRod.class)));
-          LabelNode label = new LabelNode(new Label());
-          method.instructions.insert(node, node = new JumpInsnNode(GOTO, label));
-          node = node.getNext().getNext(); // On saute les 2 suivantes.
-          LabelNode label1 = ((JumpInsnNode) node).label;
-          method.instructions.insert(node, node = label);
-          method.instructions.insert(node, new JumpInsnNode(IFEQ, label1));
         }
         break;
       }
