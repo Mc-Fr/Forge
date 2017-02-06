@@ -35,6 +35,8 @@ import net.mcfr.entities.mobs.entity.EntitySiker;
 import net.mcfr.event.EventsHandler;
 import net.mcfr.forge.tile_entities.TileEntityBellows;
 import net.mcfr.forge.tile_entities.TileEntityStove;
+import net.mcfr.network.AddChatBubbleMessage;
+import net.mcfr.network.AddChatBubbleMessageHandler;
 import net.mcfr.network.GuiHandler;
 import net.mcfr.network.McfrNetworkWrapper;
 import net.mcfr.network.OpenEditMcfrSignMessage;
@@ -43,6 +45,8 @@ import net.mcfr.network.OpenEditPaperMessage;
 import net.mcfr.network.OpenEditPaperMessageHandler;
 import net.mcfr.network.OpenEditWallNoteMessage;
 import net.mcfr.network.OpenEditWallNoteMessageHandler;
+import net.mcfr.network.RemoveChatBubbleMessage;
+import net.mcfr.network.RemoveChatBubbleMessageHandler;
 import net.mcfr.network.SyncEntityMessage;
 import net.mcfr.network.UpdateWallNoteMessage;
 import net.mcfr.network.UpdateWallNoteMessageHandler;
@@ -116,6 +120,8 @@ public class McfrMain {
    * Enregistre les paquets réseau.
    */
   private void registerPackets() {
+    McfrNetworkWrapper.registerPacket(AddChatBubbleMessageHandler.class, AddChatBubbleMessage.class, Side.CLIENT);
+    McfrNetworkWrapper.registerPacket(RemoveChatBubbleMessageHandler.class, RemoveChatBubbleMessage.class, Side.CLIENT);
     McfrNetworkWrapper.registerPacket(OpenEditPaperMessageHandler.class, OpenEditPaperMessage.class, Side.CLIENT);
     McfrNetworkWrapper.registerPacket(OpenEditMcfrSignMessageHandler.class, OpenEditMcfrSignMessage.class, Side.CLIENT);
     McfrNetworkWrapper.registerPacket(OpenEditWallNoteMessageHandler.class, OpenEditWallNoteMessage.class, Side.CLIENT);
