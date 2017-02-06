@@ -18,6 +18,11 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 
+/**
+ * Bloc à colombages.
+ *
+ * @author Mc-Fr
+ */
 public class BlockTimbered extends McfrBlock implements IBlockWithVariants {
   public static final PropertyEnum<EnumType> VARIANT = PropertyEnum.create("variant", EnumType.class);
 
@@ -58,6 +63,18 @@ public class BlockTimbered extends McfrBlock implements IBlockWithVariants {
     return state.getValue(VARIANT).getMetadata();
   }
 
+  /**
+   * Variantes des colombages :
+   * <ul>
+   * <li>croisées</li>
+   * <li>diagonale droite</li>
+   * <li>diagonale gauche</li>
+   * <li>horizontaux</li>
+   * <li>verticaux</li>
+   * </ul>
+   *
+   * @author Mc-Fr
+   */
   public static enum EnumType implements IEnumType<EnumType> {
     CROSSED("crossed"),
     RIGHT_DIAG("right"),

@@ -11,6 +11,11 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
+/**
+ * Muret de marbre.
+ * 
+ * @author Mc-Fr
+ */
 public class BlockMarbleWall extends McfrBlockWall {
   public static final PropertyEnum<EnumType> VARIANT = PropertyEnum.create("variant", EnumType.class);
 
@@ -46,6 +51,19 @@ public class BlockMarbleWall extends McfrBlockWall {
     return state.getValue(VARIANT).getMetadata();
   }
 
+  /**
+   * Variantes du muret de marbre :
+   * <ul>
+   * <li>couleur sable, lisse</li>
+   * <li>couleur sable, colonne</li>
+   * <li>blanc, lisse</li>
+   * <li>blanc, colonne</li>
+   * <li>noir, lisse</li>
+   * <li>noir, colonne</li>
+   * </ul>
+   * 
+   * @author Mc-Fr
+   */
   public static enum EnumType implements IEnumType<EnumType> {
     SMOOTH_SAND("smooth_sand"),
     COLUMN_SAND("column_sand"),

@@ -11,6 +11,11 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
+/**
+ * Muret en prierre.
+ *
+ * @author Mc-Fr
+ */
 public class BlockStoneWall extends McfrBlockWall {
   public static final PropertyEnum<EnumType> VARIANT = PropertyEnum.create("variant", EnumType.class);
 
@@ -46,6 +51,27 @@ public class BlockStoneWall extends McfrBlockWall {
     return state.getValue(VARIANT).getMetadata();
   }
 
+  /**
+   * Variantes du muret en pierre :
+   * <ul>
+   * <li>stonebrick</li>
+   * <li>stonebrick moussue</li>
+   * <li>stonebrick craquelée</li>
+   * <li>pierre jaune</li>
+   * <li>pierre ocre</li>
+   * <li>stonebrick jaune</li>
+   * <li>stonebrick jaune moussue</li>
+   * <li>stonebrick jaune craquelée</li>
+   * <li>stonebrick ocre</li>
+   * <li>stonebrick ocre moussue</li>
+   * <li>stonebrick ocre craquelée</li>
+   * <li>argile sculptée claire</li>
+   * <li>argile sculptée foncée</li>
+   * <li>sandstone</li>
+   * </ul>
+   *
+   * @author Mc-Fr
+   */
   public static enum EnumType implements IEnumType<EnumType> {
     STONEBRICK("stonebrick"),
     MOSSY_STONEBRICK("mossy_stonebrick"),

@@ -18,6 +18,11 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 
+/**
+ * Bloc de tuiles.
+ *
+ * @author Mc-Fr
+ */
 public class BlockTiles extends McfrBlock implements IBlockWithVariants {
   public static final PropertyEnum<EnumType> VARIANT = PropertyEnum.create("variant", EnumType.class);
 
@@ -58,6 +63,15 @@ public class BlockTiles extends McfrBlock implements IBlockWithVariants {
     return state.getValue(VARIANT).getMetadata();
   }
 
+  /**
+   * Variantes du bloc de tuiles :
+   * <ul>
+   * <li>briques</li>
+   * <li>ardoise</li>
+   * </ul>
+   *
+   * @author Mc-Fr
+   */
   public static enum EnumType implements IEnumType<EnumType> {
     BRICK("brick"),
     SLATE("slate");

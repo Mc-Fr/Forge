@@ -19,6 +19,11 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+/**
+ * Dalle en pierre.
+ *
+ * @author Mc-Fr
+ */
 public abstract class BlockStoneSlab extends McfrBlockSlab<BlockStoneSlab.EnumType> {
   public static final PropertyEnum<EnumType> VARIANT = PropertyEnum.create("variant", EnumType.class);
 
@@ -78,6 +83,20 @@ public abstract class BlockStoneSlab extends McfrBlockSlab<BlockStoneSlab.EnumTy
     return Item.getItemFromBlock(McfrBlocks.STONE_SLAB);
   }
 
+  /**
+   * Variantes de la dalle en pierre :
+   * <ul>
+   * <li>jaune</li>
+   * <li>pierres jaunes</li>
+   * <li>ocre</li>
+   * <li>pierres ocre</li>
+   * <li>ardoise</li>
+   * <li>tuiles de briques</li>
+   * <li>tuiles d'ardoise</li>
+   * </ul>
+   * 
+   * @author Mc-Fr
+   */
   public static enum EnumType implements IEnumType<EnumType> {
     YELLOW_STONE("yellow_stone"),
     YELLOW_COBBLESTONE("yellow_cobblestone"),
@@ -113,6 +132,11 @@ public abstract class BlockStoneSlab extends McfrBlockSlab<BlockStoneSlab.EnumTy
     }
   }
 
+  /**
+   * Dalle en pierre simple.
+   *
+   * @author Mc-Fr
+   */
   public static class BlockHalfStoneSlab extends BlockStoneSlab {
     @Override
     public boolean isDouble() {
@@ -120,6 +144,11 @@ public abstract class BlockStoneSlab extends McfrBlockSlab<BlockStoneSlab.EnumTy
     }
   }
 
+  /**
+   * Dalle en pierre double.
+   *
+   * @author Mc-Fr
+   */
   public static class BlockDoubleStoneSlab extends BlockStoneSlab {
     @Override
     public boolean isDouble() {

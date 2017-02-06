@@ -19,6 +19,11 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+/**
+ * Dalle de planches raffinées.
+ *
+ * @author Mc-Fr
+ */
 public abstract class BlockRefinedPlanksSlab extends McfrBlockSlab<BlockPlanks.EnumType> {
   public static final PropertyEnum<BlockPlanks.EnumType> VARIANT = PropertyEnum.create("variant", BlockPlanks.EnumType.class);
 
@@ -78,6 +83,11 @@ public abstract class BlockRefinedPlanksSlab extends McfrBlockSlab<BlockPlanks.E
     return Item.getItemFromBlock(McfrBlocks.REFINED_PLANKS_SLAB);
   }
 
+  /**
+   * Dalle de planches raffinées simple.
+   *
+   * @author Mc-Fr
+   */
   public static class BlockHalfRefinedPlanksSlab extends BlockRefinedPlanksSlab {
     @Override
     public boolean isDouble() {
@@ -85,6 +95,11 @@ public abstract class BlockRefinedPlanksSlab extends McfrBlockSlab<BlockPlanks.E
     }
   }
 
+  /**
+   * Dalle de planches raffinées double.
+   *
+   * @author Mc-Fr
+   */
   public static class BlockDoubleRefinedPlanksSlab extends BlockRefinedPlanksSlab {
     @Override
     public boolean isDouble() {

@@ -3,7 +3,7 @@ package net.mcfr.construction;
 import net.minecraft.block.Block;
 
 /**
- * Item des dalles de briques de pierre.
+ * Item des dalles de stonebrick.
  * 
  * @author Mc-Fr
  */

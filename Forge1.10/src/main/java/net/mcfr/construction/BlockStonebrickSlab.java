@@ -19,6 +19,11 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+/**
+ * Dalle en stonebrick.
+ *
+ * @author Mc-Fr
+ */
 public abstract class BlockStonebrickSlab extends McfrBlockSlab<BlockStonebrickSlab.EnumType> {
   public static final PropertyEnum<EnumType> VARIANT = PropertyEnum.create("variant", EnumType.class);
 
@@ -78,6 +83,21 @@ public abstract class BlockStonebrickSlab extends McfrBlockSlab<BlockStonebrickS
     return Item.getItemFromBlock(McfrBlocks.STONEBRICK_SLAB);
   }
 
+  /**
+   * Variantes de la dalle en stonebrick :
+   * <ul>
+   * <li>normale, moussue</li>
+   * <li>normales, craquelée</li>
+   * <li>jaune</li>
+   * <li>jaune, moussue</li>
+   * <li>jaune, craquelée</li>
+   * <li>ocre</li>
+   * <li>ocre, moussue</li>
+   * <li>ocre, craquelée</li>
+   * </ul>
+   * 
+   * @author Mc-Fr
+   */
   public static enum EnumType implements IEnumType<EnumType> {
     NORMAL_MOSSY("mossy"),
     NORMAL_CRACKED("cracked"),

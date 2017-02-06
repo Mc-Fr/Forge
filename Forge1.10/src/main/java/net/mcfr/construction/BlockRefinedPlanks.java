@@ -5,6 +5,11 @@ import net.mcfr.utils.NameUtils;
 import net.minecraft.block.BlockPlanks;
 import net.minecraft.creativetab.CreativeTabs;
 
+/**
+ * Bloc de planches raffinées.
+ *
+ * @author Mc-Fr
+ */
 public class BlockRefinedPlanks extends BlockPlanks implements IBlockWithVariants {
   public BlockRefinedPlanks() {
     super();
@@ -16,7 +21,7 @@ public class BlockRefinedPlanks extends BlockPlanks implements IBlockWithVariant
     setHarvestLevel("axe", 0);
     setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
   }
-  
+
   @Override
   public String getVariantName(int meta) {
     return getStateFromMeta(meta).getValue(VARIANT).getName();

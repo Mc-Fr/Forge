@@ -19,6 +19,11 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+/**
+ * Dalle de métal.
+ * 
+ * @author Mc-Fr
+ */
 public abstract class BlockMetalSlab extends McfrBlockSlab<BlockMetalSlab.EnumType> {
   public static final PropertyEnum<EnumType> VARIANT = PropertyEnum.create("variant", EnumType.class);
 
@@ -78,6 +83,15 @@ public abstract class BlockMetalSlab extends McfrBlockSlab<BlockMetalSlab.EnumTy
     return Item.getItemFromBlock(McfrBlocks.METAL_SLAB);
   }
 
+  /**
+   * Variantes de la salle en métal :
+   * <ul>
+   * <li>fer</li>
+   * <li>or</li>
+   * </ul>
+   * 
+   * @author Mc-Fr
+   */
   public static enum EnumType implements IEnumType<EnumType> {
     IRON("iron"),
     GOLD("gold");
@@ -108,6 +122,11 @@ public abstract class BlockMetalSlab extends McfrBlockSlab<BlockMetalSlab.EnumTy
     }
   }
 
+  /**
+   * Dalle de métal simple.
+   *
+   * @author Mc-Fr
+   */
   public static class BlockHalfMetalSlab extends BlockMetalSlab {
     @Override
     public boolean isDouble() {
@@ -115,6 +134,11 @@ public abstract class BlockMetalSlab extends McfrBlockSlab<BlockMetalSlab.EnumTy
     }
   }
 
+  /**
+   * Dalle de métal double.
+   *
+   * @author Mc-Fr
+   */
   public static class BlockDoubleMetalSlab extends BlockMetalSlab {
     @Override
     public boolean isDouble() {
