@@ -2,9 +2,9 @@ package net.mcfr.decoration.containerBlocks;
 
 import java.util.List;
 
-import net.mcfr.commons.CustomGuiScreens;
 import net.mcfr.commons.IBlockWithVariants;
 import net.mcfr.decoration.containerBlocks.tileEntities.TileEntityBookshelf;
+import net.mcfr.guis.CustomGuiScreens;
 import net.minecraft.block.BlockPlanks;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;

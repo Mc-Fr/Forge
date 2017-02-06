@@ -1,6 +1,5 @@
 package net.mcfr.network;
 
-import net.mcfr.commons.CustomGuiScreens;
 import net.mcfr.craftsmanship.BlockCircularSaw;
 import net.mcfr.craftsmanship.BlockLoom;
 import net.mcfr.craftsmanship.BlockTanningRack;
@@ -30,6 +29,7 @@ import net.mcfr.forge.guis.ContainerStove;
 import net.mcfr.forge.guis.GuiAnvil;
 import net.mcfr.forge.guis.GuiStove;
 import net.mcfr.forge.tileEntities.TileEntityStove;
+import net.mcfr.guis.CustomGuiScreens;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;

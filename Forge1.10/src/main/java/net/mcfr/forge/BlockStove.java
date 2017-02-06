@@ -6,8 +6,8 @@ import javax.annotation.Nullable;
 
 import net.mcfr.McfrBlocks;
 import net.mcfr.McfrMain;
-import net.mcfr.commons.CustomGuiScreens;
 import net.mcfr.forge.tileEntities.TileEntityStove;
+import net.mcfr.guis.CustomGuiScreens;
 import net.mcfr.utils.NameUtils;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.SoundType;

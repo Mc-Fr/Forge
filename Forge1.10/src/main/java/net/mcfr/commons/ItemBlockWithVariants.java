@@ -21,10 +21,16 @@ public class ItemBlockWithVariants extends ItemBlock {
     setHasSubtypes(true);
   }
 
+  /**
+   * Transtype l'argument en bloc.
+   * 
+   * @param block l'interface
+   * @return le bloc
+   */
   private static Block getBlock(IBlockWithVariants block) {
     if (block instanceof Block)
       return (Block) block;
-    throw new IllegalArgumentException(String.format("The given Block '%s' is not an instance of IBlockWithVariants!", block));
+    throw new IllegalArgumentException(String.format("Block required!", block));
   }
 
   @Override

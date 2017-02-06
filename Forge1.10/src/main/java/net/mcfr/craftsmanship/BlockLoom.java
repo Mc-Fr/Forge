@@ -1,7 +1,7 @@
 package net.mcfr.craftsmanship;
 
-import net.mcfr.commons.CustomGuiScreens;
 import net.mcfr.craftsmanship.tileEntities.TileEntityLoom;
+import net.mcfr.guis.CustomGuiScreens;
 
 public class BlockLoom extends BlockRack<TileEntityLoom> {
   public BlockLoom() {

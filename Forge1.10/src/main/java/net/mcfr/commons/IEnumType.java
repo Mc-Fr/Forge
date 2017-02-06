@@ -15,12 +15,12 @@ public interface IEnumType<T extends Enum<T>> extends IStringSerializable {
    */
   @Override
   String getName();
-  
+
   /**
    * @return le metadata de la variante
    */
   int getMetadata();
-  
+
   /**
    * @return le nom interne de la variante
    * @see #getName()

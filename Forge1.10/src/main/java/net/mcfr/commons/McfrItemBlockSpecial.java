@@ -9,7 +9,20 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemBlockSpecial;
 import net.minecraft.item.ItemStack;
 
+/**
+ * Classe facilitant la déclaration d'{@link ItemBlockSpecial items spéciaux}.
+ * 
+ * @author Mc-Fr
+ * @see ItemBlockSpecial
+ */
 public class McfrItemBlockSpecial extends ItemBlockSpecial {
+  /**
+   * Crée un nouvel item spécial.
+   * 
+   * @param name le nom interne
+   * @param block le bloc associé
+   * @param creativeTabs l'onglet du menu Créatif
+   */
   public McfrItemBlockSpecial(String name, Block block, CreativeTabs creativeTabs) {
     super(block);
     setRegistryName(name);

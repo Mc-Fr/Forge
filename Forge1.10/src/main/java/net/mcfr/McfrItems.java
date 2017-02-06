@@ -45,10 +45,14 @@ import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraft.item.ItemFood;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
+/**
+ * Cette classe regroupe tous les items du mod.
+ * 
+ * @author Mc-Fr
+ */
 public final class McfrItems {
   // Monnaie
   public static final ItemCoin COIN = new ItemCoin();
@@ -477,13 +481,6 @@ public final class McfrItems {
     register(MAGIC_WAND);
     register(LIGHTNING);
 
-    addSmelting(RAW_HUNTED_LEG, COOKED_HUNTED_LEG, 1, 0, 0);
-    addSmelting(RAW_HUNTED_STEAK, COOKED_HUNTED_STEAK, 1, 0, 0);
-    addSmelting(RAW_HUNTED_POULTRY, COOKED_HUNTED_POULTRY, 1, 0, 0);
-    addSmelting(RAW_NIALE_MEAT, COOKED_NIALE_MEAT, 1, 0, 0);
-    addSmelting(RAW_HOEN_MEAT, COOKED_HOEN_MEAT, 1, 0, 0);
-    addSmelting(RAW_GALT_MEAT, COOKED_GALT_MEAT, 1, 0, 0);
-
     McfrBlocks.LIT_CAMPFIRE.addRecipe(McfrItems.RAW_HUNTED_LEG, McfrItems.COOKED_HUNTED_LEG);
     McfrBlocks.LIT_CAMPFIRE.addRecipe(McfrItems.RAW_HUNTED_STEAK, McfrItems.COOKED_HUNTED_STEAK);
     McfrBlocks.LIT_CAMPFIRE.addRecipe(McfrItems.RAW_HUNTED_POULTRY, McfrItems.COOKED_HUNTED_POULTRY);
@@ -502,21 +499,13 @@ public final class McfrItems {
     McfrBlocks.LIT_CAMPFIRE.addRecipe(Items.STICK, Item.getItemFromBlock(Blocks.TORCH));
   }
 
+  /**
+   * Enregistre un item.
+   * 
+   * @param item l'item
+   */
   private static void register(Item item) {
     GameRegistry.register(item);
-  }
-
-  /**
-   * Ajoute une recette pour le four.
-   *
-   * @param item l'item
-   * @param result l'item résultant
-   * @param quantity la quantité
-   * @param meta le metadata
-   * @param xp la quantité d'XP
-   */
-  private static void addSmelting(Item item, Item result, int quantity, int meta, float xp) {
-    GameRegistry.addSmelting(item, new ItemStack(result, quantity, meta), xp);
   }
 
   /**

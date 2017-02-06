@@ -1,8 +1,8 @@
 package net.mcfr.forge;
 
 import net.mcfr.McfrMain;
-import net.mcfr.commons.CustomGuiScreens;
 import net.mcfr.commons.McfrBlockOrientable;
+import net.mcfr.guis.CustomGuiScreens;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;

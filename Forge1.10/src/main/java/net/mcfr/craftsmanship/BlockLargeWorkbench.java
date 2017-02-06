@@ -1,8 +1,8 @@
 package net.mcfr.craftsmanship;
 
 import net.mcfr.McfrMain;
-import net.mcfr.commons.CustomGuiScreens;
 import net.mcfr.commons.McfrBlock;
+import net.mcfr.guis.CustomGuiScreens;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;

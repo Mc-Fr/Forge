@@ -47,7 +47,6 @@ import net.mcfr.network.SyncEntityMessage;
 import net.mcfr.network.UpdateWallNoteMessage;
 import net.mcfr.network.UpdateWallNoteMessageHandler;
 import net.mcfr.proxy.CommonProxy;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -61,21 +60,25 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 
 /**
- * Classe pricipale.
+ * Classe pricipale du mod.
  * 
  * @author Mc-Fr
  */
 @Mod(modid = Constants.MOD_ID, name = Constants.MOD_NAME, version = Constants.MOD_VERSION)
 public class McfrMain {
+  /** L'instance du mod. */
   @Instance
   public static McfrMain instance;
 
-  /**
-   * Proxys client et serveur.
-   */
+  /** Proxys client et serveur. */
   @SidedProxy(clientSide = "net.mcfr.proxy.ClientProxy", serverSide = "net.mcfr.proxy.CommonProxy")
   public static CommonProxy proxy;
 
+  /**
+   * Pré-initialisation du mod.
+   * 
+   * @param e l'évènement de pré-initialisation
+   */
   @EventHandler
   public void preInit(FMLPreInitializationEvent e) {
     McfrBlocks.init();
@@ -88,6 +91,11 @@ public class McfrMain {
     registerEntities();
   }
 
+  /**
+   * Initialisation du mod.
+   * 
+   * @param e l'évènement d'initialisation
+   */
   @EventHandler
   public void init(FMLInitializationEvent e) {
     proxy.register();
@@ -96,11 +104,17 @@ public class McfrMain {
     registerPackets();
   }
 
+  /**
+   * Enregistre les écouteurs d'évènements.
+   */
   private void registerEventHandlers() {
     MinecraftForge.EVENT_BUS.register(BlockBarrel.TILE_ENTITY_SAVER);
     MinecraftForge.EVENT_BUS.register(new EventsHandler());
   }
 
+  /**
+   * Enregistre les paquets réseau.
+   */
   private void registerPackets() {
     McfrNetworkWrapper.registerPacket(OpenEditPaperMessageHandler.class, OpenEditPaperMessage.class, Side.CLIENT);
     McfrNetworkWrapper.registerPacket(OpenEditMcfrSignMessageHandler.class, OpenEditMcfrSignMessage.class, Side.CLIENT);
@@ -110,44 +124,50 @@ public class McfrMain {
     McfrNetworkWrapper.registerPacket(SyncEntityMessage.ServerHandler.class, SyncEntityMessage.class, Side.SERVER);
   }
 
+  /**
+   * Enregistre les tile entities.
+   */
   private void registerTileEntities() {
-    registerTileEntity(TileEntityBarrel.class, "barrel");
+    GameRegistry.registerTileEntity(TileEntityBarrel.class, "barrel");
 
-    registerTileEntity(TileEntityBellows.class, "bellows");
-    registerTileEntity(TileEntityStove.class, "stove");
+    GameRegistry.registerTileEntity(TileEntityBellows.class, "bellows");
+    GameRegistry.registerTileEntity(TileEntityStove.class, "stove");
 
-    registerTileEntity(TileEntityCampfire.class, "campfire");
-    registerTileEntity(TileEntityChandelier.class, "chandelier");
+    GameRegistry.registerTileEntity(TileEntityCampfire.class, "campfire");
+    GameRegistry.registerTileEntity(TileEntityChandelier.class, "chandelier");
 
-    registerTileEntity(TileEntityCarpet.class, "carpet");
+    GameRegistry.registerTileEntity(TileEntityCarpet.class, "carpet");
 
-    registerTileEntity(TileEntityBookshelf.class, "bookshelf");
-    registerTileEntity(TileEntityCrate.class, "crate");
-    registerTileEntity(TileEntityFoodCrate.class, "food_crate");
-    registerTileEntity(TileEntityLittleChest.class, "little_chest");
-    registerTileEntity(TileEntityPallet.class, "pallet");
+    GameRegistry.registerTileEntity(TileEntityBookshelf.class, "bookshelf");
+    GameRegistry.registerTileEntity(TileEntityCrate.class, "crate");
+    GameRegistry.registerTileEntity(TileEntityFoodCrate.class, "food_crate");
+    GameRegistry.registerTileEntity(TileEntityLittleChest.class, "little_chest");
+    GameRegistry.registerTileEntity(TileEntityPallet.class, "pallet");
 
-    registerTileEntity(TileEntityCircularSaw.class, "circular_saw");
-    registerTileEntity(TileEntityLoom.class, "loom");
-    registerTileEntity(TileEntityTanningRack.class, "tanning_rack");
+    GameRegistry.registerTileEntity(TileEntityCircularSaw.class, "circular_saw");
+    GameRegistry.registerTileEntity(TileEntityLoom.class, "loom");
+    GameRegistry.registerTileEntity(TileEntityTanningRack.class, "tanning_rack");
 
-    registerTileEntity(TileEntityNormalSign.class, "sign");
-    registerTileEntity(TileEntityPaperSign.class, "paper_sign");
-    registerTileEntity(TileEntityOrpSign.class, "orp_sign");
-    registerTileEntity(TileEntityTombstone.class, "tombstone");
-    registerTileEntity(TileLargeSign.class, "wall_note");
+    GameRegistry.registerTileEntity(TileEntityNormalSign.class, "sign");
+    GameRegistry.registerTileEntity(TileEntityPaperSign.class, "paper_sign");
+    GameRegistry.registerTileEntity(TileEntityOrpSign.class, "orp_sign");
+    GameRegistry.registerTileEntity(TileEntityTombstone.class, "tombstone");
+    GameRegistry.registerTileEntity(TileLargeSign.class, "wall_note");
 
-    registerTileEntity(TileEntityShowcase.class, "showcase");
-    registerTileEntity(TileEntityWeaponsStand.class, "weapons_stand");
+    GameRegistry.registerTileEntity(TileEntityShowcase.class, "showcase");
+    GameRegistry.registerTileEntity(TileEntityWeaponsStand.class, "weapons_stand");
 
-    registerTileEntity(TileEntitySupport.class, "support");
+    GameRegistry.registerTileEntity(TileEntitySupport.class, "support");
 
-    registerTileEntity(TileEntityArmChair.class, "arm_chair");
-    registerTileEntity(TileEntityWoodenBench.class, "wooden_bench");
-    registerTileEntity(TileEntityWoodenChair.class, "wooden_chair");
-    registerTileEntity(TileEntityWoodenStool.class, "wooden_stool");
+    GameRegistry.registerTileEntity(TileEntityArmChair.class, "arm_chair");
+    GameRegistry.registerTileEntity(TileEntityWoodenBench.class, "wooden_bench");
+    GameRegistry.registerTileEntity(TileEntityWoodenChair.class, "wooden_chair");
+    GameRegistry.registerTileEntity(TileEntityWoodenStool.class, "wooden_stool");
   }
 
+  /**
+   * Enregistre les entités.
+   */
   private void registerEntities() {
     EntityRegistry.registerModEntity(EntityGrapnel.class, "grapnel", 1000, this, 10, 3, true);
     EntityRegistry.registerModEntity(EntitySailBoat.class, "sailboat", 1001, this, 80, 3, true);
@@ -157,15 +177,5 @@ public class McfrMain {
     EntityRegistry.registerModEntity(EntityHoen.class, "hoen", 3, this, 80, 3, true, 0x7E1620, 0x514445);
     EntityRegistry.registerModEntity(EntityGalt.class, "galt", 4, this, 80, 3, true, 0xc7c7c7, 0x81616F);
     EntityRegistry.registerModEntity(EntityNiale.class, "niale", 5, this, 80, 3, true, 0xd0c0c0, 0x180808);
-  }
-
-  /**
-   * Enregistre une tile entity.
-   *
-   * @param tileEntityClass la tile entity
-   * @param id son ID
-   */
-  private static void registerTileEntity(Class<? extends TileEntity> tileEntityClass, String id) {
-    GameRegistry.registerTileEntity(tileEntityClass, id);
   }
 }

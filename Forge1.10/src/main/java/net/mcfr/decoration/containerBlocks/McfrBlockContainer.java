@@ -1,7 +1,7 @@
 package net.mcfr.decoration.containerBlocks;
 
 import net.mcfr.McfrMain;
-import net.mcfr.commons.CustomGuiScreens;
+import net.mcfr.guis.CustomGuiScreens;
 import net.mcfr.utils.NameUtils;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.SoundType;

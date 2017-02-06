@@ -1,7 +1,7 @@
 package net.mcfr.craftsmanship;
 
-import net.mcfr.commons.CustomGuiScreens;
 import net.mcfr.craftsmanship.tileEntities.TileEntityCircularSaw;
+import net.mcfr.guis.CustomGuiScreens;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.EnumBlockRenderType;
 

@@ -1,7 +1,7 @@
 package net.mcfr.decoration.containerBlocks;
 
-import net.mcfr.commons.CustomGuiScreens;
 import net.mcfr.decoration.containerBlocks.tileEntities.TileEntityLittleChest;
+import net.mcfr.guis.CustomGuiScreens;
 import net.mcfr.utils.FacingUtils;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;

@@ -163,14 +163,12 @@ import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 /**
- * Cette classe regroupe tous les blocs du serveur.
+ * Cette classe regroupe tous les blocs du mod.
  * <p>
  * Les blocs <i>vanilla</i> suivant ont été modifiés&nbsp;:
  * <ul>
@@ -1285,7 +1283,6 @@ public final class McfrBlocks {
    * Enregistre un bloc ayant des variantes.
    *
    * @param block le bloc
-   * @param clazz la classe de l'item correspondant
    */
   private static <T extends Block & IBlockWithVariants> void registerVariants(T block) {
     GameRegistry.register(new ItemBlockWithVariants(block));
@@ -1306,21 +1303,7 @@ public final class McfrBlocks {
   }
 
   /**
-   * Ajoute une recette pour le four.
-   *
-   * @param block le bloc
-   * @param result l'item résultant
-   * @param quantity la quantité
-   * @param meta le metadata
-   * @param xp la quantité d'XP
-   */
-  @SuppressWarnings("unused")
-  private static void addSmelting(Block block, Item result, int quantity, int meta, float xp) {
-    GameRegistry.addSmelting(block, new ItemStack(result, quantity, meta), xp);
-  }
-
-  /**
-   * Cette méthode retourne la lanterne correspondant à la couleur demandée et au type demandés.
+   * Cette méthode retourne la lanterne correspondant à la couleur et au type demandés.
    *
    * @param color la couleur
    * @param isPaper la lanterne est en papier ou non

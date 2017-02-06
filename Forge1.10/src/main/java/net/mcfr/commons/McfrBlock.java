@@ -28,7 +28,7 @@ public class McfrBlock extends Block {
   public McfrBlock(String name, Material material, SoundType sound, float hardness, float resistance, String tool, int harvestLevel, CreativeTabs tab) {
     this(name, material, material.getMaterialMapColor(), sound, hardness, resistance, tool, harvestLevel, tab);
   }
-  
+
   /**
    * Instancie un nouveau bloc.
    * 
@@ -46,11 +46,11 @@ public class McfrBlock extends Block {
     super(material, mapColor);
     setResistance(resistance);
     setHardness(hardness);
-    if (tool != null) setHarvestLevel(tool, harvestLevel);
+    if (tool != null)
+      setHarvestLevel(tool, harvestLevel);
     setSoundType(sound);
     setCreativeTab(tab);
     setRegistryName(name);
     setUnlocalizedName(NameUtils.getUnlocalizedName(name));
   }
-  
 }
