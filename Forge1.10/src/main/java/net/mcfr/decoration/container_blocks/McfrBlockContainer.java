@@ -19,11 +19,30 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
+/**
+ * Classe de base des conteneurs du mod.
+ * 
+ * @author Mc-Fr
+ *
+ * @param <T> le type de la tile entity
+ */
 public abstract class McfrBlockContainer<T extends TileEntity & IInventory> extends BlockContainer {
+  /** Classe de la tile entity */
   private final Class<T> teClass;
 
-  public McfrBlockContainer(String name, Material materialIn, SoundType sound, float hardness, float resistance, String tool, Class<T> teClass) {
-    super(materialIn);
+  /**
+   * Crée un nouveau conteneur.
+   * 
+   * @param name le nom
+   * @param material le matériau
+   * @param sound le type de son
+   * @param hardness la dureté
+   * @param resistance la résistance aux explosions
+   * @param tool l'outil nécessaire
+   * @param teClass la classe de la tile entity
+   */
+  public McfrBlockContainer(String name, Material material, SoundType sound, float hardness, float resistance, String tool, Class<T> teClass) {
+    super(material);
     this.teClass = teClass;
     setRegistryName(name);
     setUnlocalizedName(NameUtils.getUnlocalizedName(name));
@@ -34,6 +53,9 @@ public abstract class McfrBlockContainer<T extends TileEntity & IInventory> exte
     setCreativeTab(CreativeTabs.DECORATIONS);
   }
 
+  /**
+   * @return la classe de la tile entity
+   */
   public Class<T> getTileEntityClass() {
     return this.teClass;
   }
@@ -46,6 +68,9 @@ public abstract class McfrBlockContainer<T extends TileEntity & IInventory> exte
   @Override
   public abstract T createNewTileEntity(World worldIn, int meta);
 
+  /**
+   * @return l'interface à afficher
+   */
   public abstract CustomGuiScreens getGui();
 
   @Override

@@ -6,6 +6,11 @@ import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.world.World;
 
+/**
+ * Fût de nourriture.
+ *
+ * @author Mc-Fr
+ */
 public class BlockFoodCrate extends McfrBlockContainer<TileEntityFoodCrate> {
   public BlockFoodCrate() {
     super("food_crate", Material.WOOD, SoundType.WOOD, 2, 5, "axe", TileEntityFoodCrate.class);

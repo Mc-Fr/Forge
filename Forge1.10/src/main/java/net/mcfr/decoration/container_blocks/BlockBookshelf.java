@@ -19,6 +19,11 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+/**
+ * Bibliothèque.
+ *
+ * @author Mc-Fr
+ */
 public class BlockBookshelf extends McfrBlockContainer<TileEntityBookshelf> implements IBlockWithVariants {
   public static final PropertyEnum<BlockPlanks.EnumType> VARIANT = PropertyEnum.create("variant", BlockPlanks.EnumType.class);
 

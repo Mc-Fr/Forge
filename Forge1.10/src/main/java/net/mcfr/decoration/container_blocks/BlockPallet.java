@@ -11,14 +11,21 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
+/**
+ * Palette.
+ *
+ * @author Mc-Fr
+ */
 public class BlockPallet extends McfrBlockContainer<TileEntityPallet> {
+  private static final AxisAlignedBB AABB = new AxisAlignedBB(0, 0, 0, 1, 0.1875f, 1);
+
   public BlockPallet() {
     super("pallet", Material.WOOD, SoundType.WOOD, 2, 5, "axe", TileEntityPallet.class);
   }
 
   @Override
   public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
-    return new AxisAlignedBB(0, 0, 0, 1, 3 / 16f, 1);
+    return AABB;
   }
 
   @Override

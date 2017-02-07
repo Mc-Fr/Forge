@@ -14,6 +14,11 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 
+/**
+ * Tonneau vide.
+ *
+ * @author Mc-Fr
+ */
 public class BlockEmptyBarrel extends McfrBlock {
   public BlockEmptyBarrel() {
     super("empty_barrel_block", Material.WOOD, SoundType.WOOD, 2f, 5f, "axe", 0, null);

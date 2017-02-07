@@ -6,6 +6,11 @@ import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.world.World;
 
+/**
+ * Caisse.
+ *
+ * @author Mc-Fr
+ */
 public class BlockCrate extends McfrBlockContainer<TileEntityCrate> {
   public BlockCrate() {
     super("crate", Material.WOOD, SoundType.WOOD, 2, 5, "axe", TileEntityCrate.class);

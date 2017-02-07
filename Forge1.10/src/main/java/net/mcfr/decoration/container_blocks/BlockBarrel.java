@@ -37,10 +37,11 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 /**
- * Classe représentant un tonneau. Chaque tonneau non vide peut vieillir en fonction de son l'environnement et a un
- * nombre d'utilisations limité. L'age est indiqué par la propriété AGE allant de 0 à 7 et le nombre d'utilisations est
- * stocké dans la Tile Entity associée.<br/>
- * Le metadata de l'item associé indique l'age du tonneau et sa durabilité indique le nombre d'utilisations.
+ * Classe représentant un tonneau. Chaque tonneau non vide peut vieillir en fonction de son
+ * l'environnement et a un nombre d'utilisations limité. L'age est indiqué par la propriété AGE
+ * allant de 0 à 7 et le nombre d'utilisations est stocké dans la tile entity associée.<br/>
+ * Le metadata de l'item associé indique l'age du tonneau et sa durabilité indique le nombre
+ * d'utilisations.
  *
  * @author Mc-Fr
  */
@@ -48,6 +49,7 @@ public abstract class BlockBarrel extends BlockContainer {
   public static final PropertyInteger AGE = PropertyInteger.create("age", 0, 7);
   public static final int MAX_DURABILITY = 7;
 
+  /** Le gestionnaire des tile entities */
   public static final TileEntityBarrelSaver TILE_ENTITY_SAVER = new TileEntityBarrelSaver();
 
   public BlockBarrel(String name) {
@@ -87,20 +89,38 @@ public abstract class BlockBarrel extends BlockContainer {
     return EnumBlockRenderType.MODEL;
   }
 
+  /**
+   * @return l'item correspondant
+   */
   public abstract Item getItemDropped();
 
+  /**
+   * @return le récipient vide
+   */
   public abstract Item getEmptyContainer();
 
+  /**
+   * @return le récipient plein
+   */
   public abstract Item getFullContainer();
 
+  /**
+   * @return la profondeur minimale
+   */
   public int getMinDepth() {
     return 15;
   }
 
+  /**
+   * @return la luminosité optimale
+   */
   public int getOptimalLight() {
     return 8;
   }
 
+  /**
+   * @return la température optimale
+   */
   public float getOptimalTemperature() {
     return 0.8f;
   }
@@ -111,24 +131,22 @@ public abstract class BlockBarrel extends BlockContainer {
   }
 
   @Override
-  public List<ItemStack> getDrops(IBlockAccess worldIn, BlockPos pos, IBlockState state, int fortune) {
+  public List<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
     List<ItemStack> stacks = new ArrayList<>();
     ItemStack stack = new ItemStack(getItemDropped(), 1, state.getValue(AGE));
+    TileEntityBarrel te = TILE_ENTITY_SAVER.get((World) world, pos);
 
-    TileEntityBarrel tileEntity = TILE_ENTITY_SAVER.get((World) worldIn, pos);
-    if (tileEntity != null) {
+    if (te != null) {
       NBTTagCompound display = new NBTTagCompound();
       NBTTagList lore = new NBTTagList();
 
-      lore.appendTag(new NBTTagString(String.format("§r§7Durabilité : %d/%d", tileEntity.getDurability(), MAX_DURABILITY)));
+      lore.appendTag(new NBTTagString(String.format("§r§7Durabilité : %d/%d", te.getDurability(), MAX_DURABILITY)));
       display.setTag("Lore", lore);
       stack.setTagInfo("display", display);
-      stack.setTagInfo("durability", new NBTTagInt(tileEntity.getDurability()));
+      stack.setTagInfo("durability", new NBTTagInt(te.getDurability()));
 
       stacks.add(stack);
-      TILE_ENTITY_SAVER.remove((World) worldIn, pos);
-    } else {
-      System.out.println("TPD");
+      TILE_ENTITY_SAVER.remove((World) world, pos);
     }
 
     return stacks;
@@ -147,16 +165,15 @@ public abstract class BlockBarrel extends BlockContainer {
   }
 
   @Override
-  public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, @Nullable ItemStack heldItem,
-      EnumFacing side, float hitX, float hitY, float hitZ) {
+  public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, @Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
     TileEntityBarrel tileEntity = (TileEntityBarrel) worldIn.getTileEntity(pos);
     ItemStack stack = playerIn.inventory.getCurrentItem();
 
     if (stack != null) {
       if (stack.getItem() == Items.ENDER_EYE && stack.stackSize == 29) {
         useCheat(worldIn, pos);
-      } else if (getEmptyContainer() != null && getFullContainer() != null && stack.getItem() == getEmptyContainer()
-          && tileEntity.getDurability() > 0) {
+      }
+      else if (getEmptyContainer() != null && getFullContainer() != null && stack.getItem() == getEmptyContainer() && tileEntity.getDurability() > 0) {
         useEmptyContainer(worldIn, pos, playerIn, stack, tileEntity);
       }
     }
@@ -208,9 +225,7 @@ public abstract class BlockBarrel extends BlockContainer {
       }
     }
 
-    float malus = Math.min(
-        (float) Math.max(minDepth - depth, 0) / 10 + (float) Math.abs(light - optimalLight) / 10 + Math.abs((optimalTemp - temperature) * 2),
-        maxMalus);
+    float malus = Math.min((float) Math.max(minDepth - depth, 0) / 10 + (float) Math.abs(light - optimalLight) / 10 + Math.abs((optimalTemp - temperature) * 2), maxMalus);
 
     if (light == 15 || depth <= 1) {
       malus = maxMalus;
@@ -220,59 +235,64 @@ public abstract class BlockBarrel extends BlockContainer {
     int random = rand.nextInt(100);
 
     switch (age) {
-    case 0:
-      if (minute >= duration) {
-        if (random <= 40 - malus * 2) {
-          age = 1;
-          updated = true;
-        } else {
-          tileEntity.setCreationDate(new Date().getTime());
-          tileEntity.validate();
-          worldIn.setTileEntity(pos, tileEntity);
-        }
-      }
-      break;
-    case 2:
-      if (minute >= duration) {
-        if (random <= 25 - malus * 2) {
-          age = 3;
-          updated = true;
-        } else {
-          tileEntity.setCreationDate(new Date().getTime());
-          tileEntity.validate();
-          worldIn.setTileEntity(pos, tileEntity);
-        }
-      }
-      break;
-    case 4:
-      if (minute >= duration * 2) {
-        if (random <= 10 - malus * 2) {
-          final Random rand2 = new Random();
-          if (rand2.nextInt(100) < 10 && malus <= 3) {
-            age = 6;
-          } else {
-            age = 5;
+      case 0:
+        if (minute >= duration) {
+          if (random <= 40 - malus * 2) {
+            age = 1;
+            updated = true;
           }
-          updated = true;
-        } else {
-          tileEntity.setCreationDate(new Date().getTime());
-          tileEntity.validate();
-          worldIn.setTileEntity(pos, tileEntity);
+          else {
+            tileEntity.setCreationDate(new Date().getTime());
+            tileEntity.validate();
+            worldIn.setTileEntity(pos, tileEntity);
+          }
         }
-      }
-      break;
-    case 6:
-      if (minute >= duration * 4) {
-        if (random <= 5) {
-          age = 7;
-          updated = true;
-        } else {
-          tileEntity.setCreationDate(new Date().getTime());
-          tileEntity.validate();
-          worldIn.setTileEntity(pos, tileEntity);
+        break;
+      case 2:
+        if (minute >= duration) {
+          if (random <= 25 - malus * 2) {
+            age = 3;
+            updated = true;
+          }
+          else {
+            tileEntity.setCreationDate(new Date().getTime());
+            tileEntity.validate();
+            worldIn.setTileEntity(pos, tileEntity);
+          }
         }
-      }
-      break;
+        break;
+      case 4:
+        if (minute >= duration * 2) {
+          if (random <= 10 - malus * 2) {
+            final Random rand2 = new Random();
+            if (rand2.nextInt(100) < 10 && malus <= 3) {
+              age = 6;
+            }
+            else {
+              age = 5;
+            }
+            updated = true;
+          }
+          else {
+            tileEntity.setCreationDate(new Date().getTime());
+            tileEntity.validate();
+            worldIn.setTileEntity(pos, tileEntity);
+          }
+        }
+        break;
+      case 6:
+        if (minute >= duration * 4) {
+          if (random <= 5) {
+            age = 7;
+            updated = true;
+          }
+          else {
+            tileEntity.setCreationDate(new Date().getTime());
+            tileEntity.validate();
+            worldIn.setTileEntity(pos, tileEntity);
+          }
+        }
+        break;
     }
 
     if (updated) {
@@ -304,16 +324,16 @@ public abstract class BlockBarrel extends BlockContainer {
     int slot = itemstack.stackSize == 1 ? inv.currentItem : inv.getFirstEmptyStack();
 
     inv.setInventorySlotContents(slot, new ItemStack(getFullContainer(), 1, worldIn.getBlockState(pos).getValue(AGE)));
-    if (itemstack.stackSize != 1) {
-      --itemstack.stackSize;
-    }
+    if (itemstack.stackSize != 1)
+      itemstack.stackSize--;
     tileEntity.setDurability(tileEntity.getDurability() - 1);
     tileEntity.validate();
 
     if (tileEntity.getDurability() == 0) {
       worldIn.setBlockState(pos, McfrBlocks.EMPTY_BARREL.getDefaultState());
       worldIn.removeTileEntity(pos);
-    } else {
+    }
+    else {
       worldIn.setTileEntity(pos, tileEntity);
     }
   }
