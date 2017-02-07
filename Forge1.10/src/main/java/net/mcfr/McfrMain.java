@@ -32,7 +32,8 @@ import net.mcfr.entities.mobs.entity.EntityGalt;
 import net.mcfr.entities.mobs.entity.EntityHoen;
 import net.mcfr.entities.mobs.entity.EntityNiale;
 import net.mcfr.entities.mobs.entity.EntitySiker;
-import net.mcfr.event.EventsHandler;
+import net.mcfr.event.BlockEventsHandler;
+import net.mcfr.event.PlayerEventsHandler;
 import net.mcfr.forge.tile_entities.TileEntityBellows;
 import net.mcfr.forge.tile_entities.TileEntityStove;
 import net.mcfr.network.AddChatBubbleMessage;
@@ -113,7 +114,8 @@ public class McfrMain {
    */
   private void registerEventHandlers() {
     MinecraftForge.EVENT_BUS.register(BlockBarrel.TILE_ENTITY_SAVER);
-    MinecraftForge.EVENT_BUS.register(new EventsHandler());
+    MinecraftForge.EVENT_BUS.register(new PlayerEventsHandler());
+    MinecraftForge.EVENT_BUS.register(new BlockEventsHandler());
   }
 
   /**
