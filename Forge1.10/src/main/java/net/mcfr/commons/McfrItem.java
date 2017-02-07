@@ -76,6 +76,6 @@ public class McfrItem extends Item {
   @Override
   public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
     super.addInformation(stack, playerIn, tooltip, advanced);
-    NameUtils.addItemInformation(stack.getItem(), stack, playerIn, tooltip, advanced);
+    NameUtils.addItemInformation(stack.getItem(), stack, playerIn, tooltip);
   }
 }

@@ -93,7 +93,7 @@ import net.mcfr.forge.tile_entities.TileEntityBellows;
 import net.mcfr.forge.tile_entities.TileEntityBellowsRenderer;
 import net.mcfr.misc.ItemDecoratedRing;
 import net.mcfr.misc.ItemRing;
-import net.mcfr.utils.ColorHandler;
+import net.mcfr.utils.BiomeColorHandler;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockPlanks;
 import net.minecraft.client.Minecraft;
@@ -897,7 +897,7 @@ public class ClientProxy extends CommonProxy {
     RenderingRegistry.registerEntityRenderingHandler(EntityGalt.class, new RenderGalt(Minecraft.getMinecraft().getRenderManager(), new ModelGalt(), 1.2F));
     RenderingRegistry.registerEntityRenderingHandler(EntityNiale.class, new RenderNiale(Minecraft.getMinecraft().getRenderManager(), new ModelNiale(), 0.8F));
 
-    ColorHandler.init();
+    BiomeColorHandler.init();
   }
 
   /**

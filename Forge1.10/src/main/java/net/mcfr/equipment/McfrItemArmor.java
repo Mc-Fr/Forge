@@ -43,7 +43,7 @@ public class McfrItemArmor extends ItemArmor {
   @Override
   public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
     super.addInformation(stack, playerIn, tooltip, advanced);
-    NameUtils.addItemInformation(this, stack, playerIn, tooltip, advanced);
+    NameUtils.addItemInformation(this, stack, playerIn, tooltip);
   }
 
   @Override

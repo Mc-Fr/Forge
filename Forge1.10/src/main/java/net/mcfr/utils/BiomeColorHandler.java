@@ -22,8 +22,16 @@ import net.minecraft.world.biome.BiomeColorHelper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+/**
+ * Cette classe s'occupe de la gestion des couleurs des biomes sur les blocs et items.
+ *
+ * @author Mc-Fr
+ */
 @SideOnly(Side.CLIENT)
-public final class ColorHandler {
+public final class BiomeColorHandler {
+  /**
+   * Enregistre les gestionnaires.
+   */
   public static void init() {
     Minecraft minecraft = Minecraft.getMinecraft();
     BlockColors blockColors = minecraft.getBlockColors();
@@ -33,6 +41,11 @@ public final class ColorHandler {
     registerItemsColorHandlers(blockColors, itemColors);
   }
 
+  /**
+   * Enregistre le rendu des blocs.
+   * 
+   * @param blockColors le gestionnaire de couleurs des blocs
+   */
   private static void registerBlocksColorHandlers(BlockColors blockColors) {
     // Utilise la couleur du biome ou celle par défaut.
     IBlockColor foliageColorHandler = new IBlockColor() {
@@ -83,7 +96,13 @@ public final class ColorHandler {
     blockColors.registerBlockColorHandler(grassColorHandler, WILD_GRASS);
   }
 
-  private static void registerItemsColorHandlers(final BlockColors blockColors, ItemColors itemColors) {
+  /**
+   * Enregistre le rendu des items.
+   * 
+   * @param blockColors le gestionnaire de couleurs des blocs
+   * @param itemColors le gestionnaire de couleurs des items
+   */
+  private static void registerItemsColorHandlers(BlockColors blockColors, ItemColors itemColors) {
     // Utilise le gestionnaire du bloc pour l'item.
     IItemColor itemBlockColorHandler = new IItemColor() {
       @SuppressWarnings("deprecation")
@@ -118,4 +137,6 @@ public final class ColorHandler {
 
     itemColors.registerItemColorHandler(itemBlockColorHandler, WILD_GRASS);
   }
+
+  private BiomeColorHandler() {}
 }

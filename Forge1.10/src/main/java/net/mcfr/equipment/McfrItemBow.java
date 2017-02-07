@@ -26,7 +26,7 @@ public class McfrItemBow extends ItemBow {
   @Override
   public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
     super.addInformation(stack, playerIn, tooltip, advanced);
-    NameUtils.addItemInformation(this, stack, playerIn, tooltip, advanced);
+    NameUtils.addItemInformation(this, stack, playerIn, tooltip);
   }
   
   public float getCharge() {
