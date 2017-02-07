@@ -1,4 +1,4 @@
-package net.mcfr.utils;
+package net.mcfr.utils.math;
 
 import net.minecraft.util.math.MathHelper;
 

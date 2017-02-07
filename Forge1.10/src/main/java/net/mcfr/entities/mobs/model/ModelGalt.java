@@ -2,7 +2,7 @@ package net.mcfr.entities.mobs.model;
 
 import net.mcfr.entities.mobs.gender.EntityGendered;
 import net.mcfr.entities.mobs.gender.Genders;
-import net.mcfr.utils.FourierUtils;
+import net.mcfr.utils.math.FourierUtils;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.client.renderer.GlStateManager;
