@@ -10,6 +10,11 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+/**
+ * Interface de l'atelier large.
+ *
+ * @author Mc-Fr
+ */
 @SideOnly(Side.CLIENT)
 public class GuiLargeWorkbench extends GuiContainer {
   private static final ResourceLocation WORKBENCH_GUI_TEXTURES = new ResourceLocation(Constants.MOD_ID, "textures/gui/container/crafting_large.png");

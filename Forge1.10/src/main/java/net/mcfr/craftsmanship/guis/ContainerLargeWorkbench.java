@@ -15,15 +15,26 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
+/**
+ * Conteneur de l'atelier large et de l'enclume.
+ *
+ * @author Mc-Fr
+ */
 public class ContainerLargeWorkbench extends Container {
-  private InventoryCrafting craftMatrix = new InventoryCrafting(this, 5, 5);
-  private IInventory craftResult = new InventoryCraftResult();
+  /** La matrice de craft */
+  private InventoryCrafting craftMatrix;
+  /** L'inventaire correspondant au résultat */
+  private IInventory craftResult;
+  /** Le monde */
   private World world;
+  /** La position */
   private BlockPos pos;
 
-  public ContainerLargeWorkbench(InventoryPlayer playerInventory, World worldIn, BlockPos posIn) {
-    this.world = worldIn;
-    this.pos = posIn;
+  public ContainerLargeWorkbench(InventoryPlayer playerInventory, World world, BlockPos pos) {
+    this.craftMatrix = new InventoryCrafting(this, 5, 5);
+    this.craftResult = new InventoryCraftResult();
+    this.world = world;
+    this.pos = pos;
 
     addSlotToContainer(new SlotCrafting(playerInventory.player, this.craftMatrix, this.craftResult, 0, 130, 54));
     int yOffset = TOP_OFFSET;
@@ -51,18 +62,30 @@ public class ContainerLargeWorkbench extends Container {
     onCraftMatrixChanged(this.craftMatrix);
   }
 
+  /**
+   * @return la matrice de craft
+   */
   protected InventoryCrafting getCraftMatrix() {
     return this.craftMatrix;
   }
 
+  /**
+   * @return le résultat
+   */
   protected IInventory getCraftResult() {
     return this.craftResult;
   }
 
+  /**
+   * @return le monde
+   */
   protected World getWorld() {
     return this.world;
   }
 
+  /**
+   * @return la position
+   */
   protected BlockPos getPos() {
     return this.pos;
   }

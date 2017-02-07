@@ -10,9 +10,23 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 
+/**
+ * Le conteneur de base des blocs artisan.
+ *
+ * @author Mc-Fr
+ */
 public class ContainerRack extends Container {
+  /** L'inventaire du bloc */
   private IInventory rackInventory;
 
+  /**
+   * Crée un nouveau conteneur.
+   * 
+   * @param playerInventory l'inventaire du joueur
+   * @param rackInventory l'inventaire du bloc
+   * @param player le joueur
+   * @param blockClass la classe du bloc correspondant
+   */
   public ContainerRack(IInventory playerInventory, IInventory rackInventory, EntityPlayer player, final Class<? extends Block> blockClass) {
     this.rackInventory = rackInventory;
     this.rackInventory.openInventory(player);
