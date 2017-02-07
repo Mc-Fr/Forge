@@ -17,9 +17,23 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
+/**
+ * Classe de base des blocs artisan.
+ * 
+ * @author Mc-Fr
+ *
+ * @param <T> le type de la tile entity asscoiée
+ */
 public abstract class BlockRack<T extends TileEntityRack> extends McfrBlockContainer<T> {
   public static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
 
+  /**
+   * Crée un nouveau bloc artisan.
+   * 
+   * @param name le nom
+   * @param teClass la classe de la tile entity. Elle doit posséder un constructeur prenant un seul
+   *          argument, de type EnumFacing
+   */
   public BlockRack(String name, Class<T> teClass) {
     super(name, Material.WOOD, SoundType.WOOD, 1, 3, "axe", teClass);
   }
@@ -30,10 +44,8 @@ public abstract class BlockRack<T extends TileEntityRack> extends McfrBlockConta
 
     try {
       te = getTileEntityClass().getConstructor(EnumFacing.class).newInstance(getStateFromMeta(meta).getValue(FACING));
-    } catch (NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException
-        | InvocationTargetException e) {
-      e.printStackTrace();
     }
+    catch (NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {}
 
     return te;
   }

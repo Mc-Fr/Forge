@@ -14,6 +14,11 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
+/**
+ * Altelier large (grille 5x5).
+ *
+ * @author Mc-Fr
+ */
 public class BlockLargeWorkbench extends McfrBlock {
   public BlockLargeWorkbench() {
     super("large_workbench", Material.WOOD, SoundType.WOOD, 2, 5, "axe", 0, CreativeTabs.DECORATIONS);

@@ -10,6 +10,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+/**
+ * Manche d'épée.
+ *
+ * @author Mc-Fr
+ */
 public class ItemSwordHandle extends McfrItem {
   public ItemSwordHandle() {
     super("sword_handle", 16, CreativeTabs.MATERIALS);
@@ -29,6 +34,17 @@ public class ItemSwordHandle extends McfrItem {
     }
   }
 
+  /**
+   * Variantes du manche d'épée :
+   * <ul>
+   * <li>cuir</li>
+   * <li>fer</li>
+   * <li>or</li>
+   * <li>acier</li>
+   * </ul>
+   * 
+   * @author Mc-Fr
+   */
   public static enum EnumType implements IEnumType<EnumType> {
     LEATHER("leather"),
     IRON("iron"),

@@ -5,6 +5,11 @@ import net.mcfr.guis.CustomGuiScreens;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.EnumBlockRenderType;
 
+/**
+ * Scie circulaire.
+ *
+ * @author Mc-Fr
+ */
 public class BlockCircularSaw extends BlockRack<TileEntityCircularSaw> {
   public BlockCircularSaw() {
     super("circular_saw", TileEntityCircularSaw.class);

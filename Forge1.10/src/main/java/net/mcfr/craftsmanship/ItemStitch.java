@@ -10,6 +10,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+/**
+ * Maille métallique.
+ *
+ * @author Mc-Fr
+ */
 public class ItemStitch extends McfrItem {
   public ItemStitch() {
     super("stitch", CreativeTabs.MATERIALS);
@@ -29,6 +34,15 @@ public class ItemStitch extends McfrItem {
     }
   }
 
+  /**
+   * Variantes de la maille :
+   * <ul>
+   * <li>fer</li>
+   * <li>or</li>
+   * </ul>
+   *
+   * @author Mc-Fr
+   */
   public static enum EnumType implements IEnumType<EnumType> {
     IRON("iron"),
     GOLDEN("golden");

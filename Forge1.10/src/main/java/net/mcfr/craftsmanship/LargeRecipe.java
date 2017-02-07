@@ -5,31 +5,32 @@ import java.util.Objects;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.item.crafting.ShapedRecipes;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeHooks;
 
 /**
- * Ce type de recette est utilisé dans l'atelier large (5x5).
+ * Ce type de grande recette est utilisé dans l'atelier large (5x5).
  * 
  * @author Mc-Fr
  */
 public class LargeRecipe implements IRecipe {
+  /** Largeur de la recette */
   private final int width;
+  /** Hauteur de la recette */
   private final int height;
+  /** Items de la grille */
   private final ItemStack[] items;
+  /** Résultat */
   private final ItemStack output;
 
   /**
    * Crée une recette 5x5.
    * 
-   * @param width
-   *          la largeur de la zone
-   * @param height
-   *          la hauteur de la zone
-   * @param items
-   *          les ingrédients
-   * @param output
-   *          le résultat
+   * @param width la largeur de la zone
+   * @param height la hauteur de la zone
+   * @param items les ingrédients
+   * @param output le résultat
    */
   public LargeRecipe(int width, int height, ItemStack[] items, ItemStack output) {
     checkParameters(width, height, items, output);
@@ -39,6 +40,14 @@ public class LargeRecipe implements IRecipe {
     this.output = output;
   }
 
+  /**
+   * Vérifie les paramètres du constructeur.
+   * 
+   * @param width la largeur de la zone
+   * @param height la hauteur de la zone
+   * @param items les ingrédients
+   * @param output le résultat
+   */
   private void checkParameters(int width, int height, ItemStack[] items, ItemStack output) {
     if (width < 1 || width > 5)
       throw new IllegalArgumentException("recipe width must be between 1 and 5 inclusive");
@@ -82,7 +91,7 @@ public class LargeRecipe implements IRecipe {
   }
 
   /**
-   * Checks if the region of a crafting inventory is match for the recipe.<br />
+   * Vérifie si une zone de l'inventaire de craft correspond à la recette.<br/>
    * <i>Adapté de {@link ShapedRecipes#checkMatch}.</i>
    */
   private boolean checkMatch(InventoryCrafting grid, int x, int y, boolean b) {
@@ -95,7 +104,8 @@ public class LargeRecipe implements IRecipe {
         if (k >= 0 && l >= 0 && k < this.width && l < this.height) {
           if (b) {
             stack = this.items[this.width - k - 1 + l * this.width];
-          } else {
+          }
+          else {
             stack = this.items[k + l * this.width];
           }
         }
