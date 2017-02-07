@@ -13,13 +13,29 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 
+/**
+ * Classe de base des tile entities des blocs artisan.
+ *
+ * @author Mc-Fr
+ */
 public abstract class TileEntityRack extends TileEntityRestricted implements ITickable {
   private static final int TRANSFORM_TIME = 20;
 
+  /** L'item en train d'être transformé */
   private ItemStack currentStack;
+  /** Le nombre de ticks restant pour la transformation */
   private int remainingTicks;
+  /** L'orientation du bloc */
   private EnumFacing facing;
 
+  /**
+   * Crée une nouvelle tile entity.
+   * 
+   * @param name le nom
+   * @param facing l'orientation
+   * @param blockClass la classe du bloc correspondant
+   * @param containerClass la classe du conteneur correspondant
+   */
   public TileEntityRack(String name, EnumFacing facing, Class<? extends Block> blockClass, Class<? extends Container> containerClass) {
     super(name, 2, 64, false, blockClass, containerClass);
     this.currentStack = null;
@@ -27,6 +43,9 @@ public abstract class TileEntityRack extends TileEntityRestricted implements ITi
     this.facing = facing;
   }
 
+  /**
+   * @return l'orientation du bloc
+   */
   public EnumFacing getFacing() {
     return this.facing;
   }
@@ -69,6 +88,12 @@ public abstract class TileEntityRack extends TileEntityRestricted implements ITi
     }
   }
 
+  /**
+   * Retourne la quantité nécessaire d'un item pour qu'il puisse être transformé.
+   * 
+   * @param stack le stack
+   * @return la quantité nécessaire, ou une {@code IllegalStateException} si le stack est invalide
+   */
   private int getNecessaryAmount(ItemStack stack) {
     for (HashedItemStack s : ItemsLists.getMapForClass(getBlockClass()).keySet()) {
       if (stack.getItem() == s.getStack().getItem() && stack.getMetadata() == s.getStack().getMetadata())
@@ -78,6 +103,12 @@ public abstract class TileEntityRack extends TileEntityRestricted implements ITi
     throw new IllegalStateException("Stack invalide : " + stack);
   }
 
+  /**
+   * Retourne l'espace nécessaire pour la transformation de l'item donné.
+   * 
+   * @param stack le stack
+   * @return l'espace nécessaire
+   */
   private int getNecessaryOutSpace(ItemStack stack) {
     for (Map.Entry<HashedItemStack, HashedItemStack> entry : ItemsLists.getMapForClass(getBlockClass()).entrySet()) {
       ItemStack stackIn = entry.getKey().getStack();
@@ -116,6 +147,9 @@ public abstract class TileEntityRack extends TileEntityRestricted implements ITi
     return false;
   }
 
+  /**
+   * @return l'espace disponible dans la case de sortie
+   */
   private int getFreeOutputSpace() {
     ItemStack out = getStackInSlot(1);
     return out == null ? 64 : out.getItem().getItemStackLimit(out) - out.stackSize;
@@ -126,6 +160,9 @@ public abstract class TileEntityRack extends TileEntityRestricted implements ITi
     return index == 1 || stack == null || ItemsLists.isItemValid(getBlockClass(), stack);
   }
 
+  /**
+   * @return la progression de la transformation (entre 0 et 1)
+   */
   public float getProgress() {
     return (float) (TRANSFORM_TIME - this.remainingTicks) / TRANSFORM_TIME;
   }

@@ -4,7 +4,16 @@ import net.mcfr.craftsmanship.BlockTanningRack;
 import net.mcfr.craftsmanship.guis.ContainerRack;
 import net.minecraft.util.EnumFacing;
 
+/**
+ * Tile entity de l'atelier de tannage.
+ *
+ * @author Mc-Fr
+ */
 public class TileEntityTanningRack extends TileEntityRack {
+  /**
+   * Crée une tile entity orientée vers le nord.<br/>
+   * <i>Constructeur requis par Forge</i>.
+   */
   public TileEntityTanningRack() {
     this(EnumFacing.NORTH);
   }

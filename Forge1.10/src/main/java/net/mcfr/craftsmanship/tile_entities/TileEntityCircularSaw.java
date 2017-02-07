@@ -4,7 +4,16 @@ import net.mcfr.craftsmanship.BlockCircularSaw;
 import net.mcfr.craftsmanship.guis.ContainerRack;
 import net.minecraft.util.EnumFacing;
 
+/**
+ * Tile entity de la scie circulaire.
+ *
+ * @author Mc-Fr
+ */
 public class TileEntityCircularSaw extends TileEntityRack {
+  /**
+   * Crée une tile entity orientée vers le nord.<br/>
+   * <i>Constructeur requis par Forge</i>.
+   */
   public TileEntityCircularSaw() {
     this(EnumFacing.NORTH);
   }
