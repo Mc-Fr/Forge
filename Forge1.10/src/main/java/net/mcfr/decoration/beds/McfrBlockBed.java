@@ -5,7 +5,6 @@ import java.util.Random;
 import net.mcfr.utils.NameUtils;
 import net.minecraft.block.BlockBed;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Biomes;
 import net.minecraft.item.Item;
@@ -20,9 +19,22 @@ import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
+/**
+ * Classe de base des lits du mod.
+ *
+ * @author Mc-Fr
+ */
 public abstract class McfrBlockBed extends BlockBed {
+  /** La hauteur de la hitbox */
   private final float height;
 
+  /**
+   * Crée un lit.
+   * 
+   * @param name le nom (sans le suffixe '_block')
+   * @param height la hauteur de la hitbox
+   * @param hardness la dureté
+   */
   public McfrBlockBed(String name, float height, float hardness) {
     super();
     if (height > 1)
@@ -44,69 +56,74 @@ public abstract class McfrBlockBed extends BlockBed {
     return getBoundingBox(blockState, worldIn, pos);
   }
 
-  // TEMP
   @Override
-  public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
-    if (worldIn.isRemote) {
+  public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
+    if (world.isRemote) {
       return true;
     }
     else {
       if (state.getValue(PART) != BlockBed.EnumPartType.HEAD) {
-        pos = pos.offset((EnumFacing) state.getValue(FACING));
-        state = worldIn.getBlockState(pos);
+        pos = pos.offset(state.getValue(FACING));
+        state = world.getBlockState(pos);
 
-        if (state.getBlock() != this) {
+        if (state.getBlock() != this)
           return true;
-        }
       }
 
-      if (worldIn.provider.canRespawnHere() && worldIn.getBiomeGenForCoords(pos) != Biomes.HELL) {
-        if (((Boolean) state.getValue(OCCUPIED)).booleanValue()) {
-          EntityPlayer entityplayer = this.getPlayerInBed(worldIn, pos);
+      if (world.provider.canRespawnHere() && world.getBiomeGenForCoords(pos) != Biomes.HELL) {
+        if (state.getValue(OCCUPIED)) {
+          EntityPlayer sleepingPlayer = this.getPlayerInBed(world, pos);
 
-          if (entityplayer != null) {
-            playerIn.addChatComponentMessage(new TextComponentTranslation("tile.bed.occupied", new Object[0]));
+          if (sleepingPlayer != null) {
+            player.addChatComponentMessage(new TextComponentTranslation("tile.bed.occupied"));
             return true;
           }
 
-          state = state.withProperty(OCCUPIED, Boolean.valueOf(false));
-          worldIn.setBlockState(pos, state, 4);
+          state = state.withProperty(OCCUPIED, false);
+          world.setBlockState(pos, state, 4);
         }
 
-        EntityPlayer.SleepResult entityplayer$sleepresult = playerIn.trySleep(pos);
+        EntityPlayer.SleepResult sleepResult = player.trySleep(pos);
 
-        if (entityplayer$sleepresult == EntityPlayer.SleepResult.OK) {
-          state = state.withProperty(OCCUPIED, Boolean.valueOf(true));
-          worldIn.setBlockState(pos, state, 4);
+        if (sleepResult == EntityPlayer.SleepResult.OK) {
+          state = state.withProperty(OCCUPIED, true);
+          world.setBlockState(pos, state, 4);
           return true;
         }
         else {
-          if (entityplayer$sleepresult == EntityPlayer.SleepResult.NOT_POSSIBLE_NOW) {
-            playerIn.addChatComponentMessage(new TextComponentTranslation("tile.bed.noSleep", new Object[0]));
+          if (sleepResult == EntityPlayer.SleepResult.NOT_POSSIBLE_NOW) {
+            player.addChatComponentMessage(new TextComponentTranslation("tile.bed.noSleep"));
           }
-          else if (entityplayer$sleepresult == EntityPlayer.SleepResult.NOT_SAFE) {
-            playerIn.addChatComponentMessage(new TextComponentTranslation("tile.bed.notSafe", new Object[0]));
+          else if (sleepResult == EntityPlayer.SleepResult.NOT_SAFE) {
+            player.addChatComponentMessage(new TextComponentTranslation("tile.bed.notSafe"));
           }
 
           return true;
         }
       }
       else {
-        worldIn.setBlockToAir(pos);
-        BlockPos blockpos = pos.offset(((EnumFacing) state.getValue(FACING)).getOpposite());
+        world.setBlockToAir(pos);
+        BlockPos blockpos = pos.offset(state.getValue(FACING).getOpposite());
 
-        if (worldIn.getBlockState(blockpos).getBlock() == this) {
-          worldIn.setBlockToAir(blockpos);
-        }
+        if (world.getBlockState(blockpos).getBlock() == this)
+          world.setBlockToAir(blockpos);
 
-        worldIn.newExplosion((Entity) null, (double) pos.getX() + 0.5D, (double) pos.getY() + 0.5D, (double) pos.getZ() + 0.5D, 5.0F, true, true);
+        world.newExplosion(null, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, 5f, true, true);
+
         return true;
       }
     }
   }
 
-  private EntityPlayer getPlayerInBed(World worldIn, BlockPos pos) {
-    for (EntityPlayer entityplayer : worldIn.playerEntities) {
+  /**
+   * Retourne le joueur présent dans le lit ou null s'il n'y en a pas.
+   * 
+   * @param world le monde
+   * @param pos la position
+   * @return le joueur ou null
+   */
+  private EntityPlayer getPlayerInBed(World world, BlockPos pos) {
+    for (EntityPlayer entityplayer : world.playerEntities) {
       if (entityplayer.isPlayerSleeping() && entityplayer.playerLocation.equals(pos)) {
         return entityplayer;
       }
@@ -125,6 +142,9 @@ public abstract class McfrBlockBed extends BlockBed {
     return new ItemStack(getItemToDrop());
   }
 
+  /**
+   * @return l'item correspondant
+   */
   protected abstract ItemBed getItemToDrop();
 
   @Override

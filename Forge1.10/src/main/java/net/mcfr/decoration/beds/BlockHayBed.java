@@ -4,6 +4,11 @@ import net.mcfr.McfrItems;
 import net.minecraft.block.SoundType;
 import net.minecraft.item.ItemBed;
 
+/**
+ * Lit de paille.
+ *
+ * @author Mc-Fr
+ */
 public class BlockHayBed extends McfrBlockBed {
   public BlockHayBed() {
     super("hay_bed", 0.5625f, 0.2f);
