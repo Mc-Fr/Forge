@@ -15,17 +15,35 @@ import net.minecraft.tileentity.TileEntityLockable;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 
+/**
+ * Tile entity de base pour les conteneurs du mod.
+ *
+ * @author Mc-Fr
+ */
 public abstract class McfrTileEntityLockable extends TileEntityLockable {
+  /** Le nom */
   private String name;
+  /** L'inventaire */
   private ItemStack[] stacks;
-  private int stackSize;
+  /** La taille maximale des stacks */
+  private int maxStackSize;
+  /** Le nombre de joueurs utilisant le conteneur */
   private int numberPlayerUsing;
+  /** Indique si un son doit être joué à l'ouverture et la fermeture du conteneur */
   private boolean playSounds;
 
-  public McfrTileEntityLockable(String name, int size, int stackSize, boolean playSounds) {
+  /**
+   * Crée une tile entity.
+   * 
+   * @param name le nom
+   * @param size la taille de l'inventaire
+   * @param maxStackSize la taille maximale des stacks
+   * @param playSounds indique si un son doit être joué à l'ouverture et la fermeture du conteneur
+   */
+  public McfrTileEntityLockable(String name, int size, int maxStackSize, boolean playSounds) {
     this.name = name;
     this.stacks = new ItemStack[size];
-    this.stackSize = stackSize;
+    this.maxStackSize = maxStackSize;
     this.numberPlayerUsing = 0;
     this.playSounds = playSounds;
   }
@@ -142,7 +160,7 @@ public abstract class McfrTileEntityLockable extends TileEntityLockable {
 
   @Override
   public int getInventoryStackLimit() {
-    return this.stackSize;
+    return this.maxStackSize;
   }
 
   @Override
@@ -158,7 +176,7 @@ public abstract class McfrTileEntityLockable extends TileEntityLockable {
       this.numberPlayerUsing++;
 
       if (this.playSounds && this.numberPlayerUsing > 0) {
-        this.worldObj.playSound(player, new BlockPos(this.pos.getX() + 0.5, this.pos.getY() + 0.5, this.pos.getZ() + 0.5), SoundEvents.BLOCK_CHEST_OPEN, SoundCategory.BLOCKS, 0.5F, this.worldObj.rand.nextFloat() * 0.1F + 1);
+        this.worldObj.playSound(player, new BlockPos(this.pos.getX() + 0.5, this.pos.getY() + 0.5, this.pos.getZ() + 0.5), SoundEvents.BLOCK_CHEST_OPEN, SoundCategory.BLOCKS, 0.5f, this.worldObj.rand.nextFloat() * 0.1f + 1);
       }
 
       this.worldObj.addBlockEvent(this.pos, getBlockType(), 1, this.numberPlayerUsing);
@@ -173,7 +191,7 @@ public abstract class McfrTileEntityLockable extends TileEntityLockable {
       this.numberPlayerUsing--;
 
       if (this.playSounds) {
-        this.worldObj.playSound(player, new BlockPos(this.pos.getX() + 0.5, this.pos.getY() + 0.5, this.pos.getZ() + 0.5), SoundEvents.BLOCK_CHEST_CLOSE, SoundCategory.BLOCKS, 0.5F, this.worldObj.rand.nextFloat() * 0.1F + 1.1F);
+        this.worldObj.playSound(player, new BlockPos(this.pos.getX() + 0.5, this.pos.getY() + 0.5, this.pos.getZ() + 0.5), SoundEvents.BLOCK_CHEST_CLOSE, SoundCategory.BLOCKS, 0.5f, this.worldObj.rand.nextFloat() * 0.1f + 1.1f);
       }
 
       this.worldObj.addBlockEvent(this.pos, getBlockType(), 1, this.numberPlayerUsing);

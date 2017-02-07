@@ -10,20 +10,27 @@ import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 
+/**
+ * Tile entity permettant de restraindre le stockage de certains items.
+ *
+ * @author Mc-Fr
+ */
 public abstract class TileEntityRestricted extends McfrTileEntityLockable {
+  /** La classe du bloc */
   private final Class<? extends Block> blockClass;
+  /** La classe du conteneur */
   private final Class<? extends Container> containerClass;
 
   /**
-   * Crée une nouvelle Tile Entity.
+   * Crée une nouvelle tile entity.
    * 
    * @param name le nom
-   * @param size le nombre d'emplacement
-   * @param stackSize la taille maximale de chaque stack
+   * @param size la taille de l'inventaire
+   * @param stackSize la taille maximale des stacks
    * @param playSounds indique si un son doit être joué à l'ouverture et la fermeture du conteneur
-   * @param blockClass la classe du bloc associé
-   * @param containerClass la classe du conteneur associé
-   * @param authorized la liste des items autorisés
+   * @param blockClass la classe du bloc
+   * @param containerClass la classe du conteneur. Elle doit posséder un constructeur ayant la
+   *          signature suivante : {@code <init>(IInventory, IInventory, EntityPlayer, Class)}
    */
   public TileEntityRestricted(String name, int size, int stackSize, boolean playSounds, Class<? extends Block> blockClass, Class<? extends Container> containerClass) {
     super(name, size, stackSize, playSounds);
@@ -46,6 +53,9 @@ public abstract class TileEntityRestricted extends McfrTileEntityLockable {
     return stack == null || ItemsLists.isItemValid(this.blockClass, stack);
   }
 
+  /**
+   * @return la classe du bloc correspondant
+   */
   protected Class<? extends Block> getBlockClass() {
     return this.blockClass;
   }

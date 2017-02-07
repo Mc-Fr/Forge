@@ -12,7 +12,13 @@ import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
+/**
+ * Classe s'occupant du rendu des bibliothèques.
+ *
+ * @author Mc-Fr
+ */
 public class TileEntityBookshelfRenderer extends TileEntitySpecialRenderer<TileEntityBookshelf> {
+  /** Textures des différentes variantes et taux de remplisage */
   private static final Map<Integer, Map<Integer, ResourceLocation>> RESOURCES;
 
   static {
@@ -26,6 +32,7 @@ public class TileEntityBookshelfRenderer extends TileEntitySpecialRenderer<TileE
     }
   }
 
+  /** Modèle de la bibliothèque */
   private ModelBookShelf model;
 
   public TileEntityBookshelfRenderer() {

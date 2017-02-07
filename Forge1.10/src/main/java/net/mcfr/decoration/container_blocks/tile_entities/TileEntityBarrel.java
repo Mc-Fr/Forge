@@ -13,31 +13,47 @@ import net.minecraft.tileentity.TileEntity;
  * @author Mc-Fr
  */
 public class TileEntityBarrel extends TileEntity {
+  /** Timestamp de création */
   private long creationDate;
+  /** Durabilité */
   private int durability;
 
+  /**
+   * Crée une tile entity avec la date actuelle et une durabilité de -1.
+   */
   public TileEntityBarrel() {
-    this(new Date().getTime(), -1);
+    this.creationDate = new Date().getTime();
+    this.durability = -1;
   }
 
-  public TileEntityBarrel(long creationDate, int durability) {
-    super();
-    this.creationDate = creationDate;
-    this.durability = durability;
-  }
-
+  /**
+   * @return la date de création
+   */
   public long getCreationDate() {
     return this.creationDate;
   }
 
+  /**
+   * Change la date de création.
+   * 
+   * @param creationDate la nouvelle date
+   */
   public void setCreationDate(long creationDate) {
     this.creationDate = creationDate;
   }
 
+  /**
+   * @return la durabilité
+   */
   public int getDurability() {
     return this.durability;
   }
 
+  /**
+   * CHange la durabilité.
+   * 
+   * @param durability la nouvelle durabilité
+   */
   public void setDurability(int durability) {
     this.durability = durability;
   }

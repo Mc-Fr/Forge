@@ -9,7 +9,7 @@ import javax.annotation.Nullable;
 
 import net.mcfr.McfrBlocks;
 import net.mcfr.decoration.container_blocks.tile_entities.TileEntityBarrel;
-import net.mcfr.decoration.container_blocks.tile_entities.TileEntityBarrelSaver;
+import net.mcfr.event.TileEntityBarrelSaver;
 import net.mcfr.utils.NameUtils;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.BlockSlab;

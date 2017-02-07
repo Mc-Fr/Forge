@@ -1,9 +1,6 @@
 package net.mcfr.decoration.container_blocks.tile_entities;
 
-import static net.mcfr.utils.RenderUtils.bindTex;
-import static net.mcfr.utils.RenderUtils.draw;
-import static net.mcfr.utils.RenderUtils.drawQuad;
-import static net.mcfr.utils.RenderUtils.renderItem;
+import static net.mcfr.utils.RenderUtils.*;
 
 import net.mcfr.McfrBlocks;
 import net.mcfr.utils.math.Point2d;
@@ -12,9 +9,16 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.item.ItemStack;
 
+/**
+ * Classe s'occupant du rendu des palettes.
+ *
+ * @author Mc-Fr
+ */
 public class TileEntityPalletRenderer extends TileEntitySpecialRenderer<TileEntityPallet> {
-  private static final float HEIGHT = 2 / 16f;
-  private static final float W = 1 / 16f;
+  /** Hauteur de la base */
+  private static final float HEIGHT = 0.125f;
+  /** Largeur des supports */
+  private static final float W = 0.0625f;
 
   @Override
   public void renderTileEntityAt(TileEntityPallet te, double x, double y, double z, float partialTicks, int destroyStage) {
@@ -33,6 +37,9 @@ public class TileEntityPalletRenderer extends TileEntitySpecialRenderer<TileEnti
     GlStateManager.popMatrix();
   }
 
+  /**
+   * Dessine les quatre supports.
+   */
   private static void drawSupports() {
     bindTex("minecraft:textures/blocks/planks_birch.png");
 
@@ -46,6 +53,12 @@ public class TileEntityPalletRenderer extends TileEntitySpecialRenderer<TileEnti
     draw();
   }
 
+  /**
+   * Dessine un support.
+   * 
+   * @param xOffset le décalage en x
+   * @param zOffset le décalage en z
+   */
   private static void drawSupport(float xOffset, float zOffset) {
     float h = HEIGHT + 1 / 16f;
     Point3d[] p = {new Point3d(xOffset, h, zOffset), new Point3d(W + xOffset, h, zOffset), new Point3d(W + xOffset, h, W + zOffset), new Point3d(xOffset, h, W + zOffset), //
@@ -62,8 +75,13 @@ public class TileEntityPalletRenderer extends TileEntitySpecialRenderer<TileEnti
     drawQuad(p[3], p[7], p[4], p[0], t[3], t[2], t[0], t[1]);
   }
 
+  /**
+   * Dessine le contenu.
+   * 
+   * @param stacks le contenu
+   */
   private static void drawContent(ItemStack[] stacks) {
-    final float px = 1 / 16f;
+    final float px = 0.0625f;
     final float scaleFactor = 1f;
     final float blockW = 4 / scaleFactor;
 
