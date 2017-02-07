@@ -3,6 +3,11 @@ package net.mcfr.craftsmanship.models;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 
+/**
+ * Modèle de la scie circulaire.
+ *
+ * @author Mc-Fr
+ */
 public class ModelCircularSaw extends ModelBase {
   private ModelRenderer foot1;
   private ModelRenderer foot2;
@@ -101,18 +106,23 @@ public class ModelCircularSaw extends ModelBase {
     model.rotateAngleZ = z;
   }
 
-  public void renderModel(float f5) {
-    this.foot1.render(f5);
-    this.foot2.render(f5);
-    this.foot3.render(f5);
-    this.foot4.render(f5);
-    this.side1.render(f5);
-    this.side2.render(f5);
-    this.side3.render(f5);
-    this.side4.render(f5);
-    this.sideLow1.render(f5);
-    this.sideLow2.render(f5);
-    this.axle.render(f5);
-    this.saw.render(f5);
+  /**
+   * Affiche le modèle.
+   * 
+   * @param scale l'échelle
+   */
+  public void renderModel(float scale) {
+    this.foot1.render(scale);
+    this.foot2.render(scale);
+    this.foot3.render(scale);
+    this.foot4.render(scale);
+    this.side1.render(scale);
+    this.side2.render(scale);
+    this.side3.render(scale);
+    this.side4.render(scale);
+    this.sideLow1.render(scale);
+    this.sideLow2.render(scale);
+    this.axle.render(scale);
+    this.saw.render(scale);
   }
 }
