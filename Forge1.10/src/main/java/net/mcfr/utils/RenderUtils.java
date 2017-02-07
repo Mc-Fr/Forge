@@ -15,6 +15,11 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
+/**
+ * Cette classe fournit des méthodes pour dessiner avec OpenGL.
+ *
+ * @author Mc-Fr
+ */
 public final class RenderUtils {
   public static final int TOP_OFFSET = 17;
   public static final int INV_SEPARATOR = 14;
@@ -23,6 +28,12 @@ public final class RenderUtils {
   public static final int SIDE_OFFSET = 8;
   public static final int SLOT_SIZE = 18;
 
+  /**
+   * Corrige l'éclairage.
+   * 
+   * @param world le monde
+   * @param pos la position
+   */
   public static void fixLighting(World world, BlockPos pos) {
     int worldLight = world.getCombinedLight(pos, 15728640);
     int wBrightness = worldLight % 65536;
@@ -31,7 +42,7 @@ public final class RenderUtils {
   }
 
   /**
-   * @return le WorldRenderer
+   * @return le {@code VertexBuffer}
    */
   public static VertexBuffer getRenderer() {
     return Tessellator.getInstance().getBuffer();
@@ -45,7 +56,7 @@ public final class RenderUtils {
   }
 
   /**
-   * Associe une texture au WorldRenderer.
+   * Charge une texture.
    *
    * @param texturePath le chemin de la texture
    */

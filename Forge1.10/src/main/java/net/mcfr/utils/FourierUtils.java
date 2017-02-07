@@ -2,6 +2,11 @@ package net.mcfr.utils;
 
 import net.minecraft.util.math.MathHelper;
 
+/**
+ * Cette classe fournit des méthodes pour calculer des séries de Fourier.
+ *
+ * @author Mc-Fr
+ */
 public final class FourierUtils {
   private static float[] resizeTable(float[] table, int size) {
     float[] result = new float[size];

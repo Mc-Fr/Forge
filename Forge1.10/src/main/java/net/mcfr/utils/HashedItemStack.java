@@ -9,16 +9,26 @@ import net.minecraft.item.ItemStack;
  * @author Mc-Fr
  */
 public class HashedItemStack {
+  /**
+   * Retourne un {@code HashedItemStack} pour le stack donné.
+   * 
+   * @param stack le stack
+   * @return le {@code HashedItemStack}
+   */
   public static HashedItemStack fromStack(ItemStack stack) {
     return new HashedItemStack(stack);
   }
 
+  /** Le stack */
   private ItemStack stack;
 
   private HashedItemStack(ItemStack stack) {
     this.stack = stack.copy();
   }
 
+  /**
+   * @return le stack
+   */
   public ItemStack getStack() {
     return this.stack;
   }

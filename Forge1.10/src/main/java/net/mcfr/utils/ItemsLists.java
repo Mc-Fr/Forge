@@ -43,9 +43,17 @@ import net.minecraft.item.ItemSword;
 import net.minecraft.item.ItemTool;
 import net.minecraft.util.ResourceLocation;
 
+/**
+ * Cette classe fournit des méthodes pour classer les items.
+ *
+ * @author Mc-Fr
+ */
 public final class ItemsLists {
+  /** Les items triés par type */
   private static final Map<String, List<Item>> TYPES = new HashMap<>();
+  /** Les items acceptés par chaque bloc */
   private static final Map<Class<? extends Block>, List<Item>> LISTS = new HashMap<>();
+  /** Les crafts associés à chaque bloc artisan */
   private static final Map<Class<? extends Block>, Map<HashedItemStack, HashedItemStack>> MAPS = new HashMap<>();
 
   static {
@@ -128,6 +136,9 @@ public final class ItemsLists {
     return TYPES.get(key);
   }
 
+  /**
+   * @return une liste non modifiable des items de nourriture
+   */
   public static List<Item> getFood() {
     String key = "food";
 
@@ -150,6 +161,9 @@ public final class ItemsLists {
     return TYPES.get(key);
   }
 
+  /**
+   * @return une liste non modifiable des objets larges
+   */
   public static List<Item> getLargeObjects() {
     String key = "large";
 
@@ -176,6 +190,9 @@ public final class ItemsLists {
     return TYPES.get(key);
   }
 
+  /**
+   * @return une liste non modifiable des petits objets
+   */
   public static List<Item> getSmallItems() {
     String key = "small";
 
@@ -202,6 +219,9 @@ public final class ItemsLists {
     return TYPES.get(key);
   }
 
+  /**
+   * @return une liste non modifiable des objets en papier
+   */
   public static List<Item> getPaperBasedItems() {
     String key = "paper";
 
@@ -224,6 +244,9 @@ public final class ItemsLists {
     return TYPES.get(key);
   }
 
+  /**
+   * Initialise les items acceptés par la caissette.
+   */
   public static void initLittleChestItems() {
     Class<BlockLittleChest> key = BlockLittleChest.class;
 
@@ -236,6 +259,9 @@ public final class ItemsLists {
     }
   }
 
+  /**
+   * Initialise les items acceptés par la caisse.
+   */
   public static void initCrateItems() {
     Class<BlockCrate> key = BlockCrate.class;
 
@@ -251,6 +277,9 @@ public final class ItemsLists {
     }
   }
 
+  /**
+   * Initialise les items acceptés par le fût de nourriture.
+   */
   public static void initFoodCrateItems() {
     Class<BlockFoodCrate> key = BlockFoodCrate.class;
 
@@ -263,6 +292,9 @@ public final class ItemsLists {
     }
   }
 
+  /**
+   * Initialise les items acceptés par la palette.
+   */
   public static void initPalletItems() {
     Class<BlockPallet> key = BlockPallet.class;
 
@@ -275,6 +307,9 @@ public final class ItemsLists {
     }
   }
 
+  /**
+   * Initialise les items acceptés par la bibliothèque.
+   */
   public static void initBookshelfItems() {
     Class<BlockBookshelf> key = BlockBookshelf.class;
 
@@ -287,6 +322,9 @@ public final class ItemsLists {
     }
   }
 
+  /**
+   * Initialise les items acceptés par le métier à tisser.
+   */
   public static void initLoomItems() {
     Class<BlockLoom> key = BlockLoom.class;
 
@@ -303,6 +341,9 @@ public final class ItemsLists {
     }
   }
 
+  /**
+   * Initialise les items acceptés par l'atelier de tannage.
+   */
   public static void initTanningRackItems() {
     Class<BlockTanningRack> key = BlockTanningRack.class;
 
@@ -316,6 +357,9 @@ public final class ItemsLists {
     }
   }
 
+  /**
+   * Initialise les items acceptés par la scie circulaire.
+   */
   public static void initCircularSawItems() {
     Class<BlockCircularSaw> key = BlockCircularSaw.class;
 
@@ -346,6 +390,11 @@ public final class ItemsLists {
     }
   }
 
+  /**
+   * Crée une liste pour une classe donnée à partir de MAPS.
+   * 
+   * @param clazz la classe du bloc
+   */
   private static void createList(Class<? extends Block> clazz) {
     List<Item> items = new ArrayList<>();
     MAPS.get(clazz).keySet().stream().forEach(stack -> items.add(stack.getStack().getItem()));
@@ -367,6 +416,12 @@ public final class ItemsLists {
     return list != null && (stack == null || list.contains(stack.getItem()));
   }
 
+  /**
+   * Retourne la table associative pour une classe donnée.
+   * 
+   * @param clazz la classe du bloc
+   * @return la table associative
+   */
   public static Map<HashedItemStack, HashedItemStack> getMapForClass(Class<? extends Block> clazz) {
     return MAPS.get(clazz);
   }
