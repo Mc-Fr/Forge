@@ -1,20 +1,23 @@
 package net.mcfr.event;
 
+import net.mcfr.guis.GuiMcfrChat;
 import net.mcfr.guis.GuiMcfrIngameMenu;
 import net.mcfr.guis.GuiMcfrMainMenu;
 import net.mcfr.guis.chat_bubble.ChatBubble;
 import net.minecraft.block.BlockSign;
+import net.minecraft.client.gui.GuiChat;
 import net.minecraft.client.gui.GuiIngameMenu;
 import net.minecraft.client.gui.GuiMainMenu;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.gui.GuiSleepMP;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.event.GuiOpenEvent;
-import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.world.BlockEvent.PlaceEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.gameevent.TickEvent.RenderTickEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -26,7 +29,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class PlayerEventsHandler {
   @SideOnly(Side.CLIENT)
   @SubscribeEvent
-  public void onLivingUpdate(LivingUpdateEvent e) {
+  public void onRenderTick(RenderTickEvent e) {
     ChatBubble.render();
   }
 
@@ -44,6 +47,8 @@ public class PlayerEventsHandler {
       e.setGui(new GuiMcfrMainMenu());
     if (gui instanceof GuiIngameMenu)
       e.setGui(new GuiMcfrIngameMenu());
+    if (gui instanceof GuiChat && !(gui instanceof GuiSleepMP))
+      e.setGui(new GuiMcfrChat());
   }
 
   /**

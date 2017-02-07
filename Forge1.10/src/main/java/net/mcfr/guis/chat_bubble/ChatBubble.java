@@ -4,8 +4,6 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
-import org.lwjgl.opengl.GL11;
-
 import net.mcfr.utils.RenderUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
@@ -31,11 +29,14 @@ public class ChatBubble {
   }
 
   public static void render() {
-    // @f0
-    PLAYERS.stream()
-      .filter(player -> Minecraft.getMinecraft().thePlayer.getDistanceSq(player.getX(), player.getY(), player.getZ()) <= MAX_DISTANCE_SQ)
-      .forEach(player -> renderAt(player.getX() + 0.5, player.getY() + 2.3, player.getZ() + 0.5));
-    // @f1
+    // Optimisation
+    if (!PLAYERS.isEmpty()) {
+      // @f0
+      PLAYERS.stream()
+        .filter(player -> Minecraft.getMinecraft().thePlayer.getDistanceSq(player.getX(), player.getY(), player.getZ()) <= MAX_DISTANCE_SQ)
+        .forEach(player -> renderAt(player.getX() + 0.5, player.getY() + 2.3, player.getZ() + 0.5));
+      // @f1
+    }
   }
 
   private static void renderAt(double x, double y, double z) {
@@ -46,13 +47,13 @@ public class ChatBubble {
     GlStateManager.rotate(-renderManager.playerViewY, 0, 1, 0);
     GlStateManager.rotate(renderManager.playerViewX, 1, 0, 0);
     GlStateManager.color(1, 1, 1, 1);
-    GL11.glDisable(GL11.GL_LIGHTING);
+    // GL11.glDisable(GL11.GL_LIGHTING);
 
     RenderUtils.renderItem(new ItemStack(Items.PAPER));
     GlStateManager.translate(0.1, 0.1, -0.05);
     RenderUtils.renderItem(new ItemStack(Items.FEATHER));
 
-    GL11.glEnable(GL11.GL_LIGHTING);
+    // GL11.glEnable(GL11.GL_LIGHTING);
     GlStateManager.popMatrix();
   }
 }

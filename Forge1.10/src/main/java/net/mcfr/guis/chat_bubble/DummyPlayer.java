@@ -3,7 +3,15 @@ package net.mcfr.guis.chat_bubble;
 import java.util.Objects;
 import java.util.UUID;
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.entity.player.EntityPlayer;
+
 public class DummyPlayer {
+  public static DummyPlayer getFromPlayer() {
+    EntityPlayer player = Minecraft.getMinecraft().thePlayer;
+    return new DummyPlayer(player.posX, player.posY, player.posZ, player.getUniqueID());
+  }
+
   private final double x, y, z;
   private final UUID uuid;
 
