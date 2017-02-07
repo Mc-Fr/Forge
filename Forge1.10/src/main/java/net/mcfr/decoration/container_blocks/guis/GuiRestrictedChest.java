@@ -11,17 +11,32 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+/**
+ * Interface de base des conteneurs restreints.
+ *
+ * @author Mc-Fr
+ */
 @SideOnly(Side.CLIENT)
 public class GuiRestrictedChest extends GuiContainer {
   private static final ResourceLocation CHEST_GUI_TEXTURE = new ResourceLocation("textures/gui/container/generic_54.png");
 
-  private final IInventory chestInventory;
+  /** Inventaire du joueur */
   private final IInventory playerInventory;
+  /** Inventaire du conteneur */
+  private final IInventory chestInventory;
 
-  public GuiRestrictedChest(IInventory playerInv, IInventory chestInv, EntityPlayer player, final Class<? extends Block> blockClass) {
-    super(new ContainerRestricted(playerInv, chestInv, player, blockClass));
-    this.chestInventory = chestInv;
-    this.playerInventory = playerInv;
+  /**
+   * Crée un conteneur.
+   * 
+   * @param playerInventory l'inventaire du joueur
+   * @param chestInventory l'invetaire du conteneur
+   * @param player le joueur
+   * @param blockClass la classe du bloc
+   */
+  public GuiRestrictedChest(IInventory playerInventory, IInventory chestInventory, EntityPlayer player, final Class<? extends Block> blockClass) {
+    super(new ContainerRestricted(playerInventory, chestInventory, player, blockClass));
+    this.chestInventory = chestInventory;
+    this.playerInventory = playerInventory;
     this.ySize = TOP_OFFSET + SLOT_SIZE + INV_SEPARATOR + 3 * SLOT_SIZE + HOTBAR_SEPARATOR + SLOT_SIZE + BOTTOM_OFFSET;
   }
 

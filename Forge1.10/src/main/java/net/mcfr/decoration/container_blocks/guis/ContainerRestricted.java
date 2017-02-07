@@ -10,11 +10,25 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 
+/**
+ * Conteneur permettant de restreindre le stockage de certains items.
+ *
+ * @author Mc-Fr
+ */
 public class ContainerRestricted extends Container {
   public static final int SIZE = 9;
 
+  /** L'inventaire */
   private IInventory chestInventory;
 
+  /**
+   * Crée un conteneur.
+   * 
+   * @param playerInventory l'inventaire du joueur
+   * @param chestInventory l'invetaire du conteneur
+   * @param player le joueur
+   * @param blockClass la classe du bloc
+   */
   public ContainerRestricted(IInventory playerInventory, IInventory chestInventory, EntityPlayer player, final Class<? extends Block> blockClass) {
     this.chestInventory = chestInventory;
     chestInventory.openInventory(player);
@@ -44,7 +58,10 @@ public class ContainerRestricted extends Container {
     }
   }
 
-  public int getChestSize() {
+  /**
+   * @return la taille de l'inventaire
+   */
+  public int getContainerSize() {
     return SIZE;
   }
 
@@ -63,12 +80,12 @@ public class ContainerRestricted extends Container {
       previous = current.copy();
 
       if (index < 9) {
-        if (!mergeItemStack(current, getChestSize(), this.inventorySlots.size(), true)) {
+        if (!mergeItemStack(current, getContainerSize(), this.inventorySlots.size(), true)) {
           return null;
         }
       }
       else if (slot.isItemValid(current)) {
-        if (!mergeItemStack(current, 0, getChestSize(), false)) {
+        if (!mergeItemStack(current, 0, getContainerSize(), false)) {
           return null;
         }
       }
@@ -76,10 +93,13 @@ public class ContainerRestricted extends Container {
         return null;
       }
 
-      if (current.stackSize == 0) slot.putStack(null);
-      else slot.onSlotChanged();
+      if (current.stackSize == 0)
+        slot.putStack(null);
+      else
+        slot.onSlotChanged();
 
-      if (current.stackSize == previous.stackSize) return null;
+      if (current.stackSize == previous.stackSize)
+        return null;
 
       slot.onPickupFromSlot(playerIn, current);
     }
