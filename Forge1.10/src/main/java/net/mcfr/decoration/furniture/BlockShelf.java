@@ -8,13 +8,31 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 
+/**
+ * Étagère.
+ *
+ * @author Mc-Fr
+ */
 public class BlockShelf extends McfrBlockOrientable {
-  public BlockShelf(String unlocalizedName, Material material, SoundType sound, float hardness, float resistance, String tool, int harvestLevel) {
-    super(unlocalizedName + "_shelf", material, sound, hardness, resistance, tool, harvestLevel, null);
+  private static final AxisAlignedBB AABB = new AxisAlignedBB(0, 0.7, 0, 1, 1, 1);
+
+  /**
+   * Crée une étagère.
+   * 
+   * @param name le nom (sans le suffixe '_shelf')
+   * @param material la matériau
+   * @param sound le type de son
+   * @param hardness la dureté
+   * @param resistance la résistance aux explosions
+   * @param tool l'outil nécessaire
+   * @param harvestLevel le niveau de récolte
+   */
+  public BlockShelf(String name, Material material, SoundType sound, float hardness, float resistance, String tool, int harvestLevel) {
+    super(name + "_shelf", material, sound, hardness, resistance, tool, harvestLevel, null);
   }
 
   @Override
   public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
-    return new AxisAlignedBB(0, 0.7f, 0, 1, 1, 1);
+    return AABB;
   }
 }

@@ -30,6 +30,11 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
+/**
+ * Vitrine d'armes/outils.
+ *
+ * @author Mc-Fr
+ */
 public class BlockShowcase extends BlockContainer {
   public static final PropertyDirection FACING = BlockHorizontal.FACING;
 
@@ -58,15 +63,23 @@ public class BlockShowcase extends BlockContainer {
     }
   }
 
-  public IBlockState checkForSurroundingShowcases(World worldIn, BlockPos pos, IBlockState state) {
-    if (worldIn.isRemote) {
+  /**
+   * Vérifie l'état des blocs alentours.
+   * 
+   * @param world le monde
+   * @param pos la position
+   * @param state l'état courant
+   * @return le nouvel état
+   */
+  private IBlockState checkForSurroundingShowcases(World world, BlockPos pos, IBlockState state) {
+    if (world.isRemote) {
       return state;
     }
     else {
-      IBlockState stateNorth = worldIn.getBlockState(pos.north());
-      IBlockState stateSouth = worldIn.getBlockState(pos.south());
-      IBlockState stateWest = worldIn.getBlockState(pos.west());
-      IBlockState stateEast = worldIn.getBlockState(pos.east());
+      IBlockState stateNorth = world.getBlockState(pos.north());
+      IBlockState stateSouth = world.getBlockState(pos.south());
+      IBlockState stateWest = world.getBlockState(pos.west());
+      IBlockState stateEast = world.getBlockState(pos.east());
       EnumFacing facing = state.getValue(FACING);
 
       if (stateNorth.getBlock() != this && stateSouth.getBlock() != this) {
@@ -75,8 +88,8 @@ public class BlockShowcase extends BlockContainer {
 
         if (stateWest.getBlock() == this || stateEast.getBlock() == this) {
           BlockPos pos1 = stateWest.getBlock() == this ? pos.west() : pos.east();
-          IBlockState stateNorth1 = worldIn.getBlockState(pos1.north());
-          IBlockState stateSouth1 = worldIn.getBlockState(pos1.south());
+          IBlockState stateNorth1 = world.getBlockState(pos1.north());
+          IBlockState stateSouth1 = world.getBlockState(pos1.south());
           facing = EnumFacing.SOUTH;
           EnumFacing facing1;
 
@@ -102,8 +115,8 @@ public class BlockShowcase extends BlockContainer {
       }
       else {
         BlockPos pos1 = stateNorth.getBlock() == this ? pos.north() : pos.south();
-        IBlockState stateWest1 = worldIn.getBlockState(pos1.west());
-        IBlockState stateEast1 = worldIn.getBlockState(pos1.east());
+        IBlockState stateWest1 = world.getBlockState(pos1.west());
+        IBlockState stateEast1 = world.getBlockState(pos1.east());
         facing = EnumFacing.EAST;
         EnumFacing facing1;
 
@@ -128,17 +141,25 @@ public class BlockShowcase extends BlockContainer {
       }
 
       state = state.withProperty(FACING, facing);
-      worldIn.setBlockState(pos, state, 3);
+      world.setBlockState(pos, state, 3);
 
       return state;
     }
   }
 
-  public IBlockState correctFacing(World worldIn, BlockPos pos, IBlockState state) {
+  /**
+   * Corrige l'orientation.
+   * 
+   * @param world le monde
+   * @param pos la position
+   * @param state l'état courant
+   * @return le nouvel état
+   */
+  private IBlockState correctFacing(World world, BlockPos pos, IBlockState state) {
     EnumFacing facing = null;
 
     for (EnumFacing facing1 : EnumFacing.Plane.HORIZONTAL) {
-      IBlockState state1 = worldIn.getBlockState(pos.offset(facing1));
+      IBlockState state1 = world.getBlockState(pos.offset(facing1));
 
       if (state1.getBlock() == this) {
         return state;
@@ -160,15 +181,15 @@ public class BlockShowcase extends BlockContainer {
     else {
       EnumFacing facing1 = state.getValue(FACING);
 
-      if (worldIn.getBlockState(pos.offset(facing1)).isFullBlock()) {
+      if (world.getBlockState(pos.offset(facing1)).isFullBlock()) {
         facing1 = facing1.getOpposite();
       }
 
-      if (worldIn.getBlockState(pos.offset(facing1)).isFullBlock()) {
+      if (world.getBlockState(pos.offset(facing1)).isFullBlock()) {
         facing1 = facing1.rotateY();
       }
 
-      if (worldIn.getBlockState(pos.offset(facing1)).isFullBlock()) {
+      if (world.getBlockState(pos.offset(facing1)).isFullBlock()) {
         facing1 = facing1.getOpposite();
       }
 
@@ -227,8 +248,8 @@ public class BlockShowcase extends BlockContainer {
   }
 
   // FIXME conserver la tile entity.
-  @Override
   @SuppressWarnings("deprecation")
+  @Override
   public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn) {
     super.neighborChanged(state, worldIn, pos, blockIn);
     TileEntity tileEntity = worldIn.getTileEntity(pos);

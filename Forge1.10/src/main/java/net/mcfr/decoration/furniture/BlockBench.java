@@ -10,12 +10,22 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
+/**
+ * Banc en bois.
+ *
+ * @author Mc-Fr
+ */
 public class BlockBench extends BlockWoodenChair {
   public static final PropertyBool NORTH = PropertyBool.create("north");
   public static final PropertyBool EAST = PropertyBool.create("east");
   public static final PropertyBool SOUTH = PropertyBool.create("south");
   public static final PropertyBool WEST = PropertyBool.create("west");
 
+  /**
+   * Crée un banc.
+   * 
+   * @param type le type de bois
+   */
   public BlockBench(BlockPlanks.EnumType type) {
     super(type, "bench");
     // TEMP
@@ -33,6 +43,13 @@ public class BlockBench extends BlockWoodenChair {
     return state.withProperty(NORTH, isBench(worldIn, pos.north())).withProperty(EAST, isBench(worldIn, pos.east())).withProperty(SOUTH, isBench(worldIn, pos.south())).withProperty(WEST, isBench(worldIn, pos.west()));
   }
 
+  /**
+   * Indique si un bloc est un banc.
+   * 
+   * @param world le monde
+   * @param pos la position
+   * @return vrai si le bloc est une instance de BlockBench
+   */
   private boolean isBench(IBlockAccess world, BlockPos pos) {
     return world.getBlockState(pos).getBlock() instanceof BlockBench;
   }

@@ -17,15 +17,31 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 
+/**
+ * Classe de base pour les tables.
+ * 
+ * @author Mc-Fr
+ */
 public class BlockTable extends McfrBlock implements IBlockWithVariants {
   public static final PropertyEnum<BlockPlanks.EnumType> VARIANT = PropertyEnum.create("variant", BlockPlanks.EnumType.class);
 
   private AxisAlignedBB aabb;
 
+  /**
+   * Crée un table
+   * 
+   * @param type le type (sans le suffixe '_table')
+   */
   public BlockTable(String type) {
     this(type, FULL_BLOCK_AABB);
   }
 
+  /**
+   * Crée un table
+   * 
+   * @param type le type (sans le suffixe '_table')
+   * @param aabb la hitbox
+   */
   public BlockTable(String type, AxisAlignedBB aabb) {
     super(type + "_table", Material.WOOD, SoundType.WOOD, 1.5f, 5, "axe", 0, CreativeTabs.DECORATIONS);
     this.aabb = aabb;

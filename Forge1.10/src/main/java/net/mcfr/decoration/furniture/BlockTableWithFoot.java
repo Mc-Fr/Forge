@@ -6,6 +6,11 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 
+/**
+ * Table avec un seul pied.
+ *
+ * @author Mc-Fr
+ */
 public class BlockTableWithFoot extends McfrBlock {
   public BlockTableWithFoot() {
     super("foot_table", Material.WOOD, SoundType.WOOD, 1.5f, 5, "axe", 0, CreativeTabs.DECORATIONS);

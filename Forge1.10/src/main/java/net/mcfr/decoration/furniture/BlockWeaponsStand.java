@@ -28,6 +28,11 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
+/**
+ * Stand d'armes et outils.
+ *
+ * @author Mc-Fr
+ */
 public class BlockWeaponsStand extends BlockContainer {
   public static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
 
@@ -109,6 +114,14 @@ public class BlockWeaponsStand extends BlockContainer {
     }
   }
 
+  /**
+   * Met le bloc à jour.
+   * 
+   * @param player le joueur
+   * @param te la tile entity
+   * @param slot l'emplacement
+   * @return true si l'interaction a été prise en compte
+   */
   private boolean interact(EntityPlayer player, TileEntityWeaponsStand te, int slot) {
     if (te.hasItem(slot) && player.getHeldItemMainhand() == null) {
       player.inventory.setInventorySlotContents(player.inventory.currentItem, te.getItem(slot));

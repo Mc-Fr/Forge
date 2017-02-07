@@ -10,14 +10,32 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 
+/**
+ * Classe de base pour toutes les chaises.
+ *
+ * @author Mc-Fr
+ */
 public abstract class BlockChair extends McfrBlockOrientable implements ITileEntityProvider {
-  public BlockChair(String unlocalizedName, Material material, SoundType sound, float hardness, float resistance, String tool, int harvestLevel) {
-    super(unlocalizedName, material, sound, hardness, resistance, tool, harvestLevel, CreativeTabs.DECORATIONS);
+  private static final AxisAlignedBB AABB = new AxisAlignedBB(0, 0, 0, 1, 0.5, 1);
+
+  /**
+   * Crée une chaise.
+   * 
+   * @param name le nom (sans le suffixe '_shelf')
+   * @param material la matériau
+   * @param sound le type de son
+   * @param hardness la dureté
+   * @param resistance la résistance aux explosions
+   * @param tool l'outil nécessaire
+   * @param harvestLevel le niveau de récolte
+   */
+  public BlockChair(String name, Material material, SoundType sound, float hardness, float resistance, String tool, int harvestLevel) {
+    super(name, material, sound, hardness, resistance, tool, harvestLevel, CreativeTabs.DECORATIONS);
   }
 
   @Override
   public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
-    return new AxisAlignedBB(0, 0, 0, 1, 0.5f, 1);
+    return AABB;
   }
 
   @Override
