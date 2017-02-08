@@ -10,27 +10,26 @@ import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
 public class SyncEntityMessage implements IMessage {
-  public SyncEntityMessage() {
-  }
+  public SyncEntityMessage() {}
 
   private int entityId;
   private NBTTagCompound entitySyncDataCompound;
 
   public SyncEntityMessage(EntitySyncedAnimal entity) {
-    entityId = entity.getEntityId();
-    entitySyncDataCompound = entity.getSyncedProps();
+    this.entityId = entity.getEntityId();
+    this.entitySyncDataCompound = entity.getSyncedProps();
   }
 
   @Override
   public void fromBytes(ByteBuf buf) {
-    entityId = ByteBufUtils.readVarInt(buf, 4);
-    entitySyncDataCompound = ByteBufUtils.readTag(buf);
+    this.entityId = ByteBufUtils.readVarInt(buf, 4);
+    this.entitySyncDataCompound = ByteBufUtils.readTag(buf);
   }
 
   @Override
   public void toBytes(ByteBuf buf) {
-    ByteBufUtils.writeVarInt(buf, entityId, 4);
-    ByteBufUtils.writeTag(buf, entitySyncDataCompound);
+    ByteBufUtils.writeVarInt(buf, this.entityId, 4);
+    ByteBufUtils.writeTag(buf, this.entitySyncDataCompound);
   }
 
   public static class ClientHandler implements IMessageHandler<SyncEntityMessage, IMessage> {
@@ -44,7 +43,7 @@ public class SyncEntityMessage implements IMessage {
       return null;
     }
   }
-  
+
   public static class ServerHandler implements IMessageHandler<SyncEntityMessage, IMessage> {
     @Override
     public IMessage onMessage(SyncEntityMessage message, MessageContext ctx) {

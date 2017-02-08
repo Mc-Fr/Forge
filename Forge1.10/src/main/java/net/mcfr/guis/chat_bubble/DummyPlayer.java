@@ -5,8 +5,11 @@ import java.util.UUID;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class DummyPlayer {
+  @SideOnly(Side.CLIENT)
   public static DummyPlayer getFromPlayer() {
     EntityPlayer player = Minecraft.getMinecraft().thePlayer;
     return new DummyPlayer(player.posX, player.posY, player.posZ, player.getUniqueID());

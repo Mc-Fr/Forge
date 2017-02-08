@@ -12,13 +12,13 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 
-public abstract class TileLargeSign extends TileEntity {
+public abstract class TileEntityLargeSign extends TileEntity {
   public static final int LINES_NB = 15;
 
   private ITextComponent[] text;
   private int lineBeingEdited;
 
-  public TileLargeSign() {
+  public TileEntityLargeSign() {
     this.text = new ITextComponent[LINES_NB];
     this.lineBeingEdited = -1;
     Arrays.fill(this.text, new TextComponentString(""));

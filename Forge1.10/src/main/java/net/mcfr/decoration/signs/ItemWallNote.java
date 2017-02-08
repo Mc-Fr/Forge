@@ -2,7 +2,7 @@ package net.mcfr.decoration.signs;
 
 import net.mcfr.McfrBlocks;
 import net.mcfr.commons.McfrItem;
-import net.mcfr.decoration.signs.tile_entities.TileLargeSign;
+import net.mcfr.decoration.signs.tile_entities.TileEntityLargeSign;
 import net.mcfr.network.McfrNetworkWrapper;
 import net.mcfr.network.OpenEditWallNoteMessage;
 import net.minecraft.creativetab.CreativeTabs;
@@ -36,7 +36,7 @@ public class ItemWallNote extends McfrItem {
         stack.stackSize--;
         TileEntity te = worldIn.getTileEntity(pos);
 
-        if (te != null && te instanceof TileLargeSign) {
+        if (te != null && te instanceof TileEntityLargeSign) {
           McfrNetworkWrapper.getInstance().sendTo(new OpenEditWallNoteMessage(pos), (EntityPlayerMP) playerIn);
         }
       }

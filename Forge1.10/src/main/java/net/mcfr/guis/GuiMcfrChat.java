@@ -1,5 +1,8 @@
 package net.mcfr.guis;
 
+import net.mcfr.guis.chat_bubble.DummyPlayer;
+import net.mcfr.network.McfrNetworkWrapper;
+import net.mcfr.network.NotifyChatBubbleMessage;
 import net.minecraft.client.gui.GuiChat;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -9,16 +12,12 @@ public class GuiMcfrChat extends GuiChat {
   @Override
   public void initGui() {
     super.initGui();
-    // FIXME marche pas en serveur
-    // McfrNetworkWrapper.getInstance().sendToAll(new
-    // AddChatBubbleMessage(DummyPlayer.getFromPlayer()));
+    McfrNetworkWrapper.getInstance().sendToServer(new NotifyChatBubbleMessage(true, DummyPlayer.getFromPlayer()));
   }
 
   @Override
   public void onGuiClosed() {
     super.onGuiClosed();
-    // FIXME marche pas en serveur
-    // McfrNetworkWrapper.getInstance().sendToAll(new
-    // RemoveChatBubbleMessage(Minecraft.getMinecraft().thePlayer.getUniqueID()));
+    McfrNetworkWrapper.getInstance().sendToServer(new NotifyChatBubbleMessage(false, DummyPlayer.getFromPlayer()));
   }
 }
