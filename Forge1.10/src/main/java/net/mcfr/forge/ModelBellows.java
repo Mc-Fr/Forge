@@ -1,53 +1,37 @@
 package net.mcfr.forge;
 
-import java.lang.reflect.Field;
-
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 
 public class ModelBellows extends ModelBase {
   private ModelRenderer top;
+  private ModelRenderer middle1;
+  private ModelRenderer middle2;
+  private ModelRenderer middle3;
   private ModelRenderer bottom;
-  private ModelRenderer middle;
 
   public ModelBellows() {
     this.top = new ModelRenderer(this, 0, 0).setTextureSize(96, 64);
-    this.middle = new ModelRenderer(this, 0, 32).setTextureSize(96, 64);
+    this.middle1 = new ModelRenderer(this, 0, 32).setTextureSize(96, 64);
+    this.middle2 = new ModelRenderer(this, 0, 32).setTextureSize(96, 64);
+    this.middle3 = new ModelRenderer(this, 0, 32).setTextureSize(96, 64);
     this.bottom = new ModelRenderer(this, 0, 0).setTextureSize(96, 64);
-    this.bottom.addBox(0, 0, 0, 16, 3, 16, 0);
+    this.top.addBox(0, 2, 0, 16, 3, 16);
+    this.middle1.addBox(3, 3, 3, 10, 10, 10);
+    this.middle2.addBox(3, 3, 3, 10, 7, 10);
+    this.middle3.addBox(3, 3, 3, 10, 4, 10);
+    this.bottom.addBox(0, 0, 0, 16, 3, 16);
   }
 
-  public void renderBellows(int height) {
-    Field f = null;
-
-    try {
-      f = ModelRenderer.class.getDeclaredField("t");
-    }
-    catch (NoSuchFieldException | SecurityException ex) {
-      try {
-        f = ModelRenderer.class.getDeclaredField("compiled");
-      }
-      catch (NoSuchFieldException | SecurityException ex1) {
-        ex1.printStackTrace();
-      }
-    }
-    if (f != null) {
-      try {
-        f.setAccessible(true);
-        f.set(this.top, false);
-        f.set(this.middle, false);
-      }
-      catch (IllegalArgumentException | IllegalAccessException e) {
-        e.printStackTrace();
-      }
-    }
-
-    this.top.cubeList.clear();
-    this.top.addBox(0, height + 2, 0, 16, 3, 16, 0);
-    this.middle.cubeList.clear();
-    this.middle.addBox(3, 3, 3, 10, height, 10, 0);
-    this.top.render(0.0625F);
-    this.middle.render(0.0625F);
-    this.bottom.render(0.0625F);
+  public void renderModel(int height) {
+    this.top.offsetY = height / 16f;
+    this.top.render(0.0625f);
+    if (height > 7)
+      this.middle1.render(0.0625f);
+    else if (height > 4)
+      this.middle2.render(0.0625f);
+    else if (height > 1)
+      this.middle3.render(0.0625f);
+    this.bottom.render(0.0625f);
   }
 }

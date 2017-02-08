@@ -24,7 +24,7 @@ public class TileEntityBellowsRenderer extends TileEntitySpecialRenderer<TileEnt
     GL11.glColor4f(1, 1, 1, 1);
     GL11.glTranslatef((float) x, (float) y, (float) z);
 
-    this.model.renderBellows(TileEntityBellows.STEPS - te.getStep());
+    this.model.renderModel(TileEntityBellows.STEPS - te.getStep());
 
     GL11.glDisable(32826);
     GL11.glPopMatrix();
