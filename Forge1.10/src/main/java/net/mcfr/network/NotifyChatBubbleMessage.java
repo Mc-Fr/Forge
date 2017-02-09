@@ -1,19 +1,16 @@
 package net.mcfr.network;
 
-import java.util.UUID;
-
 import io.netty.buffer.ByteBuf;
+import net.mcfr.entities.EntityChatBubble;
 import net.mcfr.guis.chat_bubble.ChatBubble;
-import net.mcfr.guis.chat_bubble.DummyPlayer;
-import net.minecraft.client.Minecraft;
+import net.mcfr.guis.chat_bubble.DummyEntity;
+import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class NotifyChatBubbleMessage implements IMessage {
-  private DummyPlayer player;
+  private DummyEntity entity;
   private boolean addBubble;
 
   // Requis par Forge.
@@ -21,60 +18,62 @@ public class NotifyChatBubbleMessage implements IMessage {
     this(false, null);
   }
 
-  public NotifyChatBubbleMessage(boolean addBubble, DummyPlayer player) {
+  public NotifyChatBubbleMessage(boolean addBubble, DummyEntity entity) {
     this.addBubble = addBubble;
-    this.player = player;
+    this.entity = entity;
   }
 
   @Override
   public void toBytes(ByteBuf buf) {
     buf.writeBoolean(isAddBubble());
-    buf.writeDouble(getPlayer().getX());
-    buf.writeDouble(getPlayer().getY());
-    buf.writeDouble(getPlayer().getZ());
-    buf.writeLong(getPlayer().getUniqueId().getMostSignificantBits());
-    buf.writeLong(getPlayer().getUniqueId().getLeastSignificantBits());
+    buf.writeDouble(getEntity().getX());
+    buf.writeDouble(getEntity().getY());
+    buf.writeDouble(getEntity().getZ());
+    buf.writeInt(getEntity().getId());
   }
 
   @Override
   public void fromBytes(ByteBuf buf) {
     this.addBubble = buf.readBoolean();
-    double x = buf.readDouble();
-    double y = buf.readDouble();
-    double z = buf.readDouble();
-    UUID uuid = new UUID(buf.readLong(), buf.readLong());
-
-    this.player = new DummyPlayer(x, y, z, uuid);
+    this.entity = new DummyEntity(buf.readDouble(), buf.readDouble(), buf.readDouble(), buf.readInt());
   }
 
   public boolean isAddBubble() {
     return this.addBubble;
   }
 
-  public DummyPlayer getPlayer() {
-    return this.player;
+  public DummyEntity getEntity() {
+    return this.entity;
   }
 
   public static class ClientHandler implements IMessageHandler<NotifyChatBubbleMessage, IMessage> {
     @Override
     public IMessage onMessage(final NotifyChatBubbleMessage message, MessageContext ctx) {
-      Minecraft.getMinecraft().addScheduledTask(() -> handlePacket(message.isAddBubble(), message.getPlayer()));
+      ChatBubble.currentEntityId = message.getEntity().getId();
       return null;
-    }
-
-    @SideOnly(Side.CLIENT)
-    public void handlePacket(boolean addBubble, DummyPlayer player) {
-      if (addBubble)
-        ChatBubble.addPlayer(player);
-      else
-        ChatBubble.removePlayer(player.getUniqueId());
     }
   }
 
   public static class ServerHandler implements IMessageHandler<NotifyChatBubbleMessage, IMessage> {
     @Override
     public IMessage onMessage(final NotifyChatBubbleMessage message, MessageContext ctx) {
-      McfrNetworkWrapper.getInstance().sendToAll(message);
+      World world = ctx.getServerHandler().playerEntity.worldObj;
+      DummyEntity dummyEntity = message.getEntity();
+      double x = dummyEntity.getX();
+      double y = dummyEntity.getY();
+      double z = dummyEntity.getZ();
+
+      if (message.isAddBubble()) {
+        EntityChatBubble chatBubble = new EntityChatBubble(world, x, y, z);
+        int id = chatBubble.getEntityId();
+
+        world.spawnEntityInWorld(chatBubble);
+        McfrNetworkWrapper.getInstance().sendTo(new NotifyChatBubbleMessage(true, new DummyEntity(x, y, z, id)), ctx.getServerHandler().playerEntity);
+      }
+      else {
+        world.getEntityByID(dummyEntity.getId()).setDead();
+      }
+
       return null;
     }
   }

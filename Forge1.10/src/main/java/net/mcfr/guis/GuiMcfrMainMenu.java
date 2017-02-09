@@ -50,12 +50,16 @@ public class GuiMcfrMainMenu extends GuiScreen {
   private static final ResourceLocation SPLASH_TEXTS = new ResourceLocation("texts/splashes.txt");
   private static final ResourceLocation MINECRAFT_TITLE_TEXTURES = new ResourceLocation("textures/gui/title/minecraft.png");
   /** An array of all the paths to the panorama pictures. */
-  // @f0
-  private static final ResourceLocation[] TITLE_PANORAMA_PATHS = { new ResourceLocation("textures/gui/title/background/panorama_0.png"),
-      new ResourceLocation("textures/gui/title/background/panorama_1.png"), new ResourceLocation("textures/gui/title/background/panorama_2.png"),
-      new ResourceLocation("textures/gui/title/background/panorama_3.png"), new ResourceLocation("textures/gui/title/background/panorama_4.png"),
-      new ResourceLocation("textures/gui/title/background/panorama_5.png") };
-  // @f1
+  // #f:0
+  private static final ResourceLocation[] TITLE_PANORAMA_PATHS = {
+    new ResourceLocation("textures/gui/title/background/panorama_0.png"),
+    new ResourceLocation("textures/gui/title/background/panorama_1.png"),
+    new ResourceLocation("textures/gui/title/background/panorama_2.png"),
+    new ResourceLocation("textures/gui/title/background/panorama_3.png"),
+    new ResourceLocation("textures/gui/title/background/panorama_4.png"),
+    new ResourceLocation("textures/gui/title/background/panorama_5.png")
+  };
+  // #f:1
   public static final String MORE_INFO_TEXT = "Please click " + TextFormatting.UNDERLINE + "here" + TextFormatting.RESET + " for more information.";
 
   /** The Object object utilized as a thread lock when performing non thread-safe operations */
@@ -242,7 +246,6 @@ public class GuiMcfrMainMenu extends GuiScreen {
       List<String> admins = new ArrayList<>();
       URLConnection conn = new URL("http://www.minecraft-fr.net/launcher/adminList.txt").openConnection();
 
-      System.out.println(StandardCharsets.UTF_8.name());
       try (BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream(), StandardCharsets.UTF_8.name()))) {
         admins = rd.lines().collect(Collectors.toList());
       }

@@ -3,7 +3,6 @@ package net.mcfr.event;
 import net.mcfr.guis.GuiMcfrChat;
 import net.mcfr.guis.GuiMcfrIngameMenu;
 import net.mcfr.guis.GuiMcfrMainMenu;
-import net.mcfr.guis.chat_bubble.ChatBubble;
 import net.minecraft.block.BlockSign;
 import net.minecraft.client.gui.GuiChat;
 import net.minecraft.client.gui.GuiIngameMenu;
@@ -17,7 +16,6 @@ import net.minecraftforge.client.event.GuiOpenEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.world.BlockEvent.PlaceEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.gameevent.TickEvent.RenderTickEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -27,12 +25,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
  * @author Mc-Fr
  */
 public class PlayerEventsHandler {
-  @SideOnly(Side.CLIENT)
-  @SubscribeEvent
-  public void onRenderTick(RenderTickEvent e) {
-    ChatBubble.render();
-  }
-
   /**
    * Cet écouteur remplace l'écran-titre et le menu en jeu par ceux du mod.
    * 

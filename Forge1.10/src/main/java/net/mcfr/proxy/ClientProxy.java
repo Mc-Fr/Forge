@@ -65,6 +65,8 @@ import net.mcfr.decoration.signs.tile_entities.TileEntityWallNoteRenderer;
 import net.mcfr.economy.ItemClawMoney;
 import net.mcfr.economy.ItemCoin;
 import net.mcfr.economy.ItemToken;
+import net.mcfr.entities.EntityChatBubble;
+import net.mcfr.entities.RenderChatBubble;
 import net.mcfr.entities.mobs.entity.EntityBormoth;
 import net.mcfr.entities.mobs.entity.EntityGalt;
 import net.mcfr.entities.mobs.entity.EntityHoen;
@@ -99,6 +101,7 @@ import net.minecraft.block.BlockPlanks;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelBakery;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
@@ -891,11 +894,14 @@ public class ClientProxy extends CommonProxy {
     // }
     // });
 
-    RenderingRegistry.registerEntityRenderingHandler(EntitySiker.class, new RenderSiker(Minecraft.getMinecraft().getRenderManager(), new ModelSiker(), 2.0F));
-    RenderingRegistry.registerEntityRenderingHandler(EntityBormoth.class, new RenderBormoth(Minecraft.getMinecraft().getRenderManager(), new ModelBormoth(), 2.0F));
-    RenderingRegistry.registerEntityRenderingHandler(EntityHoen.class, new RenderHoen(Minecraft.getMinecraft().getRenderManager(), new ModelHoen(), 0.2F));
-    RenderingRegistry.registerEntityRenderingHandler(EntityGalt.class, new RenderGalt(Minecraft.getMinecraft().getRenderManager(), new ModelGalt(), 1.2F));
-    RenderingRegistry.registerEntityRenderingHandler(EntityNiale.class, new RenderNiale(Minecraft.getMinecraft().getRenderManager(), new ModelNiale(), 0.8F));
+    RenderManager render = Minecraft.getMinecraft().getRenderManager();
+
+    RenderingRegistry.registerEntityRenderingHandler(EntityChatBubble.class, new RenderChatBubble(render));
+    RenderingRegistry.registerEntityRenderingHandler(EntitySiker.class, new RenderSiker(render, new ModelSiker(), 2.0F));
+    RenderingRegistry.registerEntityRenderingHandler(EntityBormoth.class, new RenderBormoth(render, new ModelBormoth(), 2.0F));
+    RenderingRegistry.registerEntityRenderingHandler(EntityHoen.class, new RenderHoen(render, new ModelHoen(), 0.2F));
+    RenderingRegistry.registerEntityRenderingHandler(EntityGalt.class, new RenderGalt(render, new ModelGalt(), 1.2F));
+    RenderingRegistry.registerEntityRenderingHandler(EntityNiale.class, new RenderNiale(render, new ModelNiale(), 0.8F));
 
     BiomeColorHandler.init();
   }
