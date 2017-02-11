@@ -38,6 +38,7 @@ import net.minecraft.client.renderer.texture.DynamicTexture;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.resources.IResource;
+import net.minecraft.client.resources.Language;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.TextFormatting;
@@ -152,6 +153,18 @@ public class GuiMcfrMainMenu extends GuiScreen {
 
   @Override
   public void initGui() {
+    if (!this.mc.gameSettings.language.equals("fr_FR")) {
+      for (Language language : this.mc.getLanguageManager().getLanguages()) {
+        if (language.getLanguageCode().equals("fr_FR")) {
+          this.mc.gameSettings.language = "fr_FR";
+          this.mc.getLanguageManager().setCurrentLanguage(language);
+          this.mc.gameSettings.saveOptions();
+          break;
+        }
+      }
+      this.mc.refreshResources();
+    }
+
     this.viewportTexture = new DynamicTexture(256, 256);
     this.backgroundTexture = this.mc.getTextureManager().getDynamicTextureLocation("background", this.viewportTexture);
     Calendar calendar = Calendar.getInstance();

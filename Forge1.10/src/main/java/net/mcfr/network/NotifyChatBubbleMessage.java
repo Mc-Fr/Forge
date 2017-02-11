@@ -4,6 +4,7 @@ import io.netty.buffer.ByteBuf;
 import net.mcfr.entities.EntityChatBubble;
 import net.mcfr.guis.chat_bubble.ChatBubble;
 import net.mcfr.guis.chat_bubble.DummyEntity;
+import net.minecraft.entity.Entity;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
@@ -71,7 +72,9 @@ public class NotifyChatBubbleMessage implements IMessage {
         McfrNetworkWrapper.getInstance().sendTo(new NotifyChatBubbleMessage(true, new DummyEntity(x, y, z, id)), ctx.getServerHandler().playerEntity);
       }
       else {
-        world.getEntityByID(dummyEntity.getId()).setDead();
+        Entity e = world.getEntityByID(dummyEntity.getId());
+        if (e != null)
+          e.setDead();
       }
 
       return null;
