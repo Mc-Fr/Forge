@@ -109,7 +109,7 @@ public final class McfrCrafts {
     for (Block planks : PLANKS) {
       addLargeRecipe(new ItemStack(Blocks.CHEST), "IWWWI", "WWWWW", "WWHWW", "WWWWW", "IWWWI", 'I', Items.IRON_INGOT, 'W', planks, 'H', Blocks.TRIPWIRE_HOOK);
       for (Block slab : WOODEN_SLABS)
-        addLargeRecipe(new ItemStack(Blocks.FURNACE), "SSSSS", "CCCCC", "WCCCW", "WC CW", "WC CW", 'C', Blocks.COBBLESTONE, 'S', slab, 'W', planks, 'F', McfrBlocks.CAMPFIRE);
+        addLargeRecipe(new ItemStack(Blocks.FURNACE), "SSSSS", "CCCCC", "WCCCW", "WC CW", "WC CW", 'C', Blocks.COBBLESTONE, 'S', slab, 'W', planks);
     }
 
     addShapedRecipe(new ItemStack(Blocks.FARMLAND, 2), "G", "T", 'T', new ItemStack(Blocks.DIRT), 'G', Blocks.GRAVEL);
