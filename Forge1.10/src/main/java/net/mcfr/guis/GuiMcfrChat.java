@@ -18,7 +18,7 @@ public class GuiMcfrChat extends GuiChat {
   public void initGui() {
     super.initGui();
     EntityPlayer p = Minecraft.getMinecraft().thePlayer;
-    McfrNetworkWrapper.getInstance().sendToServer(new NotifyChatBubbleMessage(true, new DummyEntity(p.posX + 0.5, p.posY + OFFSET, p.posZ + 0.5, -1)));
+    McfrNetworkWrapper.getInstance().sendToServer(new NotifyChatBubbleMessage(true, new DummyEntity(p.posX, p.posY + OFFSET, p.posZ, -1)));
   }
 
   @Override
