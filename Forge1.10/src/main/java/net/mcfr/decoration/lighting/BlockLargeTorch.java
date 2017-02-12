@@ -20,7 +20,7 @@ public class BlockLargeTorch extends BlockTorch {
     setRegistryName(name);
     setUnlocalizedName(NameUtils.getUnlocalizedName(name));
     setSoundType(SoundType.WOOD);
-    setLightLevel(0.75f);
+    setLightLevel(1);
   }
 
   @Override
