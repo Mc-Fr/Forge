@@ -58,24 +58,26 @@ public class NotifyChatBubbleMessage implements IMessage {
   public static class ServerHandler implements IMessageHandler<NotifyChatBubbleMessage, IMessage> {
     @Override
     public IMessage onMessage(final NotifyChatBubbleMessage message, MessageContext ctx) {
-      World world = ctx.getServerHandler().playerEntity.worldObj;
-      DummyEntity dummyEntity = message.getEntity();
-      double x = dummyEntity.getX();
-      double y = dummyEntity.getY();
-      double z = dummyEntity.getZ();
+      ctx.getServerHandler().playerEntity.getServerWorld().addScheduledTask(() -> {
+        World world = ctx.getServerHandler().playerEntity.worldObj;
+        DummyEntity dummyEntity = message.getEntity();
+        double x = dummyEntity.getX();
+        double y = dummyEntity.getY();
+        double z = dummyEntity.getZ();
 
-      if (message.isAddBubble()) {
-        EntityChatBubble chatBubble = new EntityChatBubble(world, x, y, z);
-        int id = chatBubble.getEntityId();
+        if (message.isAddBubble()) {
+          EntityChatBubble chatBubble = new EntityChatBubble(world, x, y, z);
+          int id = chatBubble.getEntityId();
 
-        world.spawnEntityInWorld(chatBubble);
-        McfrNetworkWrapper.getInstance().sendTo(new NotifyChatBubbleMessage(true, new DummyEntity(x, y, z, id)), ctx.getServerHandler().playerEntity);
-      }
-      else {
-        Entity e = world.getEntityByID(dummyEntity.getId());
-        if (e != null)
-          e.setDead();
-      }
+          world.spawnEntityInWorld(chatBubble);
+          McfrNetworkWrapper.getInstance().sendTo(new NotifyChatBubbleMessage(true, new DummyEntity(x, y, z, id)), ctx.getServerHandler().playerEntity);
+        }
+        else {
+          Entity e = world.getEntityByID(dummyEntity.getId());
+          if (e != null)
+            e.setDead();
+        }
+      });
 
       return null;
     }
