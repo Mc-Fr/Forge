@@ -25,7 +25,6 @@ import net.mcfr.decoration.signs.tile_entities.TileEntityOrpSign;
 import net.mcfr.decoration.signs.tile_entities.TileEntityPaperSign;
 import net.mcfr.decoration.signs.tile_entities.TileEntityTombstone;
 import net.mcfr.decoration.signs.tile_entities.TileEntityWallNote;
-import net.mcfr.entities.EntityChatBubble;
 import net.mcfr.entities.EntityGrapnel;
 import net.mcfr.entities.EntitySailBoat;
 import net.mcfr.entities.mobs.entity.EntityBormoth;
@@ -39,7 +38,6 @@ import net.mcfr.forge.tile_entities.TileEntityBellows;
 import net.mcfr.forge.tile_entities.TileEntityStove;
 import net.mcfr.network.GuiHandler;
 import net.mcfr.network.McfrNetworkWrapper;
-import net.mcfr.network.NotifyChatBubbleMessage;
 import net.mcfr.network.OpenEditMcfrSignMessage;
 import net.mcfr.network.OpenEditPaperMessage;
 import net.mcfr.network.OpenEditWallNoteMessage;
@@ -120,8 +118,6 @@ public class McfrMain {
     McfrNetworkWrapper.registerPacket(OpenEditMcfrSignMessage.ClientHandler.class, OpenEditMcfrSignMessage.class, Side.CLIENT);
     McfrNetworkWrapper.registerPacket(OpenEditWallNoteMessage.ClientHandler.class, OpenEditWallNoteMessage.class, Side.CLIENT);
     McfrNetworkWrapper.registerPacket(UpdateWallNoteMessage.ServerHandler.class, UpdateWallNoteMessage.class, Side.SERVER);
-    McfrNetworkWrapper.registerPacket(NotifyChatBubbleMessage.ClientHandler.class, NotifyChatBubbleMessage.class, Side.CLIENT);
-    McfrNetworkWrapper.registerPacket(NotifyChatBubbleMessage.ServerHandler.class, NotifyChatBubbleMessage.class, Side.SERVER);
     McfrNetworkWrapper.registerPacket(SyncEntityMessage.ClientHandler.class, SyncEntityMessage.class, Side.CLIENT);
     McfrNetworkWrapper.registerPacket(SyncEntityMessage.ServerHandler.class, SyncEntityMessage.class, Side.SERVER);
   }
@@ -173,7 +169,6 @@ public class McfrMain {
   private void registerEntities() {
     EntityRegistry.registerModEntity(EntityGrapnel.class, "grapnel", 1000, this, 10, 3, true);
     EntityRegistry.registerModEntity(EntitySailBoat.class, "sailboat", 1001, this, 80, 3, true);
-    EntityRegistry.registerModEntity(EntityChatBubble.class, "chat_bubble", 1002, this, 80, 3, false);
 
     EntityRegistry.registerModEntity(EntitySiker.class, "siker", 1, this, 80, 3, true, 0xBA9B54, 0x5E4B23);
     EntityRegistry.registerModEntity(EntityBormoth.class, "bormoth", 2, this, 80, 3, true, 1000, 1000);

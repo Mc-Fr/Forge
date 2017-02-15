@@ -1,14 +1,11 @@
 package net.mcfr.event;
 
-import net.mcfr.guis.GuiMcfrChat;
 import net.mcfr.guis.GuiMcfrIngameMenu;
 import net.mcfr.guis.GuiMcfrMainMenu;
 import net.minecraft.block.BlockSign;
-import net.minecraft.client.gui.GuiChat;
 import net.minecraft.client.gui.GuiIngameMenu;
 import net.minecraft.client.gui.GuiMainMenu;
 import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.gui.GuiSleepMP;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -39,8 +36,6 @@ public class PlayerEventsHandler {
       e.setGui(new GuiMcfrMainMenu());
     if (gui instanceof GuiIngameMenu)
       e.setGui(new GuiMcfrIngameMenu());
-    if (gui instanceof GuiChat && !(gui instanceof GuiSleepMP))
-      e.setGui(new GuiMcfrChat());
   }
 
   /**

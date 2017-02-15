@@ -65,8 +65,6 @@ import net.mcfr.decoration.signs.tile_entities.TileEntityWallNoteRenderer;
 import net.mcfr.economy.ItemClawMoney;
 import net.mcfr.economy.ItemCoin;
 import net.mcfr.economy.ItemToken;
-import net.mcfr.entities.EntityChatBubble;
-import net.mcfr.entities.RenderChatBubble;
 import net.mcfr.entities.mobs.entity.EntityBormoth;
 import net.mcfr.entities.mobs.entity.EntityGalt;
 import net.mcfr.entities.mobs.entity.EntityHoen;
@@ -896,7 +894,6 @@ public class ClientProxy extends CommonProxy {
 
     RenderManager render = Minecraft.getMinecraft().getRenderManager();
 
-    RenderingRegistry.registerEntityRenderingHandler(EntityChatBubble.class, new RenderChatBubble(render));
     RenderingRegistry.registerEntityRenderingHandler(EntitySiker.class, new RenderSiker(render, new ModelSiker(), 2.0F));
     RenderingRegistry.registerEntityRenderingHandler(EntityBormoth.class, new RenderBormoth(render, new ModelBormoth(), 2.0F));
     RenderingRegistry.registerEntityRenderingHandler(EntityHoen.class, new RenderHoen(render, new ModelHoen(), 0.2F));
