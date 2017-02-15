@@ -112,8 +112,6 @@ public final class McfrCrafts {
         addLargeRecipe(new ItemStack(Blocks.FURNACE), "SSSSS", "CCCCC", "WCCCW", "WC CW", "WC CW", 'C', Blocks.COBBLESTONE, 'S', slab, 'W', planks);
     }
 
-    addShapedRecipe(new ItemStack(Blocks.FARMLAND, 2), "G", "T", 'T', new ItemStack(Blocks.DIRT), 'G', Blocks.GRAVEL);
-
     addShapedRecipe(new ItemStack(Blocks.STONEBRICK, 1, 2), "C", "#", 'C', Blocks.COBBLESTONE, '#', new ItemStack(Blocks.STONEBRICK));
 
     // Vitres colorées
@@ -128,8 +126,6 @@ public final class McfrCrafts {
 
     addLargeRecipe(new ItemStack(Blocks.REDSTONE_LAMP), "GGGGG", "GRRRG", "GRLRG", "GRRRG", "GGGGG", 'R', Items.REDSTONE, 'L', Items.LAVA_BUCKET, 'G', Blocks.GLASS);
     
-    addShapedRecipe(new ItemStack(Blocks.DIRT, 2, 1), "G", "D", 'D', new ItemStack(Blocks.DIRT, 1, 0), 'G', Blocks.GRAVEL);
-
     /* Mc-Fr */
 
     // Forge
