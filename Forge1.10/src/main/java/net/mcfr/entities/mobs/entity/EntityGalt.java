@@ -62,10 +62,9 @@ public class EntityGalt extends EntityBurrowed {
     this.tasks.addTask(5, new EntityAIWander(this, 1.0D, 10));
     this.tasks.addTask(6, new EntityAILookIdle(this));
 
-    this.targetTasks.addTask(0, new EntityAIHurtByTarget(this, false, new Class[0]));
-    this.targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityPlayer.class, true));
-    this.targetTasks.addTask(2, new EntityAINearestAttackableTarget<>(this, EntityNiale.class, true));
-    this.targetTasks.addTask(3, new EntityAINearestAttackableTarget<>(this, EntityHoen.class, true));
+    this.targetTasks.addTask(0, new EntityAIHurtByTarget(this, true, new Class[0]));
+    this.targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityNiale.class, true));
+    this.targetTasks.addTask(2, new EntityAINearestAttackableTarget<>(this, EntityHoen.class, true));
   }
 
   @Override

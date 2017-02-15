@@ -121,12 +121,14 @@ public final class McfrCrafts {
       int meta = color.getMetadata();
       int damage = color.getDyeDamage();
 
-      addLargeRecipe(new ItemStack(Blocks.STAINED_GLASS, 2, meta), "SSSSS", "SGGGS", "SGCGS", "SGGGS", "SSSSS", 'C', new ItemStack(Items.DYE, 1, damage), 'S', Items.STICK, 'G', Blocks.GLASS);
+      addLargeRecipe(new ItemStack(Blocks.STAINED_GLASS, 8, meta), "SSSSS", "SGGGS", "SGCGS", "SGGGS", "SSSSS", 'C', new ItemStack(Items.DYE, 1, damage), 'S', Items.STICK, 'G', Blocks.GLASS);
       for (Block log : LOGS)
-        addLargeRecipe(new ItemStack(Blocks.STAINED_GLASS_PANE, 4, meta), "BGGGB", "GGGGG", "GGCGG", "GGGGG", "BGGGB", 'C', new ItemStack(Items.DYE, 1, damage), 'B', log, 'G', Blocks.GLASS);
+        addLargeRecipe(new ItemStack(Blocks.STAINED_GLASS_PANE, 20, meta), "BGGGB", "GGGGG", "GGCGG", "GGGGG", "BGGGB", 'C', new ItemStack(Items.DYE, 1, damage), 'B', log, 'G', Blocks.GLASS);
     }
 
     addLargeRecipe(new ItemStack(Blocks.REDSTONE_LAMP), "GGGGG", "GRRRG", "GRLRG", "GRRRG", "GGGGG", 'R', Items.REDSTONE, 'L', Items.LAVA_BUCKET, 'G', Blocks.GLASS);
+    
+    addShapedRecipe(new ItemStack(Blocks.DIRT, 2, 1), "G", "D", 'D', new ItemStack(Blocks.DIRT, 1, 0), 'G', Blocks.GRAVEL);
 
     /* Mc-Fr */
 
@@ -161,16 +163,16 @@ public final class McfrCrafts {
     addLargeRecipe(new ItemStack(McfrBlocks.TILES, 4, 0), "B B B", "B B B", " B B ", 'B', Items.BRICK);
     addLargeRecipe(new ItemStack(McfrBlocks.TILES, 4, 1), "B B B", "B B B", " B B ", 'B', new ItemStack(Blocks.STONE, 1, 5));
 
-    addLargeRecipe(new ItemStack(McfrBlocks.MARBLE, 6, 1), "SSSSS", "S S S", "SS SS", "S S S", "SSSSS", 'S', new ItemStack(McfrBlocks.MARBLE, 1, 2));
+    addLargeRecipe(new ItemStack(McfrBlocks.MARBLE, 20, 1), "SSSSS", "S S S", "SS SS", "S S S", "SSSSS", 'S', new ItemStack(McfrBlocks.MARBLE, 1, 2));
     addShapedRecipe(new ItemStack(McfrBlocks.MARBLE, 2, 2), "SSS", "SES", "SSS", 'S', Blocks.SANDSTONE, 'E', new ItemStack(Items.POTIONITEM, 1, 0));
-    addLargeRecipe(new ItemStack(McfrBlocks.MARBLE, 6, 4), "SSSSS", "S S S", "SS SS", "S S S", "SSSSS", 'S', new ItemStack(McfrBlocks.MARBLE, 1, 5));
+    addLargeRecipe(new ItemStack(McfrBlocks.MARBLE, 20, 4), "SSSSS", "S S S", "SS SS", "S S S", "SSSSS", 'S', new ItemStack(McfrBlocks.MARBLE, 1, 5));
     addShapedRecipe(new ItemStack(McfrBlocks.MARBLE, 2, 5), "SSS", "SES", "SSS", 'S', Blocks.STONE, 'E', new ItemStack(Items.POTIONITEM, 1, 0));
-    addLargeRecipe(new ItemStack(McfrBlocks.MARBLE, 6, 7), "SSSSS", "S S S", "SS SS", "S S S", "SSSSS", 'S', new ItemStack(McfrBlocks.MARBLE, 1, 8));
+    addLargeRecipe(new ItemStack(McfrBlocks.MARBLE, 20, 7), "SSSSS", "S S S", "SS SS", "S S S", "SSSSS", 'S', new ItemStack(McfrBlocks.MARBLE, 1, 8));
     addShapedRecipe(new ItemStack(McfrBlocks.MARBLE, 2, 8), "SSS", "SES", "SSS", 'S', Blocks.OBSIDIAN, 'E', Items.WATER_BUCKET);
 
-    addLargeRecipe(new ItemStack(McfrBlocks.MARBLE_COLUMN, 8, 0), "S S S", "S S S", "S S S", "S S S", "S S S", 'S', new ItemStack(McfrBlocks.MARBLE, 1, 2));
-    addLargeRecipe(new ItemStack(McfrBlocks.MARBLE_COLUMN, 8, 1), "S S S", "S S S", "S S S", "S S S", "S S S", 'S', new ItemStack(McfrBlocks.MARBLE, 1, 5));
-    addLargeRecipe(new ItemStack(McfrBlocks.MARBLE_COLUMN, 8, 2), "S S S", "S S S", "S S S", "S S S", "S S S", 'S', new ItemStack(McfrBlocks.MARBLE, 1, 8));
+    addLargeRecipe(new ItemStack(McfrBlocks.MARBLE_COLUMN, 15, 0), "S S S", "S S S", "S S S", "S S S", "S S S", 'S', new ItemStack(McfrBlocks.MARBLE, 1, 2));
+    addLargeRecipe(new ItemStack(McfrBlocks.MARBLE_COLUMN, 15, 1), "S S S", "S S S", "S S S", "S S S", "S S S", 'S', new ItemStack(McfrBlocks.MARBLE, 1, 5));
+    addLargeRecipe(new ItemStack(McfrBlocks.MARBLE_COLUMN, 15, 2), "S S S", "S S S", "S S S", "S S S", "S S S", 'S', new ItemStack(McfrBlocks.MARBLE, 1, 8));
 
     // Ateliers
     for (Block planks : PLANKS) {
@@ -688,6 +690,8 @@ public final class McfrCrafts {
       addLargeRecipe(new ItemStack(McfrBlocks.SUPPORT), "BBBBB", "B S  ", "BS   ", "B    ", 'B', log, 'S', Items.STICK);
       addLargeRecipe(new ItemStack(McfrBlocks.LONG_SUPPORT), "B    ", "BBBBB", "B S S", "BS  S", "B    ", 'B', log, 'S', Items.STICK);
     }
+    
+    addLargeRecipe(new ItemStack(McfrBlocks.ROPE, 4, 0), "   FR", "  FRF", " FRF ", "FRF  ", "RF   ", 'F', Items.STRING, 'R', McfrBlocks.REEDS);
 
     /*
      * Items
@@ -695,6 +699,7 @@ public final class McfrCrafts {
 
     /* Minecraft */
 
+    addShapedRecipe(new ItemStack(Items.COMPASS), " I ", "ISI", " I ", 'I', Items.IRON_INGOT, 'S', new ItemStack(McfrItems.STITCH, 1, 0));
     addShapedRecipe(new ItemStack(Items.SUGAR), "S", "S", "#", 'S', McfrItems.SUGAR_CANES, '#', McfrItems.KITCHEN_MORTAR);
     addShapedRecipe(new ItemStack(Items.COOKIE), "#S#", "PPP", '#', McfrItems.COCOA, 'S', Items.SUGAR, 'P', McfrItems.CAKE_DOUGH);
     addShapedRecipe(new ItemStack(Items.PUMPKIN_PIE), "CFC", "UUU", "PPP", 'F', new ItemStack(McfrItems.FLASK, 1, 0), 'P', McfrItems.BREAD_DOUGH, 'U', Blocks.PUMPKIN, 'C', Items.CARROT);
@@ -730,7 +735,8 @@ public final class McfrCrafts {
     addShapedRecipe(new ItemStack(Items.STICK, 4), "#", "#", '#', McfrBlocks.EXOTIC_PLANKS);
 
     addLargeRecipe(new ItemStack(Items.SADDLE), "  C  ", "MCCCM", "CC CC", "C   C", "M   M", 'C', Items.LEATHER, 'M', McfrItems.STITCH);
-
+    addShapedRecipe(new ItemStack(Items.LEAD), "SS ", "SH ", "  S", 'S', Items.STRING, 'H', new ItemStack(McfrItems.SWORD_HANDLE, 1, 0));
+    
     /* Mc-Fr */
 
     // Divers
@@ -1005,7 +1011,7 @@ public final class McfrCrafts {
    * @param in le matériau
    */
   private static void addSlopeRecipe(Block out, ItemStack in) {
-    addLargeRecipe(new ItemStack(out, 6), "#   ", "##  ", "### ", "####", '#', in);
+    addLargeRecipe(new ItemStack(out, 10), "#   ", "##  ", "### ", "####", '#', in);
   }
 
   /**
@@ -1015,7 +1021,7 @@ public final class McfrCrafts {
    * @param in le matériau
    */
   private static void addPyramidRecipe(Block out, ItemStack in) {
-    addLargeRecipe(new ItemStack(out, 6), "  #  ", " ### ", "#####", '#', in);
+    addLargeRecipe(new ItemStack(out, 9), "  #  ", " ### ", "#####", '#', in);
   }
 
   /**
