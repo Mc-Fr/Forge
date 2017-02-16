@@ -12,7 +12,7 @@ public class RenderChatBubble extends Render<EntityChatBubble> {
 
   @Override
   public void doRender(EntityChatBubble entity, double x, double y, double z, float entityYaw, float partialTicks) {
-    ChatBubble.renderAt(x, y, z);
+    ChatBubble.render(x, y, z);
   }
 
   @Override

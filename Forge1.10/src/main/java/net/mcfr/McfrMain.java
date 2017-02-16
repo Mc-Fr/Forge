@@ -37,9 +37,10 @@ import net.mcfr.event.BlockEventsHandler;
 import net.mcfr.event.PlayerEventsHandler;
 import net.mcfr.forge.tile_entities.TileEntityBellows;
 import net.mcfr.forge.tile_entities.TileEntityStove;
+import net.mcfr.network.CreateChatBubbleMessage;
+import net.mcfr.network.DestroyChatBubbleMessage;
 import net.mcfr.network.GuiHandler;
 import net.mcfr.network.McfrNetworkWrapper;
-import net.mcfr.network.NotifyChatBubbleMessage;
 import net.mcfr.network.OpenEditMcfrSignMessage;
 import net.mcfr.network.OpenEditPaperMessage;
 import net.mcfr.network.OpenEditWallNoteMessage;
@@ -120,8 +121,8 @@ public class McfrMain {
     McfrNetworkWrapper.registerPacket(OpenEditMcfrSignMessage.ClientHandler.class, OpenEditMcfrSignMessage.class, Side.CLIENT);
     McfrNetworkWrapper.registerPacket(OpenEditWallNoteMessage.ClientHandler.class, OpenEditWallNoteMessage.class, Side.CLIENT);
     McfrNetworkWrapper.registerPacket(UpdateWallNoteMessage.ServerHandler.class, UpdateWallNoteMessage.class, Side.SERVER);
-    McfrNetworkWrapper.registerPacket(NotifyChatBubbleMessage.ClientHandler.class, NotifyChatBubbleMessage.class, Side.CLIENT);
-    McfrNetworkWrapper.registerPacket(NotifyChatBubbleMessage.ServerHandler.class, NotifyChatBubbleMessage.class, Side.SERVER);
+    McfrNetworkWrapper.registerPacket(CreateChatBubbleMessage.ServerHandler.class, CreateChatBubbleMessage.class, Side.SERVER);
+    McfrNetworkWrapper.registerPacket(DestroyChatBubbleMessage.ServerHandler.class, DestroyChatBubbleMessage.class, Side.SERVER);
     McfrNetworkWrapper.registerPacket(SyncEntityMessage.ClientHandler.class, SyncEntityMessage.class, Side.CLIENT);
     McfrNetworkWrapper.registerPacket(SyncEntityMessage.ServerHandler.class, SyncEntityMessage.class, Side.SERVER);
   }

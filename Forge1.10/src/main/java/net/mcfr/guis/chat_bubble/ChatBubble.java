@@ -1,5 +1,9 @@
 package net.mcfr.guis.chat_bubble;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
+
 import net.mcfr.utils.RenderUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
@@ -9,12 +13,13 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-@SideOnly(Side.CLIENT)
 public class ChatBubble {
-  /** L'identifiant de l'entité associée au joueur local */
-  public static int currentEntityId = -1;
+  /** Associe un joueur à une bulle de tchat. */
+  @SideOnly(Side.SERVER)
+  public static final Map<UUID, Integer> PLAYER_BUBBLE = new HashMap<>();
 
-  public static void renderAt(double x, double y, double z) {
+  @SideOnly(Side.CLIENT)
+  public static void render(double x, double y, double z) {
     RenderManager renderManager = Minecraft.getMinecraft().getRenderManager();
 
     GlStateManager.pushMatrix();
