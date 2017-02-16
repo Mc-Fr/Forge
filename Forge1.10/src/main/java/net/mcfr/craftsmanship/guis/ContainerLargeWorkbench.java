@@ -1,7 +1,12 @@
 package net.mcfr.craftsmanship.guis;
 
-import static net.mcfr.utils.RenderUtils.*;
+import static net.mcfr.utils.RenderUtils.HOTBAR_SEPARATOR;
+import static net.mcfr.utils.RenderUtils.INV_SEPARATOR;
+import static net.mcfr.utils.RenderUtils.SIDE_OFFSET;
+import static net.mcfr.utils.RenderUtils.SLOT_SIZE;
+import static net.mcfr.utils.RenderUtils.TOP_OFFSET;
 
+import net.mcfr.forge.inventories.LargeInventoryCrafting;
 import net.mcfr.forge.recipes.LargeRecipesHandler;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -22,7 +27,7 @@ import net.minecraft.world.World;
  */
 public class ContainerLargeWorkbench extends Container {
   /** La matrice de craft */
-  private InventoryCrafting craftMatrix;
+  private LargeInventoryCrafting craftMatrix;
   /** L'inventaire correspondant au résultat */
   private IInventory craftResult;
   /** Le monde */
@@ -31,7 +36,8 @@ public class ContainerLargeWorkbench extends Container {
   private BlockPos pos;
 
   public ContainerLargeWorkbench(InventoryPlayer playerInventory, World world, BlockPos pos) {
-    this.craftMatrix = new InventoryCrafting(this, 5, 5);
+    this.craftMatrix = new LargeInventoryCrafting(this, 5, 5);
+    
     this.craftResult = new InventoryCraftResult();
     this.world = world;
     this.pos = pos;
@@ -67,6 +73,10 @@ public class ContainerLargeWorkbench extends Container {
    */
   protected InventoryCrafting getCraftMatrix() {
     return this.craftMatrix;
+  }
+  
+  protected void setCraftMatrixAnvil() {
+    this.craftMatrix.setAnvil();
   }
 
   /**

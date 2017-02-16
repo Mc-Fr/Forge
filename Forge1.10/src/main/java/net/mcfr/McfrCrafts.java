@@ -599,7 +599,7 @@ public final class McfrCrafts {
     addShapedRecipe(new ItemStack(McfrBlocks.CHAIN_LADDER, 3), "C C", "CCC", "C C", 'C', McfrItems.STITCH);
 
     // Cordes
-    addShapedRecipe(new ItemStack(McfrBlocks.ROPE, 8), " FB", "FBF", "BF ", 'F', Items.STRING, 'B', McfrItems.HEMP_FIBER);
+    //addShapedRecipe(new ItemStack(McfrBlocks.ROPE, 8), " FB", "FBF", "BF ", 'F', Items.STRING, 'B', McfrItems.HEMP_FIBER);
     addShapedRecipe(new ItemStack(McfrBlocks.CHAIN, 4), "B", "B", "B", "B", "B", 'B', McfrItems.STITCH);
 
     // Éclairage
@@ -687,15 +687,14 @@ public final class McfrCrafts {
       addLargeRecipe(new ItemStack(McfrBlocks.LONG_SUPPORT), "B    ", "BBBBB", "B S S", "BS  S", "B    ", 'B', log, 'S', Items.STICK);
     }
     
-    addLargeRecipe(new ItemStack(McfrBlocks.ROPE, 4, 0), "   FR", "  FRF", " FRF ", "FRF  ", "RF   ", 'F', Items.STRING, 'R', McfrBlocks.REEDS);
-
+    addLargeRecipe(new ItemStack(McfrBlocks.ROPE, 4), "   FR", "  FRF", " FRF ", "FRF  ", "RF   ", 'F', Items.STRING, 'R', McfrItems.REEDS);
+    
     /*
      * Items
      */
 
     /* Minecraft */
 
-    addShapedRecipe(new ItemStack(Items.COMPASS), " I ", "ISI", " I ", 'I', Items.IRON_INGOT, 'S', new ItemStack(McfrItems.STITCH, 1, 0));
     addShapedRecipe(new ItemStack(Items.SUGAR), "S", "S", "#", 'S', McfrItems.SUGAR_CANES, '#', McfrItems.KITCHEN_MORTAR);
     addShapedRecipe(new ItemStack(Items.COOKIE), "#S#", "PPP", '#', McfrItems.COCOA, 'S', Items.SUGAR, 'P', McfrItems.CAKE_DOUGH);
     addShapedRecipe(new ItemStack(Items.PUMPKIN_PIE), "CFC", "UUU", "PPP", 'F', new ItemStack(McfrItems.FLASK, 1, 0), 'P', McfrItems.BREAD_DOUGH, 'U', Blocks.PUMPKIN, 'C', Items.CARROT);
@@ -935,7 +934,7 @@ public final class McfrCrafts {
     addAnvilRecipe(new ItemStack(Blocks.DETECTOR_RAIL, 6), 60, 100, "ISSSI", "RIIIR", "ISISI", "RIIIR", "ISSSI", 'I', Items.IRON_INGOT, 'S', Items.STICK, 'R', Items.REDSTONE);
 
     addAnvilRecipe(new ItemStack(Items.CLOCK, 1), 40, 70, " # ", "#X#", " # ", '#', Items.GOLD_INGOT, 'X', Items.REDSTONE);
-    addAnvilRecipe(new ItemStack(Items.COMPASS, 1), 60, 100, " # ", "#X#", " # ", '#', Items.IRON_INGOT, 'X', Items.REDSTONE);
+    addAnvilRecipe(new ItemStack(Items.COMPASS, 1), 60, 100, " # ", "#X#", " # ", '#', Items.IRON_INGOT, 'X', McfrItems.STITCH);
     addAnvilRecipe(new ItemStack(Items.SHEARS), 60, 100, "  #  ", " #   ", " S  #", " SS# ", '#', Items.IRON_INGOT, 'S', Items.STICK);
 
     addAnvilRecipe(new ItemStack(McfrBlocks.ANVIL), 125, 140, "BBBBB", " BBB ", "  W  ", " IWI ", "IIIII", 'B', Blocks.IRON_BLOCK, 'W', Blocks.PLANKS, 'I', Items.IRON_INGOT);

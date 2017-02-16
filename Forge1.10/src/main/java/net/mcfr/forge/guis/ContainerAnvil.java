@@ -15,6 +15,7 @@ public class ContainerAnvil extends ContainerLargeWorkbench {
 
   public ContainerAnvil(InventoryPlayer playerInventory, World worldIn, BlockPos posIn) {
     super(playerInventory, worldIn, posIn);
+    this.setCraftMatrixAnvil();
   }
 
   @Override

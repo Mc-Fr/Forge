@@ -10,7 +10,7 @@ import net.minecraftforge.common.util.EnumHelper;
  */
 public final class AdditionalPaintings {
   public static final EnumArt PLANCHEBOIS = EnumHelper.addArt("PLANCHEBOIS", "planchebois", 16, 32, 32, 64);
-  public static final EnumArt PLANCHEBOISCRACK = EnumHelper.addArt("PLANCHEBOISCRACK", "plancheboiscrack", 16, 32, 48, 64);
+  public static final EnumArt PLANCHEBOISCR = EnumHelper.addArt("PLANCHEBOISCR", "plancheboiscr", 16, 32, 48, 64);
   public static final EnumArt GRILLEBOIS = EnumHelper.addArt("GRILLEBOIS", "grillebois", 16, 32, 64, 64);
   public static final EnumArt FOURRURE = EnumHelper.addArt("FOURRURE", "fourrure", 16, 32, 80, 64);
   public static final EnumArt FOURRUREBEIGE = EnumHelper.addArt("FOURRUREBEIGE", "fourrurebeige", 16, 32, 96, 64);
@@ -30,7 +30,7 @@ public final class AdditionalPaintings {
   public static final EnumArt BOUCLIER5 = EnumHelper.addArt("BOUCLIER5", "bouclier5", 16, 16, 64, 16);
   public static final EnumArt BOUCLIER6 = EnumHelper.addArt("BOUCLIER6", "bouclier6", 16, 16, 80, 16);
   public static final EnumArt BOUCLIER7 = EnumHelper.addArt("BOUCLIER7", "bouclier7", 16, 16, 96, 16);
-  public static final EnumArt GRILLEBOISPETITE = EnumHelper.addArt("GRILLEBOISPETITE", "grilleboispetite", 16, 16, 112, 0);
+  public static final EnumArt GRILLEBOISPET = EnumHelper.addArt("GRILLEBOISPET", "grilleboispet", 16, 16, 112, 0);
   public static final EnumArt CASSEROLES = EnumHelper.addArt("CASSEROLES", "casseroles", 16, 16, 128, 0);
   public static final EnumArt USENTILES = EnumHelper.addArt("USTENTILES", "USTENTILES", 16, 16, 144, 0);
   public static final EnumArt SAUMON = EnumHelper.addArt("SAUMON", "saumon", 32, 16, 0, 48);
