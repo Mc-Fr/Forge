@@ -165,6 +165,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 /**
@@ -1267,6 +1268,8 @@ public final class McfrBlocks {
 
     register(LONG_REPEATER_OFF);
     register(LONG_REPEATER_ON);
+    
+    addNewPaintings();
   }
 
   /**
@@ -1328,6 +1331,37 @@ public final class McfrBlocks {
       default:
         return null;
     }
+  }
+  
+  public static void addNewPaintings() {
+    EnumHelper.addArt("PLANCHEBOIS", "planchebois", 16, 32, 32, 64);
+    EnumHelper.addArt("PLANCHEBOISCR", "plancheboiscr", 16, 32, 48, 64);
+    EnumHelper.addArt("GRILLEBOIS", "grillebois", 16, 32, 64, 64);
+    EnumHelper.addArt("FOURRURE", "fourrure", 16, 32, 80, 64);
+    EnumHelper.addArt("FOURRUREBEIGE", "fourrurebeige", 16, 32, 96, 64);
+    EnumHelper.addArt("BANDECUIR", "bandecuir", 16, 32, 112, 64);
+    EnumHelper.addArt("FILETH", "fileth", 16, 32, 128, 64);
+    EnumHelper.addArt("CHAINEH", "chaineh", 16, 32, 144, 64);
+    EnumHelper.addArt("BANNIEREFORET", "banniereforet", 16, 32, 160, 64);
+    EnumHelper.addArt("BANNIEREROSE", "banniererose", 16, 32, 176, 64);
+    EnumHelper.addArt("PEAUSUSPENDUE", "peaususpendue", 32, 32, 64, 96);
+    EnumHelper.addArt("GOUVERAIL", "gouvernail", 32, 32, 96, 96);
+    EnumHelper.addArt("RIDEAUNOIR", "rideaunoir", 32, 32, 32, 160);
+    EnumHelper.addArt("RIDEAUBLANC", "rideaublanc", 32, 32, 32, 160);
+    EnumHelper.addArt("BOUCLIER1", "bouclier1", 16, 16, 0, 16);
+    EnumHelper.addArt("BOUCLIER2", "bouclier2", 16, 16, 16, 16);
+    EnumHelper.addArt("BOUCLIER3", "bouclier3", 16, 16, 32, 16);
+    EnumHelper.addArt("BOUCLIER4", "bouclier4", 16, 16, 48, 16);
+    EnumHelper.addArt("BOUCLIER5", "bouclier5", 16, 16, 64, 16);
+    EnumHelper.addArt("BOUCLIER6", "bouclier6", 16, 16, 80, 16);
+    EnumHelper.addArt("BOUCLIER7", "bouclier7", 16, 16, 96, 16);
+    EnumHelper.addArt("GRILLEBOISPET", "grilleboispet", 16, 16, 112, 0);
+    EnumHelper.addArt("CASSEROLES", "casseroles", 16, 16, 128, 0);
+    EnumHelper.addArt("USTENTILES", "ustensiles", 16, 16, 144, 0);
+    EnumHelper.addArt("SAUMON", "saumon", 32, 16, 0, 48);
+    EnumHelper.addArt("FILETS", "filets", 32, 16, 32, 48);
+    EnumHelper.addArt("CHAINES", "chaines", 32, 16, 64, 48);
+    EnumHelper.addArt("LANCE", "lance", 48, 16, 96, 48);
   }
 
   private McfrBlocks() {}
