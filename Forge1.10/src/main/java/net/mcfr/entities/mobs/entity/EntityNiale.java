@@ -229,6 +229,10 @@ public class EntityNiale extends EntityBurrowed implements net.minecraftforge.co
     List<ItemStack> itemList = new ArrayList<>();
 
     itemList.add(new ItemStack(McfrItems.RAW_HUNTED_LEG, getRandomQuantity(12.3F)));
+    itemList.add(new ItemStack(Items.BONE, getRandomQuantity(4.3f)));
+    if (!this.getSheared()) {
+      itemList.add(new ItemStack(Items.STRING, getRandomQuantity(8.7f)));
+    }
     
     return itemList;
   }
