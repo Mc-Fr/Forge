@@ -29,8 +29,10 @@ public class CreateChatBubbleMessage implements IMessage {
         EntityChatBubble chatBubble = new EntityChatBubble(world, pos.xCoord, pos.yCoord + 2.3, pos.zCoord);
         int id = chatBubble.getEntityId();
 
-        if (world.spawnEntityInWorld(chatBubble))
-          ChatBubble.PLAYER_BUBBLE.put(ctx.getServerHandler().playerEntity.getUniqueID(), id);
+        if (world.spawnEntityInWorld(chatBubble)) {
+          chatBubble.startRiding(player, true);
+          ChatBubble.PLAYER_BUBBLE.put(player.getUniqueID(), id);
+        }
       });
 
       return null;

@@ -45,6 +45,7 @@ import net.mcfr.network.OpenEditMcfrSignMessage;
 import net.mcfr.network.OpenEditPaperMessage;
 import net.mcfr.network.OpenEditWallNoteMessage;
 import net.mcfr.network.SyncEntityMessage;
+import net.mcfr.network.UpdateChatBubblePositionMessage;
 import net.mcfr.network.UpdateWallNoteMessage;
 import net.mcfr.proxy.CommonProxy;
 import net.minecraftforge.common.MinecraftForge;
@@ -122,6 +123,7 @@ public class McfrMain {
     McfrNetworkWrapper.registerPacket(OpenEditWallNoteMessage.ClientHandler.class, OpenEditWallNoteMessage.class, Side.CLIENT);
     McfrNetworkWrapper.registerPacket(UpdateWallNoteMessage.ServerHandler.class, UpdateWallNoteMessage.class, Side.SERVER);
     McfrNetworkWrapper.registerPacket(CreateChatBubbleMessage.ServerHandler.class, CreateChatBubbleMessage.class, Side.SERVER);
+    McfrNetworkWrapper.registerPacket(UpdateChatBubblePositionMessage.ClientHandler.class, UpdateChatBubblePositionMessage.class, Side.CLIENT);
     McfrNetworkWrapper.registerPacket(DestroyChatBubbleMessage.ServerHandler.class, DestroyChatBubbleMessage.class, Side.SERVER);
     McfrNetworkWrapper.registerPacket(SyncEntityMessage.ClientHandler.class, SyncEntityMessage.class, Side.CLIENT);
     McfrNetworkWrapper.registerPacket(SyncEntityMessage.ServerHandler.class, SyncEntityMessage.class, Side.SERVER);
