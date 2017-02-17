@@ -9,15 +9,32 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class GuiMcfrChat extends GuiChat {
+  private boolean bubbleDisplayed;
+
   @Override
   public void initGui() {
     super.initGui();
-    McfrNetworkWrapper.getInstance().sendToServer(new CreateChatBubbleMessage());
+    this.bubbleDisplayed = false;
   }
 
   @Override
   public void onGuiClosed() {
     super.onGuiClosed();
-    McfrNetworkWrapper.getInstance().sendToServer(new DestroyChatBubbleMessage());
+    if (this.bubbleDisplayed)
+      McfrNetworkWrapper.getInstance().sendToServer(new DestroyChatBubbleMessage());
+  }
+
+  @Override
+  public void updateScreen() {
+    super.updateScreen();
+
+    if (!this.bubbleDisplayed && !this.inputField.getText().isEmpty() && !this.inputField.getText().startsWith("/")) {
+      McfrNetworkWrapper.getInstance().sendToServer(new CreateChatBubbleMessage());
+      this.bubbleDisplayed = true;
+    }
+    else if (this.bubbleDisplayed && (this.inputField.getText().isEmpty() || this.inputField.getText().startsWith("/"))) {
+      McfrNetworkWrapper.getInstance().sendToServer(new DestroyChatBubbleMessage());
+      this.bubbleDisplayed = false;
+    }
   }
 }

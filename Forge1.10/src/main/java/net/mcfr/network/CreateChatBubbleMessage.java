@@ -24,7 +24,6 @@ public class CreateChatBubbleMessage implements IMessage {
 
       player.getServerWorld().addScheduledTask(() -> {
         World world = player.worldObj;
-        System.out.println(world);
         Vec3d pos = player.getPositionVector();
         EntityChatBubble chatBubble = new EntityChatBubble(world, pos.xCoord, pos.yCoord + 2.3, pos.zCoord);
         int id = chatBubble.getEntityId();
