@@ -15,7 +15,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ChatBubble {
   /** Associe un joueur à une bulle de tchat. */
-  @SideOnly(Side.SERVER)
   public static final Map<UUID, Integer> PLAYER_BUBBLE = new HashMap<>();
 
   @SideOnly(Side.CLIENT)
