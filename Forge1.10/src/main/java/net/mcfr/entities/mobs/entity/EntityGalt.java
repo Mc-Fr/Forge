@@ -25,6 +25,7 @@ import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -150,6 +151,7 @@ public class EntityGalt extends EntityBurrowed {
     
     itemList.add(new ItemStack(McfrItems.RAW_HUNTED_STEAK, getRandomQuantity(8.6F)));
     itemList.add(new ItemStack(McfrItems.HUNTED_SKIN, getRandomQuantity(9.6F)));
+    itemList.add(new ItemStack(Items.BONE, getRandomQuantity(6.4f)));
     
     return itemList;
   }

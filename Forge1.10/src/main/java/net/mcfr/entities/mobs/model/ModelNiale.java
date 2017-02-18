@@ -99,8 +99,8 @@ public class ModelNiale extends ModelBase {
       GlStateManager.popMatrix();
     } else if (((EntityGendered) entityIn).getGender() == Genders.FEMALE){
       GlStateManager.pushMatrix();
-      GlStateManager.scale(0.6F, 0.6F, 0.6F);
-      GlStateManager.translate(0.0F, 7.0F * scale, 0.0F);
+      GlStateManager.scale(0.55F, 0.55F, 0.55F);
+      GlStateManager.translate(0.0F, 9.0F * scale, 0.0F);
       this.body.render(scale);
       GlStateManager.popMatrix();
     } else {
