@@ -1,7 +1,5 @@
 package net.mcfr.entities;
 
-import net.mcfr.network.McfrNetworkWrapper;
-import net.mcfr.network.UpdateChatBubblePositionMessage;
 import net.minecraft.entity.Entity;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
@@ -27,17 +25,19 @@ public class EntityChatBubble extends Entity {
   @Override
   protected void writeEntityToNBT(NBTTagCompound compound) {}
 
-  @Override
-  public void onEntityUpdate() {
-    super.onEntityUpdate();
-
-    if (!this.worldObj.isRemote && isRiding()) {
-      Entity entity = getRidingEntity();
-
-      this.posX = entity.posX;
-      this.posY = entity.posY + 2.3;
-      this.posZ = entity.posZ;
-      McfrNetworkWrapper.getInstance().sendToAll(new UpdateChatBubblePositionMessage(this.posX, this.posY, this.posZ, getEntityId()));
-    }
-  }
+  // TEMP
+  // @Override
+  // public void onEntityUpdate() {
+  // super.onEntityUpdate();
+  //
+  // if (!this.worldObj.isRemote && isRiding()) {
+  // Entity entity = getRidingEntity();
+  //
+  // this.posX = entity.posX;
+  // this.posY = entity.posY + 2.3;
+  // this.posZ = entity.posZ;
+  // McfrNetworkWrapper.getInstance().sendToAll(new UpdateChatBubblePositionMessage(this.posX,
+  // this.posY, this.posZ, getEntityId()));
+  // }
+  // }
 }
