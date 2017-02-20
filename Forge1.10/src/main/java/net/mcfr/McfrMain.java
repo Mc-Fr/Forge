@@ -176,7 +176,7 @@ public class McfrMain {
   private void registerEntities() {
     EntityRegistry.registerModEntity(EntityGrapnel.class, "grapnel", 1000, this, 10, 3, true);
     EntityRegistry.registerModEntity(EntitySailBoat.class, "sailboat", 1001, this, 80, 3, true);
-    EntityRegistry.registerModEntity(EntityChatBubble.class, "chat_bubble", 1002, this, 8, 3, true);
+    EntityRegistry.registerModEntity(EntityChatBubble.class, "chat_bubble", 1002, this, 20, 3, true);
 
     EntityRegistry.registerModEntity(EntitySiker.class, "siker", 1, this, 80, 3, true, 0xBA9B54, 0x5E4B23);
     EntityRegistry.registerModEntity(EntityBormoth.class, "bormoth", 2, this, 80, 3, true, 1000, 1000);
