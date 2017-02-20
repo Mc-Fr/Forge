@@ -30,6 +30,10 @@ public class GuiMcfrChat extends GuiChat {
 
   private boolean bubbleDisplayed;
 
+  public GuiMcfrChat(String defaultText) {
+    super(defaultText);
+  }
+
   @Override
   public void initGui() {
     super.initGui();

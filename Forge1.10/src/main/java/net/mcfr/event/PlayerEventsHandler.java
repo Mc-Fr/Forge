@@ -1,5 +1,7 @@
 package net.mcfr.event;
 
+import java.lang.reflect.Field;
+
 import net.mcfr.guis.GuiMcfrChat;
 import net.mcfr.guis.GuiMcfrIngameMenu;
 import net.mcfr.guis.GuiMcfrMainMenu;
@@ -38,8 +40,32 @@ public class PlayerEventsHandler {
       e.setGui(new GuiMcfrMainMenu());
     if (gui instanceof GuiIngameMenu)
       e.setGui(new GuiMcfrIngameMenu());
-    if (gui instanceof GuiChat)
-      e.setGui(new GuiMcfrChat());
+    if (gui instanceof GuiChat) {
+      GuiChat g = (GuiChat) gui;
+      String s = "";
+
+      try {
+        Class<?> clazz = g.getClass();
+        Field f = null;
+
+        try {
+          f = clazz.getDeclaredField("field_146409_v");
+        }
+        catch (NoSuchFieldException | SecurityException ex1) {
+          try {
+            f = clazz.getDeclaredField("defaultInputFieldText");
+          }
+          catch (NoSuchFieldException | SecurityException ex) {}
+        }
+        if (f != null) {
+          f.setAccessible(true);
+          s = (String) f.get(gui);
+        }
+      }
+      catch (IllegalArgumentException | IllegalAccessException ex) {}
+
+      e.setGui(new GuiMcfrChat(s));
+    }
   }
 
   /**
