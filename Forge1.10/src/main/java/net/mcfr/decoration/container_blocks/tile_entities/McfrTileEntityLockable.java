@@ -103,12 +103,12 @@ public abstract class McfrTileEntityLockable extends TileEntityLockable {
 
   @Override
   public ItemStack getStackInSlot(int index) {
-    return index > 0 && index < this.stacks.length ? this.stacks[index] : null;
+    return index >= 0 && index < this.stacks.length ? this.stacks[index] : null;
   }
 
   @Override
   public ItemStack decrStackSize(int index, int count) {
-    if (index > 0 && index < this.stacks.length && this.stacks[index] != null) {
+    if (index >= 0 && index < this.stacks.length && this.stacks[index] != null) {
       if (this.stacks[index].stackSize <= count) {
         ItemStack stack = this.stacks[index];
 
@@ -133,7 +133,7 @@ public abstract class McfrTileEntityLockable extends TileEntityLockable {
 
   @Override
   public ItemStack removeStackFromSlot(int index) {
-    if (index > 0 && index < this.stacks.length && this.stacks[index] != null) {
+    if (index >= 0 && index < this.stacks.length && this.stacks[index] != null) {
       ItemStack stack = this.stacks[index];
 
       this.stacks[index] = null;
