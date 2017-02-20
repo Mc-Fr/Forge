@@ -104,10 +104,8 @@ public abstract class TileEntitySignRenderer<T extends TileEntityMcfrSign> exten
 
           if (j == te.lineBeingEdited)
             s = "> " + s + " <";
-          if (te instanceof TileEntityOrpSign)
-            s = "§f" + s;
 
-          fontRenderer.drawString(s, -fontRenderer.getStringWidth(s) / 2, j * 10 - te.signText.length * 5, 0);
+          fontRenderer.drawString(s, -fontRenderer.getStringWidth(s) / 2, j * 10 - te.signText.length * 5, te instanceof TileEntityOrpSign ? 0xffffffff : 0);
         }
       }
     }
