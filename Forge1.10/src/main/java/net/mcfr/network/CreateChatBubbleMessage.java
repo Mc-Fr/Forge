@@ -29,7 +29,12 @@ public class CreateChatBubbleMessage implements IMessage {
         int id = chatBubble.getEntityId();
 
         if (world.spawnEntityInWorld(chatBubble)) {
-          chatBubble.startRiding(player, true);
+          /*
+           * Lorsque le bulle chevauche le joueur, un plugin la repositionne dans la tête du joueur.
+           * C'est ce qui provoque le tressautement lors de la mise à jour de la position.
+           */
+          // FIXME
+          // chatBubble.startRiding(player, true);
           ChatBubble.PLAYER_BUBBLE.put(player.getUniqueID(), id);
         }
       });
