@@ -60,6 +60,7 @@ public class GuiMcfrChat extends GuiChat {
   private boolean shouldAddBubble() {
     // #f:0
     return !this.bubbleDisplayed &&
+        !Minecraft.getMinecraft().thePlayer.isSpectator() &&
         !this.inputField.getText().isEmpty() &&
         !startsWithSpecialChar(this.inputField.getText());
     // #f:1
