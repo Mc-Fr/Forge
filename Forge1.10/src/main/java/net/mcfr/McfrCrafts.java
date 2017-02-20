@@ -753,7 +753,7 @@ public final class McfrCrafts {
 
     addShapedRecipe(new ItemStack(McfrItems.HEMP_LEAF, 1), "#", '#', McfrItems.HEMP_FLOWER);
     addShapedRecipe(new ItemStack(McfrItems.HEMP_FIBER, 3), "###", '#', McfrItems.HEMP_FLOWER);
-    addShapelessRecipe(new ItemStack(McfrItems.HEMP_FIBER, 4), new ItemStack(McfrItems.HEMP_LEAF));
+    addShapelessRecipe(new ItemStack(McfrItems.HEMP_FIBER, 2), new ItemStack(McfrItems.HEMP_LEAF));
     addShapedRecipe(new ItemStack(McfrItems.HEMP_OIL), "C", "C", "M", 'C', McfrItems.HEMP_LEAF, 'M', McfrItems.KITCHEN_MORTAR);
 
     addShapedRecipe(new ItemStack(McfrItems.FERTILIZER), "BBB", "CCC", "###", 'B', new ItemStack(Items.DYE, 1, 15), 'C', McfrItems.HEMP_OIL, '#', McfrItems.POOP);

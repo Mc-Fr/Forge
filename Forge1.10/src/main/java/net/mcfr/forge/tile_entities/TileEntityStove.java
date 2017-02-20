@@ -24,7 +24,7 @@ public class TileEntityStove extends TileEntityLockable implements ITickable, IS
   /** La température maximale. */
   public static final int MAX_TEMPERATURE = 150;
   /** Le nombre de tics avant de changer la température d'un degré. */
-  private static final int TICKS_PER_STEPS = 3 * 20;
+  private static final int TICKS_PER_STEPS = 2 * 20;
 
   /** Le nombre de tics de l'item courant. */
   private int totalFuelTicks;
