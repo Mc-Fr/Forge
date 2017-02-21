@@ -25,7 +25,7 @@ public class DestroyChatBubbleMessage implements IMessage {
         Entity e = player.worldObj.getEntityByID(id);
 
         if (e != null) {
-          e.setDead();
+          // e.setDead(); // DEBUG
           ChatBubble.PLAYER_BUBBLE.remove(player.getUniqueID());
         }
       });

@@ -5,6 +5,8 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 
 public class EntityChatBubble extends Entity {
+  private int lifespan;
+
   public EntityChatBubble(World world) {
     this(world, 0, 0, 0);
   }
@@ -14,6 +16,7 @@ public class EntityChatBubble extends Entity {
     this.posX = x;
     this.posY = y;
     this.posZ = z;
+    this.lifespan = 3 * 60 * 20;
   }
 
   @Override
@@ -25,11 +28,16 @@ public class EntityChatBubble extends Entity {
   @Override
   protected void writeEntityToNBT(NBTTagCompound compound) {}
 
-  // TEMP
   @Override
   public void onEntityUpdate() {
     super.onEntityUpdate();
 
+    if (this.lifespan <= 0)
+      setDead();
+    else
+      this.lifespan--;
+
+    // TEMP
     // if (!this.worldObj.isRemote && isRiding()) {
     // Entity entity = getRidingEntity();
     //

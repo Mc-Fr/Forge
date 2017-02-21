@@ -6,7 +6,7 @@ import java.util.List;
 import net.mcfr.network.CreateChatBubbleMessage;
 import net.mcfr.network.DestroyChatBubbleMessage;
 import net.mcfr.network.McfrNetworkWrapper;
-import net.minecraft.client.Minecraft;
+import net.mcfr.network.NetworkUtils;
 import net.minecraft.client.gui.GuiChat;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -64,7 +64,8 @@ public class GuiMcfrChat extends GuiChat {
   private boolean shouldAddBubble() {
     // #f:0
     return !this.bubbleDisplayed &&
-        !Minecraft.getMinecraft().thePlayer.isSpectator() &&
+        !NetworkUtils.getLocalPlayer().isInvisible() &&
+        !NetworkUtils.getLocalPlayer().isSpectator() &&
         !this.inputField.getText().isEmpty() &&
         !startsWithSpecialChar(this.inputField.getText());
     // #f:1
@@ -73,7 +74,8 @@ public class GuiMcfrChat extends GuiChat {
   private boolean shouldRemoveBubble() {
     // #f:0
     return this.bubbleDisplayed && (
-        Minecraft.getMinecraft().thePlayer.isSpectator() ||
+        NetworkUtils.getLocalPlayer().isInvisible() ||
+        NetworkUtils.getLocalPlayer().isSpectator() ||
         this.inputField.getText().isEmpty() ||
         startsWithSpecialChar(this.inputField.getText()));
     // #f:1

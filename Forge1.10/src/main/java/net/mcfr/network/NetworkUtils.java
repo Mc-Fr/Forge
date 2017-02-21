@@ -6,7 +6,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-final class NetworkUtils {
+public final class NetworkUtils {
   @SideOnly(Side.CLIENT)
   public static EntityPlayer getLocalPlayer() {
     return Minecraft.getMinecraft().thePlayer;
