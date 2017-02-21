@@ -236,10 +236,17 @@ public class BlockShowcase extends BlockContainer {
     return i <= 1;
   }
 
-  private boolean isDoubleShowcase(World worldIn, BlockPos pos) {
-    if (worldIn.getBlockState(pos).getBlock() == this) {
+  /**
+   * Indique si ce bloc est une double vitrine.
+   * 
+   * @param world le monde
+   * @param pos la position
+   * @return vrai si cette vitrine est double ; faux sinon
+   */
+  private boolean isDoubleShowcase(World world, BlockPos pos) {
+    if (world.getBlockState(pos).getBlock() == this) {
       for (EnumFacing facing : EnumFacing.Plane.HORIZONTAL) {
-        if (worldIn.getBlockState(pos.offset(facing)).getBlock() == this)
+        if (world.getBlockState(pos.offset(facing)).getBlock() == this)
           return true;
       }
     }
@@ -328,15 +335,15 @@ public class BlockShowcase extends BlockContainer {
         TileEntityShowcase t = (TileEntityShowcase) te;
 
         if (t.canPlayerInteract()) {
-          if (t.hasItem() && playerIn.getHeldItemMainhand() == null) {
-            playerIn.inventory.setInventorySlotContents(playerIn.inventory.currentItem, t.getItem());
-            t.setItem(null);
+          if (t.hasItem(0) && playerIn.getHeldItemMainhand() == null) {
+            playerIn.inventory.setInventorySlotContents(playerIn.inventory.currentItem, t.getItem(0));
+            t.setItem(null, 0);
             TileEntityUtils.sendTileEntityUpdate(te.getWorld(), t);
 
             return true;
           }
-          else if (!t.hasItem() && playerIn.getHeldItemMainhand() != null && TileEntityShowcase.itemIsValid(playerIn.getHeldItemMainhand())) {
-            t.setItem(playerIn.getHeldItemMainhand());
+          else if (!t.hasItem(0) && playerIn.getHeldItemMainhand() != null && TileEntityShowcase.itemIsValid(playerIn.getHeldItemMainhand())) {
+            t.setItem(playerIn.getHeldItemMainhand(), 0);
             playerIn.getHeldItemMainhand().stackSize--;
             TileEntityUtils.sendTileEntityUpdate(te.getWorld(), t);
 

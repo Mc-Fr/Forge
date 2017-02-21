@@ -11,13 +11,21 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 
+/**
+ * Tile entity de la vitrine.
+ *
+ * @author Mc-Fr
+ */
 public class TileEntityShowcase extends TileEntityOriented implements IInventory, ClickableTileEntity {
+  /** Item affiché */
   private ItemStack shownItem;
+  /** Vitrines adjacentes vérifiées ou non */
   private boolean adjacentShowcaseChecked;
   private TileEntityShowcase adjacentShowcaseNorth;
   private TileEntityShowcase adjacentShowcaseSouth;
   private TileEntityShowcase adjacentShowcaseEast;
   private TileEntityShowcase adjacentShowcaseWest;
+  /** Temps du dernier clic */
   private long lastClickedTime;
 
   public TileEntityShowcase() {
@@ -74,7 +82,7 @@ public class TileEntityShowcase extends TileEntityOriented implements IInventory
   }
 
   /**
-   * Performs the check for adjacent chests to determine if this chest is double or not.
+   * Vérifie s'il y a des vitrines simples à côté pour savoir si celle-ci est double ou non.
    */
   public void checkForAdjacentChests() {
     if (!this.adjacentShowcaseChecked) {
@@ -86,6 +94,12 @@ public class TileEntityShowcase extends TileEntityOriented implements IInventory
     }
   }
 
+  /**
+   * Cherche la vitrine du côté indiqué.
+   * 
+   * @param side le côté
+   * @return la vitrine ou null s'il n'y en a pas
+   */
   protected TileEntityShowcase getAdjacentShowcase(EnumFacing side) {
     BlockPos blockpos = getPos().offset(side);
 
@@ -102,8 +116,14 @@ public class TileEntityShowcase extends TileEntityOriented implements IInventory
     return null;
   }
 
-  private boolean isShowcaseAt(BlockPos posIn) {
-    return getWorld().getBlockState(posIn).getBlock() instanceof BlockShowcase;
+  /**
+   * Indique si le bloc à une certaines position est une vitrine.
+   * 
+   * @param pos la position
+   * @return vrai si le bloc est une vitrine ; faux sinon
+   */
+  private boolean isShowcaseAt(BlockPos pos) {
+    return getWorld().getBlockState(pos).getBlock() instanceof BlockShowcase;
   }
 
   @Override
@@ -123,7 +143,7 @@ public class TileEntityShowcase extends TileEntityOriented implements IInventory
   public NBTTagCompound writeToNBT(NBTTagCompound compound) {
     super.writeToNBT(compound);
 
-    if (hasItem()) {
+    if (hasItem(0)) {
       NBTTagCompound c = new NBTTagCompound();
       this.shownItem.writeToNBT(c);
       compound.setTag("Item", c);
@@ -131,12 +151,14 @@ public class TileEntityShowcase extends TileEntityOriented implements IInventory
     return compound;
   }
 
-  public ItemStack getItem() {
+  @Override
+  public ItemStack getItem(int slot) {
     return this.shownItem;
   }
 
-  public boolean setItem(ItemStack stack) {
-    if (stack == null || (itemIsValid(stack) && !hasItem())) {
+  @Override
+  public boolean setItem(ItemStack stack, int slot) {
+    if (stack == null || (itemIsValid(stack) && !hasItem(0))) {
       this.shownItem = stack != null ? stack.copy() : null;
       this.lastClickedTime = System.currentTimeMillis();
       markDirty();
@@ -147,8 +169,9 @@ public class TileEntityShowcase extends TileEntityOriented implements IInventory
     return false;
   }
 
-  public boolean hasItem() {
-    return getItem() != null;
+  @Override
+  public boolean hasItem(int slot) {
+    return getItem(0) != null;
   }
 
   @Override
@@ -240,6 +263,12 @@ public class TileEntityShowcase extends TileEntityOriented implements IInventory
     this.shownItem = null;
   }
 
+  /**
+   * Indique si l'item donné est valide pour la vitrine.
+   * 
+   * @param stack l'item
+   * @return vrai si l'item est accepté ; faux sinon
+   */
   public static boolean itemIsValid(ItemStack stack) {
     return ItemsLists.getWeapons().contains(stack.getItem()) || ItemsLists.getTools().contains(stack.getItem());
   }

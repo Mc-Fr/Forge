@@ -5,6 +5,11 @@ import static net.mcfr.utils.RenderUtils.*;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 
+/**
+ * Classe s'occupant du rendu du stand d'armes/outils.
+ *
+ * @author Mc-Fr
+ */
 public class TileEntityWeaponsStandRenderer extends TileEntitySpecialRenderer<TileEntityWeaponsStand> {
   @Override
   @SuppressWarnings("incomplete-switch")
