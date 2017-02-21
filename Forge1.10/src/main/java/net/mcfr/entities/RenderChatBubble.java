@@ -1,6 +1,7 @@
 package net.mcfr.entities;
 
 import net.mcfr.guis.chat_bubble.ChatBubble;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
@@ -12,7 +13,8 @@ public class RenderChatBubble extends Render<EntityChatBubble> {
 
   @Override
   public void doRender(EntityChatBubble entity, double x, double y, double z, float entityYaw, float partialTicks) {
-    ChatBubble.render(x, y, z);
+    if (!Minecraft.getMinecraft().gameSettings.hideGUI)
+      ChatBubble.render(x, y, z);
   }
 
   @Override
