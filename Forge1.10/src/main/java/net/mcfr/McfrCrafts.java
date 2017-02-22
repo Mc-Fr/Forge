@@ -615,7 +615,7 @@ public final class McfrCrafts {
 
     addShapedRecipe(new ItemStack(McfrBlocks.LARGE_TORCH, 4), "FCF", " S ", " S ", 'C', Items.COAL, 'F', Items.IRON_INGOT, 'S', Items.STICK);
     for (Block slab : WOODEN_SLABS)
-      addLargeRecipe(new ItemStack(McfrBlocks.TIKI_TORCH), "T", "S", "S", "S", "L", 'C', Blocks.TORCH, 'S', Items.STICK, 'L', slab);
+      addLargeRecipe(new ItemStack(McfrBlocks.TIKI_TORCH, 4), "T", "S", "S", "S", "L", 'C', Blocks.TORCH, 'S', Items.STICK, 'L', slab);
     addShapedRecipe(new ItemStack(McfrBlocks.BRAZIER), "CCC", "STS", "SSS", 'C', Items.COAL, 'S', Blocks.COBBLESTONE, 'T', Blocks.TORCH);
     addLargeRecipe(new ItemStack(McfrBlocks.WOODEN_LAMP, 2), "PPVPP", "PPTPP", "VTTTV", "PPTPP", "PPVPP", 'P', Blocks.LOG, 'V', Blocks.GLASS, 'T', McfrBlocks.LARGE_TORCH);
 
