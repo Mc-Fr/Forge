@@ -557,6 +557,7 @@ public class ClientProxy extends CommonProxy {
     registerBlock(CHANDELIER);
     registerBlock(LARGE_CHANDELIER);
     registerBlock(LARGE_TORCH);
+    registerBlock(TIKI_TORCH);
     registerBlock(BRAZIER);
     registerBlock(LIT_BRAZIER);
 

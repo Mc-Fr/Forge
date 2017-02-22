@@ -93,6 +93,7 @@ import net.mcfr.decoration.lighting.BlockLantern;
 import net.mcfr.decoration.lighting.BlockLargeTorch;
 import net.mcfr.decoration.lighting.BlockLitCampFire;
 import net.mcfr.decoration.lighting.BlockSimpleCandle;
+import net.mcfr.decoration.lighting.BlockTikiTorch;
 import net.mcfr.decoration.lighting.BlockTripleCandle;
 import net.mcfr.decoration.lighting.EnumLanternColor;
 import net.mcfr.decoration.misc.BlockChain;
@@ -641,6 +642,7 @@ public final class McfrBlocks {
   /** Grand lustre */
   public static final BlockChandelier LARGE_CHANDELIER = new BlockChandelier(true);
   public static final BlockLargeTorch LARGE_TORCH = new BlockLargeTorch();
+  public static final BlockTikiTorch TIKI_TORCH = new BlockTikiTorch();
   /** Braséro */
   public static final BlockBrazier BRAZIER = new BlockBrazier(false);
   public static final BlockBrazier LIT_BRAZIER = new BlockBrazier(true);
@@ -1181,6 +1183,7 @@ public final class McfrBlocks {
     register(CHANDELIER);
     register(LARGE_CHANDELIER);
     register(LARGE_TORCH);
+    register(TIKI_TORCH);
     register(BRAZIER);
     register(LIT_BRAZIER);
 
@@ -1268,7 +1271,7 @@ public final class McfrBlocks {
 
     register(LONG_REPEATER_OFF);
     register(LONG_REPEATER_ON);
-    
+
     addNewPaintings();
   }
 
@@ -1332,7 +1335,7 @@ public final class McfrBlocks {
         return null;
     }
   }
-  
+
   public static void addNewPaintings() {
     EnumHelper.addArt("PLANCHEBOIS", "planchebois", 16, 32, 32, 64);
     EnumHelper.addArt("PLANCHEBOISCR", "plancheboiscr", 16, 32, 48, 64);
