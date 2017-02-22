@@ -17,6 +17,7 @@ import net.minecraftforge.client.event.GuiOpenEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.world.BlockEvent.PlaceEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.network.FMLNetworkEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -26,8 +27,14 @@ import net.minecraftforge.fml.relauncher.SideOnly;
  * @author Mc-Fr
  */
 public class PlayerEventsHandler {
+  @SubscribeEvent
+  public void onClientConnectedToServer(FMLNetworkEvent.ClientConnectedToServerEvent e) {
+    System.out.println("connection");
+    // McfrNetworkWrapper.getInstance().sendToServer(new ModVersionCheckMessage(Constants.MOD_ID));
+  }
+
   /**
-   * Cet écouteur remplace l'écran-titre et le menu en jeu par ceux du mod.
+   * Cet écouteur remplace l'écran-titre, le menu en jeu et le tchat par ceux du mod.
    * 
    * @param e l'évènement
    */

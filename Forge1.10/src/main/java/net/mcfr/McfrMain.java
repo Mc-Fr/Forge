@@ -41,6 +41,7 @@ import net.mcfr.network.CreateChatBubbleMessage;
 import net.mcfr.network.DestroyChatBubbleMessage;
 import net.mcfr.network.GuiHandler;
 import net.mcfr.network.McfrNetworkWrapper;
+import net.mcfr.network.ModVersionCheckMessage;
 import net.mcfr.network.OpenEditMcfrSignMessage;
 import net.mcfr.network.OpenEditPaperMessage;
 import net.mcfr.network.OpenEditWallNoteMessage;
@@ -130,6 +131,7 @@ public class McfrMain {
     McfrNetworkWrapper.registerPacket(DestroyChatBubbleMessage.ServerHandler.class, DestroyChatBubbleMessage.class, Side.SERVER);
     McfrNetworkWrapper.registerPacket(SyncEntityMessage.ClientHandler.class, SyncEntityMessage.class, Side.CLIENT);
     McfrNetworkWrapper.registerPacket(SyncEntityMessage.ServerHandler.class, SyncEntityMessage.class, Side.SERVER);
+    McfrNetworkWrapper.registerPacket(ModVersionCheckMessage.ServerHandler.class, ModVersionCheckMessage.class, Side.SERVER);
   }
 
   /**
