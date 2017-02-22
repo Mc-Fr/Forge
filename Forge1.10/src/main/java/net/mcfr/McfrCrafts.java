@@ -120,7 +120,7 @@ public final class McfrCrafts {
       for (Block log : LOGS)
         addLargeRecipe(new ItemStack(Blocks.STAINED_GLASS_PANE, 20, meta), "BGGGB", "GGGGG", "GGCGG", "GGGGG", "BGGGB", 'C', new ItemStack(Items.DYE, 1, damage), 'B', log, 'G', Blocks.GLASS);
     }
-    
+
     /* Mc-Fr */
 
     // Forge
@@ -682,12 +682,14 @@ public final class McfrCrafts {
       addLargeRecipe(new ItemStack(McfrBlocks.SUPPORT, 8), "BBBBB", "B S  ", "BS   ", "B    ", 'B', log, 'S', Items.STICK);
       addLargeRecipe(new ItemStack(McfrBlocks.LONG_SUPPORT, 6), "B    ", "BBBBB", "B S S", "BS  S", "B    ", 'B', log, 'S', Items.STICK);
     }
-    
+
     /*
      * Items
      */
 
     /* Minecraft */
+
+    removeRecipe(new ItemStack(Items.BREAD));
 
     addShapedRecipe(new ItemStack(Items.SUGAR), "S", "S", "#", 'S', McfrItems.SUGAR_CANES, '#', McfrItems.KITCHEN_MORTAR);
     addShapedRecipe(new ItemStack(Items.COOKIE), "#S#", "PPP", '#', McfrItems.COCOA, 'S', Items.SUGAR, 'P', McfrItems.CAKE_DOUGH);
@@ -727,9 +729,9 @@ public final class McfrCrafts {
 
     addLargeRecipe(new ItemStack(Items.SADDLE), "  C  ", "MCCCM", "CC CC", "C   C", "M   M", 'C', Items.LEATHER, 'M', McfrItems.STITCH);
     addShapedRecipe(new ItemStack(Items.LEAD), "SS ", "SH ", "  S", 'S', Items.STRING, 'H', new ItemStack(McfrItems.SWORD_HANDLE, 1, 0));
-    
+
     /* Mc-Fr */
-    
+
     // Divers
     addShapedRecipe(new ItemStack(McfrItems.WRITEABLE_PAPER), "F", "E", "#", 'F', Items.FEATHER, '#', Items.PAPER, 'E', McfrItems.INK);
 
@@ -855,7 +857,7 @@ public final class McfrCrafts {
     addLargeRecipe(new ItemStack(McfrItems.LONG_BOW), "  SSS", " P  F", "S  F ", "S F  ", "SF   ", 'S', Items.STICK, 'P', new ItemStack(McfrItems.SWORD_HANDLE), 'F', Items.STRING);
     addLargeRecipe(new ItemStack(McfrItems.HUNTER_BOW), "  TSS", " PSF ", "TSF  ", "SF   ", "S    ", 'T', McfrItems.CLOTH_ROLL, 'S', Items.STICK, 'P', new ItemStack(McfrItems.SWORD_HANDLE), 'F', Items.STRING);
     addLargeRecipe(new ItemStack(McfrItems.LONG_HUNTER_BOW), "  TSS", " PS F", "TSPF ", "S F  ", "SF   ", 'T', McfrItems.CLOTH_ROLL, 'S', Items.STICK, 'P', new ItemStack(McfrItems.SWORD_HANDLE), 'F', Items.STRING);
-    
+
     // Arumure d'assassin
     addLargeRecipe(new ItemStack(McfrItems.ASSASSIN_HELMET), " TPT ", "TTFTT", "TF FT", "TFFFT", "TTTTT", 'P', McfrItems.HUNTED_SKIN, 'T', McfrItems.CLOTH_ROLL, 'F', McfrItems.THREAD_COIL);
     addLargeRecipe(new ItemStack(McfrItems.ASSASSIN_CHESTPLATE), " T C ", "TTMTT", "PCCPM", "CPPCM", "PPPPC", 'P', McfrItems.HUNTED_SKIN, 'T', McfrItems.CLOTH_ROLL, 'M', McfrItems.STITCH, 'C', Items.LEATHER);
