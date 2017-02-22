@@ -6,6 +6,11 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 
+/**
+ * Triple bougie.
+ *
+ * @author Mc-Fr
+ */
 public class BlockTripleCandle extends BlockCandle {
   private static final AxisAlignedBB AABB = new AxisAlignedBB(0.1, 0, 0.1, 0.9, 0.75, 0.9);
 

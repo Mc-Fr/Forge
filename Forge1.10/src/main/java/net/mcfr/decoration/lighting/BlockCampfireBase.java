@@ -19,7 +19,17 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 
-public abstract class BlockCampfireBase extends McfrBlock implements ITileEntityProvider {
+/**
+ * Bloc de base des feux de camp.
+ *
+ * @author Mc-Fr
+ */
+abstract class BlockCampfireBase extends McfrBlock implements ITileEntityProvider {
+  /**
+   * Crée un feu de camp.
+   * 
+   * @param isBurning allumé ou éteint
+   */
   public BlockCampfireBase(boolean isBurning) {
     super((isBurning ? "lit_" : "") + "campfire_block", Material.WOOD, SoundType.WOOD, 1, 0, null, -1, null);
   }

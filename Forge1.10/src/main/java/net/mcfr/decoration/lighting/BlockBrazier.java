@@ -13,9 +13,20 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
+/**
+ * Brazéro.
+ *
+ * @author Mc-Fr
+ */
 public class BlockBrazier extends McfrBlock {
+  /** Le bloc est allumé ou non. */
   private final boolean lit;
 
+  /**
+   * Crée un bloc brazéro.
+   * 
+   * @param lit allumé ou éteint
+   */
   public BlockBrazier(boolean lit) {
     super((lit ? "lit_" : "") + "brazier", Material.ROCK, SoundType.STONE, 2, 5, "pickaxe", 0, CreativeTabs.DECORATIONS);
 

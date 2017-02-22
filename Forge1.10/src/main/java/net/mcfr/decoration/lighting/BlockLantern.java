@@ -24,13 +24,26 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
+/**
+ * Lanterne colorée.
+ * 
+ * @author Mc-Fr
+ */
 public class BlockLantern extends McfrBlock {
   public static final PropertyInteger ORIENTATION = PropertyInteger.create("orientation", 0, 3);
   public static final PropertyEnum<EnumPosition> POSITION = PropertyEnum.create("position", EnumPosition.class);
 
+  /** La couleur */
   private final EnumLanternColor color;
+  /** Indique si la lanterne est en papier */
   private final boolean isPaper;
 
+  /**
+   * Crée une lanterne.
+   * 
+   * @param color la couleur
+   * @param isPaper en papier ou non
+   */
   public BlockLantern(EnumLanternColor color, boolean isPaper) {
     super(color.getName() + (isPaper ? "_paper" : "") + "_lantern", isPaper ? Material.CLOTH : Material.GLASS, isPaper ? SoundType.CLOTH : SoundType.GLASS, 0.5f, 0, null, -1, null);
     setDefaultState(this.blockState.getBaseState().withProperty(ORIENTATION, 0).withProperty(POSITION, EnumPosition.BOTTOM));
@@ -54,6 +67,12 @@ public class BlockLantern extends McfrBlock {
     return super.onBlockPlaced(worldIn, pos, facing, hitX, hitY, hitZ, meta, placer).withProperty(POSITION, position).withProperty(ORIENTATION, face);
   }
 
+  /**
+   * Retourne l'orientation en fonction de la rotation du joueur.
+   * 
+   * @param placer le joueur
+   * @return l'orientation
+   */
   private int getFacingIndex(EntityLivingBase placer) {
     int rotation = MathHelper.floor_double((placer.rotationYaw + 180) * 16 / 360 + 0.5) & 15;
 
@@ -140,6 +159,16 @@ public class BlockLantern extends McfrBlock {
     return BlockRenderLayer.CUTOUT_MIPPED;
   }
 
+  /**
+   * Positions du bloc lanterne :
+   * <ul>
+   * <li>bas</li>
+   * <li>mur</li>
+   * <li>haut</li>
+   * </ul>
+   *
+   * @author Mc-Fr
+   */
   private static enum EnumPosition implements IStringSerializable {
     BOTTOM("bottom"),
     WALL("wall"),

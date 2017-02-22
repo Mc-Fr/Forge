@@ -15,9 +15,20 @@ import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
+/**
+ * Lustre.
+ *
+ * @author Mc-Fr
+ */
 public class BlockChandelier extends McfrBlock implements ITileEntityProvider {
+  /** Indique si le lustre est grand ou non */
   private boolean isLarge;
 
+  /**
+   * Crée un lustre.
+   * 
+   * @param isLarge grand ou non
+   */
   public BlockChandelier(boolean isLarge) {
     super((isLarge ? "large_" : "") + "chandelier", Material.WOOD, SoundType.WOOD, 1, 0, "axe", 0, CreativeTabs.DECORATIONS);
     setLightLevel(isLarge ? 0.75f : 0.875f);

@@ -5,6 +5,11 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 
+/**
+ * Doubles bougies.
+ *
+ * @author Mc-Fr
+ */
 public class BlockDoubleCandle extends BlockCandle {
   // TEMP
   private static final AxisAlignedBB AABB = FULL_BLOCK_AABB;

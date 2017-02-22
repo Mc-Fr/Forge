@@ -22,7 +22,13 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+/**
+ * Lanterne (item).
+ *
+ * @author Mc-Fr
+ */
 public class ItemLantern extends McfrItem {
+  /** Indique si la lanterne est en papier ou non */
   private final boolean isPaper;
 
   public ItemLantern(boolean isPaper) {
