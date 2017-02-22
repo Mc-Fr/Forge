@@ -48,9 +48,10 @@ public abstract class BlockCandle extends McfrBlock {
     }
   }
 
+  @SuppressWarnings("deprecation")
   @Override
-  public AxisAlignedBB getCollisionBoundingBox(IBlockState state, World worldIn, BlockPos pos) {
-    return NULL_AABB;
+  public AxisAlignedBB getCollisionBoundingBox(IBlockState state, World world, BlockPos pos) {
+    return getBoundingBox(state, world, pos);
   }
 
   @Override

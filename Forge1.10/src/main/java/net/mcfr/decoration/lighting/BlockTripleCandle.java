@@ -12,10 +12,10 @@ import net.minecraft.world.IBlockAccess;
  * @author Mc-Fr
  */
 public class BlockTripleCandle extends BlockCandle {
-  private static final AxisAlignedBB AABB = new AxisAlignedBB(0.1, 0, 0.1, 0.9, 0.75, 0.9);
+  private static final AxisAlignedBB AABB = new AxisAlignedBB(0.25, 0, 0.28125, 0.75, 0.75, 0.84375);
 
   public BlockTripleCandle() {
-    super("triple", 0.5625f, new Point3d(0.3125, 0.625, 0.34375), new Point3d(0.65625, 0.75, 0.40625), new Point3d(0.46875, 0.875, 0.71875));
+    super("triple", 0.6f, new Point3d(0.3125, 0.625, 0.34375), new Point3d(0.65625, 0.75, 0.40625), new Point3d(0.46875, 0.875, 0.71875));
   }
 
   @Override
