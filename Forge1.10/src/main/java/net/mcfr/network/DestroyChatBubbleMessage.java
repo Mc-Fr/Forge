@@ -21,12 +21,15 @@ public class DestroyChatBubbleMessage implements IMessage {
       EntityPlayerMP player = ctx.getServerHandler().playerEntity;
 
       player.getServerWorld().addScheduledTask(() -> {
-        int id = ChatBubble.PLAYER_BUBBLE.get(player.getUniqueID());
-        Entity e = player.worldObj.getEntityByID(id);
+        Integer id = ChatBubble.PLAYER_BUBBLE.get(player.getUniqueID());
 
-        if (e != null) {
-          e.setDead();
-          ChatBubble.PLAYER_BUBBLE.remove(player.getUniqueID());
+        if (id != null) {
+          Entity e = player.worldObj.getEntityByID(id);
+
+          if (e != null) {
+            e.setDead();
+            ChatBubble.PLAYER_BUBBLE.remove(player.getUniqueID());
+          }
         }
       });
 

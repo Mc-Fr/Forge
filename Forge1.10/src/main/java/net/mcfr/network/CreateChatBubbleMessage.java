@@ -1,6 +1,7 @@
 package net.mcfr.network;
 
 import io.netty.buffer.ByteBuf;
+import net.mcfr.entities.ChatBubbleType;
 import net.mcfr.entities.EntityChatBubble;
 import net.mcfr.guis.chat_bubble.ChatBubble;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -11,11 +12,29 @@ import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
 public class CreateChatBubbleMessage implements IMessage {
-  @Override
-  public void toBytes(ByteBuf buf) {}
+  private ChatBubbleType type;
+
+  public CreateChatBubbleMessage() {
+    this(ChatBubbleType.TALKING);
+  }
+
+  public CreateChatBubbleMessage(ChatBubbleType type) {
+    this.type = type;
+  }
+
+  public ChatBubbleType getType() {
+    return this.type;
+  }
 
   @Override
-  public void fromBytes(ByteBuf buf) {}
+  public void toBytes(ByteBuf buf) {
+    buf.writeInt(this.type.ordinal());
+  }
+
+  @Override
+  public void fromBytes(ByteBuf buf) {
+    this.type = ChatBubbleType.byOrdinal(buf.readInt());
+  }
 
   public static class ServerHandler implements IMessageHandler<CreateChatBubbleMessage, IMessage> {
     @Override
@@ -25,7 +44,7 @@ public class CreateChatBubbleMessage implements IMessage {
       player.getServerWorld().addScheduledTask(() -> {
         World world = player.worldObj;
         Vec3d pos = player.getPositionVector();
-        EntityChatBubble chatBubble = new EntityChatBubble(world, pos.xCoord, pos.yCoord + 2.3, pos.zCoord);
+        EntityChatBubble chatBubble = new EntityChatBubble(message.getType(), world, pos.xCoord, pos.yCoord + 2.3, pos.zCoord);
         int id = chatBubble.getEntityId();
 
         if (world.spawnEntityInWorld(chatBubble)) {

@@ -14,7 +14,7 @@ public class RenderChatBubble extends Render<EntityChatBubble> {
   @Override
   public void doRender(EntityChatBubble entity, double x, double y, double z, float entityYaw, float partialTicks) {
     if (!Minecraft.getMinecraft().gameSettings.hideGUI)
-      ChatBubble.render(x, y, z);
+      ChatBubble.render(entity.getType(), x, y, z);
   }
 
   @Override

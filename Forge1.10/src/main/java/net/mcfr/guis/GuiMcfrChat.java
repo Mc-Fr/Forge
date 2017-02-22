@@ -1,8 +1,9 @@
 package net.mcfr.guis;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
+import net.mcfr.entities.ChatBubbleType;
 import net.mcfr.network.CreateChatBubbleMessage;
 import net.mcfr.network.DestroyChatBubbleMessage;
 import net.mcfr.network.McfrNetworkWrapper;
@@ -13,22 +14,29 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class GuiMcfrChat extends GuiChat {
-  private static final List<String> SPECIAL_CHARS = new ArrayList<>();
+  private static final Map<String, ChatBubbleType> SPECIAL_CHARS = new HashMap<>();
 
   static {
-    SPECIAL_CHARS.add("/");
-    SPECIAL_CHARS.add("?");
+    SPECIAL_CHARS.put("/", ChatBubbleType.COMMAND);
+    SPECIAL_CHARS.put("*", ChatBubbleType.ACTION);
+    SPECIAL_CHARS.put("(", ChatBubbleType.ORP);
+    SPECIAL_CHARS.put("%", ChatBubbleType.NONE);
+    SPECIAL_CHARS.put("$", ChatBubbleType.NONE);
+    SPECIAL_CHARS.put("?", ChatBubbleType.NONE);
+    SPECIAL_CHARS.put("@", ChatBubbleType.NONE);
+    SPECIAL_CHARS.put("=", ChatBubbleType.NONE);
   }
 
-  public static boolean startsWithSpecialChar(String str) {
-    for (String s : SPECIAL_CHARS) {
-      if (str.startsWith(s))
-        return true;
+  public static ChatBubbleType getBubbleType(String str) {
+    for (Map.Entry<String, ChatBubbleType> entry : SPECIAL_CHARS.entrySet()) {
+      if (str.startsWith(entry.getKey()))
+        return entry.getValue();
     }
-    return false;
+    return ChatBubbleType.TALKING;
   }
 
   private boolean bubbleDisplayed;
+  private String lastChar;
 
   public GuiMcfrChat(String defaultText) {
     super(defaultText);
@@ -38,6 +46,7 @@ public class GuiMcfrChat extends GuiChat {
   public void initGui() {
     super.initGui();
     this.bubbleDisplayed = false;
+    this.lastChar = "";
   }
 
   @Override
@@ -51,11 +60,13 @@ public class GuiMcfrChat extends GuiChat {
   public void updateScreen() {
     super.updateScreen();
 
+    String currentChar = this.inputField.getText().isEmpty() ? "" : this.inputField.getText().charAt(0) + "";
     if (shouldAddBubble()) {
-      McfrNetworkWrapper.getInstance().sendToServer(new CreateChatBubbleMessage());
+      McfrNetworkWrapper.getInstance().sendToServer(new CreateChatBubbleMessage(getBubbleType(currentChar)));
+      this.lastChar = currentChar;
       this.bubbleDisplayed = true;
     }
-    else if (shouldRemoveBubble()) {
+    else if (!this.lastChar.equals(currentChar) || shouldRemoveBubble()) {
       McfrNetworkWrapper.getInstance().sendToServer(new DestroyChatBubbleMessage());
       this.bubbleDisplayed = false;
     }
@@ -67,7 +78,7 @@ public class GuiMcfrChat extends GuiChat {
         !NetworkUtils.getLocalPlayer().isInvisible() &&
         !NetworkUtils.getLocalPlayer().isSpectator() &&
         !this.inputField.getText().isEmpty() &&
-        !startsWithSpecialChar(this.inputField.getText());
+        !getBubbleType(this.inputField.getText()).isNone();
     // #f:1
   }
 
@@ -77,7 +88,7 @@ public class GuiMcfrChat extends GuiChat {
         NetworkUtils.getLocalPlayer().isInvisible() ||
         NetworkUtils.getLocalPlayer().isSpectator() ||
         this.inputField.getText().isEmpty() ||
-        startsWithSpecialChar(this.inputField.getText()));
+        getBubbleType(this.inputField.getText()).isNone());
     // #f:1
   }
 }

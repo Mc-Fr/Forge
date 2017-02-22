@@ -14,6 +14,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.event.GuiOpenEvent;
+import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.world.BlockEvent.PlaceEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -26,6 +27,9 @@ import net.minecraftforge.fml.relauncher.SideOnly;
  * @author Mc-Fr
  */
 public class PlayerEventsHandler {
+  @SubscribeEvent
+  public void onEntityJoinWorld(EntityJoinWorldEvent evt) {}
+
   /**
    * Cet écouteur remplace l'écran-titre et le menu en jeu par ceux du mod.
    * 
