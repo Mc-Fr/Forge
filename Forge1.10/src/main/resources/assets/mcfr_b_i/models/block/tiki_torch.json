@@ -1,5 +1,27 @@
 {
 	"__comment": "Designed by Mcfr4488 with Cubik Studio - https://cubik.studio",
+    "display": {
+        "gui": {
+            "rotation": [ 30, 135, 0 ],
+            "translation": [ 0, 0, 0],
+            "scale":[ 0.625, 0.625, 0.625 ]
+        },
+        "head": {
+            "rotation": [ 0, -90, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 1, 1, 1 ]
+        },
+        "thirdperson_lefthand": {
+            "rotation": [ 25, -75, 0 ],
+            "translation": [ 0, 0, 0],
+            "scale": [ 0.5, 0.5, 0.5 ]
+        },
+        "thirdperson_righthand": {
+            "rotation": [ 25, -75, 0 ],
+            "translation": [ 0, 0, 0],
+            "scale": [ 0.5, 0.5, 0.5 ]
+        }
+    },
 	"textures": {
 		"particle": "blocks/planks_oak",
 		"texture": "blocks/log_oak",

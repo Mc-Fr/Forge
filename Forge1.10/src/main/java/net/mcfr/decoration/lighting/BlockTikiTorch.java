@@ -33,7 +33,7 @@ public class BlockTikiTorch extends BlockTorch {
   public void randomDisplayTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand) {
     EnumFacing facing = (EnumFacing) stateIn.getValue(FACING);
     double x = pos.getX() + 0.5;
-    double y = pos.getY() + 1.5;
+    double y = pos.getY() + 1.65;
     double z = pos.getZ() + 0.5;
 
     if (facing.getAxis().isHorizontal()) {
