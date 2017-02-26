@@ -3,6 +3,11 @@ package net.mcfr.decoration.furniture.models;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 
+/**
+ * Modèle du fauteuil en bois.
+ *
+ * @author Mc-Fr
+ */
 public class ModelWoodenArmChair extends ModelBase implements ArmChairModel {
   private ModelRenderer base;
   private ModelRenderer side1;

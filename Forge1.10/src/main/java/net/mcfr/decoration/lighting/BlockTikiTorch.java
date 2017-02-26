@@ -14,14 +14,14 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 /**
- * Grande torche.
- *
+ * Torche tiki.
+ * 
  * @author Mc-Fr
  */
-public class BlockLargeTorch extends BlockTorch {
-  public BlockLargeTorch() {
+public class BlockTikiTorch extends BlockTorch {
+  public BlockTikiTorch() {
     super();
-    String name = "large_torch";
+    String name = "tiki_torch";
     setRegistryName(name);
     setUnlocalizedName(NameUtils.getUnlocalizedName(name));
     setSoundType(SoundType.WOOD);
@@ -33,7 +33,7 @@ public class BlockLargeTorch extends BlockTorch {
   public void randomDisplayTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand) {
     EnumFacing facing = (EnumFacing) stateIn.getValue(FACING);
     double x = pos.getX() + 0.5;
-    double y = pos.getY() + 0.8;
+    double y = pos.getY() + 1.65;
     double z = pos.getZ() + 0.5;
 
     if (facing.getAxis().isHorizontal()) {

@@ -1,0 +1,81 @@
+package net.mcfr.network;
+
+import io.netty.buffer.ByteBuf;
+import net.mcfr.entities.ChatBubbleType;
+import net.mcfr.entities.EntityChatBubble;
+import net.minecraft.client.Minecraft;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
+import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
+import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
+
+public class SyncChatBubbleTypeMessage implements IMessage {
+  private int entityId;
+  private ChatBubbleType type;
+
+  public SyncChatBubbleTypeMessage() {
+    this(ChatBubbleType.TALKING, 0);
+  }
+
+  public SyncChatBubbleTypeMessage(ChatBubbleType type, int entityId) {
+    this.type = type;
+    this.entityId = entityId;
+  }
+
+  public ChatBubbleType getType() {
+    return this.type;
+  }
+
+  public int getEntityId() {
+    return this.entityId;
+  }
+
+  @Override
+  public void toBytes(ByteBuf buf) {
+    buf.writeInt(this.type.ordinal());
+    buf.writeInt(this.entityId);
+  }
+
+  @Override
+  public void fromBytes(ByteBuf buf) {
+    this.type = ChatBubbleType.byOrdinal(buf.readInt());
+    this.entityId = buf.readInt();
+  }
+
+  public static class ClientHandler implements IMessageHandler<SyncChatBubbleTypeMessage, IMessage> {
+    @Override
+    public IMessage onMessage(SyncChatBubbleTypeMessage message, MessageContext ctx) {
+      Minecraft.getMinecraft().addScheduledTask(() -> {
+        Entity e = NetworkUtils.getLocalWorld().getEntityByID(message.getEntityId());
+
+        if (e instanceof EntityChatBubble) {
+          EntityChatBubble b = (EntityChatBubble) e;
+          b.setType(message.getType());
+          b.setSynced(true);
+        }
+      });
+
+      return null;
+    }
+  }
+
+  public static class ServerHandler implements IMessageHandler<SyncChatBubbleTypeMessage, IMessage> {
+    @Override
+    public IMessage onMessage(SyncChatBubbleTypeMessage message, MessageContext ctx) {
+      EntityPlayerMP player = ctx.getServerHandler().playerEntity;
+
+      player.getServerWorld().addScheduledTask(() -> {
+        Entity e = player.worldObj.getEntityByID(message.getEntityId());
+
+        if (e instanceof EntityChatBubble) {
+          EntityChatBubble b = (EntityChatBubble) e;
+          McfrNetworkWrapper.getInstance().sendTo(new SyncChatBubbleTypeMessage(b.getType(), e.getEntityId()), player);
+          b.setSynced(true);
+        }
+      });
+
+      return null;
+    }
+  }
+}

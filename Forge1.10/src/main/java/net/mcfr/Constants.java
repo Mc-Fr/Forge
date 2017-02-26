@@ -9,9 +9,9 @@ public final class Constants {
   /** ID du mod */
   public static final String MOD_ID = "mcfr_b_i";
   /** Nom du mod */
-  public static final String MOD_NAME = "Mc-Fr Blocs et Items";
+  public static final String MOD_NAME = "Mc-Fr";
   /** Version du mod */
-  public static final String MOD_VERSION = "1.0";
+  public static final String MOD_VERSION = "1.1.4";
 
   private Constants() {}
 }

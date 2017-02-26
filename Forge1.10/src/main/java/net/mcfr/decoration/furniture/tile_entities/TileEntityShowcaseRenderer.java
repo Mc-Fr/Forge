@@ -5,11 +5,16 @@ import static net.mcfr.utils.RenderUtils.*;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 
+/**
+ * Classe s'occupant du rendu de la vitrine.
+ *
+ * @author Mc-Fr
+ */
 public class TileEntityShowcaseRenderer extends TileEntitySpecialRenderer<TileEntityShowcase> {
   @Override
   @SuppressWarnings("incomplete-switch")
   public void renderTileEntityAt(TileEntityShowcase te, double x, double y, double z, float partialTicks, int destroyStage) {
-    if (!te.hasItem())
+    if (!te.hasItem(0))
       return;
     final float scale = 0.75f;
 
@@ -38,7 +43,7 @@ public class TileEntityShowcaseRenderer extends TileEntitySpecialRenderer<TileEn
         break;
     }
     GlStateManager.scale(scale, scale, scale);
-    renderItem(te.getItem());
+    renderItem(te.getItem(0));
     GlStateManager.popMatrix();
   }
 }

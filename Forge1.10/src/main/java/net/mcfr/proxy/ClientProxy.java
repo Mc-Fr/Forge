@@ -41,8 +41,6 @@ import net.mcfr.decoration.furniture.tile_entities.TileEntityWoodenBench;
 import net.mcfr.decoration.furniture.tile_entities.TileEntityWoodenBenchRenderer;
 import net.mcfr.decoration.furniture.tile_entities.TileEntityWoodenChair;
 import net.mcfr.decoration.furniture.tile_entities.TileEntityWoodenChairRenderer;
-import net.mcfr.decoration.furniture.tile_entities.TileEntityWoodenStool;
-import net.mcfr.decoration.furniture.tile_entities.TileEntityWoodenStoolRenderer;
 import net.mcfr.decoration.lighting.EnumLanternColor;
 import net.mcfr.decoration.lighting.tile_entities.TileEntityCampfire;
 import net.mcfr.decoration.lighting.tile_entities.TileEntityCampfireRenderer;
@@ -65,6 +63,8 @@ import net.mcfr.decoration.signs.tile_entities.TileEntityWallNoteRenderer;
 import net.mcfr.economy.ItemClawMoney;
 import net.mcfr.economy.ItemCoin;
 import net.mcfr.economy.ItemToken;
+import net.mcfr.entities.EntityChatBubble;
+import net.mcfr.entities.RenderChatBubble;
 import net.mcfr.entities.mobs.entity.EntityBormoth;
 import net.mcfr.entities.mobs.entity.EntityGalt;
 import net.mcfr.entities.mobs.entity.EntityHoen;
@@ -555,6 +555,7 @@ public class ClientProxy extends CommonProxy {
     registerBlock(CHANDELIER);
     registerBlock(LARGE_CHANDELIER);
     registerBlock(LARGE_TORCH);
+    registerBlock(TIKI_TORCH);
     registerBlock(BRAZIER);
     registerBlock(LIT_BRAZIER);
 
@@ -874,7 +875,6 @@ public class ClientProxy extends CommonProxy {
     ClientRegistry.bindTileEntitySpecialRenderer(TileEntityArmChair.class, new TileEntityArmChairRenderer());
     ClientRegistry.bindTileEntitySpecialRenderer(TileEntityWoodenBench.class, new TileEntityWoodenBenchRenderer());
     ClientRegistry.bindTileEntitySpecialRenderer(TileEntityWoodenChair.class, new TileEntityWoodenChairRenderer());
-    ClientRegistry.bindTileEntitySpecialRenderer(TileEntityWoodenStool.class, new TileEntityWoodenStoolRenderer());
 
     // TODO 1.11
     // RenderingRegistry.registerEntityRenderingHandler(EntitySiker.class, new
@@ -894,6 +894,7 @@ public class ClientProxy extends CommonProxy {
 
     RenderManager render = Minecraft.getMinecraft().getRenderManager();
 
+    RenderingRegistry.registerEntityRenderingHandler(EntityChatBubble.class, new RenderChatBubble(render));
     RenderingRegistry.registerEntityRenderingHandler(EntitySiker.class, new RenderSiker(render, new ModelSiker(), 2.0F));
     RenderingRegistry.registerEntityRenderingHandler(EntityBormoth.class, new RenderBormoth(render, new ModelBormoth(), 2.0F));
     RenderingRegistry.registerEntityRenderingHandler(EntityHoen.class, new RenderHoen(render, new ModelHoen(), 0.2F));

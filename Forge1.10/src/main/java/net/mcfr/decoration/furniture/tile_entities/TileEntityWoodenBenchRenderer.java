@@ -5,6 +5,11 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.util.EnumFacing;
 
+/**
+ * Classe s'occupant du rendu des bancs en bois.
+ *
+ * @author Mc-Fr
+ */
 public class TileEntityWoodenBenchRenderer extends TileEntitySpecialRenderer<TileEntityWoodenBench> {
   @Override
   public void renderTileEntityAt(TileEntityWoodenBench te, double x, double y, double z, float partialTicks, int destroyStage) {

@@ -9,12 +9,21 @@ import net.mcfr.Constants;
 import net.mcfr.decoration.furniture.models.ArmChairModel;
 import net.mcfr.decoration.furniture.models.ModelStoneArmChair;
 import net.mcfr.decoration.furniture.models.ModelWoodenArmChair;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
 
+/**
+ * Classe s'occupant du rendu des fauteuils. Les modèles doivent être enregistrés ici pour chaque
+ * nouveau fauteuil.
+ *
+ * @author Mc-Fr
+ */
 public class TileEntityArmChairRenderer extends TileEntitySpecialRenderer<TileEntityArmChair> {
+  /** Textures */
   private final Map<String, ResourceLocation> resources;
+  /** Modèles */
   private final Map<String, ArmChairModel> models;
 
   public TileEntityArmChairRenderer() {
@@ -34,29 +43,29 @@ public class TileEntityArmChairRenderer extends TileEntitySpecialRenderer<TileEn
 
     bindTexture(this.resources.get(type));
 
-    GL11.glPushMatrix();
+    GlStateManager.pushMatrix();
     GL11.glDisable(GL11.GL_CULL_FACE);
-    GL11.glTranslatef((float) x + 0.5F, (float) y + 1.5F, (float) z + 0.5F);
+    GlStateManager.translate((float) x + 0.5F, (float) y + 1.5F, (float) z + 0.5F);
     switch (facing) {
       case NORTH:
-        GL11.glRotatef(180, 1, 0, 0);
+        GlStateManager.rotate(180, 1, 0, 0);
         break;
       case SOUTH:
-        GL11.glRotatef(180, 0, 0, 1);
+        GlStateManager.rotate(180, 0, 0, 1);
         break;
       case EAST:
-        GL11.glRotatef(90, 0, 1, 0);
-        GL11.glRotatef(180, 0, 0, 1);
+        GlStateManager.rotate(90, 0, 1, 0);
+        GlStateManager.rotate(180, 0, 0, 1);
         break;
       case WEST:
-        GL11.glRotatef(90, 0, 1, 0);
-        GL11.glRotatef(180, 0, 0, 0);
+        GlStateManager.rotate(90, 0, 1, 0);
+        GlStateManager.rotate(180, 0, 0, 0);
         break;
     }
 
     this.models.get(type).renderModel(0.0625f);
 
     GL11.glEnable(GL11.GL_CULL_FACE);
-    GL11.glPopMatrix();
+    GlStateManager.popMatrix();
   }
 }

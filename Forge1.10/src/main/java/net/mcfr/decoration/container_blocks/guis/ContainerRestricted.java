@@ -30,6 +30,12 @@ public class ContainerRestricted extends Container {
    * @param blockClass la classe du bloc
    */
   public ContainerRestricted(IInventory playerInventory, IInventory chestInventory, EntityPlayer player, final Class<? extends Block> blockClass) {
+    // Bricolage...
+    if (player.isSpectator()) {
+      IInventory inventory = chestInventory;
+      chestInventory = playerInventory;
+      playerInventory = inventory;
+    }
     this.chestInventory = chestInventory;
     chestInventory.openInventory(player);
 

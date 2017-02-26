@@ -10,10 +10,18 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.EnumFacing;
 
+/**
+ * Tile entity du stand d'armes/outils.
+ *
+ * @author Mc-Fr
+ */
 public class TileEntityWeaponsStand extends TileEntityOriented implements ClickableTileEntity {
+  /** Taille de l'inventaire */
   public static final int INVENTORY_SIZE = 2;
 
+  /** Invetaire */
   private ItemStack[] stacks;
+  /** Temps du dernier clic */
   private long lastClickedTime;
 
   public TileEntityWeaponsStand() {
@@ -68,10 +76,12 @@ public class TileEntityWeaponsStand extends TileEntityOriented implements Clicka
     return compound;
   }
 
+  @Override
   public ItemStack getItem(int slot) {
     return this.stacks[slot];
   }
 
+  @Override
   public boolean setItem(ItemStack stack, int slot) {
     if (stack == null || (itemIsValid(stack) && !hasItem(slot))) {
       this.stacks[slot] = stack != null ? stack.copy() : null;
@@ -83,10 +93,17 @@ public class TileEntityWeaponsStand extends TileEntityOriented implements Clicka
     return false;
   }
 
+  @Override
   public boolean hasItem(int slot) {
     return slot >= 0 && slot < this.stacks.length && this.stacks[slot] != null;
   }
 
+  /**
+   * Indique si l'item donné est valide pour le stand.
+   * 
+   * @param stack l'item
+   * @return vrai si l'item est accepté ; faux sinon
+   */
   public static boolean itemIsValid(ItemStack stack) {
     return ItemsLists.getWeapons().contains(stack.getItem()) || ItemsLists.getTools().contains(stack.getItem());
   }

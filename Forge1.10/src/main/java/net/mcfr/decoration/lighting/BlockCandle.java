@@ -16,9 +16,22 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+/**
+ * Bloc de base des bougies.
+ *
+ * @author Mc-Fr
+ */
 public abstract class BlockCandle extends McfrBlock {
+  /** Les coordonnées des flammes */
   private final Point3d[] flames;
 
+  /**
+   * Crée une bougie.
+   * 
+   * @param name le nom
+   * @param lightLevel le niveau d'éclairement
+   * @param flamesCoord les coordonées des flammes
+   */
   public BlockCandle(String name, float lightLevel, Point3d... flamesCoord) {
     super(name + "_candle", Material.WOOD, SoundType.WOOD, 0, 0, null, 0, CreativeTabs.DECORATIONS);
     setLightLevel(lightLevel);
@@ -35,9 +48,10 @@ public abstract class BlockCandle extends McfrBlock {
     }
   }
 
+  @SuppressWarnings("deprecation")
   @Override
-  public AxisAlignedBB getCollisionBoundingBox(IBlockState state, World worldIn, BlockPos pos) {
-    return NULL_AABB;
+  public AxisAlignedBB getCollisionBoundingBox(IBlockState state, World world, BlockPos pos) {
+    return getBoundingBox(state, world, pos);
   }
 
   @Override

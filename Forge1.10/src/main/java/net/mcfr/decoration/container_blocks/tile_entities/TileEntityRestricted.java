@@ -50,7 +50,7 @@ public abstract class TileEntityRestricted extends McfrTileEntityLockable {
 
   @Override
   public boolean isItemValidForSlot(int index, ItemStack stack) {
-    return stack == null || ItemsLists.isItemValid(this.blockClass, stack);
+    return index >= 0 && index < getSizeInventory() && (stack == null || ItemsLists.isItemValid(this.blockClass, stack));
   }
 
   /**

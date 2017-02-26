@@ -15,7 +15,6 @@ import net.mcfr.decoration.furniture.tile_entities.TileEntityShowcase;
 import net.mcfr.decoration.furniture.tile_entities.TileEntityWeaponsStand;
 import net.mcfr.decoration.furniture.tile_entities.TileEntityWoodenBench;
 import net.mcfr.decoration.furniture.tile_entities.TileEntityWoodenChair;
-import net.mcfr.decoration.furniture.tile_entities.TileEntityWoodenStool;
 import net.mcfr.decoration.lighting.tile_entities.TileEntityCampfire;
 import net.mcfr.decoration.lighting.tile_entities.TileEntityChandelier;
 import net.mcfr.decoration.misc.tile_entities.TileEntityCarpet;
@@ -25,6 +24,7 @@ import net.mcfr.decoration.signs.tile_entities.TileEntityOrpSign;
 import net.mcfr.decoration.signs.tile_entities.TileEntityPaperSign;
 import net.mcfr.decoration.signs.tile_entities.TileEntityTombstone;
 import net.mcfr.decoration.signs.tile_entities.TileEntityWallNote;
+import net.mcfr.entities.EntityChatBubble;
 import net.mcfr.entities.EntityGrapnel;
 import net.mcfr.entities.EntitySailBoat;
 import net.mcfr.entities.mobs.entity.EntityBormoth;
@@ -36,12 +36,17 @@ import net.mcfr.event.BlockEventsHandler;
 import net.mcfr.event.PlayerEventsHandler;
 import net.mcfr.forge.tile_entities.TileEntityBellows;
 import net.mcfr.forge.tile_entities.TileEntityStove;
+import net.mcfr.network.CreateChatBubbleMessage;
+import net.mcfr.network.DestroyChatBubbleMessage;
 import net.mcfr.network.GuiHandler;
 import net.mcfr.network.McfrNetworkWrapper;
+import net.mcfr.network.ModVersionCheckMessage;
 import net.mcfr.network.OpenEditMcfrSignMessage;
 import net.mcfr.network.OpenEditPaperMessage;
 import net.mcfr.network.OpenEditWallNoteMessage;
+import net.mcfr.network.SyncChatBubbleTypeMessage;
 import net.mcfr.network.SyncEntityMessage;
+import net.mcfr.network.UpdateChatBubblePositionMessage;
 import net.mcfr.network.UpdateWallNoteMessage;
 import net.mcfr.proxy.CommonProxy;
 import net.minecraftforge.common.MinecraftForge;
@@ -118,8 +123,14 @@ public class McfrMain {
     McfrNetworkWrapper.registerPacket(OpenEditMcfrSignMessage.ClientHandler.class, OpenEditMcfrSignMessage.class, Side.CLIENT);
     McfrNetworkWrapper.registerPacket(OpenEditWallNoteMessage.ClientHandler.class, OpenEditWallNoteMessage.class, Side.CLIENT);
     McfrNetworkWrapper.registerPacket(UpdateWallNoteMessage.ServerHandler.class, UpdateWallNoteMessage.class, Side.SERVER);
+    McfrNetworkWrapper.registerPacket(CreateChatBubbleMessage.ServerHandler.class, CreateChatBubbleMessage.class, Side.SERVER);
+    McfrNetworkWrapper.registerPacket(SyncChatBubbleTypeMessage.ClientHandler.class, SyncChatBubbleTypeMessage.class, Side.CLIENT);
+    McfrNetworkWrapper.registerPacket(SyncChatBubbleTypeMessage.ServerHandler.class, SyncChatBubbleTypeMessage.class, Side.SERVER);
+    McfrNetworkWrapper.registerPacket(UpdateChatBubblePositionMessage.ClientHandler.class, UpdateChatBubblePositionMessage.class, Side.CLIENT);
+    McfrNetworkWrapper.registerPacket(DestroyChatBubbleMessage.ServerHandler.class, DestroyChatBubbleMessage.class, Side.SERVER);
     McfrNetworkWrapper.registerPacket(SyncEntityMessage.ClientHandler.class, SyncEntityMessage.class, Side.CLIENT);
     McfrNetworkWrapper.registerPacket(SyncEntityMessage.ServerHandler.class, SyncEntityMessage.class, Side.SERVER);
+    McfrNetworkWrapper.registerPacket(ModVersionCheckMessage.ServerHandler.class, ModVersionCheckMessage.class, Side.SERVER);
   }
 
   /**
@@ -160,7 +171,6 @@ public class McfrMain {
     GameRegistry.registerTileEntity(TileEntityArmChair.class, "arm_chair");
     GameRegistry.registerTileEntity(TileEntityWoodenBench.class, "wooden_bench");
     GameRegistry.registerTileEntity(TileEntityWoodenChair.class, "wooden_chair");
-    GameRegistry.registerTileEntity(TileEntityWoodenStool.class, "wooden_stool");
   }
 
   /**
@@ -169,6 +179,7 @@ public class McfrMain {
   private void registerEntities() {
     EntityRegistry.registerModEntity(EntityGrapnel.class, "grapnel", 1000, this, 10, 3, true);
     EntityRegistry.registerModEntity(EntitySailBoat.class, "sailboat", 1001, this, 80, 3, true);
+    EntityRegistry.registerModEntity(EntityChatBubble.class, "chat_bubble", 1002, this, 20, 3, true);
 
     EntityRegistry.registerModEntity(EntitySiker.class, "siker", 1, this, 80, 3, true, 0xBA9B54, 0x5E4B23);
     EntityRegistry.registerModEntity(EntityBormoth.class, "bormoth", 2, this, 80, 3, true, 1000, 1000);
