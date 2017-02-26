@@ -1,7 +1,7 @@
 package net.mcfr.forge.recipes;
 
 import net.mcfr.craftsmanship.LargeRecipe;
-import net.mcfr.forge.inventories.LargeInventoryCrafting;
+import net.mcfr.forge.guis.LargeInventoryCrafting;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
@@ -18,20 +18,12 @@ public class AnvilRecipe extends LargeRecipe {
   /**
    * Crée une recette pour l'enclume.
    * 
-   * @param width
-   *          la largeur de la zone
-   * @param height
-   *          la hauteur de la zone
-   * @param items
-   *          les ingrédients
-   * @param output
-   *          le résultat
-   * @param temperatureMin
-   *          la température minimale des haut-fourneaux pour débloquer cette
-   *          recette
-   * @param temperatureMin
-   *          la température maximale des haut-fourneaux pour débloquer cette
-   *          recette
+   * @param width la largeur de la zone
+   * @param height la hauteur de la zone
+   * @param items les ingrédients
+   * @param output le résultat
+   * @param temperatureMin la température minimale des haut-fourneaux pour débloquer cette recette
+   * @param temperatureMin la température maximale des haut-fourneaux pour débloquer cette recette
    */
   public AnvilRecipe(int width, int height, ItemStack[] items, ItemStack output, int temperatureMin, int temperatureMax) {
     super(width, height, items, output);
@@ -40,11 +32,9 @@ public class AnvilRecipe extends LargeRecipe {
   }
 
   /**
-   * Indique si la température donnée correspond à celle nécessaire pour
-   * effectuer cette recette.
+   * Indique si la température donnée correspond à celle nécessaire pour effectuer cette recette.
    * 
-   * @param temperature
-   *          la température
+   * @param temperature la température
    * @return vrai si la température est correcte
    */
   public boolean temperatureMatches(int temperature) {
