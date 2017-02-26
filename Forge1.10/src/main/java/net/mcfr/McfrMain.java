@@ -15,7 +15,6 @@ import net.mcfr.decoration.furniture.tile_entities.TileEntityShowcase;
 import net.mcfr.decoration.furniture.tile_entities.TileEntityWeaponsStand;
 import net.mcfr.decoration.furniture.tile_entities.TileEntityWoodenBench;
 import net.mcfr.decoration.furniture.tile_entities.TileEntityWoodenChair;
-import net.mcfr.decoration.furniture.tile_entities.TileEntityWoodenStool;
 import net.mcfr.decoration.lighting.tile_entities.TileEntityCampfire;
 import net.mcfr.decoration.lighting.tile_entities.TileEntityChandelier;
 import net.mcfr.decoration.misc.tile_entities.TileEntityCarpet;
@@ -172,7 +171,6 @@ public class McfrMain {
     GameRegistry.registerTileEntity(TileEntityArmChair.class, "arm_chair");
     GameRegistry.registerTileEntity(TileEntityWoodenBench.class, "wooden_bench");
     GameRegistry.registerTileEntity(TileEntityWoodenChair.class, "wooden_chair");
-    GameRegistry.registerTileEntity(TileEntityWoodenStool.class, "wooden_stool");
   }
 
   /**

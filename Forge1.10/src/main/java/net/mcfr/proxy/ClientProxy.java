@@ -41,8 +41,6 @@ import net.mcfr.decoration.furniture.tile_entities.TileEntityWoodenBench;
 import net.mcfr.decoration.furniture.tile_entities.TileEntityWoodenBenchRenderer;
 import net.mcfr.decoration.furniture.tile_entities.TileEntityWoodenChair;
 import net.mcfr.decoration.furniture.tile_entities.TileEntityWoodenChairRenderer;
-import net.mcfr.decoration.furniture.tile_entities.TileEntityWoodenStool;
-import net.mcfr.decoration.furniture.tile_entities.TileEntityWoodenStoolRenderer;
 import net.mcfr.decoration.lighting.EnumLanternColor;
 import net.mcfr.decoration.lighting.tile_entities.TileEntityCampfire;
 import net.mcfr.decoration.lighting.tile_entities.TileEntityCampfireRenderer;
@@ -877,7 +875,6 @@ public class ClientProxy extends CommonProxy {
     ClientRegistry.bindTileEntitySpecialRenderer(TileEntityArmChair.class, new TileEntityArmChairRenderer());
     ClientRegistry.bindTileEntitySpecialRenderer(TileEntityWoodenBench.class, new TileEntityWoodenBenchRenderer());
     ClientRegistry.bindTileEntitySpecialRenderer(TileEntityWoodenChair.class, new TileEntityWoodenChairRenderer());
-    ClientRegistry.bindTileEntitySpecialRenderer(TileEntityWoodenStool.class, new TileEntityWoodenStoolRenderer());
 
     // TODO 1.11
     // RenderingRegistry.registerEntityRenderingHandler(EntitySiker.class, new
