@@ -5,14 +5,10 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URI;
 import java.net.URL;
-import java.net.URLConnection;
-import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
-import java.util.stream.Collectors;
 
 import org.apache.commons.io.Charsets;
 import org.apache.commons.io.IOUtils;
@@ -23,6 +19,7 @@ import org.lwjgl.util.glu.Project;
 
 import com.google.common.collect.Lists;
 
+import net.mcfr.network.NetworkUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiConfirmOpenLink;
@@ -132,8 +129,8 @@ public class GuiMcfrMainMenu extends GuiScreen {
     this.openGLWarning1 = "";
 
     if (!GLContext.getCapabilities().OpenGL20 && !OpenGlHelper.areShadersSupported()) {
-      this.openGLWarning1 = I18n.format("title.oldgl1", new Object[0]);
-      this.openGLWarning2 = I18n.format("title.oldgl2", new Object[0]);
+      this.openGLWarning1 = I18n.format("title.oldgl1");
+      this.openGLWarning2 = I18n.format("title.oldgl2");
       this.openGLWarningLink = "https://help.mojang.com/customer/portal/articles/325948?ref=game";
     }
   }
@@ -211,7 +208,7 @@ public class GuiMcfrMainMenu extends GuiScreen {
     yOffset += step + 10;
     this.buttonList.add(new GuiButton(0, this.width / 2 - 100, yOffset, 98, 20, I18n.format("menu.options")));
     this.buttonList.add(new GuiButton(7, this.width / 2 + 2, yOffset, 98, 20, I18n.format("menu.quit")));
-    if (shouldDisplayTestButtons()) {
+    if (NetworkUtils.isPlayerAdmin()) {
       this.buttonList.add(new GuiButton(8, 0, 0, 50, 20, "Solo"));
       this.buttonList.add(new GuiButton(9, 55, 0, 50, 20, "Serveurs"));
     }
@@ -252,22 +249,6 @@ public class GuiMcfrMainMenu extends GuiScreen {
         this.mc.displayGuiScreen(new GuiMultiplayer(this));
         break;
     }
-  }
-
-  private boolean shouldDisplayTestButtons() {
-    try {
-      List<String> admins = new ArrayList<>();
-      URLConnection conn = new URL("http://www.minecraft-fr.net/launcher/adminList.txt").openConnection();
-
-      try (BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream(), StandardCharsets.UTF_8.name()))) {
-        admins = rd.lines().collect(Collectors.toList());
-      }
-
-      return admins.contains(Minecraft.getMinecraft().getSession().getUsername().toLowerCase());
-    }
-    catch (IOException e) {}
-
-    return false;
   }
 
   private void connectToServer(String ip) {

@@ -1,6 +1,5 @@
 package net.mcfr.decoration.furniture;
 
-import net.mcfr.decoration.furniture.tile_entities.TileEntityWoodenStool;
 import net.minecraft.block.BlockPlanks;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
@@ -34,6 +33,6 @@ public class BlockStool extends BlockWoodenChair {
 
   @Override
   public TileEntity createNewTileEntity(World worldIn, int meta) {
-    return new TileEntityWoodenStool(getStateFromMeta(meta).getValue(FACING), getType(), isTall());
+    return null;
   }
 }

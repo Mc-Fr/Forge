@@ -127,15 +127,7 @@ public class TileEntityStove extends TileEntityLockable implements ITickable, IS
 
   private boolean hasActiveBellows() {
     // @f0
-    BlockPos[] pos = {
-      getPos().east(),
-      getPos().east().south(),
-      getPos().south(),
-      getPos().west().south(),
-      getPos().west(),
-      getPos().west().north(),
-      getPos().north(),
-      getPos().east().north()};
+    BlockPos[] pos = {getPos().east(), getPos().east().south(), getPos().south(), getPos().west().south(), getPos().west(), getPos().west().north(), getPos().north(), getPos().east().north()};
     // @f1
 
     for (BlockPos p : pos)
