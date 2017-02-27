@@ -38,10 +38,10 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.storage.loot.LootTableList;
 
-public class EntityTaure extends EntityBurrowed {
+public class EntityPryf extends EntityBurrowed {
   private static final Set<Item> TEMPTATION_ITEMS = Sets.newHashSet(new Item[] {Items.WHEAT_SEEDS, Items.MELON_SEEDS, Items.PUMPKIN_SEEDS, Items.BEETROOT_SEEDS});
   
-  public EntityTaure(World worldIn)
+  public EntityPryf(World worldIn)
   {
       super(worldIn);
       this.setSize(0.8F, 1.0F);
@@ -107,9 +107,9 @@ public class EntityTaure extends EntityBurrowed {
       return LootTableList.ENTITIES_CHICKEN;
   }
 
-  public EntityTaure createChild(EntityAgeable ageable)
+  public EntityPryf createChild(EntityAgeable ageable)
   {
-      return new EntityTaure(this.worldObj);
+      return new EntityPryf(this.worldObj);
   }
 
   /**
@@ -131,7 +131,7 @@ public class EntityTaure extends EntityBurrowed {
 
   public static void func_189789_b(DataFixer p_189789_0_)
   {
-      EntityLiving.func_189752_a(p_189789_0_, "Taure");
+      EntityLiving.func_189752_a(p_189789_0_, "Pryf");
   }
 
   /**
