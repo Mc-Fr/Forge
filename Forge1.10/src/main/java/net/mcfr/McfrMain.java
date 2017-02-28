@@ -2,6 +2,7 @@ package net.mcfr;
 
 import net.mcfr.craftsmanship.tile_entities.TileEntityCircularSaw;
 import net.mcfr.craftsmanship.tile_entities.TileEntityLoom;
+import net.mcfr.craftsmanship.tile_entities.TileEntityMortar;
 import net.mcfr.craftsmanship.tile_entities.TileEntityTanningRack;
 import net.mcfr.decoration.container_blocks.BlockBarrel;
 import net.mcfr.decoration.container_blocks.tile_entities.TileEntityBarrel;
@@ -155,6 +156,7 @@ public class McfrMain {
 
     GameRegistry.registerTileEntity(TileEntityCircularSaw.class, "circular_saw");
     GameRegistry.registerTileEntity(TileEntityLoom.class, "loom");
+    GameRegistry.registerTileEntity(TileEntityMortar.class, "mortar");
     GameRegistry.registerTileEntity(TileEntityTanningRack.class, "tanning_rack");
 
     GameRegistry.registerTileEntity(TileEntityNormalSign.class, "sign");

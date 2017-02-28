@@ -30,8 +30,8 @@ import net.mcfr.equipment.fishing.McfrItemFishingRod;
 import net.mcfr.farming.ItemFodder;
 import net.mcfr.farming.McfrItemSeeds;
 import net.mcfr.food.ItemAlcoholDrink;
-import net.mcfr.food.ItemFlask;
 import net.mcfr.food.McfrItemFood;
+import net.mcfr.food.ustensils.ItemFlask;
 import net.mcfr.mecanisms.doors.McfrItemDoor;
 import net.mcfr.misc.ItemDecoratedRing;
 import net.mcfr.misc.ItemRing;
@@ -124,7 +124,6 @@ public final class McfrItems {
   public static final McfrItemFood PUMPKIN_SOUP = (McfrItemFood) new McfrItemFood("pumpkin_soup", 3, 5.8f).setMaxStackSize(1);
   public static final McfrItem FLOUR = new McfrItem("flour", CreativeTabs.MATERIALS);
   public static final McfrItem BREAD_DOUGH = new McfrItem("bread_dough", CreativeTabs.MATERIALS);
-  public static final McfrItem KITCHEN_MORTAR = new McfrItem("kitchen_mortar", 16, CreativeTabs.MATERIALS);
   public static final McfrItemFood RAW_SWORDFISH = new McfrItemFood("raw_swordfish", 3, 0.5f);
   public static final McfrItemFood COOKED_SWORDFISH = new McfrItemFood("cooked_swordfish", 5, 6);
   public static final McfrItemFood RAW_SARDINE = new McfrItemFood("raw_sardine", 1, 0.4f);
@@ -175,11 +174,15 @@ public final class McfrItems {
   // Panneaux et affiches
   public static final ItemWallNote WALL_NOTE = new ItemWallNote();
   public static final ItemTombstone TOMBSTONE = new ItemTombstone();
-  public static final McfrItemSign SIGN = new McfrItemSign("sign", McfrBlocks.STANDING_SIGN, McfrBlocks.WALL_SIGN, McfrBlocks.SUSPENDED_SIGN, TileEntityNormalSign.class);
-  public static final McfrItemSign PAPER_SIGN = new McfrItemSign("paper_sign", McfrBlocks.STANDING_PAPER_SIGN, McfrBlocks.WALL_PAPER_SIGN, McfrBlocks.SUSPENDED_PAPER_SIGN, TileEntityPaperSign.class);
-  public static final McfrItemSign ORP_SIGN = new McfrItemSign("orp_sign", McfrBlocks.STANDING_ORP_SIGN, McfrBlocks.WALL_ORP_SIGN, null, TileEntityOrpSign.class);
+  public static final McfrItemSign SIGN = new McfrItemSign("sign", McfrBlocks.STANDING_SIGN, McfrBlocks.WALL_SIGN, McfrBlocks.SUSPENDED_SIGN,
+      TileEntityNormalSign.class);
+  public static final McfrItemSign PAPER_SIGN = new McfrItemSign("paper_sign", McfrBlocks.STANDING_PAPER_SIGN, McfrBlocks.WALL_PAPER_SIGN,
+      McfrBlocks.SUSPENDED_PAPER_SIGN, TileEntityPaperSign.class);
+  public static final McfrItemSign ORP_SIGN = new McfrItemSign("orp_sign", McfrBlocks.STANDING_ORP_SIGN, McfrBlocks.WALL_ORP_SIGN, null,
+      TileEntityOrpSign.class);
   // Redstone
-  public static final McfrItemBlockSpecial LONG_REPEATER = new McfrItemBlockSpecial("long_repeater", McfrBlocks.LONG_REPEATER_OFF, CreativeTabs.REDSTONE);
+  public static final McfrItemBlockSpecial LONG_REPEATER = new McfrItemBlockSpecial("long_repeater", McfrBlocks.LONG_REPEATER_OFF,
+      CreativeTabs.REDSTONE);
   // Outils
   public static final McfrItem HAMMER = new ItemHammer();
   /** Grappin */
@@ -345,7 +348,6 @@ public final class McfrItems {
     register(PUMPKIN_SOUP);
     register(FLOUR);
     register(BREAD_DOUGH);
-    register(KITCHEN_MORTAR);
     register(RAW_SWORDFISH);
     register(COOKED_SWORDFISH);
     register(RAW_SARDINE);

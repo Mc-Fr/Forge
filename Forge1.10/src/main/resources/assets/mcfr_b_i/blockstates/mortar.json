@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "bottom=true": { "model": "mcfr_b_i:mortar_down" },
+        "bottom=false": { "model": "mcfr_b_i:mortar" }
+    }
+}

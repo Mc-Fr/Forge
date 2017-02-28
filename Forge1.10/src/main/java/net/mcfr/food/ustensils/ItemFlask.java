@@ -1,6 +1,7 @@
-package net.mcfr.food;
+package net.mcfr.food.ustensils;
 
 import net.mcfr.commons.IEnumType;
+import net.mcfr.food.ItemDrink;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
