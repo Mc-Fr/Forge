@@ -198,7 +198,6 @@ public class GuiMcfrMainMenu extends GuiScreen {
 
     this.buttonList.add(new GuiButton(1, this.width / 2 - 100, yOffset, "Serveur Roleplay"));
     this.buttonList.add(b = new GuiButton(2, this.width / 2 - 100, yOffset += step, "Serveur Freebuild"));
-    b.enabled = false;
     yOffset += step;
     this.buttonList.add(new GuiButton(3, this.width / 2 - 100, yOffset, 66, 20, "Site"));
     this.buttonList.add(new GuiButton(4, this.width / 2 - 32, yOffset, 65, 20, "Discord"));

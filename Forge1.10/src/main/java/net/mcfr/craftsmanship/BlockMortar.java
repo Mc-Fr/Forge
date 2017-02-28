@@ -22,6 +22,7 @@ public class BlockMortar extends BlockRack<TileEntityMortar> {
   public BlockMortar() {
     super("mortar", TileEntityMortar.class);
     setDefaultState(this.blockState.getBaseState().withProperty(BOTTOM, false));
+    setCreativeTab(null);
   }
 
   @Override
