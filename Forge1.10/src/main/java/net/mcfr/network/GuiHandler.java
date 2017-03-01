@@ -2,15 +2,18 @@ package net.mcfr.network;
 
 import net.mcfr.craftsmanship.BlockCircularSaw;
 import net.mcfr.craftsmanship.BlockLoom;
+import net.mcfr.craftsmanship.BlockMortar;
 import net.mcfr.craftsmanship.BlockTanningRack;
 import net.mcfr.craftsmanship.guis.ContainerLargeWorkbench;
 import net.mcfr.craftsmanship.guis.ContainerRack;
 import net.mcfr.craftsmanship.guis.GuiCircularSaw;
 import net.mcfr.craftsmanship.guis.GuiLargeWorkbench;
 import net.mcfr.craftsmanship.guis.GuiLoom;
+import net.mcfr.craftsmanship.guis.GuiMortar;
 import net.mcfr.craftsmanship.guis.GuiTanningRack;
 import net.mcfr.craftsmanship.tile_entities.TileEntityCircularSaw;
 import net.mcfr.craftsmanship.tile_entities.TileEntityLoom;
+import net.mcfr.craftsmanship.tile_entities.TileEntityMortar;
 import net.mcfr.craftsmanship.tile_entities.TileEntityTanningRack;
 import net.mcfr.decoration.container_blocks.BlockBookshelf;
 import net.mcfr.decoration.container_blocks.BlockCrate;
@@ -68,6 +71,10 @@ public class GuiHandler implements IGuiHandler {
         if (tileEntity instanceof TileEntityCircularSaw)
           return new ContainerRack(player.inventory, (TileEntityCircularSaw) tileEntity, player, BlockCircularSaw.class);
         break;
+      case MORTAR:
+        if (tileEntity instanceof TileEntityMortar)
+          return new ContainerRack(player.inventory, (TileEntityMortar) tileEntity, player, BlockMortar.class);
+        break;
       case BOOKSHELF:
         if (tileEntity instanceof TileEntityBookshelf)
           return new ContainerRestricted(player.inventory, (TileEntityBookshelf) tileEntity, player, BlockBookshelf.class);
@@ -118,6 +125,10 @@ public class GuiHandler implements IGuiHandler {
       case SAW:
         if (tileEntity instanceof TileEntityCircularSaw)
           return new GuiCircularSaw(player.inventory, (TileEntityCircularSaw) tileEntity, player);
+        break;
+      case MORTAR:
+        if (tileEntity instanceof TileEntityMortar)
+          return new GuiMortar(player.inventory, (TileEntityMortar) tileEntity, player);
         break;
       case BOOKSHELF:
         if (tileEntity instanceof TileEntityBookshelf)

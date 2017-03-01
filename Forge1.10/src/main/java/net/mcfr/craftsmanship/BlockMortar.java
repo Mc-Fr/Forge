@@ -14,15 +14,13 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-// TODO GuiMortar et ContainerMortar
 public class BlockMortar extends BlockRack<TileEntityMortar> {
   public static final PropertyBool BOTTOM = PropertyBool.create("bottom");
-  private static final AxisAlignedBB HALF_AABB = new AxisAlignedBB(0, 0, 0, 1, 0.5, 1);
+  private static final AxisAlignedBB HALF_AABB = new AxisAlignedBB(0.25, 0, 0.25, 0.75, 0.4, 0.75);
 
   public BlockMortar() {
     super("mortar", TileEntityMortar.class);
     setDefaultState(this.blockState.getBaseState().withProperty(BOTTOM, false));
-    setCreativeTab(null);
   }
 
   @Override
@@ -32,14 +30,10 @@ public class BlockMortar extends BlockRack<TileEntityMortar> {
 
   @Override
   public IBlockState getActualState(IBlockState state, IBlockAccess world, BlockPos pos) {
-    Block block = world.getBlockState(pos.down()).getBlock();
-    boolean b = block instanceof BlockSlab;
-
-    if (b) {
-      BlockSlab slab = (BlockSlab) block;
-      b = !slab.isDouble() && slab.getBlockState().getBaseState().getValue(BlockSlab.HALF) == EnumBlockHalf.BOTTOM;
-    }
-    b |= block == McfrBlocks.END_TABLE;
+    IBlockState blockState = world.getBlockState(pos.down());
+    Block block = blockState.getBlock();
+    boolean b = block instanceof BlockSlab && !((BlockSlab) block).isDouble() && blockState.getValue(BlockSlab.HALF) == EnumBlockHalf.BOTTOM
+        || block == McfrBlocks.END_TABLE;
 
     return state.withProperty(BOTTOM, b);
   }

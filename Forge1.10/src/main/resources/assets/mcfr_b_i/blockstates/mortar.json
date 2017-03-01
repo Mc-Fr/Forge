@@ -1,6 +1,12 @@
 {
     "variants": {
-        "bottom=true": { "model": "mcfr_b_i:mortar_down" },
-        "bottom=false": { "model": "mcfr_b_i:mortar" }
+        "bottom=true,facing=north": { "model": "mcfr_b_i:mortar_down" },
+        "bottom=false,facing=north": { "model": "mcfr_b_i:mortar" },
+        "bottom=true,facing=west": { "model": "mcfr_b_i:mortar_down", "y": 270 },
+        "bottom=false,facing=west": { "model": "mcfr_b_i:mortar", "y": 270 },
+        "bottom=true,facing=south": { "model": "mcfr_b_i:mortar_down", "y": 180 },
+        "bottom=false,facing=south": { "model": "mcfr_b_i:mortar", "y": 180 },
+        "bottom=true,facing=east": { "model": "mcfr_b_i:mortar_down", "y": 90 },
+        "bottom=false,facing=east": { "model": "mcfr_b_i:mortar", "y": 90 }
     }
 }
