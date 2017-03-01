@@ -778,7 +778,6 @@ public final class McfrCrafts {
 
     /* Minecraft */
 
-    addShapedRecipe(new ItemStack(Items.SUGAR), "S", "S", "#", 'S', McfrItems.SUGAR_CANES, '#', McfrBlocks.MORTAR);
     addShapedRecipe(new ItemStack(Items.COOKIE), "#S#", "PPP", '#', McfrItems.COCOA, 'S', Items.SUGAR, 'P', McfrItems.CAKE_DOUGH);
     addShapedRecipe(new ItemStack(Items.PUMPKIN_PIE), "CFC", "UUU", "PPP", 'F', new ItemStack(McfrItems.FLASK, 1, 0), 'P', McfrItems.BREAD_DOUGH, 'U',
         Blocks.PUMPKIN, 'C', Items.CARROT);
@@ -793,13 +792,6 @@ public final class McfrCrafts {
 
     addShapedRecipe(new ItemStack(Items.FISHING_ROD, 1), " S", "SF", 'S', Items.STICK, 'F', Items.STRING);
 
-    addShapedRecipe(new ItemStack(Items.DYE, 2, 0), "#", "#", "M", '#', McfrItems.INK, 'M', McfrBlocks.MORTAR);
-    addShapedRecipe(new ItemStack(Items.DYE, 2, 0), "#", "#", "M", '#', new ItemStack(Items.COAL, 1, 0), 'M', McfrBlocks.MORTAR);
-    addShapedRecipe(new ItemStack(Items.DYE, 2, 0), "#", "#", "M", '#', new ItemStack(Items.COAL, 1, 1), 'M', McfrBlocks.MORTAR);
-    addShapedRecipe(new ItemStack(Items.DYE, 2, 1), "#", "#", "M", '#', Blocks.RED_FLOWER, 'M', McfrBlocks.MORTAR);
-    addShapedRecipe(new ItemStack(Items.DYE, 2, 2), "#", "#", "M", '#', Blocks.CACTUS, 'M', McfrBlocks.MORTAR);
-    addShapedRecipe(new ItemStack(Items.DYE, 2, 3), "#", "#", "M", '#', McfrItems.COCOA, 'M', McfrBlocks.MORTAR);
-    addShapedRecipe(new ItemStack(Items.DYE, 2, 4), "#", "#", "M", '#', new ItemStack(McfrItems.ORE, 1, 2), 'M', McfrBlocks.MORTAR);
     addShapedRecipe(new ItemStack(Items.DYE, 2, 5), "#SC", '#', new ItemStack(Items.DYE, 1, 1), 'S', Items.STICK, 'C',
         new ItemStack(Items.DYE, 1, 4));
     addShapedRecipe(new ItemStack(Items.DYE, 2, 6), "#SC", '#', new ItemStack(Items.DYE, 1, 2), 'S', Items.STICK, 'C',
@@ -812,14 +804,12 @@ public final class McfrCrafts {
         new ItemStack(Items.DYE, 1, 15));
     addShapedRecipe(new ItemStack(Items.DYE, 2, 10), "#SC", '#', new ItemStack(Items.DYE, 1, 2), 'S', Items.STICK, 'C',
         new ItemStack(Items.DYE, 1, 15));
-    addShapedRecipe(new ItemStack(Items.DYE, 2, 11), "#", "#", "M", '#', Blocks.YELLOW_FLOWER, 'M', McfrBlocks.MORTAR);
     addShapedRecipe(new ItemStack(Items.DYE, 2, 12), "#SC", '#', new ItemStack(Items.DYE, 1, 4), 'S', Items.STICK, 'C',
         new ItemStack(Items.DYE, 1, 15));
     addShapedRecipe(new ItemStack(Items.DYE, 2, 13), "#SC", '#', new ItemStack(Items.DYE, 1, 5), 'S', Items.STICK, 'C',
         new ItemStack(Items.DYE, 1, 15));
     addShapedRecipe(new ItemStack(Items.DYE, 2, 14), "#SC", '#', new ItemStack(Items.DYE, 1, 1), 'S', Items.STICK, 'C',
         new ItemStack(Items.DYE, 1, 11));
-    addShapedRecipe(new ItemStack(Items.DYE, 2, 15), "#", "#", "M", '#', Items.BONE, 'M', McfrBlocks.MORTAR);
 
     addLargeRecipe(new ItemStack(Items.BED), "RRRR#", "TTTTT", "DDDDD", "F   F", 'R', McfrItems.CLOTH_ROLL, 'T', McfrBlocks.CARPET, '#', Blocks.WOOL,
         'F', Items.IRON_INGOT, 'D', McfrBlocks.REFINED_PLANKS_SLAB);
@@ -856,7 +846,6 @@ public final class McfrCrafts {
     addShapedRecipe(new ItemStack(McfrItems.HEMP_LEAF, 1), "#", '#', McfrItems.HEMP_FLOWER);
     addShapedRecipe(new ItemStack(McfrItems.HEMP_FIBER, 3), "###", '#', McfrItems.HEMP_FLOWER);
     addShapelessRecipe(new ItemStack(McfrItems.HEMP_FIBER, 2), new ItemStack(McfrItems.HEMP_LEAF));
-    addShapedRecipe(new ItemStack(McfrItems.HEMP_OIL), "C", "C", "M", 'C', McfrItems.HEMP_LEAF, 'M', McfrBlocks.MORTAR);
 
     addShapedRecipe(new ItemStack(McfrItems.FERTILIZER), "BBB", "CCC", "###", 'B', new ItemStack(Items.DYE, 1, 15), 'C', McfrItems.HEMP_OIL, '#',
         McfrItems.POOP);
@@ -887,10 +876,9 @@ public final class McfrCrafts {
         'P', McfrItems.CAKE_DOUGH, 'E', Items.EGG, '#', McfrItems.COCOA);
     addShapedRecipe(new ItemStack(McfrItems.APPLE_PIE, 1), "ASA", "AAA", "PPP", 'S', Items.SUGAR, 'P', McfrItems.BREAD_DOUGH, 'A', Items.APPLE);
     addShapedRecipe(new ItemStack(McfrItems.PUMPKIN_SOUP), "P", "P", "B", 'P', Blocks.PUMPKIN, 'B', Items.BOWL);
-    addShapedRecipe(new ItemStack(McfrItems.FLOUR, 1), "#", "#", "S", '#', Items.WHEAT_SEEDS, 'S', McfrBlocks.MORTAR);
     addShapedRecipe(new ItemStack(McfrItems.BREAD_DOUGH, 1), "###", '#', McfrItems.FLOUR);
     for (Block planks : PLANKS)
-      addShapedRecipe(new ItemStack(McfrBlocks.MORTAR, 16), "  S", "#S#", " # ", '#', planks, 'S', Items.STICK);
+      addShapedRecipe(new ItemStack(McfrBlocks.MORTAR, 1), "  S", "#S#", " # ", '#', planks, 'S', Items.STICK);
     addShapedRecipe(new ItemStack(McfrItems.POIGRUME_COOKIE, 2), "#S#", "PPP", '#', McfrItems.POIGRUME, 'S', Items.SUGAR, 'P', McfrItems.CAKE_DOUGH);
 
     // Portes solides
