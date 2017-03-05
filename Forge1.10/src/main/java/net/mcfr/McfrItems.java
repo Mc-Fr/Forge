@@ -1,6 +1,9 @@
 package net.mcfr;
 
-import static net.minecraft.inventory.EntityEquipmentSlot.*;
+import static net.minecraft.inventory.EntityEquipmentSlot.CHEST;
+import static net.minecraft.inventory.EntityEquipmentSlot.FEET;
+import static net.minecraft.inventory.EntityEquipmentSlot.HEAD;
+import static net.minecraft.inventory.EntityEquipmentSlot.LEGS;
 
 import net.mcfr.commons.McfrItem;
 import net.mcfr.commons.McfrItemBlockSpecial;
@@ -175,9 +178,9 @@ public final class McfrItems {
   // Panneaux et affiches
   public static final ItemWallNote WALL_NOTE = new ItemWallNote();
   public static final ItemTombstone TOMBSTONE = new ItemTombstone();
-  public static final McfrItemSign SIGN = new McfrItemSign("sign", McfrBlocks.STANDING_SIGN, McfrBlocks.WALL_SIGN, McfrBlocks.SUSPENDED_SIGN, TileEntityNormalSign.class);
-  public static final McfrItemSign PAPER_SIGN = new McfrItemSign("paper_sign", McfrBlocks.STANDING_PAPER_SIGN, McfrBlocks.WALL_PAPER_SIGN, McfrBlocks.SUSPENDED_PAPER_SIGN, TileEntityPaperSign.class);
-  public static final McfrItemSign ORP_SIGN = new McfrItemSign("orp_sign", McfrBlocks.STANDING_ORP_SIGN, McfrBlocks.WALL_ORP_SIGN, null, TileEntityOrpSign.class);
+  public static final McfrItemSign SIGN = new McfrItemSign("sign", McfrBlocks.STANDING_SIGN, McfrBlocks.WALL_SIGN, McfrBlocks.SUSPENDED_SIGN, TileEntityNormalSign.class, false);
+  public static final McfrItemSign PAPER_SIGN = new McfrItemSign("paper_sign", McfrBlocks.STANDING_PAPER_SIGN, McfrBlocks.WALL_PAPER_SIGN, McfrBlocks.SUSPENDED_PAPER_SIGN, TileEntityPaperSign.class, false);
+  public static final McfrItemSign ORP_SIGN = new McfrItemSign("orp_sign", McfrBlocks.STANDING_ORP_SIGN, McfrBlocks.WALL_ORP_SIGN, null, TileEntityOrpSign.class, true);
   // Redstone
   public static final McfrItemBlockSpecial LONG_REPEATER = new McfrItemBlockSpecial("long_repeater", McfrBlocks.LONG_REPEATER_OFF, CreativeTabs.REDSTONE);
   // Outils
