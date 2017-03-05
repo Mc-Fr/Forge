@@ -16,6 +16,8 @@ public enum CustomGuiScreens {
   TANNING_RACK,
   /** Scie circulaire */
   SAW,
+  /** Mortier */
+  MORTAR,
   /** Grand atelier */
   LARGE_WORKBENCH,
   /** Bibliothèque */

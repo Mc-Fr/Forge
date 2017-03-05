@@ -10,7 +10,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 /**
- * Interface du pétier à tisser.
+ * Interface du métier à tisser.
  *
  * @author Mc-Fr
  */

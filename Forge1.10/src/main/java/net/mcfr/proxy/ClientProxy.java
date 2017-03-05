@@ -100,7 +100,7 @@ import net.mcfr.environment.plants.BlockWildGrass;
 import net.mcfr.environment.plants.EnumExoticWoodType;
 import net.mcfr.equipment.ItemGrapnel;
 import net.mcfr.farming.ItemFodder;
-import net.mcfr.food.ItemFlask;
+import net.mcfr.food.ustensils.ItemFlask;
 import net.mcfr.forge.tile_entities.TileEntityBellows;
 import net.mcfr.forge.tile_entities.TileEntityBellowsRenderer;
 import net.mcfr.misc.ItemDecoratedRing;
@@ -653,6 +653,8 @@ public class ClientProxy extends CommonProxy {
 
     registerBlock(McfrBlocks.CHOCOLATE_CAKE);
 
+    registerBlock(MORTAR);
+
     registerBlock(LONG_REPEATER_OFF);
     registerBlock(LONG_REPEATER_ON);
 
@@ -724,7 +726,6 @@ public class ClientProxy extends CommonProxy {
     registerItem(PUMPKIN_SOUP);
     registerItem(FLOUR);
     registerItem(BREAD_DOUGH);
-    registerItem(KITCHEN_MORTAR);
     registerItem(RAW_SWORDFISH);
     registerItem(COOKED_SWORDFISH);
     registerItem(RAW_SARDINE);
@@ -939,7 +940,8 @@ public class ClientProxy extends CommonProxy {
   private static void registerItem(Item item, int metadata, String name) {
     if (item == null)
       return;
-    Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(item, metadata, new ModelResourceLocation(item.getRegistryName().getResourceDomain() + ":" + name, "inventory"));
+    Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(item, metadata,
+        new ModelResourceLocation(item.getRegistryName().getResourceDomain() + ":" + name, "inventory"));
   }
 
   /**
@@ -954,7 +956,8 @@ public class ClientProxy extends CommonProxy {
 
     for (T variant : types) {
       registerItem(item, variant.getMetadata(), item.getRegistryName().getResourcePath() + "_" + variant.getName());
-      names[variant.getMetadata()] = new ResourceLocation(Constants.MOD_ID, item.getRegistryName().getResourcePath().toString() + "_" + variant.getName());
+      names[variant.getMetadata()] = new ResourceLocation(Constants.MOD_ID,
+          item.getRegistryName().getResourcePath().toString() + "_" + variant.getName());
     }
 
     ModelBakery.registerItemVariants(item, names);

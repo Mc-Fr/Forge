@@ -100,12 +100,20 @@ public abstract class TileEntitySignRenderer<T extends TileEntityMcfrSign> exten
         if (te.signText[j] != null) {
           ITextComponent itextcomponent = te.signText[j];
           List<ITextComponent> list = GuiUtilRenderComponents.splitText(itextcomponent, 90, fontRenderer, false, true);
-          String s = list != null && !list.isEmpty() ? (te instanceof TileEntityOrpSign ? list.get(0).getUnformattedText() : list.get(0).getFormattedText()) : "";
+          String s = list != null && !list.isEmpty()
+              ? (te instanceof TileEntityOrpSign ? list.get(0).getUnformattedText() : list.get(0).getFormattedText()) : "";
 
           if (j == te.lineBeingEdited)
             s = "> " + s + " <";
 
-          fontRenderer.drawString(s, -fontRenderer.getStringWidth(s) / 2, j * 10 - te.signText.length * 5, te instanceof TileEntityOrpSign ? 0xffffffff : 0);
+          for (int k = 0; k < 2; k++) {
+            if (k == 1)
+              GlStateManager.rotate(180, 0, 1, 0);
+            fontRenderer.drawString(s, -fontRenderer.getStringWidth(s) / 2, j * 10 - te.signText.length * 5,
+                te instanceof TileEntityOrpSign ? 0xffffffff : 0);
+            if (k == 1)
+              GlStateManager.rotate(-180, 0, 1, 0);
+          }
         }
       }
     }

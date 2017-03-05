@@ -11,7 +11,7 @@ public final class Constants {
   /** Nom du mod */
   public static final String MOD_NAME = "Mc-Fr";
   /** Version du mod */
-  public static final String MOD_VERSION = "1.1.4";
+  public static final String MOD_VERSION = "1.1.5";
 
   private Constants() {}
 }

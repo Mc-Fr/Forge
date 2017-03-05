@@ -58,6 +58,7 @@ import net.mcfr.construction.McfrItemSlab;
 import net.mcfr.craftsmanship.BlockCircularSaw;
 import net.mcfr.craftsmanship.BlockLargeWorkbench;
 import net.mcfr.craftsmanship.BlockLoom;
+import net.mcfr.craftsmanship.BlockMortar;
 import net.mcfr.craftsmanship.BlockTanningRack;
 import net.mcfr.decoration.beds.BlockHayBed;
 import net.mcfr.decoration.beds.BlockNormalBed;
@@ -731,6 +732,8 @@ public final class McfrBlocks {
   public static final BlockChessboard CHESSBOARD = new BlockChessboard();
   // Nourriture
   public static final McfrBlockCake CHOCOLATE_CAKE = new McfrBlockCake("chocolate");
+  // Ustensiles
+  public static final BlockMortar MORTAR = new BlockMortar();
   // Redstone
   public static final BlockLongRedstoneRepeater LONG_REPEATER_OFF = new BlockLongRedstoneRepeater(false);
   public static final BlockLongRedstoneRepeater LONG_REPEATER_ON = new BlockLongRedstoneRepeater(true);
@@ -1268,6 +1271,8 @@ public final class McfrBlocks {
     register(CHESSBOARD);
 
     register(CHOCOLATE_CAKE);
+
+    register(MORTAR);
 
     register(LONG_REPEATER_OFF);
     register(LONG_REPEATER_ON);
