@@ -21,7 +21,7 @@ public abstract class BlockBushBase extends BlockBush {
     setRegistryName(name);
     setUnlocalizedName(NameUtils.getUnlocalizedName(name));
     setSoundType(SoundType.PLANT);
-    setHardness(2);
+    setHardness(1.5F);
     setCreativeTab(CreativeTabs.DECORATIONS);
     setTickRandomly(true);
   }

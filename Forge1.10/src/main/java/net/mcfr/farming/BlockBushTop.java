@@ -30,7 +30,7 @@ public abstract class BlockBushTop extends BlockBush {
     setRegistryName(name);
     setUnlocalizedName(NameUtils.getUnlocalizedName(name));
     setSoundType(SoundType.PLANT);
-    setHardness(2);
+    setHardness(0.2F);
     setCreativeTab(CreativeTabs.DECORATIONS);
     setDefaultState(this.blockState.getBaseState().withProperty(AGE, 0));
     setTickRandomly(true);
