@@ -106,7 +106,6 @@ import net.mcfr.decoration.misc.BlockMoucharabieh;
 import net.mcfr.decoration.misc.BlockMoucharabiehPane;
 import net.mcfr.decoration.misc.BlockPebbles;
 import net.mcfr.decoration.misc.BlockRope;
-import net.mcfr.decoration.misc.BlockRopeAttach;
 import net.mcfr.decoration.misc.BlockSmokeGenerator;
 import net.mcfr.decoration.misc.BlockSupport;
 import net.mcfr.decoration.misc.McfrBlockCarpet;
@@ -661,7 +660,7 @@ public final class McfrBlocks {
   public static final BlockRope FLOOR_ROPE = new BlockRope();
   public static final BlockChain CHAIN = new BlockChain("chain", Material.IRON, SoundType.METAL, 1);
   public static final BlockChain ROPE = new BlockChain("rope", Material.CLOTH, SoundType.CLOTH, 0.5f);
-  public static final BlockRopeAttach ROPE_ATTACH = new BlockRopeAttach();
+  public static final BlockChain ROPE_ATTACH = new BlockChain("rope_attach", Material.CLOTH, SoundType.CLOTH, 0.5f);
 
   public static final BlockFeathers FEATHERS = new BlockFeathers();
   /** Cailloux */

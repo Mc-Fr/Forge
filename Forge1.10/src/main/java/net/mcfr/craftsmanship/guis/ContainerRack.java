@@ -2,8 +2,6 @@ package net.mcfr.craftsmanship.guis;
 
 import static net.mcfr.utils.RenderUtils.*;
 
-import java.util.Arrays;
-
 import net.mcfr.utils.ItemsLists;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
@@ -30,7 +28,6 @@ public class ContainerRack extends Container {
    * @param blockClass la classe du bloc correspondant
    */
   public ContainerRack(IInventory playerInventory, IInventory rackInventory, EntityPlayer player, final Class<? extends Block> blockClass) {
-    System.out.println(Arrays.toString(Thread.currentThread().getStackTrace()));
     this.rackInventory = rackInventory;
     this.rackInventory.openInventory(player);
 
