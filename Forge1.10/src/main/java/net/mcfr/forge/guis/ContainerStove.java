@@ -29,13 +29,13 @@ public class ContainerStove extends Container {
       }
     });
 
-    for (int i = 0; i < 3; ++i) {
-      for (int j = 0; j < 9; ++j) {
+    for (int i = 0; i < 3; i++) {
+      for (int j = 0; j < 9; j++) {
         addSlotToContainer(new Slot(playerInventory, 9 + i * 9 + j, SIDE_OFFSET + j * SLOT_SIZE, 84 + i * SLOT_SIZE));
       }
     }
 
-    for (int i = 0; i < 9; ++i) {
+    for (int i = 0; i < 9; i++) {
       addSlotToContainer(new Slot(playerInventory, i, SIDE_OFFSET + i * SLOT_SIZE, 142));
     }
   }

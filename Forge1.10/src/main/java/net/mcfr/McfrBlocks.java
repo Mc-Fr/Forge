@@ -206,10 +206,13 @@ public final class McfrBlocks {
   public static final BlockBellows BELLOWS = new BlockBellows();
   // Construction
   public static final BlockOldHay OLD_HAY_BLOCK = new BlockOldHay();
-  public static final McfrBlock REFINED_GOLD_BLOCK = new McfrBlock("refined_gold_block", Material.IRON, MapColor.GOLD, SoundType.METAL, 3, 10, "pickaxe", 2, CreativeTabs.BUILDING_BLOCKS);
-  public static final McfrBlock REFINED_IRON_BLOCK = new McfrBlock("refined_iron_block", Material.IRON, SoundType.METAL, 5, 10, "pickaxe", 1, CreativeTabs.BUILDING_BLOCKS);
+  public static final McfrBlock REFINED_GOLD_BLOCK = new McfrBlock("refined_gold_block", Material.IRON, MapColor.GOLD, SoundType.METAL, 3, 10,
+      "pickaxe", 2, CreativeTabs.BUILDING_BLOCKS);
+  public static final McfrBlock REFINED_IRON_BLOCK = new McfrBlock("refined_iron_block", Material.IRON, SoundType.METAL, 5, 10, "pickaxe", 1,
+      CreativeTabs.BUILDING_BLOCKS);
   public static final BlockRefinedPlanks REFINED_PLANKS = new BlockRefinedPlanks();
-  public static final McfrBlock ROUGH_SANDSTONE = new McfrBlock("rough_sandstone", Material.ROCK, SoundType.STONE, 0.8f, 0, "pickaxe", 0, CreativeTabs.BUILDING_BLOCKS);
+  public static final McfrBlock ROUGH_SANDSTONE = new McfrBlock("rough_sandstone", Material.ROCK, SoundType.STONE, 0.8f, 0, "pickaxe", 0,
+      CreativeTabs.BUILDING_BLOCKS);
   public static final BlockColoredStonebrick YELLOW_STONEBRICK = new BlockColoredStonebrick("yellow");
   public static final BlockColoredStonebrick OCHER_STONEBRICK = new BlockColoredStonebrick("ocher");
   /** Torchis */
@@ -354,11 +357,15 @@ public final class McfrBlocks {
   public static final McfrBlockStairs YELLOW_COBBLESTONE_STAIRS = new McfrBlockStairs(Blocks.STONE, 1, "yellow_cobblestone", "pickaxe", 0);
   public static final McfrBlockStairs OCHER_COBBLESTONE_STAIRS = new McfrBlockStairs(Blocks.STONE, 3, "ocher_cobblestone", "pickaxe", 0);
   public static final McfrBlockStairs YELLOW_STONEBRICK_STAIRS = new McfrBlockStairs(YELLOW_STONEBRICK, 0, "yellow_stonebrick", "pickaxe", 0);
-  public static final McfrBlockStairs YELLOW_MOSSY_STONEBRICK_STAIRS = new McfrBlockStairs(YELLOW_STONEBRICK, 1, "yellow_mossy_stonebrick", "pickaxe", 0);
-  public static final McfrBlockStairs YELLOW_CRACKED_STONEBRICK_STAIRS = new McfrBlockStairs(YELLOW_STONEBRICK, 2, "yellow_cracked_stonebrick", "pickaxe", 0);
+  public static final McfrBlockStairs YELLOW_MOSSY_STONEBRICK_STAIRS = new McfrBlockStairs(YELLOW_STONEBRICK, 1, "yellow_mossy_stonebrick", "pickaxe",
+      0);
+  public static final McfrBlockStairs YELLOW_CRACKED_STONEBRICK_STAIRS = new McfrBlockStairs(YELLOW_STONEBRICK, 2, "yellow_cracked_stonebrick",
+      "pickaxe", 0);
   public static final McfrBlockStairs OCHER_STONEBRICK_STAIRS = new McfrBlockStairs(OCHER_STONEBRICK, 0, "ocher_stonebrick", "pickaxe", 0);
-  public static final McfrBlockStairs OCHER_MOSSY_STONEBRICK_STAIRS = new McfrBlockStairs(OCHER_STONEBRICK, 1, "ocher_mossy_stonebrick", "pickaxe", 0);
-  public static final McfrBlockStairs OCHER_CRACKED_STONEBRICK_STAIRS = new McfrBlockStairs(OCHER_STONEBRICK, 2, "ocher_cracked_stonebrick", "pickaxe", 0);
+  public static final McfrBlockStairs OCHER_MOSSY_STONEBRICK_STAIRS = new McfrBlockStairs(OCHER_STONEBRICK, 1, "ocher_mossy_stonebrick", "pickaxe",
+      0);
+  public static final McfrBlockStairs OCHER_CRACKED_STONEBRICK_STAIRS = new McfrBlockStairs(OCHER_STONEBRICK, 2, "ocher_cracked_stonebrick",
+      "pickaxe", 0);
   public static final McfrBlockStairs BRICK_TILES_STAIRS = new McfrBlockStairs(TILES, 0, "brick_tiles", "pickaxe", 0);
   public static final McfrBlockStairs SLATE_TILES_STAIRS = new McfrBlockStairs(TILES, 1, "slate_tiles", "pickaxe", 0);
   public static final McfrBlockStairs LIGHT_CARVED_CLAY_STAIRS = new McfrBlockStairs(CARVED_CLAY, 0, "light_carved_clay", "pickaxe", 0);
@@ -460,11 +467,14 @@ public final class McfrBlocks {
   public static final McfrBlockSlope YELLOW_COBBLESTONE_SLOPE = new McfrBlockSlope(Blocks.STONE, 1, "yellow_cobblestone", "pickaxe", 0);
   public static final McfrBlockSlope OCHER_COBBLESTONE_SLOPE = new McfrBlockSlope(Blocks.STONE, 3, "ocher_cobblestone", "pickaxe", 0);
   public static final McfrBlockSlope YELLOW_STONEBRICK_SLOPE = new McfrBlockSlope(YELLOW_STONEBRICK, 0, "yellow_stonebrick", "pickaxe", 0);
-  public static final McfrBlockSlope YELLOW_MOSSY_STONEBRICK_SLOPE = new McfrBlockSlope(YELLOW_STONEBRICK, 1, "yellow_mossy_stonebrick", "pickaxe", 0);
-  public static final McfrBlockSlope YELLOW_CRACKED_STONEBRICK_SLOPE = new McfrBlockSlope(YELLOW_STONEBRICK, 2, "yellow_cracked_stonebrick", "pickaxe", 0);
+  public static final McfrBlockSlope YELLOW_MOSSY_STONEBRICK_SLOPE = new McfrBlockSlope(YELLOW_STONEBRICK, 1, "yellow_mossy_stonebrick", "pickaxe",
+      0);
+  public static final McfrBlockSlope YELLOW_CRACKED_STONEBRICK_SLOPE = new McfrBlockSlope(YELLOW_STONEBRICK, 2, "yellow_cracked_stonebrick",
+      "pickaxe", 0);
   public static final McfrBlockSlope OCHER_STONEBRICK_SLOPE = new McfrBlockSlope(OCHER_STONEBRICK, 0, "ocher_stonebrick", "pickaxe", 0);
   public static final McfrBlockSlope OCHER_MOSSY_STONEBRICK_SLOPE = new McfrBlockSlope(OCHER_STONEBRICK, 1, "ocher_mossy_stonebrick", "pickaxe", 0);
-  public static final McfrBlockSlope OCHER_CRACKED_STONEBRICK_SLOPE = new McfrBlockSlope(OCHER_STONEBRICK, 2, "ocher_cracked_stonebrick", "pickaxe", 0);
+  public static final McfrBlockSlope OCHER_CRACKED_STONEBRICK_SLOPE = new McfrBlockSlope(OCHER_STONEBRICK, 2, "ocher_cracked_stonebrick", "pickaxe",
+      0);
   public static final McfrBlockSlope BRICK_TILES_SLOPE = new McfrBlockSlope(TILES, 0, "brick_tiles", "pickaxe", 0);
   public static final McfrBlockSlope SLATE_TILES_SLOPE = new McfrBlockSlope(TILES, 1, "slate_tiles", "pickaxe", 0);
   public static final McfrBlockSlope LIGHT_CARVED_CLAY_SLOPE = new McfrBlockSlope(CARVED_CLAY, 0, "light_carved_clay", "pickaxe", 0);
@@ -491,8 +501,10 @@ public final class McfrBlocks {
   public static final McfrBlockLeavesPyramid ACACIA_LEAVES_PYRAMID = new McfrBlockLeavesPyramid(Blocks.LEAVES2, 0, "acacia");
   public static final McfrBlockLeavesPyramid DARK_OAK_LEAVES_PYRAMID = new McfrBlockLeavesPyramid(Blocks.LEAVES2, 1, "dark_oak");
   public static final McfrBlockPyramid SANDSTONE_PYRAMID = new McfrBlockPyramid(Blocks.SANDSTONE, 0, 0.8f, 0, "sandstone", "pickaxe", 0);
-  public static final McfrBlockPyramid CHISELED_SANDSTONE_PYRAMID = new McfrBlockPyramid(Blocks.SANDSTONE, 1, 0.8f, 0, "chiseled_sandstone", "pickaxe", 0);
-  public static final McfrBlockPyramid SMOOTH_SANDSTONE_PYRAMID = new McfrBlockPyramid(Blocks.SANDSTONE, 2, 0.8f, 0, "smooth_sandstone", "pickaxe", 0);
+  public static final McfrBlockPyramid CHISELED_SANDSTONE_PYRAMID = new McfrBlockPyramid(Blocks.SANDSTONE, 1, 0.8f, 0, "chiseled_sandstone",
+      "pickaxe", 0);
+  public static final McfrBlockPyramid SMOOTH_SANDSTONE_PYRAMID = new McfrBlockPyramid(Blocks.SANDSTONE, 2, 0.8f, 0, "smooth_sandstone", "pickaxe",
+      0);
   public static final McfrBlockPyramid WHITE_WOOL_PYRAMID = new McfrBlockPyramid(Blocks.WOOL, 0, 0.8f, 0, "white_wool", null, -1);
   public static final McfrBlockPyramid ORANGE_WOOL_PYRAMID = new McfrBlockPyramid(Blocks.WOOL, 1, 0.8f, 0, "orange_wool", null, -1);
   public static final McfrBlockPyramid MAGENTA_WOOL_PYRAMID = new McfrBlockPyramid(Blocks.WOOL, 2, 0.8f, 0, "magenta_wool", null, -1);
@@ -512,26 +524,40 @@ public final class McfrBlocks {
   public static final McfrBlockPyramid GOLDEN_PYRAMID = new McfrBlockPyramid(Blocks.GOLD_BLOCK, 0, 3, 10, "golden", "pickaxe", 2);
   public static final McfrBlockPyramid IRON_PYRAMID = new McfrBlockPyramid(Blocks.IRON_BLOCK, 0, 5, 10, "iron", "pickaxe", 1);
   public static final McfrBlockPyramid BRICK_PYRAMID = new McfrBlockPyramid(Blocks.BRICK_BLOCK, 0, 2, 10, "brick", "pickaxe", 0);
-  public static final McfrBlockPyramid MOSSY_COBBLESTONE_PYRAMID = new McfrBlockPyramid(Blocks.MOSSY_COBBLESTONE, 0, 2, 10, "mossy_cobblestone", "pickaxe", 0);
+  public static final McfrBlockPyramid MOSSY_COBBLESTONE_PYRAMID = new McfrBlockPyramid(Blocks.MOSSY_COBBLESTONE, 0, 2, 10, "mossy_cobblestone",
+      "pickaxe", 0);
   public static final McfrBlockPyramid STONEBRICK_PYRAMID = new McfrBlockPyramid(Blocks.STONEBRICK, 0, 1.5f, 10, "stonebrick", "pickaxe", 0);
-  public static final McfrBlockPyramid MOSSY_STONEBRICK_PYRAMID = new McfrBlockPyramid(Blocks.STONEBRICK, 1, 1.5f, 10, "mossy_stonebrick", "pickaxe", 0);
-  public static final McfrBlockPyramid CRACKED_STONEBRICK_PYRAMID = new McfrBlockPyramid(Blocks.STONEBRICK, 2, 1.5f, 10, "cracked_stonebrick", "pickaxe", 0);
-  public static final McfrBlockPyramid WHITE_CLAY_PYRAMID = new McfrBlockPyramid(Blocks.STAINED_HARDENED_CLAY, 0, 1.25f, 7, "white_clay", "pickaxe", 0);
-  public static final McfrBlockPyramid ORANGE_CLAY_PYRAMID = new McfrBlockPyramid(Blocks.STAINED_HARDENED_CLAY, 1, 1.25f, 7, "orange_clay", "pickaxe", 0);
-  public static final McfrBlockPyramid MAGENTA_CLAY_PYRAMID = new McfrBlockPyramid(Blocks.STAINED_HARDENED_CLAY, 2, 1.25f, 7, "magenta_clay", "pickaxe", 0);
-  public static final McfrBlockPyramid LIGHT_BLUE_CLAY_PYRAMID = new McfrBlockPyramid(Blocks.STAINED_HARDENED_CLAY, 3, 1.25f, 7, "light_blue_clay", "pickaxe", 0);
-  public static final McfrBlockPyramid YELLOW_CLAY_PYRAMID = new McfrBlockPyramid(Blocks.STAINED_HARDENED_CLAY, 4, 1.25f, 7, "yellow_clay", "pickaxe", 0);
+  public static final McfrBlockPyramid MOSSY_STONEBRICK_PYRAMID = new McfrBlockPyramid(Blocks.STONEBRICK, 1, 1.5f, 10, "mossy_stonebrick", "pickaxe",
+      0);
+  public static final McfrBlockPyramid CRACKED_STONEBRICK_PYRAMID = new McfrBlockPyramid(Blocks.STONEBRICK, 2, 1.5f, 10, "cracked_stonebrick",
+      "pickaxe", 0);
+  public static final McfrBlockPyramid WHITE_CLAY_PYRAMID = new McfrBlockPyramid(Blocks.STAINED_HARDENED_CLAY, 0, 1.25f, 7, "white_clay", "pickaxe",
+      0);
+  public static final McfrBlockPyramid ORANGE_CLAY_PYRAMID = new McfrBlockPyramid(Blocks.STAINED_HARDENED_CLAY, 1, 1.25f, 7, "orange_clay", "pickaxe",
+      0);
+  public static final McfrBlockPyramid MAGENTA_CLAY_PYRAMID = new McfrBlockPyramid(Blocks.STAINED_HARDENED_CLAY, 2, 1.25f, 7, "magenta_clay",
+      "pickaxe", 0);
+  public static final McfrBlockPyramid LIGHT_BLUE_CLAY_PYRAMID = new McfrBlockPyramid(Blocks.STAINED_HARDENED_CLAY, 3, 1.25f, 7, "light_blue_clay",
+      "pickaxe", 0);
+  public static final McfrBlockPyramid YELLOW_CLAY_PYRAMID = new McfrBlockPyramid(Blocks.STAINED_HARDENED_CLAY, 4, 1.25f, 7, "yellow_clay", "pickaxe",
+      0);
   public static final McfrBlockPyramid LIME_CLAY_PYRAMID = new McfrBlockPyramid(Blocks.STAINED_HARDENED_CLAY, 5, 1.25f, 7, "lime_clay", "pickaxe", 0);
   public static final McfrBlockPyramid PINK_CLAY_PYRAMID = new McfrBlockPyramid(Blocks.STAINED_HARDENED_CLAY, 6, 1.25f, 7, "pink_clay", "pickaxe", 0);
   public static final McfrBlockPyramid GRAY_CLAY_PYRAMID = new McfrBlockPyramid(Blocks.STAINED_HARDENED_CLAY, 7, 1.25f, 7, "gray_clay", "pickaxe", 0);
-  public static final McfrBlockPyramid LIGHT_GRAY_CLAY_PYRAMID = new McfrBlockPyramid(Blocks.STAINED_HARDENED_CLAY, 8, 1.25f, 7, "light_gray_clay", "pickaxe", 0);
+  public static final McfrBlockPyramid LIGHT_GRAY_CLAY_PYRAMID = new McfrBlockPyramid(Blocks.STAINED_HARDENED_CLAY, 8, 1.25f, 7, "light_gray_clay",
+      "pickaxe", 0);
   public static final McfrBlockPyramid CYAN_CLAY_PYRAMID = new McfrBlockPyramid(Blocks.STAINED_HARDENED_CLAY, 9, 1.25f, 7, "cyan_clay", "pickaxe", 0);
-  public static final McfrBlockPyramid PURPLE_CLAY_PYRAMID = new McfrBlockPyramid(Blocks.STAINED_HARDENED_CLAY, 10, 1.25f, 7, "purple_clay", "pickaxe", 0);
-  public static final McfrBlockPyramid BLUE_CLAY_PYRAMID = new McfrBlockPyramid(Blocks.STAINED_HARDENED_CLAY, 11, 1.25f, 7, "blue_clay", "pickaxe", 0);
-  public static final McfrBlockPyramid BROWN_CLAY_PYRAMID = new McfrBlockPyramid(Blocks.STAINED_HARDENED_CLAY, 12, 1.25f, 7, "brown_clay", "pickaxe", 0);
-  public static final McfrBlockPyramid GREEN_CLAY_PYRAMID = new McfrBlockPyramid(Blocks.STAINED_HARDENED_CLAY, 13, 1.25f, 7, "green_clay", "pickaxe", 0);
+  public static final McfrBlockPyramid PURPLE_CLAY_PYRAMID = new McfrBlockPyramid(Blocks.STAINED_HARDENED_CLAY, 10, 1.25f, 7, "purple_clay",
+      "pickaxe", 0);
+  public static final McfrBlockPyramid BLUE_CLAY_PYRAMID = new McfrBlockPyramid(Blocks.STAINED_HARDENED_CLAY, 11, 1.25f, 7, "blue_clay", "pickaxe",
+      0);
+  public static final McfrBlockPyramid BROWN_CLAY_PYRAMID = new McfrBlockPyramid(Blocks.STAINED_HARDENED_CLAY, 12, 1.25f, 7, "brown_clay", "pickaxe",
+      0);
+  public static final McfrBlockPyramid GREEN_CLAY_PYRAMID = new McfrBlockPyramid(Blocks.STAINED_HARDENED_CLAY, 13, 1.25f, 7, "green_clay", "pickaxe",
+      0);
   public static final McfrBlockPyramid RED_CLAY_PYRAMID = new McfrBlockPyramid(Blocks.STAINED_HARDENED_CLAY, 14, 1.25f, 7, "red_clay", "pickaxe", 0);
-  public static final McfrBlockPyramid BLACK_CLAY_PYRAMID = new McfrBlockPyramid(Blocks.STAINED_HARDENED_CLAY, 15, 1.25f, 7, "black_clay", "pickaxe", 0);
+  public static final McfrBlockPyramid BLACK_CLAY_PYRAMID = new McfrBlockPyramid(Blocks.STAINED_HARDENED_CLAY, 15, 1.25f, 7, "black_clay", "pickaxe",
+      0);
   public static final McfrBlockPyramid HAY_PYRAMID = new McfrBlockPyramid(Blocks.HAY_BLOCK, 0, 0.5f, 0, "hay", null, -1);
   public static final McfrBlockPyramid APPLE_PLANKS_PYRAMID = new McfrBlockPyramid(EXOTIC_PLANKS, 0, 2, 5, "apple_planks", "axe", 0);
   public static final McfrBlockPyramid CHERRY_PLANKS_PYRAMID = new McfrBlockPyramid(EXOTIC_PLANKS, 1, 2, 5, "cherry_planks", "axe", 0);
@@ -554,14 +580,21 @@ public final class McfrBlocks {
   public static final McfrBlockPyramid ROUGH_SANDSTONE_PYRAMID = new McfrBlockPyramid(ROUGH_SANDSTONE, 0, 0.8f, 0, "rough_sandstone", "pickaxe", 0);
   public static final McfrBlockPyramid YELLOW_STONE_PYRAMID = new McfrBlockPyramid(Blocks.STONE, 2, 1.5f, 10, "yellow_stone", "pickaxe", 0);
   public static final McfrBlockPyramid OCHER_STONE_PYRAMID = new McfrBlockPyramid(Blocks.STONE, 4, 1.5f, 10, "ocher_stone", "pickaxe", 0);
-  public static final McfrBlockPyramid YELLOW_COBBLESTONE_PYRAMID = new McfrBlockPyramid(Blocks.STONE, 1, 1.5f, 10, "yellow_cobblestone", "pickaxe", 0);
+  public static final McfrBlockPyramid YELLOW_COBBLESTONE_PYRAMID = new McfrBlockPyramid(Blocks.STONE, 1, 1.5f, 10, "yellow_cobblestone", "pickaxe",
+      0);
   public static final McfrBlockPyramid OCHER_COBBLESTONE_PYRAMID = new McfrBlockPyramid(Blocks.STONE, 3, 1.5f, 10, "ocher_cobblestone", "pickaxe", 0);
-  public static final McfrBlockPyramid YELLOW_STONEBRICK_PYRAMID = new McfrBlockPyramid(YELLOW_STONEBRICK, 0, 1.5f, 10, "yellow_stonebrick", "pickaxe", 0);
-  public static final McfrBlockPyramid YELLOW_MOSSY_STONEBRICK_PYRAMID = new McfrBlockPyramid(YELLOW_STONEBRICK, 1, 1.5f, 10, "yellow_mossy_stonebrick", "pickaxe", 0);
-  public static final McfrBlockPyramid YELLOW_CRACKED_STONEBRICK_PYRAMID = new McfrBlockPyramid(YELLOW_STONEBRICK, 2, 1.5f, 10, "yellow_cracked_stonebrick", "pickaxe", 0);
-  public static final McfrBlockPyramid OCHER_STONEBRICK_PYRAMID = new McfrBlockPyramid(OCHER_STONEBRICK, 0, 1.5f, 10, "ocher_stonebrick", "pickaxe", 0);
-  public static final McfrBlockPyramid OCHER_MOSSY_STONEBRICK_PYRAMID = new McfrBlockPyramid(OCHER_STONEBRICK, 1, 1.5f, 10, "ocher_mossy_stonebrick", "pickaxe", 0);
-  public static final McfrBlockPyramid OCHER_CRACKED_STONEBRICK_PYRAMID = new McfrBlockPyramid(OCHER_STONEBRICK, 2, 1.5f, 10, "ocher_cracked_stonebrick", "pickaxe", 0);
+  public static final McfrBlockPyramid YELLOW_STONEBRICK_PYRAMID = new McfrBlockPyramid(YELLOW_STONEBRICK, 0, 1.5f, 10, "yellow_stonebrick",
+      "pickaxe", 0);
+  public static final McfrBlockPyramid YELLOW_MOSSY_STONEBRICK_PYRAMID = new McfrBlockPyramid(YELLOW_STONEBRICK, 1, 1.5f, 10,
+      "yellow_mossy_stonebrick", "pickaxe", 0);
+  public static final McfrBlockPyramid YELLOW_CRACKED_STONEBRICK_PYRAMID = new McfrBlockPyramid(YELLOW_STONEBRICK, 2, 1.5f, 10,
+      "yellow_cracked_stonebrick", "pickaxe", 0);
+  public static final McfrBlockPyramid OCHER_STONEBRICK_PYRAMID = new McfrBlockPyramid(OCHER_STONEBRICK, 0, 1.5f, 10, "ocher_stonebrick", "pickaxe",
+      0);
+  public static final McfrBlockPyramid OCHER_MOSSY_STONEBRICK_PYRAMID = new McfrBlockPyramid(OCHER_STONEBRICK, 1, 1.5f, 10, "ocher_mossy_stonebrick",
+      "pickaxe", 0);
+  public static final McfrBlockPyramid OCHER_CRACKED_STONEBRICK_PYRAMID = new McfrBlockPyramid(OCHER_STONEBRICK, 2, 1.5f, 10,
+      "ocher_cracked_stonebrick", "pickaxe", 0);
   public static final McfrBlockPyramid BRICK_TILES_PYRAMID = new McfrBlockPyramid(TILES, 0, 1.5f, 10, "brick_tiles", "pickaxe", 0);
   public static final McfrBlockPyramid SLATE_TILES_PYRAMID = new McfrBlockPyramid(TILES, 1, 1.5f, 10, "slate_tiles", "pickaxe", 0);
   public static final McfrBlockPyramid LIGHT_CARVED_CLAY_PYRAMID = new McfrBlockPyramid(CARVED_CLAY, 0, 1.5f, 10, "light_carved_clay", "pickaxe", 0);
@@ -648,7 +681,8 @@ public final class McfrBlocks {
   public static final BlockBrazier BRAZIER = new BlockBrazier(false);
   public static final BlockBrazier LIT_BRAZIER = new BlockBrazier(true);
 
-  public static final McfrBlockOrientable WOODEN_LAMP = new McfrBlockOrientable("wooden_lamp", Material.WOOD, SoundType.WOOD, 2, 5, "axe", 0, CreativeTabs.BUILDING_BLOCKS);
+  public static final McfrBlockOrientable WOODEN_LAMP = new McfrBlockOrientable("wooden_lamp", Material.WOOD, SoundType.WOOD, 2, 5, "axe", 0,
+      CreativeTabs.BUILDING_BLOCKS);
   // Lanternes
   public static final BlockLantern WHITE_LANTERN = new BlockLantern(EnumLanternColor.WHITE, false);
   public static final BlockLantern ORANGE_LANTERN = new BlockLantern(EnumLanternColor.ORANGE, false);
@@ -731,7 +765,7 @@ public final class McfrBlocks {
 
   public static final BlockChessboard CHESSBOARD = new BlockChessboard();
   // Nourriture
-  public static final McfrBlockCake CHOCOLATE_CAKE = new McfrBlockCake("chocolate");
+  public static final McfrBlockCake CHOCOLATE_CAKE = new McfrBlockCake("chocolate", 5, 6.8f);
   // Ustensiles
   public static final BlockMortar MORTAR = new BlockMortar();
   // Redstone
@@ -824,7 +858,8 @@ public final class McfrBlocks {
     registerVariants(BOOKSHELF);
 
     registerSlab(HAY_SLAB, DOUBLE_HAY_SLAB, new ItemHaySlab(HAY_SLAB, HAY_SLAB, DOUBLE_HAY_SLAB));
-    registerSlab(REFINED_PLANKS_SLAB, DOUBLE_REFINED_PLANKS_SLAB, new ItemRefinedPlanksSlab(REFINED_PLANKS_SLAB, REFINED_PLANKS_SLAB, DOUBLE_REFINED_PLANKS_SLAB));
+    registerSlab(REFINED_PLANKS_SLAB, DOUBLE_REFINED_PLANKS_SLAB,
+        new ItemRefinedPlanksSlab(REFINED_PLANKS_SLAB, REFINED_PLANKS_SLAB, DOUBLE_REFINED_PLANKS_SLAB));
     registerSlab(EXOTIC_WOOD_SLAB, DOUBLE_EXOTIC_WOOD_SLAB, new ItemExoticWoodSlab(EXOTIC_WOOD_SLAB, EXOTIC_WOOD_SLAB, DOUBLE_EXOTIC_WOOD_SLAB));
     registerSlab(METAL_SLAB, DOUBLE_METAL_SLAB, new ItemMetalSlab(METAL_SLAB, METAL_SLAB, DOUBLE_METAL_SLAB));
     registerSlab(STONE_SLAB, DOUBLE_STONE_SLAB, new ItemStoneSlab(STONE_SLAB, STONE_SLAB, DOUBLE_STONE_SLAB));

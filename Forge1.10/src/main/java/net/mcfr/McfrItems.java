@@ -1,9 +1,6 @@
 package net.mcfr;
 
-import static net.minecraft.inventory.EntityEquipmentSlot.CHEST;
-import static net.minecraft.inventory.EntityEquipmentSlot.FEET;
-import static net.minecraft.inventory.EntityEquipmentSlot.HEAD;
-import static net.minecraft.inventory.EntityEquipmentSlot.LEGS;
+import static net.minecraft.inventory.EntityEquipmentSlot.*;
 
 import net.mcfr.commons.McfrItem;
 import net.mcfr.commons.McfrItemBlockSpecial;
@@ -92,10 +89,9 @@ public final class McfrItems {
   public static final McfrItemSeeds BARLEY_SEEDS = new McfrItemSeeds("barley_seeds", McfrBlocks.BARLEY, Blocks.FARMLAND);
   public static final McfrItem BARLEY = new McfrItem("barley", CreativeTabs.MATERIALS);
   public static final McfrItemSeeds GRAPE_SEEDS = new McfrItemSeeds("grape_seeds", McfrBlocks.VINE_BASE, Blocks.FARMLAND);
-  public static final McfrItem GRAPES = new McfrItem("grapes", CreativeTabs.FOOD);
+  public static final McfrItemFood GRAPES = new McfrItemFood("grapes", 2, 1.2f);
   public static final McfrItemBlockSpecial SUGAR_CANES = new McfrItemBlockSpecial("sugar_canes", McfrBlocks.SUGAR_CANES, CreativeTabs.MATERIALS);
   public static final McfrItemBlockSpecial HEMP = new McfrItemBlockSpecial("hemp", McfrBlocks.HEMP_BASE, CreativeTabs.MATERIALS);
-  public static final McfrItem HEMP_FLOWER = new McfrItem("hemp_flower", CreativeTabs.MATERIALS);
   public static final McfrItem HEMP_LEAF = new McfrItem("hemp_leaf", CreativeTabs.MATERIALS);
   public static final McfrItem HEMP_FIBER = new McfrItem("hemp_fiber", CreativeTabs.MATERIALS);
   public static final McfrItem HEMP_OIL = new McfrItem("hemp_oil", CreativeTabs.MATERIALS);
@@ -177,9 +173,12 @@ public final class McfrItems {
   // Panneaux et affiches
   public static final ItemWallNote WALL_NOTE = new ItemWallNote();
   public static final ItemTombstone TOMBSTONE = new ItemTombstone();
-  public static final McfrItemSign SIGN = new McfrItemSign("sign", McfrBlocks.STANDING_SIGN, McfrBlocks.WALL_SIGN, McfrBlocks.SUSPENDED_SIGN, TileEntityNormalSign.class, false);
-  public static final McfrItemSign PAPER_SIGN = new McfrItemSign("paper_sign", McfrBlocks.STANDING_PAPER_SIGN, McfrBlocks.WALL_PAPER_SIGN, McfrBlocks.SUSPENDED_PAPER_SIGN, TileEntityPaperSign.class, false);
-  public static final McfrItemSign ORP_SIGN = new McfrItemSign("orp_sign", McfrBlocks.STANDING_ORP_SIGN, McfrBlocks.WALL_ORP_SIGN, null, TileEntityOrpSign.class, true);
+  public static final McfrItemSign SIGN = new McfrItemSign("sign", McfrBlocks.STANDING_SIGN, McfrBlocks.WALL_SIGN, McfrBlocks.SUSPENDED_SIGN,
+      TileEntityNormalSign.class, false);
+  public static final McfrItemSign PAPER_SIGN = new McfrItemSign("paper_sign", McfrBlocks.STANDING_PAPER_SIGN, McfrBlocks.WALL_PAPER_SIGN,
+      McfrBlocks.SUSPENDED_PAPER_SIGN, TileEntityPaperSign.class, false);
+  public static final McfrItemSign ORP_SIGN = new McfrItemSign("orp_sign", McfrBlocks.STANDING_ORP_SIGN, McfrBlocks.WALL_ORP_SIGN, null,
+      TileEntityOrpSign.class, true);
   // Redstone
   public static final McfrItemBlockSpecial LONG_REPEATER = new McfrItemBlockSpecial("long_repeater", McfrBlocks.LONG_REPEATER_OFF,
       CreativeTabs.REDSTONE);
@@ -283,6 +282,7 @@ public final class McfrItems {
     CRAFTSMAN_JUNGLE_DOOR.setCreativeTab(null);
     CRAFTSMAN_ACACIA_DOOR.setCreativeTab(null);
     CRAFTSMAN_DARK_OAK_DOOR.setCreativeTab(null);
+    // end TEMP
 
     register(COIN);
     register(TOKEN);
@@ -316,7 +316,6 @@ public final class McfrItems {
     register(GRAPES);
     register(SUGAR_CANES);
     register(HEMP);
-    register(HEMP_FLOWER);
     register(HEMP_LEAF);
     register(HEMP_FIBER);
     register(HEMP_OIL);

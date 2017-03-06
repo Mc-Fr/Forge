@@ -12,7 +12,6 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
-import net.minecraft.world.World;
 
 public class BlockMortar extends BlockRack<TileEntityMortar> {
   public static final PropertyBool BOTTOM = PropertyBool.create("bottom");
@@ -41,11 +40,6 @@ public class BlockMortar extends BlockRack<TileEntityMortar> {
   @Override
   protected BlockStateContainer createBlockState() {
     return new BlockStateContainer(this, FACING, BOTTOM);
-  }
-
-  @Override
-  public TileEntityMortar createNewTileEntity(World world, int meta) {
-    return new TileEntityMortar();
   }
 
   @Override

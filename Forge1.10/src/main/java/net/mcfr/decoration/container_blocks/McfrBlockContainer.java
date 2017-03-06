@@ -74,7 +74,8 @@ public abstract class McfrBlockContainer<T extends TileEntity & IInventory> exte
   public abstract CustomGuiScreens getGui();
 
   @Override
-  public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
+  public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, ItemStack heldItem,
+      EnumFacing side, float hitX, float hitY, float hitZ) {
     if (!worldIn.isRemote) {
       TileEntity te = worldIn.getTileEntity(pos);
 

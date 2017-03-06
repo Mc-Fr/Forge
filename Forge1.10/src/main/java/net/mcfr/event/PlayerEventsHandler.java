@@ -43,6 +43,7 @@ public class PlayerEventsHandler {
   public void onOpenGui(GuiOpenEvent e) {
     GuiScreen gui = e.getGui();
 
+    System.out.println(gui);
     if (gui instanceof GuiMainMenu)
       e.setGui(new GuiMcfrMainMenu());
     if (gui instanceof GuiIngameMenu)

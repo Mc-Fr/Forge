@@ -70,6 +70,7 @@ public final class McfrCrafts {
 
     removeRecipe(new ItemStack(Blocks.SANDSTONE_STAIRS, 4));
     removeRecipe(new ItemStack(Blocks.WOOL));
+    removeRecipe(new ItemStack(Blocks.CARPET));
     removeRecipe(new ItemStack(Blocks.PISTON));
     removeRecipe(new ItemStack(Blocks.STICKY_PISTON));
     removeRecipe(new ItemStack(Blocks.CHEST));
@@ -677,18 +678,18 @@ public final class McfrCrafts {
         McfrBlocks.REFINED_DARK_OAK_STAIRS);
 
     // Tabourets
-    addLargeRecipe(new ItemStack(McfrBlocks.OAK_STOOL, 4), "LLLL", "BBBB", "FBBF", "F  F", 'L', new ItemStack(McfrBlocks.CARPET, 1, 12), 'F',
-        McfrBlocks.REFINED_OAK_FENCE, 'S', Items.STICK, 'B', new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 0));
-    addLargeRecipe(new ItemStack(McfrBlocks.SPRUCE_STOOL, 4), "LLLL", "BBBB", "FBBF", "F  F", 'L', new ItemStack(McfrBlocks.CARPET, 1, 12), 'F',
-        McfrBlocks.REFINED_SPRUCE_FENCE, 'S', Items.STICK, 'B', new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 1));
-    addLargeRecipe(new ItemStack(McfrBlocks.BIRCH_STOOL, 4), "LLLL", "BBBB", "FBBF", "F  F", 'L', new ItemStack(McfrBlocks.CARPET, 1, 12), 'F',
-        McfrBlocks.REFINED_BIRCH_FENCE, 'S', Items.STICK, 'B', new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 2));
-    addLargeRecipe(new ItemStack(McfrBlocks.JUNGLE_STOOL, 4), "LLLL", "BBBB", "FBBF", "F  F", 'L', new ItemStack(McfrBlocks.CARPET, 1, 12), 'F',
-        McfrBlocks.REFINED_JUNGLE_FENCE, 'S', Items.STICK, 'B', new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 3));
-    addLargeRecipe(new ItemStack(McfrBlocks.ACACIA_STOOL, 4), "LLLL", "BBBB", "FBBF", "F  F", 'L', new ItemStack(McfrBlocks.CARPET, 1, 12), 'F',
-        McfrBlocks.REFINED_ACACIA_FENCE, 'S', Items.STICK, 'B', new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 4));
-    addLargeRecipe(new ItemStack(McfrBlocks.DARK_OAK_STOOL, 4), "LLLL", "BBBB", "FBBF", "F  F", 'L', new ItemStack(McfrBlocks.CARPET, 1, 12), 'F',
-        McfrBlocks.REFINED_DARK_OAK_FENCE, 'S', Items.STICK, 'B', new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 5));
+    addLargeRecipe(new ItemStack(McfrBlocks.OAK_STOOL, 4), "BBBB", "FBBF", "F  F", 'F', McfrBlocks.REFINED_OAK_FENCE, 'B',
+        new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 0));
+    addLargeRecipe(new ItemStack(McfrBlocks.SPRUCE_STOOL, 4), "BBBB", "FBBF", "F  F", 'F', McfrBlocks.REFINED_SPRUCE_FENCE, 'B',
+        new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 1));
+    addLargeRecipe(new ItemStack(McfrBlocks.BIRCH_STOOL, 4), "BBBB", "FBBF", "F  F", 'F', McfrBlocks.REFINED_BIRCH_FENCE, 'B',
+        new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 2));
+    addLargeRecipe(new ItemStack(McfrBlocks.JUNGLE_STOOL, 4), "BBBB", "FBBF", "F  F", 'F', McfrBlocks.REFINED_JUNGLE_FENCE, 'B',
+        new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 3));
+    addLargeRecipe(new ItemStack(McfrBlocks.ACACIA_STOOL, 4), "BBBB", "FBBF", "F  F", 'F', McfrBlocks.REFINED_ACACIA_FENCE, 'B',
+        new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 4));
+    addLargeRecipe(new ItemStack(McfrBlocks.DARK_OAK_STOOL, 4), "BBBB", "FBBF", "F  F", 'F', McfrBlocks.REFINED_DARK_OAK_FENCE, 'B',
+        new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 5));
 
     addLargeRecipe(new ItemStack(McfrBlocks.TALL_OAK_STOOL, 2), "BSSB", "F  F", "FSSF", "F  F", 'F', McfrBlocks.REFINED_OAK_FENCE, 'S', Items.STICK,
         'B', new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 0));
@@ -843,8 +844,8 @@ public final class McfrCrafts {
     addShapedRecipe(new ItemStack(McfrItems.BARLEY_SEEDS, 2), "#", '#', McfrItems.BARLEY);
     addShapedRecipe(new ItemStack(McfrItems.GRAPE_SEEDS, 4), "S", 'S', McfrItems.GRAPES);
 
-    addShapedRecipe(new ItemStack(McfrItems.HEMP_LEAF, 1), "#", '#', McfrItems.HEMP_FLOWER);
-    addShapedRecipe(new ItemStack(McfrItems.HEMP_FIBER, 3), "###", '#', McfrItems.HEMP_FLOWER);
+    addShapedRecipe(new ItemStack(McfrItems.HEMP_LEAF, 1), "#", '#', McfrItems.HEMP);
+    addShapedRecipe(new ItemStack(McfrItems.HEMP_FIBER, 3), "###", '#', McfrItems.HEMP);
     addShapelessRecipe(new ItemStack(McfrItems.HEMP_FIBER, 2), new ItemStack(McfrItems.HEMP_LEAF));
 
     addShapedRecipe(new ItemStack(McfrItems.FERTILIZER), "BBB", "CCC", "###", 'B', new ItemStack(Items.DYE, 1, 15), 'C', McfrItems.HEMP_OIL, '#',

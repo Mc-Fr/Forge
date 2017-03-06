@@ -694,7 +694,6 @@ public class ClientProxy extends CommonProxy {
     registerItem(GRAPES);
     registerItem(McfrItems.SUGAR_CANES);
     registerItem(HEMP);
-    registerItem(HEMP_FLOWER);
     registerItem(HEMP_LEAF);
     registerItem(HEMP_FIBER);
     registerItem(HEMP_OIL);

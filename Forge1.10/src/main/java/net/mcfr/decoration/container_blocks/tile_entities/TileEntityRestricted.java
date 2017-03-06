@@ -11,7 +11,7 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 
 /**
- * Tile entity permettant de restraindre le stockage de certains items.
+ * Tile entity permettant de restreindre le stockage de certains items.
  *
  * @author Mc-Fr
  */
@@ -32,7 +32,8 @@ public abstract class TileEntityRestricted extends McfrTileEntityLockable {
    * @param containerClass la classe du conteneur. Elle doit posséder un constructeur ayant la
    *          signature suivante : {@code <init>(IInventory, IInventory, EntityPlayer, Class)}
    */
-  public TileEntityRestricted(String name, int size, int stackSize, boolean playSounds, Class<? extends Block> blockClass, Class<? extends Container> containerClass) {
+  public TileEntityRestricted(String name, int size, int stackSize, boolean playSounds, Class<? extends Block> blockClass,
+      Class<? extends Container> containerClass) {
     super(name, size, stackSize, playSounds);
     this.blockClass = blockClass;
     this.containerClass = containerClass;
@@ -41,9 +42,11 @@ public abstract class TileEntityRestricted extends McfrTileEntityLockable {
   @Override
   public Container createContainer(InventoryPlayer playerInventory, EntityPlayer playerIn) {
     try {
-      return this.containerClass.getConstructor(IInventory.class, IInventory.class, EntityPlayer.class, Class.class).newInstance(this, playerInventory, playerIn, this.blockClass);
+      return this.containerClass.getConstructor(IInventory.class, IInventory.class, EntityPlayer.class, Class.class).newInstance(playerInventory,
+          this, playerIn, this.blockClass);
     }
-    catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException | NoSuchMethodException | SecurityException e) {
+    catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException | NoSuchMethodException
+        | SecurityException e) {
       throw new RuntimeException(e);
     }
   }
