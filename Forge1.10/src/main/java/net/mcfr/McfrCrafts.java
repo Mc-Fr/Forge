@@ -956,7 +956,6 @@ public final class McfrCrafts {
         McfrBlocks.ROPE, 'P', new ItemStack(McfrItems.SWORD_HANDLE));
 
     addShapedRecipe(new ItemStack(McfrItems.POINTY_STICK), " S", "S ", 'S', Items.STICK);
-    addShapedRecipe(new ItemStack(McfrItems.STONE_DAGGER), "  S", " S ", "P  ", 'S', Blocks.STONE, 'P', new ItemStack(McfrItems.SWORD_HANDLE));
     addLargeRecipe(new ItemStack(McfrItems.STONE_SPEAR), "    I", "   S ", "  P  ", " P   ", "S    ", 'I', Blocks.COBBLESTONE, 'P',
         new ItemStack(McfrItems.SWORD_HANDLE), 'S', Items.STICK);
 

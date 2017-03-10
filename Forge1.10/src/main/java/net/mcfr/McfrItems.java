@@ -27,7 +27,10 @@ import net.mcfr.equipment.AdditionalToolMaterial;
 import net.mcfr.equipment.ItemGrapnel;
 import net.mcfr.equipment.ItemHammer;
 import net.mcfr.equipment.McfrItemArmor;
+import net.mcfr.equipment.McfrItemAxe;
 import net.mcfr.equipment.McfrItemBow;
+import net.mcfr.equipment.McfrItemPickaxe;
+import net.mcfr.equipment.McfrItemSpade;
 import net.mcfr.equipment.McfrItemSword;
 import net.mcfr.equipment.fishing.McfrItemFishingRod;
 import net.mcfr.farming.ItemFodder;
@@ -185,56 +188,89 @@ public final class McfrItems {
       CreativeTabs.REDSTONE);
   // Outils
   public static final McfrItem HAMMER = new ItemHammer();
-  /** Grappin */
+  // Outils de base en bronze et acier
+  public static final McfrItemSword BRONZE_SWORD = new McfrItemSword("bronze", AdditionalToolMaterial.BRONZE);
+  public static final McfrItemSpade BRONZE_SPADE = new McfrItemSpade("bronze", AdditionalToolMaterial.BRONZE);
+  public static final McfrItemPickaxe BRONZE_PICKAXE = new McfrItemPickaxe("bronze", AdditionalToolMaterial.BRONZE);
+  public static final McfrItemAxe BRONZE_AXE = new McfrItemAxe("bronze", AdditionalToolMaterial.BRONZE);
+  public static final McfrItemSword STEEL_SWORD = new McfrItemSword("steel", AdditionalToolMaterial.STEEL);
+  public static final McfrItemSpade STEEL_SPADE = new McfrItemSpade("steel", AdditionalToolMaterial.STEEL);
+  public static final McfrItemPickaxe STEEL_PICKAXE = new McfrItemPickaxe("steel", AdditionalToolMaterial.STEEL);
+  public static final McfrItemAxe STEEL_AXE = new McfrItemAxe("steel", AdditionalToolMaterial.STEEL);
   public static final ItemGrapnel GRAPNEL = new ItemGrapnel();
   // Pêche
   public static final McfrItemFishingRod GOOD_FISHING_ROD = new McfrItemFishingRod("good_fishing_rod");
   public static final McfrItemFishingRod FISHING_NET = new McfrItemFishingRod("fishing_net");
-  // Épées
+  // Armes autres
   public static final McfrItemSword POINTY_STICK = new McfrItemSword("pointy", "stick", ToolMaterial.WOOD);
+  public static final McfrItem WHIP = new McfrItem("whip", 1, CreativeTabs.COMBAT);
   public static final McfrItemSword BARBARIAN_SWORD = new McfrItemSword("barbarian", AdditionalToolMaterial.BARBARIAN);
   // Dagues
-  public static final McfrItemSword STONE_DAGGER = new McfrItemSword("stone", "dagger", ToolMaterial.STONE);
+  public static final McfrItemSword BRONZE_DAGGER = new McfrItemSword("bronze", "dagger", AdditionalToolMaterial.BRONZE);
   public static final McfrItemSword IRON_DAGGER = new McfrItemSword("iron", "dagger", ToolMaterial.IRON);
   public static final McfrItemSword GOLDEN_DAGGER = new McfrItemSword("golden", "dagger", ToolMaterial.GOLD);
   public static final McfrItemSword STEEL_DAGGER = new McfrItemSword("steel", "dagger", AdditionalToolMaterial.STEEL);
   public static final McfrItemSword GEROUN_DAGGER = new McfrItemSword("geroun", "dagger", AdditionalToolMaterial.GEROUN);
   // Cimeterres
-  public static final McfrItemSword STONE_SCIMITAR = new McfrItemSword("stone", "scimitar", ToolMaterial.STONE);
+  public static final McfrItemSword BRONZE_SCIMITAR = new McfrItemSword("bronze", "scimitar", AdditionalToolMaterial.BRONZE);
   public static final McfrItemSword IRON_SCIMITAR = new McfrItemSword("iron", "scimitar", ToolMaterial.IRON);
   public static final McfrItemSword GOLDEN_SCIMITAR = new McfrItemSword("golden", "scimitar", ToolMaterial.GOLD);
   public static final McfrItemSword STEEL_SCIMITAR = new McfrItemSword("steel", "scimitar", AdditionalToolMaterial.STEEL);
   // Rapières
+  public static final McfrItemSword BRONZE_RAPIER = new McfrItemSword("bronze", "rapier", AdditionalToolMaterial.BRONZE);
   public static final McfrItemSword IRON_RAPIER = new McfrItemSword("iron", "rapier", ToolMaterial.IRON);
   public static final McfrItemSword GOLDEN_RAPIER = new McfrItemSword("golden", "rapier", ToolMaterial.GOLD);
   public static final McfrItemSword STEEL_RAPIER = new McfrItemSword("steel", "rapier", AdditionalToolMaterial.STEEL);
   // Épées batardes
+  public static final McfrItemSword BRONZE_BASTARD = new McfrItemSword("bronze_bastard", AdditionalToolMaterial.BRONZE);
   public static final McfrItemSword IRON_BASTARD = new McfrItemSword("iron_bastard", ToolMaterial.IRON);
   public static final McfrItemSword GOLDEN_BASTARD = new McfrItemSword("golden_bastard", ToolMaterial.GOLD);
   public static final McfrItemSword STEEL_BASTARD = new McfrItemSword("steel_bastard", AdditionalToolMaterial.STEEL);
+  // Épées longues
+  public static final McfrItemSword BRONZE_LONG_SWORD = new McfrItemSword("bronze_long", AdditionalToolMaterial.BRONZE);
+  public static final McfrItemSword IRON_LONG_SWORD = new McfrItemSword("iron_long", ToolMaterial.IRON);
+  public static final McfrItemSword GOLDEN_LONG_SWORD = new McfrItemSword("golden_long", ToolMaterial.GOLD);
+  public static final McfrItemSword STEEL_LONG_SWORD = new McfrItemSword("steel_long", AdditionalToolMaterial.STEEL);
   // Lances
   public static final McfrItemSword STONE_SPEAR = new McfrItemSword("stone", "spear", ToolMaterial.STONE);
+  public static final McfrItemSword BRONZE_SPEAR = new McfrItemSword("bronze", "spear", AdditionalToolMaterial.BRONZE);
   public static final McfrItemSword IRON_SPEAR = new McfrItemSword("iron", "spear", ToolMaterial.IRON);
   public static final McfrItemSword GOLDEN_SPEAR = new McfrItemSword("golden", "spear", ToolMaterial.GOLD);
   public static final McfrItemSword STEEL_SPEAR = new McfrItemSword("steel", "spear", AdditionalToolMaterial.STEEL);
   // Hallebardes
+  public static final McfrItemSword BRONZE_HALBERD = new McfrItemSword("bronze", "halberd", AdditionalToolMaterial.BRONZE);
   public static final McfrItemSword IRON_HALBERD = new McfrItemSword("iron", "halberd", ToolMaterial.IRON);
   public static final McfrItemSword GOLDEN_HALBERD = new McfrItemSword("golden", "halberd", ToolMaterial.GOLD);
   public static final McfrItemSword STEEL_HALBERD = new McfrItemSword("steel", "halberd", AdditionalToolMaterial.STEEL);
   // Haches de guerre
+  public static final McfrItemSword BRONZE_BATTLE_AXE = new McfrItemSword("bronze", "battle_axe", AdditionalToolMaterial.BRONZE);
   public static final McfrItemSword IRON_BATTLE_AXE = new McfrItemSword("iron", "battle_axe", ToolMaterial.IRON);
   public static final McfrItemSword GOLDEN_BATTLE_AXE = new McfrItemSword("golden", "battle_axe", ToolMaterial.GOLD);
   public static final McfrItemSword STEEL_BATTLE_AXE = new McfrItemSword("steel", "battle_axe", AdditionalToolMaterial.STEEL);
   public static final McfrItemSword BARBARIAN_BATTLE_AXE = new McfrItemSword("barbarian", "battle_axe", AdditionalToolMaterial.BARBARIAN);
   // Marteaux
+  public static final McfrItemSword BRONZE_HAMMER = new McfrItemSword("bronze", "war_hammer", AdditionalToolMaterial.BRONZE);
   public static final McfrItemSword IRON_HAMMER = new McfrItemSword("iron", "war_hammer", ToolMaterial.IRON);
   public static final McfrItemSword GOLDEN_HAMMER = new McfrItemSword("golden", "war_hammer", ToolMaterial.GOLD);
   public static final McfrItemSword STEEL_HAMMER = new McfrItemSword("steel", "war_hammer", AdditionalToolMaterial.STEEL);
   // Masses d'armes
+  public static final McfrItemSword BRONZE_MACE = new McfrItemSword("bronze", "mace", AdditionalToolMaterial.BRONZE);
   public static final McfrItemSword IRON_MACE = new McfrItemSword("iron", "mace", ToolMaterial.IRON);
   public static final McfrItemSword GOLDEN_MACE = new McfrItemSword("golden", "mace", ToolMaterial.GOLD);
   public static final McfrItemSword STEEL_MACE = new McfrItemSword("steel", "mace", AdditionalToolMaterial.STEEL);
+  // Fléaux
+  public static final McfrItemSword BRONZE_FLAIL = new McfrItemSword("bronze", "flail", AdditionalToolMaterial.BRONZE);
+  public static final McfrItemSword IRON_FLAIL = new McfrItemSword("iron", "flail", ToolMaterial.IRON);
+  public static final McfrItemSword GOLDEN_FLAIL = new McfrItemSword("golden", "flail", ToolMaterial.GOLD);
+  public static final McfrItemSword STEEL_FLAIL = new McfrItemSword("steel", "flail", AdditionalToolMaterial.STEEL);
+  // Bâtons
+  public static final McfrItemSword WOODEN_STAFF = new McfrItemSword("wooden", "staff", ToolMaterial.WOOD);
+  public static final McfrItemSword BRONZE_STAFF = new McfrItemSword("bronze", "staff", AdditionalToolMaterial.BRONZE);
+  public static final McfrItemSword IRON_STAFF = new McfrItemSword("iron", "staff", ToolMaterial.IRON);
+  public static final McfrItemSword GOLDEN_STAFF = new McfrItemSword("golden", "staff", ToolMaterial.GOLD);
+  public static final McfrItemSword STEEL_STAFF = new McfrItemSword("steel", "staff", AdditionalToolMaterial.STEEL);
   // Arcs
+  public static final McfrItemBow BRONZE_BOW = new McfrItemBow("bronze", 0);
   public static final McfrItemBow IRON_BOW = new McfrItemBow("iron", 0);
   public static final McfrItemBow GOLDEN_BOW = new McfrItemBow("golden", 0);
   public static final McfrItemBow STEEL_BOW = new McfrItemBow("steel", 0);
@@ -404,54 +440,88 @@ public final class McfrItems {
 
     register(HAMMER);
     register(GRAPNEL);
+    
+    register(BRONZE_SWORD);
+    register(BRONZE_PICKAXE);
+    register(BRONZE_SPADE);
+    register(BRONZE_AXE);
+    register(STEEL_SWORD);
+    register(STEEL_PICKAXE);
+    register(STEEL_SPADE);
+    register(STEEL_AXE);
 
     register(GOOD_FISHING_ROD);
     register(FISHING_NET);
-
+    
     register(POINTY_STICK);
+    register(WHIP);
     register(BARBARIAN_SWORD);
 
-    register(STONE_DAGGER);
+    register(BRONZE_DAGGER);
     register(IRON_DAGGER);
     register(GOLDEN_DAGGER);
     register(STEEL_DAGGER);
     register(GEROUN_DAGGER);
 
-    register(STONE_SCIMITAR);
+    register(BRONZE_SCIMITAR);
     register(IRON_SCIMITAR);
     register(GOLDEN_SCIMITAR);
     register(STEEL_SCIMITAR);
 
+    register(BRONZE_RAPIER);
     register(IRON_RAPIER);
     register(GOLDEN_RAPIER);
     register(STEEL_RAPIER);
 
+    register(BRONZE_BASTARD);
     register(IRON_BASTARD);
     register(GOLDEN_BASTARD);
     register(STEEL_BASTARD);
+    
+    register(BRONZE_LONG_SWORD);
+    register(IRON_LONG_SWORD);
+    register(GOLDEN_LONG_SWORD);
+    register(STEEL_LONG_SWORD);
 
     register(STONE_SPEAR);
+    register(BRONZE_SPEAR);
     register(IRON_SPEAR);
     register(GOLDEN_SPEAR);
     register(STEEL_SPEAR);
 
+    register(BRONZE_HALBERD);
     register(IRON_HALBERD);
     register(GOLDEN_HALBERD);
     register(STEEL_HALBERD);
 
+    register(BRONZE_BATTLE_AXE);
     register(IRON_BATTLE_AXE);
     register(GOLDEN_BATTLE_AXE);
     register(STEEL_BATTLE_AXE);
     register(BARBARIAN_BATTLE_AXE);
 
+    register(BRONZE_HAMMER);
     register(IRON_HAMMER);
     register(GOLDEN_HAMMER);
     register(STEEL_HAMMER);
 
+    register(BRONZE_MACE);
     register(IRON_MACE);
     register(GOLDEN_MACE);
     register(STEEL_MACE);
+    
+    register(BRONZE_FLAIL);
+    register(IRON_FLAIL);
+    register(GOLDEN_FLAIL);
+    register(STEEL_FLAIL);
+    
+    register(WOODEN_STAFF);
+    register(BRONZE_STAFF);
+    register(IRON_STAFF);
+    register(GOLDEN_STAFF);
+    register(STEEL_STAFF);
 
+    register(BRONZE_BOW);
     register(IRON_BOW);
     register(GOLDEN_BOW);
     register(STEEL_BOW);

@@ -299,45 +299,78 @@ item.mcfr_b_i_rum_bottle.age_5.lore=Vieux rhum
 item.mcfr_b_i_rum_bottle.age_6.lore=Vieux rhum XO
 item.mcfr_b_i_rum_bottle.age_7.lore=Vieux rhum XO millésime
 
+< Outils >
+
+item.mcfr_b_i_bronze_pickaxe.name=Pioche en bronze
+item.mcfr_b_i_bronze_shovel.name=Pelle en bronze
+item.mcfr_b_i_bronze_axe.name=Hache en bronze
+item.mcfr_b_i_steel_pickaxe.name=Pioche en acier
+item.mcfr_b_i_steel_shovel.name=Pelle en acier
+item.mcfr_b_i_steel_axe.name=Hache en acier
+
 < Combat >
 
 tile.mcfr_b_i_pulsor.name=Pulseur
+item.mcfr_b_i_bronze_sword.name=Épée en bronze
+item.mcfr_b_i_steel_sword.name=Épée en acier
 item.mcfr_b_i_wolf_sword.name=Épée de loup
 item.mcfr_b_i_pointy_stick.name=Bâton pointu
+item.mcfr_b_i_whip.name=Fouet
 item.mcfr_b_i_barbarian_sword.name=Épée barbare
 item.mcfr_b_i_zombie_arm.name=Bras de zombie
 item.mcfr_b_i_stone_dagger.name=Dague en pierre
+item.mcfr_b_i_bronze_dagger.name=Dague en bronze
 item.mcfr_b_i_iron_dagger.name=Dague en fer
 item.mcfr_b_i_golden_dagger.name=Dague en or
 item.mcfr_b_i_steel_dagger.name=Dague en acier
 item.mcfr_b_i_geroun_dagger.name=Dague géroune
-item.mcfr_b_i_stone_scimitar.name=Cimeterre en pierre
-item.mcfr_b_i_iron_scimitar.name=Cimeterre en fer
-item.mcfr_b_i_golden_scimitar.name=Cimeterre en or
-item.mcfr_b_i_steel_scimitar.name=Cimeterre en acier
+item.mcfr_b_i_bronze_scimitar.name=Sabre en bronze
+item.mcfr_b_i_iron_scimitar.name=Sabre en fer
+item.mcfr_b_i_golden_scimitar.name=Sabre en or
+item.mcfr_b_i_steel_scimitar.name=Sabre en acier
+item.mcfr_b_i_bronze_rapier.name=Rapière en bronze
 item.mcfr_b_i_iron_rapier.name=Rapière en fer
 item.mcfr_b_i_golden_rapier.name=Rapière en or
 item.mcfr_b_i_steel_rapier.name=Rapière en acier
+item.mcfr_b_i_bronze_bastard_sword.name=Épée bâtarde en bronze
 item.mcfr_b_i_iron_bastard_sword.name=Épée bâtarde en fer
 item.mcfr_b_i_golden_bastard_sword.name=Épée bâtarde en or
 item.mcfr_b_i_steel_bastard_sword.name=Épée bâtarde en acier
+item.mcfr_b_i_bronze_long_sword.name=Épée longue en bronze
+item.mcfr_b_i_iron_long_sword.name=Épée longue en fer
+item.mcfr_b_i_golden_long_sword.name=Épée longue en or
+item.mcfr_b_i_steel_long_sword.name=Épée longue en acier
 item.mcfr_b_i_stone_spear.name=Lance en pierre
+item.mcfr_b_i_bronze_spear.name=Lance en bronze
 item.mcfr_b_i_iron_spear.name=Lance en fer
 item.mcfr_b_i_golden_spear.name=Lance en or
 item.mcfr_b_i_steel_spear.name=Lance en acier
+item.mcfr_b_i_bronze_halberd.name=Hallebarde en bronze
 item.mcfr_b_i_iron_halberd.name=Hallebarde en fer
 item.mcfr_b_i_golden_halberd.name=Hallebarde en or
 item.mcfr_b_i_steel_halberd.name=Hallebarde en acier
+item.mcfr_b_i_bronze_battle_axe.name=Hache de guerre en bronze
 item.mcfr_b_i_iron_battle_axe.name=Hache de guerre en fer
 item.mcfr_b_i_golden_battle_axe.name=Hache de guerre en or
 item.mcfr_b_i_steel_battle_axe.name=Hache de guerre en acier
 item.mcfr_b_i_barbarian_battle_axe.name=Hache barbare
+item.mcfr_b_i_bronze_war_hammer.name=Marteau de guerre en bronze
 item.mcfr_b_i_iron_war_hammer.name=Marteau de guerre en fer
 item.mcfr_b_i_golden_war_hammer.name=Marteau de guerre en or
 item.mcfr_b_i_steel_war_hammer.name=Marteau de guerre en acier
+item.mcfr_b_i_bronze_mace.name=Masse d'arme en bronze
 item.mcfr_b_i_iron_mace.name=Masse d'arme en fer
 item.mcfr_b_i_golden_mace.name=Masse d'arme en or
 item.mcfr_b_i_steel_mace.name=Masse d'arme en acier
+item.mcfr_b_i_bronze_flail.name=Fléau en bronze
+item.mcfr_b_i_iron_flail.name=Fléau en fer
+item.mcfr_b_i_golden_flail.name=Fléau en or
+item.mcfr_b_i_steel_flail.name=Fléau en acier
+item.mcfr_b_i_wooden_staff.name=Bâton de combat
+item.mcfr_b_i_bronze_staff.name=Bâton de combat en bronze
+item.mcfr_b_i_iron_staff.name=Bâton de combat en fer
+item.mcfr_b_i_golden_staff.name=Bâton de combat en or
+item.mcfr_b_i_steel_staff.name=Bâton de combat en acier
 
 < Materials >
 
@@ -925,6 +958,7 @@ tile.mcfr_b_i_bookshelf.spruce.name=Bibliothèque en pin
 item.mcfr_b_i_pumpkin_soup.name=Potage de citrouille
 item.mcfr_b_i_long_hunter_bow.name=Arc long de chasse
 item.mcfr_b_i_long_bow.name=Arc long
+item.mcfr_b_i_bronze_bow.name=Arc en bronze
 item.mcfr_b_i_iron_bow.name=Arc en fer
 item.mcfr_b_i_barbarian_bow.name=Arc barbare
 item.mcfr_b_i_hunter_bow.name=Arc de chasse

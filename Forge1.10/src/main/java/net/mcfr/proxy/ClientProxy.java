@@ -782,54 +782,88 @@ public class ClientProxy extends CommonProxy {
 
     registerItem(HAMMER);
     registerItemVariants(GRAPNEL, ItemGrapnel.EnumType.class);
+    
+    registerItem(BRONZE_SWORD);
+    registerItem(BRONZE_PICKAXE);
+    registerItem(BRONZE_SPADE);
+    registerItem(BRONZE_AXE);
+    registerItem(STEEL_SWORD);
+    registerItem(STEEL_PICKAXE);
+    registerItem(STEEL_SPADE);
+    registerItem(STEEL_AXE);
 
     registerItem(GOOD_FISHING_ROD);
     registerItem(FISHING_NET);
-
+    
     registerItem(POINTY_STICK);
+    registerItem(WHIP);
     registerItem(BARBARIAN_SWORD);
 
-    registerItem(STONE_DAGGER);
+    registerItem(BRONZE_DAGGER);
     registerItem(IRON_DAGGER);
     registerItem(GOLDEN_DAGGER);
     registerItem(STEEL_DAGGER);
     registerItem(GEROUN_DAGGER);
 
-    registerItem(STONE_SCIMITAR);
+    registerItem(BRONZE_SCIMITAR);
     registerItem(IRON_SCIMITAR);
     registerItem(GOLDEN_SCIMITAR);
     registerItem(STEEL_SCIMITAR);
 
+    registerItem(BRONZE_RAPIER);
     registerItem(IRON_RAPIER);
     registerItem(GOLDEN_RAPIER);
     registerItem(STEEL_RAPIER);
 
+    registerItem(BRONZE_BASTARD);
     registerItem(IRON_BASTARD);
     registerItem(GOLDEN_BASTARD);
     registerItem(STEEL_BASTARD);
+    
+    registerItem(BRONZE_LONG_SWORD);
+    registerItem(IRON_LONG_SWORD);
+    registerItem(GOLDEN_LONG_SWORD);
+    registerItem(STEEL_LONG_SWORD);
 
     registerItem(STONE_SPEAR);
+    registerItem(BRONZE_SPEAR);
     registerItem(IRON_SPEAR);
     registerItem(GOLDEN_SPEAR);
     registerItem(STEEL_SPEAR);
 
+    registerItem(BRONZE_HALBERD);
     registerItem(IRON_HALBERD);
     registerItem(GOLDEN_HALBERD);
     registerItem(STEEL_HALBERD);
 
+    registerItem(BRONZE_BATTLE_AXE);
     registerItem(IRON_BATTLE_AXE);
     registerItem(GOLDEN_BATTLE_AXE);
     registerItem(STEEL_BATTLE_AXE);
     registerItem(BARBARIAN_BATTLE_AXE);
 
+    registerItem(BRONZE_HAMMER);
     registerItem(IRON_HAMMER);
     registerItem(GOLDEN_HAMMER);
     registerItem(STEEL_HAMMER);
 
+    registerItem(BRONZE_MACE);
     registerItem(IRON_MACE);
     registerItem(GOLDEN_MACE);
     registerItem(STEEL_MACE);
+    
+    registerItem(BRONZE_FLAIL);
+    registerItem(IRON_FLAIL);
+    registerItem(GOLDEN_FLAIL);
+    registerItem(STEEL_FLAIL);
+    
+    registerItem(WOODEN_STAFF);
+    registerItem(BRONZE_STAFF);
+    registerItem(IRON_STAFF);
+    registerItem(GOLDEN_STAFF);
+    registerItem(STEEL_STAFF);
 
+    registerItem(BRONZE_BOW);
     registerItem(IRON_BOW);
     registerItem(GOLDEN_BOW);
     registerItem(STEEL_BOW);
