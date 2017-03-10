@@ -62,7 +62,6 @@ public class TileEntityBookshelfRenderer extends TileEntitySpecialRenderer<TileE
     else
       step = 3;
 
-    System.out.println(step);
     bindTexture(RESOURCES.get(meta).get(step));
     GlStateManager.pushMatrix();
     GlStateManager.translate(x, y, z);
