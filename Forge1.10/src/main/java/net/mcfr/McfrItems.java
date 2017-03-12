@@ -21,6 +21,7 @@ import net.mcfr.economy.ItemToken;
 import net.mcfr.environment.ItemOre;
 import net.mcfr.equipment.AdditionalArmorMaterial;
 import net.mcfr.equipment.AdditionalToolMaterial;
+import net.mcfr.equipment.ItemCrossbowBolt;
 import net.mcfr.equipment.ItemGrapnel;
 import net.mcfr.equipment.ItemHammer;
 import net.mcfr.equipment.McfrItemArmor;
@@ -190,6 +191,8 @@ public final class McfrItems {
   // Pêche
   public static final McfrItemFishingRod GOOD_FISHING_ROD = new McfrItemFishingRod("good_fishing_rod");
   public static final McfrItemFishingRod FISHING_NET = new McfrItemFishingRod("fishing_net");
+  // Projectiles
+  public static final ItemCrossbowBolt CROSSBOW_BOLT = new ItemCrossbowBolt(); // TODO déclarer
   // Arcs
   public static final McfrItemBow IRON_BOW = new McfrItemBow("iron", 0);
   public static final McfrItemBow GOLDEN_BOW = new McfrItemBow("golden", 0);
