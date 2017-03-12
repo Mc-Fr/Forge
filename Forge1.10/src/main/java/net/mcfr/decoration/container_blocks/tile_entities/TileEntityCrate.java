@@ -16,6 +16,6 @@ public class TileEntityCrate extends TileEntityRestricted {
   
   @Override
   public boolean isItemValidForSlot(int index, ItemStack stack) {
-    return true;
+    return index >= 0 && index < getSizeInventory();
   }
 }
