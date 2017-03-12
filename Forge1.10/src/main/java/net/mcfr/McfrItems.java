@@ -210,7 +210,7 @@ public final class McfrItems {
   public static final McfrItemSword BRONZE_DAGGER = new McfrItemSword("bronze", "dagger", AdditionalToolMaterial.BRONZE);
   public static final McfrItemSword GOLDEN_DAGGER = new McfrItemSword("golden", "dagger", ToolMaterial.GOLD);
   public static final McfrItemSword STEEL_DAGGER = new McfrItemSword("steel", "dagger", AdditionalToolMaterial.STEEL);
-  public static final McfrItemSword GEROUN_DAGGER = new McfrItemSword("geroun", "dagger", AdditionalToolMaterial.GEROUN);
+  public static final McfrItemSword GEROUN_DAGGER = new McfrItemSword("geroun", "dagger", ToolMaterial.IRON);
   // Épées à deux mains
   public static final McfrItemSword IRON_LONGSWORD = new McfrItemSword("iron", "longsword", ToolMaterial.IRON);
   public static final McfrItemSword BRONZE_LONGSWORD = new McfrItemSword("bronze", "longsword", AdditionalToolMaterial.BRONZE);
@@ -222,7 +222,7 @@ public final class McfrItems {
   public static final McfrItemSword GOLDEN_BASTARD = new McfrItemSword("golden", "bastard", ToolMaterial.GOLD);
   public static final McfrItemSword STEEL_BASTARD = new McfrItemSword("steel", "bastard", AdditionalToolMaterial.STEEL);
   // Épées courtes
-  public static final McfrItemSword BARBARIAN_SWORD = new McfrItemSword("barbarian", AdditionalToolMaterial.BARBARIAN);
+  public static final McfrItemSword BARBARIAN_SWORD = new McfrItemSword("barbarian", ToolMaterial.IRON);
   public static final McfrItemSword BRONZE_SWORD = new McfrItemSword("bronze", AdditionalToolMaterial.BRONZE);
   // Fléaux
   public static final McfrItemSword WOODEN_FLAIL = new McfrItemSword("wooden", "flail", ToolMaterial.WOOD);
