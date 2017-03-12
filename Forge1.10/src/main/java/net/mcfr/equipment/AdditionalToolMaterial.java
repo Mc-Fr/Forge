@@ -9,9 +9,8 @@ import net.minecraftforge.common.util.EnumHelper;
  * @author Mc-Fr
  */
 public final class AdditionalToolMaterial {
-  public static final ToolMaterial STEEL = EnumHelper.addToolMaterial("STEEL", 3, 1561, 8f, 3f, 10);
-  public static final ToolMaterial BRONZE = EnumHelper.addToolMaterial("BRONZE", 2, 200, 6f, 2f, 14);
   public static final ToolMaterial BONE = EnumHelper.addToolMaterial("BONE", 1, 131, 4f, 1f, 5);
-
+  public static final ToolMaterial BRONZE = EnumHelper.addToolMaterial("BRONZE", 2, 200, 5.0F, 1.0F, 0);
+  public static final ToolMaterial STEEL = EnumHelper.addToolMaterial("STEEL", 3, 1000, 8.0F, 2.0F, 0);
   private AdditionalToolMaterial() {}
 }

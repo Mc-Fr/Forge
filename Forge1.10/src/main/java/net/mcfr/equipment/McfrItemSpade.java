@@ -5,13 +5,14 @@ import java.util.List;
 import net.mcfr.utils.NameUtils;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemAxe;
+import net.minecraft.item.ItemSpade;
 import net.minecraft.item.ItemStack;
 
-public class McfrItemAxe extends ItemAxe {
-  public McfrItemAxe(String name, Item.ToolMaterial material) {
-    super(material, 8.0F, -3.1F);
-    name += "_axe";
+public class McfrItemSpade extends ItemSpade {
+
+  public McfrItemSpade(String name, Item.ToolMaterial material) {
+    super(material);
+    name += "_shovel";
     setRegistryName(name);
     setUnlocalizedName(NameUtils.getUnlocalizedName(name));
   }

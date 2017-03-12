@@ -48,7 +48,7 @@ public class McfrItemArmor extends ItemArmor {
 
   @Override
   public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type) {
-    return Constants.MOD_ID + ":textures/armor/" + getArmorMaterial().getName() + "_" + (this.armorType == EntityEquipmentSlot.LEGS ? "2" : "1") + ".png";
+    return Constants.MOD_ID + ":textures/models/armor/" + getArmorMaterial().getName() + "_layer_" + (this.armorType == EntityEquipmentSlot.LEGS ? "2" : "1") + ".png";
   }
 
   /**

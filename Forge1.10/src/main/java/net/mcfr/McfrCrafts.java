@@ -134,9 +134,36 @@ public final class McfrCrafts {
       addShapedRecipe(new ItemStack(McfrBlocks.BELLOWS, 1), "PPP", "RLR", "PPP", 'P', planks, 'R', McfrItems.THREAD_COIL, 'L', Blocks.WOOL);
 
     // Construction
-    addShapelessRecipe(new ItemStack(McfrBlocks.OLD_HAY_BLOCK), Blocks.HAY_BLOCK);
     addShapelessRecipe(new ItemStack(Blocks.HAY_BLOCK), McfrBlocks.OLD_HAY_BLOCK);
+    addShapedRecipe(new ItemStack(McfrBlocks.OLD_HAY_BLOCK, 2), "FF", 'F', Blocks.HAY_BLOCK);
+    addShapedRecipe(new ItemStack(Blocks.HAY_BLOCK, 2), "FF", 'F', McfrBlocks.OLD_HAY_BLOCK);
 
+    addShapelessRecipe(new ItemStack(McfrBlocks.HAY_STAIRS), McfrBlocks.OLD_HAY_STAIRS);
+    addShapelessRecipe(new ItemStack(McfrBlocks.OLD_HAY_STAIRS), McfrBlocks.HAY_STAIRS);
+    addShapelessRecipe(new ItemStack(McfrBlocks.HAY_SLAB, 1, 0), new ItemStack(McfrBlocks.HAY_SLAB, 1, 1));
+    addShapelessRecipe(new ItemStack(McfrBlocks.HAY_SLAB, 1, 1), new ItemStack(McfrBlocks.HAY_SLAB, 1, 0));
+    
+    addShapelessRecipe(new ItemStack(McfrBlocks.FEATHERS, 1, 0), Items.FEATHER);
+    addShapelessRecipe(new ItemStack(McfrBlocks.FEATHERS, 1, 1), new ItemStack(McfrBlocks.FEATHERS, 1, 0));
+    addShapelessRecipe(new ItemStack(McfrBlocks.FEATHERS, 1, 2), new ItemStack(McfrBlocks.FEATHERS, 1, 1));
+    addShapelessRecipe(new ItemStack(McfrBlocks.FEATHERS, 1, 3), new ItemStack(McfrBlocks.FEATHERS, 1, 2));
+    addShapelessRecipe(new ItemStack(McfrBlocks.FEATHERS, 1, 4), new ItemStack(McfrBlocks.FEATHERS, 1, 3));
+    addShapelessRecipe(new ItemStack(Items.FEATHER), new ItemStack(McfrBlocks.FEATHERS, 1, 4));
+    
+    addShapelessRecipe(new ItemStack(McfrBlocks.PEBBLES, 1, 0), Blocks.COBBLESTONE);
+    addShapelessRecipe(new ItemStack(McfrBlocks.PEBBLES, 1, 1), new ItemStack(McfrBlocks.PEBBLES, 1, 0));
+    addShapelessRecipe(new ItemStack(McfrBlocks.PEBBLES, 1, 2), new ItemStack(McfrBlocks.PEBBLES, 1, 1));
+    addShapelessRecipe(new ItemStack(McfrBlocks.PEBBLES, 1, 3), new ItemStack(McfrBlocks.PEBBLES, 1, 2));
+    addShapelessRecipe(new ItemStack(McfrBlocks.PEBBLES, 1, 4), new ItemStack(McfrBlocks.PEBBLES, 1, 3));
+    addShapelessRecipe(new ItemStack(Blocks.COBBLESTONE), new ItemStack(McfrBlocks.PEBBLES, 1, 4));
+
+    addShapelessRecipe(new ItemStack(McfrBlocks.COINS, 1, 0), new ItemStack(McfrItems.COIN, 1, 0));
+    addShapelessRecipe(new ItemStack(McfrBlocks.COINS, 1, 1), new ItemStack(McfrBlocks.COINS, 1, 0));
+    addShapelessRecipe(new ItemStack(McfrBlocks.COINS, 1, 2), new ItemStack(McfrBlocks.COINS, 1, 1));
+    addShapelessRecipe(new ItemStack(McfrBlocks.COINS, 1, 3), new ItemStack(McfrBlocks.COINS, 1, 2));
+    addShapelessRecipe(new ItemStack(McfrBlocks.COINS, 1, 4), new ItemStack(McfrBlocks.COINS, 1, 3));
+    addShapelessRecipe(new ItemStack(McfrItems.COIN, 1, 0), new ItemStack(McfrBlocks.COINS, 1, 4));
+    
     addShapedRecipe(new ItemStack(McfrBlocks.REFINED_IRON_BLOCK, 1, 0), "FF", "FF", 'F', Items.IRON_INGOT);
     addShapedRecipe(new ItemStack(McfrBlocks.REFINED_GOLD_BLOCK, 1, 0), "FF", "FF", 'F', Items.GOLD_INGOT);
     addShapedRecipe(new ItemStack(Items.IRON_INGOT, 4, 0), "#", '#', McfrBlocks.REFINED_IRON_BLOCK);
@@ -153,7 +180,7 @@ public final class McfrCrafts {
 
     addShapedRecipe(new ItemStack(McfrBlocks.DAUB, 2), " F ", "BBB", "AAA", 'F', new ItemStack(Items.POTIONITEM), 'B', Items.WHEAT, 'A',
         Items.CLAY_BALL);
-    addLargeRecipe(new ItemStack(McfrBlocks.TIMBERED_BLOCK, 16, 0), "STTTS", "TSTST", "TTSTT", "TSTST", "STTTS", 'S', Items.STICK, 'T',
+    addLargeRecipe(new ItemStack(McfrBlocks.TIMBERED_BLOCK, 16, 0), "STTTS", "TSTST", "TTSTT", "TSTST", "STTTS", 'S', Items.STICK, 'T', 
         McfrBlocks.DAUB);
     addLargeRecipe(new ItemStack(McfrBlocks.TIMBERED_BLOCK, 12, 1), "STTTS", "STTSS", "STSTS", "SSTTS", "STTTS", 'S', Items.STICK, 'T',
         McfrBlocks.DAUB);
@@ -957,7 +984,6 @@ public final class McfrCrafts {
         McfrBlocks.ROPE, 'P', new ItemStack(McfrItems.SWORD_HANDLE));
 
     addShapedRecipe(new ItemStack(McfrItems.POINTY_STICK), " S", "S ", 'S', Items.STICK);
-    addShapedRecipe(new ItemStack(McfrItems.STONE_DAGGER), "  S", " S ", "P  ", 'S', Blocks.STONE, 'P', new ItemStack(McfrItems.SWORD_HANDLE));
     addLargeRecipe(new ItemStack(McfrItems.STONE_SPEAR), "    I", "   S ", "  P  ", " P   ", "S    ", 'I', Blocks.COBBLESTONE, 'P',
         new ItemStack(McfrItems.SWORD_HANDLE), 'S', Items.STICK);
 

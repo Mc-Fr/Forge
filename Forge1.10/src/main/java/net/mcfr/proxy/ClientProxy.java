@@ -781,10 +781,34 @@ public class ClientProxy extends CommonProxy {
 
     registerItem(HAMMER);
     registerItemVariants(GRAPNEL, ItemGrapnel.EnumType.class);
+    
+    registerItem(BRONZE_SWORD);
+    registerItem(BRONZE_PICKAXE);
+    registerItem(BRONZE_SPADE);
+    registerItem(BRONZE_AXE);
+    registerItem(STEEL_SWORD);
+    registerItem(STEEL_PICKAXE);
+    registerItem(STEEL_SPADE);
+    registerItem(STEEL_AXE);
+
+    registerItem(GOOD_FISHING_ROD);
+    registerItem(FISHING_NET);
+    
+    registerItem(BRONZE_SWORD);
+    registerItem(BRONZE_PICKAXE);
+    registerItem(BRONZE_SPADE);
+    registerItem(BRONZE_AXE);
+    registerItem(STEEL_SWORD);
+    registerItem(STEEL_PICKAXE);
+    registerItem(STEEL_SPADE);
+    registerItem(STEEL_AXE);
 
     registerItem(GOOD_FISHING_ROD);
     registerItem(FISHING_NET);
 
+    registerItem(CROSSBOW_BOLT);
+
+    registerItem(BRONZE_BOW);
     registerItem(IRON_BOW);
     registerItem(GOLDEN_BOW);
     registerItem(STEEL_BOW);
@@ -795,32 +819,34 @@ public class ClientProxy extends CommonProxy {
     registerItem(ANCIENT_BOW);
 
     registerItem(WOODEN_STAFF);
+    registerItem(BRONZE_STAFF);
     registerItem(IRON_STAFF);
+    registerItem(GOLDEN_STAFF);
+    registerItem(STEEL_STAFF);
 
     registerItem(WOODEN_DAGGER);
     registerItem(BONE_DAGGER);
     registerItem(STONE_DAGGER);
-    registerItem(IRON_DAGGER);
     registerItem(BRONZE_DAGGER);
+    registerItem(IRON_DAGGER);
     registerItem(GOLDEN_DAGGER);
     registerItem(STEEL_DAGGER);
     registerItem(GEROUN_DAGGER);
 
-    registerItem(IRON_LONGSWORD);
-    registerItem(BRONZE_LONGSWORD);
-    registerItem(GOLDEN_LONGSWORD);
-    registerItem(STEEL_LONGSWORD);
+    registerItem(BRONZE_LONG_SWORD);
+    registerItem(IRON_LONG_SWORD);
+    registerItem(GOLDEN_LONG_SWORD);
+    registerItem(STEEL_LONG_SWORD);
 
-    registerItem(IRON_BASTARD);
+    registerItem(BARBARIAN_SWORD);
     registerItem(BRONZE_BASTARD);
+    registerItem(IRON_BASTARD);
     registerItem(GOLDEN_BASTARD);
     registerItem(STEEL_BASTARD);
 
-    registerItem(BARBARIAN_SWORD);
-    registerItem(BRONZE_SWORD);
-
     registerItem(WOODEN_FLAIL);
     registerItem(STONE_FLAIL);
+    registerItem(BRONZE_FLAIL);
     registerItem(IRON_FLAIL);
     registerItem(GOLDEN_FLAIL);
     registerItem(STEEL_FLAIL);
@@ -831,49 +857,49 @@ public class ClientProxy extends CommonProxy {
     registerItem(STEEL_CLAWS);
 
     registerItem(STONE_BATTLE_AXE);
-    registerItem(IRON_BATTLE_AXE);
     registerItem(BRONZE_BATTLE_AXE);
+    registerItem(IRON_BATTLE_AXE);
     registerItem(GOLDEN_BATTLE_AXE);
     registerItem(STEEL_BATTLE_AXE);
+    registerItem(BARBARIAN_BATTLE_AXE);
 
-    registerItem(BONE_AXE);
-    registerItem(BRONZE_AXE);
-
-    registerItem(IRON_HALBERD);
     registerItem(BRONZE_HALBERD);
+    registerItem(IRON_HALBERD);
     registerItem(GOLDEN_HALBERD);
     registerItem(STEEL_HALBERD);
 
     registerItem(POINTY_STICK);
     registerItem(BONE_SPEAR);
     registerItem(STONE_SPEAR);
-    registerItem(IRON_SPEAR);
     registerItem(BRONZE_SPEAR);
+    registerItem(IRON_SPEAR);
     registerItem(GOLDEN_SPEAR);
     registerItem(STEEL_SPEAR);
 
     registerItem(STONE_HAMMER);
-    registerItem(IRON_HAMMER);
     registerItem(BRONZE_HAMMER);
+    registerItem(IRON_HAMMER);
     registerItem(GOLDEN_HAMMER);
     registerItem(STEEL_HAMMER);
 
     registerItem(WOODEN_MACE);
     registerItem(STONE_MACE);
-    registerItem(IRON_MACE);
     registerItem(BRONZE_MACE);
+    registerItem(IRON_MACE);
     registerItem(GOLDEN_MACE);
     registerItem(STEEL_MACE);
 
-    registerItem(IRON_RAPIER);
     registerItem(BRONZE_RAPIER);
+    registerItem(IRON_RAPIER);
     registerItem(GOLDEN_RAPIER);
     registerItem(STEEL_RAPIER);
 
-    registerItem(IRON_SCIMITAR);
     registerItem(BRONZE_SCIMITAR);
+    registerItem(IRON_SCIMITAR);
     registerItem(GOLDEN_SCIMITAR);
-    registerItem(STEEL_SABER);
+    registerItem(STEEL_SCIMITAR);
+
+    registerItem(WHIP);
 
     registerItem(ASSASSIN_HELMET);
     registerItem(ASSASSIN_CHESTPLATE);

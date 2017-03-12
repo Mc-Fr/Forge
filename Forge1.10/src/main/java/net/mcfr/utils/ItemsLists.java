@@ -409,6 +409,7 @@ public final class ItemsLists {
 
       auth.put(HashedItemStack.fromStack(new ItemStack(Items.WHEAT_SEEDS, 2)), HashedItemStack.fromStack(new ItemStack(McfrItems.FLOUR)));
       auth.put(HashedItemStack.fromStack(new ItemStack(McfrItems.HEMP_LEAF, 2)), HashedItemStack.fromStack(new ItemStack(McfrItems.HEMP_OIL)));
+      auth.put(HashedItemStack.fromStack(new ItemStack(Items.COAL, 2, 0)), HashedItemStack.fromStack(new ItemStack(Items.DYE, 8, 0)));
       auth.put(HashedItemStack.fromStack(new ItemStack(Items.COAL, 2, 1)), HashedItemStack.fromStack(new ItemStack(Items.DYE, 8, 0)));
       auth.put(HashedItemStack.fromStack(new ItemStack(Items.BONE, 2)), HashedItemStack.fromStack(new ItemStack(Items.DYE, 8, 15)));
       auth.put(HashedItemStack.fromStack(new ItemStack(McfrItems.COCOA, 2)), HashedItemStack.fromStack(new ItemStack(Items.DYE, 1, 3)));
