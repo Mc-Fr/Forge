@@ -1008,8 +1008,8 @@ public final class McfrCrafts {
         McfrItems.THREAD_COIL);
 
     // Armure barbare
-    addLargeRecipe(new ItemStack(McfrItems.BARBARIAN_HELMET), " CMC ", "CPIPC", "MIIIM", "CP PC", 'P', McfrItems.HUNTED_SKIN, 'C',
-        Items.LEATHER, 'M', McfrItems.STITCH, 'I', Items.IRON_INGOT);
+    addLargeRecipe(new ItemStack(McfrItems.BARBARIAN_HELMET), " CMC ", "CPMPC", "MMMMM", "CP PC", 'P', McfrItems.HUNTED_SKIN, 'C',
+        Items.LEATHER, 'M', McfrItems.STITCH);
     addLargeRecipe(new ItemStack(McfrItems.BARBARIAN_CHESTPLATE), "PP PP", "PC CP", "  M  ", " CPP ", "PCCCP", 'P', McfrItems.HUNTED_SKIN, 'C',
         Items.LEATHER, 'M', McfrItems.STITCH);
     addLargeRecipe(new ItemStack(McfrItems.BARBARIAN_LEGGINGS), "CCMCC", "PPPPP", "PP PP", "PP PP", "P   P", 'P', McfrItems.HUNTED_SKIN, 'C',
