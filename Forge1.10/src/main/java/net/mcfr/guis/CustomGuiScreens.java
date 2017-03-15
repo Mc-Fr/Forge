@@ -29,5 +29,7 @@ public enum CustomGuiScreens {
   /** Caissette */
   LITTLE_CHEST,
   /** Palette */
-  PALLET;
+  PALLET,
+  /** Table */
+  TABLE;
 }

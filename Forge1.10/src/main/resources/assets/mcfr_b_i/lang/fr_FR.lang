@@ -999,6 +999,9 @@ container.bookshelf=Bibliothèque
 container.food_crate=Fût de nourriture
 container.crate=Caisse en bois
 container.little_chest=Cassette
+container.normal_table=Table
+container.end_table=Table basse
+container.foot_table=Table
 
 tile.mcfr_b_i_sand_bush.dead_weed.name=Herbe morte
 entity.mcfr_b_i.siker.name=Siker

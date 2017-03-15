@@ -20,13 +20,17 @@ import net.mcfr.decoration.container_blocks.BlockCrate;
 import net.mcfr.decoration.container_blocks.BlockFoodCrate;
 import net.mcfr.decoration.container_blocks.BlockLittleChest;
 import net.mcfr.decoration.container_blocks.BlockPallet;
+import net.mcfr.decoration.container_blocks.guis.ContainerLarge;
 import net.mcfr.decoration.container_blocks.guis.ContainerRestricted;
+import net.mcfr.decoration.container_blocks.guis.GuiLargeContainer;
 import net.mcfr.decoration.container_blocks.guis.GuiRestrictedChest;
 import net.mcfr.decoration.container_blocks.tile_entities.TileEntityBookshelf;
 import net.mcfr.decoration.container_blocks.tile_entities.TileEntityCrate;
 import net.mcfr.decoration.container_blocks.tile_entities.TileEntityFoodCrate;
 import net.mcfr.decoration.container_blocks.tile_entities.TileEntityLittleChest;
 import net.mcfr.decoration.container_blocks.tile_entities.TileEntityPallet;
+import net.mcfr.decoration.furniture.BlockTable;
+import net.mcfr.decoration.furniture.tile_entities.TileEntityTable;
 import net.mcfr.forge.guis.ContainerAnvil;
 import net.mcfr.forge.guis.ContainerStove;
 import net.mcfr.forge.guis.GuiAnvil;
@@ -81,20 +85,22 @@ public class GuiHandler implements IGuiHandler {
         break;
       case CRATE:
         if (tileEntity instanceof TileEntityCrate)
-          return new ContainerRestricted(player.inventory, (TileEntityCrate) tileEntity, player, BlockCrate.class);
+          return new ContainerLarge(player.inventory, (TileEntityCrate) tileEntity, player, BlockCrate.class);
         break;
       case FOOD_CRATE:
         if (tileEntity instanceof TileEntityFoodCrate)
-          return new ContainerRestricted(player.inventory, (TileEntityFoodCrate) tileEntity, player, BlockFoodCrate.class);
+          return new ContainerLarge(player.inventory, (TileEntityFoodCrate) tileEntity, player, BlockFoodCrate.class);
         break;
       case LITTLE_CHEST:
         if (tileEntity instanceof TileEntityLittleChest)
-          return new ContainerRestricted(player.inventory, (TileEntityLittleChest) tileEntity, player, BlockLittleChest.class);
+          return new ContainerLarge(player.inventory, (TileEntityLittleChest) tileEntity, player, BlockLittleChest.class);
         break;
       case PALLET:
         if (tileEntity instanceof TileEntityPallet)
           return new ContainerRestricted(player.inventory, (TileEntityPallet) tileEntity, player, BlockPallet.class);
         break;
+      case TABLE:
+        return new ContainerLarge(player.inventory, (TileEntityTable) tileEntity, player, BlockTable.class);
     }
 
     return null;
@@ -136,20 +142,22 @@ public class GuiHandler implements IGuiHandler {
         break;
       case CRATE:
         if (tileEntity instanceof TileEntityCrate)
-          return new GuiRestrictedChest(player.inventory, (TileEntityCrate) tileEntity, player, BlockCrate.class);
+          return new GuiLargeContainer(player.inventory, (TileEntityCrate) tileEntity, player, BlockCrate.class);
         break;
       case FOOD_CRATE:
         if (tileEntity instanceof TileEntityFoodCrate)
-          return new GuiRestrictedChest(player.inventory, (TileEntityFoodCrate) tileEntity, player, BlockFoodCrate.class);
+          return new GuiLargeContainer(player.inventory, (TileEntityFoodCrate) tileEntity, player, BlockFoodCrate.class);
         break;
       case LITTLE_CHEST:
         if (tileEntity instanceof TileEntityLittleChest)
-          return new GuiRestrictedChest(player.inventory, (TileEntityLittleChest) tileEntity, player, BlockLittleChest.class);
+          return new GuiLargeContainer(player.inventory, (TileEntityLittleChest) tileEntity, player, BlockLittleChest.class);
         break;
       case PALLET:
         if (tileEntity instanceof TileEntityPallet)
           return new GuiRestrictedChest(player.inventory, (TileEntityPallet) tileEntity, player, BlockPallet.class);
         break;
+      case TABLE:
+        return new GuiLargeContainer(player.inventory, (TileEntityTable) tileEntity, player, BlockTable.class);
     }
 
     return null;
