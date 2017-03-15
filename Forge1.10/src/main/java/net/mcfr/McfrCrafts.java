@@ -802,8 +802,7 @@ public final class McfrCrafts {
         'F', McfrBlocks.REFINED_ACACIA_FENCE);
     addLargeRecipe(new ItemStack(McfrBlocks.END_TABLE, 3, 5), "SSSSS", "F   F", "F   F", 'S', new ItemStack(McfrBlocks.REFINED_PLANKS_SLAB, 1, 5),
         'F', McfrBlocks.REFINED_DARK_OAK_FENCE);
-    for (Block fence : WOODEN_FENCES)
-      addLargeRecipe(new ItemStack(McfrBlocks.TABLE_WITH_FOOT, 2), "DDDDD", "  F  ", " FFF ", "F   F", 'D', McfrBlocks.REFINED_PLANKS_SLAB, 'F', fence);
+    addLargeRecipe(new ItemStack(McfrBlocks.TABLE_WITH_FOOT, 2), "DDDDD", "  F  ", " FFF ", "F   F", 'D', McfrBlocks.REFINED_PLANKS_SLAB, 'F', McfrBlocks.REFINED_OAK_FENCE);
 
     // Étagères
     addLargeRecipe(new ItemStack(McfrBlocks.OAK_SHELF, 3), "BBBBB", "SS SS", "F   F", 'F', McfrBlocks.REFINED_OAK_FENCE, 'S',

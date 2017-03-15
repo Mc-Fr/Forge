@@ -7,8 +7,8 @@
     "mcversion": "${mcversion}",
     "url": "",
     "updateUrl": "",
-    "authorList": ["Darmo", "Lepticed"],
-    "credits": "Darmo (code source), Lepticed (code source + pack de ressources)",
+    "authorList": ["Darmo", "Lepticed", "Tomlabete"],
+    "credits": "Darmo (code source), Lepticed (code source + pack de ressources), Tomlabete (code source + pack de ressources)",
     "logoFile": "",
     "screenshots": [],
     "dependencies": []
