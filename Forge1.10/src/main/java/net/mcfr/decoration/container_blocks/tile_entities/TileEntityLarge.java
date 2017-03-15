@@ -9,8 +9,12 @@ import net.minecraft.item.ItemStack;
 
 public class TileEntityLarge extends McfrTileEntityLockable {
   
+  public TileEntityLarge(String name, boolean playSounds) {
+    super(name, ContainerLarge.SIZE, 64, playSounds);
+  }
+  
   public TileEntityLarge(String name) {
-    super(name, ContainerLarge.SIZE, 64, true);
+    this(name, true);
   }
 
   @Override
