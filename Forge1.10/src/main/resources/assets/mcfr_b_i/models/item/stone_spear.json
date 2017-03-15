@@ -1,7 +1,7 @@
 {
     "parent": "builtin/generated",
     "textures": {
-        "layer0": "mcfr_b_i:items/weapons/spear_stone"
+        "layer0": "mcfr_b_i:items/weapons/stone_spear"
     },
 	"display": {
 		"thirdperson_righthand": {

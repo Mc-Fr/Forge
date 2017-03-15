@@ -1,0 +1,28 @@
+{
+    "parent": "builtin/generated",
+    "textures": {
+        "layer0": "mcfr_b_i:items/weapons/steel_staff"
+    },
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [180, 90, -145],
+			"translation": [0, 1.75, 1.2],
+			"scale": [1.2, 1.6, 1.2]
+		},
+		"thirdperson_lefthand": {
+			"rotation": [180, -90, 145],
+			"translation": [0, 1.75, 1.2],
+			"scale": [1.2, 1.6, 1.2]
+		},
+		"firstperson_righthand": {
+			"rotation": [0, 90, 50],
+			"translation": [0, 5, 2],
+			"scale": [0.6, 0.8, 0.6]
+		},
+		"firstperson_lefthand": {
+			"rotation": [0, -90, -50],
+			"translation": [0, 5, 2],
+			"scale": [0.6, 0.8, 0.6]
+		}
+	}
+}

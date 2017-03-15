@@ -1,6 +1,6 @@
 {
     "parent": "item/handheld",
     "textures": {
-        "layer0": "mcfr_b_i:items/weapons/battle_axe_steel"
+        "layer0": "mcfr_b_i:items/weapons/steel_battle_axe"
     }
 }

@@ -781,15 +781,6 @@ public class ClientProxy extends CommonProxy {
 
     registerItem(HAMMER);
     registerItemVariants(GRAPNEL, ItemGrapnel.EnumType.class);
-    
-    registerItem(BRONZE_SWORD);
-    registerItem(BRONZE_PICKAXE);
-    registerItem(BRONZE_SPADE);
-    registerItem(BRONZE_AXE);
-    registerItem(STEEL_SWORD);
-    registerItem(STEEL_PICKAXE);
-    registerItem(STEEL_SPADE);
-    registerItem(STEEL_AXE);
 
     registerItem(GOOD_FISHING_ROD);
     registerItem(FISHING_NET);
@@ -798,13 +789,6 @@ public class ClientProxy extends CommonProxy {
     registerItem(BRONZE_PICKAXE);
     registerItem(BRONZE_SPADE);
     registerItem(BRONZE_AXE);
-    registerItem(STEEL_SWORD);
-    registerItem(STEEL_PICKAXE);
-    registerItem(STEEL_SPADE);
-    registerItem(STEEL_AXE);
-
-    registerItem(GOOD_FISHING_ROD);
-    registerItem(FISHING_NET);
 
     registerItem(CROSSBOW_BOLT);
 
@@ -876,11 +860,11 @@ public class ClientProxy extends CommonProxy {
     registerItem(GOLDEN_SPEAR);
     registerItem(STEEL_SPEAR);
 
-    registerItem(STONE_HAMMER);
-    registerItem(BRONZE_HAMMER);
-    registerItem(IRON_HAMMER);
-    registerItem(GOLDEN_HAMMER);
-    registerItem(STEEL_HAMMER);
+    registerItem(STONE_WAR_HAMMER);
+    registerItem(BRONZE_WAR_HAMMER);
+    registerItem(IRON_WAR_HAMMER);
+    registerItem(GOLDEN_WAR_HAMMER);
+    registerItem(STEEL_WAR_HAMMER);
 
     registerItem(WOODEN_MACE);
     registerItem(STONE_MACE);

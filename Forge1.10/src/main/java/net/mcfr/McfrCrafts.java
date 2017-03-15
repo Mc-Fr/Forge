@@ -93,6 +93,16 @@ public final class McfrCrafts {
     for (EnumDyeColor color : EnumDyeColor.values())
       removeRecipe(new ItemStack(Items.DYE, 1, color.getMetadata()));
     removeRecipe(new ItemStack(Items.BED));
+    
+    removeRecipe(new ItemStack(Items.DIAMOND_PICKAXE));
+    removeRecipe(new ItemStack(Items.DIAMOND_AXE));
+    removeRecipe(new ItemStack(Items.DIAMOND_SWORD));
+    removeRecipe(new ItemStack(Items.DIAMOND_SHOVEL));
+    removeRecipe(new ItemStack(Items.DIAMOND_HOE));
+    removeRecipe(new ItemStack(Items.DIAMOND_HELMET));
+    removeRecipe(new ItemStack(Items.DIAMOND_CHESTPLATE));
+    removeRecipe(new ItemStack(Items.DIAMOND_LEGGINGS));
+    removeRecipe(new ItemStack(Items.DIAMOND_BOOTS));
 
     /*
      * Blocs
@@ -559,12 +569,12 @@ public final class McfrCrafts {
     addPyramidRecipe(McfrBlocks.DARK_CARVED_CLAY_PYRAMID, new ItemStack(McfrBlocks.CARVED_CLAY, 1, 1));
 
     // Trappes solides
-    addShapedRecipe(new ItemStack(McfrBlocks.STRONG_OAK_TRAPDOOR), "###", "###", '#', new ItemStack(Blocks.LOG, 1, 0));
-    addShapedRecipe(new ItemStack(McfrBlocks.STRONG_SPRUCE_TRAPDOOR), "###", "###", '#', new ItemStack(Blocks.LOG, 1, 1));
-    addShapedRecipe(new ItemStack(McfrBlocks.STRONG_BIRCH_TRAPDOOR), "###", "###", '#', new ItemStack(Blocks.LOG, 1, 2));
-    addShapedRecipe(new ItemStack(McfrBlocks.STRONG_JUNGLE_TRAPDOOR), "###", "###", '#', new ItemStack(Blocks.LOG, 1, 3));
-    addShapedRecipe(new ItemStack(McfrBlocks.STRONG_ACACIA_TRAPDOOR), "###", "###", '#', new ItemStack(Blocks.LOG, 1, 4));
-    addShapedRecipe(new ItemStack(McfrBlocks.STRONG_DARK_OAK_TRAPDOOR), "###", "###", '#', new ItemStack(Blocks.LOG, 1, 5));
+    addShapedRecipe(new ItemStack(McfrBlocks.STRONG_OAK_TRAPDOOR), "###", "#B#", '#', new ItemStack(Blocks.PLANKS, 1, 0), 'B', Blocks.OAK_FENCE);
+    addShapedRecipe(new ItemStack(McfrBlocks.STRONG_SPRUCE_TRAPDOOR), "###", "#B#", '#', new ItemStack(Blocks.PLANKS, 1, 1), 'B', Blocks.SPRUCE_FENCE);
+    addShapedRecipe(new ItemStack(McfrBlocks.STRONG_BIRCH_TRAPDOOR), "###", "#B#", '#', new ItemStack(Blocks.PLANKS, 1, 2), 'B', Blocks.BIRCH_FENCE);
+    addShapedRecipe(new ItemStack(McfrBlocks.STRONG_JUNGLE_TRAPDOOR), "###", "#B#", '#', new ItemStack(Blocks.PLANKS, 1, 3), 'B', Blocks.JUNGLE_FENCE);
+    addShapedRecipe(new ItemStack(McfrBlocks.STRONG_ACACIA_TRAPDOOR), "###", "#B#", '#', new ItemStack(Blocks.PLANKS, 1, 4), 'B', Blocks.ACACIA_FENCE);
+    addShapedRecipe(new ItemStack(McfrBlocks.STRONG_DARK_OAK_TRAPDOOR), "###", "#B#", '#', new ItemStack(Blocks.PLANKS, 1, 5), 'B', Blocks.DARK_OAK_FENCE);
 
     // Trappes artisan
     addLargeRecipe(new ItemStack(McfrBlocks.CRAFTSMAN_OAK_TRAPDOOR, 2), "FLLLF", "LWWWL", "LWVWL", "LWWWL", "FLLLF", 'L',
@@ -1134,7 +1144,7 @@ public final class McfrCrafts {
         new ItemStack(McfrItems.SWORD_HANDLE), 'S', Items.STICK);
     addAnvilRecipe(new ItemStack(McfrItems.IRON_BATTLE_AXE), 60, 90, " II  ", " III ", "  III", " S II", "P    ", 'I', Items.IRON_INGOT, 'P',
         new ItemStack(McfrItems.SWORD_HANDLE), 'S', Items.STICK);
-    addAnvilRecipe(new ItemStack(McfrItems.IRON_HAMMER), 60, 90, " II  ", " III ", "  III", " I II", "P    ", 'I', Items.IRON_INGOT, 'P',
+    addAnvilRecipe(new ItemStack(McfrItems.IRON_WAR_HAMMER), 60, 90, " II  ", " III ", "  III", " I II", "P    ", 'I', Items.IRON_INGOT, 'P',
         new ItemStack(McfrItems.SWORD_HANDLE));
     addAnvilRecipe(new ItemStack(McfrItems.IRON_MACE), 60, 90, "   II", "  III", "  II ", " S   ", "P    ", 'I', Items.IRON_INGOT, 'P',
         new ItemStack(McfrItems.SWORD_HANDLE), 'S', Items.STICK);
@@ -1149,7 +1159,7 @@ public final class McfrCrafts {
         new ItemStack(McfrItems.SWORD_HANDLE, 1, 2), 'S', Items.STICK);
     addAnvilRecipe(new ItemStack(McfrItems.GOLDEN_BATTLE_AXE), 45, 70, " II  ", " III ", "  III", " S II", "P    ", 'I', Items.GOLD_INGOT, 'P',
         new ItemStack(McfrItems.SWORD_HANDLE, 1, 2), 'S', Items.STICK);
-    addAnvilRecipe(new ItemStack(McfrItems.GOLDEN_HAMMER), 45, 70, " II  ", " III ", "  III", " I II", "P    ", 'I', Items.GOLD_INGOT, 'P',
+    addAnvilRecipe(new ItemStack(McfrItems.GOLDEN_WAR_HAMMER), 45, 70, " II  ", " III ", "  III", " I II", "P    ", 'I', Items.GOLD_INGOT, 'P',
         new ItemStack(McfrItems.SWORD_HANDLE, 1, 2));
     addAnvilRecipe(new ItemStack(McfrItems.GOLDEN_MACE), 45, 70, "   II", "  III", "  II ", " S   ", "P    ", 'I', Items.GOLD_INGOT, 'P',
         new ItemStack(McfrItems.SWORD_HANDLE, 1, 2), 'S', Items.STICK);
@@ -1187,7 +1197,7 @@ public final class McfrCrafts {
    *          le matériau
    */
   private static void addStairsRecipe(Block out, ItemStack in) {
-    addShapedRecipe(new ItemStack(out, 4), "#  ", "## ", "###", '#', in);
+    addShapedRecipe(new ItemStack(out, 6), "#  ", "## ", "###", '#', in);
   }
 
   /**

@@ -1,6 +1,6 @@
 {
     "parent": "item/handheld",
     "textures": {
-        "layer0": "mcfr_b_i:items/weapons/bastard_sword_iron"
+        "layer0": "mcfr_b_i:items/weapons/iron_bastard_sword"
     }
 }
