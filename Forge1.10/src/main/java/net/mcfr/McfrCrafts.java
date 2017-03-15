@@ -68,7 +68,21 @@ public final class McfrCrafts {
   public static void registerCrafts() {
     RecipeSorter.register(Constants.MOD_ID + ":large", LargeRecipe.class, Category.SHAPED, "before:minecraft:shaped");
 
+    removeRecipe(new ItemStack(Blocks.ACACIA_STAIRS, 4));
+    removeRecipe(new ItemStack(Blocks.BIRCH_STAIRS, 4));
+    removeRecipe(new ItemStack(Blocks.DARK_OAK_STAIRS, 4));
+    removeRecipe(new ItemStack(Blocks.JUNGLE_STAIRS, 4));
+    removeRecipe(new ItemStack(Blocks.OAK_STAIRS, 4));
+    removeRecipe(new ItemStack(Blocks.STONE_STAIRS, 4));
+    removeRecipe(new ItemStack(Blocks.SPRUCE_STAIRS, 4));
+    removeRecipe(new ItemStack(Blocks.PURPUR_STAIRS, 4));
+    removeRecipe(new ItemStack(Blocks.QUARTZ_STAIRS, 4));
+    removeRecipe(new ItemStack(Blocks.RED_SANDSTONE_STAIRS, 4));
     removeRecipe(new ItemStack(Blocks.SANDSTONE_STAIRS, 4));
+    removeRecipe(new ItemStack(Blocks.STONE_BRICK_STAIRS, 4));
+    removeRecipe(new ItemStack(Blocks.BRICK_STAIRS, 4));
+    removeRecipe(new ItemStack(Blocks.NETHER_BRICK_STAIRS, 4));
+    
     removeRecipe(new ItemStack(Blocks.WOOL));
     removeRecipe(new ItemStack(Blocks.CARPET));
     removeRecipe(new ItemStack(Blocks.PISTON));
@@ -285,6 +299,10 @@ public final class McfrCrafts {
     addLargeRecipe(new ItemStack(McfrBlocks.MARBLE_SLAB2, 16, 2), "SSSS", "SSSS", 'S', new ItemStack(McfrBlocks.MARBLE, 1, 8));
 
     // Escaliers
+    addStairsRecipe(Blocks.PURPUR_STAIRS, new ItemStack(Blocks.PURPUR_BLOCK));
+    addStairsRecipe(Blocks.QUARTZ_STAIRS, new ItemStack(Blocks.QUARTZ_BLOCK));
+    addStairsRecipe(Blocks.RED_SANDSTONE_STAIRS, new ItemStack(Blocks.RED_SANDSTONE));
+    addStairsRecipe(Blocks.NETHER_BRICK_STAIRS, new ItemStack(Blocks.NETHER_BRICK));
     addStairsRecipe(McfrBlocks.STONE_STAIRS, new ItemStack(Blocks.STONE));
     addStairsRecipe(Blocks.STONE_STAIRS, new ItemStack(Blocks.COBBLESTONE));
     addStairsRecipe(Blocks.OAK_STAIRS, new ItemStack(Blocks.PLANKS, 1, 0));

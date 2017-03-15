@@ -14,9 +14,6 @@ import net.mcfr.craftsmanship.BlockMortar;
 import net.mcfr.craftsmanship.BlockTanningRack;
 import net.mcfr.craftsmanship.guis.ContainerRack;
 import net.mcfr.decoration.container_blocks.BlockBookshelf;
-import net.mcfr.decoration.container_blocks.BlockCrate;
-import net.mcfr.decoration.container_blocks.BlockFoodCrate;
-import net.mcfr.decoration.container_blocks.BlockLittleChest;
 import net.mcfr.decoration.container_blocks.BlockPallet;
 import net.mcfr.decoration.container_blocks.ItemBarrel;
 import net.mcfr.decoration.container_blocks.guis.ContainerRestricted;
@@ -58,9 +55,6 @@ public final class ItemsLists {
   private static final Map<Class<? extends Block>, Map<HashedItemStack, HashedItemStack>> MAPS = new HashMap<>();
 
   static {
-    initLittleChestItems();
-    initCrateItems();
-    initFoodCrateItems();
     initPalletItems();
     initBookshelfItems();
     initLoomItems();
@@ -247,54 +241,6 @@ public final class ItemsLists {
     }
 
     return TYPES.get(key);
-  }
-
-  /**
-   * Initialise les items acceptés par la caissette.
-   */
-  public static void initLittleChestItems() {
-    Class<BlockLittleChest> key = BlockLittleChest.class;
-
-    if (!LISTS.containsKey(key)) {
-      List<Item> auth = new ArrayList<>();
-
-      auth.add(McfrItems.COIN);
-
-      LISTS.put(key, Collections.unmodifiableList(auth));
-    }
-  }
-
-  /**
-   * Initialise les items acceptés par la caisse.
-   */
-  public static void initCrateItems() {
-    Class<BlockCrate> key = BlockCrate.class;
-
-    if (!LISTS.containsKey(key)) {
-      List<Item> auth = new ArrayList<>();
-
-      auth.add(McfrItems.COIN);
-      auth.addAll(getTools());
-      auth.addAll(getArmorPieces());
-      auth.addAll(getWeapons());
-
-      LISTS.put(key, Collections.unmodifiableList(auth));
-    }
-  }
-
-  /**
-   * Initialise les items acceptés par le fût de nourriture.
-   */
-  public static void initFoodCrateItems() {
-    Class<BlockFoodCrate> key = BlockFoodCrate.class;
-
-    if (!LISTS.containsKey(key)) {
-      List<Item> auth = new ArrayList<>();
-
-      auth.addAll(getFood());
-
-      LISTS.put(key, Collections.unmodifiableList(auth));
-    }
   }
 
   /**

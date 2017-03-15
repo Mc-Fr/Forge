@@ -584,7 +584,8 @@ public final class McfrItems {
     register(BLUNDERBUSS);
     register(MAGIC_WAND);
     register(LIGHTNING);
-
+    register(SELECTOR);
+    
     McfrBlocks.LIT_CAMPFIRE.addRecipe(McfrItems.RAW_HUNTED_LEG, McfrItems.COOKED_HUNTED_LEG);
     McfrBlocks.LIT_CAMPFIRE.addRecipe(McfrItems.RAW_HUNTED_STEAK, McfrItems.COOKED_HUNTED_STEAK);
     McfrBlocks.LIT_CAMPFIRE.addRecipe(McfrItems.RAW_HUNTED_POULTRY, McfrItems.COOKED_HUNTED_POULTRY);

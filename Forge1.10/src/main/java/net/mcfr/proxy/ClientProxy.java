@@ -906,6 +906,7 @@ public class ClientProxy extends CommonProxy {
     registerItem(BLUNDERBUSS);
     registerItem(MAGIC_WAND);
     registerItem(LIGHTNING);
+    registerItem(SELECTOR);
 
     // Suppression du rendu des panneaux par défaut.
     TileEntityRendererDispatcher.instance.mapSpecialRenderers.remove(TileEntitySign.class);
