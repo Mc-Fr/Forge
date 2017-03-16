@@ -12,6 +12,8 @@ import net.mcfr.decoration.container_blocks.tile_entities.TileEntityFoodCrate;
 import net.mcfr.decoration.container_blocks.tile_entities.TileEntityLittleChest;
 import net.mcfr.decoration.container_blocks.tile_entities.TileEntityPallet;
 import net.mcfr.decoration.furniture.tile_entities.TileEntityArmChair;
+import net.mcfr.decoration.furniture.tile_entities.TileEntityEndTable;
+import net.mcfr.decoration.furniture.tile_entities.TileEntityFootTable;
 import net.mcfr.decoration.furniture.tile_entities.TileEntityShowcase;
 import net.mcfr.decoration.furniture.tile_entities.TileEntityTable;
 import net.mcfr.decoration.furniture.tile_entities.TileEntityWeaponsStand;
@@ -160,8 +162,8 @@ public class McfrMain {
     GameRegistry.registerTileEntity(TileEntityPallet.class, "pallet");
     
     GameRegistry.registerTileEntity(TileEntityTable.class, "normal_table");
-    GameRegistry.registerTileEntity(TileEntityTable.class, "end_table");
-    GameRegistry.registerTileEntity(TileEntityTable.class, "foot_table");
+    GameRegistry.registerTileEntity(TileEntityEndTable.class, "end_table");
+    GameRegistry.registerTileEntity(TileEntityFootTable.class, "foot_table");
 
     GameRegistry.registerTileEntity(TileEntityCircularSaw.class, "circular_saw");
     GameRegistry.registerTileEntity(TileEntityLoom.class, "loom");

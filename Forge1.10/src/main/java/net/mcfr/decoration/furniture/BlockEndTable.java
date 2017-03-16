@@ -4,7 +4,7 @@ import java.util.List;
 
 import net.mcfr.commons.IBlockWithVariants;
 import net.mcfr.commons.McfrBlockOrientableContainer;
-import net.mcfr.decoration.furniture.tile_entities.TileEntityTable;
+import net.mcfr.decoration.furniture.tile_entities.TileEntityEndTable;
 import net.mcfr.guis.CustomGuiScreens;
 import net.mcfr.utils.FacingUtils;
 import net.minecraft.block.BlockPlanks;
@@ -18,22 +18,24 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-/**
- * Classe de base pour les tables.
- * 
- * @author Mc-Fr
- */
-public class BlockTable extends McfrBlockOrientableContainer<TileEntityTable> implements IBlockWithVariants {
+public class BlockEndTable extends McfrBlockOrientableContainer<TileEntityEndTable> implements IBlockWithVariants {
   public static final PropertyEnum<BlockPlanks.EnumType> VARIANT = PropertyEnum.create("variant", BlockPlanks.EnumType.class);
-
+  
   /**
-   * Crée une table
+   * Crée une table basse
    */
-  public BlockTable() {
-    super("normal_table", Material.WOOD, SoundType.WOOD, 1.5f, 5, "axe", TileEntityTable.class, CreativeTabs.DECORATIONS);
+  public BlockEndTable() {
+    super("end_table", Material.WOOD, SoundType.WOOD, 1.5f, 5, "axe", TileEntityEndTable.class, CreativeTabs.DECORATIONS);
+  }
+
+  @Override
+  public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
+    return new AxisAlignedBB(0, 0, 0, 1, 0.5f, 1);
   }
 
   @Override
@@ -86,12 +88,12 @@ public class BlockTable extends McfrBlockOrientableContainer<TileEntityTable> im
   }
 
   @Override
-  public TileEntityTable createNewTileEntity(World worldIn, int meta) {
-    return new TileEntityTable();
+  public TileEntityEndTable createNewTileEntity(World worldIn, int meta) {
+    return new TileEntityEndTable();
   }
 
   @Override
   public CustomGuiScreens getGui() {
-    return CustomGuiScreens.TABLE;
+    return CustomGuiScreens.END_TABLE;
   }
 }

@@ -31,5 +31,9 @@ public enum CustomGuiScreens {
   /** Palette */
   PALLET,
   /** Table */
-  TABLE;
+  TABLE,
+  /** Table basse */
+  END_TABLE,
+  /** Table à pied */
+  FOOT_TABLE;
 }

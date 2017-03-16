@@ -78,6 +78,7 @@ import net.mcfr.decoration.furniture.BlockArmChair;
 import net.mcfr.decoration.furniture.BlockArmorStand;
 import net.mcfr.decoration.furniture.BlockBench;
 import net.mcfr.decoration.furniture.BlockChair;
+import net.mcfr.decoration.furniture.BlockEndTable;
 import net.mcfr.decoration.furniture.BlockShelf;
 import net.mcfr.decoration.furniture.BlockShowcase;
 import net.mcfr.decoration.furniture.BlockStool;
@@ -165,7 +166,6 @@ import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemBlock;
-import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
@@ -746,9 +746,9 @@ public final class McfrBlocks {
   public static final BlockBench ACACIA_BENCH = new BlockBench(BlockPlanks.EnumType.ACACIA);
   public static final BlockBench DARK_OAK_BENCH = new BlockBench(BlockPlanks.EnumType.DARK_OAK);
   // Tables
-  public static final BlockTable TABLE = new BlockTable("normal");
+  public static final BlockTable TABLE = new BlockTable();
   /** Table basse */
-  public static final BlockTable END_TABLE = new BlockTable("end", new AxisAlignedBB(0, 0, 0, 1, 0.5f, 1));
+  public static final BlockEndTable END_TABLE = new BlockEndTable();
   public static final BlockTableWithFoot TABLE_WITH_FOOT = new BlockTableWithFoot();
   // Étagères
   public static final BlockWoodenShelf OAK_SHELF = new BlockWoodenShelf(BlockPlanks.EnumType.OAK);

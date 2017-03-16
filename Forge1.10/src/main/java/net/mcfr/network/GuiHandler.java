@@ -29,7 +29,11 @@ import net.mcfr.decoration.container_blocks.tile_entities.TileEntityCrate;
 import net.mcfr.decoration.container_blocks.tile_entities.TileEntityFoodCrate;
 import net.mcfr.decoration.container_blocks.tile_entities.TileEntityLittleChest;
 import net.mcfr.decoration.container_blocks.tile_entities.TileEntityPallet;
+import net.mcfr.decoration.furniture.BlockEndTable;
 import net.mcfr.decoration.furniture.BlockTable;
+import net.mcfr.decoration.furniture.BlockTableWithFoot;
+import net.mcfr.decoration.furniture.tile_entities.TileEntityEndTable;
+import net.mcfr.decoration.furniture.tile_entities.TileEntityFootTable;
 import net.mcfr.decoration.furniture.tile_entities.TileEntityTable;
 import net.mcfr.forge.guis.ContainerAnvil;
 import net.mcfr.forge.guis.ContainerStove;
@@ -101,6 +105,10 @@ public class GuiHandler implements IGuiHandler {
         break;
       case TABLE:
         return new ContainerLarge(player.inventory, (TileEntityTable) tileEntity, player, BlockTable.class);
+      case END_TABLE:
+        return new ContainerLarge(player.inventory, (TileEntityEndTable) tileEntity, player, BlockEndTable.class);
+      case FOOT_TABLE:
+        return new ContainerLarge(player.inventory, (TileEntityFootTable) tileEntity, player, BlockTableWithFoot.class);
     }
 
     return null;
@@ -158,6 +166,10 @@ public class GuiHandler implements IGuiHandler {
         break;
       case TABLE:
         return new GuiLargeContainer(player.inventory, (TileEntityTable) tileEntity, player, BlockTable.class);
+      case END_TABLE:
+        return new GuiLargeContainer(player.inventory, (TileEntityEndTable) tileEntity, player, BlockEndTable.class);
+      case FOOT_TABLE:
+        return new GuiLargeContainer(player.inventory, (TileEntityFootTable) tileEntity, player, BlockTableWithFoot.class);
     }
 
     return null;
