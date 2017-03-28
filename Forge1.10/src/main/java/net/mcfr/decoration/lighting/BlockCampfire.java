@@ -25,7 +25,7 @@ public class BlockCampfire extends BlockCampfireBase {
   @Override
   public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, @Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
     if (heldItem == null) {
-      playerIn.getHeldItem(EnumHand.OFF_HAND);
+      heldItem = playerIn.getHeldItem(EnumHand.OFF_HAND);
     }
 
     if (heldItem != null) {
