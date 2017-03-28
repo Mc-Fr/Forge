@@ -82,7 +82,7 @@ public final class McfrCrafts {
     removeRecipe(new ItemStack(Blocks.STONE_BRICK_STAIRS, 4));
     removeRecipe(new ItemStack(Blocks.BRICK_STAIRS, 4));
     removeRecipe(new ItemStack(Blocks.NETHER_BRICK_STAIRS, 4));
-    
+
     removeRecipe(new ItemStack(Blocks.WOOL));
     removeRecipe(new ItemStack(Blocks.CARPET));
     removeRecipe(new ItemStack(Blocks.PISTON));
@@ -107,7 +107,7 @@ public final class McfrCrafts {
     for (EnumDyeColor color : EnumDyeColor.values())
       removeRecipe(new ItemStack(Items.DYE, 1, color.getMetadata()));
     removeRecipe(new ItemStack(Items.BED));
-    
+
     removeRecipe(new ItemStack(Items.DIAMOND_PICKAXE));
     removeRecipe(new ItemStack(Items.DIAMOND_AXE));
     removeRecipe(new ItemStack(Items.DIAMOND_SWORD));
@@ -588,11 +588,15 @@ public final class McfrCrafts {
 
     // Trappes solides
     addShapedRecipe(new ItemStack(McfrBlocks.STRONG_OAK_TRAPDOOR), "###", "#B#", '#', new ItemStack(Blocks.PLANKS, 1, 0), 'B', Blocks.OAK_FENCE);
-    addShapedRecipe(new ItemStack(McfrBlocks.STRONG_SPRUCE_TRAPDOOR), "###", "#B#", '#', new ItemStack(Blocks.PLANKS, 1, 1), 'B', Blocks.SPRUCE_FENCE);
+    addShapedRecipe(new ItemStack(McfrBlocks.STRONG_SPRUCE_TRAPDOOR), "###", "#B#", '#', new ItemStack(Blocks.PLANKS, 1, 1), 'B',
+        Blocks.SPRUCE_FENCE);
     addShapedRecipe(new ItemStack(McfrBlocks.STRONG_BIRCH_TRAPDOOR), "###", "#B#", '#', new ItemStack(Blocks.PLANKS, 1, 2), 'B', Blocks.BIRCH_FENCE);
-    addShapedRecipe(new ItemStack(McfrBlocks.STRONG_JUNGLE_TRAPDOOR), "###", "#B#", '#', new ItemStack(Blocks.PLANKS, 1, 3), 'B', Blocks.JUNGLE_FENCE);
-    addShapedRecipe(new ItemStack(McfrBlocks.STRONG_ACACIA_TRAPDOOR), "###", "#B#", '#', new ItemStack(Blocks.PLANKS, 1, 4), 'B', Blocks.ACACIA_FENCE);
-    addShapedRecipe(new ItemStack(McfrBlocks.STRONG_DARK_OAK_TRAPDOOR), "###", "#B#", '#', new ItemStack(Blocks.PLANKS, 1, 5), 'B', Blocks.DARK_OAK_FENCE);
+    addShapedRecipe(new ItemStack(McfrBlocks.STRONG_JUNGLE_TRAPDOOR), "###", "#B#", '#', new ItemStack(Blocks.PLANKS, 1, 3), 'B',
+        Blocks.JUNGLE_FENCE);
+    addShapedRecipe(new ItemStack(McfrBlocks.STRONG_ACACIA_TRAPDOOR), "###", "#B#", '#', new ItemStack(Blocks.PLANKS, 1, 4), 'B',
+        Blocks.ACACIA_FENCE);
+    addShapedRecipe(new ItemStack(McfrBlocks.STRONG_DARK_OAK_TRAPDOOR), "###", "#B#", '#', new ItemStack(Blocks.PLANKS, 1, 5), 'B',
+        Blocks.DARK_OAK_FENCE);
 
     // Trappes artisan
     addLargeRecipe(new ItemStack(McfrBlocks.CRAFTSMAN_OAK_TRAPDOOR, 2), "FLLLF", "LWWWL", "LWVWL", "LWWWL", "FLLLF", 'L',
@@ -661,9 +665,12 @@ public final class McfrCrafts {
     addWallRecipe(new ItemStack(McfrBlocks.STONE_WALL, 14, 9), new ItemStack(McfrBlocks.OCHER_STONEBRICK, 1, 1));
     addWallRecipe(new ItemStack(McfrBlocks.STONE_WALL, 14, 10), new ItemStack(McfrBlocks.OCHER_STONEBRICK, 1, 2));
 
-    for (EnumDyeColor color : EnumDyeColor.values())
+    for (EnumDyeColor color : EnumDyeColor.values()) {
       addShapelessRecipe(new ItemStack(McfrBlocks.CARPET, 1, color.getMetadata()), new ItemStack(Items.DYE, 1, color.getDyeDamage()),
           new ItemStack(McfrBlocks.CARPET, 1, 0));
+      addShapelessRecipe(new ItemStack(McfrBlocks.CARPET, 1, color.getMetadata()), new ItemStack(Blocks.CARPET, 1, color.getMetadata()));
+      addShapelessRecipe(new ItemStack(Blocks.CARPET, 1, color.getMetadata()), new ItemStack(McfrBlocks.CARPET, 1, color.getMetadata()));
+    }
 
     addShapedRecipe(new ItemStack(McfrBlocks.MOUCHARABIEH, 1, 0), "##", "##", '#', new ItemStack(McfrBlocks.MOUCHARABIEH_PANE, 1, 0));
     addShapedRecipe(new ItemStack(McfrBlocks.MOUCHARABIEH, 1, 1), "##", "##", '#', new ItemStack(McfrBlocks.MOUCHARABIEH_PANE, 1, 1));
@@ -802,7 +809,8 @@ public final class McfrCrafts {
         'F', McfrBlocks.REFINED_ACACIA_FENCE);
     addLargeRecipe(new ItemStack(McfrBlocks.END_TABLE, 3, 5), "SSSSS", "F   F", "F   F", 'S', new ItemStack(McfrBlocks.REFINED_PLANKS_SLAB, 1, 5),
         'F', McfrBlocks.REFINED_DARK_OAK_FENCE);
-    addLargeRecipe(new ItemStack(McfrBlocks.TABLE_WITH_FOOT, 2), "DDDDD", "  F  ", " FFF ", "F   F", 'D', McfrBlocks.REFINED_PLANKS_SLAB, 'F', McfrBlocks.REFINED_OAK_FENCE);
+    addLargeRecipe(new ItemStack(McfrBlocks.TABLE_WITH_FOOT, 2), "DDDDD", "  F  ", " FFF ", "F   F", 'D', McfrBlocks.REFINED_PLANKS_SLAB, 'F',
+        McfrBlocks.REFINED_OAK_FENCE);
 
     // Étagères
     addLargeRecipe(new ItemStack(McfrBlocks.OAK_SHELF, 3), "BBBBB", "SS SS", "F   F", 'F', McfrBlocks.REFINED_OAK_FENCE, 'S',
@@ -867,6 +875,8 @@ public final class McfrCrafts {
 
     addLargeRecipe(new ItemStack(Items.BED), "RRRR#", "TTTTT", "DDDDD", "F   F", 'R', McfrItems.CLOTH_ROLL, 'T', McfrBlocks.CARPET, '#', Blocks.WOOL,
         'F', Items.IRON_INGOT, 'D', McfrBlocks.REFINED_PLANKS_SLAB);
+    addLargeRecipe(new ItemStack(Items.BED), "RRRR#", "TTTTT", "DDDDD", "F   F", 'R', McfrItems.CLOTH_ROLL, 'T', Blocks.CARPET, '#', Blocks.WOOL, 'F',
+        Items.IRON_INGOT, 'D', McfrBlocks.REFINED_PLANKS_SLAB);
 
     addShapedRecipe(new ItemStack(Items.STICK, 4), "#", "#", '#', McfrBlocks.EXOTIC_PLANKS);
 
@@ -957,9 +967,12 @@ public final class McfrCrafts {
       addShapedRecipe(new ItemStack(McfrItems.HAY_BED), "FFF", "DDD", 'F', Blocks.HAY_BLOCK, 'D', slab);
       addLargeRecipe(new ItemStack(McfrItems.NORMAL_BED), "TTTT#", "FFFFF", "DDDDD", 'T', McfrBlocks.CARPET, '#', Blocks.WOOL, 'F', Blocks.HAY_BLOCK,
           'D', slab);
+      addLargeRecipe(new ItemStack(McfrItems.NORMAL_BED), "TTTT#", "FFFFF", "DDDDD", 'T', Blocks.CARPET, '#', Blocks.WOOL, 'F', Blocks.HAY_BLOCK,
+          'D', slab);
     }
     addShapedRecipe(new ItemStack(McfrItems.STONE_BED), "CCC", "DDD", 'C', Items.LEATHER, 'D', new ItemStack(Blocks.STONE_SLAB));
     addLargeRecipe(new ItemStack(McfrItems.SLEEPING_BAG), "TTTT#", "#####", 'T', McfrBlocks.CARPET, '#', Blocks.WOOL);
+    addLargeRecipe(new ItemStack(McfrItems.SLEEPING_BAG), "TTTT#", "#####", 'T', Blocks.CARPET, '#', Blocks.WOOL);
 
     // Éclairage
     for (Block planks : PLANKS)
@@ -1033,14 +1046,14 @@ public final class McfrCrafts {
         McfrItems.THREAD_COIL);
 
     // Armure barbare
-    addLargeRecipe(new ItemStack(McfrItems.BARBARIAN_HELMET), " CMC ", "CPMPC", "MMMMM", "CP PC", 'P', McfrItems.HUNTED_SKIN, 'C',
-        Items.LEATHER, 'M', McfrItems.STITCH);
+    addLargeRecipe(new ItemStack(McfrItems.BARBARIAN_HELMET), " CMC ", "CPMPC", "MMMMM", "CP PC", 'P', McfrItems.HUNTED_SKIN, 'C', Items.LEATHER, 'M',
+        McfrItems.STITCH);
     addLargeRecipe(new ItemStack(McfrItems.BARBARIAN_CHESTPLATE), "PP PP", "PC CP", "  M  ", " CPP ", "PCCCP", 'P', McfrItems.HUNTED_SKIN, 'C',
         Items.LEATHER, 'M', McfrItems.STITCH);
     addLargeRecipe(new ItemStack(McfrItems.BARBARIAN_LEGGINGS), "CCMCC", "PPPPP", "PP PP", "PP PP", "P   P", 'P', McfrItems.HUNTED_SKIN, 'C',
         Items.LEATHER, 'M', McfrItems.STITCH);
-    addLargeRecipe(new ItemStack(McfrItems.BARBARIAN_BOOTS), "PP PP", "PM MP", "CC CC", 'P', McfrItems.HUNTED_SKIN, 'C',
-        Items.LEATHER, 'M', McfrItems.STITCH);
+    addLargeRecipe(new ItemStack(McfrItems.BARBARIAN_BOOTS), "PP PP", "PM MP", "CC CC", 'P', McfrItems.HUNTED_SKIN, 'C', Items.LEATHER, 'M',
+        McfrItems.STITCH);
   }
 
   /**
