@@ -24,6 +24,8 @@ public enum CustomGuiScreens {
   BOOKSHELF,
   /** Caisse */
   CRATE,
+  /** Caisse de construction */
+  CONSTRUCTION_CRATE,
   /** Fût de nourriture */
   FOOD_CRATE,
   /** Caissette */

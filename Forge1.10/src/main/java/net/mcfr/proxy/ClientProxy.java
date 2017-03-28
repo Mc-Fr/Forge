@@ -200,6 +200,7 @@ public class ClientProxy extends CommonProxy {
 
     registerBlock(LITTLE_CHEST);
     registerBlock(CRATE);
+    registerBlock(CONSTRUCTION_CRATE);
     registerBlock(FOOD_CRATE);
     registerBlock(PALLET);
     registerBlockWoodVariants(BOOKSHELF);

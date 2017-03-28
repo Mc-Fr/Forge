@@ -7,6 +7,7 @@ import net.mcfr.craftsmanship.tile_entities.TileEntityTanningRack;
 import net.mcfr.decoration.container_blocks.BlockBarrel;
 import net.mcfr.decoration.container_blocks.tile_entities.TileEntityBarrel;
 import net.mcfr.decoration.container_blocks.tile_entities.TileEntityBookshelf;
+import net.mcfr.decoration.container_blocks.tile_entities.TileEntityConstructionCrate;
 import net.mcfr.decoration.container_blocks.tile_entities.TileEntityCrate;
 import net.mcfr.decoration.container_blocks.tile_entities.TileEntityFoodCrate;
 import net.mcfr.decoration.container_blocks.tile_entities.TileEntityLittleChest;
@@ -157,6 +158,7 @@ public class McfrMain {
 
     GameRegistry.registerTileEntity(TileEntityBookshelf.class, "bookshelf");
     GameRegistry.registerTileEntity(TileEntityCrate.class, "crate");
+    GameRegistry.registerTileEntity(TileEntityConstructionCrate.class, "construction_crate");
     GameRegistry.registerTileEntity(TileEntityFoodCrate.class, "food_crate");
     GameRegistry.registerTileEntity(TileEntityLittleChest.class, "little_chest");
     GameRegistry.registerTileEntity(TileEntityPallet.class, "pallet");

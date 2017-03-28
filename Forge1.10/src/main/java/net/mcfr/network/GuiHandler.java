@@ -16,6 +16,7 @@ import net.mcfr.craftsmanship.tile_entities.TileEntityLoom;
 import net.mcfr.craftsmanship.tile_entities.TileEntityMortar;
 import net.mcfr.craftsmanship.tile_entities.TileEntityTanningRack;
 import net.mcfr.decoration.container_blocks.BlockBookshelf;
+import net.mcfr.decoration.container_blocks.BlockConstructionCrate;
 import net.mcfr.decoration.container_blocks.BlockCrate;
 import net.mcfr.decoration.container_blocks.BlockFoodCrate;
 import net.mcfr.decoration.container_blocks.BlockLittleChest;
@@ -25,6 +26,7 @@ import net.mcfr.decoration.container_blocks.guis.ContainerRestricted;
 import net.mcfr.decoration.container_blocks.guis.GuiLargeContainer;
 import net.mcfr.decoration.container_blocks.guis.GuiRestrictedChest;
 import net.mcfr.decoration.container_blocks.tile_entities.TileEntityBookshelf;
+import net.mcfr.decoration.container_blocks.tile_entities.TileEntityConstructionCrate;
 import net.mcfr.decoration.container_blocks.tile_entities.TileEntityCrate;
 import net.mcfr.decoration.container_blocks.tile_entities.TileEntityFoodCrate;
 import net.mcfr.decoration.container_blocks.tile_entities.TileEntityLittleChest;
@@ -86,6 +88,10 @@ public class GuiHandler implements IGuiHandler {
       case BOOKSHELF:
         if (tileEntity instanceof TileEntityBookshelf)
           return new ContainerRestricted(player.inventory, (TileEntityBookshelf) tileEntity, player, BlockBookshelf.class);
+        break;
+      case CONSTRUCTION_CRATE:
+        if (tileEntity instanceof TileEntityConstructionCrate)
+          return new ContainerLarge(player.inventory, (TileEntityConstructionCrate) tileEntity, player, BlockConstructionCrate.class);
         break;
       case CRATE:
         if (tileEntity instanceof TileEntityCrate)
@@ -151,6 +157,10 @@ public class GuiHandler implements IGuiHandler {
       case CRATE:
         if (tileEntity instanceof TileEntityCrate)
           return new GuiLargeContainer(player.inventory, (TileEntityCrate) tileEntity, player, BlockCrate.class);
+        break;
+      case CONSTRUCTION_CRATE:
+        if (tileEntity instanceof TileEntityConstructionCrate)
+          return new GuiLargeContainer(player.inventory, (TileEntityConstructionCrate) tileEntity, player, BlockConstructionCrate.class);
         break;
       case FOOD_CRATE:
         if (tileEntity instanceof TileEntityFoodCrate)

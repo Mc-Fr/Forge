@@ -67,6 +67,7 @@ import net.mcfr.decoration.beds.BlockStoneBed;
 import net.mcfr.decoration.container_blocks.BlockBeerBarrel;
 import net.mcfr.decoration.container_blocks.BlockBookshelf;
 import net.mcfr.decoration.container_blocks.BlockCiderBarrel;
+import net.mcfr.decoration.container_blocks.BlockConstructionCrate;
 import net.mcfr.decoration.container_blocks.BlockCrate;
 import net.mcfr.decoration.container_blocks.BlockEmptyBarrel;
 import net.mcfr.decoration.container_blocks.BlockFoodCrate;
@@ -267,6 +268,7 @@ public final class McfrBlocks {
   // Coffres
   public static final BlockLittleChest LITTLE_CHEST = new BlockLittleChest();
   public static final BlockCrate CRATE = new BlockCrate();
+  public static final BlockConstructionCrate CONSTRUCTION_CRATE = new BlockConstructionCrate();
   public static final BlockFoodCrate FOOD_CRATE = new BlockFoodCrate();
   public static final BlockPallet PALLET = new BlockPallet();
   public static final BlockBookshelf BOOKSHELF = new BlockBookshelf();
@@ -852,6 +854,7 @@ public final class McfrBlocks {
 
     register(LITTLE_CHEST);
     register(CRATE);
+    register(CONSTRUCTION_CRATE);
     register(FOOD_CRATE);
     register(PALLET);
     registerVariants(BOOKSHELF);
