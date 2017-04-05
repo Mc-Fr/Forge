@@ -686,11 +686,18 @@ public final class McfrCrafts {
     // Échelles
     addShapedRecipe(new ItemStack(McfrBlocks.ROPE_LADDER, 3), "C C", "CSC", "C C", 'C', McfrBlocks.ROPE, 'S', Items.STICK);
     addShapedRecipe(new ItemStack(McfrBlocks.CHAIN_LADDER, 3), "C C", "CCC", "C C", 'C', McfrItems.STITCH);
+    
+    // Shred
+    addShapelessRecipe(new ItemStack(McfrBlocks.ROPE, 1), McfrBlocks.ROPE_LADDER);
+    addShapelessRecipe(new ItemStack(McfrItems.STITCH, 1), McfrBlocks.CHAIN_LADDER);
 
     // Cordes
     addLargeRecipe(new ItemStack(McfrBlocks.ROPE, 4), "   FR", "  FRF", " FRF ", "FRF  ", "RF   ", 'F', Items.STRING, 'R', McfrItems.HEMP_FIBER);
     addLargeRecipe(new ItemStack(McfrBlocks.ROPE, 4), "   FR", "  FRF", " FRF ", "FRF  ", "RF   ", 'F', Items.STRING, 'R', McfrItems.REEDS);
     addShapedRecipe(new ItemStack(McfrBlocks.CHAIN, 4), "B", "B", "B", "B", "B", 'B', McfrItems.STITCH);
+    
+    // Shred
+    addShapelessRecipe(new ItemStack(Items.STRING, 1), McfrBlocks.ROPE);
 
     // Éclairage
     addShapedRecipe(new ItemStack(McfrBlocks.CANDLE), "S", "#", "A", 'S', Items.STRING, '#', McfrItems.WAX, 'A', Items.CLAY_BALL);
@@ -877,6 +884,10 @@ public final class McfrCrafts {
         'F', Items.IRON_INGOT, 'D', McfrBlocks.REFINED_PLANKS_SLAB);
     addLargeRecipe(new ItemStack(Items.BED), "RRRR#", "TTTTT", "DDDDD", "F   F", 'R', McfrItems.CLOTH_ROLL, 'T', Blocks.CARPET, '#', Blocks.WOOL, 'F',
         Items.IRON_INGOT, 'D', McfrBlocks.REFINED_PLANKS_SLAB);
+    
+    // Shred
+    
+    addShapelessRecipe(new ItemStack(McfrItems.CLOTH_ROLL, 1), Items.BED);
 
     addShapedRecipe(new ItemStack(Items.STICK, 4), "#", "#", '#', McfrBlocks.EXOTIC_PLANKS);
 
@@ -973,6 +984,11 @@ public final class McfrCrafts {
     addShapedRecipe(new ItemStack(McfrItems.STONE_BED), "CCC", "DDD", 'C', Items.LEATHER, 'D', new ItemStack(Blocks.STONE_SLAB));
     addLargeRecipe(new ItemStack(McfrItems.SLEEPING_BAG), "TTTT#", "#####", 'T', McfrBlocks.CARPET, '#', Blocks.WOOL);
     addLargeRecipe(new ItemStack(McfrItems.SLEEPING_BAG), "TTTT#", "#####", 'T', Blocks.CARPET, '#', Blocks.WOOL);
+    // Shred
+    addShapelessRecipe(new ItemStack(Blocks.HAY_BLOCK, 1), McfrItems.HAY_BED);
+    addShapelessRecipe(new ItemStack(Blocks.HAY_BLOCK, 1), McfrItems.NORMAL_BED);
+    addShapelessRecipe(new ItemStack(Items.LEATHER, 1), McfrItems.STONE_BED);
+    addShapelessRecipe(new ItemStack(Blocks.WOOL, 2), McfrItems.SLEEPING_BAG);
 
     // Éclairage
     for (Block planks : PLANKS)
@@ -1044,6 +1060,12 @@ public final class McfrCrafts {
         McfrItems.CLOTH_ROLL, 'M', McfrItems.STITCH, 'C', Items.LEATHER);
     addLargeRecipe(new ItemStack(McfrItems.ASSASSIN_BOOTS), "FT TF", "PP PP", 'P', McfrItems.HUNTED_SKIN, 'T', McfrItems.CLOTH_ROLL, 'F',
         McfrItems.THREAD_COIL);
+     
+    // Shred
+    addShapelessRecipe(new ItemStack(McfrItems.CLOTH_ROLL, 3), McfrItems.ASSASSIN_HELMET);
+    addShapelessRecipe(new ItemStack(McfrItems.HUNTED_SKIN, 2), McfrItems.ASSASSIN_CHESTPLATE);
+    addShapelessRecipe(new ItemStack(McfrItems.CLOTH_ROLL, 2), McfrItems.ASSASSIN_LEGGINGS);
+    addShapelessRecipe(new ItemStack(McfrItems.HUNTED_SKIN, 1), McfrItems.ASSASSIN_BOOTS);
 
     // Armure barbare
     addLargeRecipe(new ItemStack(McfrItems.BARBARIAN_HELMET), " CMC ", "CPMPC", "MMMMM", "CP PC", 'P', McfrItems.HUNTED_SKIN, 'C', Items.LEATHER, 'M',
@@ -1054,6 +1076,14 @@ public final class McfrCrafts {
         Items.LEATHER, 'M', McfrItems.STITCH);
     addLargeRecipe(new ItemStack(McfrItems.BARBARIAN_BOOTS), "PP PP", "PM MP", "CC CC", 'P', McfrItems.HUNTED_SKIN, 'C', Items.LEATHER, 'M',
         McfrItems.STITCH);
+    
+    // Shred
+    addShapelessRecipe(new ItemStack(McfrItems.STITCH, 2), McfrItems.BARBARIAN_HELMET);
+    addShapelessRecipe(new ItemStack(McfrItems.HUNTED_SKIN, 2), McfrItems.BARBARIAN_CHESTPLATE);
+    addShapelessRecipe(new ItemStack(McfrItems.HUNTED_SKIN, 3), McfrItems.BARBARIAN_LEGGINGS);
+    addShapelessRecipe(new ItemStack(McfrItems.HUNTED_SKIN, 1), McfrItems.BARBARIAN_BOOTS);
+    
+    addShapelessRecipe(new ItemStack(McfrItems.THREAD_COIL, 1), Blocks.WOOL);
   }
 
   /**
@@ -1214,6 +1244,52 @@ public final class McfrCrafts {
     addFurnaceRecipe(new ItemStack(McfrItems.RAW_GALT_MEAT), new ItemStack(McfrItems.COOKED_GALT_MEAT));
     addFurnaceRecipe(new ItemStack(McfrItems.BREAD_DOUGH), new ItemStack(Items.BREAD));
     addFurnaceRecipe(new ItemStack(McfrBlocks.EXOTIC_LOG), new ItemStack(Items.COAL, 1, 1));
+    
+    // Shred
+    
+    addFurnaceRecipe(new ItemStack(Items.IRON_INGOT, 1), new ItemStack(Items.IRON_HELMET));
+    addFurnaceRecipe(new ItemStack(Items.IRON_INGOT, 2), new ItemStack(Items.IRON_CHESTPLATE));
+    addFurnaceRecipe(new ItemStack(Items.IRON_INGOT, 2), new ItemStack(Items.IRON_LEGGINGS));
+    addFurnaceRecipe(new ItemStack(Items.IRON_INGOT, 1), new ItemStack(Items.IRON_BOOTS));
+    addFurnaceRecipe(new ItemStack(Items.IRON_INGOT, 1), new ItemStack(Items.IRON_AXE));
+    addFurnaceRecipe(new ItemStack(Items.IRON_INGOT, 1), new ItemStack(Items.IRON_DOOR));
+    addFurnaceRecipe(new ItemStack(Items.IRON_INGOT, 1), new ItemStack(Items.IRON_PICKAXE));
+    addFurnaceRecipe(new ItemStack(Items.IRON_INGOT, 1), new ItemStack(Items.IRON_SWORD));
+    
+    addFurnaceRecipe(new ItemStack(Items.IRON_INGOT, 3), new ItemStack(Items.MINECART));
+    addFurnaceRecipe(new ItemStack(Items.IRON_INGOT, 1), new ItemStack(Items.BUCKET));
+    addFurnaceRecipe(new ItemStack(Items.IRON_INGOT, 2), new ItemStack(Blocks.IRON_TRAPDOOR));
+    addFurnaceRecipe(new ItemStack(Items.IRON_INGOT, 3), new ItemStack(Items.CAULDRON));
+
+    addFurnaceRecipe(new ItemStack(Items.IRON_INGOT, 1), new ItemStack(McfrItems.IRON_BASTARD));
+    addFurnaceRecipe(new ItemStack(Items.IRON_INGOT, 2), new ItemStack(McfrItems.IRON_BATTLE_AXE));
+    addFurnaceRecipe(new ItemStack(Items.IRON_INGOT, 1), new ItemStack(McfrItems.IRON_FLAIL));
+    addFurnaceRecipe(new ItemStack(Items.IRON_INGOT, 1), new ItemStack(McfrItems.IRON_HALBERD));
+    addFurnaceRecipe(new ItemStack(Items.IRON_INGOT, 2), new ItemStack(McfrItems.IRON_LONG_SWORD));
+    addFurnaceRecipe(new ItemStack(Items.IRON_INGOT, 1), new ItemStack(McfrItems.IRON_MACE));
+    addFurnaceRecipe(new ItemStack(Items.IRON_INGOT, 1), new ItemStack(McfrItems.IRON_SCIMITAR));
+    addFurnaceRecipe(new ItemStack(Items.IRON_INGOT, 1), new ItemStack(McfrItems.IRON_SPEAR));
+    addFurnaceRecipe(new ItemStack(Items.IRON_INGOT, 1), new ItemStack(McfrItems.IRON_STAFF));
+    addFurnaceRecipe(new ItemStack(Items.IRON_INGOT, 2), new ItemStack(McfrItems.IRON_WAR_HAMMER));
+    
+    addFurnaceRecipe(new ItemStack(Items.GOLD_INGOT, 1), new ItemStack(Items.GOLDEN_HELMET));
+    addFurnaceRecipe(new ItemStack(Items.GOLD_INGOT, 2), new ItemStack(Items.GOLDEN_CHESTPLATE));
+    addFurnaceRecipe(new ItemStack(Items.GOLD_INGOT, 2), new ItemStack(Items.GOLDEN_LEGGINGS));
+    addFurnaceRecipe(new ItemStack(Items.GOLD_INGOT, 1), new ItemStack(Items.GOLDEN_BOOTS));
+    addFurnaceRecipe(new ItemStack(Items.GOLD_INGOT, 1), new ItemStack(Items.GOLDEN_AXE));
+    addFurnaceRecipe(new ItemStack(Items.GOLD_INGOT, 1), new ItemStack(Items.GOLDEN_PICKAXE));
+    addFurnaceRecipe(new ItemStack(Items.GOLD_INGOT, 1), new ItemStack(Items.GOLDEN_SWORD));
+    
+    addFurnaceRecipe(new ItemStack(Items.GOLD_INGOT, 1), new ItemStack(McfrItems.GOLDEN_BASTARD));
+    addFurnaceRecipe(new ItemStack(Items.GOLD_INGOT, 2), new ItemStack(McfrItems.GOLDEN_BATTLE_AXE));
+    addFurnaceRecipe(new ItemStack(Items.GOLD_INGOT, 1), new ItemStack(McfrItems.GOLDEN_FLAIL));
+    addFurnaceRecipe(new ItemStack(Items.GOLD_INGOT, 1), new ItemStack(McfrItems.GOLDEN_HALBERD));
+    addFurnaceRecipe(new ItemStack(Items.GOLD_INGOT, 2), new ItemStack(McfrItems.GOLDEN_LONG_SWORD));
+    addFurnaceRecipe(new ItemStack(Items.GOLD_INGOT, 1), new ItemStack(McfrItems.GOLDEN_MACE));
+    addFurnaceRecipe(new ItemStack(Items.GOLD_INGOT, 1), new ItemStack(McfrItems.GOLDEN_SCIMITAR));
+    addFurnaceRecipe(new ItemStack(Items.GOLD_INGOT, 1), new ItemStack(McfrItems.GOLDEN_SPEAR));
+    addFurnaceRecipe(new ItemStack(Items.GOLD_INGOT, 1), new ItemStack(McfrItems.GOLDEN_STAFF));
+    addFurnaceRecipe(new ItemStack(Items.GOLD_INGOT, 2), new ItemStack(McfrItems.GOLDEN_WAR_HAMMER));
   }
 
   /**
