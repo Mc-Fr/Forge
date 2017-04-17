@@ -10,12 +10,10 @@ import net.mcfr.McfrBlocks;
 import net.mcfr.McfrItems;
 import net.mcfr.craftsmanship.BlockCircularSaw;
 import net.mcfr.craftsmanship.BlockLoom;
+import net.mcfr.craftsmanship.BlockMortar;
 import net.mcfr.craftsmanship.BlockTanningRack;
 import net.mcfr.craftsmanship.guis.ContainerRack;
 import net.mcfr.decoration.container_blocks.BlockBookshelf;
-import net.mcfr.decoration.container_blocks.BlockCrate;
-import net.mcfr.decoration.container_blocks.BlockFoodCrate;
-import net.mcfr.decoration.container_blocks.BlockLittleChest;
 import net.mcfr.decoration.container_blocks.BlockPallet;
 import net.mcfr.decoration.container_blocks.ItemBarrel;
 import net.mcfr.decoration.container_blocks.guis.ContainerRestricted;
@@ -57,14 +55,12 @@ public final class ItemsLists {
   private static final Map<Class<? extends Block>, Map<HashedItemStack, HashedItemStack>> MAPS = new HashMap<>();
 
   static {
-    initLittleChestItems();
-    initCrateItems();
-    initFoodCrateItems();
     initPalletItems();
     initBookshelfItems();
     initLoomItems();
     initTanningRackItems();
     initCircularSawItems();
+    initMortarItems();
   }
 
   /**
@@ -79,7 +75,8 @@ public final class ItemsLists {
       for (ResourceLocation r : Item.REGISTRY.getKeys()) {
         Item i = Item.REGISTRY.getObject(r);
 
-        if (i instanceof ItemTool || i instanceof ItemHoe || i instanceof ItemShears || i instanceof ItemFishingRod || i instanceof ItemFlintAndSteel) {
+        if (i instanceof ItemTool || i instanceof ItemHoe || i instanceof ItemShears || i instanceof ItemFishingRod
+            || i instanceof ItemFlintAndSteel) {
           l.add(i);
         }
       }
@@ -173,7 +170,9 @@ public final class ItemsLists {
       for (ResourceLocation r : Block.REGISTRY.getKeys()) {
         Block b = Block.REGISTRY.getObject(r);
 
-        if (b != Blocks.MELON_BLOCK && b != Blocks.PUMPKIN && !(b instanceof BlockSapling) && !(b instanceof BlockFlower) && !(b instanceof BlockLeaves) && b != Blocks.WEB && b != Blocks.GRASS && b != Blocks.CACTUS && b != Blocks.VINE && !(b instanceof BlockButton) && b != Blocks.LEVER && b != Blocks.REDSTONE_WIRE && b != Blocks.TRIPWIRE_HOOK && b != Blocks.TRIPWIRE)
+        if (b != Blocks.MELON_BLOCK && b != Blocks.PUMPKIN && !(b instanceof BlockSapling) && !(b instanceof BlockFlower)
+            && !(b instanceof BlockLeaves) && b != Blocks.WEB && b != Blocks.GRASS && b != Blocks.CACTUS && b != Blocks.VINE
+            && !(b instanceof BlockButton) && b != Blocks.LEVER && b != Blocks.REDSTONE_WIRE && b != Blocks.TRIPWIRE_HOOK && b != Blocks.TRIPWIRE)
           l.add(Item.getItemFromBlock(b));
       }
 
@@ -242,54 +241,6 @@ public final class ItemsLists {
     }
 
     return TYPES.get(key);
-  }
-
-  /**
-   * Initialise les items acceptés par la caissette.
-   */
-  public static void initLittleChestItems() {
-    Class<BlockLittleChest> key = BlockLittleChest.class;
-
-    if (!LISTS.containsKey(key)) {
-      List<Item> auth = new ArrayList<>();
-
-      auth.add(McfrItems.COIN);
-
-      LISTS.put(key, Collections.unmodifiableList(auth));
-    }
-  }
-
-  /**
-   * Initialise les items acceptés par la caisse.
-   */
-  public static void initCrateItems() {
-    Class<BlockCrate> key = BlockCrate.class;
-
-    if (!LISTS.containsKey(key)) {
-      List<Item> auth = new ArrayList<>();
-
-      auth.add(McfrItems.COIN);
-      auth.addAll(getTools());
-      auth.addAll(getArmorPieces());
-      auth.addAll(getWeapons());
-
-      LISTS.put(key, Collections.unmodifiableList(auth));
-    }
-  }
-
-  /**
-   * Initialise les items acceptés par le fût de nourriture.
-   */
-  public static void initFoodCrateItems() {
-    Class<BlockFoodCrate> key = BlockFoodCrate.class;
-
-    if (!LISTS.containsKey(key)) {
-      List<Item> auth = new ArrayList<>();
-
-      auth.addAll(getFood());
-
-      LISTS.put(key, Collections.unmodifiableList(auth));
-    }
   }
 
   /**
@@ -367,12 +318,15 @@ public final class ItemsLists {
       Map<HashedItemStack, HashedItemStack> auth = new HashMap<>();
 
       for (int i = 0; i < BlockPlanks.EnumType.values().length; i++) {
-        auth.put(HashedItemStack.fromStack(new ItemStack(i < 4 ? Blocks.LOG : Blocks.LOG2, 1, i % 4)), HashedItemStack.fromStack(new ItemStack(Blocks.PLANKS, 4, i)));
-        auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.PLANKS, 1, i)), HashedItemStack.fromStack(new ItemStack(McfrBlocks.REFINED_PLANKS, 1, i)));
+        auth.put(HashedItemStack.fromStack(new ItemStack(i < 4 ? Blocks.LOG : Blocks.LOG2, 1, i % 4)),
+            HashedItemStack.fromStack(new ItemStack(Blocks.PLANKS, 4, i)));
+        auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.PLANKS, 1, i)),
+            HashedItemStack.fromStack(new ItemStack(McfrBlocks.REFINED_PLANKS, 1, i)));
         auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.WOODEN_SLAB, 2, i)), HashedItemStack.fromStack(new ItemStack(Blocks.PLANKS, 1, i)));
       }
       for (int i = 0; i < EnumExoticWoodType.values().length; i++)
-        auth.put(HashedItemStack.fromStack(new ItemStack(McfrBlocks.EXOTIC_LOG, 1, i)), HashedItemStack.fromStack(new ItemStack(McfrBlocks.EXOTIC_PLANKS, 1, i)));
+        auth.put(HashedItemStack.fromStack(new ItemStack(McfrBlocks.EXOTIC_LOG, 1, i)),
+            HashedItemStack.fromStack(new ItemStack(McfrBlocks.EXOTIC_PLANKS, 1, i)));
       auth.put(HashedItemStack.fromStack(new ItemStack(McfrBlocks.STRONG_OAK_DOOR)), HashedItemStack.fromStack(new ItemStack(Blocks.PLANKS, 2)));
       auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.OAK_STAIRS)), HashedItemStack.fromStack(new ItemStack(Blocks.PLANKS, 1, 0)));
       auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.SPRUCE_STAIRS)), HashedItemStack.fromStack(new ItemStack(Blocks.PLANKS, 1, 1)));
@@ -384,6 +338,38 @@ public final class ItemsLists {
       auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.WOODEN_BUTTON)), HashedItemStack.fromStack(new ItemStack(Blocks.PLANKS)));
       auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.CHEST)), HashedItemStack.fromStack(new ItemStack(Blocks.PLANKS)));
       auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.CRAFTING_TABLE)), HashedItemStack.fromStack(new ItemStack(Blocks.PLANKS)));
+
+      MAPS.put(key, Collections.unmodifiableMap(auth));
+      createList(key);
+    }
+  }
+
+  /**
+   * Initialise les items acceptés par le mortier.
+   */
+  public static void initMortarItems() {
+    Class<BlockMortar> key = BlockMortar.class;
+
+    if (!MAPS.containsKey(key)) {
+      Map<HashedItemStack, HashedItemStack> auth = new HashMap<>();
+
+      auth.put(HashedItemStack.fromStack(new ItemStack(Items.WHEAT_SEEDS, 2)), HashedItemStack.fromStack(new ItemStack(McfrItems.FLOUR)));
+      auth.put(HashedItemStack.fromStack(new ItemStack(McfrItems.HEMP_LEAF, 2)), HashedItemStack.fromStack(new ItemStack(McfrItems.HEMP_OIL)));
+      auth.put(HashedItemStack.fromStack(new ItemStack(Items.COAL, 2, 0)), HashedItemStack.fromStack(new ItemStack(Items.DYE, 8, 0)));
+      auth.put(HashedItemStack.fromStack(new ItemStack(Items.COAL, 2, 1)), HashedItemStack.fromStack(new ItemStack(Items.DYE, 8, 0)));
+      auth.put(HashedItemStack.fromStack(new ItemStack(Items.BONE, 2)), HashedItemStack.fromStack(new ItemStack(Items.DYE, 8, 15)));
+      auth.put(HashedItemStack.fromStack(new ItemStack(McfrItems.COCOA, 2)), HashedItemStack.fromStack(new ItemStack(Items.DYE, 1, 3)));
+      auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.YELLOW_FLOWER, 2)), HashedItemStack.fromStack(new ItemStack(Items.DYE, 8, 11)));
+      auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.RED_FLOWER, 2, 0)), HashedItemStack.fromStack(new ItemStack(Items.DYE, 8, 1)));
+      auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.RED_FLOWER, 2, 4)), HashedItemStack.fromStack(new ItemStack(Items.DYE, 8, 1)));
+      auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.RED_FLOWER, 2, 2)), HashedItemStack.fromStack(new ItemStack(Items.DYE, 8, 5)));
+      auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.RED_FLOWER, 2, 6)), HashedItemStack.fromStack(new ItemStack(Items.DYE, 8, 7)));
+      auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.RED_FLOWER, 2, 5)), HashedItemStack.fromStack(new ItemStack(Items.DYE, 8, 14)));
+      auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.RED_FLOWER, 2, 7)), HashedItemStack.fromStack(new ItemStack(Items.DYE, 8, 9)));
+      auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.TALLGRASS, 2, 1)), HashedItemStack.fromStack(new ItemStack(Items.DYE, 8, 2)));
+      auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.TALLGRASS, 2, 2)), HashedItemStack.fromStack(new ItemStack(Items.DYE, 8, 2)));
+      auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.DOUBLE_PLANT, 2, 2)), HashedItemStack.fromStack(new ItemStack(Items.DYE, 8, 2)));
+      auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.DOUBLE_PLANT, 2, 3)), HashedItemStack.fromStack(new ItemStack(Items.DYE, 8, 2)));
 
       MAPS.put(key, Collections.unmodifiableMap(auth));
       createList(key);

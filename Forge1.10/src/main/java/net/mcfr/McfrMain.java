@@ -2,16 +2,21 @@ package net.mcfr;
 
 import net.mcfr.craftsmanship.tile_entities.TileEntityCircularSaw;
 import net.mcfr.craftsmanship.tile_entities.TileEntityLoom;
+import net.mcfr.craftsmanship.tile_entities.TileEntityMortar;
 import net.mcfr.craftsmanship.tile_entities.TileEntityTanningRack;
 import net.mcfr.decoration.container_blocks.BlockBarrel;
 import net.mcfr.decoration.container_blocks.tile_entities.TileEntityBarrel;
 import net.mcfr.decoration.container_blocks.tile_entities.TileEntityBookshelf;
+import net.mcfr.decoration.container_blocks.tile_entities.TileEntityConstructionCrate;
 import net.mcfr.decoration.container_blocks.tile_entities.TileEntityCrate;
 import net.mcfr.decoration.container_blocks.tile_entities.TileEntityFoodCrate;
 import net.mcfr.decoration.container_blocks.tile_entities.TileEntityLittleChest;
 import net.mcfr.decoration.container_blocks.tile_entities.TileEntityPallet;
 import net.mcfr.decoration.furniture.tile_entities.TileEntityArmChair;
+import net.mcfr.decoration.furniture.tile_entities.TileEntityEndTable;
+import net.mcfr.decoration.furniture.tile_entities.TileEntityFootTable;
 import net.mcfr.decoration.furniture.tile_entities.TileEntityShowcase;
+import net.mcfr.decoration.furniture.tile_entities.TileEntityTable;
 import net.mcfr.decoration.furniture.tile_entities.TileEntityWeaponsStand;
 import net.mcfr.decoration.furniture.tile_entities.TileEntityWoodenBench;
 import net.mcfr.decoration.furniture.tile_entities.TileEntityWoodenChair;
@@ -28,10 +33,14 @@ import net.mcfr.entities.EntityChatBubble;
 import net.mcfr.entities.EntityGrapnel;
 import net.mcfr.entities.EntitySailBoat;
 import net.mcfr.entities.mobs.entity.EntityBormoth;
+import net.mcfr.entities.mobs.entity.EntityFjalla;
 import net.mcfr.entities.mobs.entity.EntityGalt;
+import net.mcfr.entities.mobs.entity.EntityGronle;
 import net.mcfr.entities.mobs.entity.EntityHoen;
 import net.mcfr.entities.mobs.entity.EntityNiale;
+import net.mcfr.entities.mobs.entity.EntityPryf;
 import net.mcfr.entities.mobs.entity.EntitySiker;
+import net.mcfr.entities.mobs.entity.EntityTaure;
 import net.mcfr.event.BlockEventsHandler;
 import net.mcfr.event.PlayerEventsHandler;
 import net.mcfr.forge.tile_entities.TileEntityBellows;
@@ -149,12 +158,18 @@ public class McfrMain {
 
     GameRegistry.registerTileEntity(TileEntityBookshelf.class, "bookshelf");
     GameRegistry.registerTileEntity(TileEntityCrate.class, "crate");
+    GameRegistry.registerTileEntity(TileEntityConstructionCrate.class, "construction_crate");
     GameRegistry.registerTileEntity(TileEntityFoodCrate.class, "food_crate");
     GameRegistry.registerTileEntity(TileEntityLittleChest.class, "little_chest");
     GameRegistry.registerTileEntity(TileEntityPallet.class, "pallet");
+    
+    GameRegistry.registerTileEntity(TileEntityTable.class, "normal_table");
+    GameRegistry.registerTileEntity(TileEntityEndTable.class, "end_table");
+    GameRegistry.registerTileEntity(TileEntityFootTable.class, "foot_table");
 
     GameRegistry.registerTileEntity(TileEntityCircularSaw.class, "circular_saw");
     GameRegistry.registerTileEntity(TileEntityLoom.class, "loom");
+    GameRegistry.registerTileEntity(TileEntityMortar.class, "mortar");
     GameRegistry.registerTileEntity(TileEntityTanningRack.class, "tanning_rack");
 
     GameRegistry.registerTileEntity(TileEntityNormalSign.class, "sign");
@@ -186,5 +201,9 @@ public class McfrMain {
     EntityRegistry.registerModEntity(EntityHoen.class, "hoen", 3, this, 80, 3, true, 0x7E1620, 0x514445);
     EntityRegistry.registerModEntity(EntityGalt.class, "galt", 4, this, 80, 3, true, 0xc7c7c7, 0x81616F);
     EntityRegistry.registerModEntity(EntityNiale.class, "niale", 5, this, 80, 3, true, 0xd0c0c0, 0x180808);
+    EntityRegistry.registerModEntity(EntityFjalla.class, "fjalla", 6, this, 80, 3, true, 0xd0c0c0, 0x180808);
+    EntityRegistry.registerModEntity(EntityGronle.class, "gronle", 7, this, 80, 3, true, 0xd0c0c0, 0x180808);
+    EntityRegistry.registerModEntity(EntityPryf.class, "pryf", 8, this, 80, 3, true, 0xd0c0c0, 0x180808);
+    EntityRegistry.registerModEntity(EntityTaure.class, "taure", 9, this, 80, 3, true, 0xd0c0c0, 0x180808);
   }
 }

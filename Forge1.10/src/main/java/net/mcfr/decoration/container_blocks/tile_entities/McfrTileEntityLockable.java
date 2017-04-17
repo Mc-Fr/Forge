@@ -165,7 +165,8 @@ public abstract class McfrTileEntityLockable extends TileEntityLockable {
 
   @Override
   public boolean isUseableByPlayer(EntityPlayer player) {
-    return this.worldObj.getTileEntity(this.pos) == this && player.getDistanceSq(this.pos.getX() + 0.5, this.pos.getY() + 0.5, this.pos.getZ() + 0.5) <= 64;
+    return this.worldObj.getTileEntity(this.pos) == this
+        && player.getDistanceSq(this.pos.getX() + 0.5, this.pos.getY() + 0.5, this.pos.getZ() + 0.5) <= 64;
   }
 
   @Override
@@ -176,7 +177,8 @@ public abstract class McfrTileEntityLockable extends TileEntityLockable {
       this.numberPlayerUsing++;
 
       if (this.playSounds && this.numberPlayerUsing > 0) {
-        this.worldObj.playSound(player, new BlockPos(this.pos.getX() + 0.5, this.pos.getY() + 0.5, this.pos.getZ() + 0.5), SoundEvents.BLOCK_CHEST_OPEN, SoundCategory.BLOCKS, 0.5f, this.worldObj.rand.nextFloat() * 0.1f + 1);
+        this.worldObj.playSound(player, new BlockPos(this.pos.getX() + 0.5, this.pos.getY() + 0.5, this.pos.getZ() + 0.5),
+            SoundEvents.BLOCK_CHEST_OPEN, SoundCategory.BLOCKS, 0.5f, this.worldObj.rand.nextFloat() * 0.1f + 1);
       }
 
       this.worldObj.addBlockEvent(this.pos, getBlockType(), 1, this.numberPlayerUsing);
@@ -191,7 +193,8 @@ public abstract class McfrTileEntityLockable extends TileEntityLockable {
       this.numberPlayerUsing--;
 
       if (this.playSounds) {
-        this.worldObj.playSound(player, new BlockPos(this.pos.getX() + 0.5, this.pos.getY() + 0.5, this.pos.getZ() + 0.5), SoundEvents.BLOCK_CHEST_CLOSE, SoundCategory.BLOCKS, 0.5f, this.worldObj.rand.nextFloat() * 0.1f + 1.1f);
+        this.worldObj.playSound(player, new BlockPos(this.pos.getX() + 0.5, this.pos.getY() + 0.5, this.pos.getZ() + 0.5),
+            SoundEvents.BLOCK_CHEST_CLOSE, SoundCategory.BLOCKS, 0.5f, this.worldObj.rand.nextFloat() * 0.1f + 1.1f);
       }
 
       this.worldObj.addBlockEvent(this.pos, getBlockType(), 1, this.numberPlayerUsing);

@@ -1,6 +1,11 @@
 package net.mcfr.decoration.container_blocks.guis;
 
-import static net.mcfr.utils.RenderUtils.*;
+import static net.mcfr.utils.RenderUtils.BOTTOM_OFFSET;
+import static net.mcfr.utils.RenderUtils.HOTBAR_SEPARATOR;
+import static net.mcfr.utils.RenderUtils.INV_SEPARATOR;
+import static net.mcfr.utils.RenderUtils.SIDE_OFFSET;
+import static net.mcfr.utils.RenderUtils.SLOT_SIZE;
+import static net.mcfr.utils.RenderUtils.TOP_OFFSET;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.gui.inventory.GuiContainer;
@@ -29,7 +34,7 @@ public class GuiRestrictedChest extends GuiContainer {
    * Crée un conteneur.
    * 
    * @param playerInventory l'inventaire du joueur
-   * @param chestInventory l'invetaire du conteneur
+   * @param chestInventory l'inventaire du conteneur
    * @param player le joueur
    * @param blockClass la classe du bloc
    */

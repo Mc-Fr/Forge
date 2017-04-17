@@ -53,7 +53,6 @@ public class LargeRecipe implements IRecipe {
       throw new IllegalArgumentException("recipe width must be between 1 and 5 inclusive");
     if (height < 1 || height > 5)
       throw new IllegalArgumentException("recipe height must be between 1 and 5 inclusive");
-    Objects.requireNonNull(items);
     if (items.length < 1 || items.length > 25)
       throw new IllegalArgumentException("array size must be between 1 and 25 inclusive");
     Objects.requireNonNull(output);

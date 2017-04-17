@@ -41,7 +41,7 @@ public abstract class McfrBlockContainer<T extends TileEntity & IInventory> exte
    * @param tool l'outil nécessaire
    * @param teClass la classe de la tile entity
    */
-  public McfrBlockContainer(String name, Material material, SoundType sound, float hardness, float resistance, String tool, Class<T> teClass) {
+  public McfrBlockContainer(String name, Material material, SoundType sound, float hardness, float resistance, String tool, Class<T> teClass, CreativeTabs creativeTab) {
     super(material);
     this.teClass = teClass;
     setRegistryName(name);
@@ -50,7 +50,11 @@ public abstract class McfrBlockContainer<T extends TileEntity & IInventory> exte
     setHardness(hardness);
     setSoundType(sound);
     setHarvestLevel(tool, 0);
-    setCreativeTab(CreativeTabs.DECORATIONS);
+    setCreativeTab(creativeTab);
+  }
+  
+  public McfrBlockContainer(String name, Material material, SoundType sound, float hardness, float resistance, String tool, Class<T> teClass) {
+    this(name, material, sound, hardness, resistance, tool, teClass, CreativeTabs.DECORATIONS);
   }
 
   /**
@@ -74,7 +78,8 @@ public abstract class McfrBlockContainer<T extends TileEntity & IInventory> exte
   public abstract CustomGuiScreens getGui();
 
   @Override
-  public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
+  public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, ItemStack heldItem,
+      EnumFacing side, float hitX, float hitY, float hitZ) {
     if (!worldIn.isRemote) {
       TileEntity te = worldIn.getTileEntity(pos);
 

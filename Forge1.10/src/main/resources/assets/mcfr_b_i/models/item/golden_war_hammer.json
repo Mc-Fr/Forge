@@ -1,6 +1,6 @@
 {
     "parent": "item/handheld",
     "textures": {
-        "layer0": "mcfr_b_i:items/weapons/war_hammer_golden"
+        "layer0": "mcfr_b_i:items/weapons/golden_war_hammer"
     }
 }

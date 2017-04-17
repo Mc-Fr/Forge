@@ -131,7 +131,7 @@ public class EntityTaure extends EntityBurrowed {
 
   public static void func_189789_b(DataFixer p_189789_0_)
   {
-      EntityLiving.func_189752_a(p_189789_0_, "Chicken");
+      EntityLiving.func_189752_a(p_189789_0_, "Taure");
   }
 
   /**

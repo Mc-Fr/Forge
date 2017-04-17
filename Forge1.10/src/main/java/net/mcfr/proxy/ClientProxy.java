@@ -66,20 +66,32 @@ import net.mcfr.economy.ItemToken;
 import net.mcfr.entities.EntityChatBubble;
 import net.mcfr.entities.RenderChatBubble;
 import net.mcfr.entities.mobs.entity.EntityBormoth;
+import net.mcfr.entities.mobs.entity.EntityFjalla;
 import net.mcfr.entities.mobs.entity.EntityGalt;
+import net.mcfr.entities.mobs.entity.EntityGronle;
 import net.mcfr.entities.mobs.entity.EntityHoen;
 import net.mcfr.entities.mobs.entity.EntityNiale;
+import net.mcfr.entities.mobs.entity.EntityPryf;
 import net.mcfr.entities.mobs.entity.EntitySiker;
+import net.mcfr.entities.mobs.entity.EntityTaure;
 import net.mcfr.entities.mobs.model.ModelBormoth;
+import net.mcfr.entities.mobs.model.ModelFjalla;
 import net.mcfr.entities.mobs.model.ModelGalt;
+import net.mcfr.entities.mobs.model.ModelGronle;
 import net.mcfr.entities.mobs.model.ModelHoen;
 import net.mcfr.entities.mobs.model.ModelNiale;
+import net.mcfr.entities.mobs.model.ModelPryf;
 import net.mcfr.entities.mobs.model.ModelSiker;
+import net.mcfr.entities.mobs.model.ModelTaure;
 import net.mcfr.entities.mobs.render.RenderBormoth;
+import net.mcfr.entities.mobs.render.RenderFjalla;
 import net.mcfr.entities.mobs.render.RenderGalt;
+import net.mcfr.entities.mobs.render.RenderGronle;
 import net.mcfr.entities.mobs.render.RenderHoen;
 import net.mcfr.entities.mobs.render.RenderNiale;
+import net.mcfr.entities.mobs.render.RenderPryf;
 import net.mcfr.entities.mobs.render.RenderSiker;
+import net.mcfr.entities.mobs.render.RenderTaure;
 import net.mcfr.environment.BlockStalactite;
 import net.mcfr.environment.ItemOre;
 import net.mcfr.environment.plants.BlockMushroom;
@@ -88,7 +100,7 @@ import net.mcfr.environment.plants.BlockWildGrass;
 import net.mcfr.environment.plants.EnumExoticWoodType;
 import net.mcfr.equipment.ItemGrapnel;
 import net.mcfr.farming.ItemFodder;
-import net.mcfr.food.ItemFlask;
+import net.mcfr.food.ustensils.ItemFlask;
 import net.mcfr.forge.tile_entities.TileEntityBellows;
 import net.mcfr.forge.tile_entities.TileEntityBellowsRenderer;
 import net.mcfr.misc.ItemDecoratedRing;
@@ -188,6 +200,7 @@ public class ClientProxy extends CommonProxy {
 
     registerBlock(LITTLE_CHEST);
     registerBlock(CRATE);
+    registerBlock(CONSTRUCTION_CRATE);
     registerBlock(FOOD_CRATE);
     registerBlock(PALLET);
     registerBlockWoodVariants(BOOKSHELF);
@@ -641,6 +654,8 @@ public class ClientProxy extends CommonProxy {
 
     registerBlock(McfrBlocks.CHOCOLATE_CAKE);
 
+    registerBlock(MORTAR);
+
     registerBlock(LONG_REPEATER_OFF);
     registerBlock(LONG_REPEATER_ON);
 
@@ -680,7 +695,6 @@ public class ClientProxy extends CommonProxy {
     registerItem(GRAPES);
     registerItem(McfrItems.SUGAR_CANES);
     registerItem(HEMP);
-    registerItem(HEMP_FLOWER);
     registerItem(HEMP_LEAF);
     registerItem(HEMP_FIBER);
     registerItem(HEMP_OIL);
@@ -712,7 +726,6 @@ public class ClientProxy extends CommonProxy {
     registerItem(PUMPKIN_SOUP);
     registerItem(FLOUR);
     registerItem(BREAD_DOUGH);
-    registerItem(KITCHEN_MORTAR);
     registerItem(RAW_SWORDFISH);
     registerItem(COOKED_SWORDFISH);
     registerItem(RAW_SARDINE);
@@ -772,51 +785,15 @@ public class ClientProxy extends CommonProxy {
 
     registerItem(GOOD_FISHING_ROD);
     registerItem(FISHING_NET);
+    
+    registerItem(BRONZE_SWORD);
+    registerItem(BRONZE_PICKAXE);
+    registerItem(BRONZE_SPADE);
+    registerItem(BRONZE_AXE);
 
-    registerItem(POINTY_STICK);
-    registerItem(BARBARIAN_SWORD);
+    registerItem(CROSSBOW_BOLT);
 
-    registerItem(STONE_DAGGER);
-    registerItem(IRON_DAGGER);
-    registerItem(GOLDEN_DAGGER);
-    registerItem(STEEL_DAGGER);
-    registerItem(GEROUN_DAGGER);
-
-    registerItem(STONE_SCIMITAR);
-    registerItem(IRON_SCIMITAR);
-    registerItem(GOLDEN_SCIMITAR);
-    registerItem(STEEL_SCIMITAR);
-
-    registerItem(IRON_RAPIER);
-    registerItem(GOLDEN_RAPIER);
-    registerItem(STEEL_RAPIER);
-
-    registerItem(IRON_BASTARD);
-    registerItem(GOLDEN_BASTARD);
-    registerItem(STEEL_BASTARD);
-
-    registerItem(STONE_SPEAR);
-    registerItem(IRON_SPEAR);
-    registerItem(GOLDEN_SPEAR);
-    registerItem(STEEL_SPEAR);
-
-    registerItem(IRON_HALBERD);
-    registerItem(GOLDEN_HALBERD);
-    registerItem(STEEL_HALBERD);
-
-    registerItem(IRON_BATTLE_AXE);
-    registerItem(GOLDEN_BATTLE_AXE);
-    registerItem(STEEL_BATTLE_AXE);
-    registerItem(BARBARIAN_BATTLE_AXE);
-
-    registerItem(IRON_HAMMER);
-    registerItem(GOLDEN_HAMMER);
-    registerItem(STEEL_HAMMER);
-
-    registerItem(IRON_MACE);
-    registerItem(GOLDEN_MACE);
-    registerItem(STEEL_MACE);
-
+    registerItem(BRONZE_BOW);
     registerItem(IRON_BOW);
     registerItem(GOLDEN_BOW);
     registerItem(STEEL_BOW);
@@ -825,6 +802,89 @@ public class ClientProxy extends CommonProxy {
     registerItem(HUNTER_BOW);
     registerItem(LONG_HUNTER_BOW);
     registerItem(ANCIENT_BOW);
+
+    registerItem(WOODEN_STAFF);
+    registerItem(BRONZE_STAFF);
+    registerItem(IRON_STAFF);
+    registerItem(GOLDEN_STAFF);
+    registerItem(STEEL_STAFF);
+
+    registerItem(WOODEN_DAGGER);
+    registerItem(BONE_DAGGER);
+    registerItem(STONE_DAGGER);
+    registerItem(BRONZE_DAGGER);
+    registerItem(IRON_DAGGER);
+    registerItem(GOLDEN_DAGGER);
+    registerItem(STEEL_DAGGER);
+    registerItem(GEROUN_DAGGER);
+
+    registerItem(BRONZE_LONG_SWORD);
+    registerItem(IRON_LONG_SWORD);
+    registerItem(GOLDEN_LONG_SWORD);
+    registerItem(STEEL_LONG_SWORD);
+
+    registerItem(BARBARIAN_SWORD);
+    registerItem(BRONZE_BASTARD);
+    registerItem(IRON_BASTARD);
+    registerItem(GOLDEN_BASTARD);
+    registerItem(STEEL_BASTARD);
+
+    registerItem(WOODEN_FLAIL);
+    registerItem(STONE_FLAIL);
+    registerItem(BRONZE_FLAIL);
+    registerItem(IRON_FLAIL);
+    registerItem(GOLDEN_FLAIL);
+    registerItem(STEEL_FLAIL);
+
+    registerItem(BEAR_CLAWS);
+    registerItem(KATAR);
+    registerItem(NINJA_CLAWS);
+    registerItem(STEEL_CLAWS);
+
+    registerItem(STONE_BATTLE_AXE);
+    registerItem(BRONZE_BATTLE_AXE);
+    registerItem(IRON_BATTLE_AXE);
+    registerItem(GOLDEN_BATTLE_AXE);
+    registerItem(STEEL_BATTLE_AXE);
+    registerItem(BARBARIAN_BATTLE_AXE);
+
+    registerItem(BRONZE_HALBERD);
+    registerItem(IRON_HALBERD);
+    registerItem(GOLDEN_HALBERD);
+    registerItem(STEEL_HALBERD);
+
+    registerItem(POINTY_STICK);
+    registerItem(BONE_SPEAR);
+    registerItem(STONE_SPEAR);
+    registerItem(BRONZE_SPEAR);
+    registerItem(IRON_SPEAR);
+    registerItem(GOLDEN_SPEAR);
+    registerItem(STEEL_SPEAR);
+
+    registerItem(STONE_WAR_HAMMER);
+    registerItem(BRONZE_WAR_HAMMER);
+    registerItem(IRON_WAR_HAMMER);
+    registerItem(GOLDEN_WAR_HAMMER);
+    registerItem(STEEL_WAR_HAMMER);
+
+    registerItem(WOODEN_MACE);
+    registerItem(STONE_MACE);
+    registerItem(BRONZE_MACE);
+    registerItem(IRON_MACE);
+    registerItem(GOLDEN_MACE);
+    registerItem(STEEL_MACE);
+
+    registerItem(BRONZE_RAPIER);
+    registerItem(IRON_RAPIER);
+    registerItem(GOLDEN_RAPIER);
+    registerItem(STEEL_RAPIER);
+
+    registerItem(BRONZE_SCIMITAR);
+    registerItem(IRON_SCIMITAR);
+    registerItem(GOLDEN_SCIMITAR);
+    registerItem(STEEL_SCIMITAR);
+
+    registerItem(WHIP);
 
     registerItem(ASSASSIN_HELMET);
     registerItem(ASSASSIN_CHESTPLATE);
@@ -847,6 +907,7 @@ public class ClientProxy extends CommonProxy {
     registerItem(BLUNDERBUSS);
     registerItem(MAGIC_WAND);
     registerItem(LIGHTNING);
+    registerItem(SELECTOR);
 
     // Suppression du rendu des panneaux par défaut.
     TileEntityRendererDispatcher.instance.mapSpecialRenderers.remove(TileEntitySign.class);
@@ -900,6 +961,10 @@ public class ClientProxy extends CommonProxy {
     RenderingRegistry.registerEntityRenderingHandler(EntityHoen.class, new RenderHoen(render, new ModelHoen(), 0.2F));
     RenderingRegistry.registerEntityRenderingHandler(EntityGalt.class, new RenderGalt(render, new ModelGalt(), 1.2F));
     RenderingRegistry.registerEntityRenderingHandler(EntityNiale.class, new RenderNiale(render, new ModelNiale(), 0.8F));
+    RenderingRegistry.registerEntityRenderingHandler(EntityFjalla.class, new RenderFjalla(render, new ModelFjalla(), 0.8F));
+    RenderingRegistry.registerEntityRenderingHandler(EntityGronle.class, new RenderGronle(render, new ModelGronle(), 0.8F));
+    RenderingRegistry.registerEntityRenderingHandler(EntityPryf.class, new RenderPryf(render, new ModelPryf(), 0.8F));
+    RenderingRegistry.registerEntityRenderingHandler(EntityTaure.class, new RenderTaure(render, new ModelTaure(), 0.8F));
 
     BiomeColorHandler.init();
   }
@@ -923,7 +988,8 @@ public class ClientProxy extends CommonProxy {
   private static void registerItem(Item item, int metadata, String name) {
     if (item == null)
       return;
-    Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(item, metadata, new ModelResourceLocation(item.getRegistryName().getResourceDomain() + ":" + name, "inventory"));
+    Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(item, metadata,
+        new ModelResourceLocation(item.getRegistryName().getResourceDomain() + ":" + name, "inventory"));
   }
 
   /**
@@ -938,7 +1004,8 @@ public class ClientProxy extends CommonProxy {
 
     for (T variant : types) {
       registerItem(item, variant.getMetadata(), item.getRegistryName().getResourcePath() + "_" + variant.getName());
-      names[variant.getMetadata()] = new ResourceLocation(Constants.MOD_ID, item.getRegistryName().getResourcePath().toString() + "_" + variant.getName());
+      names[variant.getMetadata()] = new ResourceLocation(Constants.MOD_ID,
+          item.getRegistryName().getResourcePath().toString() + "_" + variant.getName());
     }
 
     ModelBakery.registerItemVariants(item, names);

@@ -22,8 +22,7 @@ public class BlockHempTop extends BlockBushTop {
   public List<ItemStack> getItems() {
     List<ItemStack> list = new ArrayList<>();
 
-    list.add(new ItemStack(McfrItems.HEMP));
-    list.add(new ItemStack(McfrItems.HEMP_LEAF, new Random().nextInt(3) + 1));
+    list.add(new ItemStack(McfrItems.HEMP, new Random().nextInt(3) + 1));
 
     return list;
   }

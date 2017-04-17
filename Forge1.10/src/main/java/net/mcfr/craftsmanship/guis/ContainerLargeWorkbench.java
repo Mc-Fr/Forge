@@ -1,12 +1,8 @@
 package net.mcfr.craftsmanship.guis;
 
-import static net.mcfr.utils.RenderUtils.HOTBAR_SEPARATOR;
-import static net.mcfr.utils.RenderUtils.INV_SEPARATOR;
-import static net.mcfr.utils.RenderUtils.SIDE_OFFSET;
-import static net.mcfr.utils.RenderUtils.SLOT_SIZE;
-import static net.mcfr.utils.RenderUtils.TOP_OFFSET;
+import static net.mcfr.utils.RenderUtils.*;
 
-import net.mcfr.forge.inventories.LargeInventoryCrafting;
+import net.mcfr.forge.guis.LargeInventoryCrafting;
 import net.mcfr.forge.recipes.LargeRecipesHandler;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -37,7 +33,7 @@ public class ContainerLargeWorkbench extends Container {
 
   public ContainerLargeWorkbench(InventoryPlayer playerInventory, World world, BlockPos pos) {
     this.craftMatrix = new LargeInventoryCrafting(this, 5, 5);
-    
+
     this.craftResult = new InventoryCraftResult();
     this.world = world;
     this.pos = pos;
@@ -74,7 +70,7 @@ public class ContainerLargeWorkbench extends Container {
   protected InventoryCrafting getCraftMatrix() {
     return this.craftMatrix;
   }
-  
+
   protected void setCraftMatrixAnvil() {
     this.craftMatrix.setAnvil();
   }

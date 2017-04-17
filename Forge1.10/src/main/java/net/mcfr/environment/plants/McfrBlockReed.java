@@ -29,7 +29,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class McfrBlockReed extends McfrBlock implements IPlantable {
   private static final int MAX_AGE = 15;
-  private static final int MAX_HEIGHT = 2;
+  private static final int MAX_HEIGHT = 3;
 
   public static final PropertyInteger AGE = PropertyInteger.create("age", 0, MAX_AGE);
   public static final PropertyBool TOP = PropertyBool.create("top");
@@ -96,7 +96,7 @@ public class McfrBlockReed extends McfrBlock implements IPlantable {
 
   @Override
   public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
-    if (worldIn.getBlockState(pos.down()).getBlock() == this && worldIn.isAirBlock(pos.up())) {
+    if (worldIn.isAirBlock(pos.up())) {
       int i;
 
       for (i = 1; worldIn.getBlockState(pos.down(i)).getBlock() == this; i++);

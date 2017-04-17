@@ -68,8 +68,23 @@ public final class McfrCrafts {
   public static void registerCrafts() {
     RecipeSorter.register(Constants.MOD_ID + ":large", LargeRecipe.class, Category.SHAPED, "before:minecraft:shaped");
 
+    removeRecipe(new ItemStack(Blocks.ACACIA_STAIRS, 4));
+    removeRecipe(new ItemStack(Blocks.BIRCH_STAIRS, 4));
+    removeRecipe(new ItemStack(Blocks.DARK_OAK_STAIRS, 4));
+    removeRecipe(new ItemStack(Blocks.JUNGLE_STAIRS, 4));
+    removeRecipe(new ItemStack(Blocks.OAK_STAIRS, 4));
+    removeRecipe(new ItemStack(Blocks.STONE_STAIRS, 4));
+    removeRecipe(new ItemStack(Blocks.SPRUCE_STAIRS, 4));
+    removeRecipe(new ItemStack(Blocks.PURPUR_STAIRS, 4));
+    removeRecipe(new ItemStack(Blocks.QUARTZ_STAIRS, 4));
+    removeRecipe(new ItemStack(Blocks.RED_SANDSTONE_STAIRS, 4));
     removeRecipe(new ItemStack(Blocks.SANDSTONE_STAIRS, 4));
+    removeRecipe(new ItemStack(Blocks.STONE_BRICK_STAIRS, 4));
+    removeRecipe(new ItemStack(Blocks.BRICK_STAIRS, 4));
+    removeRecipe(new ItemStack(Blocks.NETHER_BRICK_STAIRS, 4));
+
     removeRecipe(new ItemStack(Blocks.WOOL));
+    removeRecipe(new ItemStack(Blocks.CARPET));
     removeRecipe(new ItemStack(Blocks.PISTON));
     removeRecipe(new ItemStack(Blocks.STICKY_PISTON));
     removeRecipe(new ItemStack(Blocks.CHEST));
@@ -93,14 +108,26 @@ public final class McfrCrafts {
       removeRecipe(new ItemStack(Items.DYE, 1, color.getMetadata()));
     removeRecipe(new ItemStack(Items.BED));
 
+    removeRecipe(new ItemStack(Items.DIAMOND_PICKAXE));
+    removeRecipe(new ItemStack(Items.DIAMOND_AXE));
+    removeRecipe(new ItemStack(Items.DIAMOND_SWORD));
+    removeRecipe(new ItemStack(Items.DIAMOND_SHOVEL));
+    removeRecipe(new ItemStack(Items.DIAMOND_HOE));
+    removeRecipe(new ItemStack(Items.DIAMOND_HELMET));
+    removeRecipe(new ItemStack(Items.DIAMOND_CHESTPLATE));
+    removeRecipe(new ItemStack(Items.DIAMOND_LEGGINGS));
+    removeRecipe(new ItemStack(Items.DIAMOND_BOOTS));
+
     /*
      * Blocs
      */
 
     /* Minecraft */
 
-    addShapedRecipe(new ItemStack(Blocks.STONE, 8, 1), "###", "#C#", "###", 'C', new ItemStack(Items.DYE, 1, 11), '#', new ItemStack(Blocks.STONE, 1, 0));
-    addShapedRecipe(new ItemStack(Blocks.STONE, 8, 3), "###", "#C#", "###", 'C', new ItemStack(Items.DYE, 1, 14), '#', new ItemStack(Blocks.STONE, 1, 0));
+    addShapedRecipe(new ItemStack(Blocks.STONE, 8, 1), "###", "#C#", "###", 'C', new ItemStack(Items.DYE, 1, 11), '#',
+        new ItemStack(Blocks.STONE, 1, 0));
+    addShapedRecipe(new ItemStack(Blocks.STONE, 8, 3), "###", "#C#", "###", 'C', new ItemStack(Items.DYE, 1, 14), '#',
+        new ItemStack(Blocks.STONE, 1, 0));
 
     addShapedRecipe(new ItemStack(Blocks.SANDSTONE_STAIRS, 4), "#  ", "## ", "###", '#', McfrBlocks.ROUGH_SANDSTONE);
 
@@ -117,9 +144,11 @@ public final class McfrCrafts {
       int meta = color.getMetadata();
       int damage = color.getDyeDamage();
 
-      addLargeRecipe(new ItemStack(Blocks.STAINED_GLASS, 8, meta), "SSSSS", "SGGGS", "SGCGS", "SGGGS", "SSSSS", 'C', new ItemStack(Items.DYE, 1, damage), 'S', Items.STICK, 'G', Blocks.GLASS);
+      addLargeRecipe(new ItemStack(Blocks.STAINED_GLASS, 8, meta), "SSSSS", "SGGGS", "SGCGS", "SGGGS", "SSSSS", 'C',
+          new ItemStack(Items.DYE, 1, damage), 'S', Items.STICK, 'G', Blocks.GLASS);
       for (Block log : LOGS)
-        addLargeRecipe(new ItemStack(Blocks.STAINED_GLASS_PANE, 20, meta), "BGGGB", "GGGGG", "GGCGG", "GGGGG", "BGGGB", 'C', new ItemStack(Items.DYE, 1, damage), 'B', log, 'G', Blocks.GLASS);
+        addLargeRecipe(new ItemStack(Blocks.STAINED_GLASS_PANE, 20, meta), "BGGGB", "GGGGG", "GGCGG", "GGGGG", "BGGGB", 'C',
+            new ItemStack(Items.DYE, 1, damage), 'B', log, 'G', Blocks.GLASS);
     }
 
     /* Mc-Fr */
@@ -129,8 +158,35 @@ public final class McfrCrafts {
       addShapedRecipe(new ItemStack(McfrBlocks.BELLOWS, 1), "PPP", "RLR", "PPP", 'P', planks, 'R', McfrItems.THREAD_COIL, 'L', Blocks.WOOL);
 
     // Construction
-    addShapelessRecipe(new ItemStack(McfrBlocks.OLD_HAY_BLOCK), Blocks.HAY_BLOCK);
     addShapelessRecipe(new ItemStack(Blocks.HAY_BLOCK), McfrBlocks.OLD_HAY_BLOCK);
+    addShapedRecipe(new ItemStack(McfrBlocks.OLD_HAY_BLOCK, 2), "FF", 'F', Blocks.HAY_BLOCK);
+    addShapedRecipe(new ItemStack(Blocks.HAY_BLOCK, 2), "FF", 'F', McfrBlocks.OLD_HAY_BLOCK);
+
+    addShapelessRecipe(new ItemStack(McfrBlocks.HAY_STAIRS), McfrBlocks.OLD_HAY_STAIRS);
+    addShapelessRecipe(new ItemStack(McfrBlocks.OLD_HAY_STAIRS), McfrBlocks.HAY_STAIRS);
+    addShapelessRecipe(new ItemStack(McfrBlocks.HAY_SLAB, 1, 0), new ItemStack(McfrBlocks.HAY_SLAB, 1, 1));
+    addShapelessRecipe(new ItemStack(McfrBlocks.HAY_SLAB, 1, 1), new ItemStack(McfrBlocks.HAY_SLAB, 1, 0));
+
+    addShapelessRecipe(new ItemStack(McfrBlocks.FEATHERS, 1, 0), Items.FEATHER);
+    addShapelessRecipe(new ItemStack(McfrBlocks.FEATHERS, 1, 1), new ItemStack(McfrBlocks.FEATHERS, 1, 0));
+    addShapelessRecipe(new ItemStack(McfrBlocks.FEATHERS, 1, 2), new ItemStack(McfrBlocks.FEATHERS, 1, 1));
+    addShapelessRecipe(new ItemStack(McfrBlocks.FEATHERS, 1, 3), new ItemStack(McfrBlocks.FEATHERS, 1, 2));
+    addShapelessRecipe(new ItemStack(McfrBlocks.FEATHERS, 1, 4), new ItemStack(McfrBlocks.FEATHERS, 1, 3));
+    addShapelessRecipe(new ItemStack(Items.FEATHER), new ItemStack(McfrBlocks.FEATHERS, 1, 4));
+
+    addShapelessRecipe(new ItemStack(McfrBlocks.PEBBLES, 1, 0), Blocks.COBBLESTONE);
+    addShapelessRecipe(new ItemStack(McfrBlocks.PEBBLES, 1, 1), new ItemStack(McfrBlocks.PEBBLES, 1, 0));
+    addShapelessRecipe(new ItemStack(McfrBlocks.PEBBLES, 1, 2), new ItemStack(McfrBlocks.PEBBLES, 1, 1));
+    addShapelessRecipe(new ItemStack(McfrBlocks.PEBBLES, 1, 3), new ItemStack(McfrBlocks.PEBBLES, 1, 2));
+    addShapelessRecipe(new ItemStack(McfrBlocks.PEBBLES, 1, 4), new ItemStack(McfrBlocks.PEBBLES, 1, 3));
+    addShapelessRecipe(new ItemStack(Blocks.COBBLESTONE), new ItemStack(McfrBlocks.PEBBLES, 1, 4));
+
+    addShapelessRecipe(new ItemStack(McfrBlocks.COINS, 1, 0), new ItemStack(McfrItems.COIN, 1, 0));
+    addShapelessRecipe(new ItemStack(McfrBlocks.COINS, 1, 1), new ItemStack(McfrBlocks.COINS, 1, 0));
+    addShapelessRecipe(new ItemStack(McfrBlocks.COINS, 1, 2), new ItemStack(McfrBlocks.COINS, 1, 1));
+    addShapelessRecipe(new ItemStack(McfrBlocks.COINS, 1, 3), new ItemStack(McfrBlocks.COINS, 1, 2));
+    addShapelessRecipe(new ItemStack(McfrBlocks.COINS, 1, 4), new ItemStack(McfrBlocks.COINS, 1, 3));
+    addShapelessRecipe(new ItemStack(McfrItems.COIN, 1, 0), new ItemStack(McfrBlocks.COINS, 1, 4));
 
     addShapedRecipe(new ItemStack(McfrBlocks.REFINED_IRON_BLOCK, 1, 0), "FF", "FF", 'F', Items.IRON_INGOT);
     addShapedRecipe(new ItemStack(McfrBlocks.REFINED_GOLD_BLOCK, 1, 0), "FF", "FF", 'F', Items.GOLD_INGOT);
@@ -141,14 +197,21 @@ public final class McfrCrafts {
     addShapedRecipe(new ItemStack(McfrBlocks.OCHER_STONEBRICK, 4, 0), "##", "##", '#', new ItemStack(Blocks.STONE, 1, 3));
     addShapedRecipe(new ItemStack(McfrBlocks.YELLOW_STONEBRICK, 1, 1), "L", "#", 'L', Blocks.VINE, '#', new ItemStack(McfrBlocks.YELLOW_STONEBRICK));
     addShapedRecipe(new ItemStack(McfrBlocks.OCHER_STONEBRICK, 1, 1), "L", "#", 'L', Blocks.VINE, '#', new ItemStack(McfrBlocks.OCHER_STONEBRICK));
-    addShapedRecipe(new ItemStack(McfrBlocks.YELLOW_STONEBRICK, 1, 2), "C", "#", 'C', Blocks.COBBLESTONE, '#', new ItemStack(McfrBlocks.OCHER_STONEBRICK));
-    addShapedRecipe(new ItemStack(McfrBlocks.OCHER_STONEBRICK, 1, 2), "C", "#", 'C', Blocks.COBBLESTONE, '#', new ItemStack(McfrBlocks.OCHER_STONEBRICK));
+    addShapedRecipe(new ItemStack(McfrBlocks.YELLOW_STONEBRICK, 1, 2), "C", "#", 'C', Blocks.COBBLESTONE, '#',
+        new ItemStack(McfrBlocks.OCHER_STONEBRICK));
+    addShapedRecipe(new ItemStack(McfrBlocks.OCHER_STONEBRICK, 1, 2), "C", "#", 'C', Blocks.COBBLESTONE, '#',
+        new ItemStack(McfrBlocks.OCHER_STONEBRICK));
 
-    addShapedRecipe(new ItemStack(McfrBlocks.DAUB, 2), " F ", "BBB", "AAA", 'F', new ItemStack(Items.POTIONITEM), 'B', Items.WHEAT, 'A', Items.CLAY_BALL);
-    addLargeRecipe(new ItemStack(McfrBlocks.TIMBERED_BLOCK, 16, 0), "STTTS", "TSTST", "TTSTT", "TSTST", "STTTS", 'S', Items.STICK, 'T', McfrBlocks.DAUB);
-    addLargeRecipe(new ItemStack(McfrBlocks.TIMBERED_BLOCK, 12, 1), "STTTS", "STTSS", "STSTS", "SSTTS", "STTTS", 'S', Items.STICK, 'T', McfrBlocks.DAUB);
-    addLargeRecipe(new ItemStack(McfrBlocks.TIMBERED_BLOCK, 16, 3), "SSSSS", "TTTTT", "TTTTT", "TTTTT", "SSSSS", 'S', Items.STICK, 'T', McfrBlocks.DAUB);
-    addLargeRecipe(new ItemStack(McfrBlocks.TIMBERED_BLOCK, 16, 4), "STTTS", "STTTS", "STTTS", "STTTS", "STTTS", 'S', Items.STICK, 'T', McfrBlocks.DAUB);
+    addShapedRecipe(new ItemStack(McfrBlocks.DAUB, 2), " F ", "BBB", "AAA", 'F', new ItemStack(Items.POTIONITEM), 'B', Items.WHEAT, 'A',
+        Items.CLAY_BALL);
+    addLargeRecipe(new ItemStack(McfrBlocks.TIMBERED_BLOCK, 16, 0), "STTTS", "TSTST", "TTSTT", "TSTST", "STTTS", 'S', Items.STICK, 'T',
+        McfrBlocks.DAUB);
+    addLargeRecipe(new ItemStack(McfrBlocks.TIMBERED_BLOCK, 12, 1), "STTTS", "STTSS", "STSTS", "SSTTS", "STTTS", 'S', Items.STICK, 'T',
+        McfrBlocks.DAUB);
+    addLargeRecipe(new ItemStack(McfrBlocks.TIMBERED_BLOCK, 16, 3), "SSSSS", "TTTTT", "TTTTT", "TTTTT", "SSSSS", 'S', Items.STICK, 'T',
+        McfrBlocks.DAUB);
+    addLargeRecipe(new ItemStack(McfrBlocks.TIMBERED_BLOCK, 16, 4), "STTTS", "STTTS", "STTTS", "STTTS", "STTTS", 'S', Items.STICK, 'T',
+        McfrBlocks.DAUB);
     addShapedRecipe(new ItemStack(McfrBlocks.TIMBERED_BLOCK, 1, 1), "#", '#', new ItemStack(McfrBlocks.TIMBERED_BLOCK, 1, 2));
     addShapedRecipe(new ItemStack(McfrBlocks.TIMBERED_BLOCK, 1, 2), "#", '#', new ItemStack(McfrBlocks.TIMBERED_BLOCK, 1, 1));
 
@@ -162,15 +225,20 @@ public final class McfrCrafts {
     addLargeRecipe(new ItemStack(McfrBlocks.MARBLE, 20, 7), "SSSSS", "S S S", "SS SS", "S S S", "SSSSS", 'S', new ItemStack(McfrBlocks.MARBLE, 1, 8));
     addShapedRecipe(new ItemStack(McfrBlocks.MARBLE, 4, 8), "SSS", "SES", "SSS", 'S', Blocks.OBSIDIAN, 'E', Items.WATER_BUCKET);
 
-    addLargeRecipe(new ItemStack(McfrBlocks.MARBLE_COLUMN, 15, 0), "S S S", "S S S", "S S S", "S S S", "S S S", 'S', new ItemStack(McfrBlocks.MARBLE, 1, 2));
-    addLargeRecipe(new ItemStack(McfrBlocks.MARBLE_COLUMN, 15, 1), "S S S", "S S S", "S S S", "S S S", "S S S", 'S', new ItemStack(McfrBlocks.MARBLE, 1, 5));
-    addLargeRecipe(new ItemStack(McfrBlocks.MARBLE_COLUMN, 15, 2), "S S S", "S S S", "S S S", "S S S", "S S S", 'S', new ItemStack(McfrBlocks.MARBLE, 1, 8));
+    addLargeRecipe(new ItemStack(McfrBlocks.MARBLE_COLUMN, 15, 0), "S S S", "S S S", "S S S", "S S S", "S S S", 'S',
+        new ItemStack(McfrBlocks.MARBLE, 1, 2));
+    addLargeRecipe(new ItemStack(McfrBlocks.MARBLE_COLUMN, 15, 1), "S S S", "S S S", "S S S", "S S S", "S S S", 'S',
+        new ItemStack(McfrBlocks.MARBLE, 1, 5));
+    addLargeRecipe(new ItemStack(McfrBlocks.MARBLE_COLUMN, 15, 2), "S S S", "S S S", "S S S", "S S S", "S S S", 'S',
+        new ItemStack(McfrBlocks.MARBLE, 1, 8));
 
     // Ateliers
     for (Block planks : PLANKS) {
       for (Block fence : WOODEN_FENCES) {
-        addLargeRecipe(new ItemStack(McfrBlocks.LOOM), "FSSSF", "FIIIF", "FIIIF", "FSSSF", "W   W", 'F', fence, 'S', Items.STICK, 'I', Items.STRING, 'W', planks);
-        addLargeRecipe(new ItemStack(McfrBlocks.TANNING_RACK), "FMSMF", "FCCCF", "FCCCF", "FMSMF", "W   W", 'F', fence, 'S', Items.STICK, 'M', McfrItems.STITCH, 'C', Items.LEATHER, 'W', planks);
+        addLargeRecipe(new ItemStack(McfrBlocks.LOOM), "FSSSF", "FIIIF", "FIIIF", "FSSSF", "W   W", 'F', fence, 'S', Items.STICK, 'I', Items.STRING,
+            'W', planks);
+        addLargeRecipe(new ItemStack(McfrBlocks.TANNING_RACK), "FMSMF", "FCCCF", "FCCCF", "FMSMF", "W   W", 'F', fence, 'S', Items.STICK, 'M',
+            McfrItems.STITCH, 'C', Items.LEATHER, 'W', planks);
       }
     }
     addShapedRecipe(new ItemStack(McfrBlocks.CIRCULAR_SAW, 1), "S", "B", 'S', McfrItems.SAW_BLADE, 'B', McfrItems.SAW_SUPPORT);
@@ -185,17 +253,20 @@ public final class McfrCrafts {
       addShapedRecipe(new ItemStack(McfrBlocks.PALLET, 1), "SSS", "WWW", 'W', planks, 'S', Items.STICK);
     }
     for (int i = 0; i < BlockPlanks.EnumType.values().length; i++)
-      addLargeRecipe(new ItemStack(McfrBlocks.BOOKSHELF, 2, i), "#####", "#   #", "#SSS#", "#   #", "#####", '#', new ItemStack(Blocks.PLANKS, 1, i), 'S', new ItemStack(Blocks.WOODEN_SLAB, 1, i));
+      addLargeRecipe(new ItemStack(McfrBlocks.BOOKSHELF, 2, i), "#####", "#   #", "#SSS#", "#   #", "#####", '#', new ItemStack(Blocks.PLANKS, 1, i),
+          'S', new ItemStack(Blocks.WOODEN_SLAB, 1, i));
 
     // Dalles
     addShapedRecipe(new ItemStack(McfrBlocks.HAY_SLAB, 6, 0), "###", '#', Blocks.HAY_BLOCK);
     addShapedRecipe(new ItemStack(McfrBlocks.HAY_SLAB, 6, 1), "###", '#', McfrBlocks.OLD_HAY_BLOCK);
 
     for (BlockPlanks.EnumType type : BlockPlanks.EnumType.values())
-      addLargeRecipe(new ItemStack(McfrBlocks.REFINED_PLANKS_SLAB, 16, type.getMetadata()), "SSSS", "SSSS", 'S', new ItemStack(McfrBlocks.REFINED_PLANKS, 1, type.getMetadata()));
+      addLargeRecipe(new ItemStack(McfrBlocks.REFINED_PLANKS_SLAB, 16, type.getMetadata()), "SSSS", "SSSS", 'S',
+          new ItemStack(McfrBlocks.REFINED_PLANKS, 1, type.getMetadata()));
 
     for (EnumExoticWoodType type : EnumExoticWoodType.values())
-      addShapedRecipe(new ItemStack(McfrBlocks.EXOTIC_WOOD_SLAB, 6, type.getMetadata()), "###", '#', new ItemStack(McfrBlocks.EXOTIC_PLANKS, 1, type.getMetadata()));
+      addShapedRecipe(new ItemStack(McfrBlocks.EXOTIC_WOOD_SLAB, 6, type.getMetadata()), "###", '#',
+          new ItemStack(McfrBlocks.EXOTIC_PLANKS, 1, type.getMetadata()));
 
     addLargeRecipe(new ItemStack(McfrBlocks.METAL_SLAB, 16, 0), "SSSS", "SSSS", 'S', McfrBlocks.REFINED_IRON_BLOCK);
     addLargeRecipe(new ItemStack(McfrBlocks.METAL_SLAB, 16, 1), "SSSS", "SSSS", 'S', McfrBlocks.REFINED_GOLD_BLOCK);
@@ -228,6 +299,10 @@ public final class McfrCrafts {
     addLargeRecipe(new ItemStack(McfrBlocks.MARBLE_SLAB2, 16, 2), "SSSS", "SSSS", 'S', new ItemStack(McfrBlocks.MARBLE, 1, 8));
 
     // Escaliers
+    addStairsRecipe(Blocks.PURPUR_STAIRS, new ItemStack(Blocks.PURPUR_BLOCK));
+    addStairsRecipe(Blocks.QUARTZ_STAIRS, new ItemStack(Blocks.QUARTZ_BLOCK));
+    addStairsRecipe(Blocks.RED_SANDSTONE_STAIRS, new ItemStack(Blocks.RED_SANDSTONE));
+    addStairsRecipe(Blocks.NETHER_BRICK_STAIRS, new ItemStack(Blocks.NETHER_BRICK));
     addStairsRecipe(McfrBlocks.STONE_STAIRS, new ItemStack(Blocks.STONE));
     addStairsRecipe(Blocks.STONE_STAIRS, new ItemStack(Blocks.COBBLESTONE));
     addStairsRecipe(Blocks.OAK_STAIRS, new ItemStack(Blocks.PLANKS, 1, 0));
@@ -512,18 +587,30 @@ public final class McfrCrafts {
     addPyramidRecipe(McfrBlocks.DARK_CARVED_CLAY_PYRAMID, new ItemStack(McfrBlocks.CARVED_CLAY, 1, 1));
 
     // Trappes solides
-    addShapedRecipe(new ItemStack(McfrBlocks.STRONG_OAK_TRAPDOOR), "###", "###", '#', new ItemStack(Blocks.LOG, 1, 0));
-    addShapedRecipe(new ItemStack(McfrBlocks.STRONG_SPRUCE_TRAPDOOR), "###", "###", '#', new ItemStack(Blocks.LOG, 1, 1));
-    addShapedRecipe(new ItemStack(McfrBlocks.STRONG_BIRCH_TRAPDOOR), "###", "###", '#', new ItemStack(Blocks.LOG, 1, 2));
-    addShapedRecipe(new ItemStack(McfrBlocks.STRONG_JUNGLE_TRAPDOOR), "###", "###", '#', new ItemStack(Blocks.LOG, 1, 3));
-    addShapedRecipe(new ItemStack(McfrBlocks.STRONG_ACACIA_TRAPDOOR), "###", "###", '#', new ItemStack(Blocks.LOG, 1, 4));
-    addShapedRecipe(new ItemStack(McfrBlocks.STRONG_DARK_OAK_TRAPDOOR), "###", "###", '#', new ItemStack(Blocks.LOG, 1, 5));
+    addShapedRecipe(new ItemStack(McfrBlocks.STRONG_OAK_TRAPDOOR), "###", "#B#", '#', new ItemStack(Blocks.PLANKS, 1, 0), 'B', Blocks.OAK_FENCE);
+    addShapedRecipe(new ItemStack(McfrBlocks.STRONG_SPRUCE_TRAPDOOR), "###", "#B#", '#', new ItemStack(Blocks.PLANKS, 1, 1), 'B',
+        Blocks.SPRUCE_FENCE);
+    addShapedRecipe(new ItemStack(McfrBlocks.STRONG_BIRCH_TRAPDOOR), "###", "#B#", '#', new ItemStack(Blocks.PLANKS, 1, 2), 'B', Blocks.BIRCH_FENCE);
+    addShapedRecipe(new ItemStack(McfrBlocks.STRONG_JUNGLE_TRAPDOOR), "###", "#B#", '#', new ItemStack(Blocks.PLANKS, 1, 3), 'B',
+        Blocks.JUNGLE_FENCE);
+    addShapedRecipe(new ItemStack(McfrBlocks.STRONG_ACACIA_TRAPDOOR), "###", "#B#", '#', new ItemStack(Blocks.PLANKS, 1, 4), 'B',
+        Blocks.ACACIA_FENCE);
+    addShapedRecipe(new ItemStack(McfrBlocks.STRONG_DARK_OAK_TRAPDOOR), "###", "#B#", '#', new ItemStack(Blocks.PLANKS, 1, 5), 'B',
+        Blocks.DARK_OAK_FENCE);
 
     // Trappes artisan
-    addLargeRecipe(new ItemStack(McfrBlocks.CRAFTSMAN_OAK_TRAPDOOR, 2), "FLLLF", "LWWWL", "LWVWL", "LWWWL", "FLLLF", 'L', new ItemStack(Blocks.LOG, 1, 0), 'W', new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 0), 'F', Items.IRON_INGOT, 'V', new ItemStack(McfrBlocks.MOUCHARABIEH_PANE, 1, 2));
-    addLargeRecipe(new ItemStack(McfrBlocks.CRAFTSMAN_SPRUCE_TRAPDOOR, 2), "FLLLF", "LWWWL", "LWVWL", "LWWWL", "FLLLF", 'L', new ItemStack(Blocks.LOG, 1, 1), 'W', new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 1), 'F', Items.IRON_INGOT, 'V', new ItemStack(McfrBlocks.MOUCHARABIEH_PANE, 1, 2));
-    addLargeRecipe(new ItemStack(McfrBlocks.CRAFTSMAN_BIRCH_TRAPDOOR, 2), "FLLLF", "LWWWL", "LWVWL", "LWWWL", "FLLLF", 'L', new ItemStack(Blocks.LOG, 1, 2), 'W', new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 2), 'F', Items.IRON_INGOT, 'V', new ItemStack(McfrBlocks.MOUCHARABIEH_PANE, 1, 2));
-    addLargeRecipe(new ItemStack(McfrBlocks.CRAFTSMAN_JUNGLE_TRAPDOOR, 2), "FLLLF", "LWWWL", "LWVWL", "LWWWL", "FLLLF", 'L', new ItemStack(Blocks.LOG, 1, 3), 'W', new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 3), 'F', Items.IRON_INGOT, 'V', new ItemStack(McfrBlocks.MOUCHARABIEH_PANE, 1, 2));
+    addLargeRecipe(new ItemStack(McfrBlocks.CRAFTSMAN_OAK_TRAPDOOR, 2), "FLLLF", "LWWWL", "LWVWL", "LWWWL", "FLLLF", 'L',
+        new ItemStack(Blocks.LOG, 1, 0), 'W', new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 0), 'F', Items.IRON_INGOT, 'V',
+        new ItemStack(McfrBlocks.MOUCHARABIEH_PANE, 1, 2));
+    addLargeRecipe(new ItemStack(McfrBlocks.CRAFTSMAN_SPRUCE_TRAPDOOR, 2), "FLLLF", "LWWWL", "LWVWL", "LWWWL", "FLLLF", 'L',
+        new ItemStack(Blocks.LOG, 1, 1), 'W', new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 1), 'F', Items.IRON_INGOT, 'V',
+        new ItemStack(McfrBlocks.MOUCHARABIEH_PANE, 1, 2));
+    addLargeRecipe(new ItemStack(McfrBlocks.CRAFTSMAN_BIRCH_TRAPDOOR, 2), "FLLLF", "LWWWL", "LWVWL", "LWWWL", "FLLLF", 'L',
+        new ItemStack(Blocks.LOG, 1, 2), 'W', new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 2), 'F', Items.IRON_INGOT, 'V',
+        new ItemStack(McfrBlocks.MOUCHARABIEH_PANE, 1, 2));
+    addLargeRecipe(new ItemStack(McfrBlocks.CRAFTSMAN_JUNGLE_TRAPDOOR, 2), "FLLLF", "LWWWL", "LWVWL", "LWWWL", "FLLLF", 'L',
+        new ItemStack(Blocks.LOG, 1, 3), 'W', new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 3), 'F', Items.IRON_INGOT, 'V',
+        new ItemStack(McfrBlocks.MOUCHARABIEH_PANE, 1, 2));
 
     // Barrières
     addFenceRecipe(new ItemStack(Blocks.OAK_FENCE, 16), new ItemStack(Blocks.LOG, 1, 0));
@@ -578,26 +665,39 @@ public final class McfrCrafts {
     addWallRecipe(new ItemStack(McfrBlocks.STONE_WALL, 14, 9), new ItemStack(McfrBlocks.OCHER_STONEBRICK, 1, 1));
     addWallRecipe(new ItemStack(McfrBlocks.STONE_WALL, 14, 10), new ItemStack(McfrBlocks.OCHER_STONEBRICK, 1, 2));
 
-    for (EnumDyeColor color : EnumDyeColor.values())
-      addShapelessRecipe(new ItemStack(McfrBlocks.CARPET, 1, color.getMetadata()), new ItemStack(Items.DYE, 1, color.getDyeDamage()), new ItemStack(McfrBlocks.CARPET, 1, 0));
+    for (EnumDyeColor color : EnumDyeColor.values()) {
+      addShapelessRecipe(new ItemStack(McfrBlocks.CARPET, 1, color.getMetadata()), new ItemStack(Items.DYE, 1, color.getDyeDamage()),
+          new ItemStack(McfrBlocks.CARPET, 1, 0));
+      addShapelessRecipe(new ItemStack(McfrBlocks.CARPET, 1, color.getMetadata()), new ItemStack(Blocks.CARPET, 1, color.getMetadata()));
+      addShapelessRecipe(new ItemStack(Blocks.CARPET, 1, color.getMetadata()), new ItemStack(McfrBlocks.CARPET, 1, color.getMetadata()));
+    }
 
     addShapedRecipe(new ItemStack(McfrBlocks.MOUCHARABIEH, 1, 0), "##", "##", '#', new ItemStack(McfrBlocks.MOUCHARABIEH_PANE, 1, 0));
     addShapedRecipe(new ItemStack(McfrBlocks.MOUCHARABIEH, 1, 1), "##", "##", '#', new ItemStack(McfrBlocks.MOUCHARABIEH_PANE, 1, 1));
-    addLargeRecipe(new ItemStack(McfrBlocks.MOUCHARABIEH, 16, 2), "FVVVF", "VFVFV", "VVFVV", "VFVFV", "FVVVF", 'V', Blocks.GLASS, 'F', Items.IRON_INGOT);
+    addLargeRecipe(new ItemStack(McfrBlocks.MOUCHARABIEH, 16, 2), "FVVVF", "VFVFV", "VVFVV", "VFVFV", "FVVVF", 'V', Blocks.GLASS, 'F',
+        Items.IRON_INGOT);
 
     addLargeRecipe(new ItemStack(McfrBlocks.MOUCHARABIEH_PANE, 8, 0), "# # #", " ### ", "## ##", " ### ", "# # #", '#', Blocks.STONE);
     for (Block log : LOGS)
       addLargeRecipe(new ItemStack(McfrBlocks.MOUCHARABIEH_PANE, 8, 1), "# # #", " ### ", "## ##", " ### ", "# # #", '#', log);
-    addLargeRecipe(new ItemStack(McfrBlocks.MOUCHARABIEH_PANE, 16, 2), "FVVVF", "VFVFV", "VVFVV", "VFVFV", "FVVVF", 'V', Blocks.GLASS_PANE, 'F', Items.IRON_INGOT);
+    addLargeRecipe(new ItemStack(McfrBlocks.MOUCHARABIEH_PANE, 16, 2), "FVVVF", "VFVFV", "VVFVV", "VFVFV", "FVVVF", 'V', Blocks.GLASS_PANE, 'F',
+        Items.IRON_INGOT);
 
     // Échelles
     addShapedRecipe(new ItemStack(McfrBlocks.ROPE_LADDER, 3), "C C", "CSC", "C C", 'C', McfrBlocks.ROPE, 'S', Items.STICK);
     addShapedRecipe(new ItemStack(McfrBlocks.CHAIN_LADDER, 3), "C C", "CCC", "C C", 'C', McfrItems.STITCH);
+    
+    // Shred
+    addShapelessRecipe(new ItemStack(McfrBlocks.ROPE, 1), McfrBlocks.ROPE_LADDER);
+    addShapelessRecipe(new ItemStack(McfrItems.STITCH, 1), McfrBlocks.CHAIN_LADDER);
 
     // Cordes
     addLargeRecipe(new ItemStack(McfrBlocks.ROPE, 4), "   FR", "  FRF", " FRF ", "FRF  ", "RF   ", 'F', Items.STRING, 'R', McfrItems.HEMP_FIBER);
     addLargeRecipe(new ItemStack(McfrBlocks.ROPE, 4), "   FR", "  FRF", " FRF ", "FRF  ", "RF   ", 'F', Items.STRING, 'R', McfrItems.REEDS);
     addShapedRecipe(new ItemStack(McfrBlocks.CHAIN, 4), "B", "B", "B", "B", "B", 'B', McfrItems.STITCH);
+    
+    // Shred
+    addShapelessRecipe(new ItemStack(Items.STRING, 1), McfrBlocks.ROPE);
 
     // Éclairage
     addShapedRecipe(new ItemStack(McfrBlocks.CANDLE), "S", "#", "A", 'S', Items.STRING, '#', McfrItems.WAX, 'A', Items.CLAY_BALL);
@@ -608,8 +708,10 @@ public final class McfrCrafts {
 
     for (Block planks : PLANKS) {
       for (Block slab : WOODEN_SLABS) {
-        addLargeRecipe(new ItemStack(McfrBlocks.CHANDELIER), " C ", "BCB", "DPD", 'C', McfrBlocks.CHAIN, 'B', McfrBlocks.CANDLE, 'D', slab, 'P', planks);
-        addLargeRecipe(new ItemStack(McfrBlocks.LARGE_CHANDELIER), "  C  ", "BBCBB", "DDPDD", 'C', McfrBlocks.CHAIN, 'B', McfrBlocks.CANDLE, 'D', slab, 'P', planks);
+        addLargeRecipe(new ItemStack(McfrBlocks.CHANDELIER), " C ", "BCB", "DPD", 'C', McfrBlocks.CHAIN, 'B', McfrBlocks.CANDLE, 'D', slab, 'P',
+            planks);
+        addLargeRecipe(new ItemStack(McfrBlocks.LARGE_CHANDELIER), "  C  ", "BBCBB", "DDPDD", 'C', McfrBlocks.CHAIN, 'B', McfrBlocks.CANDLE, 'D',
+            slab, 'P', planks);
       }
     }
 
@@ -617,69 +719,122 @@ public final class McfrCrafts {
     for (Block slab : WOODEN_SLABS)
       addLargeRecipe(new ItemStack(McfrBlocks.TIKI_TORCH), "T", "S", "S", "S", "L", 'C', Blocks.TORCH, 'S', Items.STICK, 'L', slab);
     addShapedRecipe(new ItemStack(McfrBlocks.BRAZIER), "CCC", "STS", "SSS", 'C', Items.COAL, 'S', Blocks.COBBLESTONE, 'T', Blocks.TORCH);
-    addLargeRecipe(new ItemStack(McfrBlocks.WOODEN_LAMP, 2), "PPVPP", "PPTPP", "VTTTV", "PPTPP", "PPVPP", 'P', Blocks.LOG, 'V', Blocks.GLASS, 'T', McfrBlocks.LARGE_TORCH);
+    addLargeRecipe(new ItemStack(McfrBlocks.WOODEN_LAMP, 2), "PPVPP", "PPTPP", "VTTTV", "PPTPP", "PPVPP", 'P', Blocks.LOG, 'V', Blocks.GLASS, 'T',
+        McfrBlocks.LARGE_TORCH);
 
     for (EnumLanternColor color : EnumLanternColor.values())
-      addShapedRecipe(new ItemStack(McfrBlocks.getLantern(color, false), 1, color.getMetadata()), " B ", "FFF", "GCG", "FTF", 'B', Blocks.IRON_BARS, 'F', Items.IRON_INGOT, 'G', Blocks.STAINED_GLASS_PANE, 'C', new ItemStack(Items.DYE, 4, color.getDyeColor().getDyeDamage()), 'T', Blocks.TORCH);
+      addShapedRecipe(new ItemStack(McfrBlocks.getLantern(color, false), 1, color.getMetadata()), " B ", "FFF", "GCG", "FTF", 'B', Blocks.IRON_BARS,
+          'F', Items.IRON_INGOT, 'G', Blocks.STAINED_GLASS_PANE, 'C', new ItemStack(Items.DYE, 4, color.getDyeColor().getDyeDamage()), 'T',
+          Blocks.TORCH);
 
     // Chaises
-    addLargeRecipe(new ItemStack(McfrBlocks.OAK_CHAIR, 4), "B   ", "B   ", "ESSS", "F  F", "F  F", 'F', McfrBlocks.REFINED_OAK_FENCE, 'S', new ItemStack(McfrBlocks.REFINED_PLANKS_SLAB, 1, 0), 'B', new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 0), 'E', McfrBlocks.REFINED_OAK_STAIRS);
-    addLargeRecipe(new ItemStack(McfrBlocks.SPRUCE_CHAIR, 4), "B   ", "B   ", "ESSS", "F  F", "F  F", 'F', McfrBlocks.REFINED_SPRUCE_FENCE, 'S', new ItemStack(McfrBlocks.REFINED_PLANKS_SLAB, 1, 1), 'B', new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 1), 'E', McfrBlocks.REFINED_SPRUCE_STAIRS);
-    addLargeRecipe(new ItemStack(McfrBlocks.BIRCH_CHAIR, 4), "B   ", "B   ", "ESSS", "F  F", "F  F", 'F', McfrBlocks.REFINED_BIRCH_FENCE, 'S', new ItemStack(McfrBlocks.REFINED_PLANKS_SLAB, 1, 2), 'B', new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 2), 'E', McfrBlocks.REFINED_BIRCH_STAIRS);
-    addLargeRecipe(new ItemStack(McfrBlocks.JUNGLE_CHAIR, 4), "B   ", "B   ", "ESSS", "F  F", "F  F", 'F', McfrBlocks.REFINED_JUNGLE_FENCE, 'S', new ItemStack(McfrBlocks.REFINED_PLANKS_SLAB, 1, 3), 'B', new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 3), 'E', McfrBlocks.REFINED_JUNGLE_STAIRS);
-    addLargeRecipe(new ItemStack(McfrBlocks.ACACIA_CHAIR, 4), "B   ", "B   ", "ESSS", "F  F", "F  F", 'F', McfrBlocks.REFINED_ACACIA_FENCE, 'S', new ItemStack(McfrBlocks.REFINED_PLANKS_SLAB, 1, 4), 'B', new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 4), 'E', McfrBlocks.REFINED_ACACIA_STAIRS);
-    addLargeRecipe(new ItemStack(McfrBlocks.DARK_OAK_CHAIR, 4), "B   ", "B   ", "ESSS", "F  F", "F  F", 'F', McfrBlocks.REFINED_DARK_OAK_FENCE, 'S', new ItemStack(McfrBlocks.REFINED_PLANKS_SLAB, 1, 5), 'B', new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 5), 'E', McfrBlocks.REFINED_DARK_OAK_STAIRS);
+    addLargeRecipe(new ItemStack(McfrBlocks.OAK_CHAIR, 4), "B   ", "B   ", "ESSS", "F  F", "F  F", 'F', McfrBlocks.REFINED_OAK_FENCE, 'S',
+        new ItemStack(McfrBlocks.REFINED_PLANKS_SLAB, 1, 0), 'B', new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 0), 'E', McfrBlocks.REFINED_OAK_STAIRS);
+    addLargeRecipe(new ItemStack(McfrBlocks.SPRUCE_CHAIR, 4), "B   ", "B   ", "ESSS", "F  F", "F  F", 'F', McfrBlocks.REFINED_SPRUCE_FENCE, 'S',
+        new ItemStack(McfrBlocks.REFINED_PLANKS_SLAB, 1, 1), 'B', new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 1), 'E',
+        McfrBlocks.REFINED_SPRUCE_STAIRS);
+    addLargeRecipe(new ItemStack(McfrBlocks.BIRCH_CHAIR, 4), "B   ", "B   ", "ESSS", "F  F", "F  F", 'F', McfrBlocks.REFINED_BIRCH_FENCE, 'S',
+        new ItemStack(McfrBlocks.REFINED_PLANKS_SLAB, 1, 2), 'B', new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 2), 'E',
+        McfrBlocks.REFINED_BIRCH_STAIRS);
+    addLargeRecipe(new ItemStack(McfrBlocks.JUNGLE_CHAIR, 4), "B   ", "B   ", "ESSS", "F  F", "F  F", 'F', McfrBlocks.REFINED_JUNGLE_FENCE, 'S',
+        new ItemStack(McfrBlocks.REFINED_PLANKS_SLAB, 1, 3), 'B', new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 3), 'E',
+        McfrBlocks.REFINED_JUNGLE_STAIRS);
+    addLargeRecipe(new ItemStack(McfrBlocks.ACACIA_CHAIR, 4), "B   ", "B   ", "ESSS", "F  F", "F  F", 'F', McfrBlocks.REFINED_ACACIA_FENCE, 'S',
+        new ItemStack(McfrBlocks.REFINED_PLANKS_SLAB, 1, 4), 'B', new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 4), 'E',
+        McfrBlocks.REFINED_ACACIA_STAIRS);
+    addLargeRecipe(new ItemStack(McfrBlocks.DARK_OAK_CHAIR, 4), "B   ", "B   ", "ESSS", "F  F", "F  F", 'F', McfrBlocks.REFINED_DARK_OAK_FENCE, 'S',
+        new ItemStack(McfrBlocks.REFINED_PLANKS_SLAB, 1, 5), 'B', new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 5), 'E',
+        McfrBlocks.REFINED_DARK_OAK_STAIRS);
 
     // Tabourets
-    addLargeRecipe(new ItemStack(McfrBlocks.OAK_STOOL, 4), "LLLL", "BBBB", "FBBF", "F  F", 'L', new ItemStack(McfrBlocks.CARPET, 1, 12), 'F', McfrBlocks.REFINED_OAK_FENCE, 'S', Items.STICK, 'B', new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 0));
-    addLargeRecipe(new ItemStack(McfrBlocks.SPRUCE_STOOL, 4), "LLLL", "BBBB", "FBBF", "F  F", 'L', new ItemStack(McfrBlocks.CARPET, 1, 12), 'F', McfrBlocks.REFINED_SPRUCE_FENCE, 'S', Items.STICK, 'B', new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 1));
-    addLargeRecipe(new ItemStack(McfrBlocks.BIRCH_STOOL, 4), "LLLL", "BBBB", "FBBF", "F  F", 'L', new ItemStack(McfrBlocks.CARPET, 1, 12), 'F', McfrBlocks.REFINED_BIRCH_FENCE, 'S', Items.STICK, 'B', new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 2));
-    addLargeRecipe(new ItemStack(McfrBlocks.JUNGLE_STOOL, 4), "LLLL", "BBBB", "FBBF", "F  F", 'L', new ItemStack(McfrBlocks.CARPET, 1, 12), 'F', McfrBlocks.REFINED_JUNGLE_FENCE, 'S', Items.STICK, 'B', new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 3));
-    addLargeRecipe(new ItemStack(McfrBlocks.ACACIA_STOOL, 4), "LLLL", "BBBB", "FBBF", "F  F", 'L', new ItemStack(McfrBlocks.CARPET, 1, 12), 'F', McfrBlocks.REFINED_ACACIA_FENCE, 'S', Items.STICK, 'B', new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 4));
-    addLargeRecipe(new ItemStack(McfrBlocks.DARK_OAK_STOOL, 4), "LLLL", "BBBB", "FBBF", "F  F", 'L', new ItemStack(McfrBlocks.CARPET, 1, 12), 'F', McfrBlocks.REFINED_DARK_OAK_FENCE, 'S', Items.STICK, 'B', new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 5));
+    addLargeRecipe(new ItemStack(McfrBlocks.OAK_STOOL, 4), "BBBB", "FBBF", "F  F", 'F', McfrBlocks.REFINED_OAK_FENCE, 'B',
+        new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 0));
+    addLargeRecipe(new ItemStack(McfrBlocks.SPRUCE_STOOL, 4), "BBBB", "FBBF", "F  F", 'F', McfrBlocks.REFINED_SPRUCE_FENCE, 'B',
+        new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 1));
+    addLargeRecipe(new ItemStack(McfrBlocks.BIRCH_STOOL, 4), "BBBB", "FBBF", "F  F", 'F', McfrBlocks.REFINED_BIRCH_FENCE, 'B',
+        new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 2));
+    addLargeRecipe(new ItemStack(McfrBlocks.JUNGLE_STOOL, 4), "BBBB", "FBBF", "F  F", 'F', McfrBlocks.REFINED_JUNGLE_FENCE, 'B',
+        new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 3));
+    addLargeRecipe(new ItemStack(McfrBlocks.ACACIA_STOOL, 4), "BBBB", "FBBF", "F  F", 'F', McfrBlocks.REFINED_ACACIA_FENCE, 'B',
+        new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 4));
+    addLargeRecipe(new ItemStack(McfrBlocks.DARK_OAK_STOOL, 4), "BBBB", "FBBF", "F  F", 'F', McfrBlocks.REFINED_DARK_OAK_FENCE, 'B',
+        new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 5));
 
-    addLargeRecipe(new ItemStack(McfrBlocks.TALL_OAK_STOOL, 2), "BSSB", "F  F", "FSSF", "F  F", 'F', McfrBlocks.REFINED_OAK_FENCE, 'S', Items.STICK, 'B', new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 0));
-    addLargeRecipe(new ItemStack(McfrBlocks.TALL_SPRUCE_STOOL, 2), "BSSB", "F  F", "FSSF", "F  F", 'F', McfrBlocks.REFINED_SPRUCE_FENCE, 'S', Items.STICK, 'B', new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 1));
-    addLargeRecipe(new ItemStack(McfrBlocks.TALL_BIRCH_STOOL, 2), "BSSB", "F  F", "FSSF", "F  F", 'F', McfrBlocks.REFINED_BIRCH_FENCE, 'S', Items.STICK, 'B', new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 2));
-    addLargeRecipe(new ItemStack(McfrBlocks.TALL_JUNGLE_STOOL, 2), "BSSB", "F  F", "FSSF", "F  F", 'F', McfrBlocks.REFINED_JUNGLE_FENCE, 'S', Items.STICK, 'B', new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 3));
-    addLargeRecipe(new ItemStack(McfrBlocks.TALL_ACACIA_STOOL, 2), "BSSB", "F  F", "FSSF", "F  F", 'F', McfrBlocks.REFINED_ACACIA_FENCE, 'S', Items.STICK, 'B', new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 4));
-    addLargeRecipe(new ItemStack(McfrBlocks.TALL_DARK_OAK_STOOL, 2), "BSSB", "F  F", "FSSF", "F  F", 'F', McfrBlocks.REFINED_DARK_OAK_FENCE, 'S', Items.STICK, 'B', new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 5));
+    addLargeRecipe(new ItemStack(McfrBlocks.TALL_OAK_STOOL, 2), "BSSB", "F  F", "FSSF", "F  F", 'F', McfrBlocks.REFINED_OAK_FENCE, 'S', Items.STICK,
+        'B', new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 0));
+    addLargeRecipe(new ItemStack(McfrBlocks.TALL_SPRUCE_STOOL, 2), "BSSB", "F  F", "FSSF", "F  F", 'F', McfrBlocks.REFINED_SPRUCE_FENCE, 'S',
+        Items.STICK, 'B', new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 1));
+    addLargeRecipe(new ItemStack(McfrBlocks.TALL_BIRCH_STOOL, 2), "BSSB", "F  F", "FSSF", "F  F", 'F', McfrBlocks.REFINED_BIRCH_FENCE, 'S',
+        Items.STICK, 'B', new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 2));
+    addLargeRecipe(new ItemStack(McfrBlocks.TALL_JUNGLE_STOOL, 2), "BSSB", "F  F", "FSSF", "F  F", 'F', McfrBlocks.REFINED_JUNGLE_FENCE, 'S',
+        Items.STICK, 'B', new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 3));
+    addLargeRecipe(new ItemStack(McfrBlocks.TALL_ACACIA_STOOL, 2), "BSSB", "F  F", "FSSF", "F  F", 'F', McfrBlocks.REFINED_ACACIA_FENCE, 'S',
+        Items.STICK, 'B', new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 4));
+    addLargeRecipe(new ItemStack(McfrBlocks.TALL_DARK_OAK_STOOL, 2), "BSSB", "F  F", "FSSF", "F  F", 'F', McfrBlocks.REFINED_DARK_OAK_FENCE, 'S',
+        Items.STICK, 'B', new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 5));
 
-    addLargeRecipe(new ItemStack(McfrBlocks.WOODEN_ARMCHAIR), "W    ", "W    ", "WWWW ", "LLLLL", "LWWWL", 'W', new ItemStack(Blocks.LOG, 1, 1), 'L', new ItemStack(Blocks.LOG, 1, 1));
-    addLargeRecipe(new ItemStack(McfrBlocks.STONE_ARMCHAIR), "W    ", "W    ", "WTTT ", "LLLLL", "LWWWL", 'W', Blocks.STONE, 'L', new ItemStack(Blocks.STONEBRICK, 1, 3), 'T', new ItemStack(McfrBlocks.CARPET, 1, 12));
+    addLargeRecipe(new ItemStack(McfrBlocks.WOODEN_ARMCHAIR), "W    ", "W    ", "WWWW ", "LLLLL", "LWWWL", 'W', new ItemStack(Blocks.LOG, 1, 1), 'L',
+        new ItemStack(Blocks.LOG, 1, 1));
+    addLargeRecipe(new ItemStack(McfrBlocks.STONE_ARMCHAIR), "W    ", "W    ", "WTTT ", "LLLLL", "LWWWL", 'W', Blocks.STONE, 'L',
+        new ItemStack(Blocks.STONEBRICK, 1, 3), 'T', new ItemStack(McfrBlocks.CARPET, 1, 12));
 
-    addLargeRecipe(new ItemStack(McfrBlocks.OAK_BENCH, 2), "SSSSS", "F   F", 'F', McfrBlocks.REFINED_OAK_FENCE, 'S', new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 0));
-    addLargeRecipe(new ItemStack(McfrBlocks.SPRUCE_BENCH, 2), "SSSSS", "F   F", 'F', McfrBlocks.REFINED_SPRUCE_FENCE, 'S', new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 1));
-    addLargeRecipe(new ItemStack(McfrBlocks.BIRCH_BENCH, 2), "SSSSS", "F   F", 'F', McfrBlocks.REFINED_BIRCH_FENCE, 'S', new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 2));
-    addLargeRecipe(new ItemStack(McfrBlocks.JUNGLE_BENCH, 2), "SSSSS", "F   F", 'F', McfrBlocks.REFINED_JUNGLE_FENCE, 'S', new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 3));
-    addLargeRecipe(new ItemStack(McfrBlocks.ACACIA_BENCH, 2), "SSSSS", "F   F", 'F', McfrBlocks.REFINED_ACACIA_FENCE, 'S', new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 4));
-    addLargeRecipe(new ItemStack(McfrBlocks.DARK_OAK_BENCH, 2), "SSSSS", "F   F", 'F', McfrBlocks.REFINED_DARK_OAK_FENCE, 'S', new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 5));
+    addLargeRecipe(new ItemStack(McfrBlocks.OAK_BENCH, 2), "SSSSS", "F   F", 'F', McfrBlocks.REFINED_OAK_FENCE, 'S',
+        new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 0));
+    addLargeRecipe(new ItemStack(McfrBlocks.SPRUCE_BENCH, 2), "SSSSS", "F   F", 'F', McfrBlocks.REFINED_SPRUCE_FENCE, 'S',
+        new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 1));
+    addLargeRecipe(new ItemStack(McfrBlocks.BIRCH_BENCH, 2), "SSSSS", "F   F", 'F', McfrBlocks.REFINED_BIRCH_FENCE, 'S',
+        new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 2));
+    addLargeRecipe(new ItemStack(McfrBlocks.JUNGLE_BENCH, 2), "SSSSS", "F   F", 'F', McfrBlocks.REFINED_JUNGLE_FENCE, 'S',
+        new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 3));
+    addLargeRecipe(new ItemStack(McfrBlocks.ACACIA_BENCH, 2), "SSSSS", "F   F", 'F', McfrBlocks.REFINED_ACACIA_FENCE, 'S',
+        new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 4));
+    addLargeRecipe(new ItemStack(McfrBlocks.DARK_OAK_BENCH, 2), "SSSSS", "F   F", 'F', McfrBlocks.REFINED_DARK_OAK_FENCE, 'S',
+        new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 5));
 
     // Tables
-    addLargeRecipe(new ItemStack(McfrBlocks.TABLE, 3, 0), "SSSSS", "F   F", "F   F", "F   F", 'S', new ItemStack(McfrBlocks.REFINED_PLANKS_SLAB, 1, 0), 'F', McfrBlocks.REFINED_OAK_FENCE);
-    addLargeRecipe(new ItemStack(McfrBlocks.TABLE, 3, 1), "SSSSS", "F   F", "F   F", "F   F", 'S', new ItemStack(McfrBlocks.REFINED_PLANKS_SLAB, 1, 1), 'F', McfrBlocks.REFINED_SPRUCE_FENCE);
-    addLargeRecipe(new ItemStack(McfrBlocks.TABLE, 3, 2), "SSSSS", "F   F", "F   F", "F   F", 'S', new ItemStack(McfrBlocks.REFINED_PLANKS_SLAB, 1, 2), 'F', McfrBlocks.REFINED_BIRCH_FENCE);
-    addLargeRecipe(new ItemStack(McfrBlocks.TABLE, 3, 3), "SSSSS", "F   F", "F   F", "F   F", 'S', new ItemStack(McfrBlocks.REFINED_PLANKS_SLAB, 1, 3), 'F', McfrBlocks.REFINED_JUNGLE_FENCE);
-    addLargeRecipe(new ItemStack(McfrBlocks.TABLE, 3, 4), "SSSSS", "F   F", "F   F", "F   F", 'S', new ItemStack(McfrBlocks.REFINED_PLANKS_SLAB, 1, 4), 'F', McfrBlocks.REFINED_ACACIA_FENCE);
-    addLargeRecipe(new ItemStack(McfrBlocks.TABLE, 3, 5), "SSSSS", "F   F", "F   F", "F   F", 'S', new ItemStack(McfrBlocks.REFINED_PLANKS_SLAB, 1, 5), 'F', McfrBlocks.REFINED_DARK_OAK_FENCE);
-    addLargeRecipe(new ItemStack(McfrBlocks.END_TABLE, 3, 0), "SSSSS", "F   F", "F   F", 'S', new ItemStack(McfrBlocks.REFINED_PLANKS_SLAB, 1, 0), 'F', McfrBlocks.REFINED_OAK_FENCE);
-    addLargeRecipe(new ItemStack(McfrBlocks.END_TABLE, 3, 1), "SSSSS", "F   F", "F   F", 'S', new ItemStack(McfrBlocks.REFINED_PLANKS_SLAB, 1, 1), 'F', McfrBlocks.REFINED_SPRUCE_FENCE);
-    addLargeRecipe(new ItemStack(McfrBlocks.END_TABLE, 3, 2), "SSSSS", "F   F", "F   F", 'S', new ItemStack(McfrBlocks.REFINED_PLANKS_SLAB, 1, 2), 'F', McfrBlocks.REFINED_BIRCH_FENCE);
-    addLargeRecipe(new ItemStack(McfrBlocks.END_TABLE, 3, 3), "SSSSS", "F   F", "F   F", 'S', new ItemStack(McfrBlocks.REFINED_PLANKS_SLAB, 1, 3), 'F', McfrBlocks.REFINED_JUNGLE_FENCE);
-    addLargeRecipe(new ItemStack(McfrBlocks.END_TABLE, 3, 4), "SSSSS", "F   F", "F   F", 'S', new ItemStack(McfrBlocks.REFINED_PLANKS_SLAB, 1, 4), 'F', McfrBlocks.REFINED_ACACIA_FENCE);
-    addLargeRecipe(new ItemStack(McfrBlocks.END_TABLE, 3, 5), "SSSSS", "F   F", "F   F", 'S', new ItemStack(McfrBlocks.REFINED_PLANKS_SLAB, 1, 5), 'F', McfrBlocks.REFINED_DARK_OAK_FENCE);
-    for (Block fence : WOODEN_FENCES)
-      addLargeRecipe(new ItemStack(McfrBlocks.TABLE_WITH_FOOT, 2), "LLLLL", "  F  ", "  F  ", "  F  ", " SSS ", 'L', Blocks.LOG, 'F', fence, 'S', new ItemStack(Blocks.STONE));
+    addLargeRecipe(new ItemStack(McfrBlocks.TABLE, 3, 0), "SSSSS", "F   F", "F   F", "F   F", 'S',
+        new ItemStack(McfrBlocks.REFINED_PLANKS_SLAB, 1, 0), 'F', McfrBlocks.REFINED_OAK_FENCE);
+    addLargeRecipe(new ItemStack(McfrBlocks.TABLE, 3, 1), "SSSSS", "F   F", "F   F", "F   F", 'S',
+        new ItemStack(McfrBlocks.REFINED_PLANKS_SLAB, 1, 1), 'F', McfrBlocks.REFINED_SPRUCE_FENCE);
+    addLargeRecipe(new ItemStack(McfrBlocks.TABLE, 3, 2), "SSSSS", "F   F", "F   F", "F   F", 'S',
+        new ItemStack(McfrBlocks.REFINED_PLANKS_SLAB, 1, 2), 'F', McfrBlocks.REFINED_BIRCH_FENCE);
+    addLargeRecipe(new ItemStack(McfrBlocks.TABLE, 3, 3), "SSSSS", "F   F", "F   F", "F   F", 'S',
+        new ItemStack(McfrBlocks.REFINED_PLANKS_SLAB, 1, 3), 'F', McfrBlocks.REFINED_JUNGLE_FENCE);
+    addLargeRecipe(new ItemStack(McfrBlocks.TABLE, 3, 4), "SSSSS", "F   F", "F   F", "F   F", 'S',
+        new ItemStack(McfrBlocks.REFINED_PLANKS_SLAB, 1, 4), 'F', McfrBlocks.REFINED_ACACIA_FENCE);
+    addLargeRecipe(new ItemStack(McfrBlocks.TABLE, 3, 5), "SSSSS", "F   F", "F   F", "F   F", 'S',
+        new ItemStack(McfrBlocks.REFINED_PLANKS_SLAB, 1, 5), 'F', McfrBlocks.REFINED_DARK_OAK_FENCE);
+    addLargeRecipe(new ItemStack(McfrBlocks.END_TABLE, 3, 0), "SSSSS", "F   F", "F   F", 'S', new ItemStack(McfrBlocks.REFINED_PLANKS_SLAB, 1, 0),
+        'F', McfrBlocks.REFINED_OAK_FENCE);
+    addLargeRecipe(new ItemStack(McfrBlocks.END_TABLE, 3, 1), "SSSSS", "F   F", "F   F", 'S', new ItemStack(McfrBlocks.REFINED_PLANKS_SLAB, 1, 1),
+        'F', McfrBlocks.REFINED_SPRUCE_FENCE);
+    addLargeRecipe(new ItemStack(McfrBlocks.END_TABLE, 3, 2), "SSSSS", "F   F", "F   F", 'S', new ItemStack(McfrBlocks.REFINED_PLANKS_SLAB, 1, 2),
+        'F', McfrBlocks.REFINED_BIRCH_FENCE);
+    addLargeRecipe(new ItemStack(McfrBlocks.END_TABLE, 3, 3), "SSSSS", "F   F", "F   F", 'S', new ItemStack(McfrBlocks.REFINED_PLANKS_SLAB, 1, 3),
+        'F', McfrBlocks.REFINED_JUNGLE_FENCE);
+    addLargeRecipe(new ItemStack(McfrBlocks.END_TABLE, 3, 4), "SSSSS", "F   F", "F   F", 'S', new ItemStack(McfrBlocks.REFINED_PLANKS_SLAB, 1, 4),
+        'F', McfrBlocks.REFINED_ACACIA_FENCE);
+    addLargeRecipe(new ItemStack(McfrBlocks.END_TABLE, 3, 5), "SSSSS", "F   F", "F   F", 'S', new ItemStack(McfrBlocks.REFINED_PLANKS_SLAB, 1, 5),
+        'F', McfrBlocks.REFINED_DARK_OAK_FENCE);
+    addLargeRecipe(new ItemStack(McfrBlocks.TABLE_WITH_FOOT, 2), "DDDDD", "  F  ", " FFF ", "F   F", 'D', McfrBlocks.REFINED_PLANKS_SLAB, 'F',
+        McfrBlocks.REFINED_OAK_FENCE);
 
     // Étagères
-    addLargeRecipe(new ItemStack(McfrBlocks.OAK_SHELF, 3), "BBBBB", "SS SS", "F   F", 'F', McfrBlocks.REFINED_OAK_FENCE, 'S', new ItemStack(McfrBlocks.REFINED_PLANKS_SLAB, 1, 0), 'B', new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 0));
-    addLargeRecipe(new ItemStack(McfrBlocks.SPRUCE_SHELF, 3), "BBBBB", "SS SS", "F   F", 'F', McfrBlocks.REFINED_SPRUCE_FENCE, 'S', new ItemStack(McfrBlocks.REFINED_PLANKS_SLAB, 1, 1), 'B', new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 1));
-    addLargeRecipe(new ItemStack(McfrBlocks.BIRCH_SHELF, 3), "BBBBB", "SS SS", "F   F", 'F', McfrBlocks.REFINED_BIRCH_FENCE, 'S', new ItemStack(McfrBlocks.REFINED_PLANKS_SLAB, 1, 2), 'B', new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 2));
-    addLargeRecipe(new ItemStack(McfrBlocks.JUNGLE_SHELF, 3), "BBBBB", "SS SS", "F   F", 'F', McfrBlocks.REFINED_JUNGLE_FENCE, 'S', new ItemStack(McfrBlocks.REFINED_PLANKS_SLAB, 1, 3), 'B', new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 3));
-    addLargeRecipe(new ItemStack(McfrBlocks.JUNGLE_SHELF, 3), "BBBBB", "SS SS", "F   F", 'F', McfrBlocks.REFINED_ACACIA_FENCE, 'S', new ItemStack(McfrBlocks.REFINED_PLANKS_SLAB, 1, 4), 'B', new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 4));
-    addLargeRecipe(new ItemStack(McfrBlocks.JUNGLE_SHELF, 3), "BBBBB", "SS SS", "F   F", 'F', McfrBlocks.REFINED_DARK_OAK_FENCE, 'S', new ItemStack(McfrBlocks.REFINED_PLANKS_SLAB, 1, 5), 'B', new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 5));
+    addLargeRecipe(new ItemStack(McfrBlocks.OAK_SHELF, 3), "BBBBB", "SS SS", "F   F", 'F', McfrBlocks.REFINED_OAK_FENCE, 'S',
+        new ItemStack(McfrBlocks.REFINED_PLANKS_SLAB, 1, 0), 'B', new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 0));
+    addLargeRecipe(new ItemStack(McfrBlocks.SPRUCE_SHELF, 3), "BBBBB", "SS SS", "F   F", 'F', McfrBlocks.REFINED_SPRUCE_FENCE, 'S',
+        new ItemStack(McfrBlocks.REFINED_PLANKS_SLAB, 1, 1), 'B', new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 1));
+    addLargeRecipe(new ItemStack(McfrBlocks.BIRCH_SHELF, 3), "BBBBB", "SS SS", "F   F", 'F', McfrBlocks.REFINED_BIRCH_FENCE, 'S',
+        new ItemStack(McfrBlocks.REFINED_PLANKS_SLAB, 1, 2), 'B', new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 2));
+    addLargeRecipe(new ItemStack(McfrBlocks.JUNGLE_SHELF, 3), "BBBBB", "SS SS", "F   F", 'F', McfrBlocks.REFINED_JUNGLE_FENCE, 'S',
+        new ItemStack(McfrBlocks.REFINED_PLANKS_SLAB, 1, 3), 'B', new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 3));
+    addLargeRecipe(new ItemStack(McfrBlocks.JUNGLE_SHELF, 3), "BBBBB", "SS SS", "F   F", 'F', McfrBlocks.REFINED_ACACIA_FENCE, 'S',
+        new ItemStack(McfrBlocks.REFINED_PLANKS_SLAB, 1, 4), 'B', new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 4));
+    addLargeRecipe(new ItemStack(McfrBlocks.JUNGLE_SHELF, 3), "BBBBB", "SS SS", "F   F", 'F', McfrBlocks.REFINED_DARK_OAK_FENCE, 'S',
+        new ItemStack(McfrBlocks.REFINED_PLANKS_SLAB, 1, 5), 'B', new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 5));
     for (Block fence : WOODEN_FENCES)
-      addLargeRecipe(new ItemStack(McfrBlocks.STONE_SHELF, 3), "BBBBB", "SS SS", "F   F", 'F', fence, 'S', new ItemStack(Blocks.STONE_SLAB), 'B', new ItemStack(Blocks.STONE));
+      addLargeRecipe(new ItemStack(McfrBlocks.STONE_SHELF, 3), "BBBBB", "SS SS", "F   F", 'F', fence, 'S', new ItemStack(Blocks.STONE_SLAB), 'B',
+          new ItemStack(Blocks.STONE));
 
     for (Block log : LOGS) {
       addLargeRecipe(new ItemStack(McfrBlocks.SUPPORT, 8), "BBBBB", "B S  ", "BS   ", "B    ", 'B', log, 'S', Items.STICK);
@@ -692,10 +847,11 @@ public final class McfrCrafts {
 
     /* Minecraft */
 
-    addShapedRecipe(new ItemStack(Items.SUGAR), "S", "S", "#", 'S', McfrItems.SUGAR_CANES, '#', McfrItems.KITCHEN_MORTAR);
     addShapedRecipe(new ItemStack(Items.COOKIE), "#S#", "PPP", '#', McfrItems.COCOA, 'S', Items.SUGAR, 'P', McfrItems.CAKE_DOUGH);
-    addShapedRecipe(new ItemStack(Items.PUMPKIN_PIE), "CFC", "UUU", "PPP", 'F', new ItemStack(McfrItems.FLASK, 1, 0), 'P', McfrItems.BREAD_DOUGH, 'U', Blocks.PUMPKIN, 'C', Items.CARROT);
-    addLargeRecipe(new ItemStack(Items.CAKE), "SSASS", "PFEFP", "PPPPP", 'F', new ItemStack(McfrItems.FLASK, 1, 0), 'P', McfrItems.CAKE_DOUGH, 'S', Items.SUGAR, 'E', Items.EGG, 'A', Items.APPLE);
+    addShapedRecipe(new ItemStack(Items.PUMPKIN_PIE), "CFC", "UUU", "PPP", 'F', new ItemStack(McfrItems.FLASK, 1, 0), 'P', McfrItems.BREAD_DOUGH, 'U',
+        Blocks.PUMPKIN, 'C', Items.CARROT);
+    addLargeRecipe(new ItemStack(Items.CAKE), "SSASS", "PFEFP", "PPPPP", 'F', new ItemStack(McfrItems.FLASK, 1, 0), 'P', McfrItems.CAKE_DOUGH, 'S',
+        Items.SUGAR, 'E', Items.EGG, 'A', Items.APPLE);
 
     addShapedRecipe(new ItemStack(Items.FLINT_AND_STEEL), " F", "S ", 'F', Items.FLINT, 'S', Items.IRON_INGOT);
 
@@ -705,26 +861,33 @@ public final class McfrCrafts {
 
     addShapedRecipe(new ItemStack(Items.FISHING_ROD, 1), " S", "SF", 'S', Items.STICK, 'F', Items.STRING);
 
-    addShapedRecipe(new ItemStack(Items.DYE, 2, 0), "#", "#", "M", '#', McfrItems.INK, 'M', McfrItems.KITCHEN_MORTAR);
-    addShapedRecipe(new ItemStack(Items.DYE, 2, 0), "#", "#", "M", '#', new ItemStack(Items.COAL, 1, 0), 'M', McfrItems.KITCHEN_MORTAR);
-    addShapedRecipe(new ItemStack(Items.DYE, 2, 0), "#", "#", "M", '#', new ItemStack(Items.COAL, 1, 1), 'M', McfrItems.KITCHEN_MORTAR);
-    addShapedRecipe(new ItemStack(Items.DYE, 2, 1), "#", "#", "M", '#', Blocks.RED_FLOWER, 'M', McfrItems.KITCHEN_MORTAR);
-    addShapedRecipe(new ItemStack(Items.DYE, 2, 2), "#", "#", "M", '#', Blocks.CACTUS, 'M', McfrItems.KITCHEN_MORTAR);
-    addShapedRecipe(new ItemStack(Items.DYE, 2, 3), "#", "#", "M", '#', McfrItems.COCOA, 'M', McfrItems.KITCHEN_MORTAR);
-    addShapedRecipe(new ItemStack(Items.DYE, 2, 4), "#", "#", "M", '#', new ItemStack(McfrItems.ORE, 1, 2), 'M', McfrItems.KITCHEN_MORTAR);
-    addShapedRecipe(new ItemStack(Items.DYE, 2, 5), "#SC", '#', new ItemStack(Items.DYE, 1, 1), 'S', Items.STICK, 'C', new ItemStack(Items.DYE, 1, 4));
-    addShapedRecipe(new ItemStack(Items.DYE, 2, 6), "#SC", '#', new ItemStack(Items.DYE, 1, 2), 'S', Items.STICK, 'C', new ItemStack(Items.DYE, 1, 4));
-    addShapedRecipe(new ItemStack(Items.DYE, 2, 7), "#SC", '#', new ItemStack(Items.DYE, 1, 8), 'S', Items.STICK, 'C', new ItemStack(Items.DYE, 1, 15));
-    addShapedRecipe(new ItemStack(Items.DYE, 2, 8), "#SC", '#', new ItemStack(Items.DYE, 1, 0), 'S', Items.STICK, 'C', new ItemStack(Items.DYE, 1, 15));
-    addShapedRecipe(new ItemStack(Items.DYE, 2, 9), "#SC", '#', new ItemStack(Items.DYE, 1, 1), 'S', Items.STICK, 'C', new ItemStack(Items.DYE, 1, 15));
-    addShapedRecipe(new ItemStack(Items.DYE, 2, 10), "#SC", '#', new ItemStack(Items.DYE, 1, 2), 'S', Items.STICK, 'C', new ItemStack(Items.DYE, 1, 15));
-    addShapedRecipe(new ItemStack(Items.DYE, 2, 11), "#", "#", "M", '#', Blocks.YELLOW_FLOWER, 'M', McfrItems.KITCHEN_MORTAR);
-    addShapedRecipe(new ItemStack(Items.DYE, 2, 12), "#SC", '#', new ItemStack(Items.DYE, 1, 4), 'S', Items.STICK, 'C', new ItemStack(Items.DYE, 1, 15));
-    addShapedRecipe(new ItemStack(Items.DYE, 2, 13), "#SC", '#', new ItemStack(Items.DYE, 1, 5), 'S', Items.STICK, 'C', new ItemStack(Items.DYE, 1, 15));
-    addShapedRecipe(new ItemStack(Items.DYE, 2, 14), "#SC", '#', new ItemStack(Items.DYE, 1, 1), 'S', Items.STICK, 'C', new ItemStack(Items.DYE, 1, 11));
-    addShapedRecipe(new ItemStack(Items.DYE, 2, 15), "#", "#", "M", '#', Items.BONE, 'M', McfrItems.KITCHEN_MORTAR);
+    addShapedRecipe(new ItemStack(Items.DYE, 2, 5), "#SC", '#', new ItemStack(Items.DYE, 1, 1), 'S', Items.STICK, 'C',
+        new ItemStack(Items.DYE, 1, 4));
+    addShapedRecipe(new ItemStack(Items.DYE, 2, 6), "#SC", '#', new ItemStack(Items.DYE, 1, 2), 'S', Items.STICK, 'C',
+        new ItemStack(Items.DYE, 1, 4));
+    addShapedRecipe(new ItemStack(Items.DYE, 2, 7), "#SC", '#', new ItemStack(Items.DYE, 1, 8), 'S', Items.STICK, 'C',
+        new ItemStack(Items.DYE, 1, 15));
+    addShapedRecipe(new ItemStack(Items.DYE, 2, 8), "#SC", '#', new ItemStack(Items.DYE, 1, 0), 'S', Items.STICK, 'C',
+        new ItemStack(Items.DYE, 1, 15));
+    addShapedRecipe(new ItemStack(Items.DYE, 2, 9), "#SC", '#', new ItemStack(Items.DYE, 1, 1), 'S', Items.STICK, 'C',
+        new ItemStack(Items.DYE, 1, 15));
+    addShapedRecipe(new ItemStack(Items.DYE, 2, 10), "#SC", '#', new ItemStack(Items.DYE, 1, 2), 'S', Items.STICK, 'C',
+        new ItemStack(Items.DYE, 1, 15));
+    addShapedRecipe(new ItemStack(Items.DYE, 2, 12), "#SC", '#', new ItemStack(Items.DYE, 1, 4), 'S', Items.STICK, 'C',
+        new ItemStack(Items.DYE, 1, 15));
+    addShapedRecipe(new ItemStack(Items.DYE, 2, 13), "#SC", '#', new ItemStack(Items.DYE, 1, 5), 'S', Items.STICK, 'C',
+        new ItemStack(Items.DYE, 1, 15));
+    addShapedRecipe(new ItemStack(Items.DYE, 2, 14), "#SC", '#', new ItemStack(Items.DYE, 1, 1), 'S', Items.STICK, 'C',
+        new ItemStack(Items.DYE, 1, 11));
 
-    addLargeRecipe(new ItemStack(Items.BED), "RRRR#", "TTTTT", "DDDDD", "F   F", 'R', McfrItems.CLOTH_ROLL, 'T', McfrBlocks.CARPET, '#', Blocks.WOOL, 'F', Items.IRON_INGOT, 'D', McfrBlocks.REFINED_PLANKS_SLAB);
+    addLargeRecipe(new ItemStack(Items.BED), "RRRR#", "TTTTT", "DDDDD", "F   F", 'R', McfrItems.CLOTH_ROLL, 'T', McfrBlocks.CARPET, '#', Blocks.WOOL,
+        'F', Items.IRON_INGOT, 'D', McfrBlocks.REFINED_PLANKS_SLAB);
+    addLargeRecipe(new ItemStack(Items.BED), "RRRR#", "TTTTT", "DDDDD", "F   F", 'R', McfrItems.CLOTH_ROLL, 'T', Blocks.CARPET, '#', Blocks.WOOL, 'F',
+        Items.IRON_INGOT, 'D', McfrBlocks.REFINED_PLANKS_SLAB);
+    
+    // Shred
+    
+    addShapelessRecipe(new ItemStack(McfrItems.CLOTH_ROLL, 1), Items.BED);
 
     addShapedRecipe(new ItemStack(Items.STICK, 4), "#", "#", '#', McfrBlocks.EXOTIC_PLANKS);
 
@@ -738,7 +901,8 @@ public final class McfrCrafts {
 
     for (Block planks : PLANKS)
       for (Block fence : WOODEN_FENCES)
-        addLargeRecipe(new ItemStack(McfrItems.SAILBOAT, 1), "SSBSS", "TTBTT", "  B  ", "P B P", " PPP ", 'S', Items.STICK, 'T', McfrItems.CLOTH_ROLL, 'B', fence, 'P', planks);
+        addLargeRecipe(new ItemStack(McfrItems.SAILBOAT, 1), "SSBSS", "TTBTT", "  B  ", "P B P", " PPP ", 'S', Items.STICK, 'T', McfrItems.CLOTH_ROLL,
+            'B', fence, 'P', planks);
 
     // Artisanat
     for (Block planks : PLANKS)
@@ -754,20 +918,23 @@ public final class McfrCrafts {
     addShapedRecipe(new ItemStack(McfrItems.BARLEY_SEEDS, 2), "#", '#', McfrItems.BARLEY);
     addShapedRecipe(new ItemStack(McfrItems.GRAPE_SEEDS, 4), "S", 'S', McfrItems.GRAPES);
 
-    addShapedRecipe(new ItemStack(McfrItems.HEMP_LEAF, 1), "#", '#', McfrItems.HEMP_FLOWER);
-    addShapedRecipe(new ItemStack(McfrItems.HEMP_FIBER, 3), "###", '#', McfrItems.HEMP_FLOWER);
-    addShapelessRecipe(new ItemStack(McfrItems.HEMP_FIBER, 2), new ItemStack(McfrItems.HEMP_LEAF));
-    addShapedRecipe(new ItemStack(McfrItems.HEMP_OIL), "C", "C", "M", 'C', McfrItems.HEMP_LEAF, 'M', McfrItems.KITCHEN_MORTAR);
+    addShapedRecipe(new ItemStack(McfrItems.HEMP_FIBER, 3), "###", '#', McfrItems.HEMP);
+    addShapelessRecipe(new ItemStack(McfrItems.HEMP_LEAF, 1), new ItemStack(McfrItems.HEMP));
 
-    addShapedRecipe(new ItemStack(McfrItems.FERTILIZER), "BBB", "CCC", "###", 'B', new ItemStack(Items.DYE, 1, 15), 'C', McfrItems.HEMP_OIL, '#', McfrItems.POOP);
+    addShapedRecipe(new ItemStack(McfrItems.FERTILIZER), "BBB", "CCC", "###", 'B', new ItemStack(Items.DYE, 1, 15), 'C', McfrItems.HEMP_OIL, '#',
+        McfrItems.POOP);
 
     // Tonneaux
     for (Block planks : PLANKS)
       addShapedRecipe(new ItemStack(McfrItems.EMPTY_BARREL), "###", "IHI", "###", '#', planks, 'H', Blocks.TRIPWIRE_HOOK, 'I', Items.IRON_INGOT);
-    addShapedRecipe(new ItemStack(McfrItems.BEER_BARREL), "###", "#B#", "#T#", '#', McfrItems.BARLEY, 'B', Items.WATER_BUCKET, 'T', McfrItems.EMPTY_BARREL);
-    addShapedRecipe(new ItemStack(McfrItems.CIDER_BARREL), "###", "#B#", "#T#", '#', Items.APPLE, 'B', Items.WATER_BUCKET, 'T', McfrItems.EMPTY_BARREL);
-    addShapedRecipe(new ItemStack(McfrItems.WINE_BARREL), "###", "#B#", "#T#", '#', McfrItems.GRAPES, 'B', Items.WATER_BUCKET, 'T', McfrItems.EMPTY_BARREL);
-    addShapedRecipe(new ItemStack(McfrItems.RUM_BARREL), "###", "#B#", "#T#", '#', McfrItems.SUGAR_CANES, 'B', Items.WATER_BUCKET, 'T', McfrItems.EMPTY_BARREL);
+    addShapedRecipe(new ItemStack(McfrItems.BEER_BARREL), "###", "#B#", "#T#", '#', McfrItems.BARLEY, 'B', Items.WATER_BUCKET, 'T',
+        McfrItems.EMPTY_BARREL);
+    addShapedRecipe(new ItemStack(McfrItems.CIDER_BARREL), "###", "#B#", "#T#", '#', Items.APPLE, 'B', Items.WATER_BUCKET, 'T',
+        McfrItems.EMPTY_BARREL);
+    addShapedRecipe(new ItemStack(McfrItems.WINE_BARREL), "###", "#B#", "#T#", '#', McfrItems.GRAPES, 'B', Items.WATER_BUCKET, 'T',
+        McfrItems.EMPTY_BARREL);
+    addShapedRecipe(new ItemStack(McfrItems.RUM_BARREL), "###", "#B#", "#T#", '#', McfrItems.SUGAR_CANES, 'B', Items.WATER_BUCKET, 'T',
+        McfrItems.EMPTY_BARREL);
 
     // Récipients vides
     for (Block planks : PLANKS) {
@@ -779,13 +946,13 @@ public final class McfrCrafts {
 
     // Nourriture
     addShapedRecipe(new ItemStack(McfrItems.CAKE_DOUGH, 8), "FFF", "FOF", "FFF", 'O', Items.EGG, 'F', McfrItems.FLOUR);
-    addLargeRecipe(new ItemStack(McfrItems.CHOCOLATE_CAKE, 1), "##S##", "PFEFP", "PPPPP", 'F', new ItemStack(McfrItems.FLASK, 1, 1), 'S', Items.SUGAR, 'P', McfrItems.CAKE_DOUGH, 'E', Items.EGG, '#', McfrItems.COCOA);
+    addLargeRecipe(new ItemStack(McfrItems.CHOCOLATE_CAKE, 1), "##S##", "PFEFP", "PPPPP", 'F', new ItemStack(McfrItems.FLASK, 1, 1), 'S', Items.SUGAR,
+        'P', McfrItems.CAKE_DOUGH, 'E', Items.EGG, '#', McfrItems.COCOA);
     addShapedRecipe(new ItemStack(McfrItems.APPLE_PIE, 1), "ASA", "AAA", "PPP", 'S', Items.SUGAR, 'P', McfrItems.BREAD_DOUGH, 'A', Items.APPLE);
     addShapedRecipe(new ItemStack(McfrItems.PUMPKIN_SOUP), "P", "P", "B", 'P', Blocks.PUMPKIN, 'B', Items.BOWL);
-    addShapedRecipe(new ItemStack(McfrItems.FLOUR, 1), "#", "#", "S", '#', Items.WHEAT_SEEDS, 'S', McfrItems.KITCHEN_MORTAR);
     addShapedRecipe(new ItemStack(McfrItems.BREAD_DOUGH, 1), "###", '#', McfrItems.FLOUR);
     for (Block planks : PLANKS)
-      addShapedRecipe(new ItemStack(McfrItems.KITCHEN_MORTAR, 16), "  S", "#S#", " # ", '#', planks, 'S', Items.STICK);
+      addShapedRecipe(new ItemStack(McfrBlocks.MORTAR, 1), "  S", "#S#", " # ", '#', planks, 'S', Items.STICK);
     addShapedRecipe(new ItemStack(McfrItems.POIGRUME_COOKIE, 2), "#S#", "PPP", '#', McfrItems.POIGRUME, 'S', Items.SUGAR, 'P', McfrItems.CAKE_DOUGH);
 
     // Portes solides
@@ -797,18 +964,31 @@ public final class McfrCrafts {
     addShapedRecipe(new ItemStack(Items.DARK_OAK_DOOR), "##", "##", "##", '#', new ItemStack(Blocks.LOG, 1, 5));
 
     // Portes artisan
-    addLargeRecipe(new ItemStack(McfrItems.CRAFTSMAN_OAK_DOOR), "LFWWL", "LWVWL", "LFLFL", "LWWWL", "LFWWL", 'L', new ItemStack(Blocks.LOG, 1, 0), 'W', new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 0), 'F', Items.IRON_INGOT, 'V', new ItemStack(McfrBlocks.MOUCHARABIEH_PANE, 1, 2));
-    addLargeRecipe(new ItemStack(McfrItems.CRAFTSMAN_SPRUCE_DOOR), "LFWWL", "LWVWL", "LFLFL", "LWWWL", "LFWWL", 'L', new ItemStack(Blocks.LOG, 1, 1), 'W', new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 1), 'F', Items.IRON_INGOT, 'V', new ItemStack(McfrBlocks.MOUCHARABIEH_PANE, 1, 2));
-    addLargeRecipe(new ItemStack(McfrItems.CRAFTSMAN_BIRCH_DOOR), "LFWWL", "LWVWL", "LFLFL", "LWWWL", "LFWWL", 'L', new ItemStack(Blocks.LOG, 1, 2), 'W', new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 2), 'F', Items.IRON_INGOT, 'V', new ItemStack(McfrBlocks.MOUCHARABIEH_PANE, 1, 2));
-    addLargeRecipe(new ItemStack(McfrItems.CRAFTSMAN_JUNGLE_DOOR), "LFWWL", "LWVWL", "LFLFL", "LWWWL", "LFWWL", 'L', new ItemStack(Blocks.LOG, 1, 3), 'W', new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 3), 'F', Items.IRON_INGOT, 'V', new ItemStack(McfrBlocks.MOUCHARABIEH_PANE, 1, 2));
+    addLargeRecipe(new ItemStack(McfrItems.CRAFTSMAN_OAK_DOOR), "LFWWL", "LWVWL", "LFLFL", "LWWWL", "LFWWL", 'L', new ItemStack(Blocks.LOG, 1, 0),
+        'W', new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 0), 'F', Items.IRON_INGOT, 'V', new ItemStack(McfrBlocks.MOUCHARABIEH_PANE, 1, 2));
+    addLargeRecipe(new ItemStack(McfrItems.CRAFTSMAN_SPRUCE_DOOR), "LFWWL", "LWVWL", "LFLFL", "LWWWL", "LFWWL", 'L', new ItemStack(Blocks.LOG, 1, 1),
+        'W', new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 1), 'F', Items.IRON_INGOT, 'V', new ItemStack(McfrBlocks.MOUCHARABIEH_PANE, 1, 2));
+    addLargeRecipe(new ItemStack(McfrItems.CRAFTSMAN_BIRCH_DOOR), "LFWWL", "LWVWL", "LFLFL", "LWWWL", "LFWWL", 'L', new ItemStack(Blocks.LOG, 1, 2),
+        'W', new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 2), 'F', Items.IRON_INGOT, 'V', new ItemStack(McfrBlocks.MOUCHARABIEH_PANE, 1, 2));
+    addLargeRecipe(new ItemStack(McfrItems.CRAFTSMAN_JUNGLE_DOOR), "LFWWL", "LWVWL", "LFLFL", "LWWWL", "LFWWL", 'L', new ItemStack(Blocks.LOG, 1, 3),
+        'W', new ItemStack(McfrBlocks.REFINED_PLANKS, 1, 3), 'F', Items.IRON_INGOT, 'V', new ItemStack(McfrBlocks.MOUCHARABIEH_PANE, 1, 2));
 
     // Lits
     for (Block slab : WOODEN_SLABS) {
       addShapedRecipe(new ItemStack(McfrItems.HAY_BED), "FFF", "DDD", 'F', Blocks.HAY_BLOCK, 'D', slab);
-      addLargeRecipe(new ItemStack(McfrItems.NORMAL_BED), "TTTT#", "FFFFF", "DDDDD", 'T', McfrBlocks.CARPET, '#', Blocks.WOOL, 'F', Blocks.HAY_BLOCK, 'D', slab);
+      addLargeRecipe(new ItemStack(McfrItems.NORMAL_BED), "TTTT#", "FFFFF", "DDDDD", 'T', McfrBlocks.CARPET, '#', Blocks.WOOL, 'F', Blocks.HAY_BLOCK,
+          'D', slab);
+      addLargeRecipe(new ItemStack(McfrItems.NORMAL_BED), "TTTT#", "FFFFF", "DDDDD", 'T', Blocks.CARPET, '#', Blocks.WOOL, 'F', Blocks.HAY_BLOCK,
+          'D', slab);
     }
     addShapedRecipe(new ItemStack(McfrItems.STONE_BED), "CCC", "DDD", 'C', Items.LEATHER, 'D', new ItemStack(Blocks.STONE_SLAB));
     addLargeRecipe(new ItemStack(McfrItems.SLEEPING_BAG), "TTTT#", "#####", 'T', McfrBlocks.CARPET, '#', Blocks.WOOL);
+    addLargeRecipe(new ItemStack(McfrItems.SLEEPING_BAG), "TTTT#", "#####", 'T', Blocks.CARPET, '#', Blocks.WOOL);
+    // Shred
+    addShapelessRecipe(new ItemStack(Blocks.HAY_BLOCK, 1), McfrItems.HAY_BED);
+    addShapelessRecipe(new ItemStack(Blocks.HAY_BLOCK, 1), McfrItems.NORMAL_BED);
+    addShapelessRecipe(new ItemStack(Items.LEATHER, 1), McfrItems.STONE_BED);
+    addShapelessRecipe(new ItemStack(Blocks.WOOL, 2), McfrItems.SLEEPING_BAG);
 
     // Éclairage
     for (Block planks : PLANKS)
@@ -838,32 +1018,72 @@ public final class McfrCrafts {
 
     // Outils
     for (Block slab : WOODEN_SLABS) {
-      addShapedRecipe(new ItemStack(McfrItems.GRAPNEL, 1, 0), " CT", " EC", "P  ", 'T', Blocks.TRIPWIRE_HOOK, 'E', McfrBlocks.ROPE_LADDER, 'C', slab, 'P', new ItemStack(McfrItems.SWORD_HANDLE));
-      addLargeRecipe(new ItemStack(McfrItems.GRAPNEL, 1, 1), "  CT", "  EC", " E  ", "P   ", 'T', Blocks.TRIPWIRE_HOOK, 'E', McfrBlocks.ROPE_LADDER, 'C', slab, 'P', new ItemStack(McfrItems.SWORD_HANDLE));
-      addLargeRecipe(new ItemStack(McfrItems.GRAPNEL, 1, 2), "   CT", "   EC", "  E  ", " E   ", "P    ", 'T', Blocks.TRIPWIRE_HOOK, 'E', McfrBlocks.ROPE_LADDER, 'C', slab, 'P', new ItemStack(McfrItems.SWORD_HANDLE));
+      addShapedRecipe(new ItemStack(McfrItems.GRAPNEL, 1, 0), " CT", " EC", "P  ", 'T', Blocks.TRIPWIRE_HOOK, 'E', McfrBlocks.ROPE_LADDER, 'C', slab,
+          'P', new ItemStack(McfrItems.SWORD_HANDLE));
+      addLargeRecipe(new ItemStack(McfrItems.GRAPNEL, 1, 1), "  CT", "  EC", " E  ", "P   ", 'T', Blocks.TRIPWIRE_HOOK, 'E', McfrBlocks.ROPE_LADDER,
+          'C', slab, 'P', new ItemStack(McfrItems.SWORD_HANDLE));
+      addLargeRecipe(new ItemStack(McfrItems.GRAPNEL, 1, 2), "   CT", "   EC", "  E  ", " E   ", "P    ", 'T', Blocks.TRIPWIRE_HOOK, 'E',
+          McfrBlocks.ROPE_LADDER, 'C', slab, 'P', new ItemStack(McfrItems.SWORD_HANDLE));
     }
-    addShapedRecipe(new ItemStack(McfrItems.GRAPNEL, 1, 3), " CT", " EC", "P  ", 'T', Blocks.TRIPWIRE_HOOK, 'E', McfrBlocks.CHAIN_LADDER, 'C', Items.IRON_INGOT, 'P', new ItemStack(McfrItems.SWORD_HANDLE));
-    addLargeRecipe(new ItemStack(McfrItems.GRAPNEL, 1, 4), "  CT", "  EC", " E  ", "P   ", 'T', Blocks.TRIPWIRE_HOOK, 'E', McfrBlocks.CHAIN_LADDER, 'C', Items.IRON_INGOT, 'P', new ItemStack(McfrItems.SWORD_HANDLE));
-    addLargeRecipe(new ItemStack(McfrItems.GRAPNEL, 1, 5), "   CT", "   EC", "  E  ", " E   ", "P    ", 'T', Blocks.TRIPWIRE_HOOK, 'E', McfrBlocks.CHAIN_LADDER, 'C', Items.IRON_INGOT, 'P', new ItemStack(McfrItems.SWORD_HANDLE));
+    addShapedRecipe(new ItemStack(McfrItems.GRAPNEL, 1, 3), " CT", " EC", "P  ", 'T', Blocks.TRIPWIRE_HOOK, 'E', McfrBlocks.CHAIN_LADDER, 'C',
+        Items.IRON_INGOT, 'P', new ItemStack(McfrItems.SWORD_HANDLE));
+    addLargeRecipe(new ItemStack(McfrItems.GRAPNEL, 1, 4), "  CT", "  EC", " E  ", "P   ", 'T', Blocks.TRIPWIRE_HOOK, 'E', McfrBlocks.CHAIN_LADDER,
+        'C', Items.IRON_INGOT, 'P', new ItemStack(McfrItems.SWORD_HANDLE));
+    addLargeRecipe(new ItemStack(McfrItems.GRAPNEL, 1, 5), "   CT", "   EC", "  E  ", " E   ", "P    ", 'T', Blocks.TRIPWIRE_HOOK, 'E',
+        McfrBlocks.CHAIN_LADDER, 'C', Items.IRON_INGOT, 'P', new ItemStack(McfrItems.SWORD_HANDLE));
 
-    addLargeRecipe(new ItemStack(McfrItems.GOOD_FISHING_ROD), "    S", "   SF", "  SFF", " SF H", "P    ", 'S', Items.STICK, 'F', Items.STRING, 'H', Blocks.TRIPWIRE_HOOK, 'P', new ItemStack(McfrItems.SWORD_HANDLE));
-    addLargeRecipe(new ItemStack(McfrItems.FISHING_NET), "SSPSS", "CFFFC", "CFFFC", " CFC ", "  C  ", 'S', Items.STICK, 'F', Items.STRING, 'C', McfrBlocks.ROPE, 'P', new ItemStack(McfrItems.SWORD_HANDLE));
+    addLargeRecipe(new ItemStack(McfrItems.GOOD_FISHING_ROD), "    S", "   SF", "  SFF", " SF H", "P    ", 'S', Items.STICK, 'F', Items.STRING, 'H',
+        Blocks.TRIPWIRE_HOOK, 'P', new ItemStack(McfrItems.SWORD_HANDLE));
+    addLargeRecipe(new ItemStack(McfrItems.FISHING_NET), "SSPSS", "CFFFC", "CFFFC", " CFC ", "  C  ", 'S', Items.STICK, 'F', Items.STRING, 'C',
+        McfrBlocks.ROPE, 'P', new ItemStack(McfrItems.SWORD_HANDLE));
 
     addShapedRecipe(new ItemStack(McfrItems.POINTY_STICK), " S", "S ", 'S', Items.STICK);
-    addShapedRecipe(new ItemStack(McfrItems.STONE_DAGGER), "  S", " S ", "P  ", 'S', Blocks.STONE, 'P', new ItemStack(McfrItems.SWORD_HANDLE));
-    addLargeRecipe(new ItemStack(McfrItems.STONE_SPEAR), "    I", "   S ", "  P  ", " P   ", "S    ", 'I', Blocks.COBBLESTONE, 'P', new ItemStack(McfrItems.SWORD_HANDLE), 'S', Items.STICK);
+    addLargeRecipe(new ItemStack(McfrItems.STONE_SPEAR), "    I", "   S ", "  P  ", " P   ", "S    ", 'I', Blocks.COBBLESTONE, 'P',
+        new ItemStack(McfrItems.SWORD_HANDLE), 'S', Items.STICK);
 
     // Arcs
-    addLargeRecipe(new ItemStack(McfrItems.BARBARIAN_BOW), "  ISI", "  S F", "ISPF ", "S F  ", "IF   ", 'I', Items.IRON_INGOT, 'S', Items.STICK, 'P', new ItemStack(McfrItems.SWORD_HANDLE), 'F', Items.STRING);
-    addLargeRecipe(new ItemStack(McfrItems.LONG_BOW), "  SSS", " P  F", "S  F ", "S F  ", "SF   ", 'S', Items.STICK, 'P', new ItemStack(McfrItems.SWORD_HANDLE), 'F', Items.STRING);
-    addLargeRecipe(new ItemStack(McfrItems.HUNTER_BOW), "  TSS", " PSF ", "TSF  ", "SF   ", "S    ", 'T', McfrItems.CLOTH_ROLL, 'S', Items.STICK, 'P', new ItemStack(McfrItems.SWORD_HANDLE), 'F', Items.STRING);
-    addLargeRecipe(new ItemStack(McfrItems.LONG_HUNTER_BOW), "  TSS", " PS F", "TSPF ", "S F  ", "SF   ", 'T', McfrItems.CLOTH_ROLL, 'S', Items.STICK, 'P', new ItemStack(McfrItems.SWORD_HANDLE), 'F', Items.STRING);
+    addLargeRecipe(new ItemStack(McfrItems.BARBARIAN_BOW), "  ISI", "  S F", "ISPF ", "S F  ", "IF   ", 'I', Items.IRON_INGOT, 'S', Items.STICK, 'P',
+        new ItemStack(McfrItems.SWORD_HANDLE), 'F', Items.STRING);
+    addLargeRecipe(new ItemStack(McfrItems.LONG_BOW), "  SSS", " P  F", "S  F ", "S F  ", "SF   ", 'S', Items.STICK, 'P',
+        new ItemStack(McfrItems.SWORD_HANDLE), 'F', Items.STRING);
+    addLargeRecipe(new ItemStack(McfrItems.HUNTER_BOW), "  TSS", " PSF ", "TSF  ", "SF   ", "S    ", 'T', McfrItems.CLOTH_ROLL, 'S', Items.STICK, 'P',
+        new ItemStack(McfrItems.SWORD_HANDLE), 'F', Items.STRING);
+    addLargeRecipe(new ItemStack(McfrItems.LONG_HUNTER_BOW), "  TSS", " PS F", "TSPF ", "S F  ", "SF   ", 'T', McfrItems.CLOTH_ROLL, 'S', Items.STICK,
+        'P', new ItemStack(McfrItems.SWORD_HANDLE), 'F', Items.STRING);
 
-    // Arumure d'assassin
-    addLargeRecipe(new ItemStack(McfrItems.ASSASSIN_HELMET), " TPT ", "TTFTT", "TF FT", "TFFFT", "TTTTT", 'P', McfrItems.HUNTED_SKIN, 'T', McfrItems.CLOTH_ROLL, 'F', McfrItems.THREAD_COIL);
-    addLargeRecipe(new ItemStack(McfrItems.ASSASSIN_CHESTPLATE), " T C ", "TTMTT", "PCCPM", "CPPCM", "PPPPC", 'P', McfrItems.HUNTED_SKIN, 'T', McfrItems.CLOTH_ROLL, 'M', McfrItems.STITCH, 'C', Items.LEATHER);
-    addLargeRecipe(new ItemStack(McfrItems.ASSASSIN_LEGGINGS), "CCMCC", "TTTTT", "TTPTT", "TPPPT", "PP PP", 'P', McfrItems.HUNTED_SKIN, 'T', McfrItems.CLOTH_ROLL, 'M', McfrItems.STITCH, 'C', Items.LEATHER);
-    addLargeRecipe(new ItemStack(McfrItems.ASSASSIN_BOOTS), "FT TF", "PP PP", 'P', McfrItems.HUNTED_SKIN, 'T', McfrItems.CLOTH_ROLL, 'F', McfrItems.THREAD_COIL);
+    // Armure d'assassin
+    addLargeRecipe(new ItemStack(McfrItems.ASSASSIN_HELMET), " TPT ", "TTFTT", "TF FT", "TFFFT", "TTTTT", 'P', McfrItems.HUNTED_SKIN, 'T',
+        McfrItems.CLOTH_ROLL, 'F', McfrItems.THREAD_COIL);
+    addLargeRecipe(new ItemStack(McfrItems.ASSASSIN_CHESTPLATE), " T C ", "TTMTT", "PCCPM", "CPPCM", "PPPPC", 'P', McfrItems.HUNTED_SKIN, 'T',
+        McfrItems.CLOTH_ROLL, 'M', McfrItems.STITCH, 'C', Items.LEATHER);
+    addLargeRecipe(new ItemStack(McfrItems.ASSASSIN_LEGGINGS), "CCMCC", "TTTTT", "TTPTT", "TPPPT", "PP PP", 'P', McfrItems.HUNTED_SKIN, 'T',
+        McfrItems.CLOTH_ROLL, 'M', McfrItems.STITCH, 'C', Items.LEATHER);
+    addLargeRecipe(new ItemStack(McfrItems.ASSASSIN_BOOTS), "FT TF", "PP PP", 'P', McfrItems.HUNTED_SKIN, 'T', McfrItems.CLOTH_ROLL, 'F',
+        McfrItems.THREAD_COIL);
+     
+    // Shred
+    addShapelessRecipe(new ItemStack(McfrItems.CLOTH_ROLL, 3), McfrItems.ASSASSIN_HELMET);
+    addShapelessRecipe(new ItemStack(McfrItems.HUNTED_SKIN, 2), McfrItems.ASSASSIN_CHESTPLATE);
+    addShapelessRecipe(new ItemStack(McfrItems.CLOTH_ROLL, 2), McfrItems.ASSASSIN_LEGGINGS);
+    addShapelessRecipe(new ItemStack(McfrItems.HUNTED_SKIN, 1), McfrItems.ASSASSIN_BOOTS);
+
+    // Armure barbare
+    addLargeRecipe(new ItemStack(McfrItems.BARBARIAN_HELMET), " CMC ", "CPMPC", "MMMMM", "CP PC", 'P', McfrItems.HUNTED_SKIN, 'C', Items.LEATHER, 'M',
+        McfrItems.STITCH);
+    addLargeRecipe(new ItemStack(McfrItems.BARBARIAN_CHESTPLATE), "PP PP", "PC CP", "  M  ", " CPP ", "PCCCP", 'P', McfrItems.HUNTED_SKIN, 'C',
+        Items.LEATHER, 'M', McfrItems.STITCH);
+    addLargeRecipe(new ItemStack(McfrItems.BARBARIAN_LEGGINGS), "CCMCC", "PPPPP", "PP PP", "PP PP", "P   P", 'P', McfrItems.HUNTED_SKIN, 'C',
+        Items.LEATHER, 'M', McfrItems.STITCH);
+    addLargeRecipe(new ItemStack(McfrItems.BARBARIAN_BOOTS), "PP PP", "PM MP", "CC CC", 'P', McfrItems.HUNTED_SKIN, 'C', Items.LEATHER, 'M',
+        McfrItems.STITCH);
+    
+    // Shred
+    addShapelessRecipe(new ItemStack(McfrItems.STITCH, 2), McfrItems.BARBARIAN_HELMET);
+    addShapelessRecipe(new ItemStack(McfrItems.HUNTED_SKIN, 2), McfrItems.BARBARIAN_CHESTPLATE);
+    addShapelessRecipe(new ItemStack(McfrItems.HUNTED_SKIN, 3), McfrItems.BARBARIAN_LEGGINGS);
+    addShapelessRecipe(new ItemStack(McfrItems.HUNTED_SKIN, 1), McfrItems.BARBARIAN_BOOTS);
+    
+    addShapelessRecipe(new ItemStack(McfrItems.THREAD_COIL, 1), Blocks.WOOL);
   }
 
   /**
@@ -899,71 +1119,108 @@ public final class McfrCrafts {
     removeRecipe(new ItemStack(Items.IRON_DOOR));
     removeRecipe(new ItemStack(Blocks.IRON_TRAPDOOR));
 
-    addAnvilRecipe(new ItemStack(McfrItems.IRON_BOW), 60, 90, "  #B#", " P  S", "#  S ", "B S  ", "#S   ", '#', Items.IRON_INGOT, 'P', new ItemStack(McfrItems.SWORD_HANDLE, 1, 0), 'B', Items.STICK, 'S', Items.STRING);
-    addAnvilRecipe(new ItemStack(McfrItems.GOLDEN_BOW), 45, 70, "  ##N", " P  S", "#  S ", "# S  ", "NS   ", '#', Items.GOLD_INGOT, 'P', new ItemStack(McfrItems.SWORD_HANDLE, 1, 2), 'N', Items.GOLD_NUGGET, 'S', Items.STRING);
+    addAnvilRecipe(new ItemStack(McfrItems.IRON_BOW), 60, 90, "  #B#", " P  S", "#  S ", "B S  ", "#S   ", '#', Items.IRON_INGOT, 'P',
+        new ItemStack(McfrItems.SWORD_HANDLE, 1, 0), 'B', Items.STICK, 'S', Items.STRING);
+    addAnvilRecipe(new ItemStack(McfrItems.GOLDEN_BOW), 45, 70, "  ##N", " P  S", "#  S ", "# S  ", "NS   ", '#', Items.GOLD_INGOT, 'P',
+        new ItemStack(McfrItems.SWORD_HANDLE, 1, 2), 'N', Items.GOLD_NUGGET, 'S', Items.STRING);
 
-    addAnvilRecipe(new ItemStack(Items.IRON_SWORD), 60, 90, "    F", " F F ", " FF  ", " PFF ", "L    ", 'L', new ItemStack(McfrItems.ORE, 1, 2), 'F', Items.IRON_INGOT, 'P', new ItemStack(McfrItems.SWORD_HANDLE, 1, 0));
-    addAnvilRecipe(new ItemStack(Items.GOLDEN_SWORD), 45, 70, "    G", " G G ", " GN  ", " PGG ", "G    ", 'N', Items.GOLD_NUGGET, 'G', Items.GOLD_INGOT, 'P', new ItemStack(McfrItems.SWORD_HANDLE, 1, 2));
+    addAnvilRecipe(new ItemStack(Items.IRON_SWORD), 60, 90, "    F", " F F ", " FF  ", " PFF ", "L    ", 'L', new ItemStack(McfrItems.ORE, 1, 2), 'F',
+        Items.IRON_INGOT, 'P', new ItemStack(McfrItems.SWORD_HANDLE, 1, 0));
+    addAnvilRecipe(new ItemStack(Items.GOLDEN_SWORD), 45, 70, "    G", " G G ", " GN  ", " PGG ", "G    ", 'N', Items.GOLD_NUGGET, 'G',
+        Items.GOLD_INGOT, 'P', new ItemStack(McfrItems.SWORD_HANDLE, 1, 2));
 
     addAnvilRecipe(new ItemStack(Items.IRON_HELMET), 70, 100, " FFF ", "FFFFF", "F   F", "FF FF", " F F ", 'F', Items.IRON_INGOT);
-    addAnvilRecipe(new ItemStack(Items.IRON_CHESTPLATE), 70, 100, " FCF ", "FMFFF", "CFFFF", "CCMCC", "FFFFF", 'M', McfrItems.STITCH, 'C', Items.LEATHER, 'F', Items.IRON_INGOT);
-    addAnvilRecipe(new ItemStack(Items.IRON_LEGGINGS), 70, 100, "CCMCC", "FFFFF", "FF FF", "FF FF", "FF FF", 'M', McfrItems.STITCH, 'C', Items.LEATHER, 'F', Items.IRON_INGOT);
+    addAnvilRecipe(new ItemStack(Items.IRON_CHESTPLATE), 70, 100, " FCF ", "FMFFF", "CFFFF", "CCMCC", "FFFFF", 'M', McfrItems.STITCH, 'C',
+        Items.LEATHER, 'F', Items.IRON_INGOT);
+    addAnvilRecipe(new ItemStack(Items.IRON_LEGGINGS), 70, 100, "CCMCC", "FFFFF", "FF FF", "FF FF", "FF FF", 'M', McfrItems.STITCH, 'C',
+        Items.LEATHER, 'F', Items.IRON_INGOT);
     addAnvilRecipe(new ItemStack(Items.IRON_BOOTS), 70, 100, "CF FC", "CF FC", "FF FF", 'F', Items.IRON_INGOT, 'C', Items.LEATHER);
 
-    addAnvilRecipe(new ItemStack(Items.GOLDEN_HELMET), 35, 60, " GLG ", "GGGGG", "G G G", "GG GG", "M   M", 'G', Items.GOLD_INGOT, 'L', new ItemStack(Blocks.WOOL, 1, 14), 'M', new ItemStack(McfrItems.STITCH, 1, 1));
-    addAnvilRecipe(new ItemStack(Items.GOLDEN_CHESTPLATE), 35, 60, " FFF ", "OFFFO", "OOFOO", "COCOC", "OCOCO", 'O', Items.GOLD_INGOT, 'F', Items.IRON_INGOT, 'C', Items.LEATHER);
-    addAnvilRecipe(new ItemStack(Items.GOLDEN_LEGGINGS), 35, 60, "CCMCC", "CCGCC", "CG GC", "GG GG", "GG GG", 'G', Items.GOLD_INGOT, 'C', Items.LEATHER, 'M', new ItemStack(McfrItems.STITCH, 1, 1));
+    addAnvilRecipe(new ItemStack(Items.GOLDEN_HELMET), 35, 60, " GLG ", "GGGGG", "G G G", "GG GG", "M   M", 'G', Items.GOLD_INGOT, 'L',
+        new ItemStack(Blocks.WOOL, 1, 14), 'M', new ItemStack(McfrItems.STITCH, 1, 1));
+    addAnvilRecipe(new ItemStack(Items.GOLDEN_CHESTPLATE), 35, 60, " FFF ", "OFFFO", "OOFOO", "COCOC", "OCOCO", 'O', Items.GOLD_INGOT, 'F',
+        Items.IRON_INGOT, 'C', Items.LEATHER);
+    addAnvilRecipe(new ItemStack(Items.GOLDEN_LEGGINGS), 35, 60, "CCMCC", "CCGCC", "CG GC", "GG GG", "GG GG", 'G', Items.GOLD_INGOT, 'C',
+        Items.LEATHER, 'M', new ItemStack(McfrItems.STITCH, 1, 1));
     addAnvilRecipe(new ItemStack(Items.GOLDEN_BOOTS), 35, 60, "CG GC", "CG GC", "GG GG", 'G', Items.GOLD_INGOT, 'C', Items.LEATHER);
 
-    addAnvilRecipe(new ItemStack(Items.CHAINMAIL_HELMET), 70, 100, "FFFFF", "FFFFF", "M F M", "M   M", " M M ", 'F', Items.IRON_INGOT, 'M', McfrItems.STITCH);
-    addAnvilRecipe(new ItemStack(Items.CHAINMAIL_CHESTPLATE), 70, 100, " T T ", "TTTMT", "MTCTM", "MMMCM", "MMMMC", 'T', McfrItems.CLOTH_ROLL, 'M', McfrItems.STITCH, 'C', Items.LEATHER);
-    addAnvilRecipe(new ItemStack(Items.CHAINMAIL_LEGGINGS), 70, 100, "CCMCC", "TTMTT", "TM MT", "MM MM", "M   M", 'T', McfrItems.CLOTH_ROLL, 'M', McfrItems.STITCH, 'C', Items.LEATHER);
-    addAnvilRecipe(new ItemStack(Items.CHAINMAIL_BOOTS), 70, 100, " F F ", "MF FM", "MC CM", 'F', Items.IRON_INGOT, 'M', McfrItems.STITCH, 'C', Items.LEATHER);
+    addAnvilRecipe(new ItemStack(Items.CHAINMAIL_HELMET), 70, 100, "FFFFF", "FFFFF", "M F M", "M   M", " M M ", 'F', Items.IRON_INGOT, 'M',
+        McfrItems.STITCH);
+    addAnvilRecipe(new ItemStack(Items.CHAINMAIL_CHESTPLATE), 70, 100, " T T ", "TTTMT", "MTCTM", "MMMCM", "MMMMC", 'T', McfrItems.CLOTH_ROLL, 'M',
+        McfrItems.STITCH, 'C', Items.LEATHER);
+    addAnvilRecipe(new ItemStack(Items.CHAINMAIL_LEGGINGS), 70, 100, "CCMCC", "TTMTT", "TM MT", "MM MM", "M   M", 'T', McfrItems.CLOTH_ROLL, 'M',
+        McfrItems.STITCH, 'C', Items.LEATHER);
+    addAnvilRecipe(new ItemStack(Items.CHAINMAIL_BOOTS), 70, 100, " F F ", "MF FM", "MC CM", 'F', Items.IRON_INGOT, 'M', McfrItems.STITCH, 'C',
+        Items.LEATHER);
 
-    addAnvilRecipe(new ItemStack(McfrItems.GOLDEN_CHAINMAIL_HELMET), 35, 60, " CGC ", "CGGGC", "G G G", "MGGGM", "M   M", 'C', Items.LEATHER, 'M', new ItemStack(McfrItems.STITCH, 1, 1), 'G', Items.GOLD_INGOT);
-    addAnvilRecipe(new ItemStack(McfrItems.GOLDEN_CHAINMAIL_CHESTPLATE), 35, 60, " G C ", "GG#GG", "GCMMG", "CC#CC", "MMMMM", 'C', Items.LEATHER, 'M', new ItemStack(McfrItems.STITCH, 1, 1), '#', McfrItems.STITCH, 'G', Items.GOLD_INGOT);
-    addAnvilRecipe(new ItemStack(McfrItems.GOLDEN_CHAINMAIL_LEGGINGS), 35, 60, "CCCCC", "MMMMM", "MMTMM", "MTTTM", "TT TT", 'C', Items.LEATHER, 'M', new ItemStack(McfrItems.STITCH, 1, 1), 'T', McfrItems.CLOTH_ROLL, 'G', Items.GOLD_INGOT);
-    addAnvilRecipe(new ItemStack(McfrItems.GOLDEN_CHAINMAIL_BOOTS), 35, 60, "MG GM", "MG GM", "CC CC", 'C', Items.LEATHER, 'M', new ItemStack(McfrItems.STITCH, 1, 1), 'G', Items.GOLD_INGOT);
+    addAnvilRecipe(new ItemStack(McfrItems.GOLDEN_CHAINMAIL_HELMET), 35, 60, " CGC ", "CGGGC", "G G G", "MGGGM", "M   M", 'C', Items.LEATHER, 'M',
+        new ItemStack(McfrItems.STITCH, 1, 1), 'G', Items.GOLD_INGOT);
+    addAnvilRecipe(new ItemStack(McfrItems.GOLDEN_CHAINMAIL_CHESTPLATE), 35, 60, " G C ", "GG#GG", "GCMMG", "CC#CC", "MMMMM", 'C', Items.LEATHER, 'M',
+        new ItemStack(McfrItems.STITCH, 1, 1), '#', McfrItems.STITCH, 'G', Items.GOLD_INGOT);
+    addAnvilRecipe(new ItemStack(McfrItems.GOLDEN_CHAINMAIL_LEGGINGS), 35, 60, "CCCCC", "MMMMM", "MMTMM", "MTTTM", "TT TT", 'C', Items.LEATHER, 'M',
+        new ItemStack(McfrItems.STITCH, 1, 1), 'T', McfrItems.CLOTH_ROLL, 'G', Items.GOLD_INGOT);
+    addAnvilRecipe(new ItemStack(McfrItems.GOLDEN_CHAINMAIL_BOOTS), 35, 60, "MG GM", "MG GM", "CC CC", 'C', Items.LEATHER, 'M',
+        new ItemStack(McfrItems.STITCH, 1, 1), 'G', Items.GOLD_INGOT);
 
     addAnvilRecipe(new ItemStack(Items.CAULDRON), 70, 90, "I   I", "I   I", "II II", "BI IB", "I I I", 'I', Items.IRON_INGOT, 'B', Blocks.PLANKS);
     addAnvilRecipe(new ItemStack(Items.BUCKET), 60, 100, "I I", "I I", " I ", 'I', Items.IRON_INGOT);
 
     addAnvilRecipe(new ItemStack(Items.MINECART, 1), 60, 100, "I   I", "I   I", "IIII ", 'I', Items.IRON_INGOT);
     addAnvilRecipe(new ItemStack(Blocks.RAIL, 16), 60, 100, "I I I", "ISSSI", "S I S", "ISSSI", "I I I", 'I', Items.IRON_INGOT, 'S', Items.STICK);
-    addAnvilRecipe(new ItemStack(Blocks.GOLDEN_RAIL, 6), 40, 70, "GSRSG", "G G G", "GSRSG", "G G G", "GSRSG", 'G', Items.GOLD_INGOT, 'S', Items.STICK, 'R', Items.REDSTONE);
-    addAnvilRecipe(new ItemStack(Blocks.DETECTOR_RAIL, 6), 60, 100, "ISSSI", "RIIIR", "ISISI", "RIIIR", "ISSSI", 'I', Items.IRON_INGOT, 'S', Items.STICK, 'R', Items.REDSTONE);
+    addAnvilRecipe(new ItemStack(Blocks.GOLDEN_RAIL, 6), 40, 70, "GSRSG", "G G G", "GSRSG", "G G G", "GSRSG", 'G', Items.GOLD_INGOT, 'S', Items.STICK,
+        'R', Items.REDSTONE);
+    addAnvilRecipe(new ItemStack(Blocks.DETECTOR_RAIL, 6), 60, 100, "ISSSI", "RIIIR", "ISISI", "RIIIR", "ISSSI", 'I', Items.IRON_INGOT, 'S',
+        Items.STICK, 'R', Items.REDSTONE);
 
     addAnvilRecipe(new ItemStack(Items.CLOCK, 1), 40, 70, " # ", "#X#", " # ", '#', Items.GOLD_INGOT, 'X', Items.REDSTONE);
     addAnvilRecipe(new ItemStack(Items.COMPASS, 1), 60, 100, " # ", "#X#", " # ", '#', Items.IRON_INGOT, 'X', McfrItems.STITCH);
     addAnvilRecipe(new ItemStack(Items.SHEARS), 60, 100, "  #  ", " #   ", " S  #", " SS# ", '#', Items.IRON_INGOT, 'S', Items.STICK);
 
-    addAnvilRecipe(new ItemStack(McfrBlocks.ANVIL), 125, 140, "BBBBB", " BBB ", "  W  ", " IWI ", "IIIII", 'B', Blocks.IRON_BLOCK, 'W', Blocks.PLANKS, 'I', Items.IRON_INGOT);
-    addAnvilRecipe(new ItemStack(McfrBlocks.STOVE), 60, 100, "IIIII", "II II", "IIIII", "B   B", "IBBBI", 'B', Blocks.IRON_BLOCK, 'I', Items.IRON_INGOT);
+    addAnvilRecipe(new ItemStack(McfrBlocks.ANVIL), 125, 140, "BBBBB", " BBB ", "  W  ", " IWI ", "IIIII", 'B', Blocks.IRON_BLOCK, 'W', Blocks.PLANKS,
+        'I', Items.IRON_INGOT);
+    addAnvilRecipe(new ItemStack(McfrBlocks.STOVE), 60, 100, "IIIII", "II II", "IIIII", "B   B", "IBBBI", 'B', Blocks.IRON_BLOCK, 'I',
+        Items.IRON_INGOT);
 
-    addAnvilRecipe(new ItemStack(McfrItems.SAW_BLADE, 2), 55, 96, "  #  ", " #B# ", "#BFB#", " #B# ", "  #  ", '#', Items.IRON_INGOT, 'B', Blocks.IRON_BARS, 'F', Blocks.OAK_FENCE);
+    addAnvilRecipe(new ItemStack(McfrItems.SAW_BLADE, 2), 55, 96, "  #  ", " #B# ", "#BFB#", " #B# ", "  #  ", '#', Items.IRON_INGOT, 'B',
+        Blocks.IRON_BARS, 'F', Blocks.OAK_FENCE);
 
     addAnvilRecipe(new ItemStack(McfrItems.STITCH, 16), 60, 100, "  #  ", " # # ", " #   ", " # # ", "  #  ", '#', Items.IRON_INGOT);
     addAnvilRecipe(new ItemStack(McfrItems.STITCH, 16, 1), 40, 70, "  #  ", " # # ", " #   ", " # # ", "  #  ", '#', Items.GOLD_INGOT);
 
-    addAnvilRecipe(new ItemStack(McfrItems.IRON_DAGGER), 60, 90, "  I", " I ", "P  ", 'I', Items.IRON_INGOT, 'P', new ItemStack(McfrItems.SWORD_HANDLE));
+    addAnvilRecipe(new ItemStack(McfrItems.IRON_DAGGER), 60, 90, "  I", " I ", "P  ", 'I', Items.IRON_INGOT, 'P',
+        new ItemStack(McfrItems.SWORD_HANDLE));
     addAnvilRecipe(new ItemStack(Items.IRON_DOOR), 60, 100, "FFF", "FBF", "FBF", "FFF", "FFF", 'B', Blocks.IRON_BARS, 'F', Items.IRON_INGOT);
     addAnvilRecipe(new ItemStack(Blocks.IRON_TRAPDOOR), 60, 100, "FFF", "FBF", "FFF", 'B', Blocks.IRON_BARS, 'F', Items.IRON_INGOT);
 
-    addAnvilRecipe(new ItemStack(McfrItems.IRON_RAPIER), 60, 90, "    I", "   I ", "  I  ", "II   ", "PI   ", 'I', Items.IRON_INGOT, 'P', new ItemStack(McfrItems.SWORD_HANDLE));
-    addAnvilRecipe(new ItemStack(McfrItems.IRON_BASTARD), 60, 90, "   II", "  II ", " III ", " PI  ", "P    ", 'I', Items.IRON_INGOT, 'P', new ItemStack(McfrItems.SWORD_HANDLE));
-    addAnvilRecipe(new ItemStack(McfrItems.IRON_SPEAR), 60, 90, "    I", "   S ", "  P  ", " P   ", "S    ", 'I', Items.IRON_INGOT, 'P', new ItemStack(McfrItems.SWORD_HANDLE), 'S', Items.STICK);
-    addAnvilRecipe(new ItemStack(McfrItems.IRON_HALBERD), 60, 90, " II I", " III ", "  I  ", " S   ", "P    ", 'I', Items.IRON_INGOT, 'P', new ItemStack(McfrItems.SWORD_HANDLE), 'S', Items.STICK);
-    addAnvilRecipe(new ItemStack(McfrItems.IRON_BATTLE_AXE), 60, 90, " II  ", " III ", "  III", " S II", "P    ", 'I', Items.IRON_INGOT, 'P', new ItemStack(McfrItems.SWORD_HANDLE), 'S', Items.STICK);
-    addAnvilRecipe(new ItemStack(McfrItems.IRON_HAMMER), 60, 90, " II  ", " III ", "  III", " I II", "P    ", 'I', Items.IRON_INGOT, 'P', new ItemStack(McfrItems.SWORD_HANDLE));
-    addAnvilRecipe(new ItemStack(McfrItems.IRON_MACE), 60, 90, "   II", "  III", "  II ", " S   ", "P    ", 'I', Items.IRON_INGOT, 'P', new ItemStack(McfrItems.SWORD_HANDLE), 'S', Items.STICK);
+    addAnvilRecipe(new ItemStack(McfrItems.IRON_RAPIER), 60, 90, "    I", "   I ", "  I  ", "II   ", "PI   ", 'I', Items.IRON_INGOT, 'P',
+        new ItemStack(McfrItems.SWORD_HANDLE));
+    addAnvilRecipe(new ItemStack(McfrItems.IRON_BASTARD), 60, 90, "   II", "  II ", " III ", " PI  ", "P    ", 'I', Items.IRON_INGOT, 'P',
+        new ItemStack(McfrItems.SWORD_HANDLE));
+    addAnvilRecipe(new ItemStack(McfrItems.IRON_SPEAR), 60, 90, "    I", "   S ", "  P  ", " P   ", "S    ", 'I', Items.IRON_INGOT, 'P',
+        new ItemStack(McfrItems.SWORD_HANDLE), 'S', Items.STICK);
+    addAnvilRecipe(new ItemStack(McfrItems.IRON_HALBERD), 60, 90, " II I", " III ", "  I  ", " S   ", "P    ", 'I', Items.IRON_INGOT, 'P',
+        new ItemStack(McfrItems.SWORD_HANDLE), 'S', Items.STICK);
+    addAnvilRecipe(new ItemStack(McfrItems.IRON_BATTLE_AXE), 60, 90, " II  ", " III ", "  III", " S II", "P    ", 'I', Items.IRON_INGOT, 'P',
+        new ItemStack(McfrItems.SWORD_HANDLE), 'S', Items.STICK);
+    addAnvilRecipe(new ItemStack(McfrItems.IRON_WAR_HAMMER), 60, 90, " II  ", " III ", "  III", " I II", "P    ", 'I', Items.IRON_INGOT, 'P',
+        new ItemStack(McfrItems.SWORD_HANDLE));
+    addAnvilRecipe(new ItemStack(McfrItems.IRON_MACE), 60, 90, "   II", "  III", "  II ", " S   ", "P    ", 'I', Items.IRON_INGOT, 'P',
+        new ItemStack(McfrItems.SWORD_HANDLE), 'S', Items.STICK);
 
-    addAnvilRecipe(new ItemStack(McfrItems.GOLDEN_RAPIER), 45, 70, "    I", "   I ", "  I  ", "II   ", "PI   ", 'I', Items.GOLD_INGOT, 'P', new ItemStack(McfrItems.SWORD_HANDLE, 1, 2));
-    addAnvilRecipe(new ItemStack(McfrItems.GOLDEN_BASTARD), 45, 70, "   II", "  II ", " III ", " PI  ", "P    ", 'I', Items.GOLD_INGOT, 'P', new ItemStack(McfrItems.SWORD_HANDLE, 1, 2));
-    addAnvilRecipe(new ItemStack(McfrItems.GOLDEN_SPEAR), 45, 70, "    I", "   S ", "  P  ", " P   ", "S    ", 'I', Items.GOLD_INGOT, 'P', new ItemStack(McfrItems.SWORD_HANDLE, 1, 2), 'S', Items.STICK);
-    addAnvilRecipe(new ItemStack(McfrItems.GOLDEN_HALBERD), 45, 70, " II I", " III ", "  I  ", " S   ", "P    ", 'I', Items.GOLD_INGOT, 'P', new ItemStack(McfrItems.SWORD_HANDLE, 1, 2), 'S', Items.STICK);
-    addAnvilRecipe(new ItemStack(McfrItems.GOLDEN_BATTLE_AXE), 45, 70, " II  ", " III ", "  III", " S II", "P    ", 'I', Items.GOLD_INGOT, 'P', new ItemStack(McfrItems.SWORD_HANDLE, 1, 2), 'S', Items.STICK);
-    addAnvilRecipe(new ItemStack(McfrItems.GOLDEN_HAMMER), 45, 70, " II  ", " III ", "  III", " I II", "P    ", 'I', Items.GOLD_INGOT, 'P', new ItemStack(McfrItems.SWORD_HANDLE, 1, 2));
-    addAnvilRecipe(new ItemStack(McfrItems.GOLDEN_MACE), 45, 70, "   II", "  III", "  II ", " S   ", "P    ", 'I', Items.GOLD_INGOT, 'P', new ItemStack(McfrItems.SWORD_HANDLE, 1, 2), 'S', Items.STICK);
+    addAnvilRecipe(new ItemStack(McfrItems.GOLDEN_RAPIER), 45, 70, "    I", "   I ", "  I  ", "II   ", "PI   ", 'I', Items.GOLD_INGOT, 'P',
+        new ItemStack(McfrItems.SWORD_HANDLE, 1, 2));
+    addAnvilRecipe(new ItemStack(McfrItems.GOLDEN_BASTARD), 45, 70, "   II", "  II ", " III ", " PI  ", "P    ", 'I', Items.GOLD_INGOT, 'P',
+        new ItemStack(McfrItems.SWORD_HANDLE, 1, 2));
+    addAnvilRecipe(new ItemStack(McfrItems.GOLDEN_SPEAR), 45, 70, "    I", "   S ", "  P  ", " P   ", "S    ", 'I', Items.GOLD_INGOT, 'P',
+        new ItemStack(McfrItems.SWORD_HANDLE, 1, 2), 'S', Items.STICK);
+    addAnvilRecipe(new ItemStack(McfrItems.GOLDEN_HALBERD), 45, 70, " II I", " III ", "  I  ", " S   ", "P    ", 'I', Items.GOLD_INGOT, 'P',
+        new ItemStack(McfrItems.SWORD_HANDLE, 1, 2), 'S', Items.STICK);
+    addAnvilRecipe(new ItemStack(McfrItems.GOLDEN_BATTLE_AXE), 45, 70, " II  ", " III ", "  III", " S II", "P    ", 'I', Items.GOLD_INGOT, 'P',
+        new ItemStack(McfrItems.SWORD_HANDLE, 1, 2), 'S', Items.STICK);
+    addAnvilRecipe(new ItemStack(McfrItems.GOLDEN_WAR_HAMMER), 45, 70, " II  ", " III ", "  III", " I II", "P    ", 'I', Items.GOLD_INGOT, 'P',
+        new ItemStack(McfrItems.SWORD_HANDLE, 1, 2));
+    addAnvilRecipe(new ItemStack(McfrItems.GOLDEN_MACE), 45, 70, "   II", "  III", "  II ", " S   ", "P    ", 'I', Items.GOLD_INGOT, 'P',
+        new ItemStack(McfrItems.SWORD_HANDLE, 1, 2), 'S', Items.STICK);
   }
 
   /**
@@ -987,23 +1244,73 @@ public final class McfrCrafts {
     addFurnaceRecipe(new ItemStack(McfrItems.RAW_GALT_MEAT), new ItemStack(McfrItems.COOKED_GALT_MEAT));
     addFurnaceRecipe(new ItemStack(McfrItems.BREAD_DOUGH), new ItemStack(Items.BREAD));
     addFurnaceRecipe(new ItemStack(McfrBlocks.EXOTIC_LOG), new ItemStack(Items.COAL, 1, 1));
+    
+    // Shred
+    
+    addFurnaceRecipe(new ItemStack(Items.IRON_INGOT, 1), new ItemStack(Items.IRON_HELMET));
+    addFurnaceRecipe(new ItemStack(Items.IRON_INGOT, 2), new ItemStack(Items.IRON_CHESTPLATE));
+    addFurnaceRecipe(new ItemStack(Items.IRON_INGOT, 2), new ItemStack(Items.IRON_LEGGINGS));
+    addFurnaceRecipe(new ItemStack(Items.IRON_INGOT, 1), new ItemStack(Items.IRON_BOOTS));
+    addFurnaceRecipe(new ItemStack(Items.IRON_INGOT, 1), new ItemStack(Items.IRON_AXE));
+    addFurnaceRecipe(new ItemStack(Items.IRON_INGOT, 1), new ItemStack(Items.IRON_DOOR));
+    addFurnaceRecipe(new ItemStack(Items.IRON_INGOT, 1), new ItemStack(Items.IRON_PICKAXE));
+    addFurnaceRecipe(new ItemStack(Items.IRON_INGOT, 1), new ItemStack(Items.IRON_SWORD));
+    
+    addFurnaceRecipe(new ItemStack(Items.IRON_INGOT, 3), new ItemStack(Items.MINECART));
+    addFurnaceRecipe(new ItemStack(Items.IRON_INGOT, 1), new ItemStack(Items.BUCKET));
+    addFurnaceRecipe(new ItemStack(Items.IRON_INGOT, 2), new ItemStack(Blocks.IRON_TRAPDOOR));
+    addFurnaceRecipe(new ItemStack(Items.IRON_INGOT, 3), new ItemStack(Items.CAULDRON));
+
+    addFurnaceRecipe(new ItemStack(Items.IRON_INGOT, 1), new ItemStack(McfrItems.IRON_BASTARD));
+    addFurnaceRecipe(new ItemStack(Items.IRON_INGOT, 2), new ItemStack(McfrItems.IRON_BATTLE_AXE));
+    addFurnaceRecipe(new ItemStack(Items.IRON_INGOT, 1), new ItemStack(McfrItems.IRON_FLAIL));
+    addFurnaceRecipe(new ItemStack(Items.IRON_INGOT, 1), new ItemStack(McfrItems.IRON_HALBERD));
+    addFurnaceRecipe(new ItemStack(Items.IRON_INGOT, 2), new ItemStack(McfrItems.IRON_LONG_SWORD));
+    addFurnaceRecipe(new ItemStack(Items.IRON_INGOT, 1), new ItemStack(McfrItems.IRON_MACE));
+    addFurnaceRecipe(new ItemStack(Items.IRON_INGOT, 1), new ItemStack(McfrItems.IRON_SCIMITAR));
+    addFurnaceRecipe(new ItemStack(Items.IRON_INGOT, 1), new ItemStack(McfrItems.IRON_SPEAR));
+    addFurnaceRecipe(new ItemStack(Items.IRON_INGOT, 1), new ItemStack(McfrItems.IRON_STAFF));
+    addFurnaceRecipe(new ItemStack(Items.IRON_INGOT, 2), new ItemStack(McfrItems.IRON_WAR_HAMMER));
+    
+    addFurnaceRecipe(new ItemStack(Items.GOLD_INGOT, 1), new ItemStack(Items.GOLDEN_HELMET));
+    addFurnaceRecipe(new ItemStack(Items.GOLD_INGOT, 2), new ItemStack(Items.GOLDEN_CHESTPLATE));
+    addFurnaceRecipe(new ItemStack(Items.GOLD_INGOT, 2), new ItemStack(Items.GOLDEN_LEGGINGS));
+    addFurnaceRecipe(new ItemStack(Items.GOLD_INGOT, 1), new ItemStack(Items.GOLDEN_BOOTS));
+    addFurnaceRecipe(new ItemStack(Items.GOLD_INGOT, 1), new ItemStack(Items.GOLDEN_AXE));
+    addFurnaceRecipe(new ItemStack(Items.GOLD_INGOT, 1), new ItemStack(Items.GOLDEN_PICKAXE));
+    addFurnaceRecipe(new ItemStack(Items.GOLD_INGOT, 1), new ItemStack(Items.GOLDEN_SWORD));
+    
+    addFurnaceRecipe(new ItemStack(Items.GOLD_INGOT, 1), new ItemStack(McfrItems.GOLDEN_BASTARD));
+    addFurnaceRecipe(new ItemStack(Items.GOLD_INGOT, 2), new ItemStack(McfrItems.GOLDEN_BATTLE_AXE));
+    addFurnaceRecipe(new ItemStack(Items.GOLD_INGOT, 1), new ItemStack(McfrItems.GOLDEN_FLAIL));
+    addFurnaceRecipe(new ItemStack(Items.GOLD_INGOT, 1), new ItemStack(McfrItems.GOLDEN_HALBERD));
+    addFurnaceRecipe(new ItemStack(Items.GOLD_INGOT, 2), new ItemStack(McfrItems.GOLDEN_LONG_SWORD));
+    addFurnaceRecipe(new ItemStack(Items.GOLD_INGOT, 1), new ItemStack(McfrItems.GOLDEN_MACE));
+    addFurnaceRecipe(new ItemStack(Items.GOLD_INGOT, 1), new ItemStack(McfrItems.GOLDEN_SCIMITAR));
+    addFurnaceRecipe(new ItemStack(Items.GOLD_INGOT, 1), new ItemStack(McfrItems.GOLDEN_SPEAR));
+    addFurnaceRecipe(new ItemStack(Items.GOLD_INGOT, 1), new ItemStack(McfrItems.GOLDEN_STAFF));
+    addFurnaceRecipe(new ItemStack(Items.GOLD_INGOT, 2), new ItemStack(McfrItems.GOLDEN_WAR_HAMMER));
   }
 
   /**
    * Ajoute une recette d'escaliers.
    * 
-   * @param out le résultat
-   * @param in le matériau
+   * @param out
+   *          le résultat
+   * @param in
+   *          le matériau
    */
   private static void addStairsRecipe(Block out, ItemStack in) {
-    addShapedRecipe(new ItemStack(out, 4), "#  ", "## ", "###", '#', in);
+    addShapedRecipe(new ItemStack(out, 6), "#  ", "## ", "###", '#', in);
   }
 
   /**
    * Ajoute une recette de pente.
    * 
-   * @param out le résultat
-   * @param in le matériau
+   * @param out
+   *          le résultat
+   * @param in
+   *          le matériau
    */
   private static void addSlopeRecipe(Block out, ItemStack in) {
     addLargeRecipe(new ItemStack(out, 10), "#   ", "##  ", "### ", "####", '#', in);
@@ -1012,8 +1319,10 @@ public final class McfrCrafts {
   /**
    * Ajoute une recette de pyramide.
    * 
-   * @param out le résultat
-   * @param in le matériau
+   * @param out
+   *          le résultat
+   * @param in
+   *          le matériau
    */
   private static void addPyramidRecipe(Block out, ItemStack in) {
     addLargeRecipe(new ItemStack(out, 9), "  #  ", " ### ", "#####", '#', in);
@@ -1022,8 +1331,10 @@ public final class McfrCrafts {
   /**
    * Ajoute une recette de portillon.
    * 
-   * @param out le résultat
-   * @param in le matériau
+   * @param out
+   *          le résultat
+   * @param in
+   *          le matériau
    */
   private static void addFenceGateRecipe(ItemStack out, ItemStack in) {
     addLargeRecipe(out, "#####", "#   #", "#####", "#   #", '#', in);
@@ -1032,8 +1343,10 @@ public final class McfrCrafts {
   /**
    * Ajoute une recette de barrière.
    * 
-   * @param out le résultat
-   * @param in le matériau
+   * @param out
+   *          le résultat
+   * @param in
+   *          le matériau
    */
   private static void addFenceRecipe(ItemStack out, ItemStack in) {
     addLargeRecipe(out, "#   #", "#####", "#   #", "#####", "#   #", '#', in);
@@ -1042,8 +1355,10 @@ public final class McfrCrafts {
   /**
    * Ajoute une recette de muret.
    * 
-   * @param out le résultat
-   * @param in le matériau
+   * @param out
+   *          le résultat
+   * @param in
+   *          le matériau
    */
   private static void addWallRecipe(ItemStack out, ItemStack in) {
     addLargeRecipe(out, " ## ", "####", "####", "####", '#', in);
@@ -1052,8 +1367,10 @@ public final class McfrCrafts {
   /**
    * Ajoute une recette.
    * 
-   * @param output le résultat
-   * @param params les composants
+   * @param output
+   *          le résultat
+   * @param params
+   *          les composants
    */
   private static void addShapedRecipe(ItemStack output, Object... params) {
     GameRegistry.addShapedRecipe(output, params);
@@ -1062,8 +1379,10 @@ public final class McfrCrafts {
   /**
    * Ajoute une recette sans contrainte de disposition.
    * 
-   * @param output le résultat
-   * @param params les composants
+   * @param output
+   *          le résultat
+   * @param params
+   *          les composants
    */
   private static void addShapelessRecipe(ItemStack output, Object... params) {
     GameRegistry.addShapelessRecipe(output, params);
@@ -1072,8 +1391,10 @@ public final class McfrCrafts {
   /**
    * Ajoute une recette 5x5.
    * 
-   * @param result le résultat
-   * @param recipeComponents les composants
+   * @param result
+   *          le résultat
+   * @param recipeComponents
+   *          les composants
    */
   private static void addLargeRecipe(ItemStack result, Object... recipeComponents) {
     RawRecipe c = getComponents(recipeComponents);
@@ -1083,20 +1404,26 @@ public final class McfrCrafts {
   /**
    * Ajoute une recette pour l'enclume.
    * 
-   * @param result le résultat
-   * @param temperatureMin la température minimale requise pour obtenir le résultat
-   * @param temperatureMin la température maximale requise pour obtenir le résultat
-   * @param recipeComponents les composants
+   * @param result
+   *          le résultat
+   * @param temperatureMin
+   *          la température minimale requise pour obtenir le résultat
+   * @param temperatureMin
+   *          la température maximale requise pour obtenir le résultat
+   * @param recipeComponents
+   *          les composants
    */
   private static void addAnvilRecipe(ItemStack result, int temperatureMin, int temperatureMax, Object... recipeComponents) {
     RawRecipe c = getComponents(recipeComponents);
-    CraftingManager.getInstance().getRecipeList().add(new AnvilRecipe(c.getWidth(), c.getHeight(), c.getItems(), result, temperatureMin, temperatureMax));
+    CraftingManager.getInstance().getRecipeList()
+        .add(new AnvilRecipe(c.getWidth(), c.getHeight(), c.getItems(), result, temperatureMin, temperatureMax));
   }
 
   /**
    * Supprime les recettes dont la sortie correspond au stack donné.
    * 
-   * @param out le résultat
+   * @param out
+   *          le résultat
    */
   private static void removeRecipe(ItemStack out) {
     CraftingManager.getInstance().getRecipeList().removeIf(recipe -> {
@@ -1110,8 +1437,10 @@ public final class McfrCrafts {
   /**
    * Ajoute une recette pour le four.
    * 
-   * @param in le matériau
-   * @param out le résultat
+   * @param in
+   *          le matériau
+   * @param out
+   *          le résultat
    */
   private static void addFurnaceRecipe(ItemStack in, ItemStack out) {
     GameRegistry.addSmelting(in, out, 0);
@@ -1120,7 +1449,8 @@ public final class McfrCrafts {
   /**
    * Supprime les recettes du four dont la sortie correspond au stack donné.
    * 
-   * @param out le résultat
+   * @param out
+   *          le résultat
    */
   private static void removeFurnaceRecipe(ItemStack out) {
     Map<ItemStack, ItemStack> list = FurnaceRecipes.instance().getSmeltingList();
@@ -1138,7 +1468,8 @@ public final class McfrCrafts {
   /**
    * Extrait une recette brute à partir d'une liste d'objets.
    * 
-   * @param recipeComponents la liste des composants
+   * @param recipeComponents
+   *          la liste des composants
    * @return la recette brute
    */
   private static RawRecipe getComponents(Object... recipeComponents) {
@@ -1163,11 +1494,9 @@ public final class McfrCrafts {
 
       if (recipeComponents[i + 1] instanceof Item) {
         stack = new ItemStack((Item) recipeComponents[i + 1]);
-      }
-      else if (recipeComponents[i + 1] instanceof Block) {
+      } else if (recipeComponents[i + 1] instanceof Block) {
         stack = new ItemStack((Block) recipeComponents[i + 1], 1, 32767);
-      }
-      else if (recipeComponents[i + 1] instanceof ItemStack) {
+      } else if (recipeComponents[i + 1] instanceof ItemStack) {
         stack = (ItemStack) recipeComponents[i + 1];
       }
 
@@ -1181,8 +1510,7 @@ public final class McfrCrafts {
 
       if (charToItemStack.containsKey(c)) {
         stacks[j] = charToItemStack.get(c).copy();
-      }
-      else {
+      } else {
         stacks[j] = null;
       }
     }
@@ -1190,11 +1518,12 @@ public final class McfrCrafts {
     return new RawRecipe(width, height, stacks);
   }
 
-  private McfrCrafts() {}
+  private McfrCrafts() {
+  }
 
   /**
-   * Une recette brute sert à organiser les composants d'une recette afin de faciliter la
-   * déclaration.
+   * Une recette brute sert à organiser les composants d'une recette afin de
+   * faciliter la déclaration.
    * 
    * @author Mc-Fr
    */

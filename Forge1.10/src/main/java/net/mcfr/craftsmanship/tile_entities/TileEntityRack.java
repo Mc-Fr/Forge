@@ -2,12 +2,12 @@ package net.mcfr.craftsmanship.tile_entities;
 
 import java.util.Map;
 
+import net.mcfr.craftsmanship.guis.ContainerRack;
 import net.mcfr.decoration.container_blocks.tile_entities.TileEntityRestricted;
 import net.mcfr.utils.HashedItemStack;
 import net.mcfr.utils.ItemsLists;
 import net.mcfr.utils.NBTUtils;
 import net.minecraft.block.Block;
-import net.minecraft.inventory.Container;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
@@ -36,8 +36,8 @@ public abstract class TileEntityRack extends TileEntityRestricted implements ITi
    * @param blockClass la classe du bloc correspondant
    * @param containerClass la classe du conteneur correspondant
    */
-  public TileEntityRack(String name, EnumFacing facing, Class<? extends Block> blockClass, Class<? extends Container> containerClass) {
-    super(name, 2, 64, false, blockClass, containerClass);
+  public TileEntityRack(String name, EnumFacing facing, Class<? extends Block> blockClass) {
+    super(name, 2, 64, false, blockClass, ContainerRack.class);
     this.currentStack = null;
     this.remainingTicks = TRANSFORM_TIME;
     this.facing = facing;
@@ -172,7 +172,8 @@ public abstract class TileEntityRack extends TileEntityRestricted implements ITi
     super.readFromNBT(compound);
     this.facing = EnumFacing.getHorizontal(compound.getInteger("Facing"));
     this.remainingTicks = compound.getInteger("RemainingTicks");
-    this.currentStack = compound.hasKey("CurrentStack", NBTUtils.TAG_COMPOUND) ? ItemStack.loadItemStackFromNBT(compound.getCompoundTag("CurrentStack")) : null;
+    this.currentStack = compound.hasKey("CurrentStack", NBTUtils.TAG_COMPOUND)
+        ? ItemStack.loadItemStackFromNBT(compound.getCompoundTag("CurrentStack")) : null;
   }
 
   @Override

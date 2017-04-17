@@ -198,7 +198,6 @@ public class GuiMcfrMainMenu extends GuiScreen {
 
     this.buttonList.add(new GuiButton(1, this.width / 2 - 100, yOffset, "Serveur Roleplay"));
     this.buttonList.add(b = new GuiButton(2, this.width / 2 - 100, yOffset += step, "Serveur Freebuild"));
-    b.enabled = false;
     yOffset += step;
     this.buttonList.add(new GuiButton(3, this.width / 2 - 100, yOffset, 66, 20, "Site"));
     this.buttonList.add(new GuiButton(4, this.width / 2 - 32, yOffset, 65, 20, "Discord"));
@@ -224,8 +223,7 @@ public class GuiMcfrMainMenu extends GuiScreen {
         connectToServer("minecraft-fr.net:23457");
         break;
       case 2: // Serveur Freebuild
-        // TODO url freebuild ?
-        // connectToServer("???");
+        connectToServer("minecraft-fr.net:23461");
         break;
       case 3: // Lien site
         openLink("http://www.minecraft-fr.net");
@@ -293,7 +291,8 @@ public class GuiMcfrMainMenu extends GuiScreen {
     GlStateManager.disableAlpha();
     GlStateManager.disableCull();
     GlStateManager.depthMask(false);
-    GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
+    GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA,
+        GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
 
     for (int j = 0; j < 64; ++j) {
       GlStateManager.pushMatrix();
@@ -361,7 +360,8 @@ public class GuiMcfrMainMenu extends GuiScreen {
     GlStateManager.glTexParameteri(3553, 10240, 9729);
     GlStateManager.glCopyTexSubImage2D(3553, 0, 0, 0, 0, 0, 256, 256);
     GlStateManager.enableBlend();
-    GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
+    GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA,
+        GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
     GlStateManager.colorMask(true, true, true, false);
     Tessellator tessellator = Tessellator.getInstance();
     VertexBuffer vertexbuffer = tessellator.getBuffer();
@@ -464,7 +464,8 @@ public class GuiMcfrMainMenu extends GuiScreen {
     super.mouseClicked(mouseX, mouseY, mouseButton);
 
     synchronized (this.threadLock) {
-      if (!this.openGLWarning1.isEmpty() && mouseX >= this.openGLWarningX1 && mouseX <= this.openGLWarningX2 && mouseY >= this.openGLWarningY1 && mouseY <= this.openGLWarningY2) {
+      if (!this.openGLWarning1.isEmpty() && mouseX >= this.openGLWarningX1 && mouseX <= this.openGLWarningX2 && mouseY >= this.openGLWarningY1
+          && mouseY <= this.openGLWarningY2) {
         GuiConfirmOpenLink guiConfirmOpenLink = new GuiConfirmOpenLink(this, this.openGLWarningLink, 13, true);
         guiConfirmOpenLink.disableSecurityWarning();
         this.mc.displayGuiScreen(guiConfirmOpenLink);

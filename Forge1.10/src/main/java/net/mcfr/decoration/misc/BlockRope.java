@@ -48,7 +48,7 @@ public class BlockRope extends McfrBlock {
   }
 
   public BlockRope() {
-    super("rope_block", Material.CLOTH, SoundType.CLOTH, 0, 0.5f, null, -1, CreativeTabs.DECORATIONS);
+    super("rope_block", Material.CLOTH, SoundType.CLOTH, 0.5f, 0.5f, null, -1, CreativeTabs.DECORATIONS);
     setDefaultState(this.blockState.getBaseState().withProperty(SHAPE, EnumRailDirection.NORTH_SOUTH));
   }
 

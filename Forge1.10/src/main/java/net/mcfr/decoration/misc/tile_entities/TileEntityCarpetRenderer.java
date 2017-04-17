@@ -1,9 +1,10 @@
 package net.mcfr.decoration.misc.tile_entities;
 
-import static net.mcfr.utils.RenderUtils.*;
+import static net.mcfr.utils.RenderUtils.bindTex;
+import static net.mcfr.utils.RenderUtils.draw;
+import static net.mcfr.utils.RenderUtils.vertex;
 
 import net.mcfr.McfrBlocks;
-import net.mcfr.utils.RenderUtils;
 import net.mcfr.utils.math.Point2d;
 import net.minecraft.block.BlockSlab;
 import net.minecraft.block.BlockStairs;
@@ -35,7 +36,7 @@ public class TileEntityCarpetRenderer extends TileEntitySpecialRenderer<TileEnti
     GlStateManager.pushMatrix();
     GlStateManager.translate(x, y, z);
 
-    RenderUtils.fixLighting(te.getWorld(), te.getPos());
+    // RenderUtils.fixLighting(te.getWorld(), te.getPos());
     bindTex("minecraft:textures/blocks/wool_colored_" + EnumDyeColor.byMetadata(te.getMetadata()).getName() + ".png");
 
     if (isBottomHalfSlab(world, down)) {
@@ -570,7 +571,7 @@ public class TileEntityCarpetRenderer extends TileEntitySpecialRenderer<TileEnti
    */
   private boolean isBottomHalfSlab(IBlockAccess worldIn, BlockPos pos) {
     IBlockState state = worldIn.getBlockState(pos);
-    return state.getBlock() instanceof BlockSlab && state.getValue(BlockSlab.HALF) == BlockSlab.EnumBlockHalf.BOTTOM;
+    return state.getBlock() instanceof BlockSlab && !state.isFullCube() && state.getValue(BlockSlab.HALF) == BlockSlab.EnumBlockHalf.BOTTOM;
   }
 
   /**

@@ -30,12 +30,6 @@ public class ContainerRestricted extends Container {
    * @param blockClass la classe du bloc
    */
   public ContainerRestricted(IInventory playerInventory, IInventory chestInventory, EntityPlayer player, final Class<? extends Block> blockClass) {
-    // Bricolage...
-    if (player.isSpectator()) {
-      IInventory inventory = chestInventory;
-      chestInventory = playerInventory;
-      playerInventory = inventory;
-    }
     this.chestInventory = chestInventory;
     chestInventory.openInventory(player);
 
@@ -51,15 +45,15 @@ public class ContainerRestricted extends Container {
     }
 
     yOffset += TOP_OFFSET + INV_SEPARATOR;
-    for (int i = 0; i < 3; ++i) {
-      for (int j = 0; j < SIZE; ++j) {
+    for (int i = 0; i < 3; i++) {
+      for (int j = 0; j < SIZE; j++) {
         addSlotToContainer(new Slot(playerInventory, 9 + i * 9 + j, SIDE_OFFSET + j * SLOT_SIZE, yOffset));
       }
       yOffset += SLOT_SIZE;
     }
 
     yOffset += HOTBAR_SEPARATOR;
-    for (int i = 0; i < SIZE; ++i) {
+    for (int i = 0; i < SIZE; i++) {
       addSlotToContainer(new Slot(playerInventory, i, SIDE_OFFSET + i * SLOT_SIZE, yOffset));
     }
   }

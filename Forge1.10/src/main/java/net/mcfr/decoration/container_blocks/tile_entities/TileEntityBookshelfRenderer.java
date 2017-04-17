@@ -53,7 +53,7 @@ public class TileEntityBookshelfRenderer extends TileEntitySpecialRenderer<TileE
       }
     }
 
-    if (fillingRatio <= 0.25f)
+    if (fillingRatio == 0)
       step = 0;
     else if (fillingRatio <= 0.5f)
       step = 1;

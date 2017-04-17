@@ -16,5 +16,6 @@ public class BlockOldHay extends BlockHay {
     setRegistryName(name);
     setUnlocalizedName(NameUtils.getUnlocalizedName(name));
     setSoundType(SoundType.PLANT);
+    setHardness(0.5f);
   }
 }

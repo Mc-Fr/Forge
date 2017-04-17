@@ -16,16 +16,26 @@ public enum CustomGuiScreens {
   TANNING_RACK,
   /** Scie circulaire */
   SAW,
+  /** Mortier */
+  MORTAR,
   /** Grand atelier */
   LARGE_WORKBENCH,
   /** Bibliothèque */
   BOOKSHELF,
   /** Caisse */
   CRATE,
+  /** Caisse de construction */
+  CONSTRUCTION_CRATE,
   /** Fût de nourriture */
   FOOD_CRATE,
   /** Caissette */
   LITTLE_CHEST,
   /** Palette */
-  PALLET;
+  PALLET,
+  /** Table */
+  TABLE,
+  /** Table basse */
+  END_TABLE,
+  /** Table à pied */
+  FOOT_TABLE;
 }
