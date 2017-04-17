@@ -11,11 +11,11 @@ import net.minecraft.world.World;
 
 public class ContainerAnvil extends ContainerLargeWorkbench {
   /** La longueur des côtes de la zone de détection des haut-fourneaux. */
-  private static final int DETECTION_SIZE = 1;
+  private static final int DETECTION_SIZE = 3;
 
   public ContainerAnvil(InventoryPlayer playerInventory, World worldIn, BlockPos posIn) {
     super(playerInventory, worldIn, posIn);
-    this.setCraftMatrixAnvil();
+    setCraftMatrixAnvil();
   }
 
   @Override
