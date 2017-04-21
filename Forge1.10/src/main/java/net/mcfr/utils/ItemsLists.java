@@ -12,11 +12,9 @@ import net.mcfr.craftsmanship.BlockCircularSaw;
 import net.mcfr.craftsmanship.BlockLoom;
 import net.mcfr.craftsmanship.BlockMortar;
 import net.mcfr.craftsmanship.BlockTanningRack;
-import net.mcfr.craftsmanship.guis.ContainerRack;
 import net.mcfr.decoration.container_blocks.BlockBookshelf;
 import net.mcfr.decoration.container_blocks.BlockPallet;
 import net.mcfr.decoration.container_blocks.ItemBarrel;
-import net.mcfr.decoration.container_blocks.guis.ContainerRestricted;
 import net.mcfr.decoration.signs.ItemTombstone;
 import net.mcfr.environment.plants.EnumExoticWoodType;
 import net.minecraft.block.Block;
@@ -172,15 +170,17 @@ public final class ItemsLists {
 
         if (b != Blocks.MELON_BLOCK && b != Blocks.PUMPKIN && !(b instanceof BlockSapling) && !(b instanceof BlockFlower)
             && !(b instanceof BlockLeaves) && b != Blocks.WEB && b != Blocks.GRASS && b != Blocks.CACTUS && b != Blocks.VINE
-            && !(b instanceof BlockButton) && b != Blocks.LEVER && b != Blocks.REDSTONE_WIRE && b != Blocks.TRIPWIRE_HOOK && b != Blocks.TRIPWIRE)
+            && !(b instanceof BlockButton) && b != Blocks.LEVER && b != Blocks.REDSTONE_WIRE && b != Blocks.TRIPWIRE_HOOK && b != Blocks.TRIPWIRE) {
           l.add(Item.getItemFromBlock(b));
+        }
       }
 
       for (ResourceLocation r : Item.REGISTRY.getKeys()) {
         Item i = Item.REGISTRY.getObject(r);
 
-        if (i instanceof ItemMinecart || i instanceof ItemBarrel || i instanceof ItemTombstone || i == Items.CAULDRON || i == McfrItems.SAW_SUPPORT)
+        if (i instanceof ItemMinecart || i instanceof ItemBarrel || i instanceof ItemTombstone || i == Items.CAULDRON || i == McfrItems.SAW_SUPPORT) {
           l.add(i);
+        }
       }
 
       TYPES.put(key, Collections.unmodifiableList(l));
@@ -201,8 +201,9 @@ public final class ItemsLists {
       for (ResourceLocation r : Item.REGISTRY.getKeys()) {
         Item i = Item.REGISTRY.getObject(r);
 
-        if (i != McfrItems.COIN && i != McfrItems.TOKEN && i != McfrItems.CLAW_MONEY)
+        if (i != McfrItems.COIN && i != McfrItems.TOKEN && i != McfrItems.CLAW_MONEY) {
           l.add(i);
+        }
       }
 
       l.removeAll(getPaperBasedItems());
@@ -324,9 +325,10 @@ public final class ItemsLists {
             HashedItemStack.fromStack(new ItemStack(McfrBlocks.REFINED_PLANKS, 1, i)));
         auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.WOODEN_SLAB, 2, i)), HashedItemStack.fromStack(new ItemStack(Blocks.PLANKS, 1, i)));
       }
-      for (int i = 0; i < EnumExoticWoodType.values().length; i++)
+      for (int i = 0; i < EnumExoticWoodType.values().length; i++) {
         auth.put(HashedItemStack.fromStack(new ItemStack(McfrBlocks.EXOTIC_LOG, 1, i)),
             HashedItemStack.fromStack(new ItemStack(McfrBlocks.EXOTIC_PLANKS, 1, i)));
+      }
       auth.put(HashedItemStack.fromStack(new ItemStack(McfrBlocks.STRONG_OAK_DOOR)), HashedItemStack.fromStack(new ItemStack(Blocks.PLANKS, 2)));
       auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.OAK_STAIRS)), HashedItemStack.fromStack(new ItemStack(Blocks.PLANKS, 1, 0)));
       auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.SPRUCE_STAIRS)), HashedItemStack.fromStack(new ItemStack(Blocks.PLANKS, 1, 1)));
@@ -379,7 +381,8 @@ public final class ItemsLists {
   /**
    * Crée une liste pour une classe donnée à partir de MAPS.
    * 
-   * @param clazz la classe du bloc
+   * @param clazz
+   *          la classe du bloc
    */
   private static void createList(Class<? extends Block> clazz) {
     List<Item> items = new ArrayList<>();
@@ -390,11 +393,13 @@ public final class ItemsLists {
   /**
    * Indique si le bloc spécifié accepte le stack donné.
    *
-   * @param blockClass la classe du bloc
-   * @param stack le stack
+   * @param blockClass
+   *          la classe du bloc
+   * @param stack
+   *          le stack
    * @return vrai si le stack est accepté
-   * @note Cette méthode est prévue pour être utilisée par les classes {@link ContainerRestricted}
-   *       et {@link ContainerRack}.
+   * @note Cette méthode est prévue pour être utilisée par les classes {@link ContainerRestricted} et
+   *       {@link ContainerRack}.
    */
   public static boolean isItemValid(Class<? extends Block> blockClass, ItemStack stack) {
     List<Item> list = LISTS.get(blockClass);
@@ -405,7 +410,8 @@ public final class ItemsLists {
   /**
    * Retourne la table associative pour une classe donnée.
    * 
-   * @param clazz la classe du bloc
+   * @param clazz
+   *          la classe du bloc
    * @return la table associative
    */
   public static Map<HashedItemStack, HashedItemStack> getMapForClass(Class<? extends Block> clazz) {

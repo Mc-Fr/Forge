@@ -101,8 +101,9 @@ public class ModelFjalla extends ModelBase {
   /**
    * Sets the models various rotation angles then renders the model.
    */
+  @Override
   public void render(Entity entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
-    this.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale, entityIn);
+    setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale, entityIn);
 
     if (((EntityGendered) entityIn).isChild()) {
       GlStateManager.pushMatrix();
@@ -110,7 +111,7 @@ public class ModelFjalla extends ModelBase {
       GlStateManager.translate(0.0F, 35.0F * scale, 0.0F);
       this.abdomen.render(scale);
       GlStateManager.popMatrix();
-    } else if (((EntityGendered) entityIn).getGender() == Genders.FEMALE){
+    } else if (((EntityGendered) entityIn).getGender() == Genders.FEMALE) {
       GlStateManager.pushMatrix();
       GlStateManager.scale(0.9F, 0.9F, 0.9F);
       GlStateManager.translate(0.0F, 3.0F * scale, 0.0F);
@@ -139,15 +140,14 @@ public class ModelFjalla extends ModelBase {
   }
 
   /**
-   * Sets the model's various rotation angles. For bipeds, par1 and par2 are
-   * used for animating the movement of arms and legs, where par1 represents the
-   * time(so that arms and legs swing back and forth) and par2 represents how
-   * "far" arms and legs can swing at most.
+   * Sets the model's various rotation angles. For bipeds, par1 and par2 are used for animating the movement of arms and
+   * legs, where par1 represents the time(so that arms and legs swing back and forth) and par2 represents how "far" arms
+   * and legs can swing at most.
    */
+  @Override
   public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor,
       Entity entityIn) {
-    float degToRad = ((float) Math.PI / 180F);
-    float tickToSec = 0.012F;
+    float degToRad = (float) Math.PI / 180F;
 
     // Pliage du modèle
     this.abdomen.rotateAngleX = 3.339F * degToRad;
@@ -170,6 +170,6 @@ public class ModelFjalla extends ModelBase {
     this.torso.rotateAngleX = -8.915F * degToRad;
 
     // Calcul de l'animation
-    this.interpolateHeadAngles(headPitch, netHeadYaw, 0.2F);
+    interpolateHeadAngles(headPitch, netHeadYaw, 0.2F);
   }
 }

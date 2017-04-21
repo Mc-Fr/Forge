@@ -21,8 +21,6 @@ import org.objectweb.asm.tree.MethodNode;
 import org.objectweb.asm.tree.TypeInsnNode;
 import org.objectweb.asm.tree.VarInsnNode;
 
-import net.minecraft.block.BlockCrops;
-import net.minecraft.entity.projectile.EntityFishHook;
 import net.minecraft.item.ItemFishingRod;
 import net.minecraft.launchwrapper.IClassTransformer;
 import net.minecraft.util.math.BlockPos;
@@ -54,9 +52,12 @@ class Transformer implements IClassTransformer {
   /**
    * Transforme la classe donnée.
    * 
-   * @param obfuscated l'environnement est obfuqué ou non
-   * @param name le nom
-   * @param classCode le code de la classe
+   * @param obfuscated
+   *          l'environnement est obfuqué ou non
+   * @param name
+   *          le nom
+   * @param classCode
+   *          le code de la classe
    * @return la classe transformée
    */
   private byte[] transform(boolean obfuscated, String name, byte[] classCode) {
@@ -78,8 +79,7 @@ class Transformer implements IClassTransformer {
   }
 
   /**
-   * Modifie le code suivant (en italique) dans {@link EntityFishHook#onUpdate
-   * EntityFishHook.onUpdate}&nbsp;:
+   * Modifie le code suivant (en italique) dans {@link EntityFishHook#onUpdate EntityFishHook.onUpdate}&nbsp;:
    * 
    * <pre>
    * if (this.angler.isDead ||
@@ -118,7 +118,8 @@ class Transformer implements IClassTransformer {
         for (AbstractInsnNode node : method.instructions.toArray()) {
           AbstractInsnNode prev = node.getPrevious();
 
-          if (node.getOpcode() == INVOKEVIRTUAL && prev.getOpcode() == ALOAD && ((VarInsnNode) prev).var == 1 && node.getNext().getOpcode() == GETSTATIC) {
+          if (node.getOpcode() == INVOKEVIRTUAL && prev.getOpcode() == ALOAD && ((VarInsnNode) prev).var == 1
+              && node.getNext().getOpcode() == GETSTATIC) {
             targetNode = node;
             break;
           }
@@ -142,8 +143,7 @@ class Transformer implements IClassTransformer {
   }
 
   /**
-   * Remplace le code de {@link BlockCrops#canBlockStay BlockCrops.canBlockStay} par le code
-   * suivant&nbsp;:
+   * Remplace le code de {@link BlockCrops#canBlockStay BlockCrops.canBlockStay} par le code suivant&nbsp;:
    * 
    * <pre>
    * return !worldIn.isAirBlock(pos.down());
@@ -173,7 +173,8 @@ class Transformer implements IClassTransformer {
   @Deprecated
   private static void transformBlockCrops(ClassNode classNode, boolean obfuscated) {
     final String methodName = obfuscated ? "f" : "canBlockStay";
-    final String methodDesc = obfuscated ? "(Laid;Lcm;Lars;)Z" : "(Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/state/IBlockState;)Z";
+    final String methodDesc = obfuscated ? "(Laid;Lcm;Lars;)Z"
+        : "(Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/state/IBlockState;)Z";
 
     for (MethodNode method : classNode.methods) {
       if (method.name.equals(methodName) && method.desc.equals(methodDesc)) {
@@ -182,8 +183,10 @@ class Transformer implements IClassTransformer {
         // On ajoute les instructions au début
         method.instructions.insert(node = new VarInsnNode(ALOAD, 1));
         method.instructions.insert(node, node = new VarInsnNode(ALOAD, 2));
-        method.instructions.insert(node, node = new MethodInsnNode(INVOKEVIRTUAL, Type.getInternalName(BlockPos.class), obfuscated ? "b" : "down", obfuscated ? "()Lcm;" : "()Lnet/minecraft/util/math/BlockPos;", false));
-        method.instructions.insert(node, node = new MethodInsnNode(INVOKEVIRTUAL, Type.getInternalName(World.class), obfuscated ? "d" : "isAirBlock", obfuscated ? "(Lcm;)Z" : "(Lnet/minecraft/util/math/BlockPos;)Z", false));
+        method.instructions.insert(node, node = new MethodInsnNode(INVOKEVIRTUAL, Type.getInternalName(BlockPos.class), obfuscated ? "b" : "down",
+            obfuscated ? "()Lcm;" : "()Lnet/minecraft/util/math/BlockPos;", false));
+        method.instructions.insert(node, node = new MethodInsnNode(INVOKEVIRTUAL, Type.getInternalName(World.class), obfuscated ? "d" : "isAirBlock",
+            obfuscated ? "(Lcm;)Z" : "(Lnet/minecraft/util/math/BlockPos;)Z", false));
         final LabelNode label1 = new LabelNode(new Label());
         method.instructions.insert(node, node = new JumpInsnNode(IFNE, label1));
         method.instructions.insert(node, node = new InsnNode(ICONST_1));
@@ -199,8 +202,7 @@ class Transformer implements IClassTransformer {
   }
 
   /**
-   * Remplace le code de {@link net.minecraft.block.Block#isBed Block.isBed} par le code suivant (en
-   * italique)&nbsp;:
+   * Remplace le code de {@link net.minecraft.block.Block#isBed Block.isBed} par le code suivant (en italique)&nbsp;:
    * 
    * <pre>
    * return this <i>instanceof BlockBed</i>;
@@ -221,7 +223,8 @@ class Transformer implements IClassTransformer {
   @Deprecated
   private static void transformBlock(ClassNode classNode, boolean obfuscated) {
     final String methodName = "isBed";
-    final String methodDesc = obfuscated ? "(Lars;Laih;Lcm;Lrw;)Z" : "(Lnet/minecraft/block/state/IBlockState;Lnet/minecraft/world/IBlockAccess;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/entity/Entity;)Z";
+    final String methodDesc = obfuscated ? "(Lars;Laih;Lcm;Lrw;)Z"
+        : "(Lnet/minecraft/block/state/IBlockState;Lnet/minecraft/world/IBlockAccess;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/entity/Entity;)Z";
 
     for (MethodNode method : classNode.methods) {
       if (method.name.equals(methodName) && method.desc.equals(methodDesc)) {

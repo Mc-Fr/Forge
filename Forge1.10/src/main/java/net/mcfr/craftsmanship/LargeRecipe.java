@@ -5,7 +5,6 @@ import java.util.Objects;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.item.crafting.ShapedRecipes;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeHooks;
 
@@ -27,10 +26,14 @@ public class LargeRecipe implements IRecipe {
   /**
    * Crée une recette 5x5.
    * 
-   * @param width la largeur de la zone
-   * @param height la hauteur de la zone
-   * @param items les ingrédients
-   * @param output le résultat
+   * @param width
+   *          la largeur de la zone
+   * @param height
+   *          la hauteur de la zone
+   * @param items
+   *          les ingrédients
+   * @param output
+   *          le résultat
    */
   public LargeRecipe(int width, int height, ItemStack[] items, ItemStack output) {
     checkParameters(width, height, items, output);
@@ -43,10 +46,14 @@ public class LargeRecipe implements IRecipe {
   /**
    * Vérifie les paramètres du constructeur.
    * 
-   * @param width la largeur de la zone
-   * @param height la hauteur de la zone
-   * @param items les ingrédients
-   * @param output le résultat
+   * @param width
+   *          la largeur de la zone
+   * @param height
+   *          la hauteur de la zone
+   * @param items
+   *          les ingrédients
+   * @param output
+   *          le résultat
    */
   private void checkParameters(int width, int height, ItemStack[] items, ItemStack output) {
     if (width < 1 || width > 5)
@@ -103,8 +110,7 @@ public class LargeRecipe implements IRecipe {
         if (k >= 0 && l >= 0 && k < this.width && l < this.height) {
           if (b) {
             stack = this.items[this.width - k - 1 + l * this.width];
-          }
-          else {
+          } else {
             stack = this.items[k + l * this.width];
           }
         }

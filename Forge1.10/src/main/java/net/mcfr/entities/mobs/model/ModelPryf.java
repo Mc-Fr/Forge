@@ -41,7 +41,7 @@ public class ModelPryf extends ModelBase {
     this.rightArm = new ModelRenderer(this, 0, 0);
     this.rightLeg1 = new ModelRenderer(this, 0, 0);
     this.rightLeg2 = new ModelRenderer(this, 0, 0);
-    
+
     // #f:0
     this.body.addBox(-6.60F, -8.40F, -18.30F, 13, 16, 36);  this.body.setRotationPoint(0.00F, -12.27F, 2.06F);
     this.chin.addBox(-1.50F, 0.35F, -15.51F, 3, 8, 6);  this.chin.setRotationPoint(0.00F, 0.00F, 0.00F);
@@ -55,7 +55,7 @@ public class ModelPryf extends ModelBase {
     this.rightLeg1.addBox(-2.40F, -3.30F, -4.77F, 4, 17, 9);  this.rightLeg1.setRotationPoint(-8.69F, -0.17F, 8.63F);
     this.rightLeg2.addBox(-1.80F, -3.21F, -2.39F, 3, 27, 4);  this.rightLeg2.setRotationPoint(0.00F, 11.82F, -0.55F);
     // #f:1
-    
+
     // Enfantillages
     this.head.addChild(this.chin);
     this.neck.addChild(this.head);
@@ -73,8 +73,9 @@ public class ModelPryf extends ModelBase {
   /**
    * Sets the models various rotation angles then renders the model.
    */
+  @Override
   public void render(Entity entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
-    this.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale, entityIn);
+    setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale, entityIn);
 
     if (((EntityGendered) entityIn).isChild()) {
       GlStateManager.pushMatrix();
@@ -82,7 +83,7 @@ public class ModelPryf extends ModelBase {
       GlStateManager.translate(0.0F, 35.0F * scale, 0.0F);
       this.body.render(scale);
       GlStateManager.popMatrix();
-    } else if (((EntityGendered) entityIn).getGender() == Genders.FEMALE){
+    } else if (((EntityGendered) entityIn).getGender() == Genders.FEMALE) {
       GlStateManager.pushMatrix();
       GlStateManager.scale(0.9F, 0.9F, 0.9F);
       GlStateManager.translate(0.0F, 3.0F * scale, 0.0F);
@@ -111,15 +112,14 @@ public class ModelPryf extends ModelBase {
   }
 
   /**
-   * Sets the model's various rotation angles. For bipeds, par1 and par2 are
-   * used for animating the movement of arms and legs, where par1 represents the
-   * time(so that arms and legs swing back and forth) and par2 represents how
-   * "far" arms and legs can swing at most.
+   * Sets the model's various rotation angles. For bipeds, par1 and par2 are used for animating the movement of arms and
+   * legs, where par1 represents the time(so that arms and legs swing back and forth) and par2 represents how "far" arms
+   * and legs can swing at most.
    */
+  @Override
   public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor,
       Entity entityIn) {
-    float degToRad = ((float) Math.PI / 180F);
-    float tickToSec = 0.012F;
+    float degToRad = (float) Math.PI / 180F;
 
     // Pliage du modèle
     this.body.rotateAngleX = -6.551F * degToRad;
@@ -135,6 +135,6 @@ public class ModelPryf extends ModelBase {
     this.rightLeg2.rotateAngleX = -5.744F * degToRad;
 
     // Calcul de l'animation
-    this.interpolateHeadAngles(headPitch, netHeadYaw, 0.2F);
+    interpolateHeadAngles(headPitch, netHeadYaw, 0.2F);
   }
 }

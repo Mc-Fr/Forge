@@ -22,8 +22,9 @@ public class ModelKunawalu extends ModelBase {
   /**
    * Sets the models various rotation angles then renders the model.
    */
+  @Override
   public void render(Entity entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
-    this.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale, entityIn);
+    setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale, entityIn);
 
     if (this.isChild) {
       // TODO
@@ -50,19 +51,17 @@ public class ModelKunawalu extends ModelBase {
   }
 
   /**
-   * Sets the model's various rotation angles. For bipeds, par1 and par2 are
-   * used for animating the movement of arms and legs, where par1 represents the
-   * time(so that arms and legs swing back and forth) and par2 represents how
-   * "far" arms and legs can swing at most.
+   * Sets the model's various rotation angles. For bipeds, par1 and par2 are used for animating the movement of arms and
+   * legs, where par1 represents the time(so that arms and legs swing back and forth) and par2 represents how "far" arms
+   * and legs can swing at most.
    */
+  @Override
   public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor,
       Entity entityIn) {
-    float degToRad = ((float) Math.PI / 180F);
-    float tickToSec = 0.012F;
 
     // Pliage du modèle
 
     // Calcul de l'animation
-    this.interpolateHeadAngles(headPitch, netHeadYaw, 0.2F);
+    interpolateHeadAngles(headPitch, netHeadYaw, 0.2F);
   }
 }

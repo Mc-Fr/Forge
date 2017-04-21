@@ -66,15 +66,17 @@ public class BlockShowcase extends BlockContainer {
   /**
    * Vérifie l'état des blocs alentours.
    * 
-   * @param world le monde
-   * @param pos la position
-   * @param state l'état courant
+   * @param world
+   *          le monde
+   * @param pos
+   *          la position
+   * @param state
+   *          l'état courant
    * @return le nouvel état
    */
   private IBlockState checkForSurroundingShowcases(World world, BlockPos pos, IBlockState state) {
-    if (world.isRemote) {
+    if (world.isRemote)
       return state;
-    }
     else {
       IBlockState stateNorth = world.getBlockState(pos.north());
       IBlockState stateSouth = world.getBlockState(pos.south());
@@ -95,8 +97,7 @@ public class BlockShowcase extends BlockContainer {
 
           if (stateWest.getBlock() == this) {
             facing1 = stateWest.getValue(FACING);
-          }
-          else {
+          } else {
             facing1 = stateEast.getValue(FACING);
           }
 
@@ -112,8 +113,7 @@ public class BlockShowcase extends BlockContainer {
             facing = EnumFacing.NORTH;
           }
         }
-      }
-      else {
+      } else {
         BlockPos pos1 = stateNorth.getBlock() == this ? pos.north() : pos.south();
         IBlockState stateWest1 = world.getBlockState(pos1.west());
         IBlockState stateEast1 = world.getBlockState(pos1.east());
@@ -122,8 +122,7 @@ public class BlockShowcase extends BlockContainer {
 
         if (stateNorth.getBlock() == this) {
           facing1 = stateNorth.getValue(FACING);
-        }
-        else {
+        } else {
           facing1 = stateSouth.getValue(FACING);
         }
 
@@ -147,56 +146,6 @@ public class BlockShowcase extends BlockContainer {
     }
   }
 
-  /**
-   * Corrige l'orientation.
-   * 
-   * @param world le monde
-   * @param pos la position
-   * @param state l'état courant
-   * @return le nouvel état
-   */
-  private IBlockState correctFacing(World world, BlockPos pos, IBlockState state) {
-    EnumFacing facing = null;
-
-    for (EnumFacing facing1 : EnumFacing.Plane.HORIZONTAL) {
-      IBlockState state1 = world.getBlockState(pos.offset(facing1));
-
-      if (state1.getBlock() == this) {
-        return state;
-      }
-
-      if (state1.isFullBlock()) {
-        if (facing != null) {
-          facing = null;
-          break;
-        }
-
-        facing = facing1;
-      }
-    }
-
-    if (facing != null) {
-      return state.withProperty(FACING, facing.getOpposite());
-    }
-    else {
-      EnumFacing facing1 = state.getValue(FACING);
-
-      if (world.getBlockState(pos.offset(facing1)).isFullBlock()) {
-        facing1 = facing1.getOpposite();
-      }
-
-      if (world.getBlockState(pos.offset(facing1)).isFullBlock()) {
-        facing1 = facing1.rotateY();
-      }
-
-      if (world.getBlockState(pos.offset(facing1)).isFullBlock()) {
-        facing1 = facing1.getOpposite();
-      }
-
-      return state.withProperty(FACING, facing1);
-    }
-  }
-
   @Override
   public boolean canPlaceBlockAt(World worldIn, BlockPos pos) {
     int i = 0;
@@ -206,30 +155,26 @@ public class BlockShowcase extends BlockContainer {
     BlockPos southPos = pos.south();
 
     if (worldIn.getBlockState(westPos).getBlock() == this) {
-      if (isDoubleShowcase(worldIn, westPos)) {
+      if (isDoubleShowcase(worldIn, westPos))
         return false;
-      }
       i++;
     }
 
     if (worldIn.getBlockState(eastPos).getBlock() == this) {
-      if (isDoubleShowcase(worldIn, eastPos)) {
+      if (isDoubleShowcase(worldIn, eastPos))
         return false;
-      }
       i++;
     }
 
     if (worldIn.getBlockState(northPos).getBlock() == this) {
-      if (isDoubleShowcase(worldIn, northPos)) {
+      if (isDoubleShowcase(worldIn, northPos))
         return false;
-      }
       i++;
     }
 
     if (worldIn.getBlockState(southPos).getBlock() == this) {
-      if (isDoubleShowcase(worldIn, southPos)) {
+      if (isDoubleShowcase(worldIn, southPos))
         return false;
-      }
       i++;
     }
 
@@ -239,8 +184,10 @@ public class BlockShowcase extends BlockContainer {
   /**
    * Indique si ce bloc est une double vitrine.
    * 
-   * @param world le monde
-   * @param pos la position
+   * @param world
+   *          le monde
+   * @param pos
+   *          la position
    * @return vrai si cette vitrine est double ; faux sinon
    */
   private boolean isDoubleShowcase(World world, BlockPos pos) {
@@ -294,7 +241,8 @@ public class BlockShowcase extends BlockContainer {
   }
 
   @Override
-  public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
+  public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta,
+      EntityLivingBase placer) {
     return getDefaultState().withProperty(FACING, FacingUtils.getHorizontalFacing(placer));
   }
 
@@ -313,21 +261,20 @@ public class BlockShowcase extends BlockContainer {
 
     if (!northIsShowcase && !southIsShowcase && !westIsShowcase && !eastIsShowcase) {
       worldIn.setBlockState(pos, state, 3);
-    }
-    else if (enumfacing.getAxis() != EnumFacing.Axis.X || !northIsShowcase && !southIsShowcase) {
+    } else if (enumfacing.getAxis() != EnumFacing.Axis.X || !northIsShowcase && !southIsShowcase) {
       if (enumfacing.getAxis() == EnumFacing.Axis.Z && (westIsShowcase || eastIsShowcase)) {
         worldIn.setBlockState(westIsShowcase ? westPos : eastPos, state, 3);
         worldIn.setBlockState(pos, state, 3);
       }
-    }
-    else {
+    } else {
       worldIn.setBlockState(northIsShowcase ? northPos : southPos, state, 3);
       worldIn.setBlockState(pos, state, 3);
     }
   }
 
   @Override
-  public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, @Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
+  public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, @Nullable ItemStack heldItem,
+      EnumFacing side, float hitX, float hitY, float hitZ) {
     if (!worldIn.isRemote) {
       TileEntity te = worldIn.getTileEntity(pos);
 
@@ -341,8 +288,7 @@ public class BlockShowcase extends BlockContainer {
             TileEntityUtils.sendTileEntityUpdate(te.getWorld(), t);
 
             return true;
-          }
-          else if (!t.hasItem(0) && playerIn.getHeldItemMainhand() != null && TileEntityShowcase.itemIsValid(playerIn.getHeldItemMainhand())) {
+          } else if (!t.hasItem(0) && playerIn.getHeldItemMainhand() != null && TileEntityShowcase.itemIsValid(playerIn.getHeldItemMainhand())) {
             t.setItem(playerIn.getHeldItemMainhand(), 0);
             playerIn.getHeldItemMainhand().stackSize--;
             TileEntityUtils.sendTileEntityUpdate(te.getWorld(), t);

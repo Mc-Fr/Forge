@@ -41,8 +41,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class EntityNiale extends EntityBurrowed implements net.minecraftforge.common.IShearable {
-  private static final Set<Item> TEMPTATION_ITEMS = Sets
-      .newHashSet();
+  private static final Set<Item> TEMPTATION_ITEMS = Sets.newHashSet();
   private EntityAIEatGrass entityAIEatGrass;
   private int nialeTimer;
 
@@ -75,7 +74,7 @@ public class EntityNiale extends EntityBurrowed implements net.minecraftforge.co
     this.entityAIEatGrass = new EntityAIEatGrass(this);
     this.tasks.addTask(0, new EntityAISwimming(this));
     this.tasks.addTask(1, new EntityAIPanic(this, 1.25D));
-    this.tasks.addTask(2, new EntityAIAvoidEntity<EntityGalt>(this, EntityGalt.class, 20.0F, 1.0F, 1.3F));
+    this.tasks.addTask(2, new EntityAIAvoidEntity<>(this, EntityGalt.class, 20.0F, 1.0F, 1.3F));
     this.tasks.addTask(3, new EntityAIMate(this, 1.0D));
     this.tasks.addTask(4, new EntityAITempt(this, 1.0D, true, TEMPTATION_ITEMS));
     this.tasks.addTask(5, new EntityAIFollowParent(this, 1.1D));
@@ -224,16 +223,17 @@ public class EntityNiale extends EntityBurrowed implements net.minecraftforge.co
       ((EntityLivingBase) passenger).renderYawOffset = this.renderYawOffset;
     }
   }
-  
+
+  @Override
   public List<ItemStack> getLoots() {
     List<ItemStack> itemList = new ArrayList<>();
 
     itemList.add(new ItemStack(McfrItems.RAW_HUNTED_LEG, getRandomQuantity(12.3F)));
     itemList.add(new ItemStack(Items.BONE, getRandomQuantity(4.3f)));
-    if (!this.getSheared()) {
+    if (!getSheared()) {
       itemList.add(new ItemStack(Items.STRING, getRandomQuantity(8.7f)));
     }
-    
+
     return itemList;
   }
 }
