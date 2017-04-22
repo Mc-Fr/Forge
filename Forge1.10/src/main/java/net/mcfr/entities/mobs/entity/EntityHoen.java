@@ -130,7 +130,7 @@ public class EntityHoen extends EntityBurrowed {
   }
 
   public static void func_189789_b(DataFixer p_189789_0_) {
-    EntityLiving.func_189752_a(p_189789_0_, "Chicken");
+    EntityLiving.registerFixesMob(p_189789_0_, "Chicken");
   }
 
   /**

@@ -24,7 +24,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.pathfinding.PathNodeType;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
@@ -38,19 +37,20 @@ public class EntityBormoth extends EntityBurrowed {
 
   public EntityBormoth(World worldIn) {
     super(worldIn);
-    this.setSize(1.7F, 4.0F);
-    this.setPathPriority(PathNodeType.WATER, 0.0F);
-    this.setTrunkType(this.rand.nextInt(3));
+    setSize(1.7F, 4.0F);
+    setPathPriority(PathNodeType.WATER, 0.0F);
+    setTrunkType(this.rand.nextInt(3));
   }
-  
+
   public void setTrunkType(int type) {
-    this.setSyncedInteger("TrunkType", type);
+    setSyncedInteger("TrunkType", type);
   }
 
   public int getTrunkType() {
-    return this.getSyncedInteger("TrunkType");
+    return getSyncedInteger("TrunkType");
   }
 
+  @Override
   protected void initEntityAI() {
     this.tasks.addTask(0, new EntityAISwimming(this));
     this.tasks.addTask(1, new EntityAIPanic(this, 1.4D));
@@ -61,93 +61,81 @@ public class EntityBormoth extends EntityBurrowed {
     this.tasks.addTask(7, new EntityAILookIdle(this));
   }
 
+  @Override
   public float getEyeHeight() {
     return this.height;
   }
 
+  @Override
   protected void applyEntityAttributes() {
     super.applyEntityAttributes();
-    this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(10.0D);
-    this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.3D);
+    getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(10.0D);
+    getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.3D);
   }
 
   /**
-   * Called frequently so the entity can update its state every tick as
-   * required. For example, zombies and skeletons use this to react to sunlight
-   * and start to burn.
+   * Called frequently so the entity can update its state every tick as required. For example, zombies and skeletons use
+   * this to react to sunlight and start to burn.
    */
+  @Override
   public void onLivingUpdate() {
     super.onLivingUpdate();
   }
 
+  @Override
   protected SoundEvent getAmbientSound() {
     return SoundEvents.ENTITY_CHICKEN_AMBIENT;
   }
 
+  @Override
   protected SoundEvent getHurtSound() {
     return SoundEvents.ENTITY_CHICKEN_HURT;
   }
 
+  @Override
   protected SoundEvent getDeathSound() {
     return SoundEvents.ENTITY_CHICKEN_DEATH;
   }
 
+  @Override
   protected void playStepSound(BlockPos pos, Block blockIn) {
-    this.playSound(SoundEvents.ENTITY_CHICKEN_STEP, 0.15F, 1.0F);
+    playSound(SoundEvents.ENTITY_CHICKEN_STEP, 0.15F, 1.0F);
   }
 
+  @Override
   @Nullable
   protected ResourceLocation getLootTable() {
     return LootTableList.ENTITIES_CHICKEN;
   }
 
+  @Override
   public EntityBormoth createChild(EntityAgeable ageable) {
     return new EntityBormoth(this.worldObj);
   }
 
-  /**
-   * Get the experience points the entity currently has.
-   */
-  protected int getExperiencePoints(EntityPlayer player) {
-    return super.getExperiencePoints(player);
-  }
-
   public static void func_189789_b(DataFixer p_189789_0_) {
-    EntityLiving.func_189752_a(p_189789_0_, "Chicken");
+    EntityLiving.registerFixesMob(p_189789_0_, "Chicken");
   }
 
-  /**
-   * (abstract) Protected helper method to read subclass entity data from NBT.
-   */
-  public void readEntityFromNBT(NBTTagCompound compound) {
-    super.readEntityFromNBT(compound);
-  }
-
-  /**
-   * (abstract) Protected helper method to write subclass entity data to NBT.
-   */
-  public void writeEntityToNBT(NBTTagCompound compound) {
-    super.writeEntityToNBT(compound);
-  }
-
+  @Override
   public void updatePassenger(Entity passenger) {
     super.updatePassenger(passenger);
     float f = MathHelper.sin(this.renderYawOffset * 0.017453292F);
     float f1 = MathHelper.cos(this.renderYawOffset * 0.017453292F);
-    passenger.setPosition(this.posX + (double) (0.1F * f), this.posY + (double) (this.height * 0.5F) + passenger.getYOffset() + 0.0D,
-        this.posZ - (double) (0.1F * f1));
+    passenger.setPosition(this.posX + 0.1F * f, this.posY + this.height * 0.5F + passenger.getYOffset() + 0.0D, this.posZ - 0.1F * f1);
 
     if (passenger instanceof EntityLivingBase) {
       ((EntityLivingBase) passenger).renderYawOffset = this.renderYawOffset;
     }
   }
-  
+
+  @Override
   public List<ItemStack> getLoots() {
     List<ItemStack> itemList = new ArrayList<>();
-    
+
     itemList.add(new ItemStack(Items.ROTTEN_FLESH, getRandomQuantity(12.5F)));
     itemList.add(new ItemStack(McfrItems.HUNTED_SKIN, getRandomQuantity(12.5F)));
-    
+
     return itemList;
   }
 }
