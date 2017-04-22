@@ -94,18 +94,17 @@ public class GuiScreenPaper extends GuiScreen {
     Keyboard.enableRepeatEvents(true);
 
     if (this.paperIsUnsigned) {
-      this.buttonSign = func_189646_b(new GuiButton(3, this.width / 2 - 100, 196, 98, 20, I18n.format("book.signButton")));
-      this.buttonDone = func_189646_b(new GuiButton(0, this.width / 2 + 2, 196, 98, 20, I18n.format("gui.done")));
-      this.buttonFinalize = func_189646_b(new GuiButton(5, this.width / 2 - 100, 196, 98, 20, I18n.format("book.finalizeButton")));
-      this.buttonCancel = func_189646_b(new GuiButton(4, this.width / 2 + 2, 196, 98, 20, I18n.format("gui.cancel")));
-    }
-    else {
-      this.buttonDone = func_189646_b(new GuiButton(0, this.width / 2 - 100, 196, 200, 20, I18n.format("gui.done")));
+      this.buttonSign = addButton(new GuiButton(3, this.width / 2 - 100, 196, 98, 20, I18n.format("book.signButton")));
+      this.buttonDone = addButton(new GuiButton(0, this.width / 2 + 2, 196, 98, 20, I18n.format("gui.done")));
+      this.buttonFinalize = addButton(new GuiButton(5, this.width / 2 - 100, 196, 98, 20, I18n.format("book.finalizeButton")));
+      this.buttonCancel = addButton(new GuiButton(4, this.width / 2 + 2, 196, 98, 20, I18n.format("gui.cancel")));
+    } else {
+      this.buttonDone = addButton(new GuiButton(0, this.width / 2 - 100, 196, 200, 20, I18n.format("gui.done")));
     }
 
     int i = (this.width - 192) / 2;
-    this.buttonNextPage = func_189646_b(new NextPageButton(1, i + 120, 156, true));
-    this.buttonPreviousPage = func_189646_b(new NextPageButton(2, i + 38, 156, false));
+    this.buttonNextPage = addButton(new NextPageButton(1, i + 120, 156, true));
+    this.buttonPreviousPage = addButton(new NextPageButton(2, i + 38, 156, false));
     updateButtons();
   }
 
@@ -115,7 +114,8 @@ public class GuiScreenPaper extends GuiScreen {
   }
 
   private void updateButtons() {
-    this.buttonNextPage.visible = this.currPage < ItemWriteablePaper.MAX_PAGES_NB - 1 && !this.paperGettingSigned && (this.currPage < this.paperTotalPages - 1 || this.paperIsUnsigned);
+    this.buttonNextPage.visible = this.currPage < ItemWriteablePaper.MAX_PAGES_NB - 1 && !this.paperGettingSigned
+        && (this.currPage < this.paperTotalPages - 1 || this.paperIsUnsigned);
     this.buttonPreviousPage.visible = !this.paperGettingSigned && this.currPage > 0;
     this.buttonDone.visible = !this.paperIsUnsigned || !this.paperGettingSigned;
 
@@ -133,16 +133,18 @@ public class GuiScreenPaper extends GuiScreen {
         while (this.paperPages.tagCount() > 1) {
           String s = this.paperPages.getStringTagAt(this.paperPages.tagCount() - 1);
 
-          if (!s.isEmpty())
+          if (!s.isEmpty()) {
             break;
+          }
 
           this.paperPages.removeTag(this.paperPages.tagCount() - 1);
         }
 
-        if (this.paper.hasTagCompound())
+        if (this.paper.hasTagCompound()) {
           this.paper.getTagCompound().setTag("Pages", this.paperPages);
-        else
+        } else {
           this.paper.setTagInfo("Pages", this.paperPages);
+        }
 
         String s1 = "MC|BEdit";
 
@@ -169,32 +171,26 @@ public class GuiScreenPaper extends GuiScreen {
       if (button.id == 0) {
         this.mc.displayGuiScreen(null);
         sendPaperToServer(false);
-      }
-      else if (button.id == 3 && this.paperIsUnsigned) {
+      } else if (button.id == 3 && this.paperIsUnsigned) {
         this.paperGettingSigned = true;
-      }
-      else if (button.id == 1) {
+      } else if (button.id == 1) {
         if (this.currPage < this.paperTotalPages - 1) {
           this.currPage++;
-        }
-        else if (this.paperIsUnsigned) {
+        } else if (this.paperIsUnsigned) {
           addNewPage();
 
           if (this.currPage < this.paperTotalPages - 1) {
             this.currPage++;
           }
         }
-      }
-      else if (button.id == 2) {
+      } else if (button.id == 2) {
         if (this.currPage > 0) {
           this.currPage--;
         }
-      }
-      else if (button.id == 5 && this.paperGettingSigned) {
+      } else if (button.id == 5 && this.paperGettingSigned) {
         sendPaperToServer(true);
         this.mc.displayGuiScreen(null);
-      }
-      else if (button.id == 4 && this.paperGettingSigned) {
+      } else if (button.id == 4 && this.paperGettingSigned) {
         this.paperGettingSigned = false;
       }
 
@@ -217,8 +213,7 @@ public class GuiScreenPaper extends GuiScreen {
     if (this.paperIsUnsigned) {
       if (this.paperGettingSigned) {
         keyTypedInTitle(typedChar, keyCode);
-      }
-      else {
+      } else {
         keyTypedInPaper(typedChar, keyCode);
       }
     }
@@ -230,22 +225,23 @@ public class GuiScreenPaper extends GuiScreen {
   private void keyTypedInPaper(char typedChar, int keyCode) {
     if (isKeyComboCtrlV(keyCode)) {
       pageInsertIntoCurrent(getClipboardString());
-    }
-    else {
+    } else {
       switch (keyCode) {
-        case 14:
-          String s = this.pageGetCurrent();
-          if (!s.isEmpty())
-            pageSetCurrent(s.substring(0, s.length() - 1));
-          break;
-        case 28:
-        case 156:
-          pageInsertIntoCurrent("\n");
-          break;
-        default:
-          if (ChatAllowedCharacters.isAllowedCharacter(typedChar))
-            pageInsertIntoCurrent("" + typedChar);
-          break;
+      case 14:
+        String s = pageGetCurrent();
+        if (!s.isEmpty()) {
+          pageSetCurrent(s.substring(0, s.length() - 1));
+        }
+        break;
+      case 28:
+      case 156:
+        pageInsertIntoCurrent("\n");
+        break;
+      default:
+        if (ChatAllowedCharacters.isAllowedCharacter(typedChar)) {
+          pageInsertIntoCurrent("" + typedChar);
+        }
+        break;
       }
     }
   }
@@ -255,26 +251,26 @@ public class GuiScreenPaper extends GuiScreen {
    */
   private void keyTypedInTitle(char typedChar, int keyCode) throws IOException {
     switch (keyCode) {
-      case 14:
-        if (!this.paperTitle.isEmpty()) {
-          this.paperTitle = this.paperTitle.substring(0, this.paperTitle.length() - 1);
-          updateButtons();
-        }
-        break;
-      case 28:
-      case 156:
-        if (!this.paperTitle.isEmpty()) {
-          sendPaperToServer(true);
-          this.mc.displayGuiScreen(null);
-        }
-        break;
-      default:
-        if (this.paperTitle.length() < 16 && ChatAllowedCharacters.isAllowedCharacter(typedChar)) {
-          this.paperTitle = this.paperTitle + typedChar;
-          updateButtons();
-          this.paperIsModified = true;
-        }
-        break;
+    case 14:
+      if (!this.paperTitle.isEmpty()) {
+        this.paperTitle = this.paperTitle.substring(0, this.paperTitle.length() - 1);
+        updateButtons();
+      }
+      break;
+    case 28:
+    case 156:
+      if (!this.paperTitle.isEmpty()) {
+        sendPaperToServer(true);
+        this.mc.displayGuiScreen(null);
+      }
+      break;
+    default:
+      if (this.paperTitle.length() < 16 && ChatAllowedCharacters.isAllowedCharacter(typedChar)) {
+        this.paperTitle = this.paperTitle + typedChar;
+        updateButtons();
+        this.paperIsModified = true;
+      }
+      break;
     }
   }
 
@@ -282,7 +278,8 @@ public class GuiScreenPaper extends GuiScreen {
    * Returns the entire text of the current page as determined by currPage
    */
   private String pageGetCurrent() {
-    return this.paperPages != null && this.currPage >= 0 && this.currPage < this.paperPages.tagCount() ? this.paperPages.getStringTagAt(this.currPage) : "";
+    return this.paperPages != null && this.currPage >= 0 && this.currPage < this.paperPages.tagCount() ? this.paperPages.getStringTagAt(this.currPage)
+        : "";
   }
 
   /**
@@ -302,8 +299,9 @@ public class GuiScreenPaper extends GuiScreen {
     String s = pageGetCurrent() + text;
     int i = this.fontRendererObj.splitStringWidth(s + "" + TextFormatting.BLACK + "_", 118);
 
-    if (i <= 128 && s.length() < 256)
+    if (i <= 128 && s.length() < 256) {
       pageSetCurrent(s);
+    }
   }
 
   @Override
@@ -317,10 +315,11 @@ public class GuiScreenPaper extends GuiScreen {
       String s = this.paperTitle;
 
       if (this.paperIsUnsigned) {
-        if (this.updateCount / 6 % 2 == 0)
+        if (this.updateCount / 6 % 2 == 0) {
           s = s + "" + TextFormatting.BLACK + "_";
-        else
+        } else {
           s = s + "" + TextFormatting.GRAY + "_";
+        }
       }
 
       String editTitle = I18n.format("book.editTitle");
@@ -329,8 +328,7 @@ public class GuiScreenPaper extends GuiScreen {
       String byAuthor = I18n.format("book.byAuthor", this.editingPlayer.getName());
       this.fontRendererObj.drawString(TextFormatting.DARK_GRAY + byAuthor, i + 36 + (116 - this.fontRendererObj.getStringWidth(byAuthor)) / 2, 60, 0);
       this.fontRendererObj.drawSplitString(I18n.format("book.finalizeWarning"), i + 36, 82, 116, 0);
-    }
-    else {
+    } else {
       String pageIndicator = I18n.format("book.pageIndicator", this.currPage + 1, this.paperTotalPages);
       String str = "";
 
@@ -339,24 +337,22 @@ public class GuiScreenPaper extends GuiScreen {
       }
 
       if (this.paperIsUnsigned) {
-        if (this.fontRendererObj.getBidiFlag())
+        if (this.fontRendererObj.getBidiFlag()) {
           str += "_";
-        else if (this.updateCount / 6 % 2 == 0)
+        } else if (this.updateCount / 6 % 2 == 0) {
           str += TextFormatting.BLACK + "_";
-        else
+        } else {
           str += TextFormatting.GRAY + "_";
-      }
-      else if (this.cachedPage != this.currPage) {
+        }
+      } else if (this.cachedPage != this.currPage) {
         if (ItemSignedPaper.validPaperTagContents(this.paper.getTagCompound())) {
           try {
             ITextComponent component = ITextComponent.Serializer.jsonToComponent(str);
             this.cachedComponents = component != null ? GuiUtilRenderComponents.splitText(component, 116, this.fontRendererObj, true, true) : null;
-          }
-          catch (JsonParseException e) {
+          } catch (JsonParseException e) {
             this.cachedComponents = null;
           }
-        }
-        else {
+        } else {
           this.cachedComponents = Lists.newArrayList(new TextComponentString(TextFormatting.DARK_RED + "* Invalid book tag *"));
         }
 
@@ -367,8 +363,7 @@ public class GuiScreenPaper extends GuiScreen {
 
       if (this.cachedComponents == null) {
         this.fontRendererObj.drawSplitString(str, i + 36, 34, 116, 0);
-      }
-      else {
+      } else {
         int h = Math.min(128 / this.fontRendererObj.FONT_HEIGHT, this.cachedComponents.size());
 
         for (int j = 0; j < h; ++j) {
@@ -405,9 +400,8 @@ public class GuiScreenPaper extends GuiScreen {
   protected boolean handleComponentClick(ITextComponent component) {
     ClickEvent event = component.getStyle().getClickEvent();
 
-    if (event == null) {
+    if (event == null)
       return false;
-    }
     else if (event.getAction() == ClickEvent.Action.CHANGE_PAGE) {
       String s = event.getValue();
 
@@ -420,12 +414,10 @@ public class GuiScreenPaper extends GuiScreen {
 
           return true;
         }
-      }
-      catch (NumberFormatException e) {}
+      } catch (NumberFormatException e) {}
 
       return false;
-    }
-    else {
+    } else {
       boolean flag = super.handleComponentClick(component);
 
       if (flag && event.getAction() == ClickEvent.Action.RUN_COMMAND) {
@@ -454,9 +446,8 @@ public class GuiScreenPaper extends GuiScreen {
               if (component instanceof TextComponentString) {
                 i += this.mc.fontRendererObj.getStringWidth(((TextComponentString) component).getText());
 
-                if (i > x) {
+                if (i > x)
                   return component;
-                }
               }
             }
           }
@@ -480,19 +471,20 @@ public class GuiScreenPaper extends GuiScreen {
     public void drawButton(Minecraft mc, int mouseX, int mouseY) {
       if (this.visible) {
         // @f0
-        boolean isMouseOverButton =
-            mouseX >= this.xPosition && mouseY >= this.yPosition &&
-            mouseX < this.xPosition + this.width && mouseY < this.yPosition + this.height;
+        boolean isMouseOverButton = mouseX >= this.xPosition && mouseY >= this.yPosition && mouseX < this.xPosition + this.width
+            && mouseY < this.yPosition + this.height;
         // @f1
 
         GlStateManager.color(1, 1, 1, 1);
         mc.getTextureManager().bindTexture(PAPER_GUI_TEXTURES);
         int textureX = 0, textureY = 192;
 
-        if (isMouseOverButton)
+        if (isMouseOverButton) {
           textureX += 23;
-        if (!this.isForward)
+        }
+        if (!this.isForward) {
           textureY += 13;
+        }
 
         drawTexturedModalRect(this.xPosition, this.yPosition, textureX, textureY, 23, 13);
       }

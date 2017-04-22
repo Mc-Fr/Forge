@@ -35,8 +35,7 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
 public class EntityGalt extends EntityBurrowed {
-  private static final Set<Item> TEMPTATION_ITEMS = Sets
-      .newHashSet();
+  private static final Set<Item> TEMPTATION_ITEMS = Sets.newHashSet();
 
   public EntityGalt(World worldIn) {
     super(worldIn);
@@ -115,7 +114,7 @@ public class EntityGalt extends EntityBurrowed {
   }
 
   public static void func_189789_b(DataFixer p_189789_0_) {
-    EntityLiving.func_189752_a(p_189789_0_, "Chicken");
+    EntityLiving.registerFixesMob(p_189789_0_, "Chicken");
   }
 
   /**
@@ -145,14 +144,15 @@ public class EntityGalt extends EntityBurrowed {
       ((EntityLivingBase) passenger).renderYawOffset = this.renderYawOffset;
     }
   }
-  
+
+  @Override
   public List<ItemStack> getLoots() {
     List<ItemStack> itemList = new ArrayList<>();
-    
+
     itemList.add(new ItemStack(McfrItems.RAW_HUNTED_STEAK, getRandomQuantity(8.6F)));
     itemList.add(new ItemStack(McfrItems.HUNTED_SKIN, getRandomQuantity(9.6F)));
     itemList.add(new ItemStack(Items.BONE, getRandomQuantity(6.4f)));
-    
+
     return itemList;
   }
 }

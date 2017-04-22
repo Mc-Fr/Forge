@@ -31,9 +31,12 @@ public abstract class McfrBlockBed extends BlockBed {
   /**
    * Crée un lit.
    * 
-   * @param name le nom (sans le suffixe '_block')
-   * @param height la hauteur de la hitbox
-   * @param hardness la dureté
+   * @param name
+   *          le nom (sans le suffixe '_block')
+   * @param height
+   *          la hauteur de la hitbox
+   * @param hardness
+   *          la dureté
    */
   public McfrBlockBed(String name, float height, float hardness) {
     super();
@@ -57,10 +60,10 @@ public abstract class McfrBlockBed extends BlockBed {
   }
 
   @Override
-  public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
-    if (world.isRemote) {
+  public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, ItemStack heldItem,
+      EnumFacing side, float hitX, float hitY, float hitZ) {
+    if (world.isRemote)
       return true;
-    }
     else {
       if (state.getValue(PART) != BlockBed.EnumPartType.HEAD) {
         pos = pos.offset(state.getValue(FACING));
@@ -70,9 +73,9 @@ public abstract class McfrBlockBed extends BlockBed {
           return true;
       }
 
-      if (world.provider.canRespawnHere() && world.getBiomeGenForCoords(pos) != Biomes.HELL) {
+      if (world.provider.canRespawnHere() && world.getBiomeForCoordsBody(pos) != Biomes.HELL) {
         if (state.getValue(OCCUPIED)) {
-          EntityPlayer sleepingPlayer = this.getPlayerInBed(world, pos);
+          EntityPlayer sleepingPlayer = getPlayerInBed(world, pos);
 
           if (sleepingPlayer != null) {
             player.addChatComponentMessage(new TextComponentTranslation("tile.bed.occupied"));
@@ -89,24 +92,22 @@ public abstract class McfrBlockBed extends BlockBed {
           state = state.withProperty(OCCUPIED, true);
           world.setBlockState(pos, state, 4);
           return true;
-        }
-        else {
+        } else {
           if (sleepResult == EntityPlayer.SleepResult.NOT_POSSIBLE_NOW) {
             player.addChatComponentMessage(new TextComponentTranslation("tile.bed.noSleep"));
-          }
-          else if (sleepResult == EntityPlayer.SleepResult.NOT_SAFE) {
+          } else if (sleepResult == EntityPlayer.SleepResult.NOT_SAFE) {
             player.addChatComponentMessage(new TextComponentTranslation("tile.bed.notSafe"));
           }
 
           return true;
         }
-      }
-      else {
+      } else {
         world.setBlockToAir(pos);
         BlockPos blockpos = pos.offset(state.getValue(FACING).getOpposite());
 
-        if (world.getBlockState(blockpos).getBlock() == this)
+        if (world.getBlockState(blockpos).getBlock() == this) {
           world.setBlockToAir(blockpos);
+        }
 
         world.newExplosion(null, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, 5f, true, true);
 
@@ -118,15 +119,16 @@ public abstract class McfrBlockBed extends BlockBed {
   /**
    * Retourne le joueur présent dans le lit ou null s'il n'y en a pas.
    * 
-   * @param world le monde
-   * @param pos la position
+   * @param world
+   *          le monde
+   * @param pos
+   *          la position
    * @return le joueur ou null
    */
   private EntityPlayer getPlayerInBed(World world, BlockPos pos) {
     for (EntityPlayer entityplayer : world.playerEntities) {
-      if (entityplayer.isPlayerSleeping() && entityplayer.playerLocation.equals(pos)) {
+      if (entityplayer.isPlayerSleeping() && entityplayer.getBedLocation().equals(pos))
         return entityplayer;
-      }
     }
 
     return null;

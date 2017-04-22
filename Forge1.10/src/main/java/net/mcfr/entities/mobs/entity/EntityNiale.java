@@ -41,8 +41,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class EntityNiale extends EntityBurrowed implements net.minecraftforge.common.IShearable {
-  private static final Set<Item> TEMPTATION_ITEMS = Sets
-      .newHashSet();
+  private static final Set<Item> TEMPTATION_ITEMS = Sets.newHashSet();
   private EntityAIEatGrass entityAIEatGrass;
   private int nialeTimer;
 
@@ -194,7 +193,7 @@ public class EntityNiale extends EntityBurrowed implements net.minecraftforge.co
   }
 
   public static void func_189789_b(DataFixer p_189789_0_) {
-    EntityLiving.func_189752_a(p_189789_0_, "Chicken");
+    EntityLiving.registerFixesMob(p_189789_0_, "Chicken");
   }
 
   /**
@@ -224,16 +223,17 @@ public class EntityNiale extends EntityBurrowed implements net.minecraftforge.co
       ((EntityLivingBase) passenger).renderYawOffset = this.renderYawOffset;
     }
   }
-  
+
+  @Override
   public List<ItemStack> getLoots() {
     List<ItemStack> itemList = new ArrayList<>();
 
     itemList.add(new ItemStack(McfrItems.RAW_HUNTED_LEG, getRandomQuantity(12.3F)));
     itemList.add(new ItemStack(Items.BONE, getRandomQuantity(4.3f)));
-    if (!this.getSheared()) {
+    if (!getSheared()) {
       itemList.add(new ItemStack(Items.STRING, getRandomQuantity(8.7f)));
     }
-    
+
     return itemList;
   }
 }

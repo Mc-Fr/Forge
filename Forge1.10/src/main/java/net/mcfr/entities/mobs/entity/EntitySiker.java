@@ -115,7 +115,7 @@ public class EntitySiker extends EntityBurrowed {
   }
 
   public static void func_189789_b(DataFixer p_189789_0_) {
-    EntityLiving.func_189752_a(p_189789_0_, "Chicken");
+    EntityLiving.registerFixesMob(p_189789_0_, "Chicken");
   }
 
   /**
@@ -145,13 +145,14 @@ public class EntitySiker extends EntityBurrowed {
       ((EntityLivingBase) passenger).renderYawOffset = this.renderYawOffset;
     }
   }
-  
+
+  @Override
   public List<ItemStack> getLoots() {
     List<ItemStack> itemList = new ArrayList<>();
 
     itemList.add(new ItemStack(McfrItems.RAW_HUNTED_STEAK, getRandomQuantity(10.7F)));
     itemList.add(new ItemStack(McfrItems.HUNTED_SKIN, getRandomQuantity(8.4F)));
-    
+
     return itemList;
   }
 }
