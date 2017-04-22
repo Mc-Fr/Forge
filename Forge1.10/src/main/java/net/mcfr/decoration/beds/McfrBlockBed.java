@@ -26,17 +26,14 @@ import net.minecraft.world.World;
  */
 public abstract class McfrBlockBed extends BlockBed {
   /** La hauteur de la hitbox */
-  private final float height;
+  private final float height;;
 
   /**
    * Crée un lit.
    * 
-   * @param name
-   *          le nom (sans le suffixe '_block')
-   * @param height
-   *          la hauteur de la hitbox
-   * @param hardness
-   *          la dureté
+   * @param name le nom (sans le suffixe '_block')
+   * @param height la hauteur de la hitbox
+   * @param hardness la dureté
    */
   public McfrBlockBed(String name, float height, float hardness) {
     super();
@@ -92,16 +89,19 @@ public abstract class McfrBlockBed extends BlockBed {
           state = state.withProperty(OCCUPIED, true);
           world.setBlockState(pos, state, 4);
           return true;
-        } else {
+        }
+        else {
           if (sleepResult == EntityPlayer.SleepResult.NOT_POSSIBLE_NOW) {
             player.addChatComponentMessage(new TextComponentTranslation("tile.bed.noSleep"));
-          } else if (sleepResult == EntityPlayer.SleepResult.NOT_SAFE) {
+          }
+          else if (sleepResult == EntityPlayer.SleepResult.NOT_SAFE) {
             player.addChatComponentMessage(new TextComponentTranslation("tile.bed.notSafe"));
           }
 
           return true;
         }
-      } else {
+      }
+      else {
         world.setBlockToAir(pos);
         BlockPos blockpos = pos.offset(state.getValue(FACING).getOpposite());
 
@@ -119,10 +119,8 @@ public abstract class McfrBlockBed extends BlockBed {
   /**
    * Retourne le joueur présent dans le lit ou null s'il n'y en a pas.
    * 
-   * @param world
-   *          le monde
-   * @param pos
-   *          la position
+   * @param world le monde
+   * @param pos la position
    * @return le joueur ou null
    */
   private EntityPlayer getPlayerInBed(World world, BlockPos pos) {
