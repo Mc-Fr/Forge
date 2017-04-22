@@ -26,7 +26,7 @@ import net.minecraft.world.World;
  */
 public abstract class McfrBlockBed extends BlockBed {
   /** La hauteur de la hitbox */
-  private final float height;;
+  private final float height;
 
   /**
    * Crée un lit.
