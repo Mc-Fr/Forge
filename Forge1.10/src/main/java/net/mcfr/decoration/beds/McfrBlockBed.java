@@ -127,7 +127,7 @@ public abstract class McfrBlockBed extends BlockBed {
    */
   private EntityPlayer getPlayerInBed(World world, BlockPos pos) {
     for (EntityPlayer entityplayer : world.playerEntities) {
-      if (entityplayer.isPlayerSleeping() && entityplayer.bedLocation.equals(pos))
+      if (entityplayer.isPlayerSleeping() && entityplayer.getBedLocation().equals(pos))
         return entityplayer;
     }
 
