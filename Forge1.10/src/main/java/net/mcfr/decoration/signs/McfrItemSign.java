@@ -21,6 +21,11 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
+/**
+ * L'item des panneaux.
+ *
+ * @author Mc-Fr
+ */
 public class McfrItemSign extends McfrItem {
   private McfrBlockStandingSign standingSign;
   private McfrBlockWallSign wallSign;
@@ -28,6 +33,16 @@ public class McfrItemSign extends McfrItem {
   private Class<? extends TileEntityMcfrSign> teClass;
   private boolean canBreakLeavesFaster;
 
+  /**
+   * Crée un item de panneau.
+   * 
+   * @param name le nom
+   * @param standingSign le panneau droit
+   * @param wallSign le panneau mural
+   * @param suspendedSign le panneau suspendu
+   * @param teClass la classe de la tile entity
+   * @param canBreakLeavesFaster si true, permet de détruire les feuilles plus vite
+   */
   public McfrItemSign(String name, McfrBlockStandingSign standingSign, McfrBlockWallSign wallSign, McfrBlockSuspendedSign suspendedSign,
       Class<? extends TileEntityMcfrSign> teClass, boolean canBreakLeavesFaster) {
     super(name, 64, CreativeTabs.DECORATIONS);
@@ -47,11 +62,13 @@ public class McfrItemSign extends McfrItem {
           pos = pos.up();
           int rotation = FacingUtils.getSignRotation(playerIn);
           worldIn.setBlockState(pos, this.standingSign.getDefaultState().withProperty(McfrBlockStandingSign.ROTATION, rotation), 11);
-        } else if (facing == EnumFacing.DOWN && this.suspendedSign != null && this.suspendedSign.canPlaceBlockAt(worldIn, pos.down())) {
+        }
+        else if (facing == EnumFacing.DOWN && this.suspendedSign != null && this.suspendedSign.canPlaceBlockAt(worldIn, pos.down())) {
           pos = pos.down();
           int rotation = FacingUtils.getSignRotation(playerIn);
           worldIn.setBlockState(pos, this.suspendedSign.getDefaultState().withProperty(McfrBlockSuspendedSign.ROTATION, rotation), 11);
-        } else if (facing.getAxis() != Axis.Y && this.wallSign.canPlaceBlockAt(worldIn, pos.offset(facing))) {
+        }
+        else if (facing.getAxis() != Axis.Y && this.wallSign.canPlaceBlockAt(worldIn, pos.offset(facing))) {
           pos = pos.offset(facing);
           worldIn.setBlockState(pos, this.wallSign.getDefaultState().withProperty(McfrBlockWallSign.FACING, facing), 11);
         }

@@ -12,10 +12,17 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 
+/**
+ * Classe de base des tile entities des panneaux larges (note murale, pierre tombale).
+ *
+ * @author Mc-Fr
+ */
 public abstract class TileEntityLargeSign extends TileEntity {
+  /** Nombre de lignes */
   public static final int LINES_NB = 15;
 
   private ITextComponent[] text;
+  /** Indice de la ligne éditée */
   private int lineBeingEdited;
 
   public TileEntityLargeSign() {
@@ -24,14 +31,25 @@ public abstract class TileEntityLargeSign extends TileEntity {
     Arrays.fill(this.text, new TextComponentString(""));
   }
 
+  /**
+   * @return les lignes de texte
+   */
   public ITextComponent[] getText() {
     return this.text;
   }
 
+  /**
+   * @return l'indice de la ligne éditée
+   */
   public int getLineBeingEdited() {
     return this.lineBeingEdited;
   }
 
+  /**
+   * Modifie l'indice de la ligne éditée.
+   * 
+   * @param lineBeingEdited le nouvel indice
+   */
   public void setLineBeingEdited(int lineBeingEdited) {
     this.lineBeingEdited = lineBeingEdited;
   }

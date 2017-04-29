@@ -12,9 +12,23 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
+/**
+ * Classe de base des panneaux muraux.
+ *
+ * @author Mc-Fr
+ */
 public abstract class McfrBlockWallSign extends McfrBlockSign {
   public static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
 
+  /**
+   * Crée un panneau mural.
+   * 
+   * @param name le nom
+   * @param material le matériau
+   * @param sound le type de son
+   * @param hardness la dureté
+   * @param tool l'outil nécessaire
+   */
   public McfrBlockWallSign(String name, Material material, SoundType sound, float hardness, String tool) {
     super(name, material, sound, hardness, tool);
     setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));

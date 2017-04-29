@@ -20,17 +20,24 @@ import net.minecraft.util.ChatAllowedCharacters;
 import net.minecraft.util.text.TextComponentString;
 
 /**
- * Adapté de {@link net.minecraft.client.gui.inventory.GuiEditSign}.
+ * Interface d'édition des panneaux. Adaptée de
+ * {@link net.minecraft.client.gui.inventory.GuiEditSign}.
  *
  * @author Mc-Fr
  */
 public class GuiEditMcfrSign extends GuiScreen {
   private TileEntityMcfrSign tileSign;
-  /** Compte le nombre de mises à jour de l'écran. */
+  /** Compte le nombre de mises à jour de l'écran */
   private int updateCounter;
+  /** Indice de la ligne éditée */
   private int editLine;
   private GuiButton doneBtn;
 
+  /**
+   * Crée une interface pour la tile entity donnée.
+   * 
+   * @param teSign la tile entity
+   */
   public GuiEditMcfrSign(TileEntityMcfrSign teSign) {
     this.tileSign = teSign;
   }
