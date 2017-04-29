@@ -42,12 +42,16 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.client.ForgeHooksClient;
 import net.minecraftforge.fml.client.FMLClientHandler;
 
+/**
+ * Interface du menu principal.
+ *
+ * @author Mc-Fr
+ */
 public class GuiMcfrMainMenu extends GuiScreen {
   private static final Logger LOGGER = LogManager.getLogger();
   private static final Random RANDOM = new Random();
   private static final ResourceLocation SPLASH_TEXTS = new ResourceLocation("texts/splashes.txt");
   private static final ResourceLocation MINECRAFT_TITLE_TEXTURES = new ResourceLocation("textures/gui/title/minecraft.png");
-  /** An array of all the paths to the panorama pictures. */
   // #f:0
   private static final ResourceLocation[] TITLE_PANORAMA_PATHS = {
     new ResourceLocation("textures/gui/title/background/panorama_0.png"),
@@ -150,6 +154,7 @@ public class GuiMcfrMainMenu extends GuiScreen {
 
   @Override
   public void initGui() {
+    // Met le jeu en français s'il ne l'est pas déjà.
     if (!this.mc.gameSettings.language.equals("fr_FR")) {
       for (Language language : this.mc.getLanguageManager().getLanguages()) {
         if (language.getLanguageCode().equals("fr_FR")) {
@@ -192,18 +197,21 @@ public class GuiMcfrMainMenu extends GuiScreen {
     this.mc.setConnectedToRealms(false);
   }
 
+  /**
+   * Ajoute les boutons.
+   * 
+   * @param y hauteur initiale
+   * @param step taille du pas
+   */
   private void addButtons(int y, int step) {
-    GuiButton b;
     int yOffset = y;
 
     this.buttonList.add(new GuiButton(1, this.width / 2 - 100, yOffset, "Serveur Roleplay"));
-    this.buttonList.add(b = new GuiButton(2, this.width / 2 - 100, yOffset += step, "Serveur Freebuild"));
+    this.buttonList.add(new GuiButton(2, this.width / 2 - 100, yOffset += step, "Serveur Freebuild"));
     yOffset += step;
     this.buttonList.add(new GuiButton(3, this.width / 2 - 100, yOffset, 66, 20, "Site"));
     this.buttonList.add(new GuiButton(4, this.width / 2 - 32, yOffset, 65, 20, "Discord"));
     this.buttonList.add(new GuiButton(5, this.width / 2 + 34, yOffset, 66, 20, "Wiki"));
-    this.buttonList.add(b = new GuiButton(6, this.width / 2 - 100, yOffset += step, "Patchnote"));
-    b.enabled = false;
     yOffset += step + 10;
     this.buttonList.add(new GuiButton(0, this.width / 2 - 100, yOffset, 98, 20, I18n.format("menu.options")));
     this.buttonList.add(new GuiButton(7, this.width / 2 + 2, yOffset, 98, 20, I18n.format("menu.quit")));
@@ -234,9 +242,6 @@ public class GuiMcfrMainMenu extends GuiScreen {
       case 5: // Lien Wiki
         openLink("http://www.minecraft-fr.net/wiki/index.php");
         break;
-      case 6: // Lien patchnote
-        // TODO patchnote
-        break;
       case 7: // Quitter
         this.mc.shutdown();
         break;
@@ -249,10 +254,20 @@ public class GuiMcfrMainMenu extends GuiScreen {
     }
   }
 
+  /**
+   * Connecte le joueur à un serveur.
+   * 
+   * @param ip l'IP du serveur
+   */
   private void connectToServer(String ip) {
     FMLClientHandler.instance().connectToServer(this, new ServerData("", ip, false));
   }
 
+  /**
+   * Ouvre un lien avec le navigateur par défaut.
+   * 
+   * @param url l'URL à atteindre
+   */
   private void openLink(String url) {
     try {
       Object o = Class.forName("java.awt.Desktop").getMethod("getDesktop").invoke(null);
@@ -272,7 +287,11 @@ public class GuiMcfrMainMenu extends GuiScreen {
   }
 
   /**
-   * Draws the main menu panorama
+   * Dessine le panorama.
+   * 
+   * @param mouseX
+   * @param mouseY
+   * @param partialTicks
    */
   private void drawPanorama(int mouseX, int mouseY, float partialTicks) {
     Tessellator tessellator = Tessellator.getInstance();
@@ -352,7 +371,7 @@ public class GuiMcfrMainMenu extends GuiScreen {
   }
 
   /**
-   * Rotate and blurs the skybox view in the main menu
+   * Pivote et floute l'arrière plan.
    */
   private void rotateAndBlurSkybox(float partialTicks) {
     this.mc.getTextureManager().bindTexture(this.backgroundTexture);
@@ -385,7 +404,11 @@ public class GuiMcfrMainMenu extends GuiScreen {
   }
 
   /**
-   * Renders the skybox in the main menu
+   * Affiche l'arrière plan.
+   * 
+   * @param mouseX
+   * @param mouseY
+   * @param partialTicks
    */
   private void renderSkybox(int mouseX, int mouseY, float partialTicks) {
     this.mc.getFramebuffer().unbindFramebuffer();

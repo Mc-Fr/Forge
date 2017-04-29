@@ -12,8 +12,14 @@ import net.minecraft.client.gui.GuiChat;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+/**
+ * Interface de tchat compatible avec la bullede tchat.
+ *
+ * @author Mc-Fr
+ */
 @SideOnly(Side.CLIENT)
 public class GuiMcfrChat extends GuiChat {
+  /** Liste des caractères spéciaux et la bulle associée */
   private static final Map<String, ChatBubbleType> SPECIAL_CHARS = new HashMap<>();
 
   static {
@@ -27,6 +33,13 @@ public class GuiMcfrChat extends GuiChat {
     SPECIAL_CHARS.put("=", ChatBubbleType.NONE);
   }
 
+  /**
+   * Retourne le type de bulle de tchat associé à la chaîne donnée. Si aucun ne correspond, le type
+   * {@code TALKING} est retourné.
+   * 
+   * @param str la chaîne
+   * @return le type de bulle
+   */
   public static ChatBubbleType getBubbleType(String str) {
     for (Map.Entry<String, ChatBubbleType> entry : SPECIAL_CHARS.entrySet()) {
       if (str.startsWith(entry.getKey()))
@@ -38,6 +51,11 @@ public class GuiMcfrChat extends GuiChat {
   private boolean bubbleDisplayed;
   private String lastChar;
 
+  /**
+   * Crée une interface de tchat.
+   * 
+   * @param defaultText le texte par défaut
+   */
   public GuiMcfrChat(String defaultText) {
     super(defaultText);
   }
@@ -72,6 +90,9 @@ public class GuiMcfrChat extends GuiChat {
     }
   }
 
+  /**
+   * @return true si une bulle de tchat doit être créée
+   */
   private boolean shouldAddBubble() {
     // #f:0
     return !this.bubbleDisplayed &&
@@ -82,6 +103,9 @@ public class GuiMcfrChat extends GuiChat {
     // #f:1
   }
 
+  /**
+   * @return true si la bulle de tchat doit être supprimée
+   */
   private boolean shouldRemoveBubble() {
     // #f:0
     return this.bubbleDisplayed && (
