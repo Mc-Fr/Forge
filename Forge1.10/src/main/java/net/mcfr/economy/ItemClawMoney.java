@@ -10,6 +10,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+/**
+ * Monnaie Griffe.
+ *
+ * @author Mc-Fr
+ */
 public class ItemClawMoney extends McfrItem {
   public ItemClawMoney() {
     super("claw_money", CreativeTabs.MISC);
@@ -29,6 +34,16 @@ public class ItemClawMoney extends McfrItem {
     }
   }
 
+  /**
+   * Types de monnaie :
+   * <ul>
+   * <li>bronze</li>
+   * <li>argent</li>
+   * <li>or</li>
+   * </ul>
+   *
+   * @author Mc-Fr
+   */
   public static enum EnumType implements IEnumType<EnumType> {
     BRONZE("bronze"),
     SILVER("silver"),
