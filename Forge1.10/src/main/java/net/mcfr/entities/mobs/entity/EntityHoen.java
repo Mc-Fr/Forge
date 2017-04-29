@@ -39,8 +39,13 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
+/**
+ * Hoen.
+ *
+ * @author Mc-Fr
+ */
 public class EntityHoen extends EntityBurrowed {
-  //new Item[] {Items.WHEAT_SEEDS, Items.MELON_SEEDS, Items.PUMPKIN_SEEDS, Items.BEETROOT_SEEDS}
+  // new Item[] {Items.WHEAT_SEEDS, Items.MELON_SEEDS, Items.PUMPKIN_SEEDS, Items.BEETROOT_SEEDS}
   private static final Set<Item> TEMPTATION_ITEMS = Sets.newHashSet();
   private int ticks;
 
@@ -79,8 +84,8 @@ public class EntityHoen extends EntityBurrowed {
   }
 
   /**
-   * Called frequently so the entity can update its state every tick as required. For example, zombies and skeletons use
-   * this to react to sunlight and start to burn.
+   * Called frequently so the entity can update its state every tick as required. For example,
+   * zombies and skeletons use this to react to sunlight and start to burn.
    */
   @Override
   public void onLivingUpdate() {
@@ -113,8 +118,8 @@ public class EntityHoen extends EntityBurrowed {
   }
 
   /**
-   * Checks if the parameter is an item which this animal can be fed to breed it (wheat, carrots or seeds depending on
-   * the animal type)
+   * Checks if the parameter is an item which this animal can be fed to breed it (wheat, carrots or
+   * seeds depending on the animal type)
    */
   @Override
   public boolean isBreedingItem(@Nullable ItemStack stack) {

@@ -34,6 +34,11 @@ import net.minecraft.util.datafix.DataFixer;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
+/**
+ * Galt.
+ *
+ * @author Mc-Fr
+ */
 public class EntityGalt extends EntityBurrowed {
   private static final Set<Item> TEMPTATION_ITEMS = Sets.newHashSet();
 
@@ -83,8 +88,8 @@ public class EntityGalt extends EntityBurrowed {
   }
 
   /**
-   * Called frequently so the entity can update its state every tick as required. For example, zombies and skeletons use
-   * this to react to sunlight and start to burn.
+   * Called frequently so the entity can update its state every tick as required. For example,
+   * zombies and skeletons use this to react to sunlight and start to burn.
    */
   @Override
   public void onLivingUpdate() {
@@ -97,8 +102,8 @@ public class EntityGalt extends EntityBurrowed {
   }
 
   /**
-   * Checks if the parameter is an item which this animal can be fed to breed it (wheat, carrots or seeds depending on
-   * the animal type)
+   * Checks if the parameter is an item which this animal can be fed to breed it (wheat, carrots or
+   * seeds depending on the animal type)
    */
   @Override
   public boolean isBreedingItem(@Nullable ItemStack stack) {

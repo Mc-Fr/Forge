@@ -13,6 +13,11 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+/**
+ * Modèle du Hoen.
+ *
+ * @author Mc-Fr
+ */
 @SideOnly(Side.CLIENT)
 public class ModelHoen extends ModelBase {
   private ModelRenderer body;
@@ -68,12 +73,10 @@ public class ModelHoen extends ModelBase {
     this.head.addChild(this.crete);
   }
 
-  /**
-   * Sets the models various rotation angles then renders the model.
-   */
+  @Override
   public void render(Entity entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
     this.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale, entityIn);
-    
+
     if (((EntityGendered) entityIn).isChild()) {
       GlStateManager.pushMatrix();
       GlStateManager.scale(0.7F, 0.7F, 0.7F);
@@ -82,28 +85,25 @@ public class ModelHoen extends ModelBase {
       this.body.render(scale * 0.7F);
       GlStateManager.popMatrix();
 
-    } else if (((EntityGendered) entityIn).getGender() == Genders.FEMALE) {
+    }
+    else if (((EntityGendered) entityIn).getGender() == Genders.FEMALE) {
       this.crete.isHidden = true;
       this.body.render(scale * 0.7F);
-      
-    } else {
+
+    }
+    else {
       this.crete.isHidden = false;
       this.body.render(scale * 0.7F);
     }
   }
 
-  /**
-   * Sets the model's various rotation angles. For bipeds, par1 and par2 are
-   * used for animating the movement of arms and legs, where par1 represents the
-   * time(so that arms and legs swing back and forth) and par2 represents how
-   * "far" arms and legs can swing at most.
-   */
+  @Override
   public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor,
       Entity entityIn) {
     float degToRad = ((float) Math.PI / 180F);
     float tickToSec = 0.012F;
 
-    // Pliage du modèle    
+    // Pliage du modèle
     this.beak.rotateAngleX = 0F * degToRad;
     this.body.rotateAngleX = -7.906F * degToRad;
     this.crete.rotateAngleX = -32.506F * degToRad;

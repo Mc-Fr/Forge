@@ -2,31 +2,43 @@ package net.mcfr.entities.mobs.gender;
 
 import java.util.Random;
 
+/**
+ * Genres :
+ * <ul>
+ * <li>mâle</li>
+ * <li>femelle</li>
+ * <li>aléatoire</li>
+ * </ul>
+ *
+ * @author Mc-Fr
+ */
 public enum Genders {
   MALE(0),
   FEMALE(1),
   RANDOM(2);
-  
+
   private int value;
-  
+
   private Genders(int value) {
     this.value = value;
   }
-  
+
   public int getInt() {
     return this.value;
   }
-  
+
   public static Genders getByInt(int value) {
     if (value == 0) {
       return MALE;
-    } else if (value == 1) {
+    }
+    else if (value == 1) {
       return FEMALE;
-    } else {
+    }
+    else {
       return RANDOM;
     }
   }
-  
+
   public static Genders getRandomGender() {
     return getByInt(new Random().nextInt(2));
   }

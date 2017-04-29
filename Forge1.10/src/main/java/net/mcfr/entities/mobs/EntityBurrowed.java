@@ -12,6 +12,11 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+/**
+ * Terrier.
+ *
+ * @author Mc-Fr
+ */
 public abstract class EntityBurrowed extends EntityGendered {
   private int lastHealTime;
   @SideOnly(Side.SERVER)
@@ -46,11 +51,11 @@ public abstract class EntityBurrowed extends EntityGendered {
   public Vec3d getBurrowPosition() {
     return new Vec3d(getSyncedInteger("HomeX"), getSyncedInteger("HomeY"), getSyncedInteger("HomeZ"));
   }
-  
+
   public boolean mustRemove() {
     return getSyncedBoolean("ToRemove");
   }
-  
+
   public void setToRemove(boolean value) {
     setBurrow(-2, getPosition());
     setSyncedBoolean("ToRemove", value);
@@ -81,21 +86,21 @@ public abstract class EntityBurrowed extends EntityGendered {
       heal(1);
       this.lastHealTime = this.ticksExisted;
     }
-    
+
     if (mustRemove()) {
       this.setDead();
     }
-    
+
     super.onLivingUpdate();
   }
-  
+
   public abstract List<ItemStack> getLoots();
-  
+
   @Override
   protected void dropLoot(boolean wasRecentlyHit, int lootingModifier, DamageSource source) {
     getLoots().forEach(i -> this.entityDropItem(i, 0.0F));
   }
-  
+
   public int getRandomQuantity(float value) {
     int baseValue = (int) Math.floor(value);
     float chance = value - baseValue;

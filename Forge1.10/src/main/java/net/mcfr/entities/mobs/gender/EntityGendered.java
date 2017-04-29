@@ -4,6 +4,11 @@ import net.mcfr.entities.mobs.EntitySyncedAnimal;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.world.World;
 
+/**
+ * Cette classe représente un animal possédant un genre (mâle/femelle).
+ *
+ * @author Mc-Fr
+ */
 public abstract class EntityGendered extends EntitySyncedAnimal {
   public EntityGendered(World worldIn) {
     super(worldIn);
@@ -32,9 +37,11 @@ public abstract class EntityGendered extends EntitySyncedAnimal {
     float pitch = this.rand.nextFloat() - this.rand.nextFloat() * 0.2F;
     if (isChild()) {
       pitch += 1.5F;
-    } else if (getGender() == Genders.FEMALE) {
+    }
+    else if (getGender() == Genders.FEMALE) {
       pitch += 1.2F;
-    } else {
+    }
+    else {
       pitch += 1.0F;
     }
     return pitch;

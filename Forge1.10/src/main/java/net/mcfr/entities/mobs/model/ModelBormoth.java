@@ -11,6 +11,11 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+/**
+ * Modèle du Bormoth.
+ *
+ * @author Mc-Fr
+ */
 @SideOnly(Side.CLIENT)
 public class ModelBormoth extends ModelBase {
   public ModelRenderer abdomen;
@@ -85,74 +90,71 @@ public class ModelBormoth extends ModelBase {
 
     this.rightArm1.addChild(this.rightArm2);
     this.leftArm1.addChild(this.leftArm2);
-    
+
     this.rightArm2.addChild(this.preTrunk);
     this.preTrunk.addChild(this.trunk1);
     this.preTrunk.addChild(this.trunk2);
     this.preTrunk.addChild(this.trunk3);
   }
 
-  /**
-   * Sets the models various rotation angles then renders the model.
-   */
+  @Override
   public void render(Entity entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
     this.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale, entityIn);
-    
+
     this.trunk1.isHidden = true;
     this.trunk2.isHidden = true;
     this.trunk3.isHidden = true;
     switch (((EntityBormoth) entityIn).getTrunkType()) {
-    case 1:
-      this.trunk1.isHidden = false;
-      break;
-    case 2:
-      this.trunk2.isHidden = false;
-      break;
-    case 3:
-      this.trunk3.isHidden = false;
-      break;
+      case 1:
+        this.trunk1.isHidden = false;
+        break;
+      case 2:
+        this.trunk2.isHidden = false;
+        break;
+      case 3:
+        this.trunk3.isHidden = false;
+        break;
     }
-    
+
     if (((EntityGendered) entityIn).isChild()) {
       GlStateManager.pushMatrix();
       GlStateManager.scale(0.4F, 0.4F, 0.4F);
       GlStateManager.translate(0.0F, 35.0F * scale, 0.0F);
       this.abdomen.render(scale);
       GlStateManager.popMatrix();
-    } else if (((EntityGendered) entityIn).getGender() == Genders.FEMALE){
+    }
+    else if (((EntityGendered) entityIn).getGender() == Genders.FEMALE) {
       GlStateManager.pushMatrix();
       GlStateManager.scale(0.9F, 0.9F, 0.9F);
       GlStateManager.translate(0.0F, 3.0F * scale, 0.0F);
       this.abdomen.render(scale);
       GlStateManager.popMatrix();
-    } else {
+    }
+    else {
       this.abdomen.render(scale);
     }
   }
 
   /**
-   * Interpolate the head rotation angles to make the head movement softer
+   * Interpole les angles de rotation de la tête pour rendre le mouvement plus doux.
    */
   private void interpolateHeadAngles(float headPitch, float headYaw, float speed) {
     if (this.headPitch - headPitch > 0.2F) {
       this.headPitch -= speed;
-    } else if (this.headPitch - headPitch < -0.2F) {
+    }
+    else if (this.headPitch - headPitch < -0.2F) {
       this.headPitch += speed;
     }
 
     if (this.headYaw - headYaw * 0.4F > 0.2F) {
       this.headYaw -= speed;
-    } else if (this.headYaw - headYaw * 0.4F < -0.2F) {
+    }
+    else if (this.headYaw - headYaw * 0.4F < -0.2F) {
       this.headYaw += speed;
     }
   }
 
-  /**
-   * Sets the model's various rotation angles. For bipeds, par1 and par2 are
-   * used for animating the movement of arms and legs, where par1 represents the
-   * time(so that arms and legs swing back and forth) and par2 represents how
-   * "far" arms and legs can swing at most.
-   */
+  @Override
   public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor,
       Entity entityIn) {
     float degToRad = ((float) Math.PI / 180F);
@@ -174,7 +176,8 @@ public class ModelBormoth extends ModelBase {
       this.leftArm1.rotateAngleX = -38.29F * degToRad;
       this.leftArm2.rotateAngleX = 11.17F * degToRad;
       this.head.rotateAngleX = -67.71F * degToRad;
-    } else {
+    }
+    else {
       this.torso.rotateAngleX = -31.41F * degToRad;
       this.rightArm1.rotateAngleX = -44.06F * degToRad;
       this.rightArm2.rotateAngleX = 6.04F * degToRad;
@@ -191,14 +194,15 @@ public class ModelBormoth extends ModelBase {
 
     if (((EntityBormoth) entityIn).getTrunkType() != 0) {
       this.rightArm1.rotateAngleY = phaseCos * 10.0F * limbSwingAmount * degToRad;
-    } else {
+    }
+    else {
       this.rightArm1.rotateAngleX -= phaseCos * 20.0F * limbSwingAmount * degToRad;
       this.rightArm2.rotateAngleX += phaseCos * 10.0F * limbSwingAmount * degToRad;
     }
 
     this.leftArm1.rotateAngleX += phaseCos * 20.0F * limbSwingAmount * degToRad;
     this.leftArm2.rotateAngleX -= phaseCos * 10.0F * limbSwingAmount * degToRad;
-    
+
     this.torso.rotateAngleX += doubleCos * 3.0F * limbSwingAmount * degToRad;
     this.head.rotateAngleX -= doubleCos * 2.8F * limbSwingAmount * degToRad;
 

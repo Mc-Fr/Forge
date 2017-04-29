@@ -7,6 +7,11 @@ import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
 
+/**
+ * Rendu du Taure.
+ *
+ * @author Mc-Fr
+ */
 public class RenderTaure extends RenderLiving<EntityTaure> {
   private static final ResourceLocation TAURE_TEXTURES = new ResourceLocation(Constants.MOD_ID, "textures/entity/taure.png");
 
@@ -14,17 +19,11 @@ public class RenderTaure extends RenderLiving<EntityTaure> {
     super(renderManagerIn, modelbaseIn, shadowSizeIn);
   }
 
-  /**
-   * Returns the location of an entity's texture. Doesn't seem to be called
-   * unless you call Render.bindEntityTexture.
-   */
+  @Override
   protected ResourceLocation getEntityTexture(EntityTaure entity) {
     return TAURE_TEXTURES;
   }
 
-  /**
-   * Renders the desired {@code T} type Entity.
-   */
   @Override
   public void doRender(EntityTaure entity, double x, double y, double z, float entityYaw, float partialTicks) {
     super.doRender(entity, x, y, z, entityYaw, partialTicks);

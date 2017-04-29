@@ -24,12 +24,18 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+/**
+ * Entité du grappin.
+ *
+ * @author Mc-Fr
+ */
 public class EntityGrapnel extends Entity implements IProjectile {
   private static final DataParameter<Byte> LENGTH = EntityDataManager.createKey(EntityGrapnel.class, DataSerializers.BYTE);
   private static final DataParameter<Boolean> IS_ROPE = EntityDataManager.createKey(EntityGrapnel.class, DataSerializers.BOOLEAN);
-  
+
+  /** Vitesse */
   private static final float VELOCITY = 20;
-  
+
   private int xTile = -1;
   private int yTile = -1;
   private int zTile = -1;
@@ -38,12 +44,20 @@ public class EntityGrapnel extends Entity implements IProjectile {
   private boolean inGround;
   private int ticksInGround;
   private int ticksInAir;
-  
+
+  /** Type de grapin */
   private ItemGrapnel.EnumType type;
   private Entity shootingEntity;
-  
-  public EntityGrapnel(World worldIn, Entity shooter, ItemGrapnel.EnumType type) {
-    super(worldIn);
+
+  /**
+   * Crée un grapin.
+   * 
+   * @param world le monde
+   * @param shooter le tireur
+   * @param type le type de grappin
+   */
+  public EntityGrapnel(World world, Entity shooter, ItemGrapnel.EnumType type) {
+    super(world);
     this.type = type;
     setRenderDistanceWeight(10);
     this.shootingEntity = shooter;
@@ -60,31 +74,37 @@ public class EntityGrapnel extends Entity implements IProjectile {
     this.dataManager.set(LENGTH, (byte) type.getLength());
     this.dataManager.set(IS_ROPE, type.isRope());
   }
-  
+
   @Override
   protected void entityInit() {
     this.dataManager.register(LENGTH, (byte) 0);
     this.dataManager.register(IS_ROPE, null);
   }
-  
+
+  /**
+   * @return la longueur de l'échelle
+   */
   public int getLength() {
     return this.dataManager.get(LENGTH);
   }
-  
+
+  /**
+   * @return true si l'échelle est en corde
+   */
   public boolean isRope() {
     return this.dataManager.get(IS_ROPE);
   }
-  
+
   @Override
   protected void readEntityFromNBT(NBTTagCompound tagCompound) {
     this.type = ItemGrapnel.EnumType.byMetadata(tagCompound.getInteger("Type"));
   }
-  
+
   @Override
   protected void writeEntityToNBT(NBTTagCompound tagCompound) {
     tagCompound.setInteger("Type", this.type.getMetadata());
   }
-  
+
   @Override
   public void setThrowableHeading(double x, double y, double z, float velocity, float inaccuracy) {
     float f = MathHelper.sqrt_double(x * x + y * y + z * z);
@@ -104,14 +124,14 @@ public class EntityGrapnel extends Entity implements IProjectile {
     this.prevRotationYaw = this.rotationYaw = (float) (MathHelper.atan2(x, z) * 180.0D / Math.PI);
     this.prevRotationPitch = this.rotationPitch = (float) (MathHelper.atan2(y, f1) * 180.0D / Math.PI);
   }
-  
+
   @Override
   @SideOnly(Side.CLIENT)
   public void setPositionAndRotationDirect(double x, double y, double z, float yaw, float pitch, int posRotationIncrements, boolean b) {
     setPosition(x, y, z);
     setRotation(yaw, pitch);
   }
-  
+
   /**
    * Sets the velocity to the args. Args: x, y, z
    */
@@ -121,7 +141,7 @@ public class EntityGrapnel extends Entity implements IProjectile {
     this.motionX = x;
     this.motionY = y;
     this.motionZ = z;
-    
+
     if (this.prevRotationPitch == 0.0F && this.prevRotationYaw == 0.0F) {
       float f = MathHelper.sqrt_double(x * x + z * z);
       this.prevRotationYaw = this.rotationYaw = (float) (MathHelper.atan2(x, z) * 180.0D / Math.PI);
@@ -131,35 +151,35 @@ public class EntityGrapnel extends Entity implements IProjectile {
       setLocationAndAngles(this.posX, this.posY, this.posZ, this.rotationYaw, this.rotationPitch);
     }
   }
-  
+
   @Override
   public void onUpdate() {
     super.onUpdate();
-    
+
     if (this.prevRotationPitch == 0.0F && this.prevRotationYaw == 0.0F) {
       float f = MathHelper.sqrt_double(this.motionX * this.motionX + this.motionZ * this.motionZ);
       this.prevRotationYaw = this.rotationYaw = (float) (MathHelper.atan2(this.motionX, this.motionZ) * 180.0D / Math.PI);
       this.prevRotationPitch = this.rotationPitch = (float) (MathHelper.atan2(this.motionY, f) * 180.0D / Math.PI);
     }
-    
+
     BlockPos blockpos = new BlockPos(this.xTile, this.yTile, this.zTile);
     IBlockState iblockstate = this.worldObj.getBlockState(blockpos);
     Block block = iblockstate.getBlock();
-    
+
     if (iblockstate.getMaterial() != Material.AIR) {
       AxisAlignedBB axisalignedbb = iblockstate.getBoundingBox(this.worldObj, blockpos);
-      
+
       if (axisalignedbb != null && axisalignedbb.isVecInside(new Vec3d(this.posX, this.posY, this.posZ))) {
         this.inGround = true;
       }
     }
-    
+
     if (this.inGround) {
       int j = block.getMetaFromState(iblockstate);
-      
+
       if (block == this.inTile && j == this.inData) {
         ++this.ticksInGround;
-        
+
         if (this.ticksInGround >= 20) {
           setDead();
         }
@@ -180,26 +200,27 @@ public class EntityGrapnel extends Entity implements IProjectile {
       RayTraceResult movingobjectposition = this.worldObj.rayTraceBlocks(vec31, vec3, false, true, false);
       vec31 = new Vec3d(this.posX, this.posY, this.posZ);
       vec3 = new Vec3d(this.posX + this.motionX, this.posY + this.motionY, this.posZ + this.motionZ);
-      
+
       if (movingobjectposition != null) {
         vec3 = new Vec3d(movingobjectposition.hitVec.xCoord, movingobjectposition.hitVec.yCoord, movingobjectposition.hitVec.zCoord);
       }
-      
+
       Entity entity = null;
-      List<Entity> list = this.worldObj.getEntitiesWithinAABBExcludingEntity(this, getEntityBoundingBox().addCoord(this.motionX, this.motionY, this.motionZ).expand(1.0D, 1.0D, 1.0D));
+      List<Entity> list = this.worldObj.getEntitiesWithinAABBExcludingEntity(this,
+          getEntityBoundingBox().addCoord(this.motionX, this.motionY, this.motionZ).expand(1.0D, 1.0D, 1.0D));
       double d0 = 0.0D;
-      
+
       for (int i = 0; i < list.size(); ++i) {
         Entity entity1 = list.get(i);
-        
+
         if (entity1.canBeCollidedWith() && (entity1 != this.shootingEntity || this.ticksInAir >= 5)) {
           float f1 = 0.3F;
           AxisAlignedBB axisalignedbb1 = entity1.getEntityBoundingBox().expand(f1, f1, f1);
           RayTraceResult movingobjectposition1 = axisalignedbb1.calculateIntercept(vec31, vec3);
-          
+
           if (movingobjectposition1 != null) {
             double d1 = vec31.squareDistanceTo(movingobjectposition1.hitVec);
-            
+
             if (d1 < d0 || d0 == 0.0D) {
               entity = entity1;
               d0 = d1;
@@ -207,19 +228,20 @@ public class EntityGrapnel extends Entity implements IProjectile {
           }
         }
       }
-      
+
       if (entity != null) {
         movingobjectposition = new RayTraceResult(entity);
       }
-      
+
       if (movingobjectposition != null && movingobjectposition.entityHit != null && movingobjectposition.entityHit instanceof EntityPlayer) {
         EntityPlayer entityplayer = (EntityPlayer) movingobjectposition.entityHit;
-        
-        if (entityplayer.capabilities.disableDamage || this.shootingEntity instanceof EntityPlayer && !((EntityPlayer) this.shootingEntity).canAttackPlayer(entityplayer)) {
+
+        if (entityplayer.capabilities.disableDamage
+            || this.shootingEntity instanceof EntityPlayer && !((EntityPlayer) this.shootingEntity).canAttackPlayer(entityplayer)) {
           movingobjectposition = null;
         }
       }
-      
+
       if (movingobjectposition != null) {
         BlockPos blockpos1 = movingobjectposition.getBlockPos();
         this.xTile = blockpos1.getX();
@@ -237,52 +259,54 @@ public class EntityGrapnel extends Entity implements IProjectile {
         this.posZ -= this.motionZ / f5 * 0.05000000074505806D;
         playSound(SoundEvents.ENTITY_ARROW_HIT, 1.0F, 1.2F / (this.rand.nextFloat() * 0.2F + 0.9F));
         this.inGround = true;
-        
+
         if (iblockstate1.getMaterial() != Material.AIR) {
           this.inTile.onEntityCollidedWithBlock(this.worldObj, blockpos1, iblockstate1, this);
         }
       }
-      
+
       this.posX += this.motionX;
       this.posY += this.motionY;
       this.posZ += this.motionZ;
       float f3 = MathHelper.sqrt_double(this.motionX * this.motionX + this.motionZ * this.motionZ);
       this.rotationYaw = (float) (MathHelper.atan2(this.motionX, this.motionZ) * 180.0D / Math.PI);
-      
-      for (this.rotationPitch = (float) (MathHelper.atan2(this.motionY, f3) * 180.0D / Math.PI); this.rotationPitch - this.prevRotationPitch < -180.0F; this.prevRotationPitch -= 360.0F) {
+
+      for (this.rotationPitch = (float) (MathHelper.atan2(this.motionY, f3) * 180.0D / Math.PI); this.rotationPitch
+          - this.prevRotationPitch < -180.0F; this.prevRotationPitch -= 360.0F) {
         ;
       }
-      
+
       while (this.rotationPitch - this.prevRotationPitch >= 180.0F) {
         this.prevRotationPitch += 360.0F;
       }
-      
+
       while (this.rotationYaw - this.prevRotationYaw < -180.0F) {
         this.prevRotationYaw -= 360.0F;
       }
-      
+
       while (this.rotationYaw - this.prevRotationYaw >= 180.0F) {
         this.prevRotationYaw += 360.0F;
       }
-      
+
       this.rotationPitch = this.prevRotationPitch + (this.rotationPitch - this.prevRotationPitch) * 0.2F;
       this.rotationYaw = this.prevRotationYaw + (this.rotationYaw - this.prevRotationYaw) * 0.2F;
       float f4 = 0.99F;
       float f6 = 0.05F;
-      
+
       if (isInWater()) {
         for (int i1 = 0; i1 < 4; ++i1) {
           float f8 = 0.25F;
-          this.worldObj.spawnParticle(EnumParticleTypes.WATER_BUBBLE, this.posX - this.motionX * f8, this.posY - this.motionY * f8, this.posZ - this.motionZ * f8, this.motionX, this.motionY, this.motionZ, new int[0]);
+          this.worldObj.spawnParticle(EnumParticleTypes.WATER_BUBBLE, this.posX - this.motionX * f8, this.posY - this.motionY * f8,
+              this.posZ - this.motionZ * f8, this.motionX, this.motionY, this.motionZ, new int[0]);
         }
-        
+
         f4 = 0.6F;
       }
-      
+
       if (isWet()) {
         extinguish();
       }
-      
+
       this.motionX *= f4;
       this.motionY *= f4;
       this.motionZ *= f4;
@@ -291,12 +315,12 @@ public class EntityGrapnel extends Entity implements IProjectile {
       doBlockCollisions();
     }
   }
-  
+
   @Override
   protected boolean canTriggerWalking() {
     return false;
   }
-  
+
   @Override
   public float getEyeHeight() {
     return 0;
