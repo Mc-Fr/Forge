@@ -9,9 +9,23 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
+/**
+ * Classe de base des panneaux suspendus.
+ *
+ * @author Mc-Fr
+ */
 public abstract class McfrBlockSuspendedSign extends McfrBlockSign {
   public static final PropertyInteger ROTATION = PropertyInteger.create("rotation", 0, 15);
 
+  /**
+   * Crée un panneau suspendu.
+   * 
+   * @param name le nom
+   * @param material le matériau
+   * @param sound le type de son
+   * @param hardness la dureté
+   * @param tool l'outil nécessaire
+   */
   public McfrBlockSuspendedSign(String name, Material material, SoundType sound, float hardness, String tool) {
     super(name, material, sound, hardness, tool);
     setDefaultState(this.blockState.getBaseState().withProperty(ROTATION, 0));

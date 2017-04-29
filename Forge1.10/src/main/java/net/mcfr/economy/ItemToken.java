@@ -10,6 +10,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+/**
+ * Jeton.
+ *
+ * @author Mc-Fr
+ */
 public class ItemToken extends McfrItem {
   public ItemToken() {
     super("token", CreativeTabs.MISC);
@@ -29,6 +34,18 @@ public class ItemToken extends McfrItem {
     }
   }
 
+  /**
+   * Types de jetons :
+   * <ul>
+   * <li>icône ancienne abimée</li>
+   * <li>icône ancienne</li>
+   * <li>pièce ancienne</li>
+   * <li>tablette ancienne</li>
+   * <li>fragment ancien</li>
+   * </ul>
+   *
+   * @author Darmo
+   */
   public static enum EnumType implements IEnumType<EnumType> {
     // NORMAL("normal"),
     DAMAGED_ANCIENT_ICON("damaged_ancient_icon"),

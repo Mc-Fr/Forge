@@ -13,6 +13,11 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
+/**
+ * Pancarte en papier droite.
+ *
+ * @author Mc-Fr
+ */
 public class BlockStandingPaperSign extends McfrBlockStandingSign {
   public BlockStandingPaperSign() {
     super("standing_paper_sign", Material.WOOD, SoundType.WOOD, 1, "axe");

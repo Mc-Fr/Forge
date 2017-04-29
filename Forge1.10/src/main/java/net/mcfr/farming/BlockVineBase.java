@@ -12,6 +12,11 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 
+/**
+ * Bloc du bas du cep de vigne.
+ *
+ * @author Mc-Fr
+ */
 public class BlockVineBase extends BlockBushBase {
   public BlockVineBase() {
     super("vine");

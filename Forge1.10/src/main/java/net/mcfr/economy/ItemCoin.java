@@ -34,6 +34,17 @@ public class ItemCoin extends McfrItem {
     }
   }
 
+  /**
+   * Types de pièces :
+   * <ul>
+   * <li>laiton</li>
+   * <li>élinvar</li>
+   * <li>or</li>
+   * <li>platine</li>
+   * </ul>
+   * 
+   * @author Darmo
+   */
   public static enum EnumType implements IEnumType<EnumType> {
     BRASS("brass"),
     ELINVAR("elinvar"),

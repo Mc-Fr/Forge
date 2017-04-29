@@ -8,6 +8,11 @@ import net.mcfr.McfrBlocks;
 import net.mcfr.McfrItems;
 import net.minecraft.item.ItemStack;
 
+/**
+ * Bloc du haut du chanvre.
+ *
+ * @author Mc-Fr
+ */
 public class BlockHempTop extends BlockBushTop {
   public BlockHempTop() {
     super("hemp");

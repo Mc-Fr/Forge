@@ -13,6 +13,11 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
+/**
+ * Panneau mural HRP.
+ *
+ * @author Mc-Fr
+ */
 public class BlockWallOrpSign extends McfrBlockWallSign {
   public BlockWallOrpSign() {
     super("wall_orp_sign", Material.GLASS, SoundType.WOOD, 1, null);

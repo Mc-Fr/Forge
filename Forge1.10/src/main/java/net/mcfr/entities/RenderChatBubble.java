@@ -6,6 +6,11 @@ import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
 
+/**
+ * Cette classe s'occupe du rendu des bulles de tchat.
+ *
+ * @author Mc-Fr
+ */
 public class RenderChatBubble extends Render<EntityChatBubble> {
   public RenderChatBubble(RenderManager renderManager) {
     super(renderManager);

@@ -16,15 +16,28 @@ import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+/**
+ * Paquet commandant l'ouverture de l'interface d'édition des panneaux chez le client.
+ *
+ * @author Mc-Fr
+ */
 public class OpenEditMcfrSignMessage implements IMessage {
   private BlockPos signPos;
   private SignType signType;
 
-  // Requis par Forge.
+  /**
+   * Crée un paquet. Constructeur equis par Forge.
+   */
   public OpenEditMcfrSignMessage() {
     this(null, null);
   }
 
+  /**
+   * Crée un paquet.
+   * 
+   * @param signPos la position du panneau
+   * @param signType le type de panneau
+   */
   public OpenEditMcfrSignMessage(BlockPos signPos, SignType signType) {
     this.signPos = signPos;
     this.signType = signType;
@@ -47,14 +60,30 @@ public class OpenEditMcfrSignMessage implements IMessage {
     this.signType = SignType.fromOrdinal(buf.readInt());
   }
 
+  /**
+   * @return la position du panneau
+   */
   public BlockPos getSignPos() {
     return this.signPos;
   }
 
+  /**
+   * @return le type de panneau
+   */
   public SignType getSignType() {
     return this.signType;
   }
 
+  /**
+   * Types de panneaux :
+   * <ul>
+   * <li>normal</li>
+   * <li>en papier</li>
+   * <li>HRP</li>
+   * </ul>
+   *
+   * @author Mc-Fr
+   */
   public static enum SignType {
     NORMAL,
     PAPER,
@@ -64,6 +93,12 @@ public class OpenEditMcfrSignMessage implements IMessage {
       return values()[ordinal % values().length];
     }
 
+    /**
+     * Retourne le type de panneau en fonction de la classe passée.
+     * 
+     * @param clazz la classe
+     * @return le type de panneau
+     */
     public static SignType fromClass(Class<? extends TileEntityMcfrSign> clazz) {
       if (clazz == TileEntityNormalSign.class)
         return NORMAL;
@@ -75,6 +110,11 @@ public class OpenEditMcfrSignMessage implements IMessage {
     }
   }
 
+  /**
+   * Gestionnaire côté client.
+   *
+   * @author Mc-Fr
+   */
   public static class ClientHandler implements IMessageHandler<OpenEditMcfrSignMessage, IMessage> {
     @Override
     public IMessage onMessage(final OpenEditMcfrSignMessage message, MessageContext ctx) {
@@ -105,6 +145,12 @@ public class OpenEditMcfrSignMessage implements IMessage {
       return null;
     }
 
+    /**
+     * Ouvre l'interface d'édition. L'appel doit se faire dans une fonction pour éviter que
+     * l'instruction se retrouve sur le serveur et provoque une erreur.
+     * 
+     * @param te le panneau
+     */
     @SideOnly(Side.CLIENT)
     public void openGui(TileEntityMcfrSign te) {
       Minecraft.getMinecraft().displayGuiScreen(new GuiEditMcfrSign(te));

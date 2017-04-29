@@ -40,6 +40,11 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+/**
+ * Niale.
+ *
+ * @author Mc-Fr
+ */
 public class EntityNiale extends EntityBurrowed implements net.minecraftforge.common.IShearable {
   private static final Set<Item> TEMPTATION_ITEMS = Sets.newHashSet();
   private EntityAIEatGrass entityAIEatGrass;
@@ -96,7 +101,8 @@ public class EntityNiale extends EntityBurrowed implements net.minecraftforge.co
   public void handleStatusUpdate(byte id) {
     if (id == 10) {
       this.nialeTimer = 40;
-    } else {
+    }
+    else {
       super.handleStatusUpdate(id);
     }
   }
@@ -114,8 +120,8 @@ public class EntityNiale extends EntityBurrowed implements net.minecraftforge.co
   }
 
   /**
-   * Called frequently so the entity can update its state every tick as required. For example, zombies and skeletons use
-   * this to react to sunlight and start to burn.
+   * Called frequently so the entity can update its state every tick as required. For example,
+   * zombies and skeletons use this to react to sunlight and start to burn.
    */
   @Override
   public void onLivingUpdate() {
@@ -132,8 +138,8 @@ public class EntityNiale extends EntityBurrowed implements net.minecraftforge.co
   }
 
   /**
-   * Checks if the parameter is an item which this animal can be fed to breed it (wheat, carrots or seeds depending on
-   * the animal type)
+   * Checks if the parameter is an item which this animal can be fed to breed it (wheat, carrots or
+   * seeds depending on the animal type)
    */
   @Override
   public boolean isBreedingItem(@Nullable ItemStack stack) {
@@ -161,7 +167,8 @@ public class EntityNiale extends EntityBurrowed implements net.minecraftforge.co
     if (this.nialeTimer > 4 && this.nialeTimer <= 36) {
       float f = (this.nialeTimer - 4 - p_70890_1_) / 32.0F;
       return (float) Math.PI / 5F + (float) Math.PI * 7F / 100F * MathHelper.sin(f * 28.7F);
-    } else
+    }
+    else
       return this.nialeTimer > 0 ? (float) Math.PI / 5F : this.rotationPitch * 0.017453292F;
   }
 

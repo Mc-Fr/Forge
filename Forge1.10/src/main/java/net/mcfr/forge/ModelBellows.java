@@ -3,6 +3,11 @@ package net.mcfr.forge;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 
+/**
+ * Modèle du soufflet.
+ *
+ * @author Mc-Fr
+ */
 public class ModelBellows extends ModelBase {
   private ModelRenderer top;
   private ModelRenderer middle1;
@@ -23,6 +28,11 @@ public class ModelBellows extends ModelBase {
     this.bottom.addBox(0, 0, 0, 16, 3, 16);
   }
 
+  /**
+   * Affiche le modèle.
+   * 
+   * @param height la hauteur en pixels
+   */
   public void renderModel(int height) {
     this.top.offsetY = height / 16f;
     this.top.render(0.0625f);

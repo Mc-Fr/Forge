@@ -4,13 +4,20 @@ import net.mcfr.entities.mobs.entity.EntitySiker;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.ai.EntityAIAvoidEntity;
 
-public class EntityAIAvoidEntityCycle<T extends EntityLivingBase> extends EntityAIAvoidEntity<T> {
+/**
+ * Cycle d'évitement du Siker.
+ * 
+ * @author Mc-Fr
+ *
+ * @param <T> type de l'entité à éviter
+ */
+public class EntityAiAvoidEntityCycle<T extends EntityLivingBase> extends EntityAIAvoidEntity<T> {
   private EntitySiker entity;
   private final int ticksAvoidingDelay;
   private int ticksAvoiding;
   private boolean isBeginning;
 
-  public EntityAIAvoidEntityCycle(EntitySiker theEntityIn, Class<T> classToAvoidIn, float avoidDistanceIn, double farSpeedIn, double nearSpeedIn,
+  public EntityAiAvoidEntityCycle(EntitySiker theEntityIn, Class<T> classToAvoidIn, float avoidDistanceIn, double farSpeedIn, double nearSpeedIn,
       int ticksAvoiding) {
     super(theEntityIn, classToAvoidIn, avoidDistanceIn, farSpeedIn, nearSpeedIn);
     this.entity = theEntityIn;
@@ -21,25 +28,26 @@ public class EntityAIAvoidEntityCycle<T extends EntityLivingBase> extends Entity
   @Override
   public boolean shouldExecute() {
     if (this.entity.ticksExisted - this.entity.getLastAttackerTime() < 20) {
-      this.entity.setCycle(AICycle.IDLE);
+      this.entity.setCycle(AiCycle.IDLE);
       return false;
     }
-    
+
     boolean shouldExecute = super.shouldExecute();
-    
-    if (this.entity.getCycle() == AICycle.MUSTFLEE) {
+
+    if (this.entity.getCycle() == AiCycle.MUST_FLEE) {
       if (shouldExecute) {
-        this.entity.setCycle(AICycle.FLEEING);
+        this.entity.setCycle(AiCycle.FLEEING);
         this.isBeginning = true;
         return true;
       }
     }
-    if (this.entity.getCycle() == AICycle.FLEEING) {
+    if (this.entity.getCycle() == AiCycle.FLEEING) {
       this.ticksAvoiding--;
       if (this.ticksAvoiding > 0) {
         return shouldExecute;
-      } else {
-        this.entity.setCycle(AICycle.IDLE);
+      }
+      else {
+        this.entity.setCycle(AiCycle.IDLE);
       }
     }
     return false;
@@ -57,13 +65,14 @@ public class EntityAIAvoidEntityCycle<T extends EntityLivingBase> extends Entity
   @Override
   public boolean continueExecuting() {
     if (this.entity.ticksExisted - this.entity.getLastAttackerTime() < 20) {
-      this.entity.setCycle(AICycle.IDLE);
+      this.entity.setCycle(AiCycle.IDLE);
       return false;
     }
     if (this.ticksAvoiding-- > 0) {
       return super.continueExecuting() && (this.entity.ticksExisted - this.entity.getLastAttackerTime()) > 20;
-    } else {
-      this.entity.setCycle(AICycle.IDLE);
+    }
+    else {
+      this.entity.setCycle(AiCycle.IDLE);
     }
     return false;
   }

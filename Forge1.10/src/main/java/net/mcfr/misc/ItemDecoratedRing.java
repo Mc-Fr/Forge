@@ -10,6 +10,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+/**
+ * Anneau décoré.
+ *
+ * @author Mc-Fr
+ */
 public class ItemDecoratedRing extends McfrItem {
   public ItemDecoratedRing() {
     super("decorated_ring", CreativeTabs.MISC);
@@ -30,6 +35,19 @@ public class ItemDecoratedRing extends McfrItem {
     }
   }
 
+  /**
+   * Types d'anneaux :
+   * <ul>
+   * <li>émeraude</li>
+   * <li>rubis</li>
+   * <li>saphire</li>
+   * <li>grenat</li>
+   * <li>jade</li>
+   * <li>topaze</li>
+   * </ul>
+   *
+   * @author Mc-Fr
+   */
   public static enum EnumType implements IEnumType<EnumType> {
     EMERALD("emerald"),
     RUBY("ruby"),

@@ -13,6 +13,11 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
+/**
+ * Panneaux HRP droit.
+ *
+ * @author Mc-Fr
+ */
 public class BlockStandingOrpSign extends McfrBlockStandingSign {
   public BlockStandingOrpSign() {
     super("standing_orp_sign", Material.GLASS, SoundType.WOOD, 1, null);

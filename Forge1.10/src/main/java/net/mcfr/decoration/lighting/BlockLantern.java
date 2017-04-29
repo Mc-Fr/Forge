@@ -45,7 +45,8 @@ public class BlockLantern extends McfrBlock {
    * @param isPaper en papier ou non
    */
   public BlockLantern(EnumLanternColor color, boolean isPaper) {
-    super(color.getName() + (isPaper ? "_paper" : "") + "_lantern", isPaper ? Material.CLOTH : Material.GLASS, isPaper ? SoundType.CLOTH : SoundType.GLASS, 0.5f, 0, null, -1, null);
+    super(color.getName() + (isPaper ? "_paper" : "") + "_lantern", isPaper ? Material.CLOTH : Material.GLASS,
+        isPaper ? SoundType.CLOTH : SoundType.GLASS, 0.5f, 0, null, -1, null);
     setDefaultState(this.blockState.getBaseState().withProperty(ORIENTATION, 0).withProperty(POSITION, EnumPosition.BOTTOM));
     setLightLevel(0.875f);
     this.color = color;
@@ -60,8 +61,10 @@ public class BlockLantern extends McfrBlock {
     return ok && worldIn.getBlockState(pos1).isSideSolid(worldIn, pos1, side);
   }
 
+  @SuppressWarnings("deprecation")
   @Override
-  public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
+  public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta,
+      EntityLivingBase placer) {
     EnumPosition position = EnumPosition.fromFacing(facing);
     int face = position.isOnWall() ? facing.getHorizontalIndex() : getFacingIndex(placer);
     return super.onBlockPlaced(worldIn, pos, facing, hitX, hitY, hitZ, meta, placer).withProperty(POSITION, position).withProperty(ORIENTATION, face);

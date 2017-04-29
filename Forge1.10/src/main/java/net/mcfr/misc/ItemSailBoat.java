@@ -10,6 +10,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityBoat.Type;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemMinecart;
 import net.minecraft.item.ItemStack;
 import net.minecraft.stats.StatList;
 import net.minecraft.util.ActionResult;
@@ -22,6 +23,8 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
 /**
+ * Bateau à voiles.
+ * 
  * @see ItemMinecart
  */
 public class ItemSailBoat extends McfrItem {

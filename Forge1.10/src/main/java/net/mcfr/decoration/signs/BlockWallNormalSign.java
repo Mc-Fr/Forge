@@ -13,6 +13,11 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
+/**
+ * Panneau mural normal.
+ *
+ * @author Mc-Fr
+ */
 public class BlockWallNormalSign extends McfrBlockWallSign {
   public BlockWallNormalSign() {
     super("wall_sign", Material.WOOD, SoundType.WOOD, 1, "axe");

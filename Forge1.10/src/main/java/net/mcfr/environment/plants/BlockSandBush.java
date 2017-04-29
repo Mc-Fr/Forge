@@ -18,6 +18,11 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 
+/**
+ * Buisson des sables.
+ *
+ * @author Mc-Fr
+ */
 public class BlockSandBush extends BlockDeadBush implements IBlockWithVariants {
   public static final PropertyEnum<EnumType> VARIANT = PropertyEnum.create("variant", EnumType.class);
 
@@ -62,6 +67,16 @@ public class BlockSandBush extends BlockDeadBush implements IBlockWithVariants {
     return new ItemStack(this, 1, state.getValue(VARIANT).getMetadata());
   }
 
+  /**
+   * Types de buissons :
+   * <ul>
+   * <li>cactus</li>
+   * <li>aloe vera</li>
+   * <li>buisson mort</li>
+   * </ul>
+   *
+   * @author Mc-Fr
+   */
   public static enum EnumType implements IEnumType<EnumType> {
     CACTUS("cactus"),
     ALOE_VERA("aloe_vera"),

@@ -20,6 +20,11 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+/**
+ * Bloc de moucharabieh fin.
+ *
+ * @author Mc-Fr
+ */
 public class BlockMoucharabiehPane extends BlockPane implements IBlockWithVariants {
   public static final PropertyEnum<EnumMoucharabiehType> VARIANT = PropertyEnum.create("variant", EnumMoucharabiehType.class);
 

@@ -16,6 +16,11 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+/**
+ * Grappin.
+ *
+ * @author Mc-Fr
+ */
 public class ItemGrapnel extends McfrItem {
   public ItemGrapnel() {
     super("grapnel", 8, CreativeTabs.TOOLS);
@@ -24,7 +29,8 @@ public class ItemGrapnel extends McfrItem {
 
   // TODO utiliser onItemRigthClick
   @Override
-  public EnumActionResult onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+  public EnumActionResult onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX,
+      float hitY, float hitZ) {
     // TEMP
     // --stack.stackSize;
     // worldIn.playSound((EntityPlayer) null, playerIn.posX, playerIn.posY, playerIn.posZ,
@@ -54,6 +60,19 @@ public class ItemGrapnel extends McfrItem {
     }
   }
 
+  /**
+   * Types de grappins :
+   * <ul>
+   * <li>corde courte</li>
+   * <li>corde moyenne</li>
+   * <li>corde longue</li>
+   * <li>chaîne courte</li>
+   * <li>chaîne moyenne</li>
+   * <li>chaîne longue</li>
+   * </ul>
+   *
+   * @author Mc-Fr
+   */
   public static enum EnumType implements IEnumType<EnumType> {
     ROPE_SHORT("rope_short", 4, true),
     ROPE_MEDIUM("rope_medium", 8, true),
@@ -87,10 +106,16 @@ public class ItemGrapnel extends McfrItem {
       return getName();
     }
 
+    /**
+     * @return la longueur
+     */
     public int getLength() {
       return this.length;
     }
 
+    /**
+     * @return true si c'est une corde
+     */
     public boolean isRope() {
       return this.rope;
     }

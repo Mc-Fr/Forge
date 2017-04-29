@@ -20,10 +20,21 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
+/**
+ * Cette classe représente le bloc du haut d'un buisson en deux parties.
+ *
+ * @author Mc-Fr
+ */
 public abstract class BlockBushTop extends BlockBush {
+  /** L'âge maximal */
   private static final int MAX = 4;
   public static final PropertyInteger AGE = PropertyInteger.create("age", 0, MAX);
 
+  /**
+   * Crée un bloc de buisson haut.
+   * 
+   * @param name le nom
+   */
   public BlockBushTop(String name) {
     super();
     name = name + "_block";
@@ -41,6 +52,9 @@ public abstract class BlockBushTop extends BlockBush {
     return new AxisAlignedBB(0, 0, 0, 1, 0.5f, 1);
   }
 
+  /**
+   * @return le bloc sur lequel celui-ci peut être posé
+   */
   public abstract BlockBushBase getBaseBlock();
 
   @Override
@@ -74,6 +88,9 @@ public abstract class BlockBushTop extends BlockBush {
     super.updateTick(worldIn, pos, state, rand);
   }
 
+  /**
+   * @return les items
+   */
   public abstract List<ItemStack> getItems();
 
   @Override

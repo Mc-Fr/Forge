@@ -13,12 +13,23 @@ import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+/**
+ * Conteneur de l'interface du haut-fourneau.
+ *
+ * @author Mc-Fr
+ */
 public class ContainerStove extends Container {
   private final TileEntityStove tileStove;
   private int temperature;
   private int totalItemBurnTime;
   private int currentItemBurnTime;
 
+  /**
+   * Crée un conteneur pour le haut-fourneau.
+   * 
+   * @param playerInventory l'inventaire du joueur
+   * @param stoveInventory l'inventaire du haut-fourneau
+   */
   public ContainerStove(InventoryPlayer playerInventory, TileEntityStove stoveInventory) {
     this.tileStove = stoveInventory;
 

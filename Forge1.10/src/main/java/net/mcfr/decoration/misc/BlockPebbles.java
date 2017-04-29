@@ -11,11 +11,16 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 
+/**
+ * Ce bloc représente des petits cailloux au sol.
+ *
+ * @author Mc-Fr
+ */
 public class BlockPebbles extends BlockFloorDecoration {
   public BlockPebbles() {
     super("pebbles_block", Material.WOOD, SoundType.GROUND, 0.5f, null);
   }
-  
+
   @Override
   public List<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
     List<ItemStack> drops = new ArrayList<>();

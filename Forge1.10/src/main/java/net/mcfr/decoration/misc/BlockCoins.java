@@ -11,6 +11,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 
+/**
+ * Ce bloc représente des pièces tombées au sol.
+ *
+ * @author Mc-Fr
+ */
 public class BlockCoins extends BlockFloorDecoration {
   public BlockCoins() {
     super("coins_block", Material.WOOD, SoundType.METAL, 0.5f, null);

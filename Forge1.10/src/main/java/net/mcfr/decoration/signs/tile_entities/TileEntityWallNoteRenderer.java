@@ -11,9 +11,15 @@ import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 
+/**
+ * Cette classe s'occupe du rendu des notes murales.
+ *
+ * @author Mc-Fr
+ */
 public class TileEntityWallNoteRenderer extends TileEntitySpecialRenderer<TileEntityWallNote> {
   private static final ResourceLocation TEXTURE = new ResourceLocation(Constants.MOD_ID, "textures/entity/wall_note.png");
 
+  /** Le modèle de la note */
   private ModelWallNote model;
 
   public TileEntityWallNoteRenderer() {

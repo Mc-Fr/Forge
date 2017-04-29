@@ -13,6 +13,11 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
+/**
+ * Pancarte en papier suspendue.
+ *
+ * @author Mc-Fr
+ */
 public class BlockSuspendedPaperSign extends McfrBlockSuspendedSign {
   public BlockSuspendedPaperSign() {
     super("suspended_paper_sign", Material.WOOD, SoundType.WOOD, 1, "axe");

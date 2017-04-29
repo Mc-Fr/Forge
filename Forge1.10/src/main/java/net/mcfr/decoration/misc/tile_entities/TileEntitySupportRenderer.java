@@ -9,11 +9,18 @@ import net.mcfr.decoration.misc.models.ModelSupport;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.util.ResourceLocation;
 
+/**
+ * Cette classe s'occupe du rendu des support en équerre.
+ *
+ * @author Mc-Fr
+ */
 public class TileEntitySupportRenderer extends TileEntitySpecialRenderer<TileEntitySupport> {
   private static final ResourceLocation SUPPORT_TEXTURE = new ResourceLocation(Constants.MOD_ID, "textures/entity/support.png");
   private static final ResourceLocation LONG_SUPPORT_TEXTURE = new ResourceLocation(Constants.MOD_ID, "textures/entity/long_support.png");
 
+  /** Modèle du support normal */
   private ModelSupport support;
+  /** Modèle du support long */
   private ModelLongSupport longSupport;
 
   public TileEntitySupportRenderer() {

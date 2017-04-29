@@ -33,6 +33,11 @@ public class McfrBlockFenceGate extends BlockHorizontal {
   public static final PropertyBool POWERED = PropertyBool.create("powered");
   public static final PropertyBool IN_WALL = PropertyBool.create("in_wall");
 
+  /**
+   * Crée un portillon.
+   * 
+   * @param materialName le nom du matériau
+   */
   public McfrBlockFenceGate(String materialName) {
     super(Material.WOOD);
     String name = materialName + "_fence_gate";
@@ -52,8 +57,8 @@ public class McfrBlockFenceGate extends BlockHorizontal {
 
     if (axis == EnumFacing.Axis.Z
         && (worldIn.getBlockState(pos.west()).getBlock() instanceof BlockWall || worldIn.getBlockState(pos.east()).getBlock() instanceof BlockWall)
-        || axis == EnumFacing.Axis.X
-            && (worldIn.getBlockState(pos.north()).getBlock() instanceof BlockWall || worldIn.getBlockState(pos.south()).getBlock() instanceof BlockWall)) {
+        || axis == EnumFacing.Axis.X && (worldIn.getBlockState(pos.north()).getBlock() instanceof BlockWall
+            || worldIn.getBlockState(pos.south()).getBlock() instanceof BlockWall)) {
       state = state.withProperty(IN_WALL, true);
     }
 
@@ -103,9 +108,10 @@ public class McfrBlockFenceGate extends BlockHorizontal {
   }
 
   @Override
-  public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
-    return getDefaultState().withProperty(FACING, placer.getHorizontalFacing()).withProperty(OPEN, false).withProperty(POWERED, false).withProperty(IN_WALL,
-        false);
+  public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta,
+      EntityLivingBase placer) {
+    return getDefaultState().withProperty(FACING, placer.getHorizontalFacing()).withProperty(OPEN, false).withProperty(POWERED, false)
+        .withProperty(IN_WALL, false);
   }
 
   @Override
@@ -161,7 +167,8 @@ public class McfrBlockFenceGate extends BlockHorizontal {
 
   @Override
   public IBlockState getStateFromMeta(int meta) {
-    return getDefaultState().withProperty(FACING, EnumFacing.getHorizontal(meta)).withProperty(OPEN, (meta & 4) != 0).withProperty(POWERED, (meta & 8) != 0);
+    return getDefaultState().withProperty(FACING, EnumFacing.getHorizontal(meta)).withProperty(OPEN, (meta & 4) != 0).withProperty(POWERED,
+        (meta & 8) != 0);
   }
 
   @Override

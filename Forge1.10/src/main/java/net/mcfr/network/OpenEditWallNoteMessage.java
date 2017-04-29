@@ -13,14 +13,26 @@ import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+/**
+ * Paquet commandant l'ouverture de l'interface d'édition de la note murale chez le client.
+ * 
+ * @author Mc-Fr
+ */
 public class OpenEditWallNoteMessage implements IMessage {
   private BlockPos notePos;
 
-  // Requis par Forge.
+  /**
+   * Crée un paquet. Constructeur equis par Forge.
+   */
   public OpenEditWallNoteMessage() {
     this(null);
   }
 
+  /**
+   * Crée un paquet.
+   * 
+   * @param signPos la position de la note
+   */
   public OpenEditWallNoteMessage(BlockPos signPos) {
     this.notePos = signPos;
   }
@@ -40,10 +52,18 @@ public class OpenEditWallNoteMessage implements IMessage {
     this.notePos = new BlockPos(x, y, z);
   }
 
+  /**
+   * @return la position de la note
+   */
   public BlockPos getSignPos() {
     return this.notePos;
   }
 
+  /**
+   * Gestionnaire côté client.
+   *
+   * @author Mc-Fr
+   */
   public static class ClientHandler implements IMessageHandler<OpenEditWallNoteMessage, IMessage> {
     @Override
     public IMessage onMessage(final OpenEditWallNoteMessage message, MessageContext ctx) {
@@ -64,6 +84,12 @@ public class OpenEditWallNoteMessage implements IMessage {
       return null;
     }
 
+    /**
+     * Ouvre l'interface d'édition. L'appel doit se faire dans une fonction pour éviter que
+     * l'instruction se retrouve sur le serveur et provoque une erreur.
+     * 
+     * @param te la note
+     */
     @SideOnly(Side.CLIENT)
     public void openGui(TileEntityWallNote te) {
       Minecraft.getMinecraft().displayGuiScreen(new GuiEditWallNote(te));

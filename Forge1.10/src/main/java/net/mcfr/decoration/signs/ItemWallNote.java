@@ -16,13 +16,19 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
+/**
+ * Item de la note murale.
+ *
+ * @author Mc-Fr
+ */
 public class ItemWallNote extends McfrItem {
   public ItemWallNote() {
     super("wall_note", 16, CreativeTabs.DECORATIONS);
   }
 
   @Override
-  public EnumActionResult onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+  public EnumActionResult onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX,
+      float hitY, float hitZ) {
     if (playerIn.canPlayerEdit(pos, facing, stack)) {
       if (!worldIn.isRemote) {
         if (facing == EnumFacing.UP || facing == EnumFacing.DOWN) {

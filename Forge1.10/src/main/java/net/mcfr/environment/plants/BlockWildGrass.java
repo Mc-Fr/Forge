@@ -19,6 +19,11 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 
+/**
+ * Herbes folles.
+ *
+ * @author Mc-Fr
+ */
 public class BlockWildGrass extends BlockBush implements IBlockWithVariants {
   public static final PropertyEnum<EnumType> VARIANT = PropertyEnum.create("variant", EnumType.class);
 
@@ -68,6 +73,16 @@ public class BlockWildGrass extends BlockBush implements IBlockWithVariants {
     return null;
   }
 
+  /**
+   * Types d'herbe :
+   * <ul>
+   * <li>normale</li>
+   * <li>jungle</li>
+   * <li>fougère</li>
+   * </ul>
+   *
+   * @author Mc-Fr
+   */
   public static enum EnumType implements IEnumType<EnumType> {
     NORMAL("normal"),
     JUNGLE("jungle"),

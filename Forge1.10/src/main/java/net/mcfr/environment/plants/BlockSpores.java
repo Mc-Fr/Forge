@@ -11,6 +11,11 @@ import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
+/**
+ * Spores de champigons.
+ *
+ * @author Mc-Fr
+ */
 public class BlockSpores extends McfrBlock {
   public BlockSpores() {
     super("spores", Material.GLASS, SoundType.GLASS, 2, 3, null, -1, CreativeTabs.BUILDING_BLOCKS);

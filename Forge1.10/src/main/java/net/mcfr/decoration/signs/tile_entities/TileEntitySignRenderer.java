@@ -14,8 +14,12 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 
 /**
- * @see net.minecraft.client.renderer.tileentity.TileEntitySignRenderer
+ * Cette classe s'occupe du rendu des panneaux.
+ * 
+ * @param <T> type de panneau à rendre
+ * 
  * @author Mc-Fr
+ * @see net.minecraft.client.renderer.tileentity.TileEntitySignRenderer
  */
 public abstract class TileEntitySignRenderer<T extends TileEntityMcfrSign> extends TileEntitySpecialRenderer<T> {
   /** La texture à afficher. */
@@ -23,6 +27,12 @@ public abstract class TileEntitySignRenderer<T extends TileEntityMcfrSign> exten
   /** Le modèle de panneau. */
   private final ModelSign model;
 
+  /**
+   * Crée un gestionnaire d'affichage.
+   * 
+   * @param domain le domaine de la texture (minecraft, mcfr_b_i, etc.)
+   * @param texture la texture
+   */
   public TileEntitySignRenderer(String domain, String texture) {
     this.signTexture = new ResourceLocation(domain, texture);
     this.model = new ModelSign();

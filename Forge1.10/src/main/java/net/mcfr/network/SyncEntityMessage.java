@@ -9,12 +9,22 @@ import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
+/**
+ * Paquet permattant la synchronisation d'entités entre les clients et le serveur.
+ *
+ * @author Mc-Fr
+ */
 public class SyncEntityMessage implements IMessage {
   public SyncEntityMessage() {}
 
   private int entityId;
   private NBTTagCompound entitySyncDataCompound;
 
+  /**
+   * Crée un paquet.
+   * 
+   * @param entity l'entité
+   */
   public SyncEntityMessage(EntitySyncedAnimal entity) {
     this.entityId = entity.getEntityId();
     this.entitySyncDataCompound = entity.getSyncedProps();
@@ -32,6 +42,11 @@ public class SyncEntityMessage implements IMessage {
     ByteBufUtils.writeTag(buf, this.entitySyncDataCompound);
   }
 
+  /**
+   * Gestionnaire côté client.
+   *
+   * @author Mc-Fr
+   */
   public static class ClientHandler implements IMessageHandler<SyncEntityMessage, IMessage> {
     @Override
     public IMessage onMessage(SyncEntityMessage message, MessageContext ctx) {
@@ -44,6 +59,11 @@ public class SyncEntityMessage implements IMessage {
     }
   }
 
+  /**
+   * Gestionnaire côté serveur.
+   *
+   * @author Mc-Fr
+   */
   public static class ServerHandler implements IMessageHandler<SyncEntityMessage, IMessage> {
     @Override
     public IMessage onMessage(SyncEntityMessage message, MessageContext ctx) {

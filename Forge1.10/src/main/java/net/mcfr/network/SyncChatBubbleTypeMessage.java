@@ -10,23 +10,43 @@ import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
+/**
+ * Paquet permettant la synchronisation des bulles de tchat entre les clients et le serveur.
+ *
+ * @author Mc-Fr
+ */
 public class SyncChatBubbleTypeMessage implements IMessage {
   private int entityId;
   private ChatBubbleType type;
 
+  /**
+   * Crée un paquet. Constructeur requis par forge.
+   */
   public SyncChatBubbleTypeMessage() {
     this(ChatBubbleType.TALKING, 0);
   }
 
+  /**
+   * Crée un paquet.
+   * 
+   * @param type le type de bulle
+   * @param entityId l'ID de l'entité
+   */
   public SyncChatBubbleTypeMessage(ChatBubbleType type, int entityId) {
     this.type = type;
     this.entityId = entityId;
   }
 
+  /**
+   * @return le type de bulle
+   */
   public ChatBubbleType getType() {
     return this.type;
   }
 
+  /**
+   * @return l'ID de l'entité
+   */
   public int getEntityId() {
     return this.entityId;
   }
@@ -43,6 +63,11 @@ public class SyncChatBubbleTypeMessage implements IMessage {
     this.entityId = buf.readInt();
   }
 
+  /**
+   * Gestionnaire côté client.
+   *
+   * @author Mc-Fr
+   */
   public static class ClientHandler implements IMessageHandler<SyncChatBubbleTypeMessage, IMessage> {
     @Override
     public IMessage onMessage(SyncChatBubbleTypeMessage message, MessageContext ctx) {
@@ -60,6 +85,11 @@ public class SyncChatBubbleTypeMessage implements IMessage {
     }
   }
 
+  /**
+   * Gestionnaire côté serveur.
+   *
+   * @author Mc-Fr
+   */
   public static class ServerHandler implements IMessageHandler<SyncChatBubbleTypeMessage, IMessage> {
     @Override
     public IMessage onMessage(SyncChatBubbleTypeMessage message, MessageContext ctx) {

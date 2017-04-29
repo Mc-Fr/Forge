@@ -33,8 +33,12 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.storage.loot.LootTableList;
 
+/**
+ * Bormoth
+ *
+ * @author Mc-Fr
+ */
 public class EntityBormoth extends EntityBurrowed {
-
   public EntityBormoth(World worldIn) {
     super(worldIn);
     setSize(1.7F, 4.0F);
@@ -74,8 +78,8 @@ public class EntityBormoth extends EntityBurrowed {
   }
 
   /**
-   * Called frequently so the entity can update its state every tick as required. For example, zombies and skeletons use
-   * this to react to sunlight and start to burn.
+   * Called frequently so the entity can update its state every tick as required. For example,
+   * zombies and skeletons use this to react to sunlight and start to burn.
    */
   @Override
   public void onLivingUpdate() {

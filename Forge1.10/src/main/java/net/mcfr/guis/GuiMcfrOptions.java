@@ -23,6 +23,12 @@ import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.EnumDifficulty;
 
+/**
+ * Interface des options. Certains boutons ont été enlevés par rapport à l'interface de base
+ * (langue...).
+ *
+ * @author Mc-Fr
+ */
 public class GuiMcfrOptions extends GuiScreen {
   private static final GameSettings.Options[] SCREEN_OPTIONS = {GameSettings.Options.FOV};
 
@@ -32,6 +38,12 @@ public class GuiMcfrOptions extends GuiScreen {
   private GuiLockIconButton lockButton;
   private String title;
 
+  /**
+   * Crée une interface des options.
+   * 
+   * @param lastScreen l'écran précédent
+   * @param settings les paramètres du jeu
+   */
   public GuiMcfrOptions(GuiScreen lastScreen, GameSettings settings) {
     this.lastScreen = lastScreen;
     this.settings = settings;
@@ -47,10 +59,12 @@ public class GuiMcfrOptions extends GuiScreen {
 
     for (GameSettings.Options options : SCREEN_OPTIONS) {
       if (options.getEnumFloat()) {
-        this.buttonList.add(new GuiOptionSlider(options.returnEnumOrdinal(), this.width / 2 - 155 + i % 2 * 160, this.height / 6 - 12 + 24 * (i >> 1), options));
+        this.buttonList
+            .add(new GuiOptionSlider(options.returnEnumOrdinal(), this.width / 2 - 155 + i % 2 * 160, this.height / 6 - 12 + 24 * (i >> 1), options));
       }
       else {
-        this.buttonList.add(new GuiOptionButton(options.returnEnumOrdinal(), this.width / 2 - 155 + i % 2 * 160, this.height / 6 - 12 + 24 * (i >> 1), options, this.settings.getKeyBinding(options)));
+        this.buttonList.add(new GuiOptionButton(options.returnEnumOrdinal(), this.width / 2 - 155 + i % 2 * 160, this.height / 6 - 12 + 24 * (i >> 1),
+            options, this.settings.getKeyBinding(options)));
       }
       i++;
     }
@@ -58,12 +72,14 @@ public class GuiMcfrOptions extends GuiScreen {
     if (this.mc.theWorld != null) {
       EnumDifficulty difficulty = this.mc.theWorld.getDifficulty();
 
-      this.difficultyButton = new GuiButton(108, this.width / 2 - 155 + i % 2 * 160, this.height / 6 - 12 + 24 * (i >> 1), 150, 20, this.getDifficultyText(difficulty));
+      this.difficultyButton = new GuiButton(108, this.width / 2 - 155 + i % 2 * 160, this.height / 6 - 12 + 24 * (i >> 1), 150, 20,
+          this.getDifficultyText(difficulty));
       this.buttonList.add(this.difficultyButton);
 
       if (this.mc.isSingleplayer() && !this.mc.theWorld.getWorldInfo().isHardcoreModeEnabled()) {
         this.difficultyButton.setWidth(this.difficultyButton.getButtonWidth() - 20);
-        this.lockButton = new GuiLockIconButton(109, this.difficultyButton.xPosition + this.difficultyButton.getButtonWidth(), this.difficultyButton.yPosition);
+        this.lockButton = new GuiLockIconButton(109, this.difficultyButton.xPosition + this.difficultyButton.getButtonWidth(),
+            this.difficultyButton.yPosition);
         this.buttonList.add(this.lockButton);
         this.lockButton.setLocked(this.mc.theWorld.getWorldInfo().isDifficultyLocked());
         this.lockButton.enabled = !this.lockButton.isLocked();
@@ -86,6 +102,12 @@ public class GuiMcfrOptions extends GuiScreen {
     this.buttonList.add(new GuiButton(200, this.width / 2 - 100, this.height / 6 + 168, I18n.format("gui.done")));
   }
 
+  /**
+   * Retourne le texte de la difficulté.
+   * 
+   * @param difficulty la difficulté
+   * @return le texte correspondant
+   */
   public String getDifficultyText(EnumDifficulty difficulty) {
     ITextComponent component = new TextComponentString("");
 
@@ -141,7 +163,11 @@ public class GuiMcfrOptions extends GuiScreen {
           this.difficultyButton.displayString = getDifficultyText(this.mc.theWorld.getDifficulty());
           break;
         case 109:
-          this.mc.displayGuiScreen(new GuiYesNo(this, new TextComponentTranslation("difficulty.lock.title").getFormattedText(), new TextComponentTranslation("difficulty.lock.question", new TextComponentTranslation(this.mc.theWorld.getWorldInfo().getDifficulty().getDifficultyResourceKey())).getFormattedText(), 109));
+          this.mc
+              .displayGuiScreen(new GuiYesNo(this, new TextComponentTranslation("difficulty.lock.title").getFormattedText(),
+                  new TextComponentTranslation("difficulty.lock.question",
+                      new TextComponentTranslation(this.mc.theWorld.getWorldInfo().getDifficulty().getDifficultyResourceKey())).getFormattedText(),
+                  109));
           break;
         case 110:
           this.mc.gameSettings.saveOptions();

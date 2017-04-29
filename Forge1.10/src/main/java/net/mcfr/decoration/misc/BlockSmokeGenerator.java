@@ -15,6 +15,11 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+/**
+ * Bloc générateur de fumée.
+ *
+ * @author Mc-Fr
+ */
 public class BlockSmokeGenerator extends McfrBlock {
   public BlockSmokeGenerator() {
     super("smoke_generator", Material.ROCK, SoundType.WOOD, 1.5f, 10, "pickaxe", 0, CreativeTabs.DECORATIONS);
@@ -40,8 +45,8 @@ public class BlockSmokeGenerator extends McfrBlock {
   @SideOnly(Side.CLIENT)
   public void randomDisplayTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand) {
     for (int i = 0; i < 10; i++) {
-      worldIn.spawnParticle(EnumParticleTypes.SMOKE_LARGE, pos.getX() + rand.nextDouble(), pos.getY() + 0.4 + rand.nextDouble(), pos.getZ() + rand.nextDouble(),
-          0, 0, 0);
+      worldIn.spawnParticle(EnumParticleTypes.SMOKE_LARGE, pos.getX() + rand.nextDouble(), pos.getY() + 0.4 + rand.nextDouble(),
+          pos.getZ() + rand.nextDouble(), 0, 0, 0);
     }
     worldIn.spawnParticle(EnumParticleTypes.FLAME, pos.getX() + 0.5, pos.getY() + 0.3, pos.getZ() + 0.5, 0, 0, 0);
   }
