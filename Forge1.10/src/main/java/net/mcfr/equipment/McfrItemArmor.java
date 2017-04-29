@@ -10,6 +10,11 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 
+/**
+ * Armures.
+ * 
+ * @author Mc-Fr
+ */
 public class McfrItemArmor extends ItemArmor {
   /**
    * Crée une pièce d'armure.<br/>
@@ -17,7 +22,7 @@ public class McfrItemArmor extends ItemArmor {
    *
    * @param name le nom
    * @param material le matériau
-   * @param armorType le type d'armure (0, 1, 2 ou 3)
+   * @param armorType le type d'armure
    * @see ItemArmor#armorType
    */
   public McfrItemArmor(String name, ArmorMaterial material, EntityEquipmentSlot armorType) {
@@ -29,7 +34,7 @@ public class McfrItemArmor extends ItemArmor {
    *
    * @param name le nom de la pièce
    * @param material le matériau
-   * @param armorType le type d'armure (0, 1, 2 ou 3)
+   * @param armorType le type d'armure
    * @param addType indique si le type d'armure doit être ajouté au nom de la pièce
    * @see ItemArmor#armorType
    */
@@ -48,7 +53,8 @@ public class McfrItemArmor extends ItemArmor {
 
   @Override
   public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type) {
-    return Constants.MOD_ID + ":textures/models/armor/" + getArmorMaterial().getName() + "_layer_" + (this.armorType == EntityEquipmentSlot.LEGS ? "2" : "1") + ".png";
+    return Constants.MOD_ID + ":textures/models/armor/" + getArmorMaterial().getName() + "_layer_"
+        + (this.armorType == EntityEquipmentSlot.LEGS ? "2" : "1") + ".png";
   }
 
   /**

@@ -10,9 +10,12 @@ import net.minecraftforge.common.util.EnumHelper;
  * @author Mc-Fr
  */
 public final class AdditionalArmorMaterial {
-  public static final ArmorMaterial ASSASSIN = EnumHelper.addArmorMaterial("ASSASSIN", "assassin", 0, new int[]{0, 0, 0, 0}, 0, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0F);
-  public static final ArmorMaterial BARBARIAN = EnumHelper.addArmorMaterial("BARBARIAN", "barbarian", 0, new int[]{0, 0, 0, 0}, 0, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0F);
-  public static final ArmorMaterial GOLDEN_CHAIN = EnumHelper.addArmorMaterial("GOLDEN_CHAIN", "golden_chainmail", 0, new int[]{0, 0, 0, 0}, 0, SoundEvents.ITEM_ARMOR_EQUIP_CHAIN, 0F);
+  public static final ArmorMaterial ASSASSIN = EnumHelper.addArmorMaterial("ASSASSIN", "assassin", 0, new int[]{0, 0, 0, 0}, 0,
+      SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0F);
+  public static final ArmorMaterial BARBARIAN = EnumHelper.addArmorMaterial("BARBARIAN", "barbarian", 0, new int[]{0, 0, 0, 0}, 0,
+      SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0F);
+  public static final ArmorMaterial GOLDEN_CHAIN = EnumHelper.addArmorMaterial("GOLDEN_CHAIN", "golden_chainmail", 0, new int[]{0, 0, 0, 0}, 0,
+      SoundEvents.ITEM_ARMOR_EQUIP_CHAIN, 0F);
 
   private AdditionalArmorMaterial() {}
 }

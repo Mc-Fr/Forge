@@ -1,5 +1,6 @@
 package net.mcfr.equipment;
 
+import net.mcfr.entities.EntityCrossbowBolt;
 import net.mcfr.utils.NameUtils;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityArrow;
