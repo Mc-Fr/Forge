@@ -10,12 +10,24 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+/**
+ * Interface de l'enclume.
+ *
+ * @author Mc-Fr
+ */
 @SideOnly(Side.CLIENT)
 public class GuiAnvil extends GuiContainer {
   private static final ResourceLocation ANVIL_GUI_TEXTURES = new ResourceLocation(Constants.MOD_ID, "textures/gui/container/anvil.png");
 
-  public GuiAnvil(InventoryPlayer playerInv, World worldIn, BlockPos blockPosition) {
-    super(new ContainerAnvil(playerInv, worldIn, blockPosition));
+  /**
+   * Crée une interface pour l'enclume.
+   * 
+   * @param playerInv l'inventaire du joueur
+   * @param world le monde
+   * @param blockPosition la position du bloc
+   */
+  public GuiAnvil(InventoryPlayer playerInv, World world, BlockPos blockPosition) {
+    super(new ContainerAnvil(playerInv, world, blockPosition));
     this.ySize = 203;
   }
 

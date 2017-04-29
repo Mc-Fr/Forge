@@ -7,6 +7,11 @@ import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ITickable;
 
+/**
+ * Tile entity du soufflet.
+ *
+ * @author Mc-Fr
+ */
 public class TileEntityBellows extends TileEntity implements ITickable {
   public static final int STEPS = 11;
 
@@ -23,10 +28,18 @@ public class TileEntityBellows extends TileEntity implements ITickable {
     this.rising = false;
   }
 
+  /**
+   * @return true si ce soufflet est alimenté en énergie
+   */
   public boolean isPowered() {
     return this.powered;
   }
 
+  /**
+   * Modifie l'état d'alimentation de ce soufflet.
+   * 
+   * @param isPowered indique s'il doit être alimenté
+   */
   public void setPowered(boolean isPowered) {
     this.powered = isPowered;
     if (getWorld() != null) {
@@ -35,6 +48,9 @@ public class TileEntityBellows extends TileEntity implements ITickable {
     }
   }
 
+  /**
+   * @return l'étape de l'animation
+   */
   public int getStep() {
     return this.step;
   }

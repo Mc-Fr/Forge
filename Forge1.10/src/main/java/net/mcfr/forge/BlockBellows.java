@@ -16,6 +16,11 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
+/**
+ * Soufflet.
+ *
+ * @author Mc-Fr
+ */
 public class BlockBellows extends BlockContainer {
   public BlockBellows() {
     super(Material.WOOD);
