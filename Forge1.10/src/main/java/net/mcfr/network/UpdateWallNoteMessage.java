@@ -14,15 +14,28 @@ import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
+/**
+ * Paquet commandant la mise à jour des notes murales chez le serveur.
+ *
+ * @author Mc-Fr
+ */
 public class UpdateWallNoteMessage implements IMessage {
   private BlockPos notePos;
   private String[] lines;
 
-  // Requis par Forge.
+  /**
+   * Crée un paquet. Constructeur equis par Forge.
+   */
   public UpdateWallNoteMessage() {
     this(null, new String[TileEntityLargeSign.LINES_NB]);
   }
 
+  /**
+   * Crée un paquet.
+   * 
+   * @param signPos la position de la note
+   * @param lines les lignes de texte
+   */
   public UpdateWallNoteMessage(BlockPos signPos, String[] lines) {
     this.notePos = signPos;
     this.lines = lines;
@@ -72,14 +85,25 @@ public class UpdateWallNoteMessage implements IMessage {
     }
   }
 
+  /**
+   * @return la position de la note
+   */
   public BlockPos getNotePos() {
     return this.notePos;
   }
 
+  /**
+   * @return les lignes de texte
+   */
   public String[] getLines() {
     return this.lines;
   }
 
+  /**
+   * Gestionnaire côté serveur.
+   *
+   * @author Mc-Fr
+   */
   public static class ServerHandler implements IMessageHandler<UpdateWallNoteMessage, IMessage> {
     @Override
     public IMessage onMessage(final UpdateWallNoteMessage message, MessageContext ctx) {

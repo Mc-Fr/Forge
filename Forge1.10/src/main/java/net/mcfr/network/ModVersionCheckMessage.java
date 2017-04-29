@@ -6,6 +6,11 @@ import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
+/**
+ * Paquet permettant de comparer l'installation du client avec celle du serveur.
+ *
+ * @author Mc-Fr
+ */
 public class ModVersionCheckMessage implements IMessage {
   private String modVersion;
 
@@ -37,8 +42,13 @@ public class ModVersionCheckMessage implements IMessage {
     buf.writeBytes(b);
   }
 
-  // FIXME jamais appelé par le serveur.
+  /**
+   * Gestionnaire côté serveur.
+   *
+   * @author Mc-Fr
+   */
   public static class ServerHandler implements IMessageHandler<ModVersionCheckMessage, IMessage> {
+    // FIXME jamais appelé par le serveur.
     @Override
     public IMessage onMessage(final ModVersionCheckMessage message, MessageContext ctx) {
       System.out.println("ServerHandler.onMessage()");

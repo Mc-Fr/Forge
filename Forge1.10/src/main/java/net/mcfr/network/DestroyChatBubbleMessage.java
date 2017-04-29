@@ -8,6 +8,11 @@ import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
+/**
+ * Paquet ordonnant au serveur de détruire une bulle de tchat.
+ *
+ * @author Mc-Fr
+ */
 public class DestroyChatBubbleMessage implements IMessage {
   @Override
   public void toBytes(ByteBuf buf) {}
@@ -15,6 +20,11 @@ public class DestroyChatBubbleMessage implements IMessage {
   @Override
   public void fromBytes(ByteBuf buf) {}
 
+  /**
+   * Gestionnaire côté serveur.
+   *
+   * @author Mc-Fr
+   */
   public static class ServerHandler implements IMessageHandler<DestroyChatBubbleMessage, IMessage> {
     @Override
     public IMessage onMessage(final DestroyChatBubbleMessage message, MessageContext ctx) {
