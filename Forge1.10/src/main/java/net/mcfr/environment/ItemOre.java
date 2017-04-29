@@ -10,6 +10,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+/**
+ * Item de minerais.
+ *
+ * @author Mc-Fr
+ */
 public class ItemOre extends McfrItem {
   public ItemOre() {
     super("ore", CreativeTabs.MATERIALS);
@@ -29,6 +34,16 @@ public class ItemOre extends McfrItem {
     }
   }
 
+  /**
+   * Types de minerais :
+   * <ul>
+   * <li>fer</li>
+   * <li>or</li>
+   * <li>lapis lazuli</li>
+   * </ul>
+   *
+   * @author Mc-Fr
+   */
   public static enum EnumType implements IEnumType<EnumType> {
     IRON("iron"),
     GOLD("gold"),

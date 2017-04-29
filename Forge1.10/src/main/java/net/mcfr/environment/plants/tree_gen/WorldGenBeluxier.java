@@ -16,10 +16,22 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
+/**
+ * Générateur de béluxiers.
+ *
+ * @author Mc-Fr
+ */
 public class WorldGenBeluxier extends WorldGenMcfrTree {
-  public static final IBlockState BELUXIER_TRUNK = McfrBlocks.EXOTIC_LOG.getDefaultState().withProperty(BlockExoticLog.VARIANT, EnumExoticWoodType.BELUXIER);
-  public static final IBlockState BELUXIER_LEAF = McfrBlocks.EXOTIC_LEAVES.getDefaultState().withProperty(BlockExoticLeaves.VARIANT, EnumExoticWoodType.BELUXIER).withProperty(BlockExoticLeaves.CHECK_DECAY, false);
+  public static final IBlockState BELUXIER_TRUNK = McfrBlocks.EXOTIC_LOG.getDefaultState().withProperty(BlockExoticLog.VARIANT,
+      EnumExoticWoodType.BELUXIER);
+  public static final IBlockState BELUXIER_LEAF = McfrBlocks.EXOTIC_LEAVES.getDefaultState()
+      .withProperty(BlockExoticLeaves.VARIANT, EnumExoticWoodType.BELUXIER).withProperty(BlockExoticLeaves.CHECK_DECAY, false);
 
+  /**
+   * Crée un générateur.
+   * 
+   * @param notify doit-on avertir de la mise à jour ?
+   */
   public WorldGenBeluxier(boolean notify) {
     super(notify, 4, BELUXIER_TRUNK, BELUXIER_LEAF);
   }
@@ -33,7 +45,8 @@ public class WorldGenBeluxier extends WorldGenMcfrTree {
       List<LeafSphere> spheres = new ArrayList<>();
       IBlockState state = worldIn.getBlockState(position.down());
 
-      if (state.getBlock().canSustainPlant(state, worldIn, position.down(), EnumFacing.UP, McfrBlocks.EXOTIC_SAPLING) && position.getY() < worldIn.getHeight() - height - 1) {
+      if (state.getBlock().canSustainPlant(state, worldIn, position.down(), EnumFacing.UP, McfrBlocks.EXOTIC_SAPLING)
+          && position.getY() < worldIn.getHeight() - height - 1) {
         setDirtAt(worldIn, position.down());
 
         for (int y = 0; y < height; y++)
@@ -134,7 +147,8 @@ public class WorldGenBeluxier extends WorldGenMcfrTree {
         BlockPos pos = sphere.getPos().add(x, 0, z);
         int n = Math.abs(x) + Math.abs(z);
 
-        if (n >= minOverflow && n <= maxOverflow && rand.nextInt(100) <= sphere.getRatio() && worldIn.getBlockState(pos).getMaterial().isReplaceable()) {
+        if (n >= minOverflow && n <= maxOverflow && rand.nextInt(100) <= sphere.getRatio()
+            && worldIn.getBlockState(pos).getMaterial().isReplaceable()) {
           setBlockAndNotifyAdequately(worldIn, pos, this.leaves);
 
           if (worldIn.getBlockState(pos.down(smear)).getMaterial().isReplaceable()) {

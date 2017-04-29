@@ -26,6 +26,11 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
+/**
+ * Stalactites/stalagmites.
+ *
+ * @author Mc-Fr
+ */
 public class BlockStalactite extends McfrBlock implements IBlockWithVariants {
   public static final PropertyEnum<EnumBlockHalf> HALF = PropertyEnum.create("half", EnumBlockHalf.class);
   public static final PropertyEnum<EnumSize> SIZE = PropertyEnum.create("size", EnumSize.class);
@@ -33,6 +38,17 @@ public class BlockStalactite extends McfrBlock implements IBlockWithVariants {
   private static final AxisAlignedBB BOTTOM_HALF_AABB = new AxisAlignedBB(0, 0, 0, 1, 0.5, 1);
   private static final AxisAlignedBB TOP_HALF_AABB = new AxisAlignedBB(0, 0.5, 0, 1, 1, 1);
 
+  /**
+   * Crée une stalactite/stalagmite.
+   * 
+   * @param name le nom
+   * @param material le matériau
+   * @param sound le type de son
+   * @param hardness la dureté
+   * @param resistance la résistance aux explosions
+   * @param tool l'outil nécessaire
+   * @param harvestLevel le niveau de récolte
+   */
   public BlockStalactite(String name, Material material, SoundType sound, float hardness, float resistance, String tool, int harvestLevel) {
     super(name + "_stalactite", material, sound, hardness, resistance, null, 0, CreativeTabs.DECORATIONS);
     if (tool != null) {
@@ -51,6 +67,12 @@ public class BlockStalactite extends McfrBlock implements IBlockWithVariants {
     return getBoundingBox(state);
   }
 
+  /**
+   * Retourne la hitbox en fonction de l'état.
+   * 
+   * @param state l'état
+   * @return la hitbox
+   */
   private AxisAlignedBB getBoundingBox(IBlockState state) {
     if (state.getValue(SIZE) == EnumSize.SMALL) {
       if (state.getValue(HALF) == EnumBlockHalf.BOTTOM)
@@ -118,7 +140,8 @@ public class BlockStalactite extends McfrBlock implements IBlockWithVariants {
 
   @Override
   public boolean canPlaceBlockAt(World worldIn, BlockPos pos) {
-    return worldIn.getBlockState(pos.up()).getMaterial().isSolid() && !(up(worldIn, pos) instanceof BlockStalactite) || worldIn.getBlockState(pos.down()).getMaterial().isSolid() && !(down(worldIn, pos) instanceof BlockStalactite);
+    return worldIn.getBlockState(pos.up()).getMaterial().isSolid() && !(up(worldIn, pos) instanceof BlockStalactite)
+        || worldIn.getBlockState(pos.down()).getMaterial().isSolid() && !(down(worldIn, pos) instanceof BlockStalactite);
   }
 
   @Override
@@ -129,21 +152,46 @@ public class BlockStalactite extends McfrBlock implements IBlockWithVariants {
   }
 
   @Override
-  public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
+  public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta,
+      EntityLivingBase placer) {
     IBlockState state = super.onBlockPlaced(worldIn, pos, facing, hitX, hitY, hitZ, meta, placer).withProperty(HALF, EnumBlockHalf.BOTTOM);
     return (facing == EnumFacing.UP || hitY <= 0.5) && !worldIn.isAirBlock(pos.down()) && !(down(worldIn, pos) instanceof BlockStalactite) //
         || (facing == EnumFacing.DOWN || hitY > 0.5) && (worldIn.isAirBlock(pos.up()) || up(worldIn, pos) instanceof BlockStalactite) //
             ? state : state.withProperty(HALF, EnumBlockHalf.TOP);
   }
 
-  private Block up(World worldIn, BlockPos pos) {
-    return worldIn.getBlockState(pos.up()).getBlock();
+  /**
+   * Retourne le bloc au-dessus de la position donnée.
+   * 
+   * @param world le monde
+   * @param pos la position
+   * @return le bloc
+   */
+  private Block up(World world, BlockPos pos) {
+    return world.getBlockState(pos.up()).getBlock();
   }
 
+  /**
+   * Retourne le bloc en-dessous de la position donnée.
+   * 
+   * @param world le monde
+   * @param pos la position
+   * @return le bloc
+   */
   private Block down(World worldIn, BlockPos pos) {
     return worldIn.getBlockState(pos.down()).getBlock();
   }
 
+  /**
+   * Les tailles de stalactites/stalagmites :
+   * <ul>
+   * <li>petite</li>
+   * <li>moyenne</li>
+   * <li>grande</li>
+   * </ul>
+   *
+   * @author Mc-Fr
+   */
   public static enum EnumSize implements IEnumType<EnumSize> {
     SMALL("small"),
     MEDIUM("medium"),

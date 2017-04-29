@@ -11,10 +11,22 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
+/**
+ * Générateur de béluxiers.
+ *
+ * @author Mc-Fr
+ */
 public class WorldGenPalmTree extends WorldGenMcfrTree {
-  public static final IBlockState PALM_TRUNK = McfrBlocks.EXOTIC_LOG.getDefaultState().withProperty(BlockExoticLog.VARIANT, EnumExoticWoodType.PALM_TREE);
-  public static final IBlockState PALM_LEAF = McfrBlocks.EXOTIC_LEAVES.getDefaultState().withProperty(BlockExoticLeaves.VARIANT, EnumExoticWoodType.PALM_TREE).withProperty(BlockExoticLeaves.CHECK_DECAY, false);
+  public static final IBlockState PALM_TRUNK = McfrBlocks.EXOTIC_LOG.getDefaultState().withProperty(BlockExoticLog.VARIANT,
+      EnumExoticWoodType.PALM_TREE);
+  public static final IBlockState PALM_LEAF = McfrBlocks.EXOTIC_LEAVES.getDefaultState()
+      .withProperty(BlockExoticLeaves.VARIANT, EnumExoticWoodType.PALM_TREE).withProperty(BlockExoticLeaves.CHECK_DECAY, false);
 
+  /**
+   * Crée un générateur.
+   * 
+   * @param notify doit-on avertir de la mise à jour ?
+   */
   public WorldGenPalmTree(boolean notify) {
     super(notify, 4, PALM_TRUNK, PALM_LEAF);
   }
@@ -46,7 +58,8 @@ public class WorldGenPalmTree extends WorldGenMcfrTree {
     if (checkHeight(worldIn, position, height)) {
       IBlockState state = worldIn.getBlockState(position.down());
 
-      if (state.getBlock().canSustainPlant(state, worldIn, position.down(), EnumFacing.UP, McfrBlocks.EXOTIC_SAPLING) && position.getY() < worldIn.getHeight() - height - 1) {
+      if (state.getBlock().canSustainPlant(state, worldIn, position.down(), EnumFacing.UP, McfrBlocks.EXOTIC_SAPLING)
+          && position.getY() < worldIn.getHeight() - height - 1) {
         setDirtAt(worldIn, position.down());
 
         BlockPos pos = new BlockPos(position);

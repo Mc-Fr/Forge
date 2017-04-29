@@ -27,6 +27,11 @@ import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+/**
+ * Roseaux.
+ *
+ * @author Mc-Fr
+ */
 public class McfrBlockReed extends McfrBlock implements IPlantable {
   private static final int MAX_AGE = 15;
   private static final int MAX_HEIGHT = 3;
@@ -88,7 +93,7 @@ public class McfrBlockReed extends McfrBlock implements IPlantable {
 
   @Override
   public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn) {
-    if (!canBlockStay(worldIn, pos)) {
+    if (!canPlaceBlockAt(worldIn, pos)) {
       dropBlockAsItem(worldIn, pos, state, 0);
       worldIn.setBlockToAir(pos);
     }
@@ -136,10 +141,6 @@ public class McfrBlockReed extends McfrBlock implements IPlantable {
 
       return false;
     }
-  }
-
-  public boolean canBlockStay(World worldIn, BlockPos pos) {
-    return canPlaceBlockAt(worldIn, pos);
   }
 
   @Override

@@ -12,10 +12,22 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
+/**
+ * Générateur de pommiers.
+ *
+ * @author Mc-Fr
+ */
 public class WorldGenAppleTree extends WorldGenMcfrTree {
-  public static final IBlockState APPLE_TRUNK = McfrBlocks.EXOTIC_LOG.getDefaultState().withProperty(BlockExoticLog.VARIANT, EnumExoticWoodType.APPLE_TREE);
-  public static final IBlockState APPLE_LEAF = McfrBlocks.EXOTIC_LEAVES.getDefaultState().withProperty(BlockExoticLeaves.VARIANT, EnumExoticWoodType.APPLE_TREE).withProperty(BlockExoticLeaves.CHECK_DECAY, false);
+  public static final IBlockState APPLE_TRUNK = McfrBlocks.EXOTIC_LOG.getDefaultState().withProperty(BlockExoticLog.VARIANT,
+      EnumExoticWoodType.APPLE_TREE);
+  public static final IBlockState APPLE_LEAF = McfrBlocks.EXOTIC_LEAVES.getDefaultState()
+      .withProperty(BlockExoticLeaves.VARIANT, EnumExoticWoodType.APPLE_TREE).withProperty(BlockExoticLeaves.CHECK_DECAY, false);
 
+  /**
+   * Crée un générateur.
+   * 
+   * @param notify doit-on avertir de la mise à jour ?
+   */
   public WorldGenAppleTree(boolean notify) {
     super(notify, 4, APPLE_TRUNK, APPLE_LEAF);
   }
@@ -27,7 +39,8 @@ public class WorldGenAppleTree extends WorldGenMcfrTree {
     if (checkHeight(worldIn, position, height)) {
       IBlockState state = worldIn.getBlockState(position.down());
 
-      if (state.getBlock().canSustainPlant(state, worldIn, position.down(), EnumFacing.UP, McfrBlocks.EXOTIC_SAPLING) && position.getY() < worldIn.getHeight() - height - 1) {
+      if (state.getBlock().canSustainPlant(state, worldIn, position.down(), EnumFacing.UP, McfrBlocks.EXOTIC_SAPLING)
+          && position.getY() < worldIn.getHeight() - height - 1) {
         setDirtAt(worldIn, position.down());
 
         for (int y = position.getY() - 3 + height; y <= position.getY() + height; y++) {
@@ -44,7 +57,8 @@ public class WorldGenAppleTree extends WorldGenMcfrTree {
                 BlockPos blockpos = new BlockPos(x, y, z);
                 state = worldIn.getBlockState(blockpos);
 
-                if (state.getBlock().isAir(state, worldIn, blockpos) || state.getBlock().isLeaves(state, worldIn, blockpos) || state.getMaterial() == Material.VINE) {
+                if (state.getBlock().isAir(state, worldIn, blockpos) || state.getBlock().isLeaves(state, worldIn, blockpos)
+                    || state.getMaterial() == Material.VINE) {
                   setBlockAndNotifyAdequately(worldIn, blockpos, this.leaves);
                 }
               }
