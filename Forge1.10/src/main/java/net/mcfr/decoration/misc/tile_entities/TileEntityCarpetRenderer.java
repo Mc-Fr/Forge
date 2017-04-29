@@ -1,8 +1,6 @@
 package net.mcfr.decoration.misc.tile_entities;
 
-import static net.mcfr.utils.RenderUtils.bindTex;
-import static net.mcfr.utils.RenderUtils.draw;
-import static net.mcfr.utils.RenderUtils.vertex;
+import static net.mcfr.utils.RenderUtils.*;
 
 import net.mcfr.McfrBlocks;
 import net.mcfr.utils.math.Point2d;
@@ -25,7 +23,7 @@ import net.minecraft.world.World;
 public class TileEntityCarpetRenderer extends TileEntitySpecialRenderer<TileEntityCarpet> {
   /** Hauteur des tapis */
   private static final double H = 1 / 16d;
-  /** Largeur des tapis sur les côtés égale à la hauteur (alias pour la clarté). */
+  /** Largeur des tapis sur les côtés. Égale à la hauteur (alias pour la clarté). */
   private static final double W = H;
 
   @Override
@@ -57,6 +55,12 @@ public class TileEntityCarpetRenderer extends TileEntitySpecialRenderer<TileEnti
     GlStateManager.popMatrix();
   }
 
+  /**
+   * Affiche un côté plein.
+   * 
+   * @param world le monde
+   * @param pos la position
+   */
   private void renderFullSide(World world, BlockPos pos) {
     if (canRenderFullSide(world, pos.north())) {
       // Dessus.
@@ -204,6 +208,12 @@ public class TileEntityCarpetRenderer extends TileEntitySpecialRenderer<TileEnti
     vertex(0, b, 0, 0, 1 - h);
   }
 
+  /**
+   * Rendu pour les escaliers.
+   * 
+   * @param shape la forme de l'escalier
+   * @param facing l'orientation de l'escalier
+   */
   @SuppressWarnings("incomplete-switch")
   private void renderStairs(BlockStairs.EnumShape shape, EnumFacing facing) {
     switch (shape) {
@@ -290,16 +300,24 @@ public class TileEntityCarpetRenderer extends TileEntitySpecialRenderer<TileEnti
     }
   }
 
+  /**
+   * Rendu pour les escaliers droits.
+   * 
+   * @param rotation l'angle de rotation
+   */
   private void renderStraightStairs(int rotation) {
     double b = -0.5;
     double h = H + b;
     double l = 0.5;
-    Point2d[][] points = { //
-      {new Point2d(0, 0), new Point2d(0, l + H), new Point2d(1, l + H), new Point2d(1, 0), new Point2d(0, l + H), new Point2d(0, 1), new Point2d(1, 1), new Point2d(1, l + H)}, //
-      {new Point2d(1, 0), new Point2d(l - W, 0), new Point2d(l - W, 1), new Point2d(1, 1), new Point2d(l - W, 0), new Point2d(0, 0), new Point2d(0, 1), new Point2d(l - W, 1)}, //
-      {new Point2d(1, 1), new Point2d(1, l - H), new Point2d(0, l - H), new Point2d(0, 1), new Point2d(1, l - H), new Point2d(1, 0), new Point2d(0, 0), new Point2d(0, l - H)}, //
-      {new Point2d(0, 1), new Point2d(l + W, 1), new Point2d(l + W, 0), new Point2d(0, 0), new Point2d(l + W, 1), new Point2d(1, 1), new Point2d(1, 0), new Point2d(l + W, 0)} //
-    };
+    Point2d[][] points = {
+      {new Point2d(0, 0), new Point2d(0, l + H), new Point2d(1, l + H), new Point2d(1, 0), new Point2d(0, l + H), new Point2d(0, 1),
+        new Point2d(1, 1), new Point2d(1, l + H)},
+      {new Point2d(1, 0), new Point2d(l - W, 0), new Point2d(l - W, 1), new Point2d(1, 1), new Point2d(l - W, 0), new Point2d(0, 0),
+        new Point2d(0, 1), new Point2d(l - W, 1)},
+      {new Point2d(1, 1), new Point2d(1, l - H), new Point2d(0, l - H), new Point2d(0, 1), new Point2d(1, l - H), new Point2d(1, 0),
+        new Point2d(0, 0), new Point2d(0, l - H)},
+      {new Point2d(0, 1), new Point2d(l + W, 1), new Point2d(l + W, 0), new Point2d(0, 0), new Point2d(l + W, 1), new Point2d(1, 1),
+        new Point2d(1, 0), new Point2d(l + W, 0)}};
     Point2d[] p = points[0];
 
     GlStateManager.rotate(rotation, 0, 1, 0);
@@ -373,15 +391,24 @@ public class TileEntityCarpetRenderer extends TileEntitySpecialRenderer<TileEnti
     vertex(0, H, 0, 0, 1 - H);
   }
 
+  /**
+   * Rendu des escaliers (coin intérieur).
+   * 
+   * @param rotation l'angle de rotation
+   */
   private void renderInnerStairs(int rotation) {
     double b = -0.5;
     double h = H + b;
     double l = 0.5;
     Point2d[][] points = { //
-      {new Point2d(0, 0), new Point2d(0, l + H), new Point2d(1, l + H), new Point2d(1, 0), new Point2d(0, l + H), new Point2d(0, 1), new Point2d(l + W, 1), new Point2d(l + W, l + H), new Point2d(l + W, l + H), new Point2d(l + W, 1), new Point2d(1, 1), new Point2d(1, l + H)}, //
-      {new Point2d(1, 0), new Point2d(l - W, 0), new Point2d(l - W, 1), new Point2d(1, 1), new Point2d(l - W, 0), new Point2d(0, 0), new Point2d(0, l + H), new Point2d(l - W, l + H), new Point2d(l - W, l + H), new Point2d(0, l + H), new Point2d(0, 1), new Point2d(l - W, 1)}, //
-      {new Point2d(1, 1), new Point2d(1, l - H), new Point2d(0, l - H), new Point2d(0, 1), new Point2d(1, l - H), new Point2d(1, 0), new Point2d(l - W, 0), new Point2d(l - W, l - H), new Point2d(l - W, l - H), new Point2d(l - W, 0), new Point2d(0, 0), new Point2d(0, l - H)}, //
-      {new Point2d(0, 1), new Point2d(l + W, 1), new Point2d(l + W, 0), new Point2d(0, 0), new Point2d(l + W, 1), new Point2d(1, 1), new Point2d(1, l - H), new Point2d(l + W, l - H), new Point2d(l + W, l - H), new Point2d(1, l - H), new Point2d(1, 0), new Point2d(l + W, 0)} //
+      {new Point2d(0, 0), new Point2d(0, l + H), new Point2d(1, l + H), new Point2d(1, 0), new Point2d(0, l + H), new Point2d(0, 1),
+        new Point2d(l + W, 1), new Point2d(l + W, l + H), new Point2d(l + W, l + H), new Point2d(l + W, 1), new Point2d(1, 1), new Point2d(1, l + H)}, //
+      {new Point2d(1, 0), new Point2d(l - W, 0), new Point2d(l - W, 1), new Point2d(1, 1), new Point2d(l - W, 0), new Point2d(0, 0),
+        new Point2d(0, l + H), new Point2d(l - W, l + H), new Point2d(l - W, l + H), new Point2d(0, l + H), new Point2d(0, 1), new Point2d(l - W, 1)}, //
+      {new Point2d(1, 1), new Point2d(1, l - H), new Point2d(0, l - H), new Point2d(0, 1), new Point2d(1, l - H), new Point2d(1, 0),
+        new Point2d(l - W, 0), new Point2d(l - W, l - H), new Point2d(l - W, l - H), new Point2d(l - W, 0), new Point2d(0, 0), new Point2d(0, l - H)}, //
+      {new Point2d(0, 1), new Point2d(l + W, 1), new Point2d(l + W, 0), new Point2d(0, 0), new Point2d(l + W, 1), new Point2d(1, 1),
+        new Point2d(1, l - H), new Point2d(l + W, l - H), new Point2d(l + W, l - H), new Point2d(1, l - H), new Point2d(1, 0), new Point2d(l + W, 0)} //
     };
     Point2d[] p = points[0];
 
@@ -466,16 +493,24 @@ public class TileEntityCarpetRenderer extends TileEntitySpecialRenderer<TileEnti
     vertex(0, 0, 0, 0, 1 - H);
   }
 
+  /**
+   * Rendu des escaliers (coin extérieur).
+   * 
+   * @param rotation l'angle de rotation
+   */
   private void renderOuterStairs(int rotation) {
     double b = -0.5;
     double h = H + b;
     double l = 0.5;
-    Point2d[][] points = { //
-      {new Point2d(0, 0), new Point2d(0, l + H), new Point2d(l + W, l + H), new Point2d(l + W, 0), new Point2d(0, l + H), new Point2d(0, 1), new Point2d(1, 1), new Point2d(1, l + H), new Point2d(l + W, 0), new Point2d(l + W, l + H), new Point2d(1, l + H), new Point2d(1, 0)}, //
-      {new Point2d(1, 0), new Point2d(l - W, 0), new Point2d(l - W, l + H), new Point2d(1, l + H), new Point2d(l - W, 0), new Point2d(0, 0), new Point2d(0, 1), new Point2d(l - W, 1), new Point2d(1, l + H), new Point2d(l - W, l + H), new Point2d(l - W, 1), new Point2d(1, 1)}, //
-      {new Point2d(1, 1), new Point2d(1, l - H), new Point2d(l - W, l - H), new Point2d(l - W, 1), new Point2d(1, l - H), new Point2d(1, 0), new Point2d(0, 0), new Point2d(0, l - H), new Point2d(l - W, 1), new Point2d(l - W, l - H), new Point2d(0, l - H), new Point2d(0, 1)}, //
-      {new Point2d(0, 1), new Point2d(l + W, 1), new Point2d(l + W, l - H), new Point2d(0, l - H), new Point2d(l + W, 1), new Point2d(1, 1), new Point2d(1, 0), new Point2d(l + W, 0), new Point2d(0, l - H), new Point2d(l + W, l - H), new Point2d(l + W, 0), new Point2d(0, 0)} //
-    };
+    Point2d[][] points = {
+      {new Point2d(0, 0), new Point2d(0, l + H), new Point2d(l + W, l + H), new Point2d(l + W, 0), new Point2d(0, l + H), new Point2d(0, 1),
+        new Point2d(1, 1), new Point2d(1, l + H), new Point2d(l + W, 0), new Point2d(l + W, l + H), new Point2d(1, l + H), new Point2d(1, 0)},
+      {new Point2d(1, 0), new Point2d(l - W, 0), new Point2d(l - W, l + H), new Point2d(1, l + H), new Point2d(l - W, 0), new Point2d(0, 0),
+        new Point2d(0, 1), new Point2d(l - W, 1), new Point2d(1, l + H), new Point2d(l - W, l + H), new Point2d(l - W, 1), new Point2d(1, 1)},
+      {new Point2d(1, 1), new Point2d(1, l - H), new Point2d(l - W, l - H), new Point2d(l - W, 1), new Point2d(1, l - H), new Point2d(1, 0),
+        new Point2d(0, 0), new Point2d(0, l - H), new Point2d(l - W, 1), new Point2d(l - W, l - H), new Point2d(0, l - H), new Point2d(0, 1)},
+      {new Point2d(0, 1), new Point2d(l + W, 1), new Point2d(l + W, l - H), new Point2d(0, l - H), new Point2d(l + W, 1), new Point2d(1, 1),
+        new Point2d(1, 0), new Point2d(l + W, 0), new Point2d(0, l - H), new Point2d(l + W, l - H), new Point2d(l + W, 0), new Point2d(0, 0)}};
     Point2d[] p = points[0];
 
     GlStateManager.rotate(rotation, 0, 1, 0);
@@ -560,14 +595,14 @@ public class TileEntityCarpetRenderer extends TileEntitySpecialRenderer<TileEnti
   }
 
   /**
-   * Indique si le bloc à la position donnée est un bloc plein (air compris).
+   * @return true si le bloc à la position donnée est un bloc plein (air compris)
    */
   private boolean canRenderFullSide(World world, BlockPos pos) {
     return world.getBlockState(pos.up()).getBlock() == McfrBlocks.CARPET && world.getBlockState(pos).isFullCube();
   }
 
   /**
-   * Indique si le bloc à la position donnée est la moitié inférieure d'une dalle.
+   * @return true si le bloc à la position donnée est la moitié inférieure d'une dalle
    */
   private boolean isBottomHalfSlab(IBlockAccess worldIn, BlockPos pos) {
     IBlockState state = worldIn.getBlockState(pos);
@@ -575,7 +610,7 @@ public class TileEntityCarpetRenderer extends TileEntitySpecialRenderer<TileEnti
   }
 
   /**
-   * Indique si le bloc à la position donnée est un escalier en position basse (normale).
+   * @return true si le bloc à la position donnée est un escalier en position basse (normale)
    */
   private boolean isBottomStairs(IBlockAccess worldIn, BlockPos pos) {
     IBlockState state = worldIn.getBlockState(pos);

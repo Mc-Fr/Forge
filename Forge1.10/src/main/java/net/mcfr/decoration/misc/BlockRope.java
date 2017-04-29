@@ -1,10 +1,7 @@
 package net.mcfr.decoration.misc;
 
+import java.util.ArrayList;
 import java.util.List;
-
-import javax.annotation.Nullable;
-
-import com.google.common.collect.Lists;
 
 import net.mcfr.commons.McfrBlock;
 import net.minecraft.block.Block;
@@ -17,7 +14,6 @@ import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.item.EntityMinecart;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.Mirror;
@@ -30,23 +26,41 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 /**
- * Classe servant de base aux cordes. Leur comportement est identique aux rails normaux.
+ * Classe servant de base aux cordes au sol. Leur comportement est identique aux rails normaux (sans
+ * la fonctionnalité de rail).
  *
  * @author Mc-Fr
  */
 public class BlockRope extends McfrBlock {
   public static final PropertyEnum<EnumRailDirection> SHAPE = PropertyEnum.create("shape", EnumRailDirection.class);
 
+  /** Hitbox plate */
   private static final AxisAlignedBB FLAT_AABB = new AxisAlignedBB(0, 0, 0, 1, 0.125, 1);
 
-  public static boolean isRopeBlock(World worldIn, BlockPos pos) {
-    return isRopeBlock(worldIn.getBlockState(pos));
+  /**
+   * Indique si le bloc à la position donnée est une corde au sol.
+   * 
+   * @param world le monde
+   * @param pos la position
+   * @return true si le bloc est une corde
+   */
+  public static boolean isRopeBlock(World world, BlockPos pos) {
+    return isRopeBlock(world.getBlockState(pos));
   }
 
+  /**
+   * Indique si l'état correspond à un bloc de corde au sol.
+   * 
+   * @param state l'état
+   * @return true si le bloc est une corde
+   */
   public static boolean isRopeBlock(IBlockState state) {
     return state.getBlock() instanceof BlockRope;
   }
 
+  /**
+   * Crée une corde orientée Nord-Sud.
+   */
   public BlockRope() {
     super("rope_block", Material.CLOTH, SoundType.CLOTH, 0.5f, 0.5f, null, -1, CreativeTabs.DECORATIONS);
     setDefaultState(this.blockState.getBaseState().withProperty(SHAPE, EnumRailDirection.NORTH_SOUTH));
@@ -81,7 +95,7 @@ public class BlockRope extends McfrBlock {
   @Override
   public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state) {
     if (!worldIn.isRemote) {
-      state = updateDir(worldIn, pos, state, true);
+      state = updateDir(worldIn, pos, state);
     }
   }
 
@@ -110,8 +124,16 @@ public class BlockRope extends McfrBlock {
     }
   }
 
-  protected IBlockState updateDir(World worldIn, BlockPos pos, IBlockState state, boolean b) {
-    return worldIn.isRemote ? state : new Rope(worldIn, pos, state).place(false, true).getBlockState();
+  /**
+   * Met à jour la direction de la corde.
+   * 
+   * @param world le monde
+   * @param pos la position
+   * @param state l'état
+   * @return le nouvel état
+   */
+  protected IBlockState updateDir(World world, BlockPos pos, IBlockState state) {
+    return world.isRemote ? state : new Rope(world, pos, state).place().getBlockState();
   }
 
   @Override
@@ -149,22 +171,6 @@ public class BlockRope extends McfrBlock {
     return new BlockStateContainer(this, SHAPE);
   }
 
-  public EnumRailDirection getRopeDirection(IBlockAccess world, BlockPos pos, IBlockState state, @Nullable EntityMinecart cart) {
-    return state.getValue(SHAPE);
-  }
-
-  /**
-   * Rotate the block. For vanilla blocks this rotates around the axis passed in (generally, it
-   * should be the "face" that was hit). Note: for mod blocks, this is up to the block and modder to
-   * decide. It is not mandated that it be a rotation around the face, but could be a rotation to
-   * orient *to* that face, or a visiting of possible rotations. The method should return true if
-   * the rotation was successful though.
-   *
-   * @param world The world
-   * @param pos Block position in world
-   * @param axis The axis to rotate around
-   * @return True if the rotation was successful, False if the rotation failed, or is not possible
-   */
   @Override
   public boolean rotateBlock(World world, BlockPos pos, EnumFacing axis) {
     IBlockState state = world.getBlockState(pos);
@@ -182,7 +188,7 @@ public class BlockRope extends McfrBlock {
   public IBlockState withRotation(IBlockState state, Rotation rot) {
     switch (rot) {
       case CLOCKWISE_180:
-        switch ((EnumRailDirection) state.getValue(SHAPE)) {
+        switch (state.getValue(SHAPE)) {
           case ASCENDING_EAST:
             return state.withProperty(SHAPE, EnumRailDirection.ASCENDING_WEST);
           case ASCENDING_WEST:
@@ -201,7 +207,7 @@ public class BlockRope extends McfrBlock {
             return state.withProperty(SHAPE, EnumRailDirection.SOUTH_WEST);
         }
       case COUNTERCLOCKWISE_90:
-        switch ((EnumRailDirection) state.getValue(SHAPE)) {
+        switch (state.getValue(SHAPE)) {
           case ASCENDING_EAST:
             return state.withProperty(SHAPE, EnumRailDirection.ASCENDING_NORTH);
           case ASCENDING_WEST:
@@ -224,7 +230,7 @@ public class BlockRope extends McfrBlock {
             return state.withProperty(SHAPE, EnumRailDirection.NORTH_SOUTH);
         }
       case CLOCKWISE_90:
-        switch ((EnumRailDirection) state.getValue(SHAPE)) {
+        switch (state.getValue(SHAPE)) {
           case ASCENDING_EAST:
             return state.withProperty(SHAPE, EnumRailDirection.ASCENDING_SOUTH);
           case ASCENDING_WEST:
@@ -253,10 +259,10 @@ public class BlockRope extends McfrBlock {
 
   @Override
   @SuppressWarnings({"incomplete-switch", "deprecation"})
-  public IBlockState withMirror(IBlockState state, Mirror mirrorIn) {
-    EnumRailDirection dir = (EnumRailDirection) state.getValue(SHAPE);
+  public IBlockState withMirror(IBlockState state, Mirror mirror) {
+    EnumRailDirection dir = state.getValue(SHAPE);
 
-    switch (mirrorIn) {
+    switch (mirror) {
       case LEFT_RIGHT:
         switch (dir) {
           case ASCENDING_NORTH:
@@ -272,7 +278,7 @@ public class BlockRope extends McfrBlock {
           case NORTH_EAST:
             return state.withProperty(SHAPE, EnumRailDirection.SOUTH_EAST);
           default:
-            return super.withMirror(state, mirrorIn);
+            return super.withMirror(state, mirror);
         }
       case FRONT_BACK:
         switch (dir) {
@@ -294,26 +300,47 @@ public class BlockRope extends McfrBlock {
             return state.withProperty(SHAPE, EnumRailDirection.NORTH_WEST);
         }
     }
-    return super.withMirror(state, mirrorIn);
+    return super.withMirror(state, mirror);
   }
 
+  /**
+   * Cette classe est le modèle logique de la corde.
+   *
+   * @author Mc-Fr
+   */
   public class Rope {
     private final World world;
     private final BlockPos pos;
     private IBlockState state;
-    private final List<BlockPos> connectedRopes = Lists.newArrayList();
+    /** La liste des cordes connectées. */
+    private final List<BlockPos> connectedRopes = new ArrayList<>();
 
-    public Rope(World worldIn, BlockPos pos, IBlockState state) {
-      this.world = worldIn;
+    /**
+     * Crée un nouveau modèle.
+     * 
+     * @param world le monde
+     * @param pos la position
+     * @param state l'état
+     */
+    public Rope(World world, BlockPos pos, IBlockState state) {
+      this.world = world;
       this.pos = pos;
       this.state = state;
-      updateConnectedRopes(((BlockRope) state.getBlock()).getRopeDirection(worldIn, pos, state, null));
+      updateConnectedRopes(state.getValue(SHAPE));
     }
 
+    /**
+     * @return les cordes connectées
+     */
     public List<BlockPos> getConnectedRopes() {
       return this.connectedRopes;
     }
 
+    /**
+     * Met à jour la liste des cordes connectées.
+     * 
+     * @param dir la direction de cette corde
+     */
     private void updateConnectedRopes(EnumRailDirection dir) {
       this.connectedRopes.clear();
 
@@ -373,10 +400,12 @@ public class BlockRope extends McfrBlock {
       }
     }
 
-    private boolean hasRopeAt(BlockPos pos) {
-      return BlockRope.isRopeBlock(this.world, pos) || BlockRope.isRopeBlock(this.world, pos.up()) || BlockRope.isRopeBlock(this.world, pos.down());
-    }
-
+    /**
+     * Retourne la corde à l'endroit donné ou null s'il n'y en a pas.
+     * 
+     * @param pos la position
+     * @return la corde
+     */
     private Rope findRopeAt(BlockPos pos) {
       IBlockState state = this.world.getBlockState(pos);
 
@@ -398,15 +427,27 @@ public class BlockRope extends McfrBlock {
       }
     }
 
+    /**
+     * Indique si cette corde est connectée à celle donnée.
+     * 
+     * @param rope la corde
+     * @return true si cette corde est connectée à 'rope'
+     */
     private boolean isConnectedToRope(Rope rope) {
-      return this.isConnectedTo(rope.pos);
+      return isConnectedTo(rope.pos);
     }
 
-    private boolean isConnectedTo(BlockPos posIn) {
+    /**
+     * Indique si cette corde est connectée à celle à la position donnée.
+     * 
+     * @param pos la position
+     * @return true si cette corde est connectée à celle à la position
+     */
+    private boolean isConnectedTo(BlockPos pos) {
       for (int i = 0; i < this.connectedRopes.size(); ++i) {
         BlockPos blockpos = this.connectedRopes.get(i);
 
-        if (blockpos.getX() == posIn.getX() && blockpos.getZ() == posIn.getZ()) {
+        if (blockpos.getX() == pos.getX() && blockpos.getZ() == pos.getZ()) {
           return true;
         }
       }
@@ -414,22 +455,21 @@ public class BlockRope extends McfrBlock {
       return false;
     }
 
-    protected int countAdjacentRopes() {
-      int i = 0;
-
-      for (EnumFacing enumfacing : EnumFacing.Plane.HORIZONTAL) {
-        if (hasRopeAt(this.pos.offset(enumfacing))) {
-          ++i;
-        }
-      }
-
-      return i;
+    /**
+     * Indique si cette corde peut se connecter à la corde donnée.
+     * 
+     * @param rope la corde
+     * @return true si cette corde peut se connecter
+     */
+    private boolean canConnectTo(Rope rope) {
+      return isConnectedToRope(rope) || this.connectedRopes.size() != 2;
     }
 
-    private boolean canConnectTo(Rope rail) {
-      return isConnectedToRope(rail) || this.connectedRopes.size() != 2;
-    }
-
+    /**
+     * Connecte cette corde à celle indiquée.
+     * 
+     * @param rope la corde
+     */
     private void connectTo(Rope rope) {
       this.connectedRopes.add(rope.pos);
       BlockPos north = this.pos.north();
@@ -477,19 +517,30 @@ public class BlockRope extends McfrBlock {
       this.world.setBlockState(this.pos, this.state, 3);
     }
 
+    /**
+     * Indique si cette corde à un voisin à l'endroit indiqué.
+     * 
+     * @param pos la position
+     * @return true si cette corde a un voisin à la position
+     */
     private boolean hasNeighborRope(BlockPos pos) {
-      Rope rail = findRopeAt(pos);
+      Rope rope = findRopeAt(pos);
 
-      if (rail == null) {
+      if (rope == null) {
         return false;
       }
       else {
-        rail.removeSoftConnections();
-        return rail.canConnectTo(this);
+        rope.removeSoftConnections();
+        return rope.canConnectTo(this);
       }
     }
 
-    public Rope place(boolean b1, boolean b2) {
+    /**
+     * Place cette corde.
+     * 
+     * @return cette corde
+     */
+    public Rope place() {
       BlockPos north = this.pos.north();
       BlockPos south = this.pos.south();
       BlockPos west = this.pos.west();
@@ -550,7 +601,7 @@ public class BlockRope extends McfrBlock {
       updateConnectedRopes(dir);
       this.state = this.state.withProperty(BlockRope.SHAPE, dir);
 
-      if (b2 || this.world.getBlockState(this.pos) != this.state) {
+      if (this.world.getBlockState(this.pos) != this.state) {
         this.world.setBlockState(this.pos, this.state, 3);
 
         for (int i = 0; i < this.connectedRopes.size(); ++i) {
@@ -569,6 +620,9 @@ public class BlockRope extends McfrBlock {
       return this;
     }
 
+    /**
+     * @return l'état
+     */
     public IBlockState getBlockState() {
       return this.state;
     }

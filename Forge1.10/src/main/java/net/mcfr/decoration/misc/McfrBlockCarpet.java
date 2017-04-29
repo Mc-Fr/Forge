@@ -16,6 +16,11 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
+/**
+ * Bloc tapis.
+ *
+ * @author Mc-Fr
+ */
 public class McfrBlockCarpet extends BlockCarpet implements IBlockWithVariants, ITileEntityProvider {
   public McfrBlockCarpet() {
     String name = "carpet";
@@ -35,21 +40,21 @@ public class McfrBlockCarpet extends BlockCarpet implements IBlockWithVariants, 
   }
 
   @Override
-  public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
-    worldIn.setTileEntity(pos, createNewTileEntity(worldIn, stack.getMetadata()));
+  public void onBlockPlacedBy(World world, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
+    world.setTileEntity(pos, createNewTileEntity(world, stack.getMetadata()));
   }
 
   /**
    * Empêche les tapis d'être détruits si le bloc d'en-dessous est supprimé.
    */
   @Override
-  public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn) {}
+  public void neighborChanged(IBlockState state, World world, BlockPos pos, Block block) {}
 
   /**
    * Permet de passer à travers le tapis.
    */
   @Override
-  public AxisAlignedBB getCollisionBoundingBox(IBlockState state, World worldIn, BlockPos pos) {
+  public AxisAlignedBB getCollisionBoundingBox(IBlockState state, World world, BlockPos pos) {
     return NULL_AABB;
   }
 

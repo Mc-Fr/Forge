@@ -11,9 +11,23 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 
+/**
+ * Classe représentant une chaîne/corde à laquelle on peut grimper.
+ *
+ * @author Mc-Fr
+ */
 public class BlockChain extends McfrBlock {
+  /** Hitbox */
   private static final AxisAlignedBB AABB = new AxisAlignedBB(0.35, 0, 0.35, 0.65, 1, 0.65);
 
+  /**
+   * Crée une chaîne.
+   * 
+   * @param type le type (nom du block)
+   * @param material le matériau
+   * @param sound le type de son
+   * @param hardness la dureté
+   */
   public BlockChain(String type, Material material, SoundType sound, float hardness) {
     super(type, material, sound, hardness, 0, null, -1, CreativeTabs.DECORATIONS);
   }

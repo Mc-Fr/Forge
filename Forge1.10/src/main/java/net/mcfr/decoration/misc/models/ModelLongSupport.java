@@ -3,6 +3,11 @@ package net.mcfr.decoration.misc.models;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 
+/**
+ * Modèle du long support en équerre.
+ *
+ * @author Mc-Fr
+ */
 public class ModelLongSupport extends ModelBase {
   private ModelRenderer topPlank;
   private ModelRenderer bottomPlank;
@@ -48,6 +53,11 @@ public class ModelLongSupport extends ModelBase {
     model.rotateAngleZ = z;
   }
 
+  /**
+   * Affiche le modèle.
+   * 
+   * @param scale l'échelle d'affichage
+   */
   public void renderModel(float scale) {
     this.topPlank.render(scale);
     this.bottomPlank.render(scale);
