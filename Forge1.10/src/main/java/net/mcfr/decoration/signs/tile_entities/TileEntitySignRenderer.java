@@ -42,24 +42,25 @@ public abstract class TileEntitySignRenderer<T extends TileEntityMcfrSign> exten
         this.model.signStick.showModel = true;
         this.model.signRope1.showModel = false;
         this.model.signRope2.showModel = false;
-      }
-      else if (block instanceof McfrBlockSuspendedSign) {
+      } else if (block instanceof McfrBlockSuspendedSign) {
         GlStateManager.translate(0, -0.4f, 0);
         this.model.signStick.showModel = false;
         this.model.signRope1.showModel = true;
         this.model.signRope2.showModel = true;
       }
-    }
-    else {
+    } else {
       int meta = te.getBlockMetadata();
       float angle = 0;
 
-      if (meta == 2)
+      if (meta == 2) {
         angle = 180;
-      if (meta == 4)
+      }
+      if (meta == 4) {
         angle = 90;
-      if (meta == 5)
+      }
+      if (meta == 5) {
         angle = 270;
+      }
 
       GlStateManager.translate((float) x + 0.5f, (float) y + 0.5f, (float) z + 0.5f);
       GlStateManager.rotate(-angle, 0, 1, 0);
@@ -76,8 +77,7 @@ public abstract class TileEntitySignRenderer<T extends TileEntityMcfrSign> exten
       GlStateManager.scale(4, 2, 1);
       GlStateManager.translate(0.0625f, 0.0625f, 0.0625f);
       GlStateManager.matrixMode(5888);
-    }
-    else {
+    } else {
       bindTexture(this.signTexture);
     }
 
@@ -101,18 +101,23 @@ public abstract class TileEntitySignRenderer<T extends TileEntityMcfrSign> exten
           ITextComponent itextcomponent = te.signText[j];
           List<ITextComponent> list = GuiUtilRenderComponents.splitText(itextcomponent, 90, fontRenderer, false, true);
           String s = list != null && !list.isEmpty()
-              ? (te instanceof TileEntityOrpSign ? list.get(0).getUnformattedText() : list.get(0).getFormattedText()) : "";
+              ? te instanceof TileEntityOrpSign ? list.get(0).getUnformattedText() : list.get(0).getFormattedText() : "";
 
-          if (j == te.lineBeingEdited)
+          if (j == te.lineBeingEdited) {
             s = "> " + s + " <";
+          }
 
           for (int k = 0; k < 2; k++) {
-            if (k == 1)
+            if (k == 1) {
               GlStateManager.rotate(180, 0, 1, 0);
+            }
+            GlStateManager.disableLighting();
             fontRenderer.drawString(s, -fontRenderer.getStringWidth(s) / 2, j * 10 - te.signText.length * 5,
-                te instanceof TileEntityOrpSign ? 0xffffffff : 0);
-            if (k == 1)
+                te instanceof TileEntityOrpSign ? 0xffffff : 0);
+            GlStateManager.enableLighting();
+            if (k == 1) {
               GlStateManager.rotate(-180, 0, 1, 0);
+            }
           }
         }
       }
