@@ -8,7 +8,18 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemDoor;
 import net.minecraft.item.ItemStack;
 
+/**
+ * Item de porte.
+ *
+ * @author Mc-Fr
+ */
 public class McfrItemDoor extends ItemDoor {
+  /**
+   * Crée un item de porte.
+   * 
+   * @param name le nom
+   * @param block le bloc à poser
+   */
   public McfrItemDoor(String name, BlockDoor block) {
     super(block);
     setRegistryName(name);

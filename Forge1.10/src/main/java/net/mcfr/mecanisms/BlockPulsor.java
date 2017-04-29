@@ -34,7 +34,13 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
+/**
+ * Le pulseur attire vers lui tous les mobs aggressifs dans un rayon donné.
+ *
+ * @author Mc-Fr
+ */
 public class BlockPulsor extends McfrBlock {
+  /** Rayon d'action */
   private static final int RADIUS = 65;
 
   public BlockPulsor() {
@@ -42,35 +48,48 @@ public class BlockPulsor extends McfrBlock {
   }
 
   @Override
-  public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, @Nullable ItemStack heldItem,
+  public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, @Nullable ItemStack heldItem,
       EnumFacing side, float hitX, float hitY, float hitZ) {
-    attractMobs(worldIn, pos, state);
+    attractMobs(world, pos);
     return true;
   }
 
-  private void attractMobs(World worldIn, BlockPos pos, IBlockState state) {
-    lockAttraction(worldIn, pos, EntityBlaze.class);
-    lockAttraction(worldIn, pos, EntityCaveSpider.class);
-    lockAttraction(worldIn, pos, EntityCreeper.class);
-    lockAttraction(worldIn, pos, EntityEnderman.class);
-    lockAttraction(worldIn, pos, EntityEndermite.class);
-    lockAttraction(worldIn, pos, EntityGhast.class);
-    lockAttraction(worldIn, pos, EntityGiantZombie.class);
-    lockAttraction(worldIn, pos, EntityGuardian.class);
-    lockAttraction(worldIn, pos, EntityMagmaCube.class);
-    lockAttraction(worldIn, pos, EntityPigZombie.class);
-    lockAttraction(worldIn, pos, EntitySilverfish.class);
-    lockAttraction(worldIn, pos, EntitySkeleton.class);
-    lockAttraction(worldIn, pos, EntitySlime.class);
-    lockAttraction(worldIn, pos, EntitySpider.class);
-    lockAttraction(worldIn, pos, EntityWitch.class);
-    lockAttraction(worldIn, pos, EntityWither.class);
-    lockAttraction(worldIn, pos, EntityZombie.class);
+  /**
+   * Attire certains mobs vers le bloc.
+   * 
+   * @param world le monde
+   * @param pos la position
+   */
+  private void attractMobs(World world, BlockPos pos) {
+    lockAttraction(world, pos, EntityBlaze.class);
+    lockAttraction(world, pos, EntityCaveSpider.class);
+    lockAttraction(world, pos, EntityCreeper.class);
+    lockAttraction(world, pos, EntityEnderman.class);
+    lockAttraction(world, pos, EntityEndermite.class);
+    lockAttraction(world, pos, EntityGhast.class);
+    lockAttraction(world, pos, EntityGiantZombie.class);
+    lockAttraction(world, pos, EntityGuardian.class);
+    lockAttraction(world, pos, EntityMagmaCube.class);
+    lockAttraction(world, pos, EntityPigZombie.class);
+    lockAttraction(world, pos, EntitySilverfish.class);
+    lockAttraction(world, pos, EntitySkeleton.class);
+    lockAttraction(world, pos, EntitySlime.class);
+    lockAttraction(world, pos, EntitySpider.class);
+    lockAttraction(world, pos, EntityWitch.class);
+    lockAttraction(world, pos, EntityWither.class);
+    lockAttraction(world, pos, EntityZombie.class);
   }
 
+  /**
+   * Attire les mobs de la classe donnée vers le bloc.
+   * 
+   * @param world le monde
+   * @param pos la position
+   * @param type le type d'entité
+   */
   private void lockAttraction(World world, BlockPos pos, Class<? extends EntityLiving> type) {
-    List<EntityLiving> list = world.getEntitiesWithinAABB(type,
-        new AxisAlignedBB(pos.getX() - RADIUS, pos.getY() - RADIUS, pos.getZ() - RADIUS, pos.getX() + RADIUS, pos.getY() + RADIUS, pos.getZ() + RADIUS));
+    List<EntityLiving> list = world.getEntitiesWithinAABB(type, new AxisAlignedBB(pos.getX() - RADIUS, pos.getY() - RADIUS, pos.getZ() - RADIUS,
+        pos.getX() + RADIUS, pos.getY() + RADIUS, pos.getZ() + RADIUS));
     for (EntityLiving e : list) {
       e.getNavigator().tryMoveToXYZ(pos.getX(), pos.getY(), pos.getZ(), 1);
     }
