@@ -67,11 +67,13 @@ public class TileEntityBookshelfRenderer extends TileEntitySpecialRenderer<TileE
     bindTexture(RESOURCES.get(meta).get(step));
     RenderUtils.fixLighting(te.getWorld(), te.getPos());
     GlStateManager.pushMatrix();
+    GlStateManager.disableLighting();
     GlStateManager.translate(x, y, z);
     GlStateManager.translate(0.5, 0.5, 0.5);
     GlStateManager.rotate(180, 1, 0, 0);
     GlStateManager.translate(-0.5, -0.5, -0.5);
     this.model.renderModel(0.03126f);
+    GlStateManager.enableLighting();
     GlStateManager.popMatrix();
   }
 }
