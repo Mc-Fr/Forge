@@ -14,7 +14,17 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
+/**
+ * Cette classe représente le bloc de bas d'un buisson en deux parties.
+ *
+ * @author Mc-Fr
+ */
 public abstract class BlockBushBase extends BlockBush {
+  /**
+   * Crée un bloc de buisson bas.
+   * 
+   * @param name le nom
+   */
   public BlockBushBase(String name) {
     super();
     name = name + "_base";
@@ -31,6 +41,9 @@ public abstract class BlockBushBase extends BlockBush {
     return new AxisAlignedBB(0, 0, 0, 1, 1, 1);
   }
 
+  /**
+   * @return le bloc pouvant être posé sur celui-ci
+   */
   public abstract BlockBushTop getTopBlock();
 
   @Override

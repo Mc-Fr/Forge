@@ -12,6 +12,11 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 
+/**
+ * Bloc du bas du chanvre.
+ *
+ * @author Mc-Fr
+ */
 public class BlockHempBase extends BlockBushBase {
   public BlockHempBase() {
     super("hemp");
