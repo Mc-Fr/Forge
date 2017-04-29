@@ -10,6 +10,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+/**
+ * Anneau.
+ *
+ * @author Mc-Fr
+ */
 public class ItemRing extends McfrItem {
   public ItemRing(String name) {
     super(name + "_ring", CreativeTabs.MISC);
@@ -30,6 +35,22 @@ public class ItemRing extends McfrItem {
     }
   }
 
+  /**
+   * Types d'anneaux :
+   * <ul>
+   * <li>normal</li>
+   * <li>renforcé</li>
+   * <li>émeraude</li>
+   * <li>rubis</li>
+   * <li>saphire</li>
+   * <li>grenat</li>
+   * <li>jade</li>
+   * <li>topaze</li>
+   * <li>ancien</li>
+   * </ul>
+   *
+   * @author Mc-Fr
+   */
   public static enum EnumType implements IEnumType<EnumType> {
     NORMAL("normal"),
     REINFORCED("reinforced"),

@@ -12,6 +12,11 @@ import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
 
+/**
+ * Papier sur lequel on peut écrire.
+ *
+ * @author Mc-Fr
+ */
 public class ItemWriteablePaper extends McfrItem {
   public static final int MAX_PAGES_NB = 3;
 
