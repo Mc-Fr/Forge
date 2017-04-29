@@ -6,7 +6,13 @@ import net.mcfr.utils.math.Point2d;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 
+/**
+ * Cette classe s'occupe du rendu du feu de camps.
+ *
+ * @author Mc-Fr
+ */
 public class TileEntityCampfireRenderer extends TileEntitySpecialRenderer<TileEntityCampfire> {
+  /** Largeur d'une bûche. */
   public static final float W = 0.2f;
 
   @Override

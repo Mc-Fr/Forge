@@ -5,6 +5,11 @@ import org.lwjgl.opengl.GL11;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 
+/**
+ * Modèle du lustre.
+ *
+ * @author Mc-Fr
+ */
 public class ModelChandelier extends ModelBase {
   private ModelRenderer plank1;
   private ModelRenderer plank2;
@@ -122,6 +127,11 @@ public class ModelChandelier extends ModelBase {
     model.rotateAngleZ = z;
   }
 
+  /**
+   * Affiche le modèle.
+   * 
+   * @param scale l'échelle d'affichage
+   */
   public void renderModel(float scale) {
     GL11.glPushMatrix();
     GL11.glScalef(1.5f, 1, 1.5f);

@@ -9,11 +9,18 @@ import net.mcfr.decoration.lighting.models.ModelLargeChandelier;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.util.ResourceLocation;
 
+/**
+ * Cette classe s'occupe du rendu des lustres.
+ *
+ * @author Mc-Fr
+ */
 public class TileEntityChandelierRenderer extends TileEntitySpecialRenderer<TileEntityChandelier> {
   private static final ResourceLocation CHANDELIER_TEXTURE = new ResourceLocation(Constants.MOD_ID, "textures/entity/chandelier.png");
   private static final ResourceLocation LARGE_CHANDELIER_TEXTURE = new ResourceLocation(Constants.MOD_ID, "textures/entity/large_chandelier.png");
 
+  /** Modèle du lustre normal. */
   private ModelChandelier chandelier;
+  /** Modèle du grand lustre. */
   private ModelLargeChandelier largeChandelier;
 
   public TileEntityChandelierRenderer() {
