@@ -5,15 +5,28 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
+/**
+ * Cette classe représente un aliment contenu dans un récipient.
+ *
+ * @author Mc-Fr
+ */
 public class ItemContainedFood extends McfrItemFood {
   private Item emptyContainer;
-  
+
+  /**
+   * Crée un aliment.
+   * 
+   * @param name le nom
+   * @param emptyContainer le récipient vide
+   * @param amount la quantité de faim restituée
+   * @param saturation le taux de saturation
+   */
   public ItemContainedFood(String name, Item emptyContainer, int amount, float saturation) {
     super(name, amount, saturation, false);
     setMaxStackSize(1);
     this.emptyContainer = emptyContainer;
   }
-  
+
   @Override
   public ItemStack onItemUseFinish(ItemStack stack, World worldIn, EntityLivingBase entityLiving) {
     ItemStack s = super.onItemUseFinish(stack, worldIn, entityLiving);

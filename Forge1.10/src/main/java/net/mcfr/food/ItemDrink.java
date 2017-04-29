@@ -10,9 +10,25 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+/**
+ * Classe de base des boissons.
+ * 
+ * @author Mc-Fr
+ *
+ * @param <T> type des variantes
+ */
 public abstract class ItemDrink<T extends Enum<T> & IEnumType<T>> extends ItemContainedFood {
   private Class<T> variantsClass;
 
+  /**
+   * Crée une boisson.
+   * 
+   * @param name le nom
+   * @param emptyContainer le récipient vide
+   * @param nutrition la quantité de faim restituée
+   * @param saturation le taux de saturation
+   * @param variantsClass le type des variantes
+   */
   public ItemDrink(String name, Item emptyContainer, int nutrition, float saturation, Class<T> variantsClass) {
     super(name, emptyContainer, nutrition, saturation);
     this.variantsClass = variantsClass;

@@ -17,10 +17,22 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 
+/**
+ * Gâteau.
+ *
+ * @author Mc-Fr
+ */
 public class McfrBlockCake extends BlockCake {
   private final int amount;
   private final float saturation;
 
+  /**
+   * Crée un gâteau.
+   * 
+   * @param type le type
+   * @param amount la quantité de faim restituée
+   * @param saturation le taux de saturation
+   */
   public McfrBlockCake(String type, int amount, float saturation) {
     this.amount = amount;
     this.saturation = saturation;
@@ -41,23 +53,31 @@ public class McfrBlockCake extends BlockCake {
   }
 
   @Override
-  public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, @Nullable ItemStack heldItem,
+  public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, @Nullable ItemStack heldItem,
       EnumFacing side, float hitX, float hitY, float hitZ) {
-    eatCake(worldIn, pos, state, playerIn);
+    eatCake(world, pos, state, playerIn);
     return true;
   }
 
-  private void eatCake(World worldIn, BlockPos pos, IBlockState state, EntityPlayer player) {
+  /**
+   * Effectue l'action de consommation d'une part du gâteau.
+   * 
+   * @param world le monde
+   * @param pos la position
+   * @param state l'état
+   * @param player le mangeur
+   */
+  private void eatCake(World world, BlockPos pos, IBlockState state, EntityPlayer player) {
     if (player.canEat(false)) {
       player.addStat(StatList.CAKE_SLICES_EATEN);
       player.getFoodStats().addStats(this.amount, this.saturation);
       int i = state.getValue(BITES);
 
       if (i < 6) {
-        worldIn.setBlockState(pos, state.withProperty(BITES, i + 1), 3);
+        world.setBlockState(pos, state.withProperty(BITES, i + 1), 3);
       }
       else {
-        worldIn.setBlockToAir(pos);
+        world.setBlockToAir(pos);
       }
     }
   }
