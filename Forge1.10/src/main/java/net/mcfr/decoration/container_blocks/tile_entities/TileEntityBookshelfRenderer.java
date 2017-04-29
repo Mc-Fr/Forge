@@ -26,8 +26,9 @@ public class TileEntityBookshelfRenderer extends TileEntitySpecialRenderer<TileE
     for (BlockPlanks.EnumType type : BlockPlanks.EnumType.values()) {
       Map<Integer, ResourceLocation> resources = new HashMap<>();
 
-      for (int i = 0; i < 4; i++)
+      for (int i = 0; i < 4; i++) {
         resources.put(i, new ResourceLocation(Constants.MOD_ID, String.format("textures/entity/bookshelves/%s_bookshelf_%d.png", type, i)));
+      }
       RESOURCES.put(type.getMetadata(), resources);
     }
   }
@@ -49,23 +50,27 @@ public class TileEntityBookshelfRenderer extends TileEntitySpecialRenderer<TileE
       ItemStack stack = te.getStackInSlot(i);
 
       if (stack != null) {
-        fillingRatio += ((float) stack.stackSize / te.getInventoryStackLimit()) / te.getSizeInventory();
+        fillingRatio += (float) stack.stackSize / te.getInventoryStackLimit() / te.getSizeInventory();
       }
     }
 
-    if (fillingRatio == 0)
+    if (fillingRatio == 0) {
       step = 0;
-    else if (fillingRatio <= 0.5f)
+    } else if (fillingRatio <= 0.5f) {
       step = 1;
-    else if (fillingRatio <= 0.75f)
+    } else if (fillingRatio <= 0.75f) {
       step = 2;
-    else
+    } else {
       step = 3;
+    }
 
     bindTexture(RESOURCES.get(meta).get(step));
+    RenderUtils.fixLighting(te.getWorld(), te.getPos());
     GlStateManager.pushMatrix();
     GlStateManager.translate(x, y, z);
-    RenderUtils.fixLighting(te.getWorld(), te.getPos());
+    GlStateManager.translate(0.5, 0.5, 0.5);
+    GlStateManager.rotate(180, 1, 0, 0);
+    GlStateManager.translate(-0.5, -0.5, -0.5);
     this.model.renderModel(0.03126f);
     GlStateManager.popMatrix();
   }
