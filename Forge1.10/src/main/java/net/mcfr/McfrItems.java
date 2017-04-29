@@ -23,7 +23,6 @@ import net.mcfr.equipment.AdditionalArmorMaterial;
 import net.mcfr.equipment.AdditionalToolMaterial;
 import net.mcfr.equipment.ItemCrossbowBolt;
 import net.mcfr.equipment.ItemGrapnel;
-import net.mcfr.equipment.ItemHammer;
 import net.mcfr.equipment.McfrItemArmor;
 import net.mcfr.equipment.McfrItemAxe;
 import net.mcfr.equipment.McfrItemBow;
@@ -188,7 +187,7 @@ public final class McfrItems {
   public static final McfrItemBlockSpecial LONG_REPEATER = new McfrItemBlockSpecial("long_repeater", McfrBlocks.LONG_REPEATER_OFF,
       CreativeTabs.REDSTONE);
   // Outils
-  public static final McfrItem HAMMER = new ItemHammer();
+  public static final McfrItem HAMMER = new McfrItem("hammer", 1, CreativeTabs.TOOLS);
   public static final ItemGrapnel GRAPNEL = new ItemGrapnel();
   // Outils de base en bronze et acier
   public static final McfrItemSword BRONZE_SWORD = new McfrItemSword("bronze", AdditionalToolMaterial.BRONZE);
