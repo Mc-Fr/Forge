@@ -11,6 +11,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -18,6 +19,7 @@ import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumFacing.Axis;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
@@ -39,31 +41,35 @@ public class McfrItemSign extends McfrItem {
   }
 
   @Override
-  public EnumActionResult onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX,
+  public EnumActionResult onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX,
       float hitY, float hitZ) {
-    if (playerIn.canPlayerEdit(pos, facing, stack)) {
-      if (!worldIn.isRemote) {
-        if (facing == EnumFacing.UP && this.standingSign.canPlaceBlockAt(worldIn, pos.up())) {
+    if (player.canPlayerEdit(pos, facing, stack)) {
+      if (!world.isRemote) {
+        if (facing == EnumFacing.UP && this.standingSign.canPlaceBlockAt(world, pos.up())) {
           pos = pos.up();
-          int rotation = FacingUtils.getSignRotation(playerIn);
-          worldIn.setBlockState(pos, this.standingSign.getDefaultState().withProperty(McfrBlockStandingSign.ROTATION, rotation), 11);
-        } else if (facing == EnumFacing.DOWN && this.suspendedSign != null && this.suspendedSign.canPlaceBlockAt(worldIn, pos.down())) {
+          int rotation = FacingUtils.getSignRotation(player);
+          world.setBlockState(pos, this.standingSign.getDefaultState().withProperty(McfrBlockStandingSign.ROTATION, rotation), 11);
+        }
+        else if (facing == EnumFacing.DOWN && this.suspendedSign != null && this.suspendedSign.canPlaceBlockAt(world, pos.down())) {
           pos = pos.down();
-          int rotation = FacingUtils.getSignRotation(playerIn);
-          worldIn.setBlockState(pos, this.suspendedSign.getDefaultState().withProperty(McfrBlockSuspendedSign.ROTATION, rotation), 11);
-        } else if (facing.getAxis() != Axis.Y && this.wallSign.canPlaceBlockAt(worldIn, pos.offset(facing))) {
+          int rotation = FacingUtils.getSignRotation(player);
+          world.setBlockState(pos, this.suspendedSign.getDefaultState().withProperty(McfrBlockSuspendedSign.ROTATION, rotation), 11);
+        }
+        else if (facing.getAxis() != Axis.Y && this.wallSign.canPlaceBlockAt(world, pos.offset(facing))) {
           pos = pos.offset(facing);
-          worldIn.setBlockState(pos, this.wallSign.getDefaultState().withProperty(McfrBlockWallSign.FACING, facing), 11);
+          world.setBlockState(pos, this.wallSign.getDefaultState().withProperty(McfrBlockWallSign.FACING, facing), 11);
         }
 
         stack.stackSize--;
-        TileEntity te = worldIn.getTileEntity(pos);
+        TileEntity te = world.getTileEntity(pos);
 
-        if (te != null && te.getClass() == this.teClass && !ItemBlock.setTileEntityNBT(worldIn, playerIn, pos, stack)) {
-          ((TileEntityMcfrSign) te).setPlayer(playerIn);
-          McfrNetworkWrapper.getInstance().sendTo(new OpenEditMcfrSignMessage(pos, SignType.fromClass(this.teClass)), (EntityPlayerMP) playerIn);
+        if (te != null && te.getClass() == this.teClass && !ItemBlock.setTileEntityNBT(world, player, pos, stack)) {
+          ((TileEntityMcfrSign) te).setPlayer(player);
+          McfrNetworkWrapper.getInstance().sendTo(new OpenEditMcfrSignMessage(pos, SignType.fromClass(this.teClass)), (EntityPlayerMP) player);
         }
       }
+      else if (!(this.standingSign instanceof BlockStandingOrpSign))
+        world.playSound(player, pos, SoundEvents.BLOCK_WOOD_PLACE, SoundCategory.BLOCKS, 2f, 0.75f);
 
       return EnumActionResult.SUCCESS;
     }

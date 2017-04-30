@@ -8,11 +8,13 @@ import net.mcfr.network.OpenEditWallNoteMessage;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
@@ -22,24 +24,27 @@ public class ItemWallNote extends McfrItem {
   }
 
   @Override
-  public EnumActionResult onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-    if (playerIn.canPlayerEdit(pos, facing, stack)) {
-      if (!worldIn.isRemote) {
+  public EnumActionResult onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX,
+      float hitY, float hitZ) {
+    if (player.canPlayerEdit(pos, facing, stack)) {
+      if (!world.isRemote) {
         if (facing == EnumFacing.UP || facing == EnumFacing.DOWN) {
           return EnumActionResult.FAIL;
         }
-        else if (McfrBlocks.WALL_NOTE.canPlaceBlockAt(worldIn, pos.offset(facing))) {
+        else if (McfrBlocks.WALL_NOTE.canPlaceBlockAt(world, pos.offset(facing))) {
           pos = pos.offset(facing);
-          worldIn.setBlockState(pos, McfrBlocks.WALL_NOTE.getDefaultState().withProperty(McfrBlockWallSign.FACING, facing), 11);
+          world.setBlockState(pos, McfrBlocks.WALL_NOTE.getDefaultState().withProperty(McfrBlockWallSign.FACING, facing), 11);
         }
 
         stack.stackSize--;
-        TileEntity te = worldIn.getTileEntity(pos);
+        TileEntity te = world.getTileEntity(pos);
 
         if (te != null && te instanceof TileEntityLargeSign) {
-          McfrNetworkWrapper.getInstance().sendTo(new OpenEditWallNoteMessage(pos), (EntityPlayerMP) playerIn);
+          McfrNetworkWrapper.getInstance().sendTo(new OpenEditWallNoteMessage(pos), (EntityPlayerMP) player);
         }
       }
+      else
+        world.playSound(player, pos, SoundEvents.BLOCK_WOOD_PLACE, SoundCategory.BLOCKS, 2f, 0.75f);
 
       return EnumActionResult.SUCCESS;
     }
