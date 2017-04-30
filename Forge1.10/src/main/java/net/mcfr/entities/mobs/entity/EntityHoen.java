@@ -84,8 +84,10 @@ public class EntityHoen extends EntityBurrowed {
   }
 
   /**
-   * Called frequently so the entity can update its state every tick as required. For example,
-   * zombies and skeletons use this to react to sunlight and start to burn.
+   * <<<<<<< HEAD Called frequently so the entity can update its state every tick as required. For
+   * example, zombies and skeletons use this to react to sunlight and start to burn. ======= Called
+   * frequently so the entity can update its state every tick as required. For example, zombies and
+   * skeletons use this to react to sunlight and start to burn. >>>>>>> refs/heads/Bugfixes
    */
   @Override
   public void onLivingUpdate() {
@@ -118,8 +120,10 @@ public class EntityHoen extends EntityBurrowed {
   }
 
   /**
-   * Checks if the parameter is an item which this animal can be fed to breed it (wheat, carrots or
-   * seeds depending on the animal type)
+   * <<<<<<< HEAD Checks if the parameter is an item which this animal can be fed to breed it
+   * (wheat, carrots or seeds depending on the animal type) ======= Checks if the parameter is an
+   * item which this animal can be fed to breed it (wheat, carrots or seeds depending on the animal
+   * type) >>>>>>> refs/heads/Bugfixes
    */
   @Override
   public boolean isBreedingItem(@Nullable ItemStack stack) {
