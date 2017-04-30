@@ -118,7 +118,7 @@ public class GuiEditWallNote extends GuiScreen {
     if (meta == 4)
       angle = 90;
     if (meta == 5)
-      angle = -270;
+      angle = -90;
 
     GlStateManager.rotate(angle, 0, 1, 0);
     GlStateManager.translate(0, -1.0625F, 0);

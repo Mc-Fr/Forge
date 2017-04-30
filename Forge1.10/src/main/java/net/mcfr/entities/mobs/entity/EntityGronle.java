@@ -77,8 +77,10 @@ public class EntityGronle extends EntityBurrowed {
   }
 
   /**
-   * Called frequently so the entity can update its state every tick as required. For example,
-   * zombies and skeletons use this to react to sunlight and start to burn.
+   * <<<<<<< HEAD Called frequently so the entity can update its state every tick as required. For
+   * example, zombies and skeletons use this to react to sunlight and start to burn. ======= Called
+   * frequently so the entity can update its state every tick as required. For example, zombies and
+   * skeletons use this to react to sunlight and start to burn. >>>>>>> refs/heads/Bugfixes
    */
   @Override
   public void onLivingUpdate() {
