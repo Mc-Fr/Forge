@@ -1,0 +1,20 @@
+{
+    "variants": {
+        "rotation=0":  { "model": "mcfr_b_i:orp_sign" },
+        "rotation=1":  { "model": "mcfr_b_i:orp_sign" },
+        "rotation=2":  { "model": "mcfr_b_i:orp_sign" },
+        "rotation=3":  { "model": "mcfr_b_i:orp_sign" },
+        "rotation=4":  { "model": "mcfr_b_i:orp_sign" },
+        "rotation=5":  { "model": "mcfr_b_i:orp_sign" },
+        "rotation=6":  { "model": "mcfr_b_i:orp_sign" },
+        "rotation=7":  { "model": "mcfr_b_i:orp_sign" },
+        "rotation=8":  { "model": "mcfr_b_i:orp_sign" },
+        "rotation=9":  { "model": "mcfr_b_i:orp_sign" },
+        "rotation=10":  { "model": "mcfr_b_i:orp_sign" },
+        "rotation=11":  { "model": "mcfr_b_i:orp_sign" },
+        "rotation=12":  { "model": "mcfr_b_i:orp_sign" },
+        "rotation=13":  { "model": "mcfr_b_i:orp_sign" },
+        "rotation=14":  { "model": "mcfr_b_i:orp_sign" },
+        "rotation=15":  { "model": "mcfr_b_i:orp_sign" }
+    }
+}

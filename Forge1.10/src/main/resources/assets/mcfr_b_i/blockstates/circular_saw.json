@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=west":  { "model": "mcfr_b_i:circular_saw" },
+        "facing=east":  { "model": "mcfr_b_i:circular_saw" },
+        "facing=north":  { "model": "mcfr_b_i:circular_saw" },
+        "facing=south":  { "model": "mcfr_b_i:circular_saw" }
+    }
+}
