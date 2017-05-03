@@ -8,8 +8,8 @@ import net.mcfr.decoration.container_blocks.tile_entities.TileEntityRestrictable
  *
  * @author Mc-Fr
  */
-public class TileEntityTableWithFoot extends TileEntityRestrictable {
-  public TileEntityTableWithFoot() {
+public class TileEntityFootTable extends TileEntityRestrictable {
+  public TileEntityFootTable() {
     super("foot_table", ContainerRestrictable.LARGE_LINES_NB, 64, false, null, ContainerRestrictable.class);
   }
 }

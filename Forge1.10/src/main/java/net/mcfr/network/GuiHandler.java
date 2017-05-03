@@ -27,7 +27,7 @@ import net.mcfr.decoration.container_blocks.tile_entities.TileEntityLittleChest;
 import net.mcfr.decoration.container_blocks.tile_entities.TileEntityPallet;
 import net.mcfr.decoration.furniture.tile_entities.TileEntityEndTable;
 import net.mcfr.decoration.furniture.tile_entities.TileEntityTable;
-import net.mcfr.decoration.furniture.tile_entities.TileEntityTableWithFoot;
+import net.mcfr.decoration.furniture.tile_entities.TileEntityFootTable;
 import net.mcfr.forge.guis.ContainerAnvil;
 import net.mcfr.forge.guis.ContainerStove;
 import net.mcfr.forge.guis.GuiAnvil;
@@ -109,8 +109,8 @@ public class GuiHandler implements IGuiHandler {
           return new ContainerRestrictable(player.inventory, (TileEntityEndTable) tileEntity, player, null);
         break;
       case FOOT_TABLE:
-        if (tileEntity instanceof TileEntityTableWithFoot)
-          return new ContainerRestrictable(player.inventory, (TileEntityTableWithFoot) tileEntity, player, null);
+        if (tileEntity instanceof TileEntityFootTable)
+          return new ContainerRestrictable(player.inventory, (TileEntityFootTable) tileEntity, player, null);
         break;
     }
 
@@ -180,8 +180,8 @@ public class GuiHandler implements IGuiHandler {
           return new GuiRestrictedChest(player.inventory, (TileEntityEndTable) tileEntity, player, null);
         break;
       case FOOT_TABLE:
-        if (tileEntity instanceof TileEntityTableWithFoot)
-          return new GuiRestrictedChest(player.inventory, (TileEntityTableWithFoot) tileEntity, player, null);
+        if (tileEntity instanceof TileEntityFootTable)
+          return new GuiRestrictedChest(player.inventory, (TileEntityFootTable) tileEntity, player, null);
         break;
     }
 
