@@ -23,9 +23,4 @@ public class RenderKunawalu extends RenderLiving<EntityKunawalu> {
   protected ResourceLocation getEntityTexture(EntityKunawalu entity) {
     return KUNAWALU_TEXTURES;
   }
-
-  @Override
-  public void doRender(EntityKunawalu entity, double x, double y, double z, float entityYaw, float partialTicks) {
-    super.doRender(entity, x, y, z, entityYaw, partialTicks);
-  }
 }

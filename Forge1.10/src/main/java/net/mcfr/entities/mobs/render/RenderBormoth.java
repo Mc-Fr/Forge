@@ -23,9 +23,4 @@ public class RenderBormoth extends RenderLiving<EntityBormoth> {
   protected ResourceLocation getEntityTexture(EntityBormoth entity) {
     return BORMOTH_TEXTURES;
   }
-
-  @Override
-  public void doRender(EntityBormoth entity, double x, double y, double z, float entityYaw, float partialTicks) {
-    super.doRender(entity, x, y, z, entityYaw, partialTicks);
-  }
 }

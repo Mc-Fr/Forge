@@ -31,7 +31,7 @@ public abstract class EntitySyncedAnimal extends EntityAnimal {
 
   public void setGender(Genders gender) {
     NBTTagCompound nbt = getSyncedProps();
-    nbt.setInteger("Gender", gender.getInt());
+    nbt.setInteger("Gender", gender.ordinal());
     setSyncedProps(nbt);
   }
 

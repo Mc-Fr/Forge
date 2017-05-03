@@ -23,9 +23,4 @@ public class RenderNiale extends RenderLiving<EntityNiale> {
   protected ResourceLocation getEntityTexture(EntityNiale entity) {
     return NIALE_TEXTURES;
   }
-
-  @Override
-  public void doRender(EntityNiale entity, double x, double y, double z, float entityYaw, float partialTicks) {
-    super.doRender(entity, x, y, z, entityYaw, partialTicks);
-  }
 }

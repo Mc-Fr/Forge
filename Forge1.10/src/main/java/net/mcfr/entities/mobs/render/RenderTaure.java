@@ -23,9 +23,4 @@ public class RenderTaure extends RenderLiving<EntityTaure> {
   protected ResourceLocation getEntityTexture(EntityTaure entity) {
     return TAURE_TEXTURES;
   }
-
-  @Override
-  public void doRender(EntityTaure entity, double x, double y, double z, float entityYaw, float partialTicks) {
-    super.doRender(entity, x, y, z, entityYaw, partialTicks);
-  }
 }

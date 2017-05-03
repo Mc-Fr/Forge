@@ -16,7 +16,6 @@ import net.mcfr.entities.mobs.ai.EntityAiAttackCycle;
 import net.mcfr.entities.mobs.ai.EntityAiAvoidEntityCycle;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
@@ -28,9 +27,7 @@ import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.pathfinding.PathNodeType;
-import net.minecraft.util.datafix.DataFixer;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
@@ -88,55 +85,14 @@ public class EntitySiker extends EntityBurrowed {
     getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(10.0D);
   }
 
-  /**
-   * Called frequently so the entity can update its state every tick as required. For example,
-   * zombies and skeletons use this to react to sunlight and start to burn.
-   */
-  @Override
-  public void onLivingUpdate() {
-    super.onLivingUpdate();
-  }
-
   @Override
   public EntitySiker createChild(EntityAgeable ageable) {
     return new EntitySiker(this.worldObj);
   }
 
-  /**
-   * Checks if the parameter is an item which this animal can be fed to breed it (wheat, carrots or
-   * seeds depending on the animal type)
-   */
   @Override
   public boolean isBreedingItem(@Nullable ItemStack stack) {
     return stack != null && TEMPTATION_ITEMS.contains(stack.getItem());
-  }
-
-  /**
-   * Get the experience points the entity currently has.
-   */
-  @Override
-  protected int getExperiencePoints(EntityPlayer player) {
-    return super.getExperiencePoints(player);
-  }
-
-  public static void func_189789_b(DataFixer p_189789_0_) {
-    EntityLiving.registerFixesMob(p_189789_0_, "Chicken");
-  }
-
-  /**
-   * (abstract) Protected helper method to read subclass entity data from NBT.
-   */
-  @Override
-  public void readEntityFromNBT(NBTTagCompound compound) {
-    super.readEntityFromNBT(compound);
-  }
-
-  /**
-   * (abstract) Protected helper method to write subclass entity data to NBT.
-   */
-  @Override
-  public void writeEntityToNBT(NBTTagCompound compound) {
-    super.writeEntityToNBT(compound);
   }
 
   @Override

@@ -23,9 +23,4 @@ public class RenderPryf extends RenderLiving<EntityPryf> {
   protected ResourceLocation getEntityTexture(EntityPryf entity) {
     return PRYF_TEXTURES;
   }
-
-  @Override
-  public void doRender(EntityPryf entity, double x, double y, double z, float entityYaw, float partialTicks) {
-    super.doRender(entity, x, y, z, entityYaw, partialTicks);
-  }
 }

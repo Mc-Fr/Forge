@@ -23,9 +23,4 @@ public class RenderFjalla extends RenderLiving<EntityFjalla> {
   protected ResourceLocation getEntityTexture(EntityFjalla entity) {
     return FJALLA_TEXTURES;
   }
-
-  @Override
-  public void doRender(EntityFjalla entity, double x, double y, double z, float entityYaw, float partialTicks) {
-    super.doRender(entity, x, y, z, entityYaw, partialTicks);
-  }
 }

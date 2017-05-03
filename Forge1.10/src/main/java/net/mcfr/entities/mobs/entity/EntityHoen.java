@@ -14,7 +14,6 @@ import net.mcfr.entities.mobs.ai.EntityAIGoToBurrow;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAvoidEntity;
@@ -31,10 +30,8 @@ import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.pathfinding.PathNodeType;
 import net.minecraft.util.SoundEvent;
-import net.minecraft.util.datafix.DataFixer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
@@ -45,7 +42,6 @@ import net.minecraft.world.World;
  * @author Mc-Fr
  */
 public class EntityHoen extends EntityBurrowed {
-  // new Item[] {Items.WHEAT_SEEDS, Items.MELON_SEEDS, Items.PUMPKIN_SEEDS, Items.BEETROOT_SEEDS}
   private static final Set<Item> TEMPTATION_ITEMS = Sets.newHashSet();
   private int ticks;
 
@@ -83,17 +79,6 @@ public class EntityHoen extends EntityBurrowed {
     getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.25D);
   }
 
-  /**
-   * <<<<<<< HEAD Called frequently so the entity can update its state every tick as required. For
-   * example, zombies and skeletons use this to react to sunlight and start to burn. ======= Called
-   * frequently so the entity can update its state every tick as required. For example, zombies and
-   * skeletons use this to react to sunlight and start to burn. >>>>>>> refs/heads/Bugfixes
-   */
-  @Override
-  public void onLivingUpdate() {
-    super.onLivingUpdate();
-  }
-
   @Override
   protected SoundEvent getAmbientSound() {
     return SoundEvents.ENTITY_CHICKEN_AMBIENT;
@@ -119,43 +104,9 @@ public class EntityHoen extends EntityBurrowed {
     return new EntityHoen(this.worldObj);
   }
 
-  /**
-   * <<<<<<< HEAD Checks if the parameter is an item which this animal can be fed to breed it
-   * (wheat, carrots or seeds depending on the animal type) ======= Checks if the parameter is an
-   * item which this animal can be fed to breed it (wheat, carrots or seeds depending on the animal
-   * type) >>>>>>> refs/heads/Bugfixes
-   */
   @Override
   public boolean isBreedingItem(@Nullable ItemStack stack) {
     return stack != null && TEMPTATION_ITEMS.contains(stack.getItem());
-  }
-
-  /**
-   * Get the experience points the entity currently has.
-   */
-  @Override
-  protected int getExperiencePoints(EntityPlayer player) {
-    return super.getExperiencePoints(player);
-  }
-
-  public static void func_189789_b(DataFixer p_189789_0_) {
-    EntityLiving.registerFixesMob(p_189789_0_, "Chicken");
-  }
-
-  /**
-   * (abstract) Protected helper method to read subclass entity data from NBT.
-   */
-  @Override
-  public void readEntityFromNBT(NBTTagCompound compound) {
-    super.readEntityFromNBT(compound);
-  }
-
-  /**
-   * (abstract) Protected helper method to write subclass entity data to NBT.
-   */
-  @Override
-  public void writeEntityToNBT(NBTTagCompound compound) {
-    super.writeEntityToNBT(compound);
   }
 
   @Override

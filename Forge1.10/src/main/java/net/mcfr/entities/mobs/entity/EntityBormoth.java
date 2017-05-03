@@ -23,7 +23,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.pathfinding.PathNodeType;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
@@ -76,17 +75,6 @@ public class EntityBormoth extends EntityBurrowed {
     getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.3D);
   }
 
-  /**
-   * <<<<<<< HEAD Called frequently so the entity can update its state every tick as required. For
-   * example, zombies and skeletons use this to react to sunlight and start to burn. ======= Called
-   * frequently so the entity can update its state every tick as required. For example, zombies and
-   * skeletons use this to react to sunlight and start to burn. >>>>>>> refs/heads/Bugfixes
-   */
-  @Override
-  public void onLivingUpdate() {
-    super.onLivingUpdate();
-  }
-
   @Override
   protected SoundEvent getAmbientSound() {
     return SoundEvents.ENTITY_CHICKEN_AMBIENT;
@@ -116,21 +104,6 @@ public class EntityBormoth extends EntityBurrowed {
   @Override
   public EntityBormoth createChild(EntityAgeable ageable) {
     return new EntityBormoth(this.worldObj);
-  }
-
-  @Override
-  protected int getExperiencePoints(EntityPlayer player) {
-    return super.getExperiencePoints(player);
-  }
-
-  @Override
-  public void readEntityFromNBT(NBTTagCompound compound) {
-    super.readEntityFromNBT(compound);
-  }
-
-  @Override
-  public void writeEntityToNBT(NBTTagCompound compound) {
-    super.writeEntityToNBT(compound);
   }
 
   @Override

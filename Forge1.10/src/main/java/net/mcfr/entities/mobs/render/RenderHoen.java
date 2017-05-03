@@ -27,12 +27,10 @@ public class RenderHoen extends RenderLiving<EntityHoen> {
     if (entity.isChild()) {
       return HOEN_CHILD_TEXTURES;
     }
-    else if (entity.getGender() == Genders.FEMALE) {
+    if (entity.getGender() == Genders.FEMALE) {
       return HOEN_FEMALE_TEXTURES;
     }
-    else {
-      return HOEN_MALE_TEXTURES;
-    }
+    return HOEN_MALE_TEXTURES;
   }
 
   @Override

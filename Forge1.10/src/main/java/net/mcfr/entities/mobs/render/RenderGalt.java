@@ -22,16 +22,6 @@ public class RenderGalt extends RenderLiving<EntityGalt> {
 
   @Override
   protected ResourceLocation getEntityTexture(EntityGalt entity) {
-    if (entity.getFurType() == 1) {
-      return GALT_TEXTURES_1;
-    }
-    else {
-      return GALT_TEXTURES_2;
-    }
-  }
-
-  @Override
-  public void doRender(EntityGalt entity, double x, double y, double z, float entityYaw, float partialTicks) {
-    super.doRender(entity, x, y, z, entityYaw, partialTicks);
+    return entity.getFurType() == 1 ? GALT_TEXTURES_1 : GALT_TEXTURES_2;
   }
 }
