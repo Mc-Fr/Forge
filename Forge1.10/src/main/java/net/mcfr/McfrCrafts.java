@@ -686,7 +686,7 @@ public final class McfrCrafts {
     // Échelles
     addShapedRecipe(new ItemStack(McfrBlocks.ROPE_LADDER, 3), "C C", "CSC", "C C", 'C', McfrBlocks.ROPE, 'S', Items.STICK);
     addShapedRecipe(new ItemStack(McfrBlocks.CHAIN_LADDER, 3), "C C", "CCC", "C C", 'C', McfrItems.STITCH);
-    
+
     // Shred
     addShapelessRecipe(new ItemStack(McfrBlocks.ROPE, 1), McfrBlocks.ROPE_LADDER);
     addShapelessRecipe(new ItemStack(McfrItems.STITCH, 1), McfrBlocks.CHAIN_LADDER);
@@ -695,7 +695,7 @@ public final class McfrCrafts {
     addLargeRecipe(new ItemStack(McfrBlocks.ROPE, 4), "   FR", "  FRF", " FRF ", "FRF  ", "RF   ", 'F', Items.STRING, 'R', McfrItems.HEMP_FIBER);
     addLargeRecipe(new ItemStack(McfrBlocks.ROPE, 4), "   FR", "  FRF", " FRF ", "FRF  ", "RF   ", 'F', Items.STRING, 'R', McfrItems.REEDS);
     addShapedRecipe(new ItemStack(McfrBlocks.CHAIN, 4), "B", "B", "B", "B", "B", 'B', McfrItems.STITCH);
-    
+
     // Shred
     addShapelessRecipe(new ItemStack(Items.STRING, 1), McfrBlocks.ROPE);
 
@@ -723,9 +723,9 @@ public final class McfrCrafts {
         McfrBlocks.LARGE_TORCH);
 
     for (EnumLanternColor color : EnumLanternColor.values())
-      addShapedRecipe(new ItemStack(McfrBlocks.getLantern(color, false), 1, color.getMetadata()), " B ", "FFF", "GCG", "FTF", 'B', Blocks.IRON_BARS,
-          'F', Items.IRON_INGOT, 'G', Blocks.STAINED_GLASS_PANE, 'C', new ItemStack(Items.DYE, 4, color.getDyeColor().getDyeDamage()), 'T',
-          Blocks.TORCH);
+      addShapedRecipe(new ItemStack(McfrBlocks.getLantern(color, false), 1, color.getMetadata()), " B ", "FFF", "GCG", "FTF", 'B',
+          new ItemStack(McfrItems.STITCH), 'F', Items.IRON_INGOT, 'G', Blocks.GLASS_PANE, 'C',
+          new ItemStack(Items.DYE, 1, color.getDyeColor().getDyeDamage()), 'T', Blocks.TORCH);
 
     // Chaises
     addLargeRecipe(new ItemStack(McfrBlocks.OAK_CHAIR, 4), "B   ", "B   ", "ESSS", "F  F", "F  F", 'F', McfrBlocks.REFINED_OAK_FENCE, 'S',
@@ -884,9 +884,9 @@ public final class McfrCrafts {
         'F', Items.IRON_INGOT, 'D', McfrBlocks.REFINED_PLANKS_SLAB);
     addLargeRecipe(new ItemStack(Items.BED), "RRRR#", "TTTTT", "DDDDD", "F   F", 'R', McfrItems.CLOTH_ROLL, 'T', Blocks.CARPET, '#', Blocks.WOOL, 'F',
         Items.IRON_INGOT, 'D', McfrBlocks.REFINED_PLANKS_SLAB);
-    
+
     // Shred
-    
+
     addShapelessRecipe(new ItemStack(McfrItems.CLOTH_ROLL, 1), Items.BED);
 
     addShapedRecipe(new ItemStack(Items.STICK, 4), "#", "#", '#', McfrBlocks.EXOTIC_PLANKS);
@@ -978,8 +978,8 @@ public final class McfrCrafts {
       addShapedRecipe(new ItemStack(McfrItems.HAY_BED), "FFF", "DDD", 'F', Blocks.HAY_BLOCK, 'D', slab);
       addLargeRecipe(new ItemStack(McfrItems.NORMAL_BED), "TTTT#", "FFFFF", "DDDDD", 'T', McfrBlocks.CARPET, '#', Blocks.WOOL, 'F', Blocks.HAY_BLOCK,
           'D', slab);
-      addLargeRecipe(new ItemStack(McfrItems.NORMAL_BED), "TTTT#", "FFFFF", "DDDDD", 'T', Blocks.CARPET, '#', Blocks.WOOL, 'F', Blocks.HAY_BLOCK,
-          'D', slab);
+      addLargeRecipe(new ItemStack(McfrItems.NORMAL_BED), "TTTT#", "FFFFF", "DDDDD", 'T', Blocks.CARPET, '#', Blocks.WOOL, 'F', Blocks.HAY_BLOCK, 'D',
+          slab);
     }
     addShapedRecipe(new ItemStack(McfrItems.STONE_BED), "CCC", "DDD", 'C', Items.LEATHER, 'D', new ItemStack(Blocks.STONE_SLAB));
     addLargeRecipe(new ItemStack(McfrItems.SLEEPING_BAG), "TTTT#", "#####", 'T', McfrBlocks.CARPET, '#', Blocks.WOOL);
@@ -1060,7 +1060,7 @@ public final class McfrCrafts {
         McfrItems.CLOTH_ROLL, 'M', McfrItems.STITCH, 'C', Items.LEATHER);
     addLargeRecipe(new ItemStack(McfrItems.ASSASSIN_BOOTS), "FT TF", "PP PP", 'P', McfrItems.HUNTED_SKIN, 'T', McfrItems.CLOTH_ROLL, 'F',
         McfrItems.THREAD_COIL);
-     
+
     // Shred
     addShapelessRecipe(new ItemStack(McfrItems.CLOTH_ROLL, 3), McfrItems.ASSASSIN_HELMET);
     addShapelessRecipe(new ItemStack(McfrItems.HUNTED_SKIN, 2), McfrItems.ASSASSIN_CHESTPLATE);
@@ -1076,13 +1076,13 @@ public final class McfrCrafts {
         Items.LEATHER, 'M', McfrItems.STITCH);
     addLargeRecipe(new ItemStack(McfrItems.BARBARIAN_BOOTS), "PP PP", "PM MP", "CC CC", 'P', McfrItems.HUNTED_SKIN, 'C', Items.LEATHER, 'M',
         McfrItems.STITCH);
-    
+
     // Shred
     addShapelessRecipe(new ItemStack(McfrItems.STITCH, 2), McfrItems.BARBARIAN_HELMET);
     addShapelessRecipe(new ItemStack(McfrItems.HUNTED_SKIN, 2), McfrItems.BARBARIAN_CHESTPLATE);
     addShapelessRecipe(new ItemStack(McfrItems.HUNTED_SKIN, 3), McfrItems.BARBARIAN_LEGGINGS);
     addShapelessRecipe(new ItemStack(McfrItems.HUNTED_SKIN, 1), McfrItems.BARBARIAN_BOOTS);
-    
+
     addShapelessRecipe(new ItemStack(McfrItems.THREAD_COIL, 1), Blocks.WOOL);
   }
 
@@ -1244,9 +1244,9 @@ public final class McfrCrafts {
     addFurnaceRecipe(new ItemStack(McfrItems.RAW_GALT_MEAT), new ItemStack(McfrItems.COOKED_GALT_MEAT));
     addFurnaceRecipe(new ItemStack(McfrItems.BREAD_DOUGH), new ItemStack(Items.BREAD));
     addFurnaceRecipe(new ItemStack(McfrBlocks.EXOTIC_LOG), new ItemStack(Items.COAL, 1, 1));
-    
+
     // Shred
-    
+
     addFurnaceRecipe(new ItemStack(Items.IRON_INGOT, 1), new ItemStack(Items.IRON_HELMET));
     addFurnaceRecipe(new ItemStack(Items.IRON_INGOT, 2), new ItemStack(Items.IRON_CHESTPLATE));
     addFurnaceRecipe(new ItemStack(Items.IRON_INGOT, 2), new ItemStack(Items.IRON_LEGGINGS));
@@ -1255,7 +1255,7 @@ public final class McfrCrafts {
     addFurnaceRecipe(new ItemStack(Items.IRON_INGOT, 1), new ItemStack(Items.IRON_DOOR));
     addFurnaceRecipe(new ItemStack(Items.IRON_INGOT, 1), new ItemStack(Items.IRON_PICKAXE));
     addFurnaceRecipe(new ItemStack(Items.IRON_INGOT, 1), new ItemStack(Items.IRON_SWORD));
-    
+
     addFurnaceRecipe(new ItemStack(Items.IRON_INGOT, 3), new ItemStack(Items.MINECART));
     addFurnaceRecipe(new ItemStack(Items.IRON_INGOT, 1), new ItemStack(Items.BUCKET));
     addFurnaceRecipe(new ItemStack(Items.IRON_INGOT, 2), new ItemStack(Blocks.IRON_TRAPDOOR));
@@ -1271,7 +1271,7 @@ public final class McfrCrafts {
     addFurnaceRecipe(new ItemStack(Items.IRON_INGOT, 1), new ItemStack(McfrItems.IRON_SPEAR));
     addFurnaceRecipe(new ItemStack(Items.IRON_INGOT, 1), new ItemStack(McfrItems.IRON_STAFF));
     addFurnaceRecipe(new ItemStack(Items.IRON_INGOT, 2), new ItemStack(McfrItems.IRON_WAR_HAMMER));
-    
+
     addFurnaceRecipe(new ItemStack(Items.GOLD_INGOT, 1), new ItemStack(Items.GOLDEN_HELMET));
     addFurnaceRecipe(new ItemStack(Items.GOLD_INGOT, 2), new ItemStack(Items.GOLDEN_CHESTPLATE));
     addFurnaceRecipe(new ItemStack(Items.GOLD_INGOT, 2), new ItemStack(Items.GOLDEN_LEGGINGS));
@@ -1279,7 +1279,7 @@ public final class McfrCrafts {
     addFurnaceRecipe(new ItemStack(Items.GOLD_INGOT, 1), new ItemStack(Items.GOLDEN_AXE));
     addFurnaceRecipe(new ItemStack(Items.GOLD_INGOT, 1), new ItemStack(Items.GOLDEN_PICKAXE));
     addFurnaceRecipe(new ItemStack(Items.GOLD_INGOT, 1), new ItemStack(Items.GOLDEN_SWORD));
-    
+
     addFurnaceRecipe(new ItemStack(Items.GOLD_INGOT, 1), new ItemStack(McfrItems.GOLDEN_BASTARD));
     addFurnaceRecipe(new ItemStack(Items.GOLD_INGOT, 2), new ItemStack(McfrItems.GOLDEN_BATTLE_AXE));
     addFurnaceRecipe(new ItemStack(Items.GOLD_INGOT, 1), new ItemStack(McfrItems.GOLDEN_FLAIL));
@@ -1295,10 +1295,8 @@ public final class McfrCrafts {
   /**
    * Ajoute une recette d'escaliers.
    * 
-   * @param out
-   *          le résultat
-   * @param in
-   *          le matériau
+   * @param out le résultat
+   * @param in le matériau
    */
   private static void addStairsRecipe(Block out, ItemStack in) {
     addShapedRecipe(new ItemStack(out, 6), "#  ", "## ", "###", '#', in);
@@ -1307,10 +1305,8 @@ public final class McfrCrafts {
   /**
    * Ajoute une recette de pente.
    * 
-   * @param out
-   *          le résultat
-   * @param in
-   *          le matériau
+   * @param out le résultat
+   * @param in le matériau
    */
   private static void addSlopeRecipe(Block out, ItemStack in) {
     addLargeRecipe(new ItemStack(out, 10), "#   ", "##  ", "### ", "####", '#', in);
@@ -1319,10 +1315,8 @@ public final class McfrCrafts {
   /**
    * Ajoute une recette de pyramide.
    * 
-   * @param out
-   *          le résultat
-   * @param in
-   *          le matériau
+   * @param out le résultat
+   * @param in le matériau
    */
   private static void addPyramidRecipe(Block out, ItemStack in) {
     addLargeRecipe(new ItemStack(out, 9), "  #  ", " ### ", "#####", '#', in);
@@ -1331,10 +1325,8 @@ public final class McfrCrafts {
   /**
    * Ajoute une recette de portillon.
    * 
-   * @param out
-   *          le résultat
-   * @param in
-   *          le matériau
+   * @param out le résultat
+   * @param in le matériau
    */
   private static void addFenceGateRecipe(ItemStack out, ItemStack in) {
     addLargeRecipe(out, "#####", "#   #", "#####", "#   #", '#', in);
@@ -1343,10 +1335,8 @@ public final class McfrCrafts {
   /**
    * Ajoute une recette de barrière.
    * 
-   * @param out
-   *          le résultat
-   * @param in
-   *          le matériau
+   * @param out le résultat
+   * @param in le matériau
    */
   private static void addFenceRecipe(ItemStack out, ItemStack in) {
     addLargeRecipe(out, "#   #", "#####", "#   #", "#####", "#   #", '#', in);
@@ -1355,10 +1345,8 @@ public final class McfrCrafts {
   /**
    * Ajoute une recette de muret.
    * 
-   * @param out
-   *          le résultat
-   * @param in
-   *          le matériau
+   * @param out le résultat
+   * @param in le matériau
    */
   private static void addWallRecipe(ItemStack out, ItemStack in) {
     addLargeRecipe(out, " ## ", "####", "####", "####", '#', in);
@@ -1367,10 +1355,8 @@ public final class McfrCrafts {
   /**
    * Ajoute une recette.
    * 
-   * @param output
-   *          le résultat
-   * @param params
-   *          les composants
+   * @param output le résultat
+   * @param params les composants
    */
   private static void addShapedRecipe(ItemStack output, Object... params) {
     GameRegistry.addShapedRecipe(output, params);
@@ -1379,10 +1365,8 @@ public final class McfrCrafts {
   /**
    * Ajoute une recette sans contrainte de disposition.
    * 
-   * @param output
-   *          le résultat
-   * @param params
-   *          les composants
+   * @param output le résultat
+   * @param params les composants
    */
   private static void addShapelessRecipe(ItemStack output, Object... params) {
     GameRegistry.addShapelessRecipe(output, params);
@@ -1391,10 +1375,8 @@ public final class McfrCrafts {
   /**
    * Ajoute une recette 5x5.
    * 
-   * @param result
-   *          le résultat
-   * @param recipeComponents
-   *          les composants
+   * @param result le résultat
+   * @param recipeComponents les composants
    */
   private static void addLargeRecipe(ItemStack result, Object... recipeComponents) {
     RawRecipe c = getComponents(recipeComponents);
@@ -1404,14 +1386,10 @@ public final class McfrCrafts {
   /**
    * Ajoute une recette pour l'enclume.
    * 
-   * @param result
-   *          le résultat
-   * @param temperatureMin
-   *          la température minimale requise pour obtenir le résultat
-   * @param temperatureMin
-   *          la température maximale requise pour obtenir le résultat
-   * @param recipeComponents
-   *          les composants
+   * @param result le résultat
+   * @param temperatureMin la température minimale requise pour obtenir le résultat
+   * @param temperatureMin la température maximale requise pour obtenir le résultat
+   * @param recipeComponents les composants
    */
   private static void addAnvilRecipe(ItemStack result, int temperatureMin, int temperatureMax, Object... recipeComponents) {
     RawRecipe c = getComponents(recipeComponents);
@@ -1422,8 +1400,7 @@ public final class McfrCrafts {
   /**
    * Supprime les recettes dont la sortie correspond au stack donné.
    * 
-   * @param out
-   *          le résultat
+   * @param out le résultat
    */
   private static void removeRecipe(ItemStack out) {
     CraftingManager.getInstance().getRecipeList().removeIf(recipe -> {
@@ -1437,10 +1414,8 @@ public final class McfrCrafts {
   /**
    * Ajoute une recette pour le four.
    * 
-   * @param in
-   *          le matériau
-   * @param out
-   *          le résultat
+   * @param in le matériau
+   * @param out le résultat
    */
   private static void addFurnaceRecipe(ItemStack in, ItemStack out) {
     GameRegistry.addSmelting(in, out, 0);
@@ -1449,8 +1424,7 @@ public final class McfrCrafts {
   /**
    * Supprime les recettes du four dont la sortie correspond au stack donné.
    * 
-   * @param out
-   *          le résultat
+   * @param out le résultat
    */
   private static void removeFurnaceRecipe(ItemStack out) {
     Map<ItemStack, ItemStack> list = FurnaceRecipes.instance().getSmeltingList();
@@ -1468,8 +1442,7 @@ public final class McfrCrafts {
   /**
    * Extrait une recette brute à partir d'une liste d'objets.
    * 
-   * @param recipeComponents
-   *          la liste des composants
+   * @param recipeComponents la liste des composants
    * @return la recette brute
    */
   private static RawRecipe getComponents(Object... recipeComponents) {
@@ -1494,9 +1467,11 @@ public final class McfrCrafts {
 
       if (recipeComponents[i + 1] instanceof Item) {
         stack = new ItemStack((Item) recipeComponents[i + 1]);
-      } else if (recipeComponents[i + 1] instanceof Block) {
+      }
+      else if (recipeComponents[i + 1] instanceof Block) {
         stack = new ItemStack((Block) recipeComponents[i + 1], 1, 32767);
-      } else if (recipeComponents[i + 1] instanceof ItemStack) {
+      }
+      else if (recipeComponents[i + 1] instanceof ItemStack) {
         stack = (ItemStack) recipeComponents[i + 1];
       }
 
@@ -1510,7 +1485,8 @@ public final class McfrCrafts {
 
       if (charToItemStack.containsKey(c)) {
         stacks[j] = charToItemStack.get(c).copy();
-      } else {
+      }
+      else {
         stacks[j] = null;
       }
     }
@@ -1518,12 +1494,11 @@ public final class McfrCrafts {
     return new RawRecipe(width, height, stacks);
   }
 
-  private McfrCrafts() {
-  }
+  private McfrCrafts() {}
 
   /**
-   * Une recette brute sert à organiser les composants d'une recette afin de
-   * faciliter la déclaration.
+   * Une recette brute sert à organiser les composants d'une recette afin de faciliter la
+   * déclaration.
    * 
    * @author Mc-Fr
    */

@@ -7,7 +7,6 @@ import net.mcfr.network.McfrNetworkWrapper;
 import net.mcfr.network.OpenEditPaperMessage;
 import net.mcfr.utils.NBTUtils;
 import net.minecraft.command.CommandException;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.inventory.Slot;
@@ -37,7 +36,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SuppressWarnings("deprecation")
 public class ItemSignedPaper extends McfrItem {
   public ItemSignedPaper() {
-    super("signed_paper", 1, CreativeTabs.MISC);
+    super("signed_paper", 1, null);
   }
 
   @Override
