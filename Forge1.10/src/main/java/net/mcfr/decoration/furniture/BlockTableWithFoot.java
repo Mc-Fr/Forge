@@ -1,7 +1,7 @@
 package net.mcfr.decoration.furniture;
 
 import net.mcfr.decoration.container_blocks.McfrBlockContainer;
-import net.mcfr.decoration.furniture.tile_entities.TileEntityFootTable;
+import net.mcfr.decoration.furniture.tile_entities.TileEntityTableWithFoot;
 import net.mcfr.guis.CustomGuiScreens;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -14,9 +14,9 @@ import net.minecraft.world.World;
  *
  * @author Mc-Fr
  */
-public class BlockTableWithFoot extends McfrBlockContainer<TileEntityFootTable> {
+public class BlockTableWithFoot extends McfrBlockContainer<TileEntityTableWithFoot> {
   public BlockTableWithFoot() {
-    super("foot_table", Material.WOOD, SoundType.WOOD, 1.5f, 5, "axe", TileEntityFootTable.class, CreativeTabs.DECORATIONS);
+    super("foot_table", Material.WOOD, SoundType.WOOD, 1.5f, 5, "axe", TileEntityTableWithFoot.class, CreativeTabs.DECORATIONS);
   }
 
   @Override
@@ -28,10 +28,10 @@ public class BlockTableWithFoot extends McfrBlockContainer<TileEntityFootTable> 
   public boolean isFullCube(IBlockState state) {
     return false;
   }
-  
+
   @Override
-  public TileEntityFootTable createNewTileEntity(World worldIn, int meta) {
-    return new TileEntityFootTable();
+  public TileEntityTableWithFoot createNewTileEntity(World world, int meta) {
+    return new TileEntityTableWithFoot();
   }
 
   @Override

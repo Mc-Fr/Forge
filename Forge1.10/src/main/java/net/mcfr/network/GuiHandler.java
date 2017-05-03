@@ -16,14 +16,8 @@ import net.mcfr.craftsmanship.tile_entities.TileEntityLoom;
 import net.mcfr.craftsmanship.tile_entities.TileEntityMortar;
 import net.mcfr.craftsmanship.tile_entities.TileEntityTanningRack;
 import net.mcfr.decoration.container_blocks.BlockBookshelf;
-import net.mcfr.decoration.container_blocks.BlockConstructionCrate;
-import net.mcfr.decoration.container_blocks.BlockCrate;
-import net.mcfr.decoration.container_blocks.BlockFoodCrate;
-import net.mcfr.decoration.container_blocks.BlockLittleChest;
 import net.mcfr.decoration.container_blocks.BlockPallet;
-import net.mcfr.decoration.container_blocks.guis.ContainerLarge;
-import net.mcfr.decoration.container_blocks.guis.ContainerRestricted;
-import net.mcfr.decoration.container_blocks.guis.GuiLargeContainer;
+import net.mcfr.decoration.container_blocks.guis.ContainerRestrictable;
 import net.mcfr.decoration.container_blocks.guis.GuiRestrictedChest;
 import net.mcfr.decoration.container_blocks.tile_entities.TileEntityBookshelf;
 import net.mcfr.decoration.container_blocks.tile_entities.TileEntityConstructionCrate;
@@ -31,12 +25,9 @@ import net.mcfr.decoration.container_blocks.tile_entities.TileEntityCrate;
 import net.mcfr.decoration.container_blocks.tile_entities.TileEntityFoodCrate;
 import net.mcfr.decoration.container_blocks.tile_entities.TileEntityLittleChest;
 import net.mcfr.decoration.container_blocks.tile_entities.TileEntityPallet;
-import net.mcfr.decoration.furniture.BlockEndTable;
-import net.mcfr.decoration.furniture.BlockTable;
-import net.mcfr.decoration.furniture.BlockTableWithFoot;
 import net.mcfr.decoration.furniture.tile_entities.TileEntityEndTable;
-import net.mcfr.decoration.furniture.tile_entities.TileEntityFootTable;
 import net.mcfr.decoration.furniture.tile_entities.TileEntityTable;
+import net.mcfr.decoration.furniture.tile_entities.TileEntityTableWithFoot;
 import net.mcfr.forge.guis.ContainerAnvil;
 import net.mcfr.forge.guis.ContainerStove;
 import net.mcfr.forge.guis.GuiAnvil;
@@ -87,34 +78,40 @@ public class GuiHandler implements IGuiHandler {
         break;
       case BOOKSHELF:
         if (tileEntity instanceof TileEntityBookshelf)
-          return new ContainerRestricted(player.inventory, (TileEntityBookshelf) tileEntity, player, BlockBookshelf.class);
+          return new ContainerRestrictable(player.inventory, (TileEntityBookshelf) tileEntity, player, BlockBookshelf.class);
         break;
       case CONSTRUCTION_CRATE:
         if (tileEntity instanceof TileEntityConstructionCrate)
-          return new ContainerLarge(player.inventory, (TileEntityConstructionCrate) tileEntity, player, BlockConstructionCrate.class);
+          return new ContainerRestrictable(player.inventory, (TileEntityConstructionCrate) tileEntity, player, null);
         break;
       case CRATE:
         if (tileEntity instanceof TileEntityCrate)
-          return new ContainerLarge(player.inventory, (TileEntityCrate) tileEntity, player, BlockCrate.class);
+          return new ContainerRestrictable(player.inventory, (TileEntityCrate) tileEntity, player, null);
         break;
       case FOOD_CRATE:
         if (tileEntity instanceof TileEntityFoodCrate)
-          return new ContainerLarge(player.inventory, (TileEntityFoodCrate) tileEntity, player, BlockFoodCrate.class);
+          return new ContainerRestrictable(player.inventory, (TileEntityFoodCrate) tileEntity, player, null);
         break;
       case LITTLE_CHEST:
         if (tileEntity instanceof TileEntityLittleChest)
-          return new ContainerLarge(player.inventory, (TileEntityLittleChest) tileEntity, player, BlockLittleChest.class);
+          return new ContainerRestrictable(player.inventory, (TileEntityLittleChest) tileEntity, player, null);
         break;
       case PALLET:
         if (tileEntity instanceof TileEntityPallet)
-          return new ContainerRestricted(player.inventory, (TileEntityPallet) tileEntity, player, BlockPallet.class);
+          return new ContainerRestrictable(player.inventory, (TileEntityPallet) tileEntity, player, BlockPallet.class);
         break;
       case TABLE:
-        return new ContainerLarge(player.inventory, (TileEntityTable) tileEntity, player, BlockTable.class);
+        if (tileEntity instanceof TileEntityTable)
+          return new ContainerRestrictable(player.inventory, (TileEntityTable) tileEntity, player, null);
+        break;
       case END_TABLE:
-        return new ContainerLarge(player.inventory, (TileEntityEndTable) tileEntity, player, BlockEndTable.class);
+        if (tileEntity instanceof TileEntityEndTable)
+          return new ContainerRestrictable(player.inventory, (TileEntityEndTable) tileEntity, player, null);
+        break;
       case FOOT_TABLE:
-        return new ContainerLarge(player.inventory, (TileEntityFootTable) tileEntity, player, BlockTableWithFoot.class);
+        if (tileEntity instanceof TileEntityTableWithFoot)
+          return new ContainerRestrictable(player.inventory, (TileEntityTableWithFoot) tileEntity, player, null);
+        break;
     }
 
     return null;
@@ -156,30 +153,36 @@ public class GuiHandler implements IGuiHandler {
         break;
       case CRATE:
         if (tileEntity instanceof TileEntityCrate)
-          return new GuiLargeContainer(player.inventory, (TileEntityCrate) tileEntity, player, BlockCrate.class);
+          return new GuiRestrictedChest(player.inventory, (TileEntityCrate) tileEntity, player, null);
         break;
       case CONSTRUCTION_CRATE:
         if (tileEntity instanceof TileEntityConstructionCrate)
-          return new GuiLargeContainer(player.inventory, (TileEntityConstructionCrate) tileEntity, player, BlockConstructionCrate.class);
+          return new GuiRestrictedChest(player.inventory, (TileEntityConstructionCrate) tileEntity, player, null);
         break;
       case FOOD_CRATE:
         if (tileEntity instanceof TileEntityFoodCrate)
-          return new GuiLargeContainer(player.inventory, (TileEntityFoodCrate) tileEntity, player, BlockFoodCrate.class);
+          return new GuiRestrictedChest(player.inventory, (TileEntityFoodCrate) tileEntity, player, null);
         break;
       case LITTLE_CHEST:
         if (tileEntity instanceof TileEntityLittleChest)
-          return new GuiLargeContainer(player.inventory, (TileEntityLittleChest) tileEntity, player, BlockLittleChest.class);
+          return new GuiRestrictedChest(player.inventory, (TileEntityLittleChest) tileEntity, player, null);
         break;
       case PALLET:
         if (tileEntity instanceof TileEntityPallet)
           return new GuiRestrictedChest(player.inventory, (TileEntityPallet) tileEntity, player, BlockPallet.class);
         break;
       case TABLE:
-        return new GuiLargeContainer(player.inventory, (TileEntityTable) tileEntity, player, BlockTable.class);
+        if (tileEntity instanceof TileEntityTable)
+          return new GuiRestrictedChest(player.inventory, (TileEntityTable) tileEntity, player, null);
+        break;
       case END_TABLE:
-        return new GuiLargeContainer(player.inventory, (TileEntityEndTable) tileEntity, player, BlockEndTable.class);
+        if (tileEntity instanceof TileEntityEndTable)
+          return new GuiRestrictedChest(player.inventory, (TileEntityEndTable) tileEntity, player, null);
+        break;
       case FOOT_TABLE:
-        return new GuiLargeContainer(player.inventory, (TileEntityFootTable) tileEntity, player, BlockTableWithFoot.class);
+        if (tileEntity instanceof TileEntityTableWithFoot)
+          return new GuiRestrictedChest(player.inventory, (TileEntityTableWithFoot) tileEntity, player, null);
+        break;
     }
 
     return null;

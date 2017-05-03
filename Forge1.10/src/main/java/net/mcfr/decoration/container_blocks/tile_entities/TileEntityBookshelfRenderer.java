@@ -50,17 +50,20 @@ public class TileEntityBookshelfRenderer extends TileEntitySpecialRenderer<TileE
       ItemStack stack = te.getStackInSlot(i);
 
       if (stack != null) {
-        fillingRatio += (float) stack.stackSize / te.getInventoryStackLimit() / te.getSizeInventory();
+        fillingRatio += (float) stack.stackSize / stack.getItem().getItemStackLimit(stack) / te.getSizeInventory();
       }
     }
 
     if (fillingRatio == 0) {
       step = 0;
-    } else if (fillingRatio <= 0.5f) {
+    }
+    else if (fillingRatio <= 0.33f) {
       step = 1;
-    } else if (fillingRatio <= 0.75f) {
+    }
+    else if (fillingRatio <= 0.67f) {
       step = 2;
-    } else {
+    }
+    else {
       step = 3;
     }
 

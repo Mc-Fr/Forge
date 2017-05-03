@@ -2,6 +2,7 @@ package net.mcfr.decoration.container_blocks.guis;
 
 import static net.mcfr.utils.RenderUtils.*;
 
+import net.mcfr.decoration.container_blocks.tile_entities.McfrTileEntityLockable;
 import net.mcfr.utils.ItemsLists;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
@@ -11,49 +12,65 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 
 /**
- * Conteneur permettant de restreindre le stockage de certains items.
+ * Conteneur permettant de restreindre (éventuellement) le stockage de certains items.
  *
  * @author Mc-Fr
  */
-public class ContainerRestricted extends Container {
-  public static final int SIZE = 9;
+public class ContainerRestrictable extends Container {
+  public static final int REDUCED_LINES_NB = 1;
+  public static final int LARGE_LINES_NB = 7;
 
   /** L'inventaire */
-  private IInventory chestInventory;
+  private McfrTileEntityLockable chestInventory;
 
   /**
-   * Crée un conteneur.
+   * Crée un conteneur non restreint.
    * 
    * @param playerInventory l'inventaire du joueur
    * @param chestInventory l'invetaire du conteneur
    * @param player le joueur
-   * @param blockClass la classe du bloc
    */
-  public ContainerRestricted(IInventory playerInventory, IInventory chestInventory, EntityPlayer player, final Class<? extends Block> blockClass) {
+  public ContainerRestrictable(IInventory playerInventory, McfrTileEntityLockable chestInventory, EntityPlayer player) {
+    this(playerInventory, chestInventory, player, null);
+  }
+
+  /**
+   * Crée un conteneur restreint.
+   * 
+   * @param playerInventory l'inventaire du joueur
+   * @param chestInventory l'invetaire du conteneur
+   * @param player le joueur
+   * @param blockClass la classe du bloc si le conteneur doit être restreint, null sinon
+   */
+  public ContainerRestrictable(IInventory playerInventory, McfrTileEntityLockable chestInventory, EntityPlayer player,
+      final Class<? extends Block> blockClass) {
     this.chestInventory = chestInventory;
     chestInventory.openInventory(player);
 
-    int yOffset = SLOT_SIZE;
+    int yOffset = 0;
 
-    for (int i = 0; i < SIZE; i++) {
-      addSlotToContainer(new Slot(chestInventory, i, SIDE_OFFSET + i * SLOT_SIZE, yOffset) {
-        @Override
-        public boolean isItemValid(ItemStack stack) {
-          return ItemsLists.isItemValid(blockClass, stack);
-        }
-      });
+    for (int i = 0; i < this.chestInventory.getLinesNumber(); i++) {
+      yOffset += SLOT_SIZE;
+      for (int j = 0; j < 9; j++) {
+        addSlotToContainer(new Slot(chestInventory, i * 9 + j, SIDE_OFFSET + j * SLOT_SIZE, yOffset) {
+          @Override
+          public boolean isItemValid(ItemStack stack) {
+            return ItemsLists.isItemValid(blockClass, stack);
+          }
+        });
+      }
     }
 
     yOffset += TOP_OFFSET + INV_SEPARATOR;
     for (int i = 0; i < 3; i++) {
-      for (int j = 0; j < SIZE; j++) {
+      for (int j = 0; j < 9; j++) {
         addSlotToContainer(new Slot(playerInventory, 9 + i * 9 + j, SIDE_OFFSET + j * SLOT_SIZE, yOffset));
       }
       yOffset += SLOT_SIZE;
     }
 
     yOffset += HOTBAR_SEPARATOR;
-    for (int i = 0; i < SIZE; i++) {
+    for (int i = 0; i < 9; i++) {
       addSlotToContainer(new Slot(playerInventory, i, SIDE_OFFSET + i * SLOT_SIZE, yOffset));
     }
   }
@@ -62,7 +79,7 @@ public class ContainerRestricted extends Container {
    * @return la taille de l'inventaire
    */
   public int getContainerSize() {
-    return SIZE;
+    return this.chestInventory.getLinesNumber() * 9;
   }
 
   @Override

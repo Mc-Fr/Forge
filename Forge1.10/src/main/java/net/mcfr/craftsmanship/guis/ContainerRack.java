@@ -2,6 +2,7 @@ package net.mcfr.craftsmanship.guis;
 
 import static net.mcfr.utils.RenderUtils.*;
 
+import net.mcfr.decoration.container_blocks.tile_entities.McfrTileEntityLockable;
 import net.mcfr.utils.ItemsLists;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
@@ -17,7 +18,7 @@ import net.minecraft.item.ItemStack;
  */
 public class ContainerRack extends Container {
   /** L'inventaire du bloc */
-  private IInventory rackInventory;
+  private McfrTileEntityLockable rackInventory;
 
   /**
    * Crée un nouveau conteneur.
@@ -27,7 +28,8 @@ public class ContainerRack extends Container {
    * @param player le joueur
    * @param blockClass la classe du bloc correspondant
    */
-  public ContainerRack(IInventory playerInventory, IInventory rackInventory, EntityPlayer player, final Class<? extends Block> blockClass) {
+  public ContainerRack(IInventory playerInventory, McfrTileEntityLockable rackInventory, EntityPlayer player,
+      final Class<? extends Block> blockClass) {
     this.rackInventory = rackInventory;
     this.rackInventory.openInventory(player);
 

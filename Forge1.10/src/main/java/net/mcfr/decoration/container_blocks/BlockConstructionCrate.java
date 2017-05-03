@@ -6,14 +6,18 @@ import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.world.World;
 
+/**
+ * Caisse de construction (incassable).
+ *
+ * @author Mc-Fr
+ */
 public class BlockConstructionCrate extends McfrBlockContainer<TileEntityConstructionCrate> {
   public BlockConstructionCrate() {
-    super("construction_crate", Material.BARRIER, SoundType.WOOD, 2, 5, null, TileEntityConstructionCrate.class);
-    setHardness(100f);
+    super("construction_crate", Material.BARRIER, SoundType.WOOD, 100, 5, null, TileEntityConstructionCrate.class);
   }
 
   @Override
-  public TileEntityConstructionCrate createNewTileEntity(World worldIn, int meta) {
+  public TileEntityConstructionCrate createNewTileEntity(World world, int meta) {
     return new TileEntityConstructionCrate();
   }
 

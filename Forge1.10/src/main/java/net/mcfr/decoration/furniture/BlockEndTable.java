@@ -25,7 +25,7 @@ import net.minecraft.world.World;
 
 public class BlockEndTable extends McfrBlockOrientableContainer<TileEntityEndTable> implements IBlockWithVariants {
   public static final PropertyEnum<BlockPlanks.EnumType> VARIANT = PropertyEnum.create("variant", BlockPlanks.EnumType.class);
-  
+
   /**
    * Crée une table basse
    */

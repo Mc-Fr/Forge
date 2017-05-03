@@ -87,7 +87,7 @@ public class BlockTable extends McfrBlockOrientableContainer<TileEntityTable> im
 
   @Override
   public TileEntityTable createNewTileEntity(World worldIn, int meta) {
-    return new TileEntityTable();
+    return new TileEntityTable("norman_table");
   }
 
   @Override
