@@ -9,7 +9,7 @@ import net.mcfr.decoration.container_blocks.tile_entities.TileEntityRestrictable
  * @author Mc-Fr
  */
 public class TileEntityTable extends TileEntityRestrictable {
-  public TileEntityTable(String name) {
-    super(name, ContainerRestrictable.LARGE_LINES_NB, 64, false, null, ContainerRestrictable.class);
+  public TileEntityTable() {
+    super("normal_table", ContainerRestrictable.LARGE_LINES_NB, 64, false, null, ContainerRestrictable.class);
   }
 }
