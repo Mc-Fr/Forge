@@ -55,42 +55,22 @@ public class BlockLantern extends McfrBlock {
   }
 
   @Override
-  public boolean canPlaceBlockOnSide(World world, BlockPos pos, EnumFacing side) {
-    boolean ok = super.canPlaceBlockOnSide(world, pos, side);
-    BlockPos pos1 = pos.offset(side);
-
-    return ok && world.getBlockState(pos1).isSideSolid(world, pos1, side.getOpposite());
-  }
-
-  @SuppressWarnings("deprecation")
-  @Override
-  public IBlockState onBlockPlaced(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta,
-      EntityLivingBase placer) {
+  public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta,
+      EntityLivingBase placer, ItemStack stack) {
     EnumPosition position = EnumPosition.fromFacing(facing);
     int face = position.isOnWall() ? facing.getHorizontalIndex() : getFacingIndex(placer);
-    return super.onBlockPlaced(world, pos, facing, hitX, hitY, hitZ, meta, placer).withProperty(POSITION, position).withProperty(ORIENTATION, face);
+    return super.getStateForPlacement(world, pos, facing, hitX, hitY, hitZ, meta, placer, stack).withProperty(POSITION, position)
+        .withProperty(ORIENTATION, face);
   }
 
   @Override
   public void neighborChanged(IBlockState state, World world, BlockPos pos, Block block) {
-    if (!canPlaceBlockOnSide(world, pos, getFacing(state))) {
+    if (!canPlaceBlockAt(world, pos)) {
       dropBlockAsItem(world, pos, state, 0);
       world.setBlockToAir(pos);
     }
     else
       super.neighborChanged(state, world, pos, block);
-  }
-
-  private EnumFacing getFacing(IBlockState state) {
-    switch (state.getValue(POSITION)) {
-      case BOTTOM:
-        return EnumFacing.UP;
-      case TOP:
-        return EnumFacing.DOWN;
-      case WALL:
-        return EnumFacing.getHorizontal(state.getValue(ORIENTATION)).getOpposite();
-    }
-    return null;
   }
 
   /**
