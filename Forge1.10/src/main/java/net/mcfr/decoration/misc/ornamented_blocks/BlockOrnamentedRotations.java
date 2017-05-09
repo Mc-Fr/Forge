@@ -20,7 +20,7 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 
 /**
- * Bloc ornementé (1) avec rotations.
+ * Classe de base des blocs ornementés avec rotations.
  *
  * @author Mc-Fr
  *
