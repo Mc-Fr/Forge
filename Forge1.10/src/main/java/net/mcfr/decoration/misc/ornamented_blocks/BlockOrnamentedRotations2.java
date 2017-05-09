@@ -43,8 +43,8 @@ public class BlockOrnamentedRotations2 extends BlockOrnamentedRotations<BlockOrn
    * <ul>
    * <li>ligne droite</li>
    * <li>3/4 de cercle</li>
+   * <li>croisement 0</li>
    * <li>croisement 1</li>
-   * <li>croisement 2</li>
    * </ul>
    *
    * @author Mc-Fr
@@ -52,8 +52,8 @@ public class BlockOrnamentedRotations2 extends BlockOrnamentedRotations<BlockOrn
   public enum EnumType implements IEnumType<EnumType> {
     LINE_END("line_end"),
     CIRCLE_3_QUARTERS("circle_3_quarters"),
-    CROSSING_1("crossing_1"),
-    CROSSING_2("crossing_2");
+    CROSSING_0("crossing_0"),
+    CROSSING_1("crossing_1");
 
     private final String name;
 

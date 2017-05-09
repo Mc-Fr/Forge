@@ -42,18 +42,18 @@ public class BlockOrnamentedRotations3 extends BlockOrnamentedRotations<BlockOrn
    * Variantes du bloc décoré 3 :
    * <ul>
    * <li>coin</li>
+   * <li>croisement 0</li>
    * <li>croisement 1</li>
    * <li>croisement 2</li>
-   * <li>croisement 3</li>
    * </ul>
    *
    * @author Mc-Fr
    */
   public enum EnumType implements IEnumType<EnumType> {
     CORNER("corner"),
+    CROSSING_0("crossing_0"),
     CROSSING_1("crossing_1"),
-    CROSSING_2("crossing_2"),
-    CROSSING_3("crossing_3");
+    CROSSING_2("crossing_2");
 
     private final String name;
 
