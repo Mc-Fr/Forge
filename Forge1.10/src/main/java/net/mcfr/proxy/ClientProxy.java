@@ -48,6 +48,10 @@ import net.mcfr.decoration.lighting.tile_entities.TileEntityChandelier;
 import net.mcfr.decoration.lighting.tile_entities.TileEntityChandelierRenderer;
 import net.mcfr.decoration.misc.BlockFloorDecoration;
 import net.mcfr.decoration.misc.EnumMoucharabiehType;
+import net.mcfr.decoration.misc.ornamented_blocks.BlockOrnamentedNoRotation;
+import net.mcfr.decoration.misc.ornamented_blocks.BlockOrnamentedRotations1;
+import net.mcfr.decoration.misc.ornamented_blocks.BlockOrnamentedRotations2;
+import net.mcfr.decoration.misc.ornamented_blocks.BlockOrnamentedRotations3;
 import net.mcfr.decoration.misc.tile_entities.TileEntityCarpet;
 import net.mcfr.decoration.misc.tile_entities.TileEntityCarpetRenderer;
 import net.mcfr.decoration.misc.tile_entities.TileEntitySupport;
@@ -161,6 +165,19 @@ public class ClientProxy extends CommonProxy {
     registerBlockVariants(MARBLE, BlockMarble.EnumType.class);
     registerBlockVariants(MARBLE_COLUMN, BlockMarbleColumn.EnumType.class);
     registerBlockVariants(CARVED_CLAY, BlockCarvedClay.EnumType.class);
+
+    registerBlockVariants(OCHER_ORNAMENTED_BLOCK, BlockOrnamentedNoRotation.EnumType.class);
+    registerBlockVariants(OCHER_ORNAMENTED_BLOCK1, BlockOrnamentedRotations1.EnumType.class);
+    registerBlockVariants(OCHER_ORNAMENTED_BLOCK2, BlockOrnamentedRotations2.EnumType.class);
+    registerBlockVariants(OCHER_ORNAMENTED_BLOCK3, BlockOrnamentedRotations3.EnumType.class);
+    registerBlockVariants(WHITE_ORNAMENTED_BLOCK, BlockOrnamentedNoRotation.EnumType.class);
+    registerBlockVariants(WHITE_ORNAMENTED_BLOCK1, BlockOrnamentedRotations1.EnumType.class);
+    registerBlockVariants(WHITE_ORNAMENTED_BLOCK2, BlockOrnamentedRotations2.EnumType.class);
+    registerBlockVariants(WHITE_ORNAMENTED_BLOCK3, BlockOrnamentedRotations3.EnumType.class);
+    registerBlockVariants(BLACK_ORNAMENTED_BLOCK, BlockOrnamentedNoRotation.EnumType.class);
+    registerBlockVariants(BLACK_ORNAMENTED_BLOCK1, BlockOrnamentedRotations1.EnumType.class);
+    registerBlockVariants(BLACK_ORNAMENTED_BLOCK2, BlockOrnamentedRotations2.EnumType.class);
+    registerBlockVariants(BLACK_ORNAMENTED_BLOCK3, BlockOrnamentedRotations3.EnumType.class);
 
     registerBlock(McfrBlocks.BARLEY);
     registerBlock(VINE_BASE);
@@ -785,7 +802,7 @@ public class ClientProxy extends CommonProxy {
 
     registerItem(GOOD_FISHING_ROD);
     registerItem(FISHING_NET);
-    
+
     registerItem(BRONZE_SWORD);
     registerItem(BRONZE_PICKAXE);
     registerItem(BRONZE_SPADE);

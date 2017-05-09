@@ -112,6 +112,10 @@ import net.mcfr.decoration.misc.BlockSmokeGenerator;
 import net.mcfr.decoration.misc.BlockSupport;
 import net.mcfr.decoration.misc.McfrBlockCarpet;
 import net.mcfr.decoration.misc.McfrBlockFence;
+import net.mcfr.decoration.misc.ornamented_blocks.BlockOrnamentedNoRotation;
+import net.mcfr.decoration.misc.ornamented_blocks.BlockOrnamentedRotations1;
+import net.mcfr.decoration.misc.ornamented_blocks.BlockOrnamentedRotations2;
+import net.mcfr.decoration.misc.ornamented_blocks.BlockOrnamentedRotations3;
 import net.mcfr.decoration.signs.BlockStandingNormalSign;
 import net.mcfr.decoration.signs.BlockStandingOrpSign;
 import net.mcfr.decoration.signs.BlockStandingPaperSign;
@@ -224,6 +228,21 @@ public final class McfrBlocks {
   public static final BlockMarble MARBLE = new BlockMarble();
   public static final BlockMarbleColumn MARBLE_COLUMN = new BlockMarbleColumn();
   public static final BlockCarvedClay CARVED_CLAY = new BlockCarvedClay();
+  // Blocs décorés
+  public static final BlockOrnamentedNoRotation OCHER_ORNAMENTED_BLOCK = new BlockOrnamentedNoRotation("ocher");
+  public static final BlockOrnamentedRotations1 OCHER_ORNAMENTED_BLOCK1 = new BlockOrnamentedRotations1("ocher");
+  public static final BlockOrnamentedRotations2 OCHER_ORNAMENTED_BLOCK2 = new BlockOrnamentedRotations2("ocher");
+  public static final BlockOrnamentedRotations3 OCHER_ORNAMENTED_BLOCK3 = new BlockOrnamentedRotations3("ocher");
+  public static final BlockOrnamentedNoRotation WHITE_ORNAMENTED_BLOCK = new BlockOrnamentedNoRotation("white");
+  public static final BlockOrnamentedRotations1 WHITE_ORNAMENTED_BLOCK1 = new BlockOrnamentedRotations1("white");
+  public static final BlockOrnamentedRotations2 WHITE_ORNAMENTED_BLOCK2 = new BlockOrnamentedRotations2("white");
+  public static final BlockOrnamentedRotations3 WHITE_ORNAMENTED_BLOCK3 = new BlockOrnamentedRotations3("white");
+  public static final BlockOrnamentedNoRotation BLACK_ORNAMENTED_BLOCK = new BlockOrnamentedNoRotation("black");
+  public static final BlockOrnamentedRotations1 BLACK_ORNAMENTED_BLOCK1 = new BlockOrnamentedRotations1("black");
+  public static final BlockOrnamentedRotations2 BLACK_ORNAMENTED_BLOCK2 = new BlockOrnamentedRotations2("black");
+  public static final BlockOrnamentedRotations3 BLACK_ORNAMENTED_BLOCK3 = new BlockOrnamentedRotations3("black");
+  // Sang
+  // TODO
   // Agriculture
   /** Orge */
   public static final BlockBarleyCrops BARLEY = new BlockBarleyCrops();
@@ -815,6 +834,19 @@ public final class McfrBlocks {
     registerVariants(MARBLE);
     registerVariants(MARBLE_COLUMN);
     registerVariants(CARVED_CLAY);
+
+    registerVariants(OCHER_ORNAMENTED_BLOCK);
+    registerVariants(OCHER_ORNAMENTED_BLOCK1);
+    registerVariants(OCHER_ORNAMENTED_BLOCK2);
+    registerVariants(OCHER_ORNAMENTED_BLOCK3);
+    registerVariants(WHITE_ORNAMENTED_BLOCK);
+    registerVariants(WHITE_ORNAMENTED_BLOCK1);
+    registerVariants(WHITE_ORNAMENTED_BLOCK2);
+    registerVariants(WHITE_ORNAMENTED_BLOCK3);
+    registerVariants(BLACK_ORNAMENTED_BLOCK);
+    registerVariants(BLACK_ORNAMENTED_BLOCK1);
+    registerVariants(BLACK_ORNAMENTED_BLOCK2);
+    registerVariants(BLACK_ORNAMENTED_BLOCK3);
 
     register(BARLEY);
     register(VINE_BASE);

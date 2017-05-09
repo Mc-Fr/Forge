@@ -33,7 +33,8 @@ public class McfrBlockOrientable extends McfrBlock {
    * @param harvestLevel le niveau de l'outils
    * @param tab l'onglet du menu Créatif
    */
-  public McfrBlockOrientable(String name, Material material, SoundType sound, float hardness, float resistance, String tool, int harvestLevel, CreativeTabs tab) {
+  public McfrBlockOrientable(String name, Material material, SoundType sound, float hardness, float resistance, String tool, int harvestLevel,
+      CreativeTabs tab) {
     this(name, material, material.getMaterialMapColor(), sound, hardness, resistance, tool, harvestLevel, tab);
   }
 
@@ -50,13 +51,16 @@ public class McfrBlockOrientable extends McfrBlock {
    * @param harvestLevel le niveau de l'outils
    * @param tab l'onglet du menu Créatif
    */
-  public McfrBlockOrientable(String name, Material material, MapColor mapColor, SoundType sound, float hardness, float resistance, String tool, int harvestLevel, CreativeTabs tab) {
+  public McfrBlockOrientable(String name, Material material, MapColor mapColor, SoundType sound, float hardness, float resistance, String tool,
+      int harvestLevel, CreativeTabs tab) {
     super(name, material, mapColor, sound, hardness, resistance, tool, harvestLevel, tab);
     setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
   }
 
+  @SuppressWarnings("deprecation")
   @Override
-  public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
+  public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta,
+      EntityLivingBase placer) {
     return super.onBlockPlaced(worldIn, pos, facing, hitX, hitY, hitZ, meta, placer).withProperty(FACING, FacingUtils.getHorizontalFacing(placer));
   }
 
