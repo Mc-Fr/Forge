@@ -734,6 +734,7 @@ public class ClientProxy extends CommonProxy {
     registerItem(POIGRUME);
     registerItem(POIGRUME_COOKIE);
     registerItem(COCOA);
+    registerItem(ORP_FOOD);
 
     registerItem(RAW_HUNTED_LEG);
     registerItem(COOKED_HUNTED_LEG);
@@ -785,7 +786,7 @@ public class ClientProxy extends CommonProxy {
 
     registerItem(GOOD_FISHING_ROD);
     registerItem(FISHING_NET);
-    
+
     registerItem(BRONZE_SWORD);
     registerItem(BRONZE_PICKAXE);
     registerItem(BRONZE_SPADE);

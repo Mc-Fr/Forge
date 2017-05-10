@@ -50,7 +50,7 @@ public class BlockChanger extends McfrBlockOrientable {
             return false;
           break;
         case ELINVAR:
-          if (stack.stackSize == 16)
+          if (stack.stackSize == 32)
             i.setInventorySlotContents(i.currentItem, new ItemStack(McfrItems.COIN, 1, ItemCoin.EnumType.GOLD.getMetadata()));
           else if (stack.stackSize == 1)
             i.setInventorySlotContents(i.currentItem, new ItemStack(McfrItems.COIN, 64, ItemCoin.EnumType.BRASS.getMetadata()));
@@ -58,15 +58,15 @@ public class BlockChanger extends McfrBlockOrientable {
             return false;
           break;
         case GOLD:
-          if (stack.stackSize == 4)
+          if (stack.stackSize == 16)
             i.setInventorySlotContents(i.currentItem, new ItemStack(McfrItems.COIN, 1, ItemCoin.EnumType.PLATINUM.getMetadata()));
           else if (stack.stackSize == 1)
-            i.setInventorySlotContents(i.currentItem, new ItemStack(McfrItems.COIN, 16, ItemCoin.EnumType.ELINVAR.getMetadata()));
+            i.setInventorySlotContents(i.currentItem, new ItemStack(McfrItems.COIN, 32, ItemCoin.EnumType.ELINVAR.getMetadata()));
           else
             return false;
         case PLATINUM:
           if (stack.stackSize == 1)
-            i.setInventorySlotContents(i.currentItem, new ItemStack(McfrItems.COIN, 4, ItemCoin.EnumType.ELINVAR.getMetadata()));
+            i.setInventorySlotContents(i.currentItem, new ItemStack(McfrItems.COIN, 16, ItemCoin.EnumType.ELINVAR.getMetadata()));
           else
             return false;
           break;
