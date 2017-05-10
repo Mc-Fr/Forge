@@ -9,6 +9,11 @@ import net.minecraft.client.gui.achievement.GuiAchievements;
 import net.minecraft.client.gui.achievement.GuiStats;
 import net.minecraft.client.resources.I18n;
 
+/**
+ * Interface du menu en jeu. Le bouton des mods a été supprimé par rapport à l'interface de base.
+ *
+ * @author Mc-Fr
+ */
 public class GuiMcfrIngameMenu extends GuiScreen {
   @Override
   public void initGui() {
@@ -26,37 +31,34 @@ public class GuiMcfrIngameMenu extends GuiScreen {
     }
   }
 
-  /**
-   * Called by the controls from the buttonList when activated. (Mouse pressed for buttons)
-   */
   @Override
   protected void actionPerformed(GuiButton button) throws IOException {
     switch (button.id) {
-    case 0:
-      this.mc.displayGuiScreen(new GuiMcfrOptions(this, this.mc.gameSettings));
-      break;
-    case 1:
-      button.enabled = false;
-      this.mc.theWorld.sendQuittingDisconnectingPacket();
-      this.mc.loadWorld(null);
-      this.mc.displayGuiScreen(new GuiMcfrMainMenu());
-    case 4:
-      this.mc.displayGuiScreen((GuiScreen) null);
-      this.mc.setIngameFocus();
-      break;
-    case 5:
-      if (this.mc.thePlayer != null) {
-        this.mc.displayGuiScreen(new GuiAchievements(this, this.mc.thePlayer.getStatFileWriter()));
-      }
-      break;
-    case 6:
-      if (this.mc.thePlayer != null) {
-        this.mc.displayGuiScreen(new GuiStats(this, this.mc.thePlayer.getStatFileWriter()));
-      }
-      break;
-    case 7:
-      this.mc.displayGuiScreen(new GuiShareToLan(this));
-      break;
+      case 0:
+        this.mc.displayGuiScreen(new GuiMcfrOptions(this, this.mc.gameSettings));
+        break;
+      case 1:
+        button.enabled = false;
+        this.mc.theWorld.sendQuittingDisconnectingPacket();
+        this.mc.loadWorld(null);
+        this.mc.displayGuiScreen(new GuiMcfrMainMenu());
+      case 4:
+        this.mc.displayGuiScreen((GuiScreen) null);
+        this.mc.setIngameFocus();
+        break;
+      case 5:
+        if (this.mc.thePlayer != null) {
+          this.mc.displayGuiScreen(new GuiAchievements(this, this.mc.thePlayer.getStatFileWriter()));
+        }
+        break;
+      case 6:
+        if (this.mc.thePlayer != null) {
+          this.mc.displayGuiScreen(new GuiStats(this, this.mc.thePlayer.getStatFileWriter()));
+        }
+        break;
+      case 7:
+        this.mc.displayGuiScreen(new GuiShareToLan(this));
+        break;
     }
   }
 

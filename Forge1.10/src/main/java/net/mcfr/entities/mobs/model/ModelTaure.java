@@ -7,6 +7,11 @@ import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
 
+/**
+ * Modèle du Taure.
+ *
+ * @author Mc-Fr
+ */
 public class ModelTaure extends ModelBase {
   public ModelRenderer abdomen;
   public ModelRenderer head;
@@ -81,9 +86,6 @@ public class ModelTaure extends ModelBase {
     this.abdomen.addChild(this.torso);
   }
 
-  /**
-   * Sets the models various rotation angles then renders the model.
-   */
   @Override
   public void render(Entity entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
     setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale, entityIn);
@@ -94,39 +96,38 @@ public class ModelTaure extends ModelBase {
       GlStateManager.translate(0.0F, 35.0F * scale, 0.0F);
       this.abdomen.render(scale);
       GlStateManager.popMatrix();
-    } else if (((EntityGendered) entityIn).getGender() == Genders.FEMALE) {
+    }
+    else if (((EntityGendered) entityIn).getGender() == Genders.FEMALE) {
       GlStateManager.pushMatrix();
       GlStateManager.scale(0.9F, 0.9F, 0.9F);
       GlStateManager.translate(0.0F, 3.0F * scale, 0.0F);
       this.abdomen.render(scale);
       GlStateManager.popMatrix();
-    } else {
+    }
+    else {
       this.abdomen.render(scale);
     }
   }
 
   /**
-   * Interpolate the head rotation angles to make the head movement softer
+   * Interpole les angles de rotation de la tête pour rendre le mouvement plus doux.
    */
   private void interpolateHeadAngles(float headPitch, float headYaw, float speed) {
     if (this.headPitch - headPitch > 0.2F) {
       this.headPitch -= speed;
-    } else if (this.headPitch - headPitch < -0.2F) {
+    }
+    else if (this.headPitch - headPitch < -0.2F) {
       this.headPitch += speed;
     }
 
     if (this.headYaw - headYaw * 0.4F > 0.2F) {
       this.headYaw -= speed;
-    } else if (this.headYaw - headYaw * 0.4F < -0.2F) {
+    }
+    else if (this.headYaw - headYaw * 0.4F < -0.2F) {
       this.headYaw += speed;
     }
   }
 
-  /**
-   * Sets the model's various rotation angles. For bipeds, par1 and par2 are used for animating the movement of arms and
-   * legs, where par1 represents the time(so that arms and legs swing back and forth) and par2 represents how "far" arms
-   * and legs can swing at most.
-   */
   @Override
   public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor,
       Entity entityIn) {

@@ -15,10 +15,22 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
+/**
+ * Générateur de béluxiers.
+ *
+ * @author Mc-Fr
+ */
 public class WorldGenCherryTree extends WorldGenMcfrTree {
-  public static final IBlockState CHERRY_TRUNK = McfrBlocks.EXOTIC_LOG.getDefaultState().withProperty(BlockExoticLog.VARIANT, EnumExoticWoodType.CHERRY_TREE);
-  public static final IBlockState CHERRY_LEAF = McfrBlocks.EXOTIC_LEAVES.getDefaultState().withProperty(BlockExoticLeaves.VARIANT, EnumExoticWoodType.CHERRY_TREE).withProperty(BlockExoticLeaves.CHECK_DECAY, false);
+  public static final IBlockState CHERRY_TRUNK = McfrBlocks.EXOTIC_LOG.getDefaultState().withProperty(BlockExoticLog.VARIANT,
+      EnumExoticWoodType.CHERRY_TREE);
+  public static final IBlockState CHERRY_LEAF = McfrBlocks.EXOTIC_LEAVES.getDefaultState()
+      .withProperty(BlockExoticLeaves.VARIANT, EnumExoticWoodType.CHERRY_TREE).withProperty(BlockExoticLeaves.CHECK_DECAY, false);
 
+  /**
+   * Crée un générateur.
+   * 
+   * @param notify doit-on avertir de la mise à jour ?
+   */
   public WorldGenCherryTree(boolean notify) {
     super(notify, 4, CHERRY_TRUNK, CHERRY_LEAF);
   }
@@ -31,7 +43,8 @@ public class WorldGenCherryTree extends WorldGenMcfrTree {
     if (checkHeight(worldIn, position, height)) {
       IBlockState state = worldIn.getBlockState(position.down());
 
-      if (state.getBlock().canSustainPlant(state, worldIn, position.down(), EnumFacing.UP, McfrBlocks.EXOTIC_SAPLING) && position.getY() < worldIn.getHeight() - height - 1) {
+      if (state.getBlock().canSustainPlant(state, worldIn, position.down(), EnumFacing.UP, McfrBlocks.EXOTIC_SAPLING)
+          && position.getY() < worldIn.getHeight() - height - 1) {
         setDirtAt(worldIn, position.down());
 
         int y;

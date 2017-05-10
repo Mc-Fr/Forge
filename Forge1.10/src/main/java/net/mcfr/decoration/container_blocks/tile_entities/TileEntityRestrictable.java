@@ -11,11 +11,11 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 
 /**
- * Tile entity permettant de restreindre le stockage de certains items.
+ * Tile entity permettant de restreindre (éventuellement) le stockage de certains items.
  *
  * @author Mc-Fr
  */
-public abstract class TileEntityRestricted extends McfrTileEntityLockable {
+public abstract class TileEntityRestrictable extends McfrTileEntityLockable {
   /** La classe du bloc */
   private final Class<? extends Block> blockClass;
   /** La classe du conteneur */
@@ -25,25 +25,26 @@ public abstract class TileEntityRestricted extends McfrTileEntityLockable {
    * Crée une nouvelle tile entity.
    * 
    * @param name le nom
-   * @param size la taille de l'inventaire
+   * @param linesNumber le nombre de lignes de l'inventaire
    * @param stackSize la taille maximale des stacks
    * @param playSounds indique si un son doit être joué à l'ouverture et la fermeture du conteneur
-   * @param blockClass la classe du bloc
+   * @param blockClass la classe du bloc si le contenu doit être restreint, null sinon
    * @param containerClass la classe du conteneur. Elle doit posséder un constructeur ayant la
-   *          signature suivante : {@code <init>(IInventory, IInventory, EntityPlayer, Class)}
+   *          signature suivante :
+   *          {@code <init>(IInventory, McfrTileEntityLockable, EntityPlayer, Class)}
    */
-  public TileEntityRestricted(String name, int size, int stackSize, boolean playSounds, Class<? extends Block> blockClass,
+  public TileEntityRestrictable(String name, int linesNumber, int stackSize, boolean playSounds, Class<? extends Block> blockClass,
       Class<? extends Container> containerClass) {
-    super(name, size, stackSize, playSounds);
+    super(name, linesNumber, stackSize, playSounds);
     this.blockClass = blockClass;
     this.containerClass = containerClass;
   }
 
   @Override
-  public Container createContainer(InventoryPlayer playerInventory, EntityPlayer playerIn) {
+  public Container createContainer(InventoryPlayer playerInventory, EntityPlayer player) {
     try {
-      return this.containerClass.getConstructor(IInventory.class, IInventory.class, EntityPlayer.class, Class.class).newInstance(playerInventory,
-          this, playerIn, this.blockClass);
+      return this.containerClass.getConstructor(IInventory.class, McfrTileEntityLockable.class, EntityPlayer.class, Class.class)
+          .newInstance(playerInventory, this, player, this.blockClass);
     }
     catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException | NoSuchMethodException
         | SecurityException e) {

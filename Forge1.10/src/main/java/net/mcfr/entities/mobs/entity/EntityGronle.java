@@ -12,7 +12,6 @@ import net.mcfr.entities.mobs.EntityBurrowed;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIFollowParent;
@@ -28,19 +27,21 @@ import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.pathfinding.PathNodeType;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
-import net.minecraft.util.datafix.DataFixer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.storage.loot.LootTableList;
 
+/**
+ * Gronle.
+ *
+ * @author Mc-Fr
+ */
 public class EntityGronle extends EntityBurrowed {
-  private static final Set<Item> TEMPTATION_ITEMS = Sets
-      .newHashSet(new Item[] { Items.WHEAT_SEEDS, Items.MELON_SEEDS, Items.PUMPKIN_SEEDS, Items.BEETROOT_SEEDS });
+  private static final Set<Item> TEMPTATION_ITEMS = Sets.newHashSet(Items.WHEAT_SEEDS, Items.MELON_SEEDS, Items.PUMPKIN_SEEDS, Items.BEETROOT_SEEDS);
 
   public EntityGronle(World worldIn) {
     super(worldIn);
@@ -70,15 +71,6 @@ public class EntityGronle extends EntityBurrowed {
     super.applyEntityAttributes();
     getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(4.0D);
     getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.2D);
-  }
-
-  /**
-   * Called frequently so the entity can update its state every tick as required. For example, zombies and skeletons use
-   * this to react to sunlight and start to burn.
-   */
-  @Override
-  public void onLivingUpdate() {
-    super.onLivingUpdate();
   }
 
   @Override
@@ -112,41 +104,9 @@ public class EntityGronle extends EntityBurrowed {
     return new EntityGronle(this.worldObj);
   }
 
-  /**
-   * Checks if the parameter is an item which this animal can be fed to breed it (wheat, carrots or seeds depending on
-   * the animal type)
-   */
   @Override
   public boolean isBreedingItem(@Nullable ItemStack stack) {
     return stack != null && TEMPTATION_ITEMS.contains(stack.getItem());
-  }
-
-  /**
-   * Get the experience points the entity currently has.
-   */
-  @Override
-  protected int getExperiencePoints(EntityPlayer player) {
-    return super.getExperiencePoints(player);
-  }
-
-  public static void func_189789_b(DataFixer p_189789_0_) {
-    EntityLiving.registerFixesMob(p_189789_0_, "Chicken");
-  }
-
-  /**
-   * (abstract) Protected helper method to read subclass entity data from NBT.
-   */
-  @Override
-  public void readEntityFromNBT(NBTTagCompound compound) {
-    super.readEntityFromNBT(compound);
-  }
-
-  /**
-   * (abstract) Protected helper method to write subclass entity data to NBT.
-   */
-  @Override
-  public void writeEntityToNBT(NBTTagCompound compound) {
-    super.writeEntityToNBT(compound);
   }
 
   @Override

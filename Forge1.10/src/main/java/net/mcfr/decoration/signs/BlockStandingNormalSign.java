@@ -13,6 +13,11 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
+/**
+ * Classe de base des panneaux droits.
+ *
+ * @author Mc-Fr
+ */
 public class BlockStandingNormalSign extends McfrBlockStandingSign {
   public BlockStandingNormalSign() {
     super("standing_sign", Material.WOOD, SoundType.WOOD, 1, "axe");

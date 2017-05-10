@@ -88,13 +88,16 @@ public class BlockArmorStand extends BlockContainer {
   }
 
   @Override
-  public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
-    return super.onBlockPlaced(worldIn, pos, facing, hitX, hitY, hitZ, meta, placer).withProperty(FACING, FacingUtils.getHorizontalFacing(placer)).withProperty(HALF, EnumBlockHalf.LOWER);
+  public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta,
+      EntityLivingBase placer) {
+    return super.onBlockPlaced(worldIn, pos, facing, hitX, hitY, hitZ, meta, placer).withProperty(FACING, FacingUtils.getHorizontalFacing(placer))
+        .withProperty(HALF, EnumBlockHalf.LOWER);
   }
 
   @Override
   public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
-    worldIn.setBlockState(pos.up(), getDefaultState().withProperty(FACING, FacingUtils.getHorizontalFacing(placer)).withProperty(HALF, EnumBlockHalf.UPPER));
+    worldIn.setBlockState(pos.up(),
+        getDefaultState().withProperty(FACING, FacingUtils.getHorizontalFacing(placer)).withProperty(HALF, EnumBlockHalf.UPPER));
   }
 
   @Override
@@ -116,7 +119,8 @@ public class BlockArmorStand extends BlockContainer {
   }
 
   @Override
-  public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, @Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
+  public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, @Nullable ItemStack heldItem,
+      EnumFacing side, float hitX, float hitY, float hitZ) {
     if (!worldIn.isRemote) {
       if (state.getValue(HALF) == EnumBlockHalf.UPPER)
         pos = pos.up();
@@ -157,7 +161,8 @@ public class BlockArmorStand extends BlockContainer {
 
   @Override
   public IBlockState getStateFromMeta(int meta) {
-    return getDefaultState().withProperty(FACING, EnumFacing.Plane.HORIZONTAL.facings()[meta & 7]).withProperty(HALF, EnumBlockHalf.values()[(meta & 8) >> 3]);
+    return getDefaultState().withProperty(FACING, EnumFacing.Plane.HORIZONTAL.facings()[meta & 7]).withProperty(HALF,
+        EnumBlockHalf.values()[(meta & 8) >> 3]);
   }
 
   @Override

@@ -30,7 +30,8 @@ public class BlockChanger extends McfrBlockOrientable {
    * Permet de faire le change de la monnaie.<br/>
    * Taux de conversion :
    * <ul>
-   * <li>1 platine <-> 16 élinvar</li>
+   * <li>1 platine <-> 4 or</li>
+   * <li>1 or <-> 16 élinvar</li>
    * <li>1 élinvar <-> 64 laiton</li>
    * </ul>
    */
@@ -41,24 +42,31 @@ public class BlockChanger extends McfrBlockOrientable {
     ItemStack stack = i.getStackInSlot(i.currentItem);
 
     if (stack != null && stack.getItem() == McfrItems.COIN) {
-      switch (stack.getMetadata()) {
-        case 0:
+      switch (ItemCoin.EnumType.byMetadata(stack.getMetadata())) {
+        case BRASS:
           if (stack.stackSize == 64)
-            i.setInventorySlotContents(i.currentItem, new ItemStack(McfrItems.COIN, 1, 1));
+            i.setInventorySlotContents(i.currentItem, new ItemStack(McfrItems.COIN, 1, ItemCoin.EnumType.ELINVAR.getMetadata()));
           else
             return false;
           break;
-        case 1:
+        case ELINVAR:
           if (stack.stackSize == 16)
-            i.setInventorySlotContents(i.currentItem, new ItemStack(McfrItems.COIN, 1, 2));
+            i.setInventorySlotContents(i.currentItem, new ItemStack(McfrItems.COIN, 1, ItemCoin.EnumType.GOLD.getMetadata()));
           else if (stack.stackSize == 1)
-            i.setInventorySlotContents(i.currentItem, new ItemStack(McfrItems.COIN, 64, 0));
+            i.setInventorySlotContents(i.currentItem, new ItemStack(McfrItems.COIN, 64, ItemCoin.EnumType.BRASS.getMetadata()));
           else
             return false;
           break;
-        case 2:
+        case GOLD:
+          if (stack.stackSize == 4)
+            i.setInventorySlotContents(i.currentItem, new ItemStack(McfrItems.COIN, 1, ItemCoin.EnumType.PLATINUM.getMetadata()));
+          else if (stack.stackSize == 1)
+            i.setInventorySlotContents(i.currentItem, new ItemStack(McfrItems.COIN, 16, ItemCoin.EnumType.ELINVAR.getMetadata()));
+          else
+            return false;
+        case PLATINUM:
           if (stack.stackSize == 1)
-            i.setInventorySlotContents(i.currentItem, new ItemStack(McfrItems.COIN, 16, 1));
+            i.setInventorySlotContents(i.currentItem, new ItemStack(McfrItems.COIN, 4, ItemCoin.EnumType.ELINVAR.getMetadata()));
           else
             return false;
           break;

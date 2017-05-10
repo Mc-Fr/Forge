@@ -6,23 +6,45 @@ import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 
+/**
+ * Tile entity des supports en équerre.
+ *
+ * @author Mc-Fr
+ */
 public class TileEntitySupport extends TileEntity {
+  /** L'orientation */
   private EnumFacing facing;
+  /** Indique si le support est long */
   private boolean isLong;
 
+  /**
+   * Crée une tile entity pour un support court orienté vers le Nord.
+   */
   public TileEntitySupport() {
     this(EnumFacing.NORTH, false);
   }
 
+  /**
+   * Crée une tile entity pour un support d'orientation et de longueur données.
+   * 
+   * @param facing l'orientation
+   * @param isLong le support est-il long ?
+   */
   public TileEntitySupport(EnumFacing facing, boolean isLong) {
     this.facing = facing;
     this.isLong = isLong;
   }
 
+  /**
+   * @return l'orientation
+   */
   public EnumFacing getFacing() {
     return this.facing;
   }
 
+  /**
+   * @return true si le support est long
+   */
   public boolean isLong() {
     return this.isLong;
   }

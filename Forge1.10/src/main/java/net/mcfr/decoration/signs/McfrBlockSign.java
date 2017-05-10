@@ -25,7 +25,21 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+/**
+ * Classe de base de tous les panneaux du mod.
+ *
+ * @author Mc-Fr
+ */
 public abstract class McfrBlockSign extends McfrBlock implements ITileEntityProvider {
+  /**
+   * Crée un panneau.
+   * 
+   * @param name le nom
+   * @param material le matériau
+   * @param sound le type de son
+   * @param hardness la dureté
+   * @param tool l'outil nécessaire
+   */
   public McfrBlockSign(String name, Material material, SoundType sound, float hardness, String tool) {
     super(name, material, sound, hardness, 0, tool, 0, null);
   }
@@ -69,7 +83,8 @@ public abstract class McfrBlockSign extends McfrBlock implements ITileEntityProv
   }
 
   @Override
-  public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, @Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
+  public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, @Nullable ItemStack heldItem,
+      EnumFacing side, float hitX, float hitY, float hitZ) {
     if (worldIn.isRemote) {
       return true;
     }

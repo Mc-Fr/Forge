@@ -11,11 +11,16 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 
+/**
+ * Ce bloc représente des plumes au sol.
+ *
+ * @author Mc-Fr
+ */
 public class BlockFeathers extends BlockFloorDecoration {
   public BlockFeathers() {
     super("feathers_block", Material.WOOD, SoundType.CLOTH, 0.5f, null);
   }
-  
+
   @Override
   public List<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
     List<ItemStack> drops = new ArrayList<>();

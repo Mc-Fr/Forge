@@ -26,6 +26,11 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+/**
+ * Lierre luisant.
+ *
+ * @author Mc-Fr
+ */
 public class BlockGlowingVine extends McfrBlock {
   public static final PropertyEnum<EnumFacing> FACING = BlockDirectional.FACING;
 
@@ -99,12 +104,19 @@ public class BlockGlowingVine extends McfrBlock {
     }
   }
 
+  /**
+   * Indique si cette liane peut être posée sur le bloc donné.
+   * 
+   * @param state l'état du bloc
+   * @return true si cette lianne peut être posée
+   */
   private boolean canAttachVineOn(IBlockState state) {
     return state.isFullCube() && state.getMaterial().blocksMovement();
   }
 
   @Override
-  public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
+  public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta,
+      EntityLivingBase placer) {
     return getDefaultState().withProperty(FACING, facing.getOpposite());
   }
 

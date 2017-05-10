@@ -17,14 +17,16 @@ import net.minecraft.util.ChatAllowedCharacters;
 import net.minecraft.util.text.TextComponentString;
 
 /**
- * Adapté de {@link net.minecraft.client.gui.inventory.GuiEditSign}.
+ * Interface d'édition de la note murale. Adaptée de
+ * {@link net.minecraft.client.gui.inventory.GuiEditSign}.
  *
  * @author Mc-Fr
  */
 public class GuiEditWallNote extends GuiScreen {
   private TileEntityLargeSign tileNote;
-  /** Compte le nombre de mises à jour de l'écran. */
+  /** Compte le nombre de mises à jour de l'écran */
   private int updateCounter;
+  /** Indice de la ligne éditée */
   private int editLine;
   private GuiButton doneBtn;
 
@@ -43,10 +45,8 @@ public class GuiEditWallNote extends GuiScreen {
   public void onGuiClosed() {
     Keyboard.enableRepeatEvents(false);
     // @f0
-    String[] lines = Arrays.asList(this.tileNote.getText())
-      .stream()
-      .map(text -> text != null ? text.getFormattedText() : null)
-      .toArray(String[]::new);
+    String[] lines = Arrays.asList(this.tileNote.getText()).stream().map(text -> text != null ? text.getFormattedText() : null)
+        .toArray(String[]::new);
     // @f1
     McfrNetworkWrapper.getInstance().sendToServer(new UpdateWallNoteMessage(this.tileNote.getPos(), lines));
   }
@@ -118,7 +118,7 @@ public class GuiEditWallNote extends GuiScreen {
     if (meta == 4)
       angle = 90;
     if (meta == 5)
-      angle = -270;
+      angle = -90;
 
     GlStateManager.rotate(angle, 0, 1, 0);
     GlStateManager.translate(0, -1.0625F, 0);

@@ -14,6 +14,11 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 
+/**
+ * Les animaux héritant de cette classe peuvent être synchronisés avec le serveur.
+ *
+ * @author Mc-Fr
+ */
 public abstract class EntitySyncedAnimal extends EntityAnimal {
   public static Map<Integer, NBTTagCompound> syncedProps = new HashMap<>();
   protected NBTTagCompound syncedPropsCompound = new NBTTagCompound();
@@ -26,7 +31,7 @@ public abstract class EntitySyncedAnimal extends EntityAnimal {
 
   public void setGender(Genders gender) {
     NBTTagCompound nbt = getSyncedProps();
-    nbt.setInteger("Gender", gender.getInt());
+    nbt.setInteger("Gender", gender.ordinal());
     setSyncedProps(nbt);
   }
 

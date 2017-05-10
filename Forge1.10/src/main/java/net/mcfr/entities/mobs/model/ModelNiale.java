@@ -10,6 +10,11 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.math.MathHelper;
 
+/**
+ * Modèle du Niale.
+ *
+ * @author Mc-Fr
+ */
 public class ModelNiale extends ModelBase {
   public boolean isChild;
 
@@ -75,35 +80,36 @@ public class ModelNiale extends ModelBase {
     this.tail.addChild(this.tailWhool);
   }
 
-  /**
-   * Sets the models various rotation angles then renders the model.
-   */
+  @Override
   public void render(Entity entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
     this.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale, entityIn);
-    
+
     if (!((EntityNiale) entityIn).getSheared()) {
       this.whool.isHidden = false;
       this.tailWhool.isHidden = false;
       this.headWhool.isHidden = false;
-    } else {
+    }
+    else {
       this.whool.isHidden = true;
       this.tailWhool.isHidden = true;
       this.headWhool.isHidden = true;
     }
-    
+
     if (((EntityGendered) entityIn).isChild()) {
       GlStateManager.pushMatrix();
       GlStateManager.scale(0.4F, 0.4F, 0.4F);
       GlStateManager.translate(0.0F, 35.0F * scale, 0.0F);
       this.body.render(scale);
       GlStateManager.popMatrix();
-    } else if (((EntityGendered) entityIn).getGender() == Genders.FEMALE){
+    }
+    else if (((EntityGendered) entityIn).getGender() == Genders.FEMALE) {
       GlStateManager.pushMatrix();
       GlStateManager.scale(0.55F, 0.55F, 0.55F);
       GlStateManager.translate(0.0F, 9.0F * scale, 0.0F);
       this.body.render(scale);
       GlStateManager.popMatrix();
-    } else {
+    }
+    else {
       GlStateManager.pushMatrix();
       GlStateManager.scale(0.6F, 0.6F, 0.6F);
       GlStateManager.translate(0.0F, 7.0F * scale, 0.0F);
@@ -113,37 +119,34 @@ public class ModelNiale extends ModelBase {
   }
 
   /**
-   * Interpolate the head rotation angles to make the head movement softer
+   * Interpole les angles de rotation de la tête pour rendre le mouvement plus doux.
    */
   private void interpolateHeadAngles(float headPitch, float headYaw, float speed) {
-    
+
     if (this.headPitch - headPitch > 0.2F) {
       this.headPitch -= speed;
-    } else if (this.headPitch - headPitch < -0.2F) {
+    }
+    else if (this.headPitch - headPitch < -0.2F) {
       this.headPitch += speed;
     }
 
     if (this.headYaw - headYaw * 0.4F > 0.2F) {
       this.headYaw -= speed;
-    } else if (this.headYaw - headYaw * 0.4F < -0.2F) {
+    }
+    else if (this.headYaw - headYaw * 0.4F < -0.2F) {
       this.headYaw += speed;
     }
   }
-  
-  public void setLivingAnimations(EntityLivingBase entitylivingbaseIn, float p_78086_2_, float p_78086_3_, float partialTickTime)
-  {
-      super.setLivingAnimations(entitylivingbaseIn, p_78086_2_, p_78086_3_, partialTickTime);
-      this.head.rotationPointY = -0.74F + ((EntityNiale)entitylivingbaseIn).getHeadRotationPointY(partialTickTime) * 9.0F;
-      this.headRotationAngleX = ((EntityNiale)entitylivingbaseIn).getHeadRotationAngleX(partialTickTime);
-      this.headWhool.rotationPointY = this.head.rotationPointY;
+
+  @Override
+  public void setLivingAnimations(EntityLivingBase entitylivingbaseIn, float p_78086_2_, float p_78086_3_, float partialTickTime) {
+    super.setLivingAnimations(entitylivingbaseIn, p_78086_2_, p_78086_3_, partialTickTime);
+    this.head.rotationPointY = -0.74F + ((EntityNiale) entitylivingbaseIn).getHeadRotationPointY(partialTickTime) * 9.0F;
+    this.headRotationAngleX = ((EntityNiale) entitylivingbaseIn).getHeadRotationAngleX(partialTickTime);
+    this.headWhool.rotationPointY = this.head.rotationPointY;
   }
-  
-  /**
-   * Sets the model's various rotation angles. For bipeds, par1 and par2 are
-   * used for animating the movement of arms and legs, where par1 represents the
-   * time(so that arms and legs swing back and forth) and par2 represents how
-   * "far" arms and legs can swing at most.
-   */
+
+  @Override
   public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor,
       Entity entityIn) {
     float degToRad = ((float) Math.PI / 180F);
@@ -156,11 +159,11 @@ public class ModelNiale extends ModelBase {
     this.tail.rotateAngleY = 0F;
     this.tailWhool.rotateAngleX = 0F * degToRad;
     this.whool.rotateAngleX = 0F * degToRad;
-    
-    // Calcul de l'animation    
+
+    // Calcul de l'animation
     float phaseCos = MathHelper.cos(ageInTicks * tickToSec * 12.0F * ((float) Math.PI));
     float phaseSin = MathHelper.sin(ageInTicks * tickToSec * 16.0F * ((float) Math.PI));
-    
+
     this.leftArm.rotateAngleX = phaseCos * 20.0F * limbSwingAmount * degToRad;
     this.rightArm.rotateAngleX = -phaseCos * 20.0F * limbSwingAmount * degToRad;
     this.leftLeg.rotateAngleX = -phaseCos * 20.0F * limbSwingAmount * degToRad;
@@ -168,9 +171,9 @@ public class ModelNiale extends ModelBase {
     this.whool.rotateAngleZ = phaseSin * 6.0F * limbSwingAmount * degToRad;
     this.body.rotateAngleZ = phaseCos * 2.0F * limbSwingAmount * degToRad;
     this.tail.rotateAngleY += phaseCos * 10.0F * limbSwingAmount * degToRad;
-    
+
     this.interpolateHeadAngles(headPitch, netHeadYaw, 0.2F);
-    
+
     this.head.rotateAngleY = this.headPitch * degToRad;
     this.head.rotateAngleX = this.headRotationAngleX;
     this.headWhool.rotateAngleX = this.head.rotateAngleX / 2;

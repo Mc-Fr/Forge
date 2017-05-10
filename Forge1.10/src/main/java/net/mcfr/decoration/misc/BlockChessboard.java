@@ -10,6 +10,11 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
+/**
+ * Échiquier.
+ *
+ * @author Mc-Fr
+ */
 public class BlockChessboard extends McfrBlock {
   public BlockChessboard() {
     super("chessboard", Material.WOOD, SoundType.WOOD, 0.2f, 0, null, -1, CreativeTabs.DECORATIONS);
@@ -32,20 +37,33 @@ public class BlockChessboard extends McfrBlock {
     checkForDrop(worldIn, pos, state);
   }
 
-  private boolean checkForDrop(World worldIn, BlockPos pos, IBlockState state) {
-    if (!canBlockStay(worldIn, pos)) {
-      dropBlockAsItem(worldIn, pos, state, 0);
-      worldIn.setBlockToAir(pos);
+  /**
+   * Vérifie si le bloc peut rester à sa position.
+   * 
+   * @param world le monde
+   * @param pos la position
+   * @param state l'état
+   * @return true si le bloc n'a pas été supprimé
+   */
+  private boolean checkForDrop(World world, BlockPos pos, IBlockState state) {
+    if (!canBlockStay(world, pos)) {
+      dropBlockAsItem(world, pos, state, 0);
+      world.setBlockToAir(pos);
 
       return false;
     }
-    else {
-      return true;
-    }
+    return true;
   }
 
-  private boolean canBlockStay(World worldIn, BlockPos pos) {
-    return !worldIn.isAirBlock(pos.down()) && worldIn.getBlockState(pos.down()).getBlock() != this;
+  /**
+   * Indique si le bloc peut rester à son emplacement.
+   * 
+   * @param world le monde
+   * @param pos la position
+   * @return true si le bloc peut rester
+   */
+  private boolean canBlockStay(World world, BlockPos pos) {
+    return !world.isAirBlock(pos.down()) && world.getBlockState(pos.down()).getBlock() != this;
   }
 
   @Override

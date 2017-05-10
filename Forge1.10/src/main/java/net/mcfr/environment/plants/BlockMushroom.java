@@ -18,6 +18,11 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 
+/**
+ * Bloc de champignon géant.
+ *
+ * @author Mc-Fr
+ */
 public class BlockMushroom extends McfrBlock implements IBlockWithVariants {
   public static final PropertyEnum<EnumType> VARIANT = PropertyEnum.create("variant", EnumType.class);
 
@@ -58,6 +63,29 @@ public class BlockMushroom extends McfrBlock implements IBlockWithVariants {
     return state.getValue(VARIANT).getMetadata();
   }
 
+  /**
+   * Types de blocs :
+   * <ul>
+   * <li>chapeau rouge</li>
+   * <li>chapeau rose</li>
+   * <li>chapeau orange</li>
+   * <li>chapeau jaune</li>
+   * <li>chapeau bleu</li>
+   * <li>chapeau bleu clair</li>
+   * <li>chapeau vert</li>
+   * <li>chapeau lime</li>
+   * <li>chapeau violet</li>
+   * <li>chapeau magenta</li>
+   * <li>chapeau cyan</li>
+   * <li>pied blanc</li>
+   * <li>pied bleu clair</li>
+   * <li>lamelles cyan</li>
+   * <li>lamelles blanches</li>
+   * <li>lamelles bleu clair</li>
+   * </ul>
+   *
+   * @author Mc-Fr
+   */
   public static enum EnumType implements IEnumType<EnumType> {
     RED_CAP("red_cap"),
     PINK_CAP("pink_cap"),

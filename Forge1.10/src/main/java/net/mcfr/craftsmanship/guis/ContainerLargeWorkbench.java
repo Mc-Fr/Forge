@@ -71,6 +71,9 @@ public class ContainerLargeWorkbench extends Container {
     return this.craftMatrix;
   }
 
+  /**
+   * Transforme la matrice en matrice d'enclume.
+   */
   protected void setCraftMatrixAnvil() {
     this.craftMatrix.setAnvil();
   }

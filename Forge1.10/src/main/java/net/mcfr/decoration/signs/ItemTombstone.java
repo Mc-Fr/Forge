@@ -6,29 +6,37 @@ import net.mcfr.decoration.signs.tile_entities.TileEntityTombstone;
 import net.mcfr.utils.FacingUtils;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
+/**
+ * Item de la pierre tombale.
+ *
+ * @author Mc-Fr
+ */
 public class ItemTombstone extends McfrItem {
   public ItemTombstone() {
     super("tombstone", 16, CreativeTabs.DECORATIONS);
   }
 
   @Override
-  public EnumActionResult onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-    if (playerIn.canPlayerEdit(pos, facing, stack)) {
-      if (!worldIn.isRemote && facing == EnumFacing.UP && McfrBlocks.TOMBSTONE.canPlaceBlockAt(worldIn, pos.offset(facing))) {
+  public EnumActionResult onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX,
+      float hitY, float hitZ) {
+    if (player.canPlayerEdit(pos, facing, stack)) {
+      if (!world.isRemote && facing == EnumFacing.UP && McfrBlocks.TOMBSTONE.canPlaceBlockAt(world, pos.offset(facing))) {
         pos = pos.offset(facing);
-        int rotation = FacingUtils.getSignRotation(playerIn);
-        worldIn.setBlockState(pos, McfrBlocks.TOMBSTONE.getDefaultState().withProperty(BlockTombstone.ROTATION, rotation), 11);
+        int rotation = FacingUtils.getSignRotation(player);
+        world.setBlockState(pos, McfrBlocks.TOMBSTONE.getDefaultState().withProperty(BlockTombstone.ROTATION, rotation), 11);
 
         stack.stackSize--;
-        TileEntity te = worldIn.getTileEntity(pos);
+        TileEntity te = world.getTileEntity(pos);
 
         if (te != null && te instanceof TileEntityTombstone) {
           // TODO
@@ -36,6 +44,8 @@ public class ItemTombstone extends McfrItem {
           // (EntityPlayerMP) playerIn);
         }
       }
+      else
+        world.playSound(player, pos, SoundEvents.BLOCK_STONE_PLACE, SoundCategory.BLOCKS, 2f, 0.75f);
 
       return EnumActionResult.SUCCESS;
     }

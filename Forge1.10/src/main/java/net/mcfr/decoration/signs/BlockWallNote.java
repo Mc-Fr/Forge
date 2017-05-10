@@ -24,6 +24,11 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
+/**
+ * Note murale.
+ *
+ * @author Mc-Fr
+ */
 public class BlockWallNote extends McfrBlock implements ITileEntityProvider {
   public static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
 
@@ -100,7 +105,8 @@ public class BlockWallNote extends McfrBlock implements ITileEntityProvider {
   }
 
   @Override
-  public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
+  public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, ItemStack heldItem,
+      EnumFacing side, float hitX, float hitY, float hitZ) {
     if (worldIn.isRemote) {
       TileEntity te = worldIn.getTileEntity(pos);
 

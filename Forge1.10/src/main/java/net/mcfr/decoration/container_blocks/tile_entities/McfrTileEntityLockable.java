@@ -36,13 +36,13 @@ public abstract class McfrTileEntityLockable extends TileEntityLockable {
    * Crée une tile entity.
    * 
    * @param name le nom
-   * @param size la taille de l'inventaire
+   * @param linesNumber le nombre de lignes de l'inventaire
    * @param maxStackSize la taille maximale des stacks
    * @param playSounds indique si un son doit être joué à l'ouverture et la fermeture du conteneur
    */
-  public McfrTileEntityLockable(String name, int size, int maxStackSize, boolean playSounds) {
+  public McfrTileEntityLockable(String name, int linesNumber, int maxStackSize, boolean playSounds) {
     this.name = name;
-    this.stacks = new ItemStack[size];
+    this.stacks = new ItemStack[linesNumber * 9];
     this.maxStackSize = maxStackSize;
     this.numberPlayerUsing = 0;
     this.playSounds = playSounds;
@@ -99,6 +99,10 @@ public abstract class McfrTileEntityLockable extends TileEntityLockable {
   @Override
   public int getSizeInventory() {
     return this.stacks.length;
+  }
+
+  public int getLinesNumber() {
+    return this.stacks.length / 9;
   }
 
   @Override

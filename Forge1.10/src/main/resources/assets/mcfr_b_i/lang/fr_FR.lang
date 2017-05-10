@@ -90,6 +90,7 @@ tile.mcfr_b_i_marble_slab2.smooth_black.name=Dalle en marbre noir lisse
 tile.mcfr_b_i_marble_slab.column_sand.name=Dalle en colonne de marbre jaune
 tile.mcfr_b_i_marble_slab.column_white.name=Dalle en colonne de marbre blanc
 tile.mcfr_b_i_marble_slab2.column_black.name=Dalle en colonne de marbre noir
+tile.mcfr_b_i_beehive.name=Ruche
 
 tile.mcfr_b_i_marble_wall.column_black.name=Muret en marbre noir
 tile.mcfr_b_i_marble_wall.column_sand.name=Muret en marbre jaune

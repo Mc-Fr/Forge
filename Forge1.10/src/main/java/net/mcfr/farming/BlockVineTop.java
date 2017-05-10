@@ -7,6 +7,11 @@ import net.mcfr.McfrBlocks;
 import net.mcfr.McfrItems;
 import net.minecraft.item.ItemStack;
 
+/**
+ * Bloc du haut du cep de vigne.
+ *
+ * @author Mc-Fr
+ */
 public class BlockVineTop extends BlockBushTop {
   public BlockVineTop() {
     super("vine");

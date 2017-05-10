@@ -18,6 +18,11 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
+/**
+ * Pierre tombale.
+ *
+ * @author Mc-Fr
+ */
 public class BlockTombstone extends McfrBlockStandingSign {
   public BlockTombstone() {
     super("tombstone_block", Material.ROCK, SoundType.STONE, 2, "pickaxe");
@@ -37,7 +42,8 @@ public class BlockTombstone extends McfrBlockStandingSign {
   }
 
   @Override
-  public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
+  public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, ItemStack heldItem,
+      EnumFacing side, float hitX, float hitY, float hitZ) {
     if (worldIn.isRemote) {
       TileEntity te = worldIn.getTileEntity(pos);
 

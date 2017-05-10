@@ -13,6 +13,11 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
+/**
+ * Pancarte murale en papier.
+ *
+ * @author Mc-Fr
+ */
 public class BlockWallPaperSign extends McfrBlockWallSign {
   public BlockWallPaperSign() {
     super("wall_paper_sign", Material.WOOD, SoundType.WOOD, 1, "axe");

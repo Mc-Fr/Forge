@@ -662,7 +662,7 @@ public final class McfrBlocks {
   public static final BlockRope FLOOR_ROPE = new BlockRope();
   public static final BlockChain CHAIN = new BlockChain("chain", Material.IRON, SoundType.METAL, 1);
   public static final BlockChain ROPE = new BlockChain("rope", Material.CLOTH, SoundType.CLOTH, 0.5f);
-  public static final BlockChain ROPE_ATTACH = new BlockChain("rope_attach", Material.CLOTH, SoundType.CLOTH, 0.5f);
+  public static final BlockChain ROPE_ATTACH = new BlockChain("rope_attach", Material.CLOTH, SoundType.METAL, 0.5f);
 
   public static final BlockFeathers FEATHERS = new BlockFeathers();
   /** Cailloux */

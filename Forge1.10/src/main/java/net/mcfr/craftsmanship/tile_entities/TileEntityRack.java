@@ -3,7 +3,7 @@ package net.mcfr.craftsmanship.tile_entities;
 import java.util.Map;
 
 import net.mcfr.craftsmanship.guis.ContainerRack;
-import net.mcfr.decoration.container_blocks.tile_entities.TileEntityRestricted;
+import net.mcfr.decoration.container_blocks.tile_entities.TileEntityRestrictable;
 import net.mcfr.utils.HashedItemStack;
 import net.mcfr.utils.ItemsLists;
 import net.mcfr.utils.NBTUtils;
@@ -18,7 +18,7 @@ import net.minecraft.util.ITickable;
  *
  * @author Mc-Fr
  */
-public abstract class TileEntityRack extends TileEntityRestricted implements ITickable {
+public abstract class TileEntityRack extends TileEntityRestrictable implements ITickable {
   private static final int TRANSFORM_TIME = 20;
 
   /** L'item en train d'être transformé */

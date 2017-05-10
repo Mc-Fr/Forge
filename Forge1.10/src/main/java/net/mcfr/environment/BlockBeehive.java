@@ -26,6 +26,12 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
+/**
+ * La ruche grossit de la même manière que le bloc de cacao mais peut être posée sur tous les types
+ * de bois.
+ *
+ * @author Mc-Fr
+ */
 public class BlockBeehive extends BlockCocoa {
   public BlockBeehive() {
     super();

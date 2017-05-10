@@ -6,15 +6,34 @@ import net.minecraft.entity.Entity;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 
+/**
+ * Entité de la bulle de tchat.
+ *
+ * @author Mc-Fr
+ */
 public class EntityChatBubble extends Entity {
   private ChatBubbleType type;
   private int lifespan;
   private boolean synced;
 
+  /**
+   * Crée une bulle de tchat. Constructeur requis par Forge.
+   * 
+   * @param world le monde
+   */
   public EntityChatBubble(World world) {
     this(ChatBubbleType.NONE, world, 0, 0, 0);
   }
 
+  /**
+   * Crée une bulle de tchat.
+   * 
+   * @param type le type
+   * @param world le monde
+   * @param x position x
+   * @param y position y
+   * @param z position z
+   */
   public EntityChatBubble(ChatBubbleType type, World world, double x, double y, double z) {
     super(world);
     setSize(0.3f, 0.3f);
@@ -26,14 +45,27 @@ public class EntityChatBubble extends Entity {
     this.synced = false;
   }
 
+  /**
+   * @return le type
+   */
   public ChatBubbleType getType() {
     return this.type;
   }
 
+  /**
+   * Modifie le type.
+   * 
+   * @param type le nouveau type
+   */
   public void setType(ChatBubbleType type) {
     this.type = type;
   }
 
+  /**
+   * Indique que la bulle a été synchronisée.
+   * 
+   * @param synced
+   */
   public void setSynced(boolean synced) {
     this.synced = synced;
   }
@@ -60,7 +92,7 @@ public class EntityChatBubble extends Entity {
     else
       this.lifespan--;
 
-    // TEMP
+    // TODO mise à jour de la position
     // if (!this.worldObj.isRemote && isRiding()) {
     // Entity entity = getRidingEntity();
     //

@@ -13,7 +13,6 @@ import net.mcfr.entities.mobs.EntityBurrowed;
 import net.mcfr.entities.mobs.ai.EntityAIGoToBurrow;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAvoidEntity;
@@ -31,15 +30,18 @@ import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.pathfinding.PathNodeType;
-import net.minecraft.util.datafix.DataFixer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+/**
+ * Niale.
+ *
+ * @author Mc-Fr
+ */
 public class EntityNiale extends EntityBurrowed implements net.minecraftforge.common.IShearable {
   private static final Set<Item> TEMPTATION_ITEMS = Sets.newHashSet();
   private EntityAIEatGrass entityAIEatGrass;
@@ -96,7 +98,8 @@ public class EntityNiale extends EntityBurrowed implements net.minecraftforge.co
   public void handleStatusUpdate(byte id) {
     if (id == 10) {
       this.nialeTimer = 40;
-    } else {
+    }
+    else {
       super.handleStatusUpdate(id);
     }
   }
@@ -113,10 +116,6 @@ public class EntityNiale extends EntityBurrowed implements net.minecraftforge.co
     getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.27D);
   }
 
-  /**
-   * Called frequently so the entity can update its state every tick as required. For example, zombies and skeletons use
-   * this to react to sunlight and start to burn.
-   */
   @Override
   public void onLivingUpdate() {
     if (this.worldObj.isRemote) {
@@ -131,10 +130,6 @@ public class EntityNiale extends EntityBurrowed implements net.minecraftforge.co
     return new EntityNiale(this.worldObj);
   }
 
-  /**
-   * Checks if the parameter is an item which this animal can be fed to breed it (wheat, carrots or seeds depending on
-   * the animal type)
-   */
   @Override
   public boolean isBreedingItem(@Nullable ItemStack stack) {
     return stack != null && TEMPTATION_ITEMS.contains(stack.getItem());
@@ -161,7 +156,8 @@ public class EntityNiale extends EntityBurrowed implements net.minecraftforge.co
     if (this.nialeTimer > 4 && this.nialeTimer <= 36) {
       float f = (this.nialeTimer - 4 - p_70890_1_) / 32.0F;
       return (float) Math.PI / 5F + (float) Math.PI * 7F / 100F * MathHelper.sin(f * 28.7F);
-    } else
+    }
+    else
       return this.nialeTimer > 0 ? (float) Math.PI / 5F : this.rotationPitch * 0.017453292F;
   }
 
@@ -182,34 +178,6 @@ public class EntityNiale extends EntityBurrowed implements net.minecraftforge.co
 
     playSound(SoundEvents.ENTITY_SHEEP_SHEAR, 1.0F, 1.0F);
     return ret;
-  }
-
-  /**
-   * Get the experience points the entity currently has.
-   */
-  @Override
-  protected int getExperiencePoints(EntityPlayer player) {
-    return super.getExperiencePoints(player);
-  }
-
-  public static void func_189789_b(DataFixer p_189789_0_) {
-    EntityLiving.registerFixesMob(p_189789_0_, "Chicken");
-  }
-
-  /**
-   * (abstract) Protected helper method to read subclass entity data from NBT.
-   */
-  @Override
-  public void readEntityFromNBT(NBTTagCompound compound) {
-    super.readEntityFromNBT(compound);
-  }
-
-  /**
-   * (abstract) Protected helper method to write subclass entity data to NBT.
-   */
-  @Override
-  public void writeEntityToNBT(NBTTagCompound compound) {
-    super.writeEntityToNBT(compound);
   }
 
   @Override

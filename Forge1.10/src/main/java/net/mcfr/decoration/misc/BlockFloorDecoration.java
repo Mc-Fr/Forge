@@ -24,9 +24,24 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
+/**
+ * Cette classe sert de base aux blocs représentant des petits objets (plumes, cailloux, etc.) sur
+ * le sol. Ce bloc fournit 5 variantes de texture.
+ *
+ * @author Mc-Fr
+ */
 public abstract class BlockFloorDecoration extends McfrBlock implements IBlockWithVariants {
   public static final PropertyEnum<EnumType> VARIANT = PropertyEnum.create("variant", EnumType.class);
 
+  /**
+   * Crée un bloc de décoration.
+   * 
+   * @param name le nom
+   * @param material le matériau
+   * @param sound le type de son
+   * @param hardness la dureté
+   * @param tool l'outil nécessaire
+   */
   public BlockFloorDecoration(String name, Material material, SoundType sound, float hardness, String tool) {
     super(name, material, sound, hardness, 0, tool, 0, CreativeTabs.DECORATIONS);
     setDefaultState(this.blockState.getBaseState().withProperty(VARIANT, EnumType.TYPE1));
@@ -59,8 +74,10 @@ public abstract class BlockFloorDecoration extends McfrBlock implements IBlockWi
     return super.canPlaceBlockAt(worldIn, pos) && worldIn.isSideSolid(pos.down(), EnumFacing.UP);
   }
 
+  @SuppressWarnings("deprecation")
   @Override
-  public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
+  public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta,
+      EntityLivingBase placer) {
     return super.onBlockPlaced(worldIn, pos, facing, hitX, hitY, hitZ, meta, placer).withProperty(VARIANT, EnumType.byMetadata(meta));
   }
 
@@ -109,6 +126,11 @@ public abstract class BlockFloorDecoration extends McfrBlock implements IBlockWi
     return state.getValue(VARIANT).getMetadata();
   }
 
+  /**
+   * Variantes de modèles.
+   *
+   * @author Mc-Fr
+   */
   public static enum EnumType implements IEnumType<EnumType> {
     TYPE0("type_0"),
     TYPE1("type_1"),

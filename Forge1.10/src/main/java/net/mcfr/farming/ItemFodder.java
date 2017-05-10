@@ -10,6 +10,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+/**
+ * Bloc de fourrage.
+ *
+ * @author Mc-Fr
+ */
 public class ItemFodder extends McfrItem {
   public ItemFodder() {
     super("fodder", CreativeTabs.MATERIALS);
@@ -29,6 +34,15 @@ public class ItemFodder extends McfrItem {
     }
   }
 
+  /**
+   * Types de fourrage :
+   * <ul>
+   * <li>léger</li>
+   * <li>lourd</li>
+   * </ul>
+   *
+   * @author Mc-Fr
+   */
   public static enum EnumType implements IEnumType<EnumType> {
     LIGHT("light"),
     HEAVY("heavy");

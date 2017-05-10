@@ -9,12 +9,23 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+/**
+ * Interface du haut-fourneau.
+ *
+ * @author Mc-Fr
+ */
 @SideOnly(Side.CLIENT)
 public class GuiStove extends GuiContainer {
   private static final ResourceLocation STOVE_GUI_TEXTURES = new ResourceLocation(Constants.MOD_ID, "textures/gui/container/stove.png");
 
   private final TileEntityStove tileStove;
 
+  /**
+   * Crée une interface pour le haut-fourneau.
+   * 
+   * @param playerInv l'inventaire du joueur
+   * @param stoveInv l'inventaire du haut-fourneau
+   */
   public GuiStove(InventoryPlayer playerInv, TileEntityStove stoveInv) {
     super(new ContainerStove(playerInv, stoveInv));
     this.tileStove = stoveInv;
@@ -46,14 +57,32 @@ public class GuiStove extends GuiContainer {
     drawTexturedModalRect(x + 110, y + 4 + offset, 207, 4 + offset, 19, progress);
   }
 
+  /**
+   * Retourne la progression du carburant mise à l'échelle.
+   * 
+   * @param pixels le nombre de pixel totaux
+   * @return la progression mise à l'échelle
+   */
   private int getFuelProgressScaled(int pixels) {
     return (int) ((1 - this.tileStove.getFuelProgress()) * pixels) + 1;
   }
 
+  /**
+   * Retourne la progression de la température mise à l'échelle.
+   * 
+   * @param pixels le nombre de pixel totaux
+   * @return la progression mise à l'échelle
+   */
   private int getNextTemperatureProgressScaled(int pixels) {
     return (int) (this.tileStove.getNextTemperatureProgress() * pixels);
   }
 
+  /**
+   * Retourne la progression jusqu'à la prochaine température mise à l'échelle.
+   * 
+   * @param pixels le nombre de pixel totaux
+   * @return la progression mise à l'échelle
+   */
   private int getTemperatureProgressScaled(int pixels) {
     return (int) (this.tileStove.getTemperatureProgress() * pixels);
   }

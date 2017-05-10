@@ -19,6 +19,12 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+/**
+ * Planches "exotiques".
+ *
+ * @author Mc-Fr
+ * @see EnumExoticWoodType
+ */
 public class BlockExoticPlanks extends McfrBlock implements IBlockWithVariants {
   public static final PropertyEnum<EnumExoticWoodType> VARIANT = PropertyEnum.create("variant", EnumExoticWoodType.class);
 

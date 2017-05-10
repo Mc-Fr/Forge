@@ -35,11 +35,21 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+/**
+ * Haut-fourneau.
+ *
+ * @author Mc-Fr
+ */
 public class BlockStove extends BlockContainer {
   public static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
 
   private final boolean isBurning;
 
+  /**
+   * Crée un haut-fourneau.
+   * 
+   * @param isBurning indique s'il est allumé
+   */
   public BlockStove(boolean isBurning) {
     super(Material.ROCK);
     String name = (isBurning ? "lit_" : "") + "stove";
@@ -56,6 +66,9 @@ public class BlockStove extends BlockContainer {
     setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
   }
 
+  /**
+   * @return true si le haut-fourneau est allumé
+   */
   public boolean isLit() {
     return this.isBurning;
   }
@@ -65,28 +78,35 @@ public class BlockStove extends BlockContainer {
     setDefaultFacing(worldIn, pos, state);
   }
 
-  private void setDefaultFacing(World worldIn, BlockPos pos, IBlockState state) {
-    if (!worldIn.isRemote) {
-      IBlockState state0 = worldIn.getBlockState(pos.north());
-      IBlockState state1 = worldIn.getBlockState(pos.south());
-      IBlockState state2 = worldIn.getBlockState(pos.west());
-      IBlockState state3 = worldIn.getBlockState(pos.east());
-      EnumFacing enumfacing = state.getValue(FACING);
+  /**
+   * Calcule l'orientation par défaut.
+   * 
+   * @param world le monde
+   * @param pos la position
+   * @param state l'état
+   */
+  private void setDefaultFacing(World world, BlockPos pos, IBlockState state) {
+    if (!world.isRemote) {
+      IBlockState stateNorth = world.getBlockState(pos.north());
+      IBlockState stateSouth = world.getBlockState(pos.south());
+      IBlockState stateWest = world.getBlockState(pos.west());
+      IBlockState stateEast = world.getBlockState(pos.east());
+      EnumFacing facing = state.getValue(FACING);
 
-      if (enumfacing == EnumFacing.NORTH && state0.isFullBlock() && !state1.isFullBlock()) {
-        enumfacing = EnumFacing.SOUTH;
+      if (facing == EnumFacing.NORTH && stateNorth.isFullBlock() && !stateSouth.isFullBlock()) {
+        facing = EnumFacing.SOUTH;
       }
-      else if (enumfacing == EnumFacing.SOUTH && state1.isFullBlock() && !state0.isFullBlock()) {
-        enumfacing = EnumFacing.NORTH;
+      else if (facing == EnumFacing.SOUTH && stateSouth.isFullBlock() && !stateNorth.isFullBlock()) {
+        facing = EnumFacing.NORTH;
       }
-      else if (enumfacing == EnumFacing.WEST && state2.isFullBlock() && !state3.isFullBlock()) {
-        enumfacing = EnumFacing.EAST;
+      else if (facing == EnumFacing.WEST && stateWest.isFullBlock() && !stateEast.isFullBlock()) {
+        facing = EnumFacing.EAST;
       }
-      else if (enumfacing == EnumFacing.EAST && state3.isFullBlock() && !state2.isFullBlock()) {
-        enumfacing = EnumFacing.WEST;
+      else if (facing == EnumFacing.EAST && stateEast.isFullBlock() && !stateWest.isFullBlock()) {
+        facing = EnumFacing.WEST;
       }
 
-      worldIn.setBlockState(pos, state.withProperty(FACING, enumfacing), 2);
+      world.setBlockState(pos, state.withProperty(FACING, facing), 2);
     }
   }
 
@@ -124,7 +144,8 @@ public class BlockStove extends BlockContainer {
   }
 
   @Override
-  public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, @Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
+  public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, @Nullable ItemStack heldItem,
+      EnumFacing side, float hitX, float hitY, float hitZ) {
     if (!worldIn.isRemote) {
       TileEntity tileentity = worldIn.getTileEntity(pos);
 
@@ -136,37 +157,38 @@ public class BlockStove extends BlockContainer {
     return true;
   }
 
-  public static void setState(boolean active, World worldIn, BlockPos pos) {
-    IBlockState iblockstate = worldIn.getBlockState(pos);
-    TileEntity tileentity = worldIn.getTileEntity(pos);
+  /**
+   * Modifie l'état du bloc.
+   * 
+   * @param active indique si le bloc est actif
+   * @param world le monde
+   * @param pos la position
+   */
+  public static void setState(boolean active, World world, BlockPos pos) {
+    IBlockState iblockstate = world.getBlockState(pos);
+    TileEntity tileentity = world.getTileEntity(pos);
 
     if (active) {
-      worldIn.setBlockState(pos, McfrBlocks.LIT_STOVE.getDefaultState().withProperty(FACING, iblockstate.getValue(FACING)), 3);
-      worldIn.setBlockState(pos, McfrBlocks.LIT_STOVE.getDefaultState().withProperty(FACING, iblockstate.getValue(FACING)), 3);
+      world.setBlockState(pos, McfrBlocks.LIT_STOVE.getDefaultState().withProperty(FACING, iblockstate.getValue(FACING)), 3);
+      world.setBlockState(pos, McfrBlocks.LIT_STOVE.getDefaultState().withProperty(FACING, iblockstate.getValue(FACING)), 3);
     }
     else {
-      worldIn.setBlockState(pos, McfrBlocks.STOVE.getDefaultState().withProperty(FACING, iblockstate.getValue(FACING)), 3);
-      worldIn.setBlockState(pos, McfrBlocks.STOVE.getDefaultState().withProperty(FACING, iblockstate.getValue(FACING)), 3);
+      world.setBlockState(pos, McfrBlocks.STOVE.getDefaultState().withProperty(FACING, iblockstate.getValue(FACING)), 3);
+      world.setBlockState(pos, McfrBlocks.STOVE.getDefaultState().withProperty(FACING, iblockstate.getValue(FACING)), 3);
     }
 
     if (tileentity != null) {
       tileentity.validate();
-      worldIn.setTileEntity(pos, tileentity);
+      world.setTileEntity(pos, tileentity);
     }
   }
 
-  /**
-   * Called by ItemBlocks just before a block is actually set in the world, to allow for adjustments
-   * to the IBlockstate
-   */
   @Override
-  public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
+  public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta,
+      EntityLivingBase placer) {
     return getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite());
   }
 
-  /**
-   * Called by ItemBlocks after a block is set in the world, to allow post-place logic
-   */
   @Override
   public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
     worldIn.setBlockState(pos, state.withProperty(FACING, placer.getHorizontalFacing().getOpposite()), 2);
@@ -207,9 +229,6 @@ public class BlockStove extends BlockContainer {
     return EnumBlockRenderType.MODEL;
   }
 
-  /**
-   * Convert the given metadata into a BlockState for this Block
-   */
   @Override
   public IBlockState getStateFromMeta(int meta) {
     EnumFacing enumfacing = EnumFacing.getFront(meta);
@@ -221,9 +240,6 @@ public class BlockStove extends BlockContainer {
     return getDefaultState().withProperty(FACING, enumfacing);
   }
 
-  /**
-   * Convert the BlockState into the correct metadata value
-   */
   @Override
   public int getMetaFromState(IBlockState state) {
     return state.getValue(FACING).getIndex();

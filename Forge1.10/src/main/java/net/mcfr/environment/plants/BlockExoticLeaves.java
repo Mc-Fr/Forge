@@ -28,12 +28,19 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+/**
+ * Feuilles "exotiques".
+ *
+ * @author Mc-Fr
+ * @see EnumExoticWoodType
+ */
 public class BlockExoticLeaves extends BlockLeaves implements IBlockWithVariants {
   public static final PropertyEnum<EnumExoticWoodType> VARIANT = PropertyEnum.create("variant", EnumExoticWoodType.class);
 
   public BlockExoticLeaves() {
     super();
-    setDefaultState(this.blockState.getBaseState().withProperty(VARIANT, EnumExoticWoodType.APPLE_TREE).withProperty(CHECK_DECAY, true).withProperty(DECAYABLE, true));
+    setDefaultState(this.blockState.getBaseState().withProperty(VARIANT, EnumExoticWoodType.APPLE_TREE).withProperty(CHECK_DECAY, true)
+        .withProperty(DECAYABLE, true));
     String name = "exotic_leaves";
     setRegistryName(name);
     setUnlocalizedName(NameUtils.getUnlocalizedName(name));
@@ -64,7 +71,8 @@ public class BlockExoticLeaves extends BlockLeaves implements IBlockWithVariants
 
   @Override
   public IBlockState getStateFromMeta(int meta) {
-    return getDefaultState().withProperty(VARIANT, getExoticWoodType(meta)).withProperty(DECAYABLE, (meta & 4) == 0).withProperty(CHECK_DECAY, (meta & 8) > 0);
+    return getDefaultState().withProperty(VARIANT, EnumExoticWoodType.byMetadata(meta)).withProperty(DECAYABLE, (meta & 4) == 0)
+        .withProperty(CHECK_DECAY, (meta & 8) > 0);
   }
 
   @Override
@@ -79,10 +87,6 @@ public class BlockExoticLeaves extends BlockLeaves implements IBlockWithVariants
     }
 
     return i;
-  }
-
-  public EnumExoticWoodType getExoticWoodType(int meta) {
-    return EnumExoticWoodType.byMetadata(meta);
   }
 
   @Override

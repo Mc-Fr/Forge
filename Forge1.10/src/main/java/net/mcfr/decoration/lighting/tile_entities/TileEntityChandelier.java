@@ -5,18 +5,33 @@ import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 
+/**
+ * Tile entity des lustres.
+ *
+ * @author Mc-Fr
+ */
 public class TileEntityChandelier extends TileEntity {
   private boolean isLarge;
 
+  /**
+   * Crée une tile entity pour un petit lustre
+   */
   public TileEntityChandelier() {
     this(false);
   }
 
+  /**
+   * Crée une tile entity pour un lustre de taille indiquée.
+   * 
+   * @param isLarge le lustre est-il large ?
+   */
   public TileEntityChandelier(boolean isLarge) {
-    super();
     this.isLarge = isLarge;
   }
 
+  /**
+   * @return true si le lustre associé est large
+   */
   public boolean isLarge() {
     return this.isLarge;
   }

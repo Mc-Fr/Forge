@@ -11,9 +11,15 @@ import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 
+/**
+ * Cette classe s'occupe du rendu des notes murales.
+ *
+ * @author Mc-Fr
+ */
 public class TileEntityWallNoteRenderer extends TileEntitySpecialRenderer<TileEntityWallNote> {
   private static final ResourceLocation TEXTURE = new ResourceLocation(Constants.MOD_ID, "textures/entity/wall_note.png");
 
+  /** Le modèle de la note */
   private ModelWallNote model;
 
   public TileEntityWallNoteRenderer() {
@@ -30,12 +36,12 @@ public class TileEntityWallNoteRenderer extends TileEntitySpecialRenderer<TileEn
     if (meta == 2)
       angle = 180;
     if (meta == 4)
-      angle = 90;
-    if (meta == 5)
       angle = -90;
+    if (meta == 5)
+      angle = 90;
 
     GlStateManager.translate((float) x + 0.5f, (float) y + 0.5f, (float) z + 0.5f);
-    GlStateManager.rotate(-angle, 0, 1, 0);
+    GlStateManager.rotate(angle, 0, 1, 0);
     GlStateManager.translate(0, -0.3125f, -0.49f);
 
     if (destroyStage >= 0) {

@@ -18,6 +18,12 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+/**
+ * Bois "exotique".
+ *
+ * @author Mc-Fr
+ * @see EnumExoticWoodType
+ */
 public class BlockExoticLog extends BlockLog implements IBlockWithVariants {
   public static final PropertyEnum<EnumExoticWoodType> VARIANT = PropertyEnum.create("variant", EnumExoticWoodType.class);
 

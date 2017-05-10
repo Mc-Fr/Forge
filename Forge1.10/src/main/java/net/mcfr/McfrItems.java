@@ -1,9 +1,6 @@
 package net.mcfr;
 
-import static net.minecraft.inventory.EntityEquipmentSlot.CHEST;
-import static net.minecraft.inventory.EntityEquipmentSlot.FEET;
-import static net.minecraft.inventory.EntityEquipmentSlot.HEAD;
-import static net.minecraft.inventory.EntityEquipmentSlot.LEGS;
+import static net.minecraft.inventory.EntityEquipmentSlot.*;
 
 import net.mcfr.commons.McfrItem;
 import net.mcfr.commons.McfrItemBlockSpecial;
@@ -26,7 +23,6 @@ import net.mcfr.equipment.AdditionalArmorMaterial;
 import net.mcfr.equipment.AdditionalToolMaterial;
 import net.mcfr.equipment.ItemCrossbowBolt;
 import net.mcfr.equipment.ItemGrapnel;
-import net.mcfr.equipment.ItemHammer;
 import net.mcfr.equipment.McfrItemArmor;
 import net.mcfr.equipment.McfrItemAxe;
 import net.mcfr.equipment.McfrItemBow;
@@ -123,7 +119,7 @@ public final class McfrItems {
   public static final ItemAlcoholDrink WINE_GLASS = new ItemAlcoholDrink("wine_glass", EMPTY_GLASS, 2, 0.2f);
   public static final McfrItem EMPTY_BOTTLE = new McfrItem("empty_bottle", 8, CreativeTabs.MATERIALS);
   public static final ItemAlcoholDrink RUM_BOTTLE = new ItemAlcoholDrink("rum_bottle", EMPTY_BOTTLE, 2, 0.2f);
-  public static final ItemFlask FLASK = new ItemFlask(Items.GLASS_BOTTLE, 0, 0.2f);
+  public static final ItemFlask FLASK = new ItemFlask(0, 0.2f);
   // Nourriture, ingrédients et ustensiles de cuisine
   public static final McfrItem CAKE_DOUGH = new McfrItem("cake_dough", CreativeTabs.MATERIALS);
   public static final McfrItemBlockSpecial CHOCOLATE_CAKE = McfrBlocks.CHOCOLATE_CAKE.getItem();
@@ -191,7 +187,7 @@ public final class McfrItems {
   public static final McfrItemBlockSpecial LONG_REPEATER = new McfrItemBlockSpecial("long_repeater", McfrBlocks.LONG_REPEATER_OFF,
       CreativeTabs.REDSTONE);
   // Outils
-  public static final McfrItem HAMMER = new ItemHammer();
+  public static final McfrItem HAMMER = new McfrItem("hammer", 1, CreativeTabs.TOOLS);
   public static final ItemGrapnel GRAPNEL = new ItemGrapnel();
   // Outils de base en bronze et acier
   public static final McfrItemSword BRONZE_SWORD = new McfrItemSword("bronze", AdditionalToolMaterial.BRONZE);
@@ -585,7 +581,7 @@ public final class McfrItems {
     register(MAGIC_WAND);
     register(LIGHTNING);
     register(SELECTOR);
-    
+
     McfrBlocks.LIT_CAMPFIRE.addRecipe(McfrItems.RAW_HUNTED_LEG, McfrItems.COOKED_HUNTED_LEG);
     McfrBlocks.LIT_CAMPFIRE.addRecipe(McfrItems.RAW_HUNTED_STEAK, McfrItems.COOKED_HUNTED_STEAK);
     McfrBlocks.LIT_CAMPFIRE.addRecipe(McfrItems.RAW_HUNTED_POULTRY, McfrItems.COOKED_HUNTED_POULTRY);
@@ -607,8 +603,7 @@ public final class McfrItems {
   /**
    * Enregistre un item.
    * 
-   * @param item
-   *          l'item
+   * @param item l'item
    */
   private static void register(Item item) {
     GameRegistry.register(item);
@@ -627,6 +622,5 @@ public final class McfrItems {
     }
   }
 
-  private McfrItems() {
-  }
+  private McfrItems() {}
 }

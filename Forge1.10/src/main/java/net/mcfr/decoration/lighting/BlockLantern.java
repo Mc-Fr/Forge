@@ -4,6 +4,7 @@ import java.util.Random;
 
 import net.mcfr.McfrItems;
 import net.mcfr.commons.McfrBlock;
+import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyEnum;
@@ -45,7 +46,8 @@ public class BlockLantern extends McfrBlock {
    * @param isPaper en papier ou non
    */
   public BlockLantern(EnumLanternColor color, boolean isPaper) {
-    super(color.getName() + (isPaper ? "_paper" : "") + "_lantern", isPaper ? Material.CLOTH : Material.GLASS, isPaper ? SoundType.CLOTH : SoundType.GLASS, 0.5f, 0, null, -1, null);
+    super(color.getName() + (isPaper ? "_paper" : "") + "_lantern", isPaper ? Material.CLOTH : Material.GLASS,
+        isPaper ? SoundType.CLOTH : SoundType.GLASS, 0.5f, 0, null, -1, null);
     setDefaultState(this.blockState.getBaseState().withProperty(ORIENTATION, 0).withProperty(POSITION, EnumPosition.BOTTOM));
     setLightLevel(0.875f);
     this.color = color;
@@ -53,18 +55,22 @@ public class BlockLantern extends McfrBlock {
   }
 
   @Override
-  public boolean canPlaceBlockOnSide(World worldIn, BlockPos pos, EnumFacing side) {
-    boolean ok = super.canPlaceBlockOnSide(worldIn, pos, side);
-    BlockPos pos1 = pos.offset(side);
-
-    return ok && worldIn.getBlockState(pos1).isSideSolid(worldIn, pos1, side);
+  public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta,
+      EntityLivingBase placer, ItemStack stack) {
+    EnumPosition position = EnumPosition.fromFacing(facing);
+    int face = position.isOnWall() ? facing.getHorizontalIndex() : getFacingIndex(placer);
+    return super.getStateForPlacement(world, pos, facing, hitX, hitY, hitZ, meta, placer, stack).withProperty(POSITION, position)
+        .withProperty(ORIENTATION, face);
   }
 
   @Override
-  public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
-    EnumPosition position = EnumPosition.fromFacing(facing);
-    int face = position.isOnWall() ? facing.getHorizontalIndex() : getFacingIndex(placer);
-    return super.onBlockPlaced(worldIn, pos, facing, hitX, hitY, hitZ, meta, placer).withProperty(POSITION, position).withProperty(ORIENTATION, face);
+  public void neighborChanged(IBlockState state, World world, BlockPos pos, Block block) {
+    if (!canPlaceBlockAt(world, pos)) {
+      dropBlockAsItem(world, pos, state, 0);
+      world.setBlockToAir(pos);
+    }
+    else
+      super.neighborChanged(state, world, pos, block);
   }
 
   /**

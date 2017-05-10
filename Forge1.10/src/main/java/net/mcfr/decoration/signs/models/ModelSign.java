@@ -3,6 +3,11 @@ package net.mcfr.decoration.signs.models;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 
+/**
+ * Modèle du panneau.
+ *
+ * @author Mc-Fr
+ */
 public class ModelSign extends ModelBase {
   public ModelRenderer signBoard = new ModelRenderer(this, 0, 0);
   public ModelRenderer signStick = new ModelRenderer(this, 0, 14);
@@ -18,6 +23,9 @@ public class ModelSign extends ModelBase {
     this.signRope2.addBox(-9, -22, -1, 2, 8, 2, 0);
   }
 
+  /**
+   * Affiche le modèle.
+   */
   public void renderSign() {
     this.signBoard.render(0.0625F);
     this.signStick.render(0.0625F);

@@ -13,6 +13,11 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
+/**
+ * Panneau normal suspendu.
+ *
+ * @author Mc-Fr
+ */
 public class BlockSuspendedNormalSign extends McfrBlockSuspendedSign {
   public BlockSuspendedNormalSign() {
     super("suspended_sign", Material.WOOD, SoundType.WOOD, 1, "axe");

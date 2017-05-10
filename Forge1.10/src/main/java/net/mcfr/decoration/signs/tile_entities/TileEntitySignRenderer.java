@@ -14,8 +14,12 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 
 /**
- * @see net.minecraft.client.renderer.tileentity.TileEntitySignRenderer
+ * Cette classe s'occupe du rendu des panneaux.
+ * 
+ * @param <T> type de panneau à rendre
+ * 
  * @author Mc-Fr
+ * @see net.minecraft.client.renderer.tileentity.TileEntitySignRenderer
  */
 public abstract class TileEntitySignRenderer<T extends TileEntityMcfrSign> extends TileEntitySpecialRenderer<T> {
   /** La texture à afficher. */
@@ -23,6 +27,12 @@ public abstract class TileEntitySignRenderer<T extends TileEntityMcfrSign> exten
   /** Le modèle de panneau. */
   private final ModelSign model;
 
+  /**
+   * Crée un gestionnaire d'affichage.
+   * 
+   * @param domain le domaine de la texture (minecraft, mcfr_b_i, etc.)
+   * @param texture la texture
+   */
   public TileEntitySignRenderer(String domain, String texture) {
     this.signTexture = new ResourceLocation(domain, texture);
     this.model = new ModelSign();
@@ -54,12 +64,15 @@ public abstract class TileEntitySignRenderer<T extends TileEntityMcfrSign> exten
       int meta = te.getBlockMetadata();
       float angle = 0;
 
-      if (meta == 2)
+      if (meta == 2) {
         angle = 180;
-      if (meta == 4)
+      }
+      if (meta == 4) {
         angle = 90;
-      if (meta == 5)
+      }
+      if (meta == 5) {
         angle = 270;
+      }
 
       GlStateManager.translate((float) x + 0.5f, (float) y + 0.5f, (float) z + 0.5f);
       GlStateManager.rotate(-angle, 0, 1, 0);
@@ -96,23 +109,34 @@ public abstract class TileEntitySignRenderer<T extends TileEntityMcfrSign> exten
     if (destroyStage < 0) {
       FontRenderer fontRenderer = getFontRenderer();
 
-      for (int j = 0; j < te.signText.length; ++j) {
-        if (te.signText[j] != null) {
-          ITextComponent itextcomponent = te.signText[j];
+      int color = 0;
+      for (int lineNb = 0; lineNb < te.signText.length; ++lineNb) {
+        if (te.signText[lineNb] != null) {
+          ITextComponent itextcomponent = te.signText[lineNb];
           List<ITextComponent> list = GuiUtilRenderComponents.splitText(itextcomponent, 90, fontRenderer, false, true);
           String s = list != null && !list.isEmpty()
               ? (te instanceof TileEntityOrpSign ? list.get(0).getUnformattedText() : list.get(0).getFormattedText()) : "";
 
-          if (j == te.lineBeingEdited)
+          if (lineNb == 0 && te instanceof TileEntityOrpSign) {
+            if (!s.startsWith("&"))
+              color = 0xffffff;
+            else
+              s = s.substring(1);
+          }
+          if (lineNb == te.lineBeingEdited) {
             s = "> " + s + " <";
+          }
 
           for (int k = 0; k < 2; k++) {
-            if (k == 1)
+            if (k == 1) {
               GlStateManager.rotate(180, 0, 1, 0);
-            fontRenderer.drawString(s, -fontRenderer.getStringWidth(s) / 2, j * 10 - te.signText.length * 5,
-                te instanceof TileEntityOrpSign ? 0xffffffff : 0);
-            if (k == 1)
+            }
+            GlStateManager.disableLighting();
+            fontRenderer.drawString(s, -fontRenderer.getStringWidth(s) / 2, lineNb * 10 - te.signText.length * 5, color);
+            GlStateManager.enableLighting();
+            if (k == 1) {
               GlStateManager.rotate(-180, 0, 1, 0);
+            }
           }
         }
       }

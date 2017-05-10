@@ -12,9 +12,11 @@ import net.mcfr.craftsmanship.BlockCircularSaw;
 import net.mcfr.craftsmanship.BlockLoom;
 import net.mcfr.craftsmanship.BlockMortar;
 import net.mcfr.craftsmanship.BlockTanningRack;
+import net.mcfr.craftsmanship.guis.ContainerRack;
 import net.mcfr.decoration.container_blocks.BlockBookshelf;
 import net.mcfr.decoration.container_blocks.BlockPallet;
 import net.mcfr.decoration.container_blocks.ItemBarrel;
+import net.mcfr.decoration.container_blocks.guis.ContainerRestrictable;
 import net.mcfr.decoration.signs.ItemTombstone;
 import net.mcfr.environment.plants.EnumExoticWoodType;
 import net.minecraft.block.Block;
@@ -381,8 +383,7 @@ public final class ItemsLists {
   /**
    * Crée une liste pour une classe donnée à partir de MAPS.
    * 
-   * @param clazz
-   *          la classe du bloc
+   * @param clazz la classe du bloc
    */
   private static void createList(Class<? extends Block> clazz) {
     List<Item> items = new ArrayList<>();
@@ -393,15 +394,15 @@ public final class ItemsLists {
   /**
    * Indique si le bloc spécifié accepte le stack donné.
    *
-   * @param blockClass
-   *          la classe du bloc
-   * @param stack
-   *          le stack
-   * @return vrai si le stack est accepté
-   * @note Cette méthode est prévue pour être utilisée par les classes {@link ContainerRestricted} et
+   * @param blockClass la classe du bloc
+   * @param stack le stack
+   * @return vrai si le stack est accepté ou la classe du bloc est null
+   * @note Cette méthode est prévue pour être utilisée par les classes {@link ContainerRestrictable} et
    *       {@link ContainerRack}.
    */
   public static boolean isItemValid(Class<? extends Block> blockClass, ItemStack stack) {
+    if (blockClass == null)
+      return true;
     List<Item> list = LISTS.get(blockClass);
 
     return list != null && (stack == null || list.contains(stack.getItem()));
@@ -410,8 +411,7 @@ public final class ItemsLists {
   /**
    * Retourne la table associative pour une classe donnée.
    * 
-   * @param clazz
-   *          la classe du bloc
+   * @param clazz la classe du bloc
    * @return la table associative
    */
   public static Map<HashedItemStack, HashedItemStack> getMapForClass(Class<? extends Block> clazz) {

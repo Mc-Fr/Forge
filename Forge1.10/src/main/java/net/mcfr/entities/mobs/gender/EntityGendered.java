@@ -4,6 +4,11 @@ import net.mcfr.entities.mobs.EntitySyncedAnimal;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.world.World;
 
+/**
+ * Cette classe représente un animal possédant un genre (mâle/femelle).
+ *
+ * @author Mc-Fr
+ */
 public abstract class EntityGendered extends EntitySyncedAnimal {
   public EntityGendered(World worldIn) {
     super(worldIn);
@@ -12,12 +17,9 @@ public abstract class EntityGendered extends EntitySyncedAnimal {
 
   @Override
   public void setGender(Genders gender) {
-    setSyncedInteger("Gender", gender.getInt());
+    setSyncedInteger("Gender", gender.ordinal());
   }
 
-  /**
-   * Returns true if the mob is currently able to mate with the specified mob.
-   */
   @Override
   public final boolean canMateWith(EntityAnimal otherAnimal) {
     return otherAnimal instanceof EntityGendered && getGender() != ((EntityGendered) otherAnimal).getGender() && super.canMateWith(otherAnimal);
@@ -29,13 +31,12 @@ public abstract class EntityGendered extends EntitySyncedAnimal {
 
   @Override
   protected float getSoundPitch() {
-    float pitch = this.rand.nextFloat() - this.rand.nextFloat() * 0.2F;
+    float pitch = this.rand.nextFloat() - this.rand.nextFloat() * 0.2F + 1;
     if (isChild()) {
-      pitch += 1.5F;
-    } else if (getGender() == Genders.FEMALE) {
-      pitch += 1.2F;
-    } else {
-      pitch += 1.0F;
+      pitch += 0.5F;
+    }
+    else if (getGender() == Genders.FEMALE) {
+      pitch += 0.2F;
     }
     return pitch;
   }

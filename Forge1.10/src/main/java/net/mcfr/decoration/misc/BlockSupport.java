@@ -17,16 +17,28 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
+/**
+ * Bloc support en équerre.
+ *
+ * @author Mc-Fr
+ */
 public class BlockSupport extends McfrBlockOrientable implements ITileEntityProvider {
+  /** Indique si ce support est long */
   private boolean isLong;
 
+  /**
+   * Crée un support.
+   * 
+   * @param isLong le support est-il long ?
+   */
   public BlockSupport(boolean isLong) {
     super((isLong ? "long_" : "") + "support", Material.WOOD, SoundType.WOOD, 1, 0, "axe", 0, CreativeTabs.DECORATIONS);
     this.isLong = isLong;
   }
 
   @Override
-  public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
+  public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta,
+      EntityLivingBase placer) {
     EnumFacing face = facing.getAxis() != Axis.Y ? facing : FacingUtils.getHorizontalFacing(placer);
     return super.onBlockPlaced(worldIn, pos, facing, hitX, hitY, hitZ, meta, placer).withProperty(FACING, face);
   }

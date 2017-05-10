@@ -7,7 +7,6 @@ import net.mcfr.network.McfrNetworkWrapper;
 import net.mcfr.network.OpenEditPaperMessage;
 import net.mcfr.utils.NBTUtils;
 import net.minecraft.command.CommandException;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.inventory.Slot;
@@ -29,10 +28,15 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+/**
+ * Papier signé.
+ *
+ * @author Mc-Fr
+ */
 @SuppressWarnings("deprecation")
 public class ItemSignedPaper extends McfrItem {
   public ItemSignedPaper() {
-    super("signed_paper", 1, CreativeTabs.MISC);
+    super("signed_paper", 1, null);
   }
 
   @Override
@@ -64,15 +68,21 @@ public class ItemSignedPaper extends McfrItem {
   }
 
   @Override
-  public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-    if (!worldIn.isRemote) {
-      resolveContents(itemStackIn, playerIn);
-      McfrNetworkWrapper.getInstance().sendTo(new OpenEditPaperMessage(hand, false), (EntityPlayerMP) playerIn);
+  public ActionResult<ItemStack> onItemRightClick(ItemStack itemStack, World world, EntityPlayer player, EnumHand hand) {
+    if (!world.isRemote) {
+      resolveContents(itemStack, player);
+      McfrNetworkWrapper.getInstance().sendTo(new OpenEditPaperMessage(hand, false), (EntityPlayerMP) player);
     }
 
-    return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
+    return new ActionResult<>(EnumActionResult.SUCCESS, itemStack);
   }
 
+  /**
+   * Envoie le contenu du papier vers le client.
+   * 
+   * @param stack
+   * @param player
+   */
   private void resolveContents(ItemStack stack, EntityPlayer player) {
     if (stack != null && stack.getTagCompound() != null) {
       NBTTagCompound compound = stack.getTagCompound();
@@ -116,7 +126,10 @@ public class ItemSignedPaper extends McfrItem {
   }
 
   /**
-   * Cette méthode retourne vrai si le tag NBT "Pages" est valide.
+   * Indique si le tag "Pages" est valide.
+   * 
+   * @param nbt le tag conteneur
+   * @return true si le tag "Pages" est valide
    */
   public static boolean isNBTValid(NBTTagCompound nbt) {
     if (nbt != null && nbt.hasKey("Pages", NBTUtils.TAG_LIST)) {
@@ -137,6 +150,12 @@ public class ItemSignedPaper extends McfrItem {
     return false;
   }
 
+  /**
+   * Indique si les tags sont valides.
+   * 
+   * @param nbt tag conteneur
+   * @return true si les tags sont valides
+   */
   public static boolean validPaperTagContents(NBTTagCompound nbt) {
     if (!ItemSignedPaper.isNBTValid(nbt) || !nbt.hasKey("Title", NBTUtils.TAG_STRING)) {
       return false;

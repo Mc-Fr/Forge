@@ -4,13 +4,24 @@ import net.mcfr.commons.IEnumType;
 import net.mcfr.food.ItemDrink;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
+/**
+ * Fiole en verre.
+ *
+ * @author Mc-Fr
+ */
 public class ItemFlask extends ItemDrink<ItemFlask.EnumType> {
-  public ItemFlask(Item emptyContainer, int nutrition, float saturation) {
-    super("flask", emptyContainer, nutrition, saturation, EnumType.class);
+  /**
+   * Crée une fiole.
+   * 
+   * @param nutrition la quantité de faim restituée
+   * @param saturation le taux de saturation
+   */
+  public ItemFlask(int nutrition, float saturation) {
+    super("flask", Items.GLASS_BOTTLE, nutrition, saturation, EnumType.class);
   }
 
   @Override
@@ -35,6 +46,15 @@ public class ItemFlask extends ItemDrink<ItemFlask.EnumType> {
     return super.onItemUseFinish(stack, worldIn, entityLiving);
   }
 
+  /**
+   * Le type de contenu de la fiole :
+   * <ul>
+   * <li>lait</li>
+   * <li>cacao</li>
+   * </ul>
+   *
+   * @author Mc-Fr
+   */
   public static enum EnumType implements IEnumType<EnumType> {
     MILK("milk"),
     COCOA("cocoa");

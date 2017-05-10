@@ -14,6 +14,11 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 
+/**
+ * Cannes à sucre. Celles de Minecraft sont considérées comme du bambou.
+ *
+ * @author Mc-Fr
+ */
 public class BlockSugarCanes extends BlockReed {
   public BlockSugarCanes() {
     super();
@@ -23,28 +28,28 @@ public class BlockSugarCanes extends BlockReed {
     setHardness(0);
     setSoundType(SoundType.PLANT);
   }
-  
+
   @Override
   public Item getItemDropped(IBlockState state, Random rand, int fortune) {
     return McfrItems.SUGAR_CANES;
   }
-  
+
   @Override
   public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player) {
     return new ItemStack(McfrItems.SUGAR_CANES);
   }
-  
+
   @Override
   public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
     if (worldIn.getBlockState(pos.down()).getBlock() == this || checkForDrop(worldIn, pos, state)) {
       if (worldIn.isAirBlock(pos.up())) {
         int i;
-        
+
         for (i = 1; worldIn.getBlockState(pos.down(i)).getBlock() == this; ++i);
-        
+
         if (i < 3) {
           int j = state.getValue(AGE).intValue();
-          
+
           if (j == 15) {
             worldIn.setBlockState(pos.up(), getDefaultState());
             worldIn.setBlockState(pos, state.withProperty(AGE, 0), 4);

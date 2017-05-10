@@ -7,9 +7,15 @@ import net.mcfr.forge.ModelBellows;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.util.ResourceLocation;
 
+/**
+ * Rendu du soufflet.
+ *
+ * @author Mc-Fr
+ */
 public class TileEntityBellowsRenderer extends TileEntitySpecialRenderer<TileEntityBellows> {
   private static final ResourceLocation TEXTURE = new ResourceLocation(Constants.MOD_ID, "textures/entity/bellows.png");
 
+  /** Modèle du soufflet */
   private ModelBellows model;
 
   public TileEntityBellowsRenderer() {

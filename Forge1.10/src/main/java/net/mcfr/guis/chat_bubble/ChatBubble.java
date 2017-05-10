@@ -15,6 +15,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+/**
+ * Cette classe s'occupe du rendu de la bulle de tchat.
+ *
+ * @author Mc-Fr
+ */
 public class ChatBubble {
   /** Associe un joueur à une bulle de tchat. */
   public static final Map<UUID, Integer> PLAYER_BUBBLE = new HashMap<>();
@@ -51,7 +56,7 @@ public class ChatBubble {
         GlStateManager.rotate(180, 0, 1, 0);
         RenderUtils.renderItem(new ItemStack(McfrItems.ORP_SIGN));
         break;
-      case NONE:
+      default:
         // No-op
         break;
     }

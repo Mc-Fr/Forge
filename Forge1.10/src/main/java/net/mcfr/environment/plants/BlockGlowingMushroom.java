@@ -14,6 +14,11 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+/**
+ * Champignon luisant.
+ *
+ * @author Mc-Fr
+ */
 public class BlockGlowingMushroom extends McfrBlock {
   public static final AxisAlignedBB MUSHROOM_AABB = new AxisAlignedBB(0.3, 0, 0.3, 0.7, 0.4, 0.7);
 

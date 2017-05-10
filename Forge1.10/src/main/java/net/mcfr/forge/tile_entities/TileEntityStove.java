@@ -20,6 +20,11 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.math.BlockPos;
 
+/**
+ * Tile entity du haut-fourneau.
+ *
+ * @author Mc-Fr
+ */
 public class TileEntityStove extends TileEntityLockable implements ITickable, ISidedInventory {
   /** La température maximale. */
   public static final int MAX_TEMPERATURE = 150;
@@ -32,8 +37,11 @@ public class TileEntityStove extends TileEntityLockable implements ITickable, IS
   private int remainingFuelTicks;
   /** Le nombre de tics restant avant d'augmenter d'un degré. */
   private int remainingStepTicks;
+  /** La température actuelle */
   private int temperature;
+  /** Indique si la température maximale a été atteinte */
   private boolean maxReached;
+  /** Le carburant */
   private ItemStack fuel;
 
   public TileEntityStove() {
@@ -89,45 +97,76 @@ public class TileEntityStove extends TileEntityLockable implements ITickable, IS
     markDirty();
   }
 
+  /**
+   * @return le nombre total de ticks pour le carburant actuel
+   */
   public int getTotalFuelTicks() {
     return this.totalFuelTicks;
   }
 
+  /**
+   * @return le nombre de ticks restant pour le carburant actuel
+   */
   public int getRemainingFuelTicks() {
     return this.remainingFuelTicks;
   }
 
+  /**
+   * @return la progression de la jauge de carburant
+   */
   public float getFuelProgress() {
     return !isBurning() ? 0 : (float) (getTotalFuelTicks() - getRemainingFuelTicks()) / getTotalFuelTicks();
   }
 
+  /**
+   * @return le nombre de ticks restants avant la prochaine température
+   */
   public int getRemainingStepTicks() {
     return this.remainingStepTicks;
   }
 
+  /**
+   * @return la progression de la jauge de température
+   */
   public float getNextTemperatureProgress() {
     return (float) (TICKS_PER_STEPS - getRemainingStepTicks()) / TICKS_PER_STEPS;
   }
 
+  /**
+   * @return la température totale
+   */
   public int getTemperature() {
     return this.temperature;
   }
 
+  /**
+   * @return la progression de la jauge de température totale
+   */
   public float getTemperatureProgress() {
     return (float) getTemperature() / MAX_TEMPERATURE;
   }
 
+  /**
+   * @return true si le haut-fourneau est allumé
+   */
   public boolean isBurning() {
     return this.remainingFuelTicks > 0 && hasActiveBellows();
   }
 
+  /**
+   * @return true si le haut-fourneau est chaud
+   */
   public boolean isHot() {
     return this.temperature > 0;
   }
 
+  /**
+   * @return true si des soufflets actifs sont présents autour
+   */
   private boolean hasActiveBellows() {
     // @f0
-    BlockPos[] pos = {getPos().east(), getPos().east().south(), getPos().south(), getPos().west().south(), getPos().west(), getPos().west().north(), getPos().north(), getPos().east().north()};
+    BlockPos[] pos = {getPos().east(), getPos().east().south(), getPos().south(), getPos().west().south(), getPos().west(), getPos().west().north(),
+      getPos().north(), getPos().east().north()};
     // @f1
 
     for (BlockPos p : pos)

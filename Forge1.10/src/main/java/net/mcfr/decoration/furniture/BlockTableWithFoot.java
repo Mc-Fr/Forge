@@ -28,9 +28,9 @@ public class BlockTableWithFoot extends McfrBlockContainer<TileEntityFootTable> 
   public boolean isFullCube(IBlockState state) {
     return false;
   }
-  
+
   @Override
-  public TileEntityFootTable createNewTileEntity(World worldIn, int meta) {
+  public TileEntityFootTable createNewTileEntity(World world, int meta) {
     return new TileEntityFootTable();
   }
 

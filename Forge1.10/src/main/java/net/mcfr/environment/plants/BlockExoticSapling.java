@@ -30,6 +30,12 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+/**
+ * Pousses "exotiques".
+ *
+ * @author Mc-Fr
+ * @see EnumExoticWoodType
+ */
 public class BlockExoticSapling extends BlockBush implements IBlockWithVariants, IGrowable {
   public static final PropertyEnum<EnumExoticWoodType> VARIANT = PropertyEnum.create("type", EnumExoticWoodType.class);
   public static final PropertyInteger STAGE = PropertyInteger.create("stage", 0, 1);

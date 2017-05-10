@@ -8,7 +8,20 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
+/**
+ * Échelle suspendue. Ce bloc ne peut tenir que s'il est contre un bloc ou sous une autre échelle
+ * suspendue.
+ *
+ * @author Mc-Fr
+ */
 public class BlockHangedLadder extends BlockLadder {
+  /**
+   * Crée une échelle suspendue.
+   * 
+   * @param materialName le matériau
+   * @param sound le type de son
+   * @param hardness la dureté
+   */
   public BlockHangedLadder(String materialName, SoundType sound, float hardness) {
     super();
     String name = materialName + "_ladder";

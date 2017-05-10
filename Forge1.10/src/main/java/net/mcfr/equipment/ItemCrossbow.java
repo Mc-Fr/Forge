@@ -17,7 +17,17 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.world.World;
 
+/**
+ * Arbalète.
+ *
+ * @author Mc-Fr
+ */
 public class ItemCrossbow extends ItemBow {
+  /**
+   * Crée une arbalète.
+   * 
+   * @param name le nom
+   */
   public ItemCrossbow(String name) {
     super();
     name = name + "_crossbow";
@@ -94,6 +104,12 @@ public class ItemCrossbow extends ItemBow {
     }
   }
 
+  /**
+   * Cherche des munitions dans l'inventaire du joueur.
+   * 
+   * @param player le joueur
+   * @return des munitions
+   */
   private ItemStack findAmmo(EntityPlayer player) {
     if (isBolt(player.getHeldItem(EnumHand.OFF_HAND))) {
       return player.getHeldItem(EnumHand.OFF_HAND);
@@ -113,6 +129,12 @@ public class ItemCrossbow extends ItemBow {
     }
   }
 
+  /**
+   * Indique si l'item est un carreau.
+   * 
+   * @param stack l'item
+   * @return true si l'item est un carreau
+   */
   protected boolean isBolt(ItemStack stack) {
     return stack != null && stack.getItem() instanceof ItemCrossbowBolt;
   }

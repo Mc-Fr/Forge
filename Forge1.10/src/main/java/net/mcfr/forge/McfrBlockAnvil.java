@@ -14,13 +14,19 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
+/**
+ * Cette enclume est un atelier possédant une matrice 5x5.
+ *
+ * @author Mc-Fr
+ */
 public class McfrBlockAnvil extends McfrBlockOrientable {
   public McfrBlockAnvil() {
     super("anvil", Material.ANVIL, SoundType.ANVIL, 5, 2000, "pickaxe", 1, CreativeTabs.DECORATIONS);
   }
 
   @Override
-  public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
+  public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, ItemStack heldItem,
+      EnumFacing side, float hitX, float hitY, float hitZ) {
     if (!worldIn.isRemote) {
       playerIn.openGui(McfrMain.instance, CustomGuiScreens.ANVIL.ordinal(), worldIn, pos.getX(), pos.getY(), pos.getZ());
     }

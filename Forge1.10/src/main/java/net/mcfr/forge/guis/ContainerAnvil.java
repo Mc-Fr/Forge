@@ -9,12 +9,24 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
+/**
+ * Conteneur de l'interface de l'enclume.
+ *
+ * @author Mc-Fr
+ */
 public class ContainerAnvil extends ContainerLargeWorkbench {
   /** La longueur des côtes de la zone de détection des haut-fourneaux. */
   private static final int DETECTION_SIZE = 3;
 
-  public ContainerAnvil(InventoryPlayer playerInventory, World worldIn, BlockPos posIn) {
-    super(playerInventory, worldIn, posIn);
+  /**
+   * Crée un conteneur pour l'enclume.
+   * 
+   * @param playerInventory l'invetaire du joueur
+   * @param world le monde
+   * @param pos la position
+   */
+  public ContainerAnvil(InventoryPlayer playerInventory, World world, BlockPos pos) {
+    super(playerInventory, world, pos);
     setCraftMatrixAnvil();
   }
 
