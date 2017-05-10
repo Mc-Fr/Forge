@@ -112,6 +112,8 @@ import net.mcfr.decoration.misc.BlockSmokeGenerator;
 import net.mcfr.decoration.misc.BlockSupport;
 import net.mcfr.decoration.misc.McfrBlockCarpet;
 import net.mcfr.decoration.misc.McfrBlockFence;
+import net.mcfr.decoration.misc.blood_stains.BlockBloodStainCorner;
+import net.mcfr.decoration.misc.blood_stains.BlockBloodWallsAndFloor;
 import net.mcfr.decoration.misc.ornamented_blocks.BlockOrnamentedNoRotation;
 import net.mcfr.decoration.misc.ornamented_blocks.BlockOrnamentedRotations1;
 import net.mcfr.decoration.misc.ornamented_blocks.BlockOrnamentedRotations2;
@@ -242,7 +244,12 @@ public final class McfrBlocks {
   public static final BlockOrnamentedRotations2 BLACK_ORNAMENTED_BLOCK2 = new BlockOrnamentedRotations2("black");
   public static final BlockOrnamentedRotations3 BLACK_ORNAMENTED_BLOCK3 = new BlockOrnamentedRotations3("black");
   // Sang
-  // TODO
+  public static final BlockBloodWallsAndFloor BLOOD1 = new BlockBloodWallsAndFloor("1");
+  public static final BlockBloodWallsAndFloor BLOOD2 = new BlockBloodWallsAndFloor("2");
+  public static final BlockBloodWallsAndFloor BLOOD3 = new BlockBloodWallsAndFloor("3");
+  public static final BlockBloodWallsAndFloor BLOOD4 = new BlockBloodWallsAndFloor("4");
+  public static final BlockBloodWallsAndFloor BLOOD5 = new BlockBloodWallsAndFloor("5");
+  public static final BlockBloodStainCorner BLOOD_CORNER = new BlockBloodStainCorner();
   // Agriculture
   /** Orge */
   public static final BlockBarleyCrops BARLEY = new BlockBarleyCrops();
@@ -847,6 +854,13 @@ public final class McfrBlocks {
     registerVariants(BLACK_ORNAMENTED_BLOCK1);
     registerVariants(BLACK_ORNAMENTED_BLOCK2);
     registerVariants(BLACK_ORNAMENTED_BLOCK3);
+
+    register(BLOOD1);
+    register(BLOOD2);
+    register(BLOOD3);
+    register(BLOOD4);
+    register(BLOOD5);
+    register(BLOOD_CORNER);
 
     register(BARLEY);
     register(VINE_BASE);

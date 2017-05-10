@@ -9,6 +9,7 @@ import net.mcfr.craftsmanship.ItemSwordHandle;
 import net.mcfr.decoration.beds.McfrItemBed;
 import net.mcfr.decoration.container_blocks.ItemBarrel;
 import net.mcfr.decoration.lighting.ItemLantern;
+import net.mcfr.decoration.misc.blood_stains.ItemBlood;
 import net.mcfr.decoration.signs.ItemTombstone;
 import net.mcfr.decoration.signs.ItemWallNote;
 import net.mcfr.decoration.signs.McfrItemSign;
@@ -65,6 +66,7 @@ public final class McfrItems {
   // Divers
   public static final ItemOre ORE = new ItemOre();
   public static final McfrItem INK = new McfrItem("ink", CreativeTabs.MATERIALS);
+  public static final ItemBlood BLOOD_STAIN = new ItemBlood();
   /** Fourrage */
   public static final ItemFodder FODDER = new ItemFodder();
   public static final McfrItem PIPE = new McfrItem("pipe", 1, CreativeTabs.MISC);
@@ -342,6 +344,7 @@ public final class McfrItems {
 
     register(ORE);
     register(INK);
+    register(BLOOD_STAIN);
     register(FODDER);
     register(PIPE);
     register(WRITEABLE_PAPER);

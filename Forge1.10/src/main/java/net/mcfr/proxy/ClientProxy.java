@@ -48,6 +48,7 @@ import net.mcfr.decoration.lighting.tile_entities.TileEntityChandelier;
 import net.mcfr.decoration.lighting.tile_entities.TileEntityChandelierRenderer;
 import net.mcfr.decoration.misc.BlockFloorDecoration;
 import net.mcfr.decoration.misc.EnumMoucharabiehType;
+import net.mcfr.decoration.misc.blood_stains.ItemBlood;
 import net.mcfr.decoration.misc.ornamented_blocks.BlockOrnamentedNoRotation;
 import net.mcfr.decoration.misc.ornamented_blocks.BlockOrnamentedRotations1;
 import net.mcfr.decoration.misc.ornamented_blocks.BlockOrnamentedRotations2;
@@ -178,6 +179,13 @@ public class ClientProxy extends CommonProxy {
     registerBlockVariants(BLACK_ORNAMENTED_BLOCK1, BlockOrnamentedRotations1.EnumType.class);
     registerBlockVariants(BLACK_ORNAMENTED_BLOCK2, BlockOrnamentedRotations2.EnumType.class);
     registerBlockVariants(BLACK_ORNAMENTED_BLOCK3, BlockOrnamentedRotations3.EnumType.class);
+
+    registerBlock(BLOOD1);
+    registerBlock(BLOOD2);
+    registerBlock(BLOOD3);
+    registerBlock(BLOOD4);
+    registerBlock(BLOOD5);
+    registerBlock(BLOOD_CORNER);
 
     registerBlock(McfrBlocks.BARLEY);
     registerBlock(VINE_BASE);
@@ -686,6 +694,7 @@ public class ClientProxy extends CommonProxy {
 
     registerItemVariants(ORE, ItemOre.EnumType.class);
     registerItem(INK);
+    registerItemVariants(BLOOD_STAIN, ItemBlood.EnumType.class);
     registerItemVariants(FODDER, ItemFodder.EnumType.class);
     registerItem(PIPE);
     registerItem(WRITEABLE_PAPER);
