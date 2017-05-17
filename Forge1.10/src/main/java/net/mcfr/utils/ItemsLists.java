@@ -374,6 +374,7 @@ public final class ItemsLists {
       auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.TALLGRASS, 2, 2)), HashedItemStack.fromStack(new ItemStack(Items.DYE, 8, 2)));
       auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.DOUBLE_PLANT, 2, 2)), HashedItemStack.fromStack(new ItemStack(Items.DYE, 8, 2)));
       auth.put(HashedItemStack.fromStack(new ItemStack(Blocks.DOUBLE_PLANT, 2, 3)), HashedItemStack.fromStack(new ItemStack(Items.DYE, 8, 2)));
+      auth.put(HashedItemStack.fromStack(new ItemStack(Items.REEDS)), HashedItemStack.fromStack(new ItemStack(Items.SUGAR, 2)));
 
       MAPS.put(key, Collections.unmodifiableMap(auth));
       createList(key);
@@ -397,8 +398,8 @@ public final class ItemsLists {
    * @param blockClass la classe du bloc
    * @param stack le stack
    * @return vrai si le stack est accepté ou la classe du bloc est null
-   * @note Cette méthode est prévue pour être utilisée par les classes {@link ContainerRestrictable} et
-   *       {@link ContainerRack}.
+   * @note Cette méthode est prévue pour être utilisée par les classes {@link ContainerRestrictable}
+   *       et {@link ContainerRack}.
    */
   public static boolean isItemValid(Class<? extends Block> blockClass, ItemStack stack) {
     if (blockClass == null)
