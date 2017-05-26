@@ -135,7 +135,7 @@ public final class McfrItems {
   public static final McfrItemFood POIGRUME = new McfrItemFood("poigrume", 1, 0.8f);
   public static final McfrItemFood POIGRUME_COOKIE = new McfrItemFood("poigrume_cookie", 2, 3.2f);
   public static final McfrItem COCOA = new McfrItem("cocoa", CreativeTabs.MATERIALS);
-  public static final McfrItemFood ORP_FOOD = new McfrItemFood("orp_food", 4, 6.8f);
+  public static final McfrItemFood ORP_FOOD = new McfrItemFood("orp_food", 4, 20.0f);
   // Loots de chasse
   public static final McfrItemFood RAW_HUNTED_LEG = new McfrItemFood("raw_hunted_leg", 3, 0.6f);
   public static final McfrItemFood COOKED_HUNTED_LEG = new McfrItemFood("cooked_hunted_leg", 4, 8.8f);

@@ -267,6 +267,7 @@ item.mcfr_b_i_raw_galt_meat.name=Viande de Galt crue
 item.mcfr_b_i_cooked_galt_meat.name=Viande de Galt cuite
 item.mcfr_b_i_raw_hoen_meat.name=Viande d'Hoen crue
 item.mcfr_b_i_cooked_hoen_meat.name=Viande d'Hoen cuite
+item.mcfr_b_i_orp_food.name=Nourriture HRP
 
 item.mcfr_b_i_beer_tankard.age_0.lore=Bière de table
 item.mcfr_b_i_beer_tankard.age_1.lore=Bière blanche
