@@ -96,7 +96,7 @@ public class ContainerRestrictable extends Container {
       ItemStack current = slot.getStack();
       previous = current.copy();
 
-      if (index < 9) {
+      if (index < getContainerSize()) {
         if (!mergeItemStack(current, getContainerSize(), this.inventorySlots.size(), true)) {
           return null;
         }
