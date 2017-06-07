@@ -10,13 +10,9 @@ buildscript {
 apply plugin: 'net.minecraftforge.gradle.forge'
 //Only edit below this line, the above code adds and enables the nessasary things for Forge to be setup.
 
-//jar {
- //  manifest {
-  //     attributes "FMLCorePlugin": "net.mcfr.core.McfrCore", "FMLCorePluginContainsFMLMod": "true"
-  // }
-//}
-version = "1.1.6"
-group= "net.mcfr" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+
+version = "1.2.0"
+group= "com.tomlabete.McFr" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "McFr"
 
 sourceCompatibility = targetCompatibility = "1.8" // Need this here so eclipse task generates correctly.

@@ -41,6 +41,12 @@ public class ItemCoin extends McfrItem {
    * <li>élinvar</li>
    * <li>or</li>
    * <li>platine</li>
+   * <li>hexane</li>
+   * <li>once</li>
+   * <li>nef</li>
+   * <li>galion</li>
+   * <li>zéphir d'argent</li>
+   * <li>zéphir d'or</li>
    * </ul>
    * 
    * @author Darmo
@@ -49,7 +55,13 @@ public class ItemCoin extends McfrItem {
     BRASS("brass"),
     ELINVAR("elinvar"),
     GOLD("gold"),
-    PLATINUM("platinum");
+    PLATINUM("platinum"),
+    HEXANE("hexane"),
+    ONCE("once"),
+    NEF("nef"),
+    GALION("galion"),
+    SILVER_ZEPHIR("silver_zephir"),
+    GOLDEN_ZEPHIR("golden_zephir");
 
     private final String name;
 
