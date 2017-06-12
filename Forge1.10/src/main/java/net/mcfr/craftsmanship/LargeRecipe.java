@@ -5,6 +5,7 @@ import java.util.Objects;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.item.crafting.ShapedRecipes;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeHooks;
 
@@ -133,17 +134,7 @@ public class LargeRecipe implements IRecipe {
 
   @Override
   public ItemStack getCraftingResult(InventoryCrafting inv) {
-    ItemStack stack = getRecipeOutput().copy();
-
-    for (int i = 0; i < inv.getSizeInventory(); ++i) {
-      ItemStack stack1 = inv.getStackInSlot(i);
-
-      if (stack1 != null && stack1.hasTagCompound()) {
-        stack.setTagCompound(stack1.getTagCompound().copy());
-      }
-    }
-
-    return stack;
+    return getRecipeOutput().copy();
   }
 
   @Override
