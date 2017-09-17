@@ -221,7 +221,12 @@ item.mcfr_b_i_coin.galion.name=Galion
 item.mcfr_b_i_coin.silver_zephir.name=Zéphir d'Argent
 item.mcfr_b_i_coin.golden_zephir.name=Zéphir d'Or
 item.mcfr_b_i_pipe.name=Pipe en bois
-item.mcfr_b_i_key.name=Clé
+item.mcfr_b_i_key.broken.name=Clé cassée
+item.mcfr_b_i_key.coded.name=Clé
+item.mcfr_b_i_key.blank.name=Clé vierge
+item.mcfr_b_i_lock.broken.name=Serrure cassée
+item.mcfr_b_i_lock.coded.name=Serrure
+item.mcfr_b_i_lock.blank.name=Serrure vierge
 item.mcfr_b_i_keyring.name=Trousseau de clés
 
 < Foodstuffs >

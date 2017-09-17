@@ -6,6 +6,8 @@ import static net.mcfr.McfrItems.*;
 import net.mcfr.Constants;
 import net.mcfr.McfrBlocks;
 import net.mcfr.McfrItems;
+import net.mcfr.capabilities.IPrevFood;
+import net.mcfr.capabilities.PrevFood;
 import net.mcfr.commons.IEnumType;
 import net.mcfr.construction.BlockCarvedClay;
 import net.mcfr.construction.BlockColoredStonebrick;
@@ -117,6 +119,7 @@ import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntitySign;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 
@@ -129,6 +132,8 @@ public class ClientProxy extends CommonProxy {
   @SuppressWarnings("deprecation")
   @Override
   public void register() {
+    CapabilityManager.INSTANCE.register(IPrevFood.class, new PrevFood.Storage(), PrevFood.class);
+    
     EXOTIC_LEAVES.setGraphicsLevel(Minecraft.getMinecraft().gameSettings.fancyGraphics);
 
     /**
@@ -518,7 +523,7 @@ public class ClientProxy extends CommonProxy {
     registerBlock(McfrBlocks.CRAFTSMAN_JUNGLE_DOOR);
     registerBlock(McfrBlocks.CRAFTSMAN_ACACIA_DOOR);
     registerBlock(McfrBlocks.CRAFTSMAN_DARK_OAK_DOOR);
-
+    
     registerBlock(REFINED_OAK_GATE);
     registerBlock(REFINED_SPRUCE_GATE);
     registerBlock(REFINED_BIRCH_GATE);
@@ -688,6 +693,7 @@ public class ClientProxy extends CommonProxy {
 
     registerItem(KEYRING);
     registerItem(KEY);
+    registerItem(LOCK);
 
     registerItem(BARLEY_SEEDS);
     registerItem(McfrItems.BARLEY);

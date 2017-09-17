@@ -2,6 +2,9 @@ package net.mcfr.event;
 
 import java.lang.reflect.Field;
 
+import net.mcfr.Constants;
+import net.mcfr.capabilities.IPrevFood;
+import net.mcfr.capabilities.PrevFoodProvider;
 import net.mcfr.guis.GuiMcfrChat;
 import net.mcfr.guis.GuiMcfrIngameMenu;
 import net.mcfr.guis.GuiMcfrMainMenu;
@@ -10,10 +13,16 @@ import net.minecraft.client.gui.GuiChat;
 import net.minecraft.client.gui.GuiIngameMenu;
 import net.minecraft.client.gui.GuiMainMenu;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.FoodStats;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.GuiOpenEvent;
+import net.minecraftforge.event.AttachCapabilitiesEvent;
+import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.world.BlockEvent.PlaceEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -27,6 +36,41 @@ import net.minecraftforge.fml.relauncher.SideOnly;
  * @author Mc-Fr
  */
 public class PlayerEventsHandler {
+  public static final ResourceLocation PREV_FOOD_CAP = new ResourceLocation(Constants.MOD_ID, "prevFood");
+  
+  private final float SATURATION_SPEED_MULTIPLIER = 0.1f;
+  private final float SATURATION_REGENERATION_PROPORTION = 0.5f;
+  
+  @SubscribeEvent
+  public void onAttachEntityCapabilities(AttachCapabilitiesEvent<Entity> event) {
+    if (event.getObject() instanceof EntityPlayer)
+      event.addCapability(PREV_FOOD_CAP, new PrevFoodProvider());
+  }
+  
+  @SubscribeEvent
+  public void onPlayerUpdate(LivingEvent.LivingUpdateEvent event) {
+    if (event.getEntity() instanceof EntityPlayer && !event.getEntity().getEntityWorld().isRemote) {
+      EntityPlayer player = (EntityPlayer) event.getEntity();
+      IPrevFood cap = player.getCapability(PrevFoodProvider.PREV_FOOD_CAP, null);
+      FoodStats stats = player.getFoodStats();
+      
+      int food = stats.getFoodLevel();
+      int prevFood = cap.getFood();
+      float saturation = stats.getSaturationLevel();
+      float prevSaturation = cap.getSaturation();
+      
+      if (food < prevFood) {
+        stats.addStats(food, 0.5f * SATURATION_REGENERATION_PROPORTION);
+        stats.setFoodLevel(food);
+      } else if (saturation < prevSaturation && saturation > 3f) {
+        stats.addStats(1, 0.5f - 0.5f * SATURATION_SPEED_MULTIPLIER);
+        stats.setFoodLevel(food);
+      }
+
+      cap.set(stats.getFoodLevel(), stats.getSaturationLevel());
+    }
+  }
+  
   @SubscribeEvent
   public void onClientConnectedToServer(FMLNetworkEvent.ClientConnectedToServerEvent e) {
     System.out.println("connection");

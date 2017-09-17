@@ -67,7 +67,7 @@ public final class McfrCrafts {
    */
   public static void registerCrafts() {
     RecipeSorter.register(Constants.MOD_ID + ":large", LargeRecipe.class, Category.SHAPED, "before:minecraft:shaped");
-
+    
     removeRecipe(new ItemStack(Blocks.ACACIA_STAIRS, 4));
     removeRecipe(new ItemStack(Blocks.BIRCH_STAIRS, 4));
     removeRecipe(new ItemStack(Blocks.DARK_OAK_STAIRS, 4));
@@ -107,7 +107,27 @@ public final class McfrCrafts {
     for (EnumDyeColor color : EnumDyeColor.values())
       removeRecipe(new ItemStack(Items.DYE, 1, color.getMetadata()));
     removeRecipe(new ItemStack(Items.BED));
-
+    
+    removeRecipe(new ItemStack(Items.IRON_PICKAXE));
+    removeRecipe(new ItemStack(Items.IRON_AXE));
+    removeRecipe(new ItemStack(Items.IRON_SWORD));
+    removeRecipe(new ItemStack(Items.IRON_SHOVEL));
+    removeRecipe(new ItemStack(Items.IRON_HOE));
+    removeRecipe(new ItemStack(Items.IRON_HELMET));
+    removeRecipe(new ItemStack(Items.IRON_CHESTPLATE));
+    removeRecipe(new ItemStack(Items.IRON_LEGGINGS));
+    removeRecipe(new ItemStack(Items.IRON_BOOTS));
+    
+    removeRecipe(new ItemStack(Items.GOLDEN_PICKAXE));
+    removeRecipe(new ItemStack(Items.GOLDEN_AXE));
+    removeRecipe(new ItemStack(Items.GOLDEN_SWORD));
+    removeRecipe(new ItemStack(Items.GOLDEN_SHOVEL));
+    removeRecipe(new ItemStack(Items.GOLDEN_HOE));
+    removeRecipe(new ItemStack(Items.GOLDEN_HELMET));
+    removeRecipe(new ItemStack(Items.GOLDEN_CHESTPLATE));
+    removeRecipe(new ItemStack(Items.GOLDEN_LEGGINGS));
+    removeRecipe(new ItemStack(Items.GOLDEN_BOOTS));
+    
     removeRecipe(new ItemStack(Items.DIAMOND_PICKAXE));
     removeRecipe(new ItemStack(Items.DIAMOND_AXE));
     removeRecipe(new ItemStack(Items.DIAMOND_SWORD));
@@ -128,8 +148,6 @@ public final class McfrCrafts {
         new ItemStack(Blocks.STONE, 1, 0));
     addShapedRecipe(new ItemStack(Blocks.STONE, 8, 3), "###", "#C#", "###", 'C', new ItemStack(Items.DYE, 1, 14), '#',
         new ItemStack(Blocks.STONE, 1, 0));
-
-    addShapedRecipe(new ItemStack(Blocks.SANDSTONE_STAIRS, 4), "#  ", "## ", "###", '#', McfrBlocks.ROUGH_SANDSTONE);
 
     for (Block planks : PLANKS) {
       addShapedRecipe(new ItemStack(Blocks.CHEST), "IWI", "WHW", "WWW", 'I', Items.IRON_INGOT, 'W', planks, 'H', Blocks.TRIPWIRE_HOOK);
@@ -299,6 +317,7 @@ public final class McfrCrafts {
     addLargeRecipe(new ItemStack(McfrBlocks.MARBLE_SLAB2, 16, 2), "SSSS", "SSSS", 'S', new ItemStack(McfrBlocks.MARBLE, 1, 8));
 
     // Escaliers
+    addStairsRecipe(Blocks.SANDSTONE_STAIRS, new ItemStack(McfrBlocks.ROUGH_SANDSTONE));
     addStairsRecipe(Blocks.PURPUR_STAIRS, new ItemStack(Blocks.PURPUR_BLOCK));
     addStairsRecipe(Blocks.QUARTZ_STAIRS, new ItemStack(Blocks.QUARTZ_BLOCK));
     addStairsRecipe(Blocks.RED_SANDSTONE_STAIRS, new ItemStack(Blocks.RED_SANDSTONE));
@@ -1118,6 +1137,14 @@ public final class McfrCrafts {
     removeRecipe(new ItemStack(Items.SHEARS));
     removeRecipe(new ItemStack(Items.IRON_DOOR));
     removeRecipe(new ItemStack(Blocks.IRON_TRAPDOOR));
+    
+    addAnvilRecipe(new ItemStack(McfrItems.KEY, 1, 2), 0, 100, "  I  ", "  I  ", "  I  ", "  I  ", "  I  ", 'I', Items.IRON_INGOT);
+    addAnvilRecipe(new ItemStack(McfrItems.KEY, 1, 2), 0, 100, "KI", 'K', new ItemStack(McfrItems.KEY, 1, 1), 'I', Items.IRON_INGOT);
+    addAnvilRecipe(new ItemStack(McfrItems.KEY, 1, 2), 0, 100, "KI", 'K', new ItemStack(McfrItems.KEY, 1, 0), 'I', Items.IRON_INGOT);
+    
+    addAnvilRecipe(new ItemStack(McfrItems.LOCK, 1, 2), 0, 100, "IIIII", 'I', Items.IRON_INGOT);
+    addAnvilRecipe(new ItemStack(McfrItems.LOCK, 1, 2), 0, 100, "LI", 'L', new ItemStack(McfrItems.LOCK, 1, 1), 'I', Items.IRON_INGOT);
+    addAnvilRecipe(new ItemStack(McfrItems.LOCK, 1, 2), 0, 100, "LI", 'L', new ItemStack(McfrItems.LOCK, 1, 0), 'I', Items.IRON_INGOT);
 
     addAnvilRecipe(new ItemStack(McfrItems.IRON_BOW), 60, 90, "  #B#", " P  S", "#  S ", "B S  ", "#S   ", '#', Items.IRON_INGOT, 'P',
         new ItemStack(McfrItems.SWORD_HANDLE, 1, 0), 'B', Items.STICK, 'S', Items.STRING);
@@ -1394,7 +1421,7 @@ public final class McfrCrafts {
   private static void addAnvilRecipe(ItemStack result, int temperatureMin, int temperatureMax, Object... recipeComponents) {
     RawRecipe c = getComponents(recipeComponents);
     CraftingManager.getInstance().getRecipeList()
-        .add(new AnvilRecipe(c.getWidth(), c.getHeight(), c.getItems(), result, temperatureMin, temperatureMax));
+        .add(new AnvilRecipe(c.getWidth(), c.getHeight(), c.getItems(), result, 1, 100));
   }
 
   /**

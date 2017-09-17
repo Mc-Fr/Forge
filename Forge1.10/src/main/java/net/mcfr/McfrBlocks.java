@@ -102,6 +102,7 @@ import net.mcfr.decoration.lighting.EnumLanternColor;
 import net.mcfr.decoration.misc.BlockChain;
 import net.mcfr.decoration.misc.BlockChessboard;
 import net.mcfr.decoration.misc.BlockCoins;
+import net.mcfr.decoration.misc.BlockDecoration;
 import net.mcfr.decoration.misc.BlockFeathers;
 import net.mcfr.decoration.misc.BlockHangedLadder;
 import net.mcfr.decoration.misc.BlockMoucharabieh;
@@ -150,12 +151,7 @@ import net.mcfr.forge.McfrBlockAnvil;
 import net.mcfr.mecanisms.BlockLongRedstoneRepeater;
 import net.mcfr.mecanisms.BlockPulsor;
 import net.mcfr.mecanisms.McfrBlockFenceGate;
-import net.mcfr.mecanisms.doors.BlockCraftsmanAcaciaDoor;
-import net.mcfr.mecanisms.doors.BlockCraftsmanBirchDoor;
-import net.mcfr.mecanisms.doors.BlockCraftsmanDarkOakDoor;
-import net.mcfr.mecanisms.doors.BlockCraftsmanJungleDoor;
-import net.mcfr.mecanisms.doors.BlockCraftsmanOakDoor;
-import net.mcfr.mecanisms.doors.BlockCraftsmanSpruceDoor;
+import net.mcfr.mecanisms.doors.BlockCraftsmanDoor;
 import net.mcfr.mecanisms.doors.BlockStrongOakDoor;
 import net.mcfr.mecanisms.trapdoors.BlockCraftsmanTrapdoor;
 import net.mcfr.mecanisms.trapdoors.BlockStrongTrapdoor;
@@ -616,13 +612,13 @@ public final class McfrBlocks {
   public static final BlockCraftsmanTrapdoor CRAFTSMAN_DARK_OAK_TRAPDOOR = new BlockCraftsmanTrapdoor(BlockPlanks.EnumType.DARK_OAK);
   // Porte solide
   public static final BlockStrongOakDoor STRONG_OAK_DOOR = new BlockStrongOakDoor();
-  // Portes artisant
-  public static final BlockCraftsmanOakDoor CRAFTSMAN_OAK_DOOR = new BlockCraftsmanOakDoor();
-  public static final BlockCraftsmanSpruceDoor CRAFTSMAN_SPRUCE_DOOR = new BlockCraftsmanSpruceDoor();
-  public static final BlockCraftsmanBirchDoor CRAFTSMAN_BIRCH_DOOR = new BlockCraftsmanBirchDoor();
-  public static final BlockCraftsmanJungleDoor CRAFTSMAN_JUNGLE_DOOR = new BlockCraftsmanJungleDoor();
-  public static final BlockCraftsmanAcaciaDoor CRAFTSMAN_ACACIA_DOOR = new BlockCraftsmanAcaciaDoor();
-  public static final BlockCraftsmanDarkOakDoor CRAFTSMAN_DARK_OAK_DOOR = new BlockCraftsmanDarkOakDoor();
+  // Portes artisan
+  public static final BlockCraftsmanDoor CRAFTSMAN_OAK_DOOR = new BlockCraftsmanDoor(BlockPlanks.EnumType.OAK);
+  public static final BlockCraftsmanDoor CRAFTSMAN_SPRUCE_DOOR = new BlockCraftsmanDoor(BlockPlanks.EnumType.SPRUCE);
+  public static final BlockCraftsmanDoor CRAFTSMAN_BIRCH_DOOR = new BlockCraftsmanDoor(BlockPlanks.EnumType.BIRCH);
+  public static final BlockCraftsmanDoor CRAFTSMAN_JUNGLE_DOOR = new BlockCraftsmanDoor(BlockPlanks.EnumType.JUNGLE);
+  public static final BlockCraftsmanDoor CRAFTSMAN_ACACIA_DOOR = new BlockCraftsmanDoor(BlockPlanks.EnumType.ACACIA);
+  public static final BlockCraftsmanDoor CRAFTSMAN_DARK_OAK_DOOR = new BlockCraftsmanDoor(BlockPlanks.EnumType.DARK_OAK);
   // Portillons
   public static final McfrBlockFenceGate REFINED_OAK_GATE = new McfrBlockFenceGate("refined_oak");
   public static final McfrBlockFenceGate REFINED_SPRUCE_GATE = new McfrBlockFenceGate("refined_spruce");
@@ -769,6 +765,7 @@ public final class McfrBlocks {
   public static final McfrBlockCake CHOCOLATE_CAKE = new McfrBlockCake("chocolate", 5, 6.8f);
   // Ustensiles
   public static final BlockMortar MORTAR = new BlockMortar();
+  public static final BlockDecoration TANKARD = new BlockDecoration("tankard", Material.WOOD, SoundType.WOOD, 0);
   // Redstone
   public static final BlockLongRedstoneRepeater LONG_REPEATER_OFF = new BlockLongRedstoneRepeater(false);
   public static final BlockLongRedstoneRepeater LONG_REPEATER_ON = new BlockLongRedstoneRepeater(true);
@@ -1172,7 +1169,7 @@ public final class McfrBlocks {
     register(CRAFTSMAN_JUNGLE_DOOR);
     register(CRAFTSMAN_ACACIA_DOOR);
     register(CRAFTSMAN_DARK_OAK_DOOR);
-
+    
     register(REFINED_OAK_GATE);
     register(REFINED_SPRUCE_GATE);
     register(REFINED_BIRCH_GATE);

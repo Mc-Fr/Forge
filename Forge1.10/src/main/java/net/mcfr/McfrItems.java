@@ -37,6 +37,7 @@ import net.mcfr.food.ItemContainedFood;
 import net.mcfr.food.McfrItemFood;
 import net.mcfr.food.ustensils.ItemFlask;
 import net.mcfr.mecanisms.doors.McfrItemDoor;
+import net.mcfr.mecanisms.keys.McfrCodedItem;
 import net.mcfr.misc.ItemDecoratedRing;
 import net.mcfr.misc.ItemRing;
 import net.mcfr.misc.ItemSailBoat;
@@ -88,7 +89,8 @@ public final class McfrItems {
   public static final ItemSwordHandle SWORD_HANDLE = new ItemSwordHandle();
   // Clés
   public static final McfrItem KEYRING = new McfrItem("keyring", CreativeTabs.MISC);
-  public static final McfrItem KEY = new McfrItem("key", CreativeTabs.MISC);
+  public static final McfrCodedItem KEY = new McfrCodedItem("key", CreativeTabs.MISC);
+  public static final McfrCodedItem LOCK = new McfrCodedItem("lock", CreativeTabs.MISC);
   // Agriculture
   public static final McfrItemSeeds BARLEY_SEEDS = new McfrItemSeeds("barley_seeds", McfrBlocks.BARLEY, Blocks.FARMLAND);
   public static final McfrItem BARLEY = new McfrItem("barley", CreativeTabs.MATERIALS);
@@ -362,6 +364,7 @@ public final class McfrItems {
 
     register(KEYRING);
     register(KEY);
+    register(LOCK);
 
     register(BARLEY_SEEDS);
     register(BARLEY);

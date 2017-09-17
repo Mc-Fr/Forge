@@ -14,9 +14,9 @@ import net.mcfr.decoration.container_blocks.tile_entities.TileEntityLittleChest;
 import net.mcfr.decoration.container_blocks.tile_entities.TileEntityPallet;
 import net.mcfr.decoration.furniture.tile_entities.TileEntityArmChair;
 import net.mcfr.decoration.furniture.tile_entities.TileEntityEndTable;
+import net.mcfr.decoration.furniture.tile_entities.TileEntityFootTable;
 import net.mcfr.decoration.furniture.tile_entities.TileEntityShowcase;
 import net.mcfr.decoration.furniture.tile_entities.TileEntityTable;
-import net.mcfr.decoration.furniture.tile_entities.TileEntityFootTable;
 import net.mcfr.decoration.furniture.tile_entities.TileEntityWeaponsStand;
 import net.mcfr.decoration.furniture.tile_entities.TileEntityWoodenBench;
 import net.mcfr.decoration.furniture.tile_entities.TileEntityWoodenChair;
@@ -42,9 +42,12 @@ import net.mcfr.entities.mobs.entity.EntityPryf;
 import net.mcfr.entities.mobs.entity.EntitySiker;
 import net.mcfr.entities.mobs.entity.EntityTaure;
 import net.mcfr.event.BlockEventsHandler;
+import net.mcfr.event.ItemEventsHandler;
 import net.mcfr.event.PlayerEventsHandler;
 import net.mcfr.forge.tile_entities.TileEntityBellows;
 import net.mcfr.forge.tile_entities.TileEntityStove;
+import net.mcfr.mecanisms.keys.IKeyCode;
+import net.mcfr.mecanisms.keys.KeyCode;
 import net.mcfr.network.CreateChatBubbleMessage;
 import net.mcfr.network.DestroyChatBubbleMessage;
 import net.mcfr.network.GuiHandler;
@@ -59,6 +62,7 @@ import net.mcfr.network.UpdateChatBubblePositionMessage;
 import net.mcfr.network.UpdateWallNoteMessage;
 import net.mcfr.proxy.CommonProxy;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
@@ -109,6 +113,7 @@ public class McfrMain {
    */
   @EventHandler
   public void init(FMLInitializationEvent e) {
+    CapabilityManager.INSTANCE.register(IKeyCode.class, new KeyCode.Storage(), KeyCode.class);
     proxy.register();
     registerEventHandlers();
     NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
@@ -122,6 +127,7 @@ public class McfrMain {
     MinecraftForge.EVENT_BUS.register(BlockBarrel.TILE_ENTITY_SAVER);
     MinecraftForge.EVENT_BUS.register(new PlayerEventsHandler());
     MinecraftForge.EVENT_BUS.register(new BlockEventsHandler());
+    MinecraftForge.EVENT_BUS.register(new ItemEventsHandler());
   }
 
   /**

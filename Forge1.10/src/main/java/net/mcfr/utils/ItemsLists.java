@@ -357,7 +357,7 @@ public final class ItemsLists {
     if (!MAPS.containsKey(key)) {
       Map<HashedItemStack, HashedItemStack> auth = new HashMap<>();
 
-      auth.put(HashedItemStack.fromStack(new ItemStack(Items.WHEAT_SEEDS, 2)), HashedItemStack.fromStack(new ItemStack(McfrItems.FLOUR)));
+      auth.put(HashedItemStack.fromStack(new ItemStack(Items.WHEAT_SEEDS, 4)), HashedItemStack.fromStack(new ItemStack(McfrItems.FLOUR))); //NOTE
       auth.put(HashedItemStack.fromStack(new ItemStack(McfrItems.HEMP_LEAF, 2)), HashedItemStack.fromStack(new ItemStack(McfrItems.HEMP_OIL)));
       auth.put(HashedItemStack.fromStack(new ItemStack(Items.COAL, 2, 0)), HashedItemStack.fromStack(new ItemStack(Items.DYE, 8, 0)));
       auth.put(HashedItemStack.fromStack(new ItemStack(Items.COAL, 2, 1)), HashedItemStack.fromStack(new ItemStack(Items.DYE, 8, 0)));
