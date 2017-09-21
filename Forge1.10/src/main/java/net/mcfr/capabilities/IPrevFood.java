@@ -1,7 +1,7 @@
 package net.mcfr.capabilities;
 
 public interface IPrevFood {
-  public void set(int food, float saturation);
-  public int getFood();
-  public float getSaturation();
+  void set(int food, float saturation);
+  int getFood();
+  float getSaturation();
 }
